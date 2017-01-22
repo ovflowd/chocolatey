@@ -26,5 +26,7 @@ build 500
 
 ### Known issues
 >1. There CAN be a problem with chrome and entering the client 
+
 >>>1.1. If this bug appears you should try to use Internet explore or Firefox 
+
 >>>>>Sidenote on 1. Dont know where this problem come from so this problem is on the azureweb git and the yupi emu git.
