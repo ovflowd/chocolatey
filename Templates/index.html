@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title head-title="">{{hotel_name}}</title>
+    <!--[if (lte IE 9)|(IEMobile)]>
+    <script>window.location = '{{global_url}}/upgrade/';</script>
+    <!--<![endif]-->
+    <meta name="robots" content="NOODP">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="prerender-status-code" status-for-prerender="">
+    <meta name="fragment" content="!">
+    <meta name="description" content="Habbo Hotel: faça amigos, divirta-se e fique conhecido!">
+	<meta name="author" content="AzureWEB">
+    <meta name="apple-itunes-app" content="app-id=794866182">
+    <meta name="fragment" content="!">
+    <meta name="revision" content="1132bb0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="prerender-status-code" status-for-prerender="">
+    <link rel="stylesheet" href="{{gallery_url}}web-img/css/main.css">
+	<link rel="shortcut icon" href="{{global_url}}favicon.ico"><link rel="icon" sizes="196x196" href="{{global_url}}favicon.ico"><link rel="apple-touch-icon" href="{{global_url}}favicon.ico"><link rel="apple-touch-icon" sizes="76x76" href="{{global_url}}favicon.ico"><link rel="apple-touch-icon" sizes="120x120" href="{{global_url}}favicon.ico">
+    <script>!function(){var e=document.createElement("link"),t=document.getElementsByTagName("script")[0];e.href="https://fonts.googleapis.com/css?family=Ubuntu:regular,bold|Ubuntu+Condensed:regular",e.rel="stylesheet",t.parentNode.insertBefore(e,t)}();</script>
+	<script>
+        window.session = {{user_data}};
+        window.geoLocation = {"country": "br", "continent": "sa"};
+        window.partnerCodeInfo = null;
+        window.hotelang = "{{server_lang}}";
+        window.imagingurl = "{{imaging_url}}";
+        window.badgeurl = "{{badge_url}}";
+		window.hotelurl = "{{global_url}}";
+        window.banner = null;
+    </script>
+</head>
+<body habbo-client-disable-scrollbars ng-cloak>
+<div class="content" ui-view></div>
+<habbo-footer></habbo-footer>
+<div habbo-require-session><habbo-client></habbo-client></div>
+<habbo-eu-cookie-banner habbo-require-no-session></habbo-eu-cookie-banner>
+<script src="{{gallery_url}}web-img/js/ang.js"></script>
+<script src="{{gallery_url}}web-img/js/sapi.js"></script>
+</body>
+</html>

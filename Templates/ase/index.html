@@ -1,0 +1,190 @@
+<body>
+<div id='ipdwrapper'><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class='outerdiv' id='global-outerdiv'><!-- OUTERDIV -->
+        <table cellpadding='0' cellspacing='8' width='100%' id='tablewrap'>
+            <tr>
+                <?php if(isset($_POST['addnotes'])):
+                    \Azure\Database\Adapter::secure_query("INSERT INTO `cms_hk_notes` (`message`) VALUES (:message);",[
+                    ':message' => \Azure\View\Misc::escape_text($_POST['message'])]);
+                endif;
+                ?>
+                <td width='100%' valign='top' id='rightblock'>
+                    <div><!-- RIGHT CONTENT BLOCK -->
+                        <div style='font-size:30px; padding-left:7px; letter-spacing:-2px; border-bottom:1px solid #EDEDED'>
+                            Azure Allseeingeye
+                        </div>
+                        <br/>
+
+                        <div id='ipb-get-members'
+                             style='border:1px solid #000; background:#FFF; padding:2px;position:absolute;width:120px;display:none;z-index:100'></div>
+                        <!--in_dev_notes-->
+                        <!--in_dev_check-->
+                        <table border='0' width='100%' cellpadding='0' cellspacing='4'>
+                            <tr>
+                                <td valign='top' width='75%'>
+                                    <table border='0' width='100%' cellpadding='0' cellspacing='0'>
+                                        <tr>
+                                            <td>
+                                                <div class='homepage_pane_border'>
+                                                    <div class='homepage_section'>Tasks and Statistics</div>
+                                                    <table width='100%' cellspacing='0' cellpadding='4'>
+                                                        <tr>
+                                                            <td width='50%' valign='top'>
+                                                                <div class='homepage_border'>
+                                                                    <div class='homepage_sub_header'>System Overview
+                                                                    </div>
+                                                                    <table width='100%' cellpadding='4' cellspacing='0'>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row' width='60%'>
+                                                                                <strong>Azure habbo web Version</strong>
+                                                                                &nbsp;(<a
+                                                                                    href='https://trac2.assembla.com/HoloCMS'>History</a>)
+                                                                            </td>
+                                                                            <td class='homepage_sub_row' width='40%'>
+                                                                                <strong>v3</strong>&nbsp;STABLE
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'>
+                                                                                <strong>Members</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{registered_users}} ({{online_users}}
+                                                                                online)
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'>
+                                                                                <strong>Rooms</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{rooms_data}} ({{rooms_loaded}} loaded)
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Furniture</strong>
+                                                                            </td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{items_data}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'>
+                                                                                <strong>Groups</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{groups_data}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Stafflog
+                                                                                Entries</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{stafflogs_data}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Active
+                                                                                Bans</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{bans_data}}
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                            <td width='50%' valign='top'>
+                                                                <div class='homepage_border'>
+                                                                    <div class='homepage_sub_header'>Server Setup</div>
+                                                                    <table width='100%' cellpadding='4' cellspacing='0'>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Game
+                                                                                IP</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{emu_ip}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Game
+                                                                                Port</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{emu_port}}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Wordfilter
+                                                                                Enabled</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                Enabled (SOU)
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class='homepage_sub_row'><strong>Server
+                                                                                Language</strong></td>
+                                                                            <td class='homepage_sub_row'>
+                                                                                {{server_lang}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class='homepage_pane_border'>
+                                                    <div class='homepage_section'>Communication</div>
+                                                    <table width='50%' cellspacing='0' cellpadding='4'>
+                                                        <tr>
+                                                            <td valign='top' width='50%'>
+                                                                <div class='homepage_border'>
+                                                                    <div class='homepage_sub_header'>Housekeeping
+                                                                        Notes
+                                                                    </div>
+                                                                    <br/>
+
+                                                                    <?php $row = \Azure\Database\Adapter::fetch_array(\Azure\Database\Adapter::query("SELECT * FROM cms_hk_notes ORDER BY message DESC LIMIT 1")); ?>
+                                                                    <div align='center'>
+                                                                        <form action='/theallseeingeye/web/index'
+                                                                              method='post'>
+                                                                            <input type="hidden" name="addnotes"
+                                                                                   value="1"/>
+                                                                            <textarea name='message'
+                                                                                      style='background-color:#F9FFA2;border:1px solid #CCC;width:95%;font-family:verdana;font-size:10px'
+                                                                                      rows='8'
+                                                                                      cols='25'><?php echo $row['message']; ?></textarea>
+
+                                                                            <div><br/><input type='submit'
+                                                                                             value='Save Admin Notes'
+                                                                                             class='realbutton'/></div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <br/>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>

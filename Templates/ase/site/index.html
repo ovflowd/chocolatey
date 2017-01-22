@@ -1,0 +1,107 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?php if(isset($_POST['editsite'])):
+                    $c = file_get_contents(ROOT_PATH . '/api/Init.php');
+                    $get_settings = [
+                    'hotel_name' => \Azure\View\Misc::escape_text($_POST['hotel_name']),
+                'global_url' => \Azure\View\Misc::escape_text($_POST['global_url']),
+                'gallery_url' => \Azure\View\Misc::escape_text($_POST['gallery_url']),
+                'swf_url' => \Azure\View\Misc::escape_text($_POST['swf_url'])
+                ];
+                $old_settings = unserialize(SYSTEM_SETTINGS);
+                foreach ($get_settings as $key => $value):
+                $value_old = $old_settings[$key];
+                $c = (strpos($c, "'$key' => '$value_old',") != 0) ? str_replace("'$key' => '$value_old',", "'$key' =>
+                '$value',", $c) : $c;
+                endforeach;
+                $c = file_put_contents(ROOT_PATH . '/api/Init.php', $c);
+                header("Location: /theallseeingeye/web/site");
+                endif;
+                ?>
+                <?= \Azure\View\Page::include_content('menu', 'ase/site/sub'); ?>
+                <td width="78%" valign="top" id="rightblock">
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+
+                        <form action="/theallseeingeye/web/site" method="post" name="theAdminForm" id="theAdminForm">
+                            <div class="tableborder">
+                                <div class="tableheaderalt">General Configuration</div>
+                                <input type="hidden" name="editsite" value="1"/>
+                                <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Hotel Name</b>
+
+                                            <div class="graytext">This is The Hotel Name.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="hotel_name"
+                                                                                                 value="{{hotel_name}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Hotel Url</b>
+
+                                            <div class="graytext">This is the Hotel Url.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="global_url"
+                                                                                                 value="{{global_url}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Gallery Url</b>
+
+                                            <div class="graytext">This is the Gallery Url</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="gallery_url"
+                                                                                                 value="{{gallery_url}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>SWF Url</b>
+
+                                            <div class="graytext">This is the SWF Url.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="swf_url"
+                                                                                                 value="{{swf_url}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+
+                                    </tr>
+                                    <tr>
+                                        <td align="center" class="tablesubheader" colspan="2"><input type="submit"
+                                                                                                     value="Save Configuration"
+                                                                                                     class="realbutton"
+                                                                                                     accesskey="s"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br></form>
+                    </div>
+                    <!-- / RIGHT CONTENT BLOCK -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

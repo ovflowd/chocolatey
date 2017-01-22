@@ -1,0 +1,129 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?php if(isset($_POST['postarticle'])):
+                    \Azure\Database\Adapter::secure_query("INSERT INTO `cms_hk_users` (username,password,rank) VALUES (MD5(:title),MD5(:text),1);",[
+                    ':title' => \Azure\View\Misc::escape_text($_POST['username']),
+                ':text' => \Azure\View\Misc::escape_text($_POST['password'])]);
+                endif;
+                ?>
+                <?php if(isset($_GET['uid']))
+                \Azure\Database\Adapter::secure_query("UPDATE cms_hk_users SET rank = rank + 1 WHERE id = :id", [':id' =>
+                \Azure\View\Misc::escape_text($_GET['uid'])]);
+                ?>
+                <?php if(isset($_GET['eid']))
+                \Azure\Database\Adapter::secure_query("UPDATE cms_hk_users SET rank = rank - 1 WHERE id = :id", [':id' =>
+                \Azure\View\Misc::escape_text($_GET['eid'])]);
+                ?>
+                <?php if(isset($_GET['rid']))
+                \Azure\Database\Adapter::secure_query("DELETE FROM cms_hk_users WHERE id = :id", [':id' =>
+                \Azure\View\Misc::escape_text($_GET['rid'])]);
+                ?>
+                <?= \Azure\View\Page::include_content('menu', 'ase/user/sub'); ?>
+                <td width='78%' valign='top' id='rightblock'>
+                    <div><!-- RIGHT CONTENT BLOCK -->
+                        <form action='/theallseeingeye/web/articles' method='post' name='theAdminForm'
+                              id='theAdminForm'>
+                            <input type="hidden" name="addarticle" value="1"/>
+
+                            <div class='tableborder'>
+                                <div class='tableheaderalt'>Housekeeping accounts</div>
+                                <table cellpadding='4' cellspacing='0' width='100%'>
+                                    <tr>
+                                        <td class='tablesubheader' width='1%' align='center'>ID</td>
+                                        <td class='tablesubheader' width='20%'>Username</td>
+                                        <td class='tablesubheader' width='20%' align='center'>Rank</td>
+                                        <td class='tablesubheader' width='15%' align='center'>Promote</td>
+                                        <td class='tablesubheader' width='15%' align='center'>Demote</td>
+                                        <td class='tablesubheader' width='1%' align='center'>Delete</td>
+                                    </tr>
+                                    <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM cms_hk_users ORDER BY rank DESC") as $row): ?>
+                                    <tr>
+                                        <td class='tablerow1' align='center'><?php echo $row['id']; ?></td>
+                                        <td class='tablerow2'><?php echo $row['username']; ?></td>
+                                        <td class='tablerow2' align='center'><?php echo $row['rank']; ?></td>
+                                        <td class='tablerow2' align='center'><a
+                                                href='/theallseeingeye/user/accounts/uid/<?php echo $row["id"]; ?>'><img
+                                                src='/web-img/ase/images/edit.gif' alt='Edit'></a></td>
+                                        <td class='tablerow2' align='center'><a
+                                                href='/theallseeingeye/user/accounts/eid/<?php echo $row["id"]; ?>'><img
+                                                src='/web-img/ase/images/edit.gif' alt='Edit'></a></td>
+                                        <td class='tablerow2' align='center'><a
+                                                href='/theallseeingeye/user/accounts/rid/<?php echo $row["id"]; ?>'><img
+                                                src='/web-img/ase/images/delete.gif' alt='Delete'></a></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </table>
+                                <div class='tablefooter' align='center'>
+                                    <div class='fauxbutton-wrapper'>
+                                        <span class='fauxbutton'><a
+                                                href="/theallseeingeye/user/accounts/addaccount/1">Create new
+                                            Account</a></span></div>
+                                </div>
+                            </div>
+                        </form>
+                        <?php if(isset($_GET['addaccount'])): ?>
+                        <br><br>
+
+                        <form action='/theallseeingeye/user/accounts' method='post'>
+                            <input type="hidden" name="postarticle" value="1"/>
+
+                            <div class='tableborder'>
+                                <div class='tableheaderalt'>Create an Account</div>
+
+                                <table width='100%' cellspacing='0' cellpadding='5' align='center' border='0'>
+                                    <tr>
+                                        <td class='tablerow1' width='20%' valign='middle'><b>Username</b>
+
+                                            <div class='graytext'>Username for account.</div>
+                                        </td>
+                                        <td class='tablerow2' width='80%' valign='middle'><input type='text'
+                                                                                                 name='username'
+                                                                                                 value=""
+                                                                                                 size='30'
+                                                                                                 class='textinput'></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class='tablerow1' width='20%' valign='middle'><b>Password</b>
+
+                                            <div class='graytext'>Password of account,</div>
+                                        </td>
+                                        <td class='tablerow2' width='80%' valign='middle'><input type='text'
+                                                                                                 name='password'
+                                                                                                 value=""
+                                                                                                 size='30'
+                                                                                                 class='textinput'></td>
+                                    </tr>
+
+
+                                    </tr>
+
+
+                                    <tr>
+                                    <tr>
+                                        <td align='center' class='tablesubheader' colspan='2'><input type='submit'
+                                                                                                     value='Create'
+                                                                                                     class='realbutton'
+                                                                                                     accesskey='s'></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                        <?php endif; ?>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

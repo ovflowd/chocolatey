@@ -1,0 +1,44 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?= \Azure\View\Page::include_content('menu', 'ase/user/sub'); ?>
+                <td width="78%" valign="top" id="rightblock">
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+                        <div class="tableborder">
+                            <div class="tableheaderalt">Chatlogs Listing</div>
+                            <table cellpadding="4" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td class="tablesubheader" width="10%">User</td>
+                                    <td class="tablesubheader" width="10%" align="center">Room</td>
+                                    <td class="tablesubheader" width="20%" align="center">Time</td>
+                                    <td class="tablesubheader" width="60%" align="center">Message</td>
+                                </tr>
+                                <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM users_chatlogs") as $row): ?>
+                                <tr>
+                                    <td class="tablerow2" align="center"><?= $row['user_id']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['room_id']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['timestamp']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['message']; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- / RIGHT CONTENT BLOCK -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

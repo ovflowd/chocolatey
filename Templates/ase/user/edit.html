@@ -1,0 +1,168 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?php if(isset($_POST['edituser'])):
+                    \Azure\Database\Adapter::secure_query("UPDATE users SET
+                    username = :username,
+                    real_name = :realname,
+                    mail = :mail,
+                    auth_ticket = :ticket,
+                    credits = :credits,
+                    look = :look,
+                    gender = :gender,
+                    motto = :motto
+                    WHERE id = :id",[
+                        ':username' => \Azure\View\Misc::escape_text($_POST['username']),
+                ':realname' => \Azure\View\Misc::escape_text($_POST['real_name']),
+                ':mail' => \Azure\View\Misc::escape_text($_POST['mail']),
+                ':ticket' => \Azure\View\Misc::escape_text($_POST['auth_ticket']),
+                ':credits' => \Azure\View\Misc::escape_text($_POST['credits']),
+                ':look' => \Azure\View\Misc::escape_text($_POST['look']),
+                ':gender' => \Azure\View\Misc::escape_text($_POST['gender']),
+                ':id' => \Azure\View\Misc::escape_text($_GET['id']),
+                ':motto' => \Azure\View\Misc::escape_text($_POST['motto'])]);
+                endif;
+                ?>
+                <?= \Azure\View\Page::include_content('menu', 'ase/user/sub'); ?>
+                <?php $row = \Azure\Database\Adapter::fetch_array(\Azure\Database\Adapter::secure_query("SELECT * FROM users WHERE id = :id", [':id' =>
+                \Azure\View\Misc::escape_text($_GET['id'])])); ?>
+                <td width="78%" valign="top" id="rightblock">
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+                        <p><strong>Now editing user..</strong></p>
+
+                        <form action="/theallseeingeye/web/uedit/id/<?= $row['id']; ?>" method="post"
+                              name="theAdminForm"
+                              id="theAdminForm">
+                            <input type="hidden" name="edituser" value="1">
+
+                            <div class="tableborder">
+                                <div class="tableheaderalt">Edit User</div>
+
+                                <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
+
+                                    <tbody>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>id</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text" name="id"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['id']; ?>"
+                                                                                                 disabled="disabled">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>username</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="username"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['username']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>real_name</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="real_name"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['real_name']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>mail</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text" name="mail"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['mail']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>auth_ticket</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="auth_ticket"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['auth_ticket']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>credits</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="credits"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['credits']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>look</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text" name="look"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['look']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>gender</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="gender"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['gender']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>motto</b>
+
+                                            <div class="graytext"></div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="motto"
+                                                                                                 size="100%"
+                                                                                                 value="<?= $row['motto']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" class="tablesubheader" colspan="2"><input type="submit"
+                                                                                                     value="Save User"
+                                                                                                     class="realbutton"
+                                                                                                     accesskey="s"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                        </form>
+                    </div>
+                    <!-- / RIGHT CONTENT BLOCK -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

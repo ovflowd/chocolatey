@@ -1,0 +1,172 @@
+<body>
+<div id="overlay"></div>
+<header>
+    <div id="border-left"></div>
+    <div id="border-right"></div>
+    <div id="header-content">
+        <a href="/" id="habbo-logo"></a>
+
+        <div class="navigation">
+            <ul>
+                <li class="selected">
+                    <a></span>Install</a>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="top-bar-triangle"></div>
+    <div id="top-bar-triangle-border"></div>
+</header>
+
+<div id="content">
+    <div class="sub-navigation">
+        <ul>
+            <li>Start</li>
+            <li>Database</li>
+            <li class="selected">Settings</li>
+            <li>Installation</li>
+            <li class="last">Administration</li>
+        </ul>
+    </div>
+    <div id="page-content">
+        <section id="upper-content">
+            <h1 class="underlined">AzureWEB</h1>
+            <section id="upper-content-left">
+                <h5 class="subscription-header">Parte #2: Settings</h5>
+
+                <div id="subscription-left-content">
+                    <h2>What i do here?</h2>
+
+                    <p>You Must Configure the Hotel Details and Other Stuff.</p>
+
+
+                </div>
+            </section>
+            <section id="upper-content-right">
+                <div id="subscription-status">
+                    <form id="settings" method="post" action="api/install/settings">
+                        <h2>Let's Do That!</h2>
+
+                        <div class="builders subscription-management">
+
+                            <div class="vouchers-right">
+                                <h3>Site Settings</h3>
+
+                                <p class="past-transactions">Hotel Name</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="hotel_name" type="text"
+                                           placeholder="eg.: azure">
+                                </p>
+                            </div>
+                            <div class="vouchers-right">
+                                <p class="past-transactions">Hotel Url</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="hotel_url" value="https://localhost/"
+                                           type="text"
+                                           placeholder="https://localhost/">
+                                </p>
+                            </div>
+                            <div class="vouchers-right">
+                                <p class="past-transactions">WebGallery Url (<i>Can be the same of the Hotel</i>)</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="gallery_url" value="https://localhost/"
+                                           type="text"
+                                           placeholder="https://localhost/">
+                                </p>
+                            </div>
+                            <div class="vouchers-right">
+                                <p class="past-transactions">SWF Url (<i>Can be the same of the Hotel or of the
+                                    Gallery</i>)</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="swf_url"
+                                           value="https://uiot.azurewebsites.net/" type="text"
+                                           placeholder="https://uiot.azurewebsites.net/">
+                                </p>
+                            </div>
+
+                            <div class="vouchers-right">
+                                <h3>Emulator Settings</h3>
+
+                                <p class="past-transactions">Emulator IP</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="emu_ip" type="text"
+                                           placeholder="eg.: 127.0.0.1">
+                                </p>
+                            </div>
+                            <div class="vouchers-right">
+                                <p class="past-transactions">Emulator Port</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="emu_port" type="text"
+                                           placeholder="eg.: 8080">
+                                </p>
+                            </div>
+
+                            <div class="vouchers-right">
+                                <h3>Twitter/Facebook Settings</h3>
+
+                                <p class="past-transactions">Twitter Name</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="twitter_name" type="text"
+                                           placeholder="eg.: habbo">
+                                </p>
+                            </div>
+                            <div class="vouchers-right">
+                                <p class="past-transactions">Twitter AppId</p>
+
+                                <p>
+                                    <input class="voucher-number-input" name="twitter_id" type="text"
+                                           placeholder="eg.: 1">
+                                </p>
+                            </div>
+                            <p><i></i></p>
+
+                            <p></p>
+
+                            <div class="subscription-management-bottom">
+
+                                <div class="amounts">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td class="img">
+                                                <div class="time-img"></div>
+                                            </td>
+                                            <td>Submit Settings Data</td>
+                                            <td></td>
+                                            <td rowspan="2">
+                                                <input onclick="form.submit();"
+                                                       class="confirm-button confirm-payment-details"
+                                                       data-country-id="235" data-method-id="1566"
+                                                       data-price-point-id="316" data-tab-id="16" type="button"
+                                                       value="Send Data">
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="subscription-management-footer">
+                                <p>(C) 2015 The Azure Group</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </section>
+        <div id="lower-content">
+            <section id="bottom-content">
+                <div></div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>

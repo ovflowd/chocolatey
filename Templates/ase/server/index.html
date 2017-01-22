@@ -1,0 +1,81 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?php if(isset($_POST['editserver'])):
+                    $c = file_get_contents(ROOT_PATH . '/api/Init.php');
+                    $get_settings = [
+                    'emu_ip' => \Azure\View\Misc::escape_text($_POST['emu_ip']),
+                'emu_port' => \Azure\View\Misc::escape_text($_POST['emu_port'])
+                ];
+                $old_settings = unserialize(SYSTEM_SETTINGS);
+                foreach ($get_settings as $key => $value):
+                $value_old = $old_settings[$key];
+                $c = (strpos($c, "'$key' => '$value_old',") != 0) ? str_replace("'$key' => '$value_old',", "'$key' =>
+                '$value',", $c) : $c;
+                endforeach;
+                $c = file_put_contents(ROOT_PATH . '/api/Init.php', $c);
+                header("Location: /theallseeingeye/web/server");
+                endif;
+                ?>
+                <?= \Azure\View\Page::include_content('menu', 'ase/server/sub'); ?>
+                <td width="78%" valign="top" id="rightblock">
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+
+                        <form action="/theallseeingeye/web/server" method="post" name="theAdminForm" id="theAdminForm">
+                            <div class="tableborder">
+                                <div class="tableheaderalt">General Configuration</div>
+                                <input type="hidden" name="editserver" value="1"/>
+                                <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Game Port</b>
+
+                                            <div class="graytext">This is the port the game server will listen on.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="emu_ip"
+                                                                                                 value="{{emu_ip}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>MUS Port</b>
+
+                                            <div class="graytext">This is the port the MUS socket will listen on.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="emu_port"
+                                                                                                 value="{{emu_port}}"
+                                                                                                 size="30"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" class="tablesubheader" colspan="2"><input type="submit"
+                                                                                                     value="Save Configuration"
+                                                                                                     class="realbutton"
+                                                                                                     accesskey="s"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br></form>
+                    </div>
+                    <!-- / RIGHT CONTENT BLOCK -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

@@ -1,0 +1,110 @@
+<body>
+<div id="ipdwrapper"><!-- IPDWRAPPER -->
+    <!-- TOP TABS -->
+    <?= \Azure\View\Page::include_content('tabs', 'ase/sub'); ?>
+    <!-- / TOP TABS -->
+    <?= \Azure\View\Page::include_content('trips', 'ase/sub'); ?>
+    <div class="outerdiv" id="global-outerdiv"><!-- OUTERDIV -->
+        <table cellpadding="0" cellspacing="8" width="100%" id="tablewrap">
+            <tbody>
+            <tr>
+                <?php if(isset($_POST['addvoucher'])):
+                    \Azure\Database\Adapter::secure_query("INSERT INTO `items_vouchers` (`voucher`,`type`,`value`) VALUES (:voucher,:type,:value);",[
+                    ':voucher' => \Azure\View\Misc::escape_text($_POST['voucher']),
+                ':type' => \Azure\View\Misc::escape_text($_POST['type']),
+                ':value' => \Azure\View\Misc::escape_text($_POST['value'])]);
+                endif;
+                ?>
+                <?php if(isset($_GET['rid']))
+                \Azure\Database\Adapter::secure_query("DELETE FROM items_vouchers WHERE voucher = :voucher", [':voucher' =>
+                \Azure\View\Misc::escape_text($_GET['rid'])]);
+                ?>
+                <?= \Azure\View\Page::include_content('menu', 'ase/user/sub'); ?>
+                <td width="78%" valign="top" id="rightblock">
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+
+                        <form action="/theallseeingeye/web/voucher" method="post" id="theAdminForm">
+                            <div class="tableborder">
+                                <div class="tableheaderalt">Create Voucher</div>
+                                <input type="hidden" name="addvoucher" value="1"/>
+                                <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Voucher Type</b></td>
+                                        <td class="tablerow2" width="60%" valign="middle"><select name="type"
+                                                                                                  class="dropdown">
+                                            <option value="credits">Credits</option>
+                                            <option value="pixels">Pixels</option>
+                                            <option value="vippoints">Diamonds</option>
+                                        </select>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Voucher Code</b>
+
+                                            <div class="graytext">Write a Code for the Voucher</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="voucher"
+                                                                                                 size="20"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tablerow1" width="40%" valign="middle"><b>Voucher Amount</b>
+
+                                            <div class="graytext">Enter an Amount for the voucher: eg.: 100.</div>
+                                        </td>
+                                        <td class="tablerow2" width="60%" valign="middle"><input type="text"
+                                                                                                 name="value"
+                                                                                                 size="20"
+                                                                                                 class="textinput"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" class="tablesubheader" colspan="2"><input type="submit"
+                                                                                                     value="Add"
+                                                                                                     class="realbutton"
+                                                                                                     accesskey="s"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br></form>
+                    </div>
+
+                    <div><!-- RIGHT CONTENT BLOCK -->
+
+                        <div class="tableborder">
+                            <div class="tableheaderalt">Voucher Listing</div>
+                            <table cellpadding="4" cellspacing="0" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td class="tablesubheader" width="40%">Code</td>
+                                    <td class="tablesubheader" width="20%" align="center">Type</td>
+                                    <td class="tablesubheader" width="20%" align="center">Amount</td>
+                                    <td class="tablesubheader" width="10%" align="center">Remove</td>
+                                </tr>
+                                <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM items_vouchers") as $row): ?>
+                                <tr>
+                                    <td class="tablerow2"><?= $row['voucher']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['type']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['value']; ?></td>
+                                    <td class="tablerow2" align="center"><a
+                                            href="/theallseeingeye/web/voucher/rid/<?= $row['voucher']; ?>"><img
+                                            src="/web-img/ase/images/delete.gif" alt="Remove Voucher"></a></td>
+                                </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- / RIGHT CONTENT BLOCK -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

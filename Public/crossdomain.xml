@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cross-domain-policy>
+    <allow-access-from domain="*.eabbu.com"/>
+	<allow-access-from domain="*.eabbu.top"/>
+	<allow-access-from domain="*.universalinternetofthings.xyz"/>
+	<allow-access-from domain="uiotassets.blob.core.windows.net"/>
+</cross-domain-policy>

@@ -1,0 +1,1455 @@
+/* -------------------------------- */
+/* Drop shadows
+/* -------------------------------- */
+
+.shadow-moz {
+    padding: 0 6px 6px 0;
+    background: url(/web-img/ase/css/images/folder_css_images/dropshadow-alpha.png) no-repeat bottom right;
+}
+
+.shadow-ie {
+    filter: shadow(color:gray, direction : 135, strength : 3);
+}
+
+/* -------------------------------- */
+/* Loading box
+/* -------------------------------- */
+
+#loading-layer-inner {
+    width: 220px;
+    height: 28px;
+    padding: 18px 10px 10px 10px;
+    text-align: center;
+    color: #000;
+    border: 1px solid;
+    border-color: #ccc #666 #666 #ccc;
+    background-color: #FCF8C7;
+}
+
+/* -------------------------------- */
+/* Create semi-transparent layer
+/* -------------------------------- */
+
+.dragmove-hide-ie {
+    background: #FFF;
+    filter: alpha(opacity=50);
+    height: 250px;
+    width: 250px;
+}
+
+.dragmove-hide-moz {
+    background: transparent;
+    background-image: url('/web-img/ase/css/images/folder_css_images/50opacity-white.png');
+    background-repeat: repeat;
+    height: 250px;
+    width: 250px;
+}
+
+/* -------------------------------- */
+/* Used: Alert boxes and stuff (used in JS)
+/* -------------------------------- */
+
+.alert-box,
+.alert-box-js,
+.alert-box-noimg {
+    background-image: url(/web-img/ase/css/images/folder_css_images/js_alert.gif);
+    background-repeat: no-repeat;
+    color: #000;
+    border: 1px solid #000;
+    background-color: #FFDC3B;
+    padding: 3px 3px 3px 25px;
+}
+
+.alert-box-js {
+    width: auto;
+    position: absolute;
+}
+
+.alert-box-noimg {
+    background-image: url(images/spacer.gif);
+    background-repeat: no-repeat;
+}
+
+/**
+* Information box
+**/
+
+.bad-box {
+    color: #000;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    background-color: #FFCCCC;
+    padding: 6px;
+    text-align: left;
+}
+
+.good-box {
+    color: #000;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    background-color: #d9eac8;
+    padding: 6px;
+    text-align: left;
+}
+
+.ok-box {
+    color: #000;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    background-color: #EBE7B6;
+    padding: 6px;
+    text-align: left;
+}
+
+.warning-box,
+.information-box,
+.help-box {
+    color: #000;
+    border: 1px solid #000;
+    -moz-border-radius: 5px;
+    background-color: #FCF8C7;
+    padding: 6px;
+    text-align: left;
+}
+
+.warning-box img,
+.information-box img,
+.help-box img {
+    float: left;
+    margin-top: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+    border: 0px;
+}
+
+.warning-box h2,
+.warning-box p,
+.information-box h2,
+.information-box p,
+.help-box h2,
+.help-box p {
+    padding: 0px;
+    margin: 0px;
+    margin-left: 60px;
+}
+
+.warning-box h2,
+.information-box h2,
+.help-box h2 {
+    padding-bottom: 4px;
+    font-size: 14px;
+    border-bottom: 1px solid #000;
+}
+
+.warning-box {
+    background-color: #FFCCCC;
+}
+
+.warning-box ul {
+    margin-left: 30px;
+}
+
+.help-box {
+    background-color: #D5EEB6;
+}
+
+/**
+* Used: Content -> pages & dirs overview
+* when not a folder, so we show a diff
+* link underline
+*/
+
+.content-page-links,
+.content-page-links a:active,
+.content-page-links a:visited,
+.content-page-links a:link {
+    text-decoration: none;
+}
+
+.dny-edit-title {
+    border: 0px;
+    padding: 3px;
+    margin: 0px;
+    background: #D1DCEB;
+    color: #3A4F6C;
+}
+
+.input-warn,
+.input-warn-content {
+    border: 1px solid #C00;
+}
+
+.input-ok,
+.input-ok-content {
+    border: 1px solid #0C0;
+}
+
+.input-warn-content {
+    padding: 4px;
+    margin: 4px;
+    background-color: #FCC;
+}
+
+.input-ok-content {
+    padding: 4px;
+    margin: 4px;
+    background-color: #CFC;
+}
+
+/* ======================================== */
+/* General Styles */
+/* ======================================== */
+
+html {
+    overflow-x: auto; /* fixes MSIE scrollbar bug DO NOT REMOVE */
+}
+
+body,
+.body-bg {
+    /*background-repeat: repeat-x;
+    background-image: url(images/acp_logo_strip.gif);*/
+    background-color: #F3F3F3;
+    color: #000;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Arial, Verdana, "Trebuchet MS";
+    font-size: 11px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center; /* centers board in MSIE known bug workaround */
+}
+
+table, tr, td {
+    color: #000;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Arial, Verdana, "Trebuchet MS";
+    font-size: 11px;
+}
+
+form {
+    border: 0px solid #000;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+textarea,
+input,
+select {
+    border: 1px solid #999999;
+    color: #555;
+    font-size: 13px;
+    padding: 2px
+}
+
+input:focus,
+select:focus {
+    background: #e9f6fd;
+    border: 1px solid black;
+}
+
+.minisubmit {
+    font-size: 10px;
+    border: 1px solid #999;
+}
+
+.inputtext,
+.inputtextgreen,
+.inputtextred,
+.inputtextmini {
+    font-size: 11px;
+    border: 1px solid #999;
+}
+
+.inputtextmini {
+    font-size: 10px;
+}
+
+.inputtextgreen {
+    border: 1px solid #006600;
+}
+
+.inputtextred {
+    border: 1px solid #990000;
+}
+
+.textareaeditor {
+    width: 99%;
+    height: 300px;
+    padding: 4px;
+    border: 1px solid #999;
+}
+
+.formsubmit {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+a:link,
+a:visited,
+a:active {
+    background-color: transparent;
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    background-color: transparent;
+    color: #465584;
+    text-decoration: underline;
+}
+
+.global-copyright {
+    font-size: 10px;
+    font-weight: bold;
+    color: #3363A1;
+    padding: 15px;
+    text-align: center;
+}
+
+.global-copyright a:link,
+.global-copyright a:visited,
+.global-copyright a:active {
+    color: #3363A1;
+    text-decoration: underline;
+}
+
+img.ipd {
+    vertical-align: middle;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    float: none;
+}
+
+img.ipd-alt {
+    vertical-align: middle;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    float: none;
+    padding-bottom: 2px
+}
+
+img.calendar {
+    vertical-align: top;
+    border: 0px;
+    width: 16px;
+    height: 16px;
+}
+
+.img-boxed {
+    border: 2px inset #345487;
+    background-color: #E4EAF2;
+    padding: 2px;
+}
+
+.img-boxed-off {
+    border: 1px outset #E4EAF2;
+    background-color: transparent;
+    padding: 3px;
+}
+
+/* ======================================== */
+/* PAGINATION                               */
+/* ======================================== */
+
+.pagelink,
+.pagelinklast,
+.pagecurrent {
+    background: #F0F5FA;
+    border: 1px solid #072A66;
+    padding: 1px 3px 1px 3px;
+}
+
+.pagelinklast {
+    background: #DFE6EF;
+}
+
+.pagecurrent {
+    background: #FFC9A5;
+}
+
+.pagelink a:active,
+.pagelink a:visited,
+.pagelink a:link,
+.pagelinklast a:active,
+.pagelinklast a:visited,
+.pagelinklast a:link,
+.pagecurrent a:active,
+.pagecurrent a:visited,
+.pagecurrent a:link {
+    text-decoration: none;
+}
+
+/* ======================================== */
+/* MAIN BLOCKS
+/* ======================================== */
+
+#leftblock {
+    /*border: 1px solid #555;
+    background-color:#FFF;
+    padding:10px;*/
+}
+
+#rightblock {
+    padding: 10px;
+    border: 1px solid #5D789C;
+    -moz-border-radius: 5px;
+    background-color: #FFF;
+}
+
+#tablewrap {
+    height: 100%;
+}
+
+/* ======================================== */
+/* OUTER BORDER / DIV
+/* ======================================== */
+
+.outerdiv {
+    border: 1px solid #5D789C;
+    border-top: 1px solid #578DCA;
+    padding: 0px 4px 4px 4px;
+    background-image: url('/web-img/ase/css/images/folder_css_images/content_bar_bg.gif');
+    background-repeat: repeat-x;
+    background-color: #ACBFD9;
+}
+
+.sub-tab-strip {
+    background-image: url('/web-img/ase/css/images/folder_css_images/main_menu_bg.gif');
+    background-repeat: repeat-x;
+    border-bottom: 4px solid #385985;
+    border-left: 1px solid #5D789C;
+    border-right: 1px solid #5D789C;
+    color: #FFF;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 8px 15px 8px 15px;
+    margin: 0px;
+    height: 14px;
+}
+
+.global-memberbar {
+    vertical-align: middle;
+    color: #FFF;
+    font-size: 11px;
+    padding-left: 5px;
+    width: auto;
+    float: right;
+}
+
+.global-memberbar a:active,
+.global-memberbar a:visited,
+.global-memberbar a:link {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.global-memberbar a:hover {
+    text-decoration: underline;
+}
+
+.navwrap {
+    vertical-align: middle;
+    color: #FFF;
+    font-size: 11px;
+    padding-left: 5px;
+    float: left;
+}
+
+.navwrap a:active,
+.navwrap a:visited,
+.navwrap a:link {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ======================================== */
+/* MENU STYLES */
+/* ======================================== */
+
+.menuouterwrap {
+    border: 1px solid #5D789C;
+    -moz-border-radius: 5px;
+    background-color: #EFF3F7;
+    margin: 0px 4px 0px 4px;
+}
+
+.menucatwrap {
+    font-size: 12px;
+    font-weight: bold;
+    color: #20476D;
+    margin: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #C7C7C7;
+}
+
+.menulinkwrap {
+    margin: 2px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #E3E3E3;
+}
+
+.menulinkwrap a:link,
+.menulinkwrap a:visited,
+.menulinkwrap a:active {
+    color: #000;
+}
+
+.menulinkwrap a:hover {
+    color: #E69F06;
+}
+
+.menutext {
+    font-size: 10px;
+}
+
+/* ======================================== */
+/* TABS
+/* ======================================== */
+
+.tabwrap-main {
+    height: 37px;
+    background-image: url('/web-img/ase/css/images/folder_css_images/tab_background.gif');
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+
+.tabon-main,
+.tabon {
+    border-top: 1px solid #3363A1;
+    border-left: 1px solid #3363A1;
+    border-right: 1px solid #3363A1;
+    background-color: #6696D6;
+    color: #FFFFFF;
+    padding: 8px;
+    float: left;
+    width: auto;
+    background-image: url('/web-img/ase/css/images/folder_css_images/tab-on-bg.gif');
+    background-repeat: repeat-x;
+    background-position: left top;
+    margin-top: 3px;
+}
+
+.taboff-main,
+.taboff {
+    border-top: 1px solid #759BC7;
+    border-left: 1px solid #759BC7;
+    border-right: 1px solid #759BC7;
+    background-color: #3363A1;
+    color: #3363A1;
+    padding: 8px;
+    float: left;
+    width: auto;
+    background-image: url('/web-img/ase/css/images/folder_css_images/tab-off-bg.gif');
+    background-repeat: repeat-x;
+    background-position: left top;
+    margin-top: 3px;
+}
+
+.tabon-main,
+.taboff-main {
+    padding: 4px 8px 4px 8px;
+}
+
+.tabon-main a:link,
+.tabon-main a:visited,
+.tabon-main a:active,
+.tabon a:link,
+.tabon a:visited,
+.tabon a:active {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.taboff-main a:link,
+.taboff-main a:visited,
+.taboff-main a:active,
+.taboff a:link,
+.taboff a:visited,
+.taboff a:active {
+    text-decoration: none;
+    color: #3363A1;
+}
+
+.tabwrap {
+    height: 33px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tabclear {
+    clear: both;
+    background-image: url('/web-img/ase/css/images/folder_css_images/main_menu_bg.gif');
+    background-repeat: repeat-x;
+    border-left: 1px solid #5D789C;
+    border-right: 1px solid #5D789C;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 15px 8px 8px;
+    margin: 0px;
+    height: 14px;
+}
+
+.logoright {
+    width: auto;
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 4px;
+}
+
+/* ======================================== */
+/* MAIN WRAPPER ID */
+/* ======================================== */
+/* Adjust main width here. Leave margins alone to auto-center content */
+#ipdwrapper {
+    text-align: left; /* re_aligns text to left second part of two part MSIE centering workaround */
+    padding: 6px;
+}
+
+/* ======================================== */
+/* GENERAL SYTLES */
+/* ======================================== */
+
+.tablepad {
+    padding: 6px;
+}
+
+.tableborder {
+    border: 1px solid #5D789C;
+}
+
+/* MIGHT WANT TO CHANGE THIS AT SOME POINT */
+
+.tableheader,
+.tableheaderalt,
+.tableheader2 {
+    font-size: 12px;
+    vertical-align: middle;
+    font-weight: bold;
+    color: #FFF;
+    padding: 8px 0px 8px 5px;
+    background-image: url(/web-img/ase/css/images/folder_css_images/table_title_gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #3363A1;
+}
+
+.tableheaderalt a:link,
+.tableheaderalt a:visited,
+.tableheaderalt a:active {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.tablefooter,
+.tablesubheader {
+    background-color: #ACBFD9;
+    font-size: 10px;
+    color: #3363A1;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.tablerowmedium {
+    background-color: #999;
+}
+
+.tablerow1 img,
+.tablerow2 img,
+.tablerow3 img {
+    vertical-align: middle;
+    border: 0px;
+}
+
+.formmain-background {
+    background-image: url(/web-img/ase/css/images/folder_css_images/css-form-background.gif);
+    background-repeat: repeat-x;
+    background-color: #EAEDF0;
+    border-top: 1px solid #769BC7;
+    padding: 6px;
+}
+
+.formmain-fieldset {
+    border: 1px solid #769BC7;
+    padding: 6px 6px 10px 6px;
+    margin-bottom: 3px;
+}
+
+.formbutton-wrap {
+    padding-top: 2px;
+    height: 32px;
+}
+
+.formbutton-on,
+.formbutton-off {
+    padding: 6px;
+    font-size: 10px;
+    font-weight: bold;
+    width: auto;
+    float: left;
+    color: #3363A1;
+}
+
+.formbutton-on {
+    background-color: #D1DCEB;
+    border-bottom: 1px solid #769BC7;
+    border-right: 1px solid #769BC7;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+    cursor: pointer;
+}
+
+.formbutton-off {
+    background-color: #F1F1F1;
+    border-bottom: 1px solid #769BC7;
+    border-right: 1px solid #769BC7;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow1 {
+    background-color: #EAEDF0;
+    padding: 6px;
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow2 {
+    background-color: #F1F1F1;
+    padding: 6px;
+
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow3 {
+    background-color: #D1DCEB;
+    padding: 6px;
+
+    border-bottom: 1px solid #D1DCEB;
+    border-right: 1px solid #D1DCEB;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow4 {
+    background-color: #C0CBDA;
+    padding: 6px;
+
+    border-bottom: 1px solid #D1DCEB;
+    border-right: 1px solid #D1DCEB;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow2highlight {
+    background-color: #FCECCD;
+    padding: 6px;
+
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow2queued {
+    background-color: #FCECCD;
+    padding: 6px;
+
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow1shaded {
+    background-color: #EFE6EA;
+    padding: 6px;
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+.tablerow2shaded {
+    background-color: #F6ECF0;
+    padding: 6px;
+
+    border-bottom: 1px solid #C1BEBE;
+    border-right: 1px solid #C1BEBE;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+}
+
+/* ======================================== */
+/* BUTTONS / FORMS */
+/* ======================================== */
+
+.fauxredbutton {
+    border: 1px solid #999;
+    background-color: #FED4D4;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 6px;
+    margin: 0px;
+}
+
+.fauxbutton {
+    border: 1px solid #999;
+    background-color: #E7E7E7;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.fauxbutton-wrapper {
+    padding: 5px;
+}
+
+.popupmenu {
+    background-color: #EFF3F7;
+    border: 1px solid #999;
+    text-align: left;
+    font-size: 10px;
+    padding: 3px 5px 3px 3px;
+    background-image: url(images/icons_menu/menu-icon-bg.gif);
+    background-repeat: repeat-y;
+}
+
+.popupmenu-pagelinks {
+    background-color: #EFF3F7;
+    border: 1px solid #999;
+    text-align: left;
+    font-size: 10px;
+    padding: 3px 5px 3px 3px;
+}
+
+.menusep {
+    white-space: nowrap; /* stop menu collapsing in IE */
+    padding-top: 4px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #DDD;
+}
+
+.menuseplast {
+    white-space: nowrap; /* stop menu collapsing in IE */
+    padding-top: 4px;
+    padding-bottom: 3px;
+    color: #000;
+}
+
+.menusep a:link,
+.menusep a:visited,
+.menusep a:active,
+.menuseplast a:link,
+.menuseplast a:visited,
+.menuseplast a:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000000;
+}
+
+.fauxdropdown {
+    border: 1px solid #777;
+    background-color: #CCC;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 6px;
+    margin: 0px;
+}
+
+.fauxdropdown a:link,
+.fauxdropdown a:visited,
+.fauxdropdown a:active,
+.fauxbutton a:link,
+.fauxbutton a:visited,
+.fauxbutton a:active,
+.fauxredbutton a:link,
+.fauxredbutton a:visited,
+.fauxredbutton a:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.fauxredbutton a:hover,
+.fauxbutton a:hover {
+    margin: 0px;
+}
+
+.realbutton {
+    border: 1px solid #999;
+    background-color: #E7E7E7;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.realdarkbutton {
+    border: 1px solid #999;
+    background-color: #CCC;
+    font-family: Verdana, Arial;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+input[type="text"] {
+    cursor: text;
+}
+
+.desctext {
+    color: gray;
+}
+
+.mininav {
+    font-size: 11px;
+    color: #3363A1;
+}
+
+.mininav a:link,
+.mininav a:visited,
+.mininav a:active {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3363A1;
+}
+
+.datedropdown {
+    font-size: 10px;
+}
+
+.datedropdownleave {
+    font-size: 10px;
+    background-color: #FED4D4;
+}
+
+/* ============================================================== */
+/* PALETTE STYLES
+/* ============================================================== */
+
+/* Main pop up wrapper */
+
+#palettewrapper {
+    text-align: left; /* re_aligns text to left second part of two part MSIE centering workaround */
+}
+
+.paletteheader {
+    font-weight: bold;
+    font-size: 12px;
+    color: #FFFFFF;
+    height: 25px;
+    background-image: url(/web-img/ase/css/images/folder_css_images/main_menu_bg.gif);
+    background-repeat: repeat-x;
+    padding-top: 7px;
+    padding-left: 6px;
+}
+
+.palettewrap {
+    padding: 10px;
+    background-color: #FFFFFF;
+    background-image: url(/web-img/ase/css/images/folder_css_images/mainblock_bg.gif);
+    background-repeat: repeat-x;
+}
+
+.iframestyle {
+    border: 1px solid #777;
+    background-color: #FFF;
+}
+
+.iframebuttonsoff {
+    font-size: 10px;
+    border: 1px solid #777;
+    border-bottom: 0px;
+    padding: 5px;
+    background-color: #BBB;
+}
+
+.iframebuttons {
+    font-size: 10px;
+    border: 1px solid #777;
+    border-bottom: 0px;
+    padding: 5px;
+    background-color: #EBEBEB;
+}
+
+/* ============================================================== */
+/* DIFF STYLES
+/* ============================================================== */
+
+del,
+.diffred {
+    background-color: #D7BBC8;
+    text-decoration: none;
+}
+
+ins,
+.diffgreen {
+    background-color: #BBD0C8;
+    text-decoration: none;
+}
+
+.diffwrap {
+    background: #FFF;
+    color: black;
+    border: 1px solid #000;
+    white-space: pre;
+    font-family: monaco, courier, fixed;
+    overflow: auto;
+    width: 100%;
+}
+
+/* ============================================================== */
+/* RTE STYLES
+/* ============================================================== */
+
+.attach-menubutton {
+    border: 1px solid #7585B8;
+    -moz-border-radius: 3px;
+    padding: 2px 1px 2px 4px;
+    margin: 0px;
+    font-size: 11px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    background-image: url('images/folder_rte_images/rte-dd-bg.gif');
+    background-repeat: no-repeat;
+    width: auto;
+}
+
+.attach-parentdiv {
+    background-color: #E5E6F1;
+    background-image: url('images/folder_rte_images/rte_tile.gif');
+    background-repeat: repeat-x;
+    border: 1px solid #555;
+    letter-spacing: 0;
+    padding: 6px;
+    text-align: left;
+}
+
+.attach-messagediv {
+    background: #FFF;
+    color: #000000;
+    text-align: center;
+    border: 1px solid #555;
+}
+
+.attach-msg-span {
+    padding-top: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.attach-iframe {
+    border: 0px;
+    background-color: transparent;
+}
+
+.attach-popupmenu {
+    background-color: #EFF3F7;
+    border: 1px solid #999;
+    text-align: left;
+    font-size: 11px;
+    padding: 3px 5px 3px 3px;
+    background-image: url('images/icon_components/articles/articles-menu-icon-bg.gif');
+    background-repeat: repeat-y;
+}
+
+.attach-menu-row-over,
+.attach-menu-row {
+    padding: 1px 1px 4px 1px;
+    width: 100%;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.attach-menu-row-over {
+    background: #D3D3D3;
+}
+
+/* ============================================================== */
+/* RTE STYLES
+/* ============================================================== */
+
+.rte-cb-bg {
+    background-color: #E5E6F1;
+    background-image: url('/web-img/ase/css/images/folder_css_images/rte-cb-top-bg.gif');
+    background-repeat: repeat-x;
+    border-bottom: 1px solid #555;
+    letter-spacing: 0;
+    height: 11px;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+}
+
+.rte-buttonbar {
+    background-color: #E5E6F1;
+    background-image: url('/web-img/ase/css/images/folder_css_images/rte_tile.gif');
+    background-repeat: repeat-x;
+    border: 1px solid #555;
+    letter-spacing: 0;
+}
+
+.rte-buttonbar tbody tr td,
+.rte-buttonbar tr td,
+.rteBack tbody tr td,
+.rteBack tr td {
+    padding: 0;
+}
+
+.rte-iframe {
+    border: 2px inset solid #777;
+    background-color: #FFF;
+    margin-top: 4px;
+}
+
+.rte-menu-button,
+.rte-selected-menubutton,
+.rte-hover-menubutton,
+.rte-normal-menubutton {
+    border: 1px solid #7585B8;
+    -moz-border-radius: 3px;
+    padding: 2px 1px 2px 4px;
+    margin: 0px;
+    font-size: 11px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    background-image: url('/web-img/ase/css/images/folder_css_images/rte-dd-bg.gif');
+    background-repeat: no-repeat;
+    width: auto;
+}
+
+.rte-selected-menubutton,
+.rte-hover-menubutton {
+    border: 1px solid #95C4F7;
+    background-color: #FFFFFF;
+}
+
+.rte-menu-face,
+.rte-menu-size,
+.rte-selected-menu,
+.rte-hover-menu,
+.rte-normal-menu {
+    background-color: #EFF3F7;
+    border-bottom: 1px dotted #999;
+    padding: 1px 1px 4px 1px;
+    width: 100%;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.rte-selected-menu-color,
+.rte-hover-menu-color,
+.rte-normal-menu-color,
+.rte-menu-color {
+    width: 10px;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.rte-hover-menu-color {
+    border: 1px solid black;
+}
+
+.rte-popupmenu {
+    background-color: #EFF3F7;
+    border: 1px solid #999;
+    text-align: left;
+    font-size: 11px;
+    padding: 3px 5px 3px 3px;
+}
+
+.rte-selected,
+.rte-hover,
+.rte-normal {
+    cursor: pointer;
+    cursor: hand;
+    padding: 1px;
+}
+
+.rte-selected-menu,
+.rte-hover-menu {
+    background: #D3D3D3;
+}
+
+.rte-selected {
+    border: 1px outset;
+    padding: 0px;
+}
+
+.rte-hover {
+    background: #EBEBEB;
+}
+
+/* ============================================================== */
+/* RTE STYLES
+/* ============================================================== */
+
+.rteimage {
+    /*background: #D3D3D3;*/
+    /*border: 1px outset transparent*/;
+    cursor: pointer;
+    cursor: hand;
+    padding: 1px;
+}
+
+.rteImageRaised {
+    /*background: #D3D3D3;*/
+    border: 1px outset;
+    cursor: pointer;
+    cursor: hand;
+    padding: 0px;
+}
+
+.rteImageLowered {
+    /*background: #D3D3D3;*/
+    border: 1px inset;
+    cursor: pointer;
+    cursor: hand;
+    padding: 0px;
+}
+
+.rteimage:hover {
+    background: #EBEBEB;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.rteVertSep {
+    margin: 0 4px 0 4px;
+}
+
+.rteBack {
+    background: #D3D3D3;
+    border: 1px outset;
+    letter-spacing: 0;
+    padding: 2px;
+}
+
+/* used in ips_rte.js - do not remove */
+.rtebottombutton {
+    font-size: 10px;
+    border: 1px solid #777;
+    border-top: 0px;
+    padding: 3px;
+    margin: 0px;
+    background-color: #EBEBEB;
+}
+
+/* used in ips_rte.js - do not remove */
+.rtebottombuttonon {
+    font-size: 10px;
+    border: 1px solid #777;
+    border-top: 0px;
+    padding: 3px;
+    margin: 0px;
+    background-color: #D3D3D3;
+}
+
+.rtebuttonbar1 {
+    /*background: #D3D3D3;*/
+    background-image: url('/web-img/ase/css/images/folder_css_images/rte_tile.gif');
+    border: 1px solid gray;
+    border-bottom: 0px;
+    letter-spacing: 0;
+    padding: 2px;
+    height: 26px;
+}
+
+.rtebuttonbar2 {
+    /*background: #D3D3D3;*/
+    background-image: url('/web-img/ase/css/images/folder_css_images/rte_tile.gif');
+    border: 1px solid gray;
+    border-top: 1px solid gray;
+    letter-spacing: 0;
+    padding: 2px;
+    height: 26px;
+}
+
+.rtebuttonbar1 tbody tr td,
+.rtebuttonbar1 tr td,
+.rtebuttonbar2 tbody tr td,
+.rtebuttonbar2 tr td,
+.rteBack tbody tr td,
+.rteBack tr td {
+    /*background: #D3D3D3;*/
+    padding: 0;
+}
+
+.rteDiv {
+    display: block;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+.rteiframe {
+    border: 1px solid #777;
+    background-color: #FFF;
+}
+
+.rteselectbox {
+    font-size: 11px;
+}
+
+.rss-feed-valid {
+    font-weight: bold;
+    color: green;
+}
+
+.rss-feed-invalid {
+    font-weight: bold;
+    color: red;
+}
+
+.rss-feed-msg {
+    font-weight: bold;
+    color: gray;
+}
+
+.rss-feed-url {
+    font-weight: bold;
+    color: blue;
+}
+
+.perms-red {
+    background-color: #D7BBC8;
+}
+
+.perms-green {
+    background-color: #BBD0C8;
+}
+
+.perms-gray {
+    background-color: #CCC;
+}
+
+.red-perm {
+    color: red;
+    font-weight: bold;
+}
+
+.green-perm {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.yellow-perm {
+    color: teal;
+    font-weight: bold;
+}
+
+.blue-perm {
+    color: blue;
+    font-weight: bold;
+}
+
+.orange-perm {
+    color: orange;
+    font-weight: bold;
+}
+
+.purple-perm {
+    color: purple;
+    font-weight: bold;
+}
+
+/* new homepage styles */
+
+.homepage_section_warning,
+.homepage_section {
+    background-color: #344966;
+    font-size: 14px;
+    color: #fff;
+    padding: 7px;
+}
+
+.homepage_section_warning {
+    background-color: #66343e;
+}
+
+.homepage_pane_warning_border,
+.homepage_pane_warning,
+.homepage_pane_border,
+.homepage_pane {
+    background-color: #e2e2e0;
+    padding: 4px;
+}
+
+.homepage_pane_warning_border {
+    border: 1px solid #66343e;
+}
+
+.homepage_pane_border {
+    border: 1px solid #344966;
+}
+
+.homepage_pane_warning_border,
+.homepage_pane_warning {
+    background-color: #F3e2e0;
+}
+
+.homepage_sub_header {
+    padding: 8px;
+    background-color: #a8afbd;
+    color: #3b424c;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.homepage_sub_row {
+    background-color: #e6ebf1;
+    padding: 6px;
+    border-bottom: 1px solid #d3dae4;
+}
+
+.homepage_sub_row_2 {
+    background-color: #d3dae4;
+    padding: 6px;
+    border-bottom: 1px solid #b3bbc8;
+}
+
+.homepage_sub_row_3 {
+    background-color: #e2e2e0;
+    padding: 6px;
+    border-bottom: 1px solid #b3bbc8;
+}
+
+.homepage_border {
+    border: 1px solid #7f8ca0;
+}
+
+#common_actions div a {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 3px;
+    border: 1px solid #e2e2e0;
+    color: #343434;
+}
+
+#common_actions div a:hover {
+    background-color: #ffffff;
+    border: 1px solid #acacac;
+    color: #343434;
+}
+
+#common_actions img {
+    vertical-align: middle;
+}

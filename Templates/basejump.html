@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script type="text/javascript" src="{{swf_url}}/swfobject.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .game {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="game" class="game">Please install flash player.</div>
+<script type="text/javascript">
+    var flashvars = {
+        assetUrl: "{{swf_url}}/BasicAssets.swf",
+        habboHost: "azure-hotelfr",
+        accessToken: "{{client_tick}}",
+        socketPolicyPort: "843",
+        gameServerPort: "{{fastfood_port}}",
+        gameServerHost: "{{fastfood_ip}}"
+    };
+    var params = {};
+    var attributes = {};
+    var swfFile = "{{swf_url}}/BaseJump.swf";
+
+    swfobject.embedSWF(swfFile, "game", "100%", "100%", "9.0.0", "{{swf_url}}/expressInstall.swf", flashvars, params, attributes);
+</script>
+</html>
