@@ -4,9 +4,13 @@ Welcome to Azure Web. Azure Web is still in beta version, many bugs and glitches
 
 Azure Web is created by Azure Team:
 >Claudio (sant0ro/bi0s/ovflowd)
+
 >Boris (xDr).  
+
 >Jarreth (Rockster).
+
 >Mike (Mike Sant).
+
 >Caio (Flicker)
 
 ### Version
