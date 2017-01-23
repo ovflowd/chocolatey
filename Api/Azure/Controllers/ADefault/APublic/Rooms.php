@@ -43,18 +43,21 @@ class Rooms extends ControllerType
      */
     function show()
     {
-        header("Access-Control-Allow-Origin: eabbu.com,eabbu.top");
+        $hotelUrl = unserialize(SYSTEM_SETTINGS)->emu_ip;
+	    
+        header("Access-Control-Allow-Origin: $hotelUrl");
 
         $roomId = end(explode('/', $_SERVER['REQUEST_URI']));
 
         Adapter::query("SET NAMES utf8");
-        $row_a = Adapter::fetch_array(Adapter::secure_query("SELECT * FROM rooms WHERE id = :roomid", [':roomid' => $roomId]));
+        $row_a = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM rooms WHERE id = :roomid", [':roomid' => $roomId]));
         $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT id,username FROM users WHERE id = :ownerid", [':ownerid' => $row_a['owner']]));
         $row_c = Adapter::row_count(Adapter::secure_query("SELECT room_id FROM navigator_publics WHERE room_id = :roomid", [':roomid' => $row_a['id']]));
-        $tags = explode(',', $row_a['tags']);
-        $photos = new JsonRooms($row_a['id'], EMULATOR_TYPE == 'plus' ? $row_a['caption'] : $row_a['name'], $row_a['description'], $row_a['users_max'], $row_b->username, $row_b->id, $row_a['score'], $tags, $row_c == 1);
+	
+	$room  = new JsonRooms($row_a->id, EMULATOR_TYPE == 'plus' ? $row_a->caption : $row_a->name, $row_a->description, $row_a->users_max, $row_b->username, $row_b->id, $row_a->score, explode(',', $row_a->tags), $row_c == 1);
 
         header('Content-type: application/json');
-        return str_replace("\\/", "/", json_encode($photos));
+	
+        return str_replace("\\/", "/", json_encode($room));
     }
 }
