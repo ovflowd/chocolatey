@@ -3209,7 +3209,7 @@ habbo-header-small .header__habbo__logo {
 }
 
 .user-menu__name__wrapper:active, .user-menu__name__wrapper:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #267b91;
 }
 
 @media (min-width: 532px) {
@@ -3240,7 +3240,7 @@ habbo-header-small .header__habbo__logo {
 }
 
 .user-menu__link--help:active, .user-menu__link--help:hover, .user-menu__link--logout:active, .user-menu__link--logout:hover, .user-menu__link--profile:active, .user-menu__link--profile:hover, .user-menu__link--settings:active, .user-menu__link--settings:hover, .user-menu__link:active, .user-menu__link:hover {
-    border-bottom: 0 solid;
+    border-bottom: 0 solid #267b91;
 }
 
 .user-menu__avatar img, .user-menu__link--profile {
@@ -4135,7 +4135,7 @@ habbo-message-container[type='x'] .message-container:before {
 }
 
 .toast-button:active, .toast-button:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #666;
 }
 
 .toast-button:active {
@@ -5146,7 +5146,7 @@ habbo-discussions {
 }
 
 .discussions__reply:active, .discussions__reply:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #1e7b9e;
 }
 
 .discussions__reply:active {
@@ -5202,7 +5202,8 @@ habbo-discussions {
 }
 
 .client-reload__button:active, .client-reload__button:hover, .client__buttons .client__close:active, .client__buttons .client__close:hover, .client__buttons button:active, .client__buttons button:hover, .register-banner__button:active, .register-banner__button:hover {
-    border-bottom: 2px solid;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
 }
 
 .news__right-image {
@@ -6233,7 +6234,7 @@ habbo-creation-content {
 }
 
 .photo-delete:active, .photo-delete:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #b73e56;
 }
 
 .photo-delete:active {
@@ -6287,7 +6288,7 @@ habbo-report {
 }
 
 .report-form__submit:active, .report-form__submit:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #b73e56;
 }
 
 .report-form__submit:active {
@@ -6849,7 +6850,7 @@ habbo-registration-form {
 }
 
 .room__enter-button:active, .room__enter-button:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #ffce37;
 }
 
 .room__enter-button:active {
@@ -7233,7 +7234,8 @@ habbo-registration-form {
 }
 
 .login-form__button:active, .login-form__button:hover, habbo-facebook-connect[type=large] .facebook-connect:active, habbo-facebook-connect[type=large] .facebook-connect:hover {
-    border-bottom: 2px solid;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
 }
 
 .spinner__indicator {
@@ -7471,7 +7473,7 @@ habbo-header-large habbo-login-form {
     }
 
     habbo-header-large .login-form__button:active, habbo-header-large .login-form__button:hover {
-        border-bottom: 2px solid;
+        border-bottom: 2px solid #1e7b9e;
     }
 
     habbo-header-large .login-form__button:active {
@@ -7616,7 +7618,8 @@ habbo-facebook-connect[type=small] .facebook-connect {
 }
 
 .account-security__disable:active, .account-security__disable:hover, .account-security__edit:active, .account-security__edit:hover, .account-security__enable:active, .account-security__enable:hover, .account-security__reset:active, .account-security__reset:hover, .activation-status__submit:active, .activation-status__submit:hover, .avatar-create__button:active, .avatar-create__button:hover, .avatar-selector__button:active, .avatar-selector__button:hover, .payment-button:active, .payment-button:hover {
-    border-bottom: 2px solid;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
 }
 
 @media (min-width: 532px) {
@@ -9108,7 +9111,7 @@ habbo-transactions {
 }
 
 .transactions__button:active, .transactions__button:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #1e7b9e;
 }
 
 .transactions__button:active {

@@ -4078,17 +4078,17 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         appStoreUrl: "https://itunes.apple.com/app/id794866182",
         badgeUrl: "https://habboo-a.akamaihd.net/c_images/album1584",
         googlePlayUrl: "https://play.google.com/store/apps/details?id=air.com.sulake.habboair",
-        habboWebAdsUrl: "habbo-web-ads/",
-        habboWebLeaderboardsUrl: "habbo-web-leaderboards/",
-        habboWebNewsUrl: "habbo-web-news/en/production/",
-        habboWebPagesUrl: "habbo-web-pages/production/",
+        habboWebAdsUrl: "/habbo-web-ads/",
+        habboWebLeaderboardsUrl: "/habbo-web-leaderboards/",
+        habboWebNewsUrl: "/habbo-web-news/en/production/",
+        habboWebPagesUrl: "/habbo-web-pages/production/",
         imagingUrl: "/habbo-imaging",
         lang: "en",
         hotel: "hhus",
         localizationSite: "com",
         minAge: parseInt("13", 10),
         rpxLocale: "en",
-        rpxTokenUrl: "api/public/authentication/rpx",
+        rpxTokenUrl: "/api/public/authentication/rpx",
         offerToroEnabled: "false",
         twitterAccount: "@Habbo",
         adyenPublicKey: "10001|DB119F7832E23CBEDA2A330D3C13310D78ABA07136CDFFFA3D798BDFE4A903D5A079EE09710BBEC72573F0CA80D48DD0380D8AC1B0FDBCB978E69E9BE92ABDC27020858A52DC8D7A9C2D77B071FE1E6A3177E4E73E8E7CFC4A13C881BBBEF3C2EFBB24475818AB9E56BC597BABFD306593C3DF2B16F49D38F560212C183492EE7D0750CE84AB3509563CB3C99EC0B815CF5211E793500110B2A53DCAD793E267677BBE89035E5E9662FD2DB94A5EECBD6FB81F5DAF7205F9EBF15963639FC72DF0875CC2249FB31B300CC8183B2C948B3B3843C414677C9EC82C6A2D4CBF937B57FD03A53B0A8A56369AD490CEAB9EED18FE77E7B9032445A57A06CE23DE6115"
@@ -4100,7 +4100,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         e.setLanguage("en"), e.setSiteKey("6LdhyucSAAAAAKNhbY53azV2gZul4DcD8Xo111yp")
     }]), angular.module("pascalprecht.translate").config(["$translateProvider", function (e) {
         e.preferredLanguage("com"), e.useStaticFilesLoader({
-            prefix: "habbo-web-l10n/",
+            prefix: "/habbo-web-l10n/",
             suffix: ".json"
         }), e.useSanitizeValueStrategy("escapeParameters")
     }])

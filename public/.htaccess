@@ -3,21 +3,44 @@
         Options -MultiViews
     </IfModule>
 
+    Options +FollowSymLinks
+    Options -Indexes
+
     RewriteEngine On
+    RewriteBase /
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
     # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+    # Assets Exceptions
+    RewriteCond %{REQUEST_URI} !^/habbo-web/
+    RewriteCond %{REQUEST_URI} !^/habbo-web-pages/
+    RewriteCond %{REQUEST_URI} !^/habbo-web-ads/
+    RewriteCond %{REQUEST_URI} !^/habbo-imaging/
+    RewriteCond %{REQUEST_URI} !^/habbo-web-l10n/
+    RewriteCond %{REQUEST_URI} !^/habbo-web-news/
+
+    # API Exceptions
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_URI} !^/stories-api/
+    RewriteCond %{REQUEST_URI} !^/shopapi/
+    RewriteCond %{REQUEST_URI} !^/extradata/
+
+    RewriteRule ^.*$ index.php [L]
 
     # Handle Api Requests
     RewriteRule ^api/(.*)$ api.php [L]
     RewriteRule ^extradata/(.*)$ api.php [L]
     RewriteRule ^shopapi/(.*)$ api.php [L]
+
+    # Habbo-Imaging for Badge
+    RewriteRule ^habbo-imaging/badge/([^/]+) /habbo-imaging/badge.php?badge=$1
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
