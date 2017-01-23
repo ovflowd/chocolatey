@@ -44,18 +44,18 @@ class Dumper
      */
     public function setIndentation($num)
     {
-        @trigger_error('The '.__METHOD__.' method is deprecated since version 3.1 and will be removed in 4.0. Pass the indentation to the constructor instead.', E_USER_DEPRECATED);
+        @trigger_error('The ' . __METHOD__ . ' method is deprecated since version 3.1 and will be removed in 4.0. Pass the indentation to the constructor instead.', E_USER_DEPRECATED);
 
-        $this->indentation = (int) $num;
+        $this->indentation = (int)$num;
     }
 
     /**
      * Dumps a PHP value to YAML.
      *
-     * @param mixed $input  The PHP value
-     * @param int   $inline The level where you switch to inline YAML
-     * @param int   $indent The level of indentation (used internally)
-     * @param int   $flags  A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
+     * @param mixed $input The PHP value
+     * @param int $inline The level where you switch to inline YAML
+     * @param int $indent The level of indentation (used internally)
+     * @param int $flags A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
      *
      * @return string The YAML representation of the PHP value
      */
@@ -83,13 +83,13 @@ class Dumper
         $prefix = $indent ? str_repeat(' ', $indent) : '';
 
         if ($inline <= 0 || !is_array($input) || empty($input)) {
-            $output .= $prefix.Inline::dump($input, $flags);
+            $output .= $prefix . Inline::dump($input, $flags);
         } else {
             $isAHash = Inline::isHash($input);
 
             foreach ($input as $key => $value) {
                 if ($inline >= 1 && Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK & $flags && is_string($value) && false !== strpos($value, "\n")) {
-                    $output .= sprintf("%s%s%s |\n", $prefix, $isAHash ? Inline::dump($key, $flags).':' : '-', '');
+                    $output .= sprintf("%s%s%s |\n", $prefix, $isAHash ? Inline::dump($key, $flags) . ':' : '-', '');
 
                     foreach (preg_split('/\n|\r\n/', $value) as $row) {
                         $output .= sprintf("%s%s%s\n", $prefix, str_repeat(' ', $this->indentation), $row);
@@ -101,11 +101,11 @@ class Dumper
                 $willBeInlined = $inline - 1 <= 0 || !is_array($value) || empty($value);
 
                 $output .= sprintf('%s%s%s%s',
-                    $prefix,
-                    $isAHash ? Inline::dump($key, $flags).':' : '-',
-                    $willBeInlined ? ' ' : "\n",
-                    $this->dump($value, $inline - 1, $willBeInlined ? 0 : $indent + $this->indentation, $flags)
-                ).($willBeInlined ? "\n" : '');
+                        $prefix,
+                        $isAHash ? Inline::dump($key, $flags) . ':' : '-',
+                        $willBeInlined ? ' ' : "\n",
+                        $this->dump($value, $inline - 1, $willBeInlined ? 0 : $indent + $this->indentation, $flags)
+                    ) . ($willBeInlined ? "\n" : '');
             }
         }
 

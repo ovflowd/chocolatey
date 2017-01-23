@@ -11,8 +11,8 @@
 
 namespace Symfony\Component\Yaml;
 
-use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Exception\DumpException;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * Inline implements a YAML parser/dumper for the YAML inline syntax.
@@ -35,9 +35,9 @@ class Inline
     /**
      * Converts a YAML string to a PHP value.
      *
-     * @param string $value      A YAML string
-     * @param int    $flags      A bit field of PARSE_* constants to customize the YAML parser behavior
-     * @param array  $references Mapping of variable names to values
+     * @param string $value A YAML string
+     * @param int $flags A bit field of PARSE_* constants to customize the YAML parser behavior
+     * @param array $references Mapping of variable names to values
      *
      * @return mixed A PHP value
      *
@@ -77,10 +77,10 @@ class Inline
             }
         }
 
-        self::$exceptionOnInvalidType = (bool) (Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE & $flags);
-        self::$objectSupport = (bool) (Yaml::PARSE_OBJECT & $flags);
-        self::$objectForMap = (bool) (Yaml::PARSE_OBJECT_FOR_MAP & $flags);
-        self::$constantSupport = (bool) (Yaml::PARSE_CONSTANT & $flags);
+        self::$exceptionOnInvalidType = (bool)(Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE & $flags);
+        self::$objectSupport = (bool)(Yaml::PARSE_OBJECT & $flags);
+        self::$objectForMap = (bool)(Yaml::PARSE_OBJECT_FOR_MAP & $flags);
+        self::$constantSupport = (bool)(Yaml::PARSE_CONSTANT & $flags);
 
         $value = trim($value);
 
@@ -88,7 +88,7 @@ class Inline
             return '';
         }
 
-        if (2 /* MB_OVERLOAD_STRING */ & (int) ini_get('mbstring.func_overload')) {
+        if (2 /* MB_OVERLOAD_STRING */ & (int)ini_get('mbstring.func_overload')) {
             $mbEncoding = mb_internal_encoding();
             mb_internal_encoding('ASCII');
         }
@@ -120,256 +120,12 @@ class Inline
     }
 
     /**
-     * Dumps a given PHP variable to a YAML string.
-     *
-     * @param mixed $value The PHP variable to convert
-     * @param int   $flags A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
-     *
-     * @return string The YAML string representing the PHP value
-     *
-     * @throws DumpException When trying to dump PHP resource
-     */
-    public static function dump($value, $flags = 0)
-    {
-        if (is_bool($flags)) {
-            @trigger_error('Passing a boolean flag to toggle exception handling is deprecated since version 3.1 and will be removed in 4.0. Use the Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE flag instead.', E_USER_DEPRECATED);
-
-            if ($flags) {
-                $flags = Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE;
-            } else {
-                $flags = 0;
-            }
-        }
-
-        if (func_num_args() >= 3) {
-            @trigger_error('Passing a boolean flag to toggle object support is deprecated since version 3.1 and will be removed in 4.0. Use the Yaml::DUMP_OBJECT flag instead.', E_USER_DEPRECATED);
-
-            if (func_get_arg(2)) {
-                $flags |= Yaml::DUMP_OBJECT;
-            }
-        }
-
-        switch (true) {
-            case is_resource($value):
-                if (Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE & $flags) {
-                    throw new DumpException(sprintf('Unable to dump PHP resources in a YAML file ("%s").', get_resource_type($value)));
-                }
-
-                return 'null';
-            case $value instanceof \DateTimeInterface:
-                return $value->format('c');
-            case is_object($value):
-                if (Yaml::DUMP_OBJECT & $flags) {
-                    return '!php/object:'.serialize($value);
-                }
-
-                if (Yaml::DUMP_OBJECT_AS_MAP & $flags && ($value instanceof \stdClass || $value instanceof \ArrayObject)) {
-                    return self::dumpArray((array) $value, $flags);
-                }
-
-                if (Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE & $flags) {
-                    throw new DumpException('Object support when dumping a YAML file has been disabled.');
-                }
-
-                return 'null';
-            case is_array($value):
-                return self::dumpArray($value, $flags);
-            case null === $value:
-                return 'null';
-            case true === $value:
-                return 'true';
-            case false === $value:
-                return 'false';
-            case ctype_digit($value):
-                return is_string($value) ? "'$value'" : (int) $value;
-            case is_numeric($value):
-                $locale = setlocale(LC_NUMERIC, 0);
-                if (false !== $locale) {
-                    setlocale(LC_NUMERIC, 'C');
-                }
-                if (is_float($value)) {
-                    $repr = (string) $value;
-                    if (is_infinite($value)) {
-                        $repr = str_ireplace('INF', '.Inf', $repr);
-                    } elseif (floor($value) == $value && $repr == $value) {
-                        // Preserve float data type since storing a whole number will result in integer value.
-                        $repr = '!!float '.$repr;
-                    }
-                } else {
-                    $repr = is_string($value) ? "'$value'" : (string) $value;
-                }
-                if (false !== $locale) {
-                    setlocale(LC_NUMERIC, $locale);
-                }
-
-                return $repr;
-            case '' == $value:
-                return "''";
-            case self::isBinaryString($value):
-                return '!!binary '.base64_encode($value);
-            case Escaper::requiresDoubleQuoting($value):
-                return Escaper::escapeWithDoubleQuotes($value);
-            case Escaper::requiresSingleQuoting($value):
-            case preg_match('{^[0-9]+[_0-9]*$}', $value):
-            case preg_match(self::getHexRegex(), $value):
-            case preg_match(self::getTimestampRegex(), $value):
-                return Escaper::escapeWithSingleQuotes($value);
-            default:
-                return $value;
-        }
-    }
-
-    /**
-     * Check if given array is hash or just normal indexed array.
-     *
-     * @internal
-     *
-     * @param array $value The PHP array to check
-     *
-     * @return bool true if value is hash array, false otherwise
-     */
-    public static function isHash(array $value)
-    {
-        $expectedKey = 0;
-
-        foreach ($value as $key => $val) {
-            if ($key !== $expectedKey++) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Dumps a PHP array to a YAML string.
-     *
-     * @param array $value The PHP array to dump
-     * @param int   $flags A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
-     *
-     * @return string The YAML string representing the PHP array
-     */
-    private static function dumpArray($value, $flags)
-    {
-        // array
-        if ($value && !self::isHash($value)) {
-            $output = array();
-            foreach ($value as $val) {
-                $output[] = self::dump($val, $flags);
-            }
-
-            return sprintf('[%s]', implode(', ', $output));
-        }
-
-        // hash
-        $output = array();
-        foreach ($value as $key => $val) {
-            $output[] = sprintf('%s: %s', self::dump($key, $flags), self::dump($val, $flags));
-        }
-
-        return sprintf('{ %s }', implode(', ', $output));
-    }
-
-    /**
-     * Parses a YAML scalar.
-     *
-     * @param string $scalar
-     * @param int    $flags
-     * @param string $delimiters
-     * @param array  $stringDelimiters
-     * @param int    &$i
-     * @param bool   $evaluate
-     * @param array  $references
-     *
-     * @return string
-     *
-     * @throws ParseException When malformed inline YAML string is parsed
-     *
-     * @internal
-     */
-    public static function parseScalar($scalar, $flags = 0, $delimiters = null, $stringDelimiters = array('"', "'"), &$i = 0, $evaluate = true, $references = array())
-    {
-        if (in_array($scalar[$i], $stringDelimiters)) {
-            // quoted scalar
-            $output = self::parseQuotedScalar($scalar, $i);
-
-            if (null !== $delimiters) {
-                $tmp = ltrim(substr($scalar, $i), ' ');
-                if (!in_array($tmp[0], $delimiters)) {
-                    throw new ParseException(sprintf('Unexpected characters (%s).', substr($scalar, $i)));
-                }
-            }
-        } else {
-            // "normal" string
-            if (!$delimiters) {
-                $output = substr($scalar, $i);
-                $i += strlen($output);
-
-                // remove comments
-                if (preg_match('/[ \t]+#/', $output, $match, PREG_OFFSET_CAPTURE)) {
-                    $output = substr($output, 0, $match[0][1]);
-                }
-            } elseif (preg_match('/^(.+?)('.implode('|', $delimiters).')/', substr($scalar, $i), $match)) {
-                $output = $match[1];
-                $i += strlen($output);
-            } else {
-                throw new ParseException(sprintf('Malformed inline YAML string: %s.', $scalar));
-            }
-
-            // a non-quoted string cannot start with @ or ` (reserved) nor with a scalar indicator (| or >)
-            if ($output && ('@' === $output[0] || '`' === $output[0] || '|' === $output[0] || '>' === $output[0])) {
-                throw new ParseException(sprintf('The reserved indicator "%s" cannot start a plain scalar; you need to quote the scalar.', $output[0]));
-            }
-
-            if ($output && '%' === $output[0]) {
-                @trigger_error(sprintf('Not quoting the scalar "%s" starting with the "%%" indicator character is deprecated since Symfony 3.1 and will throw a ParseException in 4.0.', $output), E_USER_DEPRECATED);
-            }
-
-            if ($evaluate) {
-                $output = self::evaluateScalar($output, $flags, $references);
-            }
-        }
-
-        return $output;
-    }
-
-    /**
-     * Parses a YAML quoted scalar.
-     *
-     * @param string $scalar
-     * @param int    &$i
-     *
-     * @return string
-     *
-     * @throws ParseException When malformed inline YAML string is parsed
-     */
-    private static function parseQuotedScalar($scalar, &$i)
-    {
-        if (!preg_match('/'.self::REGEX_QUOTED_STRING.'/Au', substr($scalar, $i), $match)) {
-            throw new ParseException(sprintf('Malformed inline YAML string: %s.', substr($scalar, $i)));
-        }
-
-        $output = substr($match[0], 1, strlen($match[0]) - 2);
-
-        $unescaper = new Unescaper();
-        if ('"' == $scalar[$i]) {
-            $output = $unescaper->unescapeDoubleQuotedString($output);
-        } else {
-            $output = $unescaper->unescapeSingleQuotedString($output);
-        }
-
-        $i += strlen($match[0]);
-
-        return $output;
-    }
-
-    /**
      * Parses a YAML sequence.
      *
      * @param string $sequence
-     * @param int    $flags
-     * @param int    &$i
-     * @param array  $references
+     * @param int $flags
+     * @param int &$i
+     * @param array $references
      *
      * @return array
      *
@@ -406,7 +162,7 @@ class Inline
                         // embedded mapping?
                         try {
                             $pos = 0;
-                            $value = self::parseMapping('{'.$value.'}', $flags, $pos, $references);
+                            $value = self::parseMapping('{' . $value . '}', $flags, $pos, $references);
                         } catch (\InvalidArgumentException $e) {
                             // no, it's not
                         }
@@ -427,9 +183,9 @@ class Inline
      * Parses a YAML mapping.
      *
      * @param string $mapping
-     * @param int    $flags
-     * @param int    &$i
-     * @param array  $references
+     * @param int $flags
+     * @param int &$i
+     * @param array $references
      *
      * @return array|\stdClass
      *
@@ -450,7 +206,7 @@ class Inline
                     continue 2;
                 case '}':
                     if (self::$objectForMap) {
-                        return (object) $output;
+                        return (object)$output;
                     }
 
                     return $output;
@@ -527,11 +283,104 @@ class Inline
     }
 
     /**
+     * Parses a YAML scalar.
+     *
+     * @param string $scalar
+     * @param int $flags
+     * @param string $delimiters
+     * @param array $stringDelimiters
+     * @param int &$i
+     * @param bool $evaluate
+     * @param array $references
+     *
+     * @return string
+     *
+     * @throws ParseException When malformed inline YAML string is parsed
+     *
+     * @internal
+     */
+    public static function parseScalar($scalar, $flags = 0, $delimiters = null, $stringDelimiters = array('"', "'"), &$i = 0, $evaluate = true, $references = array())
+    {
+        if (in_array($scalar[$i], $stringDelimiters)) {
+            // quoted scalar
+            $output = self::parseQuotedScalar($scalar, $i);
+
+            if (null !== $delimiters) {
+                $tmp = ltrim(substr($scalar, $i), ' ');
+                if (!in_array($tmp[0], $delimiters)) {
+                    throw new ParseException(sprintf('Unexpected characters (%s).', substr($scalar, $i)));
+                }
+            }
+        } else {
+            // "normal" string
+            if (!$delimiters) {
+                $output = substr($scalar, $i);
+                $i += strlen($output);
+
+                // remove comments
+                if (preg_match('/[ \t]+#/', $output, $match, PREG_OFFSET_CAPTURE)) {
+                    $output = substr($output, 0, $match[0][1]);
+                }
+            } elseif (preg_match('/^(.+?)(' . implode('|', $delimiters) . ')/', substr($scalar, $i), $match)) {
+                $output = $match[1];
+                $i += strlen($output);
+            } else {
+                throw new ParseException(sprintf('Malformed inline YAML string: %s.', $scalar));
+            }
+
+            // a non-quoted string cannot start with @ or ` (reserved) nor with a scalar indicator (| or >)
+            if ($output && ('@' === $output[0] || '`' === $output[0] || '|' === $output[0] || '>' === $output[0])) {
+                throw new ParseException(sprintf('The reserved indicator "%s" cannot start a plain scalar; you need to quote the scalar.', $output[0]));
+            }
+
+            if ($output && '%' === $output[0]) {
+                @trigger_error(sprintf('Not quoting the scalar "%s" starting with the "%%" indicator character is deprecated since Symfony 3.1 and will throw a ParseException in 4.0.', $output), E_USER_DEPRECATED);
+            }
+
+            if ($evaluate) {
+                $output = self::evaluateScalar($output, $flags, $references);
+            }
+        }
+
+        return $output;
+    }
+
+    /**
+     * Parses a YAML quoted scalar.
+     *
+     * @param string $scalar
+     * @param int &$i
+     *
+     * @return string
+     *
+     * @throws ParseException When malformed inline YAML string is parsed
+     */
+    private static function parseQuotedScalar($scalar, &$i)
+    {
+        if (!preg_match('/' . self::REGEX_QUOTED_STRING . '/Au', substr($scalar, $i), $match)) {
+            throw new ParseException(sprintf('Malformed inline YAML string: %s.', substr($scalar, $i)));
+        }
+
+        $output = substr($match[0], 1, strlen($match[0]) - 2);
+
+        $unescaper = new Unescaper();
+        if ('"' == $scalar[$i]) {
+            $output = $unescaper->unescapeDoubleQuotedString($output);
+        } else {
+            $output = $unescaper->unescapeSingleQuotedString($output);
+        }
+
+        $i += strlen($match[0]);
+
+        return $output;
+    }
+
+    /**
      * Evaluates scalars and replaces magic values.
      *
      * @param string $scalar
-     * @param int    $flags
-     * @param array  $references
+     * @param int $flags
+     * @param array $references
      *
      * @return string A YAML string
      *
@@ -574,9 +423,9 @@ class Inline
             case $scalar[0] === '+' || $scalar[0] === '-' || $scalar[0] === '.' || $scalar[0] === '!' || is_numeric($scalar[0]):
                 switch (true) {
                     case 0 === strpos($scalar, '!str'):
-                        return (string) substr($scalar, 5);
+                        return (string)substr($scalar, 5);
                     case 0 === strpos($scalar, '! '):
-                        return (int) self::parseScalar(substr($scalar, 2), $flags);
+                        return (int)self::parseScalar(substr($scalar, 2), $flags);
                     case 0 === strpos($scalar, '!php/object:'):
                         if (self::$objectSupport) {
                             return unserialize(substr($scalar, 12));
@@ -613,25 +462,25 @@ class Inline
 
                         return;
                     case 0 === strpos($scalar, '!!float '):
-                        return (float) substr($scalar, 8);
+                        return (float)substr($scalar, 8);
                     case preg_match('{^[+-]?[0-9][0-9_]*$}', $scalar):
-                        $scalar = str_replace('_', '', (string) $scalar);
-                        // omitting the break / return as integers are handled in the next case
+                        $scalar = str_replace('_', '', (string)$scalar);
+                    // omitting the break / return as integers are handled in the next case
                     case ctype_digit($scalar):
                         $raw = $scalar;
-                        $cast = (int) $scalar;
+                        $cast = (int)$scalar;
 
-                        return '0' == $scalar[0] ? octdec($scalar) : (((string) $raw == (string) $cast) ? $cast : $raw);
+                        return '0' == $scalar[0] ? octdec($scalar) : (((string)$raw == (string)$cast) ? $cast : $raw);
                     case '-' === $scalar[0] && ctype_digit(substr($scalar, 1)):
                         $raw = $scalar;
-                        $cast = (int) $scalar;
+                        $cast = (int)$scalar;
 
-                        return '0' == $scalar[1] ? octdec($scalar) : (((string) $raw === (string) $cast) ? $cast : $raw);
+                        return '0' == $scalar[1] ? octdec($scalar) : (((string)$raw === (string)$cast) ? $cast : $raw);
                     case is_numeric($scalar):
                     case preg_match(self::getHexRegex(), $scalar):
                         $scalar = str_replace('_', '', $scalar);
 
-                        return '0x' === $scalar[0].$scalar[1] ? hexdec($scalar) : (float) $scalar;
+                        return '0x' === $scalar[0] . $scalar[1] ? hexdec($scalar) : (float)$scalar;
                     case '.inf' === $scalarLower:
                     case '.nan' === $scalarLower:
                         return -log(0);
@@ -645,7 +494,7 @@ class Inline
                             @trigger_error('Using the comma as a group separator for floats is deprecated since version 3.2 and will be removed in 4.0.', E_USER_DEPRECATED);
                         }
 
-                        return (float) str_replace(array(',', '_'), '', $scalar);
+                        return (float)str_replace(array(',', '_'), '', $scalar);
                     case preg_match(self::getTimestampRegex(), $scalar):
                         if (Yaml::PARSE_DATETIME & $flags) {
                             // When no timezone is provided in the parsed date, YAML spec says we must assume UTC.
@@ -660,8 +509,18 @@ class Inline
                         return $time;
                 }
             default:
-                return (string) $scalar;
+                return (string)$scalar;
         }
+    }
+
+    /**
+     * Gets a regex that matches a YAML number in hexadecimal notation.
+     *
+     * @return string
+     */
+    private static function getHexRegex()
+    {
+        return '~^0x[0-9a-f_]++$~i';
     }
 
     /**
@@ -684,11 +543,6 @@ class Inline
         }
 
         return base64_decode($parsedBinaryData, true);
-    }
-
-    private static function isBinaryString($value)
-    {
-        return !preg_match('//u', $value) || preg_match('/[^\x09-\x0d\x20-\xff]/', $value);
     }
 
     /**
@@ -717,12 +571,158 @@ EOF;
     }
 
     /**
-     * Gets a regex that matches a YAML number in hexadecimal notation.
+     * Dumps a given PHP variable to a YAML string.
      *
-     * @return string
+     * @param mixed $value The PHP variable to convert
+     * @param int $flags A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
+     *
+     * @return string The YAML string representing the PHP value
+     *
+     * @throws DumpException When trying to dump PHP resource
      */
-    private static function getHexRegex()
+    public static function dump($value, $flags = 0)
     {
-        return '~^0x[0-9a-f_]++$~i';
+        if (is_bool($flags)) {
+            @trigger_error('Passing a boolean flag to toggle exception handling is deprecated since version 3.1 and will be removed in 4.0. Use the Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE flag instead.', E_USER_DEPRECATED);
+
+            if ($flags) {
+                $flags = Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE;
+            } else {
+                $flags = 0;
+            }
+        }
+
+        if (func_num_args() >= 3) {
+            @trigger_error('Passing a boolean flag to toggle object support is deprecated since version 3.1 and will be removed in 4.0. Use the Yaml::DUMP_OBJECT flag instead.', E_USER_DEPRECATED);
+
+            if (func_get_arg(2)) {
+                $flags |= Yaml::DUMP_OBJECT;
+            }
+        }
+
+        switch (true) {
+            case is_resource($value):
+                if (Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE & $flags) {
+                    throw new DumpException(sprintf('Unable to dump PHP resources in a YAML file ("%s").', get_resource_type($value)));
+                }
+
+                return 'null';
+            case $value instanceof \DateTimeInterface:
+                return $value->format('c');
+            case is_object($value):
+                if (Yaml::DUMP_OBJECT & $flags) {
+                    return '!php/object:' . serialize($value);
+                }
+
+                if (Yaml::DUMP_OBJECT_AS_MAP & $flags && ($value instanceof \stdClass || $value instanceof \ArrayObject)) {
+                    return self::dumpArray((array)$value, $flags);
+                }
+
+                if (Yaml::DUMP_EXCEPTION_ON_INVALID_TYPE & $flags) {
+                    throw new DumpException('Object support when dumping a YAML file has been disabled.');
+                }
+
+                return 'null';
+            case is_array($value):
+                return self::dumpArray($value, $flags);
+            case null === $value:
+                return 'null';
+            case true === $value:
+                return 'true';
+            case false === $value:
+                return 'false';
+            case ctype_digit($value):
+                return is_string($value) ? "'$value'" : (int)$value;
+            case is_numeric($value):
+                $locale = setlocale(LC_NUMERIC, 0);
+                if (false !== $locale) {
+                    setlocale(LC_NUMERIC, 'C');
+                }
+                if (is_float($value)) {
+                    $repr = (string)$value;
+                    if (is_infinite($value)) {
+                        $repr = str_ireplace('INF', '.Inf', $repr);
+                    } elseif (floor($value) == $value && $repr == $value) {
+                        // Preserve float data type since storing a whole number will result in integer value.
+                        $repr = '!!float ' . $repr;
+                    }
+                } else {
+                    $repr = is_string($value) ? "'$value'" : (string)$value;
+                }
+                if (false !== $locale) {
+                    setlocale(LC_NUMERIC, $locale);
+                }
+
+                return $repr;
+            case '' == $value:
+                return "''";
+            case self::isBinaryString($value):
+                return '!!binary ' . base64_encode($value);
+            case Escaper::requiresDoubleQuoting($value):
+                return Escaper::escapeWithDoubleQuotes($value);
+            case Escaper::requiresSingleQuoting($value):
+            case preg_match('{^[0-9]+[_0-9]*$}', $value):
+            case preg_match(self::getHexRegex(), $value):
+            case preg_match(self::getTimestampRegex(), $value):
+                return Escaper::escapeWithSingleQuotes($value);
+            default:
+                return $value;
+        }
+    }
+
+    /**
+     * Dumps a PHP array to a YAML string.
+     *
+     * @param array $value The PHP array to dump
+     * @param int $flags A bit field of Yaml::DUMP_* constants to customize the dumped YAML string
+     *
+     * @return string The YAML string representing the PHP array
+     */
+    private static function dumpArray($value, $flags)
+    {
+        // array
+        if ($value && !self::isHash($value)) {
+            $output = array();
+            foreach ($value as $val) {
+                $output[] = self::dump($val, $flags);
+            }
+
+            return sprintf('[%s]', implode(', ', $output));
+        }
+
+        // hash
+        $output = array();
+        foreach ($value as $key => $val) {
+            $output[] = sprintf('%s: %s', self::dump($key, $flags), self::dump($val, $flags));
+        }
+
+        return sprintf('{ %s }', implode(', ', $output));
+    }
+
+    /**
+     * Check if given array is hash or just normal indexed array.
+     *
+     * @internal
+     *
+     * @param array $value The PHP array to check
+     *
+     * @return bool true if value is hash array, false otherwise
+     */
+    public static function isHash(array $value)
+    {
+        $expectedKey = 0;
+
+        foreach ($value as $key => $val) {
+            if ($key !== $expectedKey++) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static function isBinaryString($value)
+    {
+        return !preg_match('//u', $value) || preg_match('/[^\x09-\x0d\x20-\xff]/', $value);
     }
 }

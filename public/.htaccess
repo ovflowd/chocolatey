@@ -14,6 +14,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
+    # Handle Api Requests
+    RewriteRule ^api/(.*)$ api.php [L]
+    RewriteRule ^extradata/(.*)$ api.php [L]
+    RewriteRule ^shopapi/(.*)$ api.php [L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

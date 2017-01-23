@@ -11,14 +11,16 @@
          stopOnFailure="false"
          syntaxCheck="true"
          verbose="true">
->
+    >
     <testsuites>
         <testsuite name="Mockery Test Suite">
             <directory suffix="Test.php">./tests</directory>
             <exclude>./tests/Mockery/MockingVariadicArgumentsTest.php</exclude>
             <exclude>./tests/Mockery/MockingParameterAndReturnTypesTest.php</exclude>
             <file phpVersion="5.6.0" phpVersionOperator=">=">./tests/Mockery/MockingVariadicArgumentsTest.php</file>
-            <file phpVersion="7.0.0-dev" phpVersionOperator=">=">./tests/Mockery/MockingParameterAndReturnTypesTest.php</file>
+            <file phpVersion="7.0.0-dev" phpVersionOperator=">=">
+                ./tests/Mockery/MockingParameterAndReturnTypesTest.php
+            </file>
         </testsuite>
     </testsuites>
     <filter>
@@ -31,7 +33,7 @@
     </filter>
     <listeners>
         <listener
-            class='Mockery\Adapter\Phpunit\TestListener'
-            file='./library/Mockery/Adapter/Phpunit/TestListener.php'/>
+                class='Mockery\Adapter\Phpunit\TestListener'
+                file='./library/Mockery/Adapter/Phpunit/TestListener.php'/>
     </listeners>
 </phpunit>

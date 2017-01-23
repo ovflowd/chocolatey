@@ -1,7 +1,10 @@
 {
   "name": "nikic/fast-route",
   "description": "Fast request router for PHP",
-  "keywords": ["routing", "router"],
+  "keywords": [
+    "routing",
+    "router"
+  ],
   "license": "BSD-3-Clause",
   "authors": [
     {
@@ -16,6 +19,8 @@
     "psr-4": {
       "FastRoute\\": "src/"
     },
-    "files": ["src/functions.php"]
+    "files": [
+      "src/functions.php"
+    ]
   }
 }

@@ -9,7 +9,7 @@
          processIsolation="false"
          syntaxCheck="false"
          bootstrap="test/bootstrap.php"
-        >
+>
     <testsuites>
         <testsuite name="FastRoute Tests">
             <directory>./test/</directory>
