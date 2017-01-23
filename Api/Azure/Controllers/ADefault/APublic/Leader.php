@@ -51,12 +51,12 @@ class Leader extends ControllerType
 
         Adapter::query("SET NAMES utf8");
         foreach (Adapter::query("SELECT * FROM rooms") as $row_a):
-            $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM users WHERE id = :ownerid", [':ownerid' => $row_a['owner']]));
-            $row_c = Adapter::row_count(Adapter::secure_query("SELECT * FROM navigator_publics WHERE room_id = :roomid", [':roomid' => $row_a['id']]));
+            $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT id,username FROM users WHERE id = :ownerid", [':ownerid' => $row_a['owner']]));
+            $row_c = Adapter::row_count(Adapter::secure_query("SELECT room_id FROM navigator_publics WHERE room_id = :roomid", [':roomid' => $row_a['id']]));
 
             $tags = explode(',', $row_a['tags']);
 
-            $photos[$count++] = new JsonLeader($row_a['id'], $row_a['score'], $count, $row_a['caption'], $row_a['description'], $row_b->username, $row_b->id, $row_a['score'], $tags, $row_c == 1);
+            $photos[$count++] = new JsonLeader($row_a['id'], $row_a['score'], $count, EMULATOR_TYPE == 'plus' ? $row_a['caption'] : $row_a['name'], $row_a['description'], $row_b->username, $row_b->id, $row_a['score'], $tags, $row_c == 1);
         endforeach;
 
         header('Content-type: application/json');

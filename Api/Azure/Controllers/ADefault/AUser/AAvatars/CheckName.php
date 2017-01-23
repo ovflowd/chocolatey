@@ -43,7 +43,7 @@ class CheckName extends ControllerType
      * function show
      * render and return content
      * @param string $user_name
-     * @return mixed|void
+     * @return mixed
      */
     function show($user_name = '')
     {

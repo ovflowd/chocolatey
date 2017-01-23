@@ -45,7 +45,7 @@ class Database extends ControllerType
 
             Adapter::set_instance($database_settings);
 
-            if (Adapter::row_count(Adapter::query("SELECT * FROM server_status")) >= 1):
+            if (Adapter::row_count(Adapter::query("SELECT id FROM catalog_pages")) >= 1):
                 if (strpos(file_get_contents(ROOT_PATH . "/Api/Gogo.php"), '$database_settings = array') == false):
                     file_put_contents(ROOT_PATH . "/Api/Gogo.php", "\n//database settings \n" . '$database_settings = ' . var_export($database_settings, true) . ';', FILE_APPEND);
                     header("Location: /settings");

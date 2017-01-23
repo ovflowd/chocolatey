@@ -52,25 +52,27 @@ final class Data
      * function system_create_instance
      * create instance of system data
      * @param string $server_lang
-     * @param bool $return
-     * @return array|null
+     * @return mixed
      */
-    static function system_create_instance($server_lang = 'en', $return = false)
+    static function system_create_instance($server_lang = 'en')
     {
+        // Sadly we don't have some alternatives for Arcturus. So we will need to ignore errors.
         if (!self::check_if_system_exists()):
             $row_one = Adapter::fetch_object(Adapter::query("SELECT users_online,server_ver,users_online,rooms_loaded,stamp FROM server_status"));
             $row_two = Adapter::row_count(Adapter::query("SELECT id FROM users"));
             $row_three = Adapter::row_count(Adapter::query("SELECT id FROM rooms"));
-            $row_four = Adapter::row_count(Adapter::query("SELECT id FROM groups"));
+            $row_four = Adapter::row_count(EMULATOR_TYPE == 'plus' ? Adapter::query("SELECT id FROM groups") : Adapter::query("SELECT id FROM guilds"));
             $row_fifth = Adapter::row_count(Adapter::query("SELECT id FROM items"));
-            $row_sixth = Adapter::row_count(Adapter::query("SELECT id FROM users_bans"));
+            $row_sixth = Adapter::row_count(Adapter::query("SELECT id FROM bans"));
             $row_seventh = Adapter::row_count(Adapter::query("SELECT id FROM server_stafflogs"));
 
             self::$system_instance = new System($server_lang, (($row_one->users_online == 0) ? 0 : $row_one->users_online), $row_one->server_ver, $row_one->rooms_loaded, $row_one->stamp, $row_two, $row_three, $row_four, $row_fifth, $row_sixth, $row_seventh);
 
-            if ($return) return self::$system_instance;
-            else $_SESSION['hotel_data'] = serialize(self::$system_instance);
+            $_SESSION['hotel_data'] = serialize(self::$system_instance);
+
+            return self::$system_instance;
         endif;
+
         return null;
     }
 
@@ -150,7 +152,7 @@ final class Data
 
         $count = 0;
         $badge = [];
-        foreach (Adapter::secure_query("SELECT * FROM user_badges WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
+        foreach (Adapter::secure_query(EMULATOR_TYPE == 'plus' ? "SELECT * FROM user_badges WHERE user_id = :userid" : "SELECT * FROM users_badges WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
             $f = new JsonBadge($row_a['badge_id'], $row_a['badge_id'], $row_a['badge_id']);
             $badge[$count] = json_decode($f->get_json());
 
@@ -162,7 +164,7 @@ final class Data
 
         $count = 0;
         $badge_used = [];
-        foreach (Adapter::secure_query("SELECT * FROM user_badges WHERE user_id = :userid AND badge_slot != 0", [':userid' => $row->id]) as $row_a):
+        foreach (Adapter::secure_query(EMULATOR_TYPE == 'plus' ? "SELECT * FROM user_badges WHERE user_id = :userid AND badge_slot != 0" : "SELECT * FROM users_badges WHERE user_id = :userid AND slot_id != 0", [':userid' => $row->id]) as $row_a):
             $f = new JsonUsedBadge($row_a['badge_slot'], $row_a['badge_id'], $row_a['badge_id'], $row_a['badge_id']);
             $badge_used[$count] = json_decode($f->get_json());
 
@@ -187,7 +189,7 @@ final class Data
 
         $count = 0;
         $user_rooms = [];
-        foreach (Adapter::secure_query("SELECT * FROM rooms WHERE owner = :userid", [':userid' => $row->id]) as $row_a):
+        foreach (Adapter::secure_query(EMULATOR_TYPE == 'plus' ? "SELECT * FROM rooms WHERE owner = :userid" : "SELECT * FROM rooms WHERE owner_id = :userid", [':userid' => $row->id]) as $row_a):
             $f = new JsonRoom($row_a['id'], $row_a['caption'], $row_a['description'], $row->id);
             $user_rooms[$count] = json_decode($f->get_json());
 
@@ -199,9 +201,17 @@ final class Data
 
         $count = 0;
         $user_groups = [];
-        foreach (Adapter::secure_query("SELECT * FROM group_memberships WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
-            $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM groups WHERE id = :userid LIMIT 1", [':userid' => $row_a['group_id']]));
-            $f = new JsonGroup($row_a['group_id'], $row_b->name, $row_b->desc, 'NORMAL', $row_b->badge, $row_b->room_id, $row_b->colour1, $row_b->colour2, false);
+        foreach (Adapter::secure_query(EMULATOR_TYPE == 'plus' ? "SELECT * FROM group_memberships WHERE user_id = :userid" : "SELECT * FROM guilds_members WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
+
+            if (EMULATOR_TYPE == 'plus'):
+                $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM groups WHERE id = :userid LIMIT 1", [':userid' => $row_a['group_id']]));
+
+                $f = new JsonGroup($row_a['group_id'], $row_b->name, $row_b->desc, 'NORMAL', $row_b->badge, $row_b->room_id, $row_b->colour1, $row_b->colour2, false);
+            else:
+                $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM guilds WHERE id = :userid LIMIT 1", [':userid' => $row_a['group_id']]));
+
+                $f = new JsonGroup($row_a['group_id'], $row_b->name, $row_b->description, 'NORMAL', $row_b->badge, $row_b->room_id, $row_b->color_one, $row_b->color_two, false);
+            endif;
 
             $user_groups[$count] = json_decode($f->get_json());
 
