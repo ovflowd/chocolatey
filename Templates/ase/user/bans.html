@@ -9,7 +9,7 @@
             <tbody>
             <tr>
                 <?php if(isset($_GET['rid']))
-                \Azure\Database\Adapter::secure_query("DELETE FROM users_bans WHERE id = :id", [':id' =>
+                \Azure\Database\Adapter::secure_query("DELETE FROM bans WHERE id = :id", [':id' =>
                 \Azure\View\Misc::escape_text($_GET['rid'])]);
                 ?>
                 <?= \Azure\View\Page::include_content('menu', 'ase/user/sub'); ?>
@@ -29,13 +29,21 @@
                                     <td class="tablesubheader" width="30%" align="center">Added By</td>
                                     <td class="tablesubheader" width="30%" align="center">Remove</td>
                                 </tr>
-                                <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM users_bans") as $row): ?>
+                                <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM bans") as $row): ?>
                                 <tr>
                                     <td class="tablerow2"><?= $row['id']; ?></td>
                                     <td class="tablerow2" align="center"><?= $row['bantype']; ?></td>
+                                    <?php if(EMULATOR_TYPE == 'plus'): ?>
                                     <td class="tablerow2" align="center"><?= $row['value']; ?></td>
                                     <td class="tablerow2" align="center"><?= $row['reason']; ?></td>
                                     <td class="tablerow2" align="center"><?= $row['expire']; ?></td>
+                                	<?php else: 
+                                		$userName = \Azure\Database\Adapter::fetch_array(\Azure\Database\Adapter::query("SELECT username FROM users WHERE id = '{$row['user_id']}'"));
+                                	?>
+                                	<td class="tablerow2" align="center"><?= $userName ?></td>
+                                	<td class="tablerow2" align="center"><?= $row['ban_reason']; ?></td>
+                                    <td class="tablerow2" align="center"><?= $row['ban_expire']; ?></td>
+                                	<?php endif; ?>
                                     <td class="tablerow2" align="center"><a
                                             href="/theallseeingeye/web/bans/rid/<?= $row['id']; ?>"><img
                                             src="/web-img/ase/images/delete.gif" alt="Delete Ban"></a></td>

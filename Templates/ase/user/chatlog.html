@@ -22,14 +22,28 @@
                                     <td class="tablesubheader" width="20%" align="center">Time</td>
                                     <td class="tablesubheader" width="60%" align="center">Message</td>
                                 </tr>
-                                <?php foreach(\Azure\Database\Adapter::query("SELECT * FROM users_chatlogs") as $row): ?>
-                                <tr>
-                                    <td class="tablerow2" align="center"><?= $row['user_id']; ?></td>
-                                    <td class="tablerow2" align="center"><?= $row['room_id']; ?></td>
-                                    <td class="tablerow2" align="center"><?= $row['timestamp']; ?></td>
-                                    <td class="tablerow2" align="center"><?= $row['message']; ?></td>
-                                </tr>
-                                <?php endforeach; ?>
+                                <?php 
+                                    if(EMULATOR_TYPE == 'plus'):
+                                        foreach(\Azure\Database\Adapter::query("SELECT * FROM chatlogs") as $row): ?>
+                                    <tr>
+                                        <td class="tablerow2" align="center"><?= $row['user_id']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['room_id']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['timestamp']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['message']; ?></td>
+                                    </tr>
+                                <?php 
+                                        endforeach; 
+                                    else:
+                                        foreach(\Azure\Database\Adapter::query("SELECT * FROM chatlogs_room") as $row): ?>
+                                    <tr>
+                                        <td class="tablerow2" align="center"><?= $row['user_from_id']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['room_id']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['timestamp']; ?></td>
+                                        <td class="tablerow2" align="center"><?= $row['message']; ?></td>
+                                    </tr>
+                                <?php
+                                        endforeach;
+                                    endif;
                                 </tbody>
                             </table>
                         </div>
