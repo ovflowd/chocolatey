@@ -2,15 +2,40 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Habbo API Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
+| Here are registered all main HabboWEB api routes
+| You can simply went to their respective controllers.
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
+$app->get('/api', function () {
+    return response('Unauthorized.', 401);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Habbo ShopAPI Routes
+|--------------------------------------------------------------------------
+|
+| Here are registered all shop pages related routes
+| You can simply went to their respective controllers.
+|
+*/
+
+$app->get('/shopapi', function () {
+    return response('Unauthorized.', 401);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Habbo WebPages Routes
+|--------------------------------------------------------------------------
+|
+| Here are registered all HabboWEB Pages Routes
+| Those Routes are special, like News, Advertisement, and others.
+|
+*/
+
+$app->get('/habbo-web-news/{country}/production/{view}', 'ArticleController@show');
