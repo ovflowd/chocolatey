@@ -133,7 +133,6 @@ final class Data
      */
     static function user_create_instance($user_id, $return = false)
     {
-        // get user_data
         $row = (((is_numeric($user_id))) ? Adapter::fetch_object(Adapter::secure_query("SELECT * FROM users WHERE id = :userid LIMIT 1", [':userid' => $user_id])) : Adapter::fetch_object(Adapter::secure_query("SELECT * FROM users WHERE username = :userid LIMIT 1", [':userid' => $user_id])));
 
         $verified = Adapter::fetch_array(Adapter::secure_query('SELECT verified FROM cms_users_verification WHERE user_id = :userid', [':userid' => $row->id]));
@@ -198,6 +197,7 @@ final class Data
             return self::$user_instance;
 
         $_SESSION['user_data'] = serialize(self::$user_instance);
+        
         return null;
     }
 
