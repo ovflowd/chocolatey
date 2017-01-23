@@ -84,13 +84,13 @@ class User extends Model
 
                     $query = EMULATOR_TYPE == 'plus' ?
                         Adapter::secure_query("SELECT * FROM bans WHERE `value` = :username LIMIT 1;", [':username' => $rok->username]) :
-                        Adapter::secure_query("SELECT * FROM bans WHERE userid = :userid LIMIT 1;", [':userid' => $rok->id]);
+                        Adapter::secure_query("SELECT * FROM bans WHERE user_id = :userid LIMIT 1;", [':userid' => $rok->id]);
 
                     if (Adapter::row_count($query) == 0):
 
                         Data::user_create_instance($rok->id);
 
-                        $verified_email = Adapter::row_count(Adapter::secure_query("SELECT * FROM cms_users_verification WHERE user_id = :userid AND verified = 'true'", [':userid' => $rok->id])) == 1;
+                        $verified_email = Adapter::row_count(Adapter::secure_query("SELECT * FROM cms_users_verification WHERE user_id = :userid AND verified = 'true'", [':userid' => $rok->id])) == 1 ? 'true' : 'false';
 
                         if (($newbie == 1) && ($rok->novato == 1)):
                             $_SESSION['is_newbie'] = true;
@@ -111,6 +111,7 @@ class User extends Model
                 endif;
             endif;
         endif;
+	    
         header('HTTP/1.1 401 Unauthorized');
         echo '{"message":"login.invalid_password"}';
         return;
