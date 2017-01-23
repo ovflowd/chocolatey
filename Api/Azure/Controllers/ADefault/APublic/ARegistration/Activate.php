@@ -48,8 +48,10 @@ class Activate extends ControllerType
         $query = Adapter::secure_query('SELECT * FROM cms_users_verification WHERE user_hash = :userhash', [':userhash' => $data['token']]);
         if (Adapter::row_count($query) == 1):
             $fetch = Adapter::fetch_object($query);
+
             Adapter::secure_query('UPDATE cms_users_verification SET verified = :verified WHERE user_hash = :userhash', [':verified' => 'true', ':userhash' => $data['token']]);
             Data::user_create_instance($fetch->user_id);
+
             $row = Adapter::fetch_object(Adapter::secure_query('SELECT mail FROM users WHERE id = :userid', [':userid' => $fetch->user_id]));
 
             $activate_object = new stdClass();

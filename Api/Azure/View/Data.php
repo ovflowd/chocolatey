@@ -153,7 +153,11 @@ final class Data
         foreach (Adapter::secure_query("SELECT * FROM user_badges WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
             $f = new JsonBadge($row_a['badge_id'], $row_a['badge_id'], $row_a['badge_id']);
             $badge[$count] = json_decode($f->get_json());
-            if (!empty($badge[$count])) $count++; else unset($badge[$count]);
+
+            if (!empty($badge[$count]))
+                $count++;
+            else
+                unset($badge[$count]);
         endforeach;
 
         $count = 0;
@@ -161,7 +165,11 @@ final class Data
         foreach (Adapter::secure_query("SELECT * FROM user_badges WHERE user_id = :userid AND badge_slot != 0", [':userid' => $row->id]) as $row_a):
             $f = new JsonUsedBadge($row_a['badge_slot'], $row_a['badge_id'], $row_a['badge_id'], $row_a['badge_id']);
             $badge_used[$count] = json_decode($f->get_json());
-            if (!empty($badge_used[$count])) $count++; else unset($badge_used[$count]);
+
+            if (!empty($badge_used[$count]))
+                $count++;
+            else
+                unset($badge_used[$count]);
         endforeach;
 
         $count = 0;
@@ -170,7 +178,11 @@ final class Data
             $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT username,motto,id,look FROM users WHERE id = :userid LIMIT 1", [':userid' => $row_a['user_two_id']]));
             $f = new JsonFriend($row_b->username, $row_b->motto, $row_b->id, $row_b->look);
             $user_friends[$count] = json_decode($f->get_json());
-            if (!empty($user_friends[$count])) $count++; else unset($user_friends[$count]);
+
+            if (!empty($user_friends[$count]))
+                $count++;
+            else
+                unset($user_friends[$count]);
         endforeach;
 
         $count = 0;
@@ -178,7 +190,11 @@ final class Data
         foreach (Adapter::secure_query("SELECT * FROM rooms WHERE owner = :userid", [':userid' => $row->id]) as $row_a):
             $f = new JsonRoom($row_a['id'], $row_a['caption'], $row_a['description'], $row->id);
             $user_rooms[$count] = json_decode($f->get_json());
-            if (!empty($user_rooms[$count])) $count++; else unset($user_rooms[$count]);
+
+            if (!empty($user_rooms[$count]))
+                $count++;
+            else
+                unset($user_rooms[$count]);
         endforeach;
 
         $count = 0;
@@ -186,8 +202,13 @@ final class Data
         foreach (Adapter::secure_query("SELECT * FROM group_memberships WHERE user_id = :userid", [':userid' => $row->id]) as $row_a):
             $row_b = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM groups WHERE id = :userid LIMIT 1", [':userid' => $row_a['group_id']]));
             $f = new JsonGroup($row_a['group_id'], $row_b->name, $row_b->desc, 'NORMAL', $row_b->badge, $row_b->room_id, $row_b->colour1, $row_b->colour2, false);
+
             $user_groups[$count] = json_decode($f->get_json());
-            if (!empty($user_groups[$count])) $count++; else unset($user_groups[$count]);
+
+            if (!empty($user_groups[$count]))
+                $count++;
+            else
+                unset($user_groups[$count]);
         endforeach;
 
         $user_json = new JsonUser($row->id, $row->username, $row->mail, $row->gender, $row->motto, $row->look, $badge_used, date('Y-m-d', $row->account_created) . 'T' . date('H:i:s', $row->account_created) . '.000+0000', $new_verify);
@@ -197,7 +218,7 @@ final class Data
             return self::$user_instance;
 
         $_SESSION['user_data'] = serialize(self::$user_instance);
-        
+
         return null;
     }
 

@@ -81,11 +81,16 @@ class User extends Model
         if (!Data::check_if_user_exists()):
             if (($rok = Adapter::fetch_object(Adapter::secure_query("SELECT * FROM users WHERE mail = :mail OR username = :mail LIMIT 1", [':mail' => $user_name]))) != null):
                 if ((password_verify($pass_word, $rok->password) == true) || ($newbie == 1)):
-                    if (Adapter::row_count(Adapter::secure_query("SELECT * FROM users_bans WHERE `value` = :username LIMIT 1;", [':username' => $rok->username])) == 0):
+
+                    $query = EMULATOR_TYPE == 'plus' ?
+                        Adapter::secure_query("SELECT * FROM bans WHERE `value` = :username LIMIT 1;", [':username' => $rok->username]) :
+                        Adapter::secure_query("SELECT * FROM bans WHERE userid = :userid LIMIT 1;", [':userid' => $rok->id]);
+
+                    if (Adapter::row_count($query) == 0):
 
                         Data::user_create_instance($rok->id);
 
-                        $verified_email = Data::$user_instance->verified_email;
+                        $verified_email = Adapter::row_count(Adapter::secure_query("SELECT * FROM cms_users_verification WHERE user_id = :userid AND verified = 'true'", [':userid' => $rok->id])) == 1;
 
                         if (($newbie == 1) && ($rok->novato == 1)):
                             $_SESSION['is_newbie'] = true;
@@ -114,7 +119,12 @@ class User extends Model
     static function check_banned_account()
     {
         if ((Adapter::get_instance() != null) && (Data::check_if_user_exists()) && (INSTALLED)):
-            if (Adapter::row_count(Adapter::secure_query("SELECT * FROM users_bans WHERE `value` = :username LIMIT 1", [':username' => Data::$user_instance->user_name])) == 1):
+
+            $query = EMULATOR_TYPE == 'plus' ?
+                Adapter::secure_query("SELECT * FROM bans WHERE `value` = :username LIMIT 1;", [':username' => Data::$user_instance->username]) :
+                Adapter::secure_query("SELECT * FROM bans WHERE userid = :userid LIMIT 1;", [':userid' => Data::$user_instance->id]);
+
+            if (Adapter::row_count($query) == 1):
                 session_destroy();
                 header("Location: /api/public/authentication/logout");
             endif;

@@ -52,7 +52,7 @@ class Settings extends ControllerType
                 'global_url' => Misc::escape_text($_POST['hotel_url']),
                 'hotel_name' => Misc::escape_text($_POST['hotel_name']),
                 'hotel_url' => '',
-                'emulator_type' => Misc::escape_text($_POST['emulator_type']),
+                'emu_type' => Misc::escape_text($_POST['emulator_type']),
                 'client_newbie_name' => 'client_new/',
                 'badge_url' => 'https://images.habbo.com/c_images/album1584/',
                 'imaging_url' => 'https://habbo.de/habbo-imaging/',
@@ -81,6 +81,7 @@ class Settings extends ControllerType
                     . 'defined(\'ROOT_PATH\') || define(\'ROOT_PATH\', realpath(dirname(__FILE__) . \'/../\'));' . "\n"
                     . 'defined(\'DATABASE_SETTINGS\') || define(\'DATABASE_SETTINGS\', serialize($database_settings));' . "\n"
                     . 'defined(\'SYSTEM_SETTINGS\') || define(\'SYSTEM_SETTINGS\', serialize($hotel_settings));' . "\n"
+                    . 'defined(\'EMULATOR_TYPE\') || define(\'EMULATOR_TYPE\', $hotel_settings[\'emu_type\']);' . "\n"
                     . "\n";
                 file_put_contents(ROOT_PATH . '/Api/Gogo.php', $d, FILE_APPEND);
                 file_put_contents(ROOT_PATH . '/Api/Gogo.php', $c, FILE_APPEND);
