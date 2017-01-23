@@ -17,11 +17,7 @@
 
 namespace Azure\Controllers;
 
-use Azure\Database\Adapter;
-use Azure\Models\Json\ProfileSelfies as JsonSelfies;
-use Azure\Models\Json\UserChannelsContent as JsonChannelsContent;
 use Azure\Types\Controller as ControllerType;
-use Azure\View\Misc;
 
 /**
  * Class RecentModerations
@@ -29,22 +25,22 @@ use Azure\View\Misc;
  */
 class RecentModerations extends ControllerType
 {
-	/**
-	 * function construct
-	 * create a controller for user-stories
-	 */
+    /**
+     * function construct
+     * create a controller for user-stories
+     */
 
-	function __construct()
-	{
+    function __construct()
+    {
 
-	}
+    }
 
-	/**
-	 * function show
-	 * render and return content
-	 */
-	function show()
-	{
-		return '';
-	}
+    /**
+     * function show
+     * render and return content
+     */
+    function show()
+    {
+        return '';
+    }
 }

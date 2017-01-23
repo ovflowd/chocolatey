@@ -24,21 +24,21 @@ namespace Azure\Interfaces;
  */
 interface Model
 {
-	/**
-	 * @param $name
-	 * @return mixed
-	 */
-	function __get($name);
+    /**
+     * @param $name
+     * @return mixed
+     */
+    function __get($name);
 
-	/**
-	 * @param $name
-	 * @param $value
-	 * @return mixed
-	 */
-	function __set($name, $value);
+    /**
+     * @param $name
+     * @param $value
+     * @return mixed
+     */
+    function __set($name, $value);
 
-	/**
-	 * destruct xit
-	 */
-	function __destruct();
+    /**
+     * destruct xit
+     */
+    function __destruct();
 }

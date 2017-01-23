@@ -27,35 +27,35 @@ use Azure\Types\Controller as ControllerType;
 class Configuration extends ControllerType
 {
 
-	/**
-	 * function construct
-	 * create a controller for shop purse
-	 */
+    /**
+     * function construct
+     * create a controller for shop purse
+     */
 
-	function __construct()
-	{
+    function __construct()
+    {
 
-	}
+    }
 
-	/**
-	 * function show
-	 * render and return content
-	 */
-	function show()
-	{
-		if (!INSTALLED):
-			if (file_exists(ROOT_PATH . '/Api/Gogo.php')):
-				unlink(ROOT_PATH . '/Api/Init.php');
-				rename(ROOT_PATH . '/Api/Gogo.php', ROOT_PATH . '/Api/Init.php');
-				return '<p>Installation 60% Done.. Please Click to Continue.<input class="confirm-button" onclick="document.location.href=\'/installation\'" type="submit" value="Next"></p>';
-			else:
-				Adapter::set_instance(unserialize(DATABASE_SETTINGS));
-				$i = Adapter::get_instance();
-				$i->exec(file_get_contents(ROOT_PATH . '/Etc/cms_sql/sql.sql'));
-				return '<p>Installation Successfully! <input class="confirm-button" onclick="document.location.href=\'/administration\'" type="submit" value="Next"></p>';
-			endif;
-		endif;
-		header("Location: /");
-		return;
-	}
+    /**
+     * function show
+     * render and return content
+     */
+    function show()
+    {
+        if (!INSTALLED):
+            if (file_exists(ROOT_PATH . '/Api/Gogo.php')):
+                unlink(ROOT_PATH . '/Api/Init.php');
+                rename(ROOT_PATH . '/Api/Gogo.php', ROOT_PATH . '/Api/Init.php');
+                return '<p>Installation 60% Done.. Please Click to Continue.<input class="confirm-button" onclick="document.location.href=\'/installation\'" type="submit" value="Next"></p>';
+            else:
+                Adapter::set_instance(unserialize(DATABASE_SETTINGS));
+                $i = Adapter::get_instance();
+                $i->exec(file_get_contents(ROOT_PATH . '/Etc/cms_sql/sql.sql'));
+                return '<p>Installation Successfully! <input class="confirm-button" onclick="document.location.href=\'/administration\'" type="submit" value="Next"></p>';
+            endif;
+        endif;
+        header("Location: /");
+        return;
+    }
 }

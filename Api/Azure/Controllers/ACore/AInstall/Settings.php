@@ -52,6 +52,7 @@ class Settings extends ControllerType
                 'global_url' => Misc::escape_text($_POST['hotel_url']),
                 'hotel_name' => Misc::escape_text($_POST['hotel_name']),
                 'hotel_url' => '',
+                'emulator_type' => Misc::escape_text($_POST['emulator_type']),
                 'client_newbie_name' => 'client_new/',
                 'badge_url' => 'https://images.habbo.com/c_images/album1584/',
                 'imaging_url' => 'https://habbo.de/habbo-imaging/',

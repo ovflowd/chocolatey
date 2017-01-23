@@ -17,8 +17,6 @@
 
 namespace Azure\Controllers\ADefault\APublic\APromos;
 
-use Azure\Database\Adapter;
-use Azure\Models\Json\Channels as JsonChannels;
 use Azure\Types\Controller as ControllerType;
 
 /**

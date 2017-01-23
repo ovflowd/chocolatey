@@ -23,27 +23,27 @@ namespace Azure\Interfaces;
  */
 interface Json
 {
-	/**
-	 * @param $name
-	 * @return mixed
-	 */
-	function __get($name);
+    /**
+     * @param $name
+     * @return mixed
+     */
+    function __get($name);
 
-	/**
-	 * @param $name
-	 * @param $value
-	 * @return mixed
-	 */
-	function __set($name, $value);
+    /**
+     * @param $name
+     * @param $value
+     * @return mixed
+     */
+    function __set($name, $value);
 
-	/**
-	 * @param $type
-	 * @return mixed
-	 */
-	function get_json($type);
+    /**
+     * @param $type
+     * @return mixed
+     */
+    function get_json($type);
 
-	/**
-	 * destruct xit
-	 */
-	function __destruct();
+    /**
+     * destruct xit
+     */
+    function __destruct();
 }

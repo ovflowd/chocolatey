@@ -26,23 +26,23 @@ use Azure\View\Data;
  */
 class Profile extends ControllerType
 {
-	/**
-	 * function construct
-	 * create a controller for user profile
-	 */
+    /**
+     * function construct
+     * create a controller for user profile
+     */
 
-	function __construct()
-	{
+    function __construct()
+    {
 
-	}
+    }
 
-	/**
-	 * function show
-	 * render and return content
-	 */
-	function show()
-	{
-		header('Content-type: application/json');
-		return Data::$user_instance->get_user_data(2);
-	}
+    /**
+     * function show
+     * render and return content
+     */
+    function show()
+    {
+        header('Content-type: application/json');
+        return Data::$user_instance->get_user_data(2);
+    }
 }

@@ -26,25 +26,25 @@ use Azure\Types\Json as JsonType;
 class Purchase extends JsonType
 {
 
-	/**
-	 * @var int
-	 */
-	/**
-	 * @var int
-	 */
-	/**
-	 * @var int
-	 */
-	public $countryId = 5113, $paymentMethodId, $pricePointId = 9478;
+    /**
+     * @var int
+     */
+    /**
+     * @var int
+     */
+    /**
+     * @var int
+     */
+    public $countryId = 5113, $paymentMethodId, $pricePointId = 9478;
 
-	/**
-	 * function construct
-	 * create a model for the purchase instance
-	 * @param $user_id
-	 */
+    /**
+     * function construct
+     * create a model for the purchase instance
+     * @param $user_id
+     */
 
-	function __construct($user_id = 0)
-	{
-		$this->paymentMethodId = $user_id;
-	}
+    function __construct($user_id = 0)
+    {
+        $this->paymentMethodId = $user_id;
+    }
 }

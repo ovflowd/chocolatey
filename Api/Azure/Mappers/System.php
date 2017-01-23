@@ -26,18 +26,21 @@ use Azure\View\Data;
  */
 class System extends Model
 {
-	/**
-	 * function get_system_class
-	 * return the variables of the system instance
-	 * @return mixed
-	 */
-	static function get_system_class()
-	{
-		if (Data::check_if_system_exists()):
-			foreach (get_class_vars(get_class(Data::$system_instance)) as $name => $value)
-				$hotel_array[$name] = Data::$system_instance->$name;
-			return $hotel_array;
-		endif;
-		return null;
-	}
+    /**
+     * function get_system_class
+     * return the variables of the system instance
+     * @return array
+     */
+    static function get_system_class()
+    {
+        if (Data::check_if_system_exists()):
+            $hotelSettings = [];
+
+            foreach (get_class_vars(get_class(Data::$system_instance)) as $name => $value)
+                $hotelSettings[$name] = Data::$system_instance->{$name};
+
+            return $hotelSettings;
+        endif;
+        return null;
+    }
 }

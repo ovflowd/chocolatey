@@ -23,27 +23,27 @@ use Azure\View\Data;
 
 class Accounts extends ControllerType
 {
-	/**
-	 * function construct
-	 * create a controller for promos
-	 */
+    /**
+     * function construct
+     * create a controller for promos
+     */
 
-	function __construct()
-	{
+    function __construct()
+    {
 
-	}
+    }
 
-	/**
-	 * function show
-	 * render and return content
-	 */
-	function show()
-	{
-		if (Validate::do_validate(6) == true):
-			return (Data::framework_instance(true)->page);
-		else:
-			header("Location: /theallseeingeye/web/login");
-			return null;
-		endif;
-	}
+    /**
+     * function show
+     * render and return content
+     */
+    function show()
+    {
+        if (Validate::do_validate(6) == true):
+            return (Data::framework_instance(true)->page);
+        else:
+            header("Location: /theallseeingeye/web/login");
+            return null;
+        endif;
+    }
 }

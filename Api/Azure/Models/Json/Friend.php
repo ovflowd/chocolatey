@@ -26,34 +26,34 @@ use Azure\Types\Json as JsonType;
 class Friend extends JsonType
 {
 
-	/**
-	 * @var string
-	 */
-	/**
-	 * @var string
-	 */
-	/**
-	 * @var int|string
-	 */
-	/**
-	 * @var int|string
-	 */
-	public $name, $motto, $uniqueId, $figureString;
+    /**
+     * @var string
+     */
+    /**
+     * @var string
+     */
+    /**
+     * @var int|string
+     */
+    /**
+     * @var int|string
+     */
+    public $name, $motto, $uniqueId, $figureString;
 
-	/**
-	 * function construct
-	 * create a model for the friend instance
-	 * @param string $username
-	 * @param string $name
-	 * @param int $description
-	 * @param string $look
-	 */
+    /**
+     * function construct
+     * create a model for the friend instance
+     * @param string $username
+     * @param string $name
+     * @param int $description
+     * @param string $look
+     */
 
-	function __construct($username = '', $name = '', $description = 0, $look = '')
-	{
-		$this->name         = $username;
-		$this->motto        = $name;
-		$this->uniqueId     = $description;
-		$this->figureString = $look;
-	}
+    function __construct($username = '', $name = '', $description = 0, $look = '')
+    {
+        $this->name = $username;
+        $this->motto = $name;
+        $this->uniqueId = $description;
+        $this->figureString = $look;
+    }
 }

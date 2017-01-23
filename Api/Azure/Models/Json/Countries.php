@@ -26,30 +26,30 @@ use Azure\Types\Json as JsonType;
 class Countries extends JsonType
 {
 
-	/**
-	 * @var string
-	 */
-	/**
-	 * @var string
-	 */
-	/**
-	 * @var string
-	 */
-	public $id, $name, $locale = null, $countryCode;
+    /**
+     * @var string
+     */
+    /**
+     * @var string
+     */
+    /**
+     * @var string
+     */
+    public $id, $name, $locale = null, $countryCode;
 
-	/**
-	 * function construct
-	 * create a model for the countries instance
-	 * @param string $id
-	 * @param string $name
-	 * @param string $locale
-	 * @param string $country_code
-	 */
-	function __construct($id = '', $name = '', $locale = '', $country_code = '')
-	{
-		$this->id          = $id;
-		$this->name        = $name;
-		$this->locale      = $locale;
-		$this->countryCode = $country_code;
-	}
+    /**
+     * function construct
+     * create a model for the countries instance
+     * @param string $id
+     * @param string $name
+     * @param string $locale
+     * @param string $country_code
+     */
+    function __construct($id = '', $name = '', $locale = '', $country_code = '')
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->locale = $locale;
+        $this->countryCode = $country_code;
+    }
 }

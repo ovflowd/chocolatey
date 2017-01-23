@@ -25,22 +25,22 @@ use Azure\Types\Controller as ControllerType;
  */
 class Web extends ControllerType
 {
-	/**
-	 * function construct
-	 * create a controller for notifications
-	 */
+    /**
+     * function construct
+     * create a controller for notifications
+     */
 
-	function __construct()
-	{
+    function __construct()
+    {
 
-	}
+    }
 
-	/**
-	 * function show
-	 * render and return content
-	 */
-	function show()
-	{
-		header("Location: /theallseeingeye/web/login");
-	}
+    /**
+     * function show
+     * render and return content
+     */
+    function show()
+    {
+        header("Location: /theallseeingeye/web/login");
+    }
 }

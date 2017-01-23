@@ -26,33 +26,33 @@ use Azure\Types\Json as JsonType;
 class UsedBadges extends JsonType
 {
 
-	/**
-	 * @var int
-	 */
-	/**
-	 * @var int|string
-	 */
-	/**
-	 * @var int|string
-	 */
-	/**
-	 * @var int|string
-	 */
-	public $badgeIndex = 0, $code, $name, $description;
+    /**
+     * @var int
+     */
+    /**
+     * @var int|string
+     */
+    /**
+     * @var int|string
+     */
+    /**
+     * @var int|string
+     */
+    public $badgeIndex = 0, $code, $name, $description;
 
-	/**
-	 * function construct
-	 * create a model for the badge instance
-	 * @param integer $index
-	 * @param string $code
-	 * @param string $name
-	 * @param string $description
-	 */
-	function __construct($index = 1, $code = 'FAN', $name = 'FAN', $description = 'default badge')
-	{
-		$this->badgeIndex  = $index;
-		$this->code        = $code;
-		$this->name        = $name;
-		$this->description = $description;
-	}
+    /**
+     * function construct
+     * create a model for the badge instance
+     * @param integer $index
+     * @param string $code
+     * @param string $name
+     * @param string $description
+     */
+    function __construct($index = 1, $code = 'FAN', $name = 'FAN', $description = 'default badge')
+    {
+        $this->badgeIndex = $index;
+        $this->code = $code;
+        $this->name = $name;
+        $this->description = $description;
+    }
 }

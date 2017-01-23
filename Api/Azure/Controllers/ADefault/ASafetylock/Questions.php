@@ -44,11 +44,11 @@ class Questions extends ControllerType
     function show()
     {
         $query = Adapter::fetch_object(Adapter::secure_query('SELECT trade_lock FROM users WHERE id = :userid', [':userid' => Data::$user_instance->user_id]));
-        
-		if($query->trade_lock == '0')
-			return '[]';
-		
-		header('Content-type: application/json');
-		return '[{"questionId":1,"questionKey":"IDENTITY_SAFETYQUESTION_1"},{"questionId":2,"questionKey":"IDENTITY_SAFETYQUESTION_2"}]';
+
+        if ($query->trade_lock == '0')
+            return '[]';
+
+        header('Content-type: application/json');
+        return '[{"questionId":1,"questionKey":"IDENTITY_SAFETYQUESTION_1"},{"questionId":2,"questionKey":"IDENTITY_SAFETYQUESTION_2"}]';
     }
 }

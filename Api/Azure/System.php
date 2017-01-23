@@ -25,12 +25,12 @@ use Azure\Mappers\System as Mapper;
  */
 final class System extends Mapper
 {
-	/**
-	 * function __construct
-	 * Construct the System Mapper
-	 */
-	final function __construct()
-	{
-		parent::__construct();
-	}
+    /**
+     * function __construct
+     * Construct the System Mapper
+     */
+    final function __construct()
+    {
+        parent::__construct();
+    }
 }

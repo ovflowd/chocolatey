@@ -23,36 +23,36 @@ namespace Azure\Types;
  */
 abstract class Controller
 {
-	/**
-	 * function __get
-	 * return a selected variable
-	 * @param $name
-	 * @return mixed
-	 */
+    /**
+     * function __get
+     * return a selected variable
+     * @param $name
+     * @return mixed
+     */
 
-	function __get($name)
-	{
-		return $this->$name;
-	}
+    function __get($name)
+    {
+        return $this->$name;
+    }
 
-	/**
-	 * function __set
-	 * store a value for a variable
-	 * @param $name
-	 * @param string $value
-	 * @return mixed|void
-	 */
+    /**
+     * function __set
+     * store a value for a variable
+     * @param $name
+     * @param string $value
+     * @return mixed|void
+     */
 
-	function __set($name, $value = '')
-	{
-		$this->$name = Misc::escape_text($value);
-	}
+    function __set($name, $value = '')
+    {
+        $this->$name = Misc::escape_text($value);
+    }
 
-	/**
-	 * destruct xit
-	 */
-	function __destruct()
-	{
+    /**
+     * destruct xit
+     */
+    function __destruct()
+    {
 
-	}
+    }
 }
