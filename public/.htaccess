@@ -12,7 +12,6 @@
     # Assets Exceptions
     RewriteCond %{REQUEST_URI} !^/habbo-web/
     RewriteCond %{REQUEST_URI} !^/habbo-imaging/
-    RewriteCond %{REQUEST_URI} !^/habbo-web-l10n/
 
     RewriteRule ^.*$ index.php [L]
 

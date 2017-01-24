@@ -19,5 +19,5 @@
     ingame. Check out our <a target="_blank"
                              ng-href="{{'https://help.habbo.com/entries/22405102-Habbo-Fansite-Policy' | zendeskRedirectUrl}}">fansite
         policy</a> if you have any questions!</p>
-<p>Always remember to keep your Habbo login details separate and private! Don&apos;t use them to register on any other
+<p>Always remember to keep your  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> login details separate and private! Don&apos;t use them to register on any other
     sites.</p>

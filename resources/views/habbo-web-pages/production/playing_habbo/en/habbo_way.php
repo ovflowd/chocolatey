@@ -1,16 +1,16 @@
-<h1>Habbo Way</h1>
-<p>The Habbo Way is like a code of conduct, a guide to how Habbos should act in the Hotel. Playing by the rules puts the
-    fun in Habbo!</p>
+<h1> <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> Way</h1>
+<p>The  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> Way is like a code of conduct, a guide to how <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> s should act in the Hotel. Playing by the rules puts the
+    fun in  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> </p>
 <h2>DO&#x2026;</h2>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HabboWay/habboway_2a.png" alt="Do chat" class="align-right"></p>
 <h4>Chat</h4>
-<p>Be a chatterbox and get to know your fellow Habbos! Make new friends, chat with old ones and have FUN!</p>
+<p>Be a chatterbox and get to know your fellow <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> s! Make new friends, chat with old ones and have FUN!</p>
 <h4>Create</h4>
 <p>Let your creativity run wild and really express yourself! From building epic rooms to creating awesome selfies - You
     could be the next Pixel Picasso!</p>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HabboWay/habboway_5a.png" alt="Do create" class="align-right"></p>
 <h4>Help</h4>
-<p>Help a stranger, gain a friend! Always be helpful to other Habbos - you never know when you might need help
+<p>Help a stranger, gain a friend! Always be helpful to other <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> s - you never know when you might need help
     yourself.</p>
 <h4>Trade</h4>
 <p>Build your own furni empire and trade your way to the top! If you have a nose for business, use the Marketplace to
@@ -19,7 +19,7 @@
 </p>
 <h4>Play &amp; host games</h4>
 <p>Play games with friends, get in the competitive spirit and kick butt! Or create your own games and get popular!
-    Successful games means other Habbos will want to join and swamp your room with fun.</p>
+    Successful games means other <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> s will want to join and swamp your room with fun.</p>
 <h4>Make friends</h4>
 <p>Have fun, hang out and you might just make a great pixel friend&#x2026;</p>
 <hr>
@@ -27,12 +27,12 @@
 <p><img src="https://habboo-a.akamaihd.net/c_images/HabboWay/habboway_2b.png" alt="Don&apos;t troll"
         class="align-right"></p>
 <h4>Troll</h4>
-<p>No one likes trolls, not even their mothers! Bullying in Habbo will not be tolerated.</p>
+<p>No one likes trolls, not even their mothers! Bullying in  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> will not be tolerated.</p>
 <h4>Scam or script</h4>
 <p>Make it, don&apos;t fake it! No one likes a trickster. Stealing doesn&apos;t make you rich, it makes you a
     criminal.</p>
 <h4>Trick or cheat</h4>
-<p>Cheaters and tricksters never prosper; they just spoil everyone else&apos;s Habbo experience.</p>
+<p>Cheaters and tricksters never prosper; they just spoil everyone else&apos;s  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> experience.</p>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HabboWay/habboway_7b.png" alt="Don&apos;t sell for real money"
         class="align-right"></p>
 <h4>Sell for real money</h4>
@@ -50,5 +50,5 @@
 <blockquote>
     <h4>How to play</h4>
     <p>Get creative, get constructive, get social! See our <a href="/playing-habbo/how-to-play">tips on what to do in
-        Habbo</a>.</p>
+        <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> </a>.</p>
 </blockquote>
