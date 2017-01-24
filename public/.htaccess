@@ -35,6 +35,10 @@
     RewriteRule ^extradata/(.*)$ api.php [L]
     RewriteRule ^shopapi/(.*)$ api.php [L]
 
+    # Handle Habbo-WEB Requests
+    RewriteRule ^habbo-web-ads/(.*)$ api.php [L]
+    RewriteRule ^habbo-web-news/(.*)$ api.php [L]
+
     # Habbo-Imaging for Badge
     RewriteRule ^habbo-imaging/badge/([^/]+) /habbo-imaging/badge.php?badge=$1
 

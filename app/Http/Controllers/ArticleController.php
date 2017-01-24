@@ -15,8 +15,15 @@ class ArticleController extends Controller
      */
     public function show($countryId, $articleCategory)
     {
-        $articleContent = '<section></section>';
+        $categoryName = 'front';
 
-        return (new Response($articleContent, 200))->header('Content-Type', 'text/html; charset=UTF-8');
+        $articlePage = strpos('_', $articleCategory) !== false
+            ? ($categoryName = explode('_', $articleCategory)[1]) : 1;
+
+        return response(view($categoryName == 'front' ? 'articlesFront' : 'articlesCategory', [
+            'country' => $countryId,
+            'category' => $categoryName == 'front' ? 'all' : $categoryName,
+            'page' => $articlePage
+        ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 }
