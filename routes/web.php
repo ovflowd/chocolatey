@@ -11,6 +11,7 @@
 */
 
 # Main Request Route
+
 $app->get('/', function () {
     return view('habbo-web');
 });
@@ -29,6 +30,12 @@ $app->get('/', function () {
 $app->get('/api', function () {
     return response('Unauthorized.', 401);
 });
+
+$app->group(['middleware' => 'auth'], function () use ($app) {
+    # Authenticate User
+    $app->post('api/public/authentication/login', 'LoginController@login');
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +68,7 @@ $app->get('/extradata', function () {
 });
 
 # Show All Registered HabboWEB Photos
-$app->get('/extradata/public/photos', 'PublicPhotos@show');
+$app->get('/extradata/public/photos', 'PublicPhotosController@show');
 
 # Public Stories
 $app->get('/extradata/public/users/stories', function () {

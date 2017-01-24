@@ -25,7 +25,11 @@ $app->withFacades();
 # Enable Laravel Eloquent Models
 $app->withEloquent();
 
-$app->configure('database');
+# Configure App Provider
+$app->configure('app');
+
+# Configure Auth Provider
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +53,9 @@ $app->singleton(
 |--------------------------------------------------------------------------
 */
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +69,8 @@ $app->singleton(
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(\Sofa\Eloquence\ServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*

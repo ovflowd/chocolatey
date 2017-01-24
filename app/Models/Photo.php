@@ -22,7 +22,10 @@ class Photo extends Model
      *
      * @var array
      */
-    protected $appends = ['creator_uniqueId', 'version'];
+    protected $appends = [
+        'creator_uniqueId',
+        'version'
+    ];
 
     /**
      * Get the Unique Id of the Photo
