@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\User;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,8 +15,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['auth']->viaRequest('api', function ($request) {
-            return User::where('mail', $request->json()
-                ->get('email'))->where('password', md5($request->json()->get('password')))->first();
+            return $request->path() == 'api/public/authentication/login'
+                ? (new LoginController)->login($request) : null;
         });
     }
 }

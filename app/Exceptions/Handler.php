@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         if ($e instanceof NotFoundHttpException)
-            return view('habbo-web');
+            return view('habbo-web', ['request' => $request]);
 
         return parent::render($request, $e);
     }

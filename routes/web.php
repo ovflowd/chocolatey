@@ -12,9 +12,7 @@
 
 # Main Request Route
 
-$app->get('/', function () {
-    return view('habbo-web');
-});
+$app->get('/', 'HomePageController@show');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +31,10 @@ $app->get('/api', function () {
 
 $app->group(['middleware' => 'auth'], function () use ($app) {
     # Authenticate User
-    $app->post('api/public/authentication/login', 'LoginController@login');
+    $app->post('api/public/authentication/login', 'LoginController@attempt');
+
+    # Logout User
+    $app->post('api/public/authentication/logout', 'LoginController@logout');
 });
 
 
