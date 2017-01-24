@@ -27,8 +27,6 @@ $app->withFacades();
 
 $app->configure('database');
 
-// $app->withEloquent();
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -60,10 +58,6 @@ $app->singleton(
 | route or middleware that'll be assigned to some specific routes.
 |
 */
-
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
