@@ -2,6 +2,21 @@
 
 /*
 |--------------------------------------------------------------------------
+| Habbo Main Route
+|--------------------------------------------------------------------------
+|
+| Here it's registered the main Route
+| This Route redirects to HabboWEB
+|
+*/
+
+# Main Request Route
+$app->get('/', function () {
+    return view('habbo-web');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Habbo API Routes
 |--------------------------------------------------------------------------
 |
@@ -33,6 +48,23 @@ $app->get('/shopapi', function () {
 /*
 |--------------------------------------------------------------------------
 | Habbo WebPages Routes
+|--------------------------------------------------------------------------
+|
+| Here are registered all HabboWEB Pages Routes
+| Those Routes are special, like News, Advertisement, and others.
+|
+*/
+
+# Main HabboPAGES Request is Forbidden
+$app->get('/habbo-web-pages/', function () {
+    return response('Unauthorized.', 401);
+});
+
+$app->get('/habbo-web-pages/production/{category}/{view}', 'PageController@show');
+
+/*
+|--------------------------------------------------------------------------
+| Habbo WebNEWS Routes
 |--------------------------------------------------------------------------
 |
 | Here are registered all HabboWEB Pages Routes

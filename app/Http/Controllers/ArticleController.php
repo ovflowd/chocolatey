@@ -22,7 +22,7 @@ class ArticleController extends Controller
 
         $categoryPage = str_replace('.html', '', end($categoryArray));
 
-        return response(view($categoryName == 'front' ? 'ArticlesFront' : 'ArticlesCategory', [
+        return response(view('habbo-web-news.' . ($categoryName == 'front' ? 'articles-front' : 'articles-category'), [
             'country' => $countryId,
             'category' => $categoryName,
             'page' => $categoryPage
@@ -40,7 +40,7 @@ class ArticleController extends Controller
     {
         $articleId = substr($articleName, 0, strpos($articleName, '_'));
 
-        return response(view('ArticleView', [
+        return response(view('habbo-web-news.articles-view', [
             'country' => $countryId,
             'article' => $articleId
         ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
