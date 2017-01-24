@@ -8,10 +8,10 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PublicPhotos
+ * Class PublicPhotosController
  * @package App\Http\Controllers
  */
-class PublicPhotos extends BaseController
+class PublicPhotosController extends BaseController
 {
     /**
      * Render a set of Public HabboWEB Photos
