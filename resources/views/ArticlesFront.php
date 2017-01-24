@@ -2,8 +2,8 @@
 
 <section>
     <?php foreach (DB::select('SELECT * FROM azure_articles ' .
-        'WHERE categories LIKE :category AND id >= :page ORDER BY id ASC LIMIT 10',
-        [':category' => "%$category%", ':page' => $page == 1 ? $page : ($page * 3)]) as $articleContent): ?>
+        'WHERE categories LIKE :category  ORDER BY id ASC LIMIT 10',
+        [':category' => "%all%"]) as $articleContent): ?>
         <article class="news-header news-header--column">
             <a href="/community/article/<?= $articleContent->id ?>" class="news-header__link news-header__banner">
                 <figure class="news-header__viewport">

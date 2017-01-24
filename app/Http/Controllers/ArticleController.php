@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
         $categoryArray = explode('_', $articleCategory);
 
-        $categoryPage = end($categoryArray);
+        $categoryPage = str_replace('.html', '', end($categoryArray));
 
         return response(view($categoryName == 'front' ? 'ArticlesFront' : 'ArticlesCategory', [
             'country' => $countryId,
