@@ -38,4 +38,14 @@ $app->get('/shopapi', function () {
 |
 */
 
-$app->get('/habbo-web-news/{country}/production/{view}', 'ArticleController@show');
+$app->get('/habbo-web-news/', function () {
+    return response('Unauthorized.', 401);
+});
+
+$app->get('/habbo-web-news/{country}/', function () {
+    return response('Unauthorized.', 401);
+});
+
+$app->get('/habbo-web-news/{country}/production/{view}', 'ArticleController@many');
+
+$app->get('/habbo-web-news/{country}/production/articles/{article}', 'ArticleController@one');

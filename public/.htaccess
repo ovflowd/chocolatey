@@ -1,13 +1,8 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-
     Options +FollowSymLinks
     Options -Indexes
 
     RewriteEngine On
-    RewriteBase /
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -28,7 +23,7 @@
     RewriteCond %{REQUEST_URI} !^/shopapi/
     RewriteCond %{REQUEST_URI} !^/extradata/
 
-    RewriteRule ^.*$ index.php [L]
+    RewriteRule ^.*$ index.html [L]
 
     # Handle Api Requests
     RewriteRule ^api/(.*)$ api.php [L]

@@ -13,17 +13,36 @@ class ArticleController extends Controller
      * @param string $articleCategory
      * @return Response
      */
-    public function show($countryId, $articleCategory)
+    public function many($countryId, $articleCategory)
     {
-        $categoryName = 'front';
+        $categoryName = strstr($articleCategory, '_') !== false
+            ? str_replace('_', '-', substr($articleCategory, 0, strrpos($articleCategory, '_'))) : 'front';
 
-        $articlePage = strpos('_', $articleCategory) !== false
-            ? ($categoryName = explode('_', $articleCategory)[1]) : 1;
+        $categoryArray = explode('_', $articleCategory);
 
-        return response(view($categoryName == 'front' ? 'articlesFront' : 'articlesCategory', [
+        $categoryPage = end($categoryArray);
+
+        return response(view($categoryName == 'front' ? 'ArticlesFront' : 'ArticlesCategory', [
             'country' => $countryId,
-            'category' => $categoryName == 'front' ? 'all' : $categoryName,
-            'page' => $articlePage
+            'category' => $categoryName,
+            'page' => $categoryPage
+        ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
+    }
+
+    /**
+     * Render a specific view of a specific Article
+     *
+     * @param string $countryId
+     * @param string $articleName
+     * @return Response
+     */
+    public function one($countryId, $articleName)
+    {
+        $articleId = substr($articleName, 0, strpos($articleName, '_'));
+
+        return response(view('ArticleView', [
+            'country' => $countryId,
+            'article' => $articleId
         ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 }
