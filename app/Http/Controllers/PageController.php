@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
-class PageController extends Controller
+/**
+ * Class PageController
+ * @package App\Http\Controllers
+ */
+class PageController extends BaseController
 {
     /**
      * Render a HabboWEB Page

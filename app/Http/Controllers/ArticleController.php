@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Laravel\Lumen\Routing\Controller as BaseController;
 
-class ArticleController extends Controller
+/**
+ * Class ArticleController
+ * @package App\Http\Controllers
+ */
+class ArticleController extends BaseController
 {
     /**
      * Render a specific view of Article set

@@ -47,6 +47,29 @@ $app->get('/shopapi', function () {
 
 /*
 |--------------------------------------------------------------------------
+| Habbo Extradata Routes
+|--------------------------------------------------------------------------
+|
+| Here we registered all Extradata Routes
+| You can simply went to their respective controllers.
+|
+*/
+
+# Main Extradata Request is Forbidden
+$app->get('/extradata', function () {
+    return response('Unauthorized.', 401);
+});
+
+# Show All Registered HabboWEB Photos
+$app->get('/extradata/public/photos', 'PublicPhotos@show');
+
+# Public Stories
+$app->get('/extradata/public/users/stories', function () {
+    return response()->json('aaa');
+});
+
+/*
+|--------------------------------------------------------------------------
 | Habbo WebPages Routes
 |--------------------------------------------------------------------------
 |
@@ -60,6 +83,7 @@ $app->get('/habbo-web-pages/', function () {
     return response('Unauthorized.', 401);
 });
 
+# Request a Specific View of HabboWEB Pages
 $app->get('/habbo-web-pages/production/{category}/{view}', 'PageController@show');
 
 /*

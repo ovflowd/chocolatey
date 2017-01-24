@@ -12,18 +12,18 @@ try {
 |--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
-|
-| Here we will load the environment and create the application instance
-| that serves as the central piece of this framework. We'll use this
-| application as an "IoC" container and router for this framework.
-|
 */
 
+# Create Lumen Application
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__ . '/../')
 );
 
+# Enable Laravel Facades (DB::)
 $app->withFacades();
+
+# Enable Laravel Eloquent Models
+$app->withEloquent();
 
 $app->configure('database');
 
@@ -31,11 +31,6 @@ $app->configure('database');
 |--------------------------------------------------------------------------
 | Register Container Bindings
 |--------------------------------------------------------------------------
-|
-| Now we will register a few bindings in the service container. We will
-| register the exception handler and the console kernel. You may add
-| your own bindings here if you like or you can make another file.
-|
 */
 
 $app->singleton(
@@ -52,11 +47,6 @@ $app->singleton(
 |--------------------------------------------------------------------------
 | Register Middleware
 |--------------------------------------------------------------------------
-|
-| Next, we will register the middleware with the application. These can
-| be global middleware that run before and after each request into a
-| route or middleware that'll be assigned to some specific routes.
-|
 */
 
 // $app->routeMiddleware([
@@ -82,13 +72,9 @@ $app->singleton(
 |--------------------------------------------------------------------------
 | Load The Application Routes
 |--------------------------------------------------------------------------
-|
-| Next we will include the routes file so that they can all be added to
-| the application. This will provide all of the URLs the application
-| can respond to, as well as the controllers that may handle them.
-|
 */
 
+# Enable Lumen Controllers & Routes
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__ . '/../routes/web.php';
 });

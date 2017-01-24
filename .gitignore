@@ -50,3 +50,5 @@ storage/*.key
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 
+public/habbo-imaging/resource/*
+!public/habbo-imaging/resource/.gitkeep
