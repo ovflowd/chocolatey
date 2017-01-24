@@ -1,5 +1,5 @@
 ![](http://www.habbcrazy.net/resources/fonts/62/azureweb.gif)
-<br><sup><sup>azureWEB devlopment</sup></sup>
+<br><sup>azureWEB devlopment</sup>
 
 <hr>
 ### New AzureWEB being developed on Lumen.
