@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Sessions;
+namespace App\Helpers;
 
 /**
  * Class Session
- * @package App\Sessions
+ * @package App\Helpers
  */
 class Session
 {

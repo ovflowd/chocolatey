@@ -76,6 +76,11 @@ $app->get('/extradata/public/users/stories', function () {
     return response()->json('aaa');
 });
 
+$app->group(['middleware' => 'auth'], function () use ($app) {
+    # Report a Specific Photo
+    $app->post('/extradata/private/creation/{photo}/report', 'PublicPhotosController@report');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Habbo WebPages Routes

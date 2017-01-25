@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Sessions\Session;
+use App\Helpers\Session;
 use Illuminate\Support\ServiceProvider;
 
 /**

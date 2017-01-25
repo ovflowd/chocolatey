@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use App\Models\PhotoLike;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -32,5 +33,17 @@ class PublicPhotosController extends BaseController
         endforeach;
 
         return response()->json($habboWebPhotos, 200, array(), JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * Register a Report of a Photo
+     *
+     * @param Request $request
+     * @param int $photoIdentifier
+     * @return Response
+     */
+    public function report(Request $request, $photoIdentifier)
+    {
+
     }
 }
