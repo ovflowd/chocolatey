@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Auth\Authorizable;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
@@ -87,6 +88,26 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'points',
         'rank'
     ];
+
+    /**
+     * Store an User on the Database
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     * @return $this
+     */
+    public function store($username, $password, $email)
+    {
+        $this->attributes['username'] = $username;
+        $this->attributes['password'] = md5($password);
+        $this->attributes['mail'] = $email;
+        $this->attributes['account_created'] = time();
+        $this->attributes['motto'] = Config::get('azure.motto');
+        $this->attributes['auth_ticket'] = '';
+
+        return $this;
+    }
 
     /**
      * Get Current User Country

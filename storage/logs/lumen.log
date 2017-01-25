@@ -277,3 +277,13 @@ Stack trace:
 #12 /Users/santoro/GitHub/azureWEB/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(476): Laravel\Lumen\Application->dispatch(NULL)
 #13 /Users/santoro/GitHub/azureWEB/public/index.php(28): Laravel\Lumen\Application->run()
 #14 {main}  
+[2017-01-25 16:29:17] lumen.ERROR: exception 'Symfony\Component\Console\Exception\RuntimeException' with message 'Not enough arguments (missing: "name").' in /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Input/Input.php:83
+Stack trace:
+#0 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Command/Command.php(256): Symfony\Component\Console\Input\Input->validate()
+#1 /Users/santoro/GitHub/azureWEB/vendor/illuminate/console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /Users/santoro/GitHub/azureWEB/vendor/laravel/lumen-framework/src/Console/Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /Users/santoro/GitHub/azureWEB/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  

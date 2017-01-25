@@ -4,8 +4,6 @@ namespace App\Models;
 
 /**
  * Class PhotoLike
- * @property int photoId
- * @property string userName
  * @package App\Models
  */
 class PhotoLike extends AzureModel
@@ -26,8 +24,8 @@ class PhotoLike extends AzureModel
      */
     public function store($photoId, $userName)
     {
-        $this->photoId = $photoId;
-        $this->userName = $userName;
+        $this->attributes['photoId'] = $photoId;
+        $this->attributes['userName'] = $userName;
 
         return $this;
     }

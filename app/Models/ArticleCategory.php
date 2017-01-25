@@ -6,8 +6,6 @@ use InvalidArgumentException;
 
 /**
  * Class ArticleCategory
- * @property string link
- * @property string translate
  * @package App\Models
  */
 class ArticleCategory extends AzureModel
@@ -31,8 +29,8 @@ class ArticleCategory extends AzureModel
         if (ArticleCategory::query()->where('link', $link)->count() > 0)
             throw new InvalidArgumentException("This Link actually Exists on the Database");
 
-        $this->link = $link;
-        $this->translate = $translate;
+        $this->attributes['link'] = $link;
+        $this->attributes['translate'] = $translate;
 
         return $this;
     }

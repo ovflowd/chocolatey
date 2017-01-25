@@ -6,8 +6,6 @@ use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class PhotoReportCategory
- * @property int report_category
- * @property string description
  * @package App\Models
  */
 class PhotoReportCategory extends AzureModel
@@ -31,8 +29,8 @@ class PhotoReportCategory extends AzureModel
         if (PhotoReportCategory::query()->where('report_category', $reportCategory)->count() > 0)
             throw new InvalidMutatorException("Already Exists a Category with this Id");
 
-        $this->report_category = $reportCategory;
-        $this->description = $description;
+        $this->attributes['report_category'] = $reportCategory;
+        $this->attributes['description'] = $description;
 
         return $this;
     }

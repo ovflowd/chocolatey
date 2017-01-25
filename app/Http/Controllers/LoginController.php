@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
+use App\Models\Ban;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -34,11 +35,20 @@ class LoginController extends BaseController
      */
     public function login(Request $request)
     {
-        if ($request->json()->has('email') && $request->json()->has('password'))
-            Session::set('azureWEB', User::where('mail', $request->json()->get('email'))
-                ->where('password', md5($request->json()->get('password')))->first());
+        if ($request->json()->has('email') && $request->json()->has('password')):
+            $userData = User::where('mail', $request->json()->get('email'))
+                ->where('password', md5($request->json()->get('password')))->first();
 
-        return Session::get('azureWEB');
+            if ($userData == null)
+                return null;
+
+            if (Ban::query()->where('user_id', $userData->id))
+                return null;
+
+            Session::set('azureWEB', $userData);
+        endif;
+
+        return null;
     }
 
     /**

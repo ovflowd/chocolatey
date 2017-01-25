@@ -4,13 +4,6 @@ namespace App\Models;
 
 /**
  * Class Article
- * @property string description
- * @property int title
- * @property string content
- * @property int author
- * @property string thumbnailUrl
- * @property string categories
- * @property string imageUrl
  * @package App\Models
  */
 class Article extends AzureModel
@@ -36,13 +29,13 @@ class Article extends AzureModel
      */
     public function store($title, $description, $content, $author, $categories, $imageUrl, $thumbnailUrl)
     {
-        $this->title = $title;
-        $this->description = $description;
-        $this->content = $content;
-        $this->author = $author;
-        $this->categories = $categories;
-        $this->imageUrl = $imageUrl;
-        $this->thumbnailUrl = $thumbnailUrl;
+        $this->attributes['title'] = $title;
+        $this->attributes['description'] = $description;
+        $this->attributes['content'] = $content;
+        $this->attributes['author'] = $author;
+        $this->attributes['categories'] = $categories;
+        $this->attributes['imageUrl'] = $imageUrl;
+        $this->attributes['thumbnailUrl'] = $thumbnailUrl;
 
         return $this;
     }

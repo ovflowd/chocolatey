@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class PhotoReport
- * @property int photo_id
- * @property int reason_id
- * @property int reported_by
- * @property int approved
  * @package App\Models
  */
 class PhotoReport extends AzureModel
@@ -40,10 +36,10 @@ class PhotoReport extends AzureModel
      */
     public function store($photoId, $reasonId, $reportedBy)
     {
-        $this->photo_id = $photoId;
-        $this->reason_id = $reasonId;
-        $this->reported_by = $reportedBy;
-        $this->approved = 0;
+        $this->attributes['photo_id'] = $photoId;
+        $this->attributes['reason_id'] = $reasonId;
+        $this->attributes['reported_by'] = $reportedBy;
+        $this->attributes['approved'] = 0;
 
         return $this;
     }
