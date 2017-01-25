@@ -16,7 +16,7 @@ class Ban extends AzureModel
     protected $table = 'bans';
 
     /**
-     * Store a new CMS Article
+     * Store an User Ban
      *
      * @param int $userId
      * @param int $userStaffId

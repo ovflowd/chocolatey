@@ -27,6 +27,7 @@ class Photo extends AzureModel
         'version',
         'likes'
     ];
+
     /**
      * The attributes that should be casted to native types.
      *

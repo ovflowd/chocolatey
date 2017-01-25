@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateAzureUsersIdTable extends Migration
 {
@@ -14,8 +14,10 @@ class CreateAzureUsersIdTable extends Migration
     public function up()
     {
         Schema::create('azure_users_id', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->string('mail', 125);
+            $table->integer('user_id', 11);
+            $table->enum('mail_verified', ['0', '1'])->default('0');
+            $table->primary('user_id');
         });
     }
 
