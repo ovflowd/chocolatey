@@ -1,7 +1,7 @@
 <section>
     @foreach ($set as $articleContent)
         <article class="news-header news-header--column">
-            <a href="/community/article/{{$articleContent->id}}" class="news-header__link news-header__banner">
+            <a href="/community/article/{{$articleContent->id}}/content" class="news-header__link news-header__banner">
                 <figure class="news-header__viewport">
                     <img src="{{$articleContent->thumbnailUrl}}"
                          alt="{{$articleContent->title}}" class="news-header__image news-header__image--thumbnail">
@@ -9,7 +9,7 @@
                          alt="Race to the limit!" class="news-header__image news-header__image--featured">
                 </figure>
             </a>
-            <a href="/community/article/{{$articleContent->id}}" class="news-header__link news-header__wrapper">
+            <a href="/community/article/{{$articleContent->id}}/content" class="news-header__link news-header__wrapper">
                 <h2 class="news-header__title">{{$articleContent->title}}</h2>
             </a>
             <aside class="news-header__wrapper news-header__info">
@@ -17,13 +17,11 @@
                     @{{ <?= strtotime($articleContent->createdAt) ?> | date: 'mediumDate' }}
                 </time>
                 <ul class="news-header__categories">
-                    @foreach (explode(',', $articleContent->categories) as $articleCategory)
-                        <?php $articleCategoryContent = DB::select('SELECT * FROM azure_articles_categories WHERE link = :link',
-                            [':link' => $articleCategory])[0]; ?>
+                    @foreach ($articleContent->categories as $articleCategory)
                         <li class="news-header__category">
-                            <a href="/community/category/{{$articleCategoryContent->link}}/content"
+                            <a href="/community/category/{{$articleCategory->link}}/content"
                                class="news-header__category__link"
-                               translate="{{$articleCategoryContent->translate}}"></a>
+                               translate="{{$articleCategory->translate}}"></a>
                         </li>
                     @endforeach
                 </ul>

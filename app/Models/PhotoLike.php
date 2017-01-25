@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
 /**
  * Class PhotoLike
+ * @property int photoId
+ * @property string userName
  * @package App\Models
  */
-class PhotoLike extends Model
+class PhotoLike extends AzureModel
 {
     /**
      * The table associated with the model.
@@ -18,24 +18,17 @@ class PhotoLike extends Model
     protected $table = 'azure_user_photos_likes';
 
     /**
-     * Unique Identifier of Like
+     * Store a new Photo Data
      *
-     * @var int
+     * @param int $photoId
+     * @param string $userName
+     * @return $this
      */
-    public $id;
+    public function store($photoId, $userName)
+    {
+        $this->photoId = $photoId;
+        $this->userName = $userName;
 
-    /**
-     * The Photo Referenced Id
-     *
-     * @var int
-     */
-    public $photoId;
-
-    /**
-     * The Username of the User that
-     * Liked the Photo
-     *
-     * @var string
-     */
-    public $userName;
+        return $this;
+    }
 }

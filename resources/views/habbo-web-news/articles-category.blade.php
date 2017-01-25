@@ -32,13 +32,11 @@
                     @{{ <?= strtotime($articleContent->createdAt) ?> | date: 'mediumDate' }}
                 </time>
                 <ul class="news-header__categories">
-                    @foreach (explode(',', $articleContent->categories) as $articleCategory)
-                        <?php $articleCategoryContent = DB::select('SELECT * FROM azure_articles_categories WHERE link = :link',
-                            [':link' => $articleCategory])[0]; ?>
+                    @foreach ($articleContent->categories as $articleCategory)
                         <li class="news-header__category">
-                            <a href="/community/category/{{$articleCategoryContent->link}}/content"
+                            <a href="/community/category/{{$articleCategory->link}}/content"
                                class="news-header__category__link"
-                               translate="{{$articleCategoryContent->translate}}"></a>
+                               translate="{{$articleCategory->translate}}"></a>
                         </li>
                     @endforeach
                 </ul>

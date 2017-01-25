@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 

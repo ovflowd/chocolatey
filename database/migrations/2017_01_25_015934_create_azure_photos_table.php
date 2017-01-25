@@ -18,7 +18,7 @@ class CreateAzurePhotosTable extends Migration
             $table->integer('creator_id', 11);
             $table->string('previewUrl', 255);
             $table->string('url', 255);
-            $table->timestamp('time');
+            $table->timestamp('time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('tags', 255);
             $table->string('creator_name', 50);
             $table->integer('version', 1)->default(1);

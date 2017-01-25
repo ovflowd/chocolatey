@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class Photo
  * @package App\Models
  */
-class Photo extends Model
+class Photo extends AzureModel
 {
     /**
      * The table associated with the model.
@@ -24,8 +24,29 @@ class Photo extends Model
      */
     protected $appends = [
         'creator_uniqueId',
-        'version'
+        'version',
+        'likes'
     ];
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'tags' => 'array',
+        'creator_uniqueId' => 'string'
+    ];
+
+    /**
+     * Store Function
+     *
+     * A photo can't be inserted by the CMS.
+     * Only by the Emulator
+     */
+    public function store()
+    {
+        throw new InvalidMutatorException("You cannot store a Photo by AzureWEB. Photos need be created from the Server.");
+    }
 
     /**
      * Get the Unique Id of the Photo
@@ -80,12 +101,17 @@ class Photo extends Model
     }
 
     /**
-     * The attributes that should be casted to native types.
+     * Get Photo Likes Directly as Username
      *
-     * @var array
+     * @return array
      */
-    protected $casts = [
-        'tags' => 'array',
-        'creator_uniqueId' => 'string'
-    ];
+    public function getLikesAttribute()
+    {
+        $likes = [];
+
+        foreach (PhotoLike::query()->select('username')->where('photo_id', $this->attributes['id'])->get() as $like)
+            $likes[] = $like->username;
+
+        return $likes;
+    }
 }

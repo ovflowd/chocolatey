@@ -57,6 +57,36 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'traits',
         'country'
     ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'email',
+    ];
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'real_name',
+        'account_day_of_birth',
+        'last_online',
+        'ip_current',
+        'ip_register',
+        'auth_ticket',
+        'home_room',
+        'points',
+        'online',
+        'pixels',
+        'credits',
+        'gender',
+        'points',
+        'rank'
+    ];
 
     /**
      * Get Current User Country
@@ -159,36 +189,4 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return date("yyyy-MM-dd'T'HH:mm:ss.SSSZ", $this->attributes['lastWebAccess']);
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'email',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'real_name',
-        'account_day_of_birth',
-        'last_online',
-        'ip_current',
-        'ip_register',
-        'auth_ticket',
-        'home_room',
-        'points',
-        'online',
-        'pixels',
-        'credits',
-        'gender',
-        'points',
-        'rank'
-    ];
 }

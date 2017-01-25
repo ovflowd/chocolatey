@@ -19,8 +19,8 @@ class CreateArticlesTable extends Migration
             $table->string('description', 255);
             $table->text('content');
             $table->string('author', 50);
-            $table->timestamp('createdAt');
-            $table->timestamp('updatedAt');
+            $table->timestamp('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('imageUrl', 255);
             $table->string('thumbnailUrl', 255);
         });

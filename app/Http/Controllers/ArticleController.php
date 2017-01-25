@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\ArticleCategory;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -41,8 +42,8 @@ class ArticleController extends BaseController
      */
     protected function front()
     {
-        return view('habbo-web-news.articles-front',
-            ['set' => DB::select("SELECT * FROM azure_articles WHERE categories LIKE '%all%'  ORDER BY id ASC LIMIT 10")]);
+        return view('habbo-web-news.articles-front', ['set' => Article::query()
+            ->where('categories', 'like', '%all%')->orderBy('id', 'ASC')->limit(10)->get()]);
     }
 
     /**
@@ -59,11 +60,10 @@ class ArticleController extends BaseController
     {
         return view('habbo-web-news.articles-category', [
             'category' => $categoryName,
-            'categories' => DB::select('SELECT * FROM azure_articles_categories'),
-            'articleSet' => DB::select('SELECT * FROM azure_articles ' .
-                'WHERE categories LIKE :category AND id >= :page ORDER BY id ASC LIMIT 10',
-                [':category' => "%$categoryName%", ':page' => $categoryPage == 1
-                    ? $categoryPage : ($categoryPage * 3)])
+            'categories' => ArticleCategory::all(),
+            'articleSet' => Article::query()->where('categories', 'like', "%$categoryName%")
+                ->where('id', '>=', $categoryPage == 1 ? $categoryPage : ($categoryPage * 3))
+                ->orderBy('id', 'ASC')->limit(10)->get()
         ]);
     }
 
@@ -80,15 +80,16 @@ class ArticleController extends BaseController
     {
         $articleId = substr($articleName, 0, strpos($articleName, '_'));
 
-        $articleContent = DB::select('SELECT * FROM azure_articles WHERE id = :id', [':id' => $articleId])[0];
+        /*** @var $articleContent Article */
+        $articleContent = Article::query()->where('id', $articleId)->first();
 
-        $articleCategory = explode(',', $articleContent->categories);
+        $articleCategory = $articleContent->categories;
 
         return response(view('habbo-web-news.articles-view', [
             'article' => $articleContent,
-            'latest' => DB::select('SELECT id, createdAt, title FROM azure_articles ORDER BY id ASC LIMIT 5'),
-            'related' => DB::select('SELECT id, createdAt, title FROM azure_articles WHERE categories LIKE :category LIMIT 5',
-                [':category' => '%' . end($articleCategory) . '%'])
+            'latest' => Article::query()->select('id', 'createdAt', 'title')->orderBy('id', 'ASC')->limit(10)->get(),
+            'related' => Article::query()->where('categories', 'like', '%' . end($articleCategory)->link . '%')
+                ->orderBy('id', 'ASC')->limit(5)->get()
         ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 }

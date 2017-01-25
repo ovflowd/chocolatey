@@ -2,8 +2,8 @@
     <header class="news-header news-header--single">
         <div class="news-header__banner">
             <figure class="news-header__viewport">
-                <img src="{{$article->imageUrl}}"
-                     alt="{{$article->title}}"
+                <img src="<?php echo e($article->imageUrl); ?>"
+                     alt="<?php echo e($article->title); ?>"
                      class="news-header__image news-header__image--featured">
             </figure>
         </div>
@@ -14,52 +14,56 @@
                 @{{ <?= strtotime($article->createdAt) ?> | date: 'mediumDate' }}
             </time>
             <ul class="news-header__categories">
-                @foreach ($article->categories as $articleCategory)
+                <?php $__currentLoopData = $article->categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $articleCategory): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                     <li class="news-header__category">
-                        <a href="/community/category/{{$articleCategory->link}}"
+                        <a href="/community/category/<?php echo e($articleCategory->link); ?>"
                            class="news-header__category__link"
-                           translate="{{$articleCategory->translate}}"></a>
+                           translate="<?php echo e($articleCategory->translate); ?>"></a>
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </ul>
         </aside>
         <p class="news-header__wrapper news-header__summary">
-            {{$article->description}}
+            <?php echo e($article->description); ?>
+
         </p>
     </header>
     <div class="news-article">
-        {{$article->content}}
+        <?php echo e($article->content); ?>
+
     </div>
 
     <div class="news-footer">
         <aside class="news-box">
             <h4 translate="NEWS_RELATED"></h4>
             <ul>
-                @foreach ($related as $relatedContent)
+                <?php $__currentLoopData = $related; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relatedContent): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                     <li class="news-box__item">
-                        <a href="/community/article/{{$relatedContent->id}}/content" class="news-box__link">
-                            {{$relatedContent->title}}
+                        <a href="/community/article/<?php echo e($relatedContent->id); ?>/content" class="news-box__link">
+                            <?php echo e($relatedContent->title); ?>
+
                         </a>
                         <time class="news-box__date">
                             (@{{ <?= strtotime($relatedContent->createdAt) ?> | date: 'mediumDate' }})
                         </time>
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </ul>
         </aside>
         <aside class="news-box">
             <h4 translate="NEWS_NEWEST"></h4>
             <ul>
-                @foreach ($latest as $relatedContent)
+                <?php $__currentLoopData = $latest; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relatedContent): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                     <li class="news-box__item">
-                        <a href="/community/article/{{$relatedContent->id}}/content" class="news-box__link">
-                            {{$relatedContent->title}}
+                        <a href="/community/article/<?php echo e($relatedContent->id); ?>/content" class="news-box__link">
+                            <?php echo e($relatedContent->title); ?>
+
                         </a>
                         <time class="news-box__date">
                             (@{{ <?= strtotime($relatedContent->createdAt) ?> | date: 'mediumDate' }})
                         </time>
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
             </ul>
         </aside>
     </div>

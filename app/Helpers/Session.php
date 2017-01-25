@@ -25,6 +25,16 @@ class Session
     }
 
     /**
+     * Rename the Session ID
+     *
+     * @param string $name
+     */
+    public function rename($name)
+    {
+        session_name($name);
+    }
+
+    /**
      * Start Session Handler
      */
     public function start()
@@ -38,17 +48,6 @@ class Session
     public function destroy()
     {
         session_destroy();
-    }
-
-    /**
-     * Check if a Key exists in the Session
-     *
-     * @param mixed $key
-     * @return bool
-     */
-    public function has($key)
-    {
-        return array_key_exists($key, $_SESSION);
     }
 
     /**
@@ -71,6 +70,17 @@ class Session
     public function get($key)
     {
         return $this->has($key) ? $_SESSION[$key] : null;
+    }
+
+    /**
+     * Check if a Key exists in the Session
+     *
+     * @param mixed $key
+     * @return bool
+     */
+    public function has($key)
+    {
+        return array_key_exists($key, $_SESSION);
     }
 
     /**
