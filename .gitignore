@@ -52,3 +52,4 @@ storage/*.key
 
 public/habbo-imaging/resource/*
 !public/habbo-imaging/resource/.gitkeep
+storage/logs/lumen.log

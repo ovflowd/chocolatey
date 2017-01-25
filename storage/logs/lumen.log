@@ -287,3 +287,19 @@ Stack trace:
 #5 /Users/santoro/GitHub/azureWEB/vendor/laravel/lumen-framework/src/Console/Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #6 /Users/santoro/GitHub/azureWEB/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #7 {main}  
+[2017-01-25 18:45:09] lumen.ERROR: exception 'InvalidArgumentException' with message 'A CreateAzureUsersPreferencesTable migration already exists.' in /Users/santoro/GitHub/azureWEB/vendor/illuminate/database/Migrations/MigrationCreator.php:76
+Stack trace:
+#0 /Users/santoro/GitHub/azureWEB/vendor/illuminate/database/Migrations/MigrationCreator.php(49): Illuminate\Database\Migrations\MigrationCreator->ensureMigrationDoesntAlreadyExist('create_azure_us...')
+#1 /Users/santoro/GitHub/azureWEB/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(98): Illuminate\Database\Migrations\MigrationCreator->create('create_azure_us...', '/Users/santoro/...', 'azure_users_req...', true)
+#2 /Users/santoro/GitHub/azureWEB/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(81): Illuminate\Database\Console\Migrations\MigrateMakeCommand->writeMigration('create_azure_us...', 'azure_users_req...', true)
+#3 [internal function]: Illuminate\Database\Console\Migrations\MigrateMakeCommand->fire()
+#4 /Users/santoro/GitHub/azureWEB/vendor/illuminate/container/Container.php(508): call_user_func_array(Array, Array)
+#5 /Users/santoro/GitHub/azureWEB/vendor/illuminate/console/Command.php(169): Illuminate\Container\Container->call(Array)
+#6 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Command/Command.php(261): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /Users/santoro/GitHub/azureWEB/vendor/illuminate/console/Command.php(155): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(817): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(185): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 /Users/santoro/GitHub/azureWEB/vendor/symfony/console/Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 /Users/santoro/GitHub/azureWEB/vendor/laravel/lumen-framework/src/Console/Kernel.php(83): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 /Users/santoro/GitHub/azureWEB/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 {main}  

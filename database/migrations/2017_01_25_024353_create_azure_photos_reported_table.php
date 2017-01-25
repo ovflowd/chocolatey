@@ -18,7 +18,7 @@ class CreateAzurePhotosReportedTable extends Migration
             $table->integer('photo_id', 11);
             $table->integer('reported_by', 11);
             $table->integer('reason_id', 11);
-            $table->enum('approved', ['0', '1', '2'])->default(0);
+            $table->enum('approved', ['0', '1', '2'])->default('0');
         });
     }
 
