@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -24,7 +25,7 @@ class PageController extends BaseController
 
         $pageName = $pageArray[0];
 
-        return response(view("habbo-web-pages.production.{$pageCategory}.{$pageLanguage}.$pageName"), 200)
-            ->header('Content-Type', 'text/html; charset=UTF-8');
+        return response(view("habbo-web-pages.production.{$pageCategory}.{$pageLanguage}.$pageName",
+            ['azure' => Config::get('azure')]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 }

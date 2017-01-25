@@ -1,8 +1,8 @@
 <h3>Teen helplines</h3>
 <p>If you are feeling sad, being bullied, harming yourself or just want to talk to someone for advice and help about
-    things outside <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> , please contact these helplines.</p>
-<p>For player assistance,  <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> bans, and other <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> -related questions, you can contact the <a target="_blank"
-                                                                                                ng-href="{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo
+    things outside {{ $azure['name'] }} , please contact these helplines.</p>
+<p>For player assistance,  {{ $azure['name'] }} bans, and other {{ $azure['name'] }} -related questions, you can contact the <a target="_blank"
+                                                                                                ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo
     Helpdesk</a>.</p>
 <h4>Australia</h4>
 <p><strong>Kids Help</strong></p>

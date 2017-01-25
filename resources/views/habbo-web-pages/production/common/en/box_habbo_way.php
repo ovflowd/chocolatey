@@ -1,2 +1,0 @@
-<h3> <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> Way</h3>
-<p>Follow the <a href="/playing-habbo/habbo-way"> <?= \Illuminate\Support\Facades\Config::get('azure.name'); ?> Way</a> - a series of guidelines to keep you on the right side of fun!</p>
