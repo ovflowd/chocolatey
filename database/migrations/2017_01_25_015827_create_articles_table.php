@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('azure_articles', function (Blueprint $table) {
-            $table->integer('id', 11);
+            $table->increments('id');
             $table->string('title', 125);
             $table->string('description', 255);
             $table->text('content');
@@ -23,7 +23,6 @@ class CreateArticlesTable extends Migration
             $table->timestamp('updatedAt');
             $table->string('imageUrl', 255);
             $table->string('thumbnailUrl', 255);
-            $table->primary('id');
         });
     }
 

@@ -14,10 +14,9 @@ class CreateAzurePhotosLikesTable extends Migration
     public function up()
     {
         Schema::create('azure_user_photos_likes', function (Blueprint $table) {
-            $table->integer('id', 11);
+            $table->increments('id');
             $table->integer('photo_id', 11);
             $table->string('username', 255);
-            $table->primary('id');
         });
     }
 

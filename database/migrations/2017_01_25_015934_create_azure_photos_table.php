@@ -14,7 +14,7 @@ class CreateAzurePhotosTable extends Migration
     public function up()
     {
         Schema::create('azure_user_photos', function (Blueprint $table) {
-            $table->integer('id', 11);
+            $table->increments('id');
             $table->integer('creator_id', 11);
             $table->string('previewUrl', 255);
             $table->string('url', 255);
@@ -24,7 +24,6 @@ class CreateAzurePhotosTable extends Migration
             $table->integer('version', 1)->default(1);
             $table->enum('type', ["PHOTO", "SELFIE"])->default("PHOTO");
             $table->integer('room_id', 11);
-            $table->primary('id');
         });
     }
 

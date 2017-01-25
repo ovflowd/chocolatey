@@ -6,6 +6,7 @@ use App\Models\Photo;
 use App\Models\PhotoLike;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -16,6 +17,8 @@ class PublicPhotosController extends BaseController
 {
     /**
      * Render a set of Public HabboWEB Photos
+     *
+     * @TODO: Exclude Approved Reported Photos from the List
      *
      * @return Response
      */
@@ -37,6 +40,8 @@ class PublicPhotosController extends BaseController
 
     /**
      * Register a Report of a Photo
+     * Observation.: We will not create a limit of max reports.
+     * Since it's a retro we don't really care about reports.
      *
      * @param Request $request
      * @param int $photoIdentifier
@@ -44,6 +49,11 @@ class PublicPhotosController extends BaseController
      */
     public function report(Request $request, $photoIdentifier)
     {
+        DB::table('azure_user_photos_reported')->insert([
+            'photo_id' => $photoIdentifier, 'reason_id' => $request->json()->get('reason'),
+            'reported_by' => $request->user()->uniqueId, 'approved' => 0
+        ]);
 
+        return response(null, 200);
     }
 }

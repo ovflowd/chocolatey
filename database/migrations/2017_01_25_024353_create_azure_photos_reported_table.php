@@ -14,12 +14,11 @@ class CreateAzurePhotosReportedTable extends Migration
     public function up()
     {
         Schema::create('azure_user_photos_reported', function (Blueprint $table) {
-            $table->integer('id', 11);
+            $table->increments('id');
             $table->integer('photo_id', 11);
             $table->integer('reported_by', 11);
             $table->integer('reason_id', 11);
             $table->enum('approved', ['0', '1', '2'])->default(0);
-            $table->primary('id');
         });
     }
 
