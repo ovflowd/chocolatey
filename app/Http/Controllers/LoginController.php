@@ -62,4 +62,12 @@ class LoginController extends BaseController
 
         return response(null, 200);
     }
+
+    public function register(Request $request)
+    {
+        $email = $request->json()->get('email');
+        $password = $request->json()->get('password');
+
+        
+    }
 }
