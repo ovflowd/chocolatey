@@ -37,29 +37,19 @@ class LoginController extends BaseController
     public function login(Request $request)
     {
         if ($request->json()->has('email') && $request->json()->has('password')):
-            $userData = User::where('mail', $request->json()->get('email'))
-                ->where('password', md5($request->json()->get('password')))->first();
+            Session::set('azureWEB', User::query()->where('mail', $request->json()->get('email'))
+                ->where('password', md5($request->json()->get('password')))->first());
 
-            if ($userData == null)
+            if (Session::get('azureWEB') == null)
                 return null;
 
-            if (Ban::query()->where('user_id', $userData->id))
+            if (Ban::query()->where('user_id', Session::get('azureWEB')->id)->count() > 0)
                 return null;
 
-            $this->storeUser($userData);
+            return Session::get('azureWEB');
         endif;
 
         return null;
-    }
-
-    /**
-     * Store User on Session
-     *
-     * @param User $user
-     */
-    protected function storeUser(User $user)
-    {
-        Session::set('azureWEB', $user);
     }
 
     /**
@@ -153,7 +143,7 @@ class LoginController extends BaseController
 
         (new AzureId)->store($userData->id, $email)->save();
 
-        $this->storeUser($userData);
+        Session::set('azureWEB', $userData);
 
         return response()->json($userData, 200);
     }

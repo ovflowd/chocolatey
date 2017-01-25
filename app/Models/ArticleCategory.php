@@ -18,6 +18,13 @@ class ArticleCategory extends AzureModel
     protected $table = 'azure_articles_categories';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Store a New Article Category
      *
      * @param string $link

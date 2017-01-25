@@ -16,6 +16,13 @@ class Article extends AzureModel
     protected $table = 'azure_articles';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Store a new CMS Article
      *
      * @param int $title

@@ -16,6 +16,13 @@ class PhotoLike extends AzureModel
     protected $table = 'azure_user_photos_likes';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Store a new Photo Data
      *
      * @param int $photoId

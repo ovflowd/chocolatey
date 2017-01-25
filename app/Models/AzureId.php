@@ -29,6 +29,13 @@ class AzureId extends AzureModel
     ];
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Store a new Azure Id Account
      *
      * @param string $userMail

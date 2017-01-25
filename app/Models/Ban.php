@@ -16,6 +16,13 @@ class Ban extends AzureModel
     protected $table = 'bans';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Store an User Ban
      *
      * @param int $userId

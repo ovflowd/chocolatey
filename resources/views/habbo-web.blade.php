@@ -36,7 +36,7 @@
             }();
         </script>
         <script>
-            window.session = {{ \App\Facades\Session::get('azureWEB') or '' }};
+            window.session = <?= \App\Facades\Session::get('azureWEB') ?>;
             window.partnerCodeInfo = null;
             window.banner = null;
         </script>

@@ -18,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['auth']->viaRequest('api', function ($request) {
-            $userData = !empty(Session::get('azureWEB')) ? Session::get('azureWEB') : null;
+            $userData = Session::has('azureWEB') ? Session::get('azureWEB') : null;
 
             return $request->path() == 'api/public/authentication/login'
                 ? (new LoginController)->login($request) : $userData;

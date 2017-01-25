@@ -90,6 +90,8 @@ class Session
      */
     public function erase($key)
     {
-        $_SESSION[$key] = '';
+        $_SESSION[$key] = null;
+
+        unset($_SESSION[$key]);
     }
 }

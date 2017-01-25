@@ -18,6 +18,13 @@ class PhotoReport extends AzureModel
     protected $table = 'azure_user_photos_reported';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The Appender(s) of the Model
      *
      * @var array

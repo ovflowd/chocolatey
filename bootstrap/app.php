@@ -79,7 +79,6 @@ $app->register(\Sofa\Eloquence\ServiceProvider::class);
 |--------------------------------------------------------------------------
 */
 
-Session::rename('session.id');
 Session::start();
 
 /*

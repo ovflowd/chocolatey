@@ -18,6 +18,13 @@ class PhotoReportCategory extends AzureModel
     protected $table = 'azure_user_photos_reported_categories';
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Add a Report Category
      *
      * @param int $reportCategory
