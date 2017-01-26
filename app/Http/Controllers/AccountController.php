@@ -16,7 +16,6 @@ use Laravel\Lumen\Routing\Controller as BaseController;
  */
 class AccountController extends BaseController
 {
-
     /**
      * Check an User Name
      *

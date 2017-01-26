@@ -74,23 +74,15 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # User Security Settings Request
     $app->get('api/safetylock/featureStatus', 'AccountSecurityController@featureStatus');
-    // GET 200 (Account not Confirmed) - identity_verification_required
-    // GET 200 (Feature Disabled) - disabled
-    // GET 200 (Feature Enabled) - enabled
 
     # User Security Settings Save
     $app->post('api/safetylock/save', 'AccountSecurityController@saveQuestions');
-    // POST - answer1, answer2, password, questionId1, questionId2
-    // Success: 204 - No Content
-    // Invalid Password: 400 {"error":"invalid_password"}
 
     # User Security Settings Disable
     $app->get('api/safetylock/disable', 'AccountSecurityController@disable');
-    // GET 204 - No Content
 
     # User Security Settings Reset Devices
     $app->get('api/safetylock/resetTrustedLogins', 'AccountSecurityController@reset');
-    // GET 204 - No Content
 
     # Resend E-mail Verification
     $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
