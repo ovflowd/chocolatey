@@ -20,19 +20,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use Authenticatable, Authorizable, Eloquence, Mappable;
 
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'users';
-
     /**
      * The attributes that will be mapped
      *
      * @var array
      */
     protected $maps = [
-        'id' => 'uniqueId',
+        'uniqueId' => 'id',
         'name' => 'username',
         'figureString' => 'look',
         'lastWebAccess' => 'last_login',
@@ -42,7 +47,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'emailVerified' => 'mail_verified',
         'accountId' => 'id'
     ];
-
     /**
      * The Appender(s) of the Model
      *
@@ -50,13 +54,22 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $appends = [
         'habboClubMember',
+        'buildersClubMember',
         'sessionLoginId',
         'loginLogId',
         'identityVerified',
         'identityType',
         'trusted',
+        'country',
         'traits',
-        'country'
+        'name',
+        'figureString',
+        'lastWebAccess',
+        'creationTime',
+        'email',
+        'identityId',
+        'emailVerified',
+        'accountId'
     ];
     /**
      * The attributes that are mass assignable.
@@ -72,6 +85,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
+        'id',
+        'username',
+        'mail',
         'password',
         'real_name',
         'account_day_of_birth',
@@ -88,13 +104,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'points',
         'rank'
     ];
-
     /**
-     * Disable Timestamps
+     * The attributes that should be casted to native types.
      *
-     * @var bool
+     * @var array
      */
-    public $timestamps = false;
+    protected $casts = [
+        'traits' => 'string',
+    ];
 
     /**
      * Store an User on the Database
@@ -128,13 +145,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * Set the Trait Attribute
+     *
+     * @param array $accountType
+     */
+    public function setTraitsAttribute(array $accountType)
+    {
+        $this->attributes['traits'] = $accountType;
+    }
+
+    /**
      * What is this field?
      *
      * @return array
      */
     public function getTraitsAttribute()
     {
-        return ["NONE"];
+        return !empty($this->attributes['traits'])
+            ? $this->attributes['traits'] : ["USER"];
     }
 
     /**
@@ -194,6 +222,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @return bool
      */
     public function getHabboClubMemberAttribute()
+    {
+        return true;
+    }
+
+    /**
+     * Get the Builders Club Attribute
+     * In a Retro Habbo everyone is BC, yeah?
+     *
+     * @return bool
+     */
+    public function getBuildersClubMemberAttribute()
     {
         return true;
     }

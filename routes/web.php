@@ -109,6 +109,20 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Logout User
     $app->post('api/public/authentication/logout', 'LoginController@logout');
+
+    # Habbo Client Loginstep
+    $app->post('/api/log/loginstep', function () {
+        return response(null, 204);
+    });
+
+    # New User Client Check/Select Username
+    $app->post('api/newuser/name/{selectType}', 'AccountController@checkName');
+
+    # New User Client Save Look
+    $app->post('api/user/look/save', 'AccountController@saveLook');
+
+    # New User Client Select Room
+    $app->post('api/newuser/room/select', 'AccountController@selectRoom');
 });
 
 
@@ -173,6 +187,12 @@ $app->get('/habbo-web-pages/', function () {
 
 # Request a Specific View of HabboWEB Pages
 $app->get('/habbo-web-pages/production/{category}/{view}', 'PageController@show');
+
+# Middleware that Requires Authentication
+$app->group(['middleware' => 'auth'], function () use ($app) {
+    # Request the Client URL
+    $app->get('/client/{view}', 'PageController@getClient');
+});
 
 /*
 |--------------------------------------------------------------------------

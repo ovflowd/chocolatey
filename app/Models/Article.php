@@ -9,18 +9,17 @@ namespace App\Models;
 class Article extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'azure_articles';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'azure_articles';
 
     /**
      * Store a new CMS Article

@@ -11,19 +11,17 @@ use Illuminate\Database\Eloquent\Builder;
 class PhotoReport extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'azure_user_photos_reported';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'azure_user_photos_reported';
     /**
      * The Appender(s) of the Model
      *

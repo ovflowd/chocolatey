@@ -11,18 +11,17 @@ use Sofa\Eloquence\Metable\InvalidMutatorException;
 class PhotoReportCategory extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'azure_user_photos_reported_categories';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'azure_user_photos_reported_categories';
 
     /**
      * Add a Report Category

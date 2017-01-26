@@ -12,12 +12,17 @@ use Illuminate\Database\Eloquent\Collection;
 class AzureId extends AzureModel
 {
     /**
+     * Disable Timestamps
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+    /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'azure_users_id';
-
     /**
      * The Appender(s) of the Model
      *
@@ -29,13 +34,6 @@ class AzureId extends AzureModel
     ];
 
     /**
-     * Disable Timestamps
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * Store a new Azure Id Account
      *
      * @param string $userMail
@@ -43,7 +41,7 @@ class AzureId extends AzureModel
      * @return $this
      * @throws ErrorException
      */
-    public function store($userMail, $userId)
+    public function store($userId, $userMail)
     {
         if (AzureId::query()->where('user_id', $userId)->count() > 0)
             throw new ErrorException("An User with this Id already registered.");

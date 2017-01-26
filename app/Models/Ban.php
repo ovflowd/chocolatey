@@ -9,18 +9,17 @@ namespace App\Models;
 class Ban extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bans';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'bans';
 
     /**
      * Store an User Ban

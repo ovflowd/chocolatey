@@ -9,18 +9,17 @@ namespace App\Models;
 class PhotoLike extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'azure_user_photos_likes';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'azure_user_photos_likes';
 
     /**
      * Store a new Photo Data

@@ -65,6 +65,37 @@ class LoginController extends BaseController
     }
 
     /**
+     * Register an User on the Database
+     * and do the Login of the User
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function register(Request $request)
+    {
+        $email = $request->json()->get('email');
+        $password = $request->json()->get('password');
+
+        if (strpos($email, '@') == false)
+            return response()->json(['error' => 'registration_email'], 409);
+
+        if (AzureId::query()->where('mail', $email)->count() > 0)
+            return response()->json(['error' => 'registration_email_in_use'], 409);
+
+        (new User)->store($userName = $this->generateUserName($email), $password, $email)->save();
+
+        $userData = User::where('username', $userName)->first();
+
+        $userData->traits = ["NEW_USER", "USER"];
+
+        (new AzureId)->store($userData->uniqueId, $email)->save();
+
+        Session::set('azureWEB', $userData);
+
+        return response()->json($userData, 200);
+    }
+
+    /**
      * Return Random Username
      *
      * @param string $email
@@ -117,34 +148,5 @@ class LoginController extends BaseController
             default:
                 return '*';
         endswitch;
-    }
-
-    /**
-     * Register an User on the Database
-     * and do the Login of the User
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function register(Request $request)
-    {
-        $email = $request->json()->get('email');
-        $password = $request->json()->get('password');
-
-        if (strpos($email, '@') == false)
-            return response()->json(['error' => 'registration_email'], 409);
-
-        if (AzureId::query()->where('mail', $email)->count() > 0)
-            return response()->json(['error' => 'registration_email_in_use'], 409);
-
-        (new User)->store($userName = $this->generateUserName($email), $password, $email);
-
-        $userData = User::where('username', $userName)->select('id')->first();
-
-        (new AzureId)->store($userData->id, $email)->save();
-
-        Session::set('azureWEB', $userData);
-
-        return response()->json($userData, 200);
     }
 }

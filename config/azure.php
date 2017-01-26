@@ -54,6 +54,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Invalid Usernames
+    |--------------------------------------------------------------------------
+    |
+    | Invalid User Names for Users
+    | Check if User contains something like that
+    |
+    */
+
+    'invalid' => [
+        'MOD_',
+        'MOD-',
+        'Admin_',
+        'ovflowd',
+        'sant0ro',
+        'saamus'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | User Default Motto
     |--------------------------------------------------------------------------
     |
@@ -89,13 +108,16 @@ return [
     */
 
     'game' => [
-        'gordon' => 'http://127.0.0.1/swf/gordon/',
-        'flash' => 'http://127.0.0.1/swf/gordon/Habbo.swf',
+        'gordon' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/',
+        'flash' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/Habbo.swf',
         'gamedata' => [
-            'variables' => 'http://127.0.0.1/swf/gamedata/variables.txt',
-            'texts' => 'http://127.0.0.1/swf/gamedata/flash_texts.txt',
-            'override_variables' => 'http://127.0.0.1/swf/gamedata/override_variables.txt',
-            'override_texts' => 'http://127.0.0.1/swf/gamedata/override_flash_texts.txt',
+            'figuredata' => 'https://uiotassets.blob.core.windows.net/unity/gamedata/figuredata.xml',
+            'furnidata' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/',
+            'productdata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/productdata.txt',
+            'variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_variables.txt',
+            'texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_flash_texts.txt',
+            'override_variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
+            'override_texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
 

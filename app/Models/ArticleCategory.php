@@ -11,18 +11,17 @@ use InvalidArgumentException;
 class ArticleCategory extends AzureModel
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'azure_articles_categories';
-
-    /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'azure_articles_categories';
 
     /**
      * Store a New Article Category
