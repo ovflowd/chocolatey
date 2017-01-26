@@ -6,6 +6,7 @@ use App\Facades\Session;
 use App\Models\AzureId;
 use App\Models\Ban;
 use App\Models\User;
+use App\Models\UserPreferences;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -89,6 +90,8 @@ class LoginController extends BaseController
         $userData->traits = ["NEW_USER", "USER"];
 
         (new AzureId)->store($userData->uniqueId, $email)->save();
+
+        (new UserPreferences)->store($userData->uniqueId)->save();
 
         Session::set('azureWEB', $userData);
 

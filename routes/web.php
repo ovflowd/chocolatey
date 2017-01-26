@@ -31,10 +31,6 @@ $app->get('/api', function () {
 
 # Create an User Request
 $app->post('api/public/registration/new', 'LoginController@register');
-// POST - email, password, birthdate
-// E-mail In Use: 409 - {"error":"registration_email_in_use"}
-// Invalid E-mail: 409 - {"error":"registration_email"}
-// Success: 201 Created - User Eloquent Model - {"uniqueId":"hhus-5dd3e36949a92469504763c979c85f31","name":"knightgoogl","figureString":"hr-892-46.hd-209-8.ch-260-79.lg-280-77.sh-906-68.ha-1003-80","motto":"","buildersClubMember":false,"habboClubMember":false,"lastWebAccess":null,"creationTime":"2017-01-25T18:08:42.000+0000","sessionLogId":148536598799567460,"loginLogId":148536772168646750,"email":"google@uiot.org","identityId":25754090,"emailVerified":false,"identityVerified":false,"identityType":"HABBO","trusted":true,"force":["NONE"],"accountId":63205925,"country":null,"traits":["NEW_USER","USER"],"partner":"NO_PARTNER"}
 
 # Confirm E-mail
 $app->post('api/public/registration/activate', 'AccountController@confirmActivation');
@@ -58,7 +54,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Client URL
     $app->get('api/client/clienturl', 'ClientController@getUrl');
-    // GET 200 - {"clienturl":"https://www.habbo.com/client/hhus-5dd3e36949a92469504763c979c85f31/c3bb8cc5-ddcc-4d2c-9589-65acbfbcdcca-63205925"}
 
     # Change Password Request
     $app->post('api/settings/password/change', 'AccountSecurityController@changePassword');
@@ -72,13 +67,10 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     // POST - No Item - Send E-mail
 
     # User Privacy Settings
-    $app->post('api/user/preferences', 'AccountController@getPreferences');
-    // POST - emailFriendRequestNotificationEnabled, emailGiftNotificationEnabled, emailGroupNotificationEnabled, emailMiniMailNotificationEnabled, emailNewsletterEnabled, emailRoomMessageNotificationEnabled, friendCanFollow, friendRequestEnabled, offlineMessagingEnabled, onlineStatusVisible, profileVisible
-    // Success: 200 - No Content
+    $app->get('api/user/preferences', 'AccountController@getPreferences');
 
     # User Privacy Settings Changes
-    $app->get('api/user/preferences/save', 'AccountController@savePreferences');
-    // GET 200 - {"profileVisible":true,"onlineStatusVisible":true,"friendCanFollow":true,"friendRequestEnabled":true,"offlineMessagingEnabled":true,"emailNewsletterEnabled":true,"emailMiniMailNotificationEnabled":true,"emailFriendRequestNotificationEnabled":true,"emailGiftNotificationEnabled":true,"emailRoomMessageNotificationEnabled":true,"emailGroupNotificationEnabled":true}
+    $app->post('api/user/preferences/save', 'AccountController@savePreferences');
 
     # User Security Settings Request
     $app->get('api/safetylock/featureStatus', 'AccountSecurityController@featureStatus');
@@ -120,6 +112,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # New User Client Save Look
     $app->post('api/user/look/save', 'AccountController@saveLook');
+
+    # User Messenger Not Read Discussions
+    $app->get('api/user/discussions', 'AccountController@getDiscussions');
 
     # New User Client Select Room
     $app->post('api/newuser/room/select', 'AccountController@selectRoom');
@@ -168,6 +163,12 @@ $app->get('/extradata/public/users/stories', function () {
 $app->group(['middleware' => 'auth'], function () use ($app) {
     # Report a Specific Photo
     $app->post('/extradata/private/creation/{photo}/report', 'PublicPhotosController@report');
+
+    # Recent Photo Moderations
+    # @TODO: Synchronize with Photo Moderations
+    $app->get('/extradata/private/moderations/recentModerations', function () {
+        return response()->json([]);
+    });
 });
 
 /*

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
+use App\Models\UserPreferences;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -83,6 +84,48 @@ class AccountController extends BaseController
 
         if ($roomIndex != 1 && $roomIndex != 2 && $roomIndex != 3)
             return response(null, 400);
+
+        return response(null, 200);
+    }
+
+    /**
+     * Get User Non Read Messenger Discussions
+     *
+     * @TODO: Code Integration with HabboMessenger
+     * @TODO: Create Messenger Model
+     *
+     * @return JsonResponse
+     */
+    public function getDiscussions()
+    {
+        return response()->json([]);
+    }
+
+    /**
+     * Get User Preferences
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getPreferences(Request $request)
+    {
+        $userPreferences = UserPreferences::query()->where('user_id', $request->user()->uniqueId)->first();
+
+        foreach ($userPreferences->getAttributes() as $attributeName => $attributeValue)
+            $userPreferences->{$attributeName} = $attributeValue == 1;
+
+        return response()->json($userPreferences);
+    }
+
+    /**
+     * Save New User Preferences
+     *
+     * @param Request $request
+     * @return ResponseFactory
+     */
+    public function savePreferences(Request $request)
+    {
+        UserPreferences::query()->where('user_id', $request->user()->uniqueId)->update((array)$request->json()->all());
 
         return response(null, 200);
     }

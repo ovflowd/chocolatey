@@ -24,8 +24,8 @@ class CreateAzureUsersPreferencesTable extends Migration
             $table->enum('friendCanFollow', ['1', '0'])->default('0');
             $table->enum('friendRequestEnabled', ['1', '0'])->default('0');
             $table->enum('offlineMessagingEnabled', ['1', '0'])->default('0');
-            $table->enum('onlineStatusVisible', ['1', '0'])->default('0');
-            $table->enum('profileVisible', ['1', '0'])->default('0');
+            $table->enum('onlineStatusVisible', ['1', '0'])->default('1');
+            $table->enum('profileVisible', ['1', '0'])->default('1');
             $table->primary('user_id');
         });
     }
