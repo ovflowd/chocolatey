@@ -60,7 +60,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Resend E-mail Verification
     $app->post('api/settings/email/verification-resend', 'MailController@verify');
-    // POST - No Item - Send E-mail
 
     # User Privacy Settings
     $app->get('api/user/preferences', 'AccountController@getPreferences');
@@ -82,10 +81,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Resend E-mail Verification
     $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
-    // POST - currentPassword, newEmail
-    // E-mail in Use: 400 {"error":"changeEmail.email_already_in_use"}
-    // Invalid E-mail: 400 {"error":"registration_email"}
-    // Success: 200 {"email":"google@uiot.org"} - Send E-mail
 
     # Logout User
     $app->post('api/public/authentication/logout', 'LoginController@logout');

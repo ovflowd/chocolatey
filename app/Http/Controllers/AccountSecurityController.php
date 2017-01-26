@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Session;
 use App\Models\AzureId;
 use App\Models\UserSecurity;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Http\ResponseFactory;
@@ -25,7 +27,7 @@ class AccountSecurityController extends BaseController
     {
         $mailVerified = AzureId::query()->where('user_id', $request->user()->uniqueId)->first()->mail_verified;
 
-        if ($mailVerified == 1)
+        if ($mailVerified == 0)
             return response('identity_verification_required', 200);
 
         $featureEnabled = UserSecurity::query()->where('user_id', $request->user()->uniqueId)->count();
@@ -119,5 +121,40 @@ class AccountSecurityController extends BaseController
         DB::table('users')->where('id', $userId)->update(['password' => md5($request->json()->get('password'))]);
 
         return response(null, 204);
+    }
+
+    /**
+     * Change User E-mail
+     *
+     * @TODO: Implement Notification of E-mail Change
+     * @TODO: Implement Confirmation of E-mail Change
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function changeMail(Request $request)
+    {
+        $userId = $request->user()->uniqueId;
+
+        if (DB::table('users')->where('id', $userId)
+                ->where('password', md5($request->json()->get('currentPassword')))->count() == 0
+        )
+            return response()->json(['error' => 'changeEmail.invalid_password'], 400);
+
+        if (strpos($request->json()->get('newEmail'), '@') == false)
+            return response()->json(['error' => 'registration_email'], 400);
+
+        if (AzureId::query()->where('mail', $request->json()->get('newEmail'))->count() > 0)
+            return response()->json(['error' => 'changeEmail.email_already_in_use'], 400);
+
+        $userData = $request->user();
+        $userData->email = $request->json()->get('newEmail');
+
+        Session::set('azureWEB', $userData);
+
+        // @TODO: In the futurue the e-mail only will be changed after e-mail confirmation
+        DB::table('users')->where('id', $userId)->update(['mail' => $request->json()->get('newEmail')]);
+
+        return response()->json(['email' => $request->json()->get('newEmail')], 200);
     }
 }

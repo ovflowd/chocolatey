@@ -88,7 +88,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'id',
         'username',
         'mail',
+        'account_created',
         'password',
+        'mail_verified',
         'real_name',
         'account_day_of_birth',
         'last_online',
@@ -242,9 +244,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return false|string
      */
-    public function getCreationTimeAttribute()
+    public function getAccountCreatedAttribute()
     {
-        return date("yyyy-MM-dd'T'HH:mm:ss.SSSZ", $this->attributes['creationTime']);
+        return date("Y-m-dTHH:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
     }
 
     /**
@@ -252,8 +254,18 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return false|string
      */
-    public function getLastWebAccessAttribute()
+    public function getLastLoginAttribute()
     {
-        return date("yyyy-MM-dd'T'HH:mm:ss.SSSZ", $this->attributes['lastWebAccess']);
+        return date("Y-m-dTHH:i:s.ZZZZ+ZZZZ", $this->attributes['last_login']);
+    }
+
+    /**
+     * Get E-Mail Verified Attribute
+     *
+     * @return bool
+     */
+    public function getMailVerifiedAttribute()
+    {
+        return $this->attributes['mail_verified'] == 1;
     }
 }
