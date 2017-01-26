@@ -43,13 +43,10 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 storage/*.key
+storage/logs/*.log
 .env.*.php
 .env.php
 .env
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
-
-public/habbo-imaging/resource/*
-!public/habbo-imaging/resource/.gitkeep
-storage/logs/lumen.log
