@@ -12,6 +12,9 @@
 
 # Main Request Route
 
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+
 $app->get('/', 'HomePageController@show');
 
 /*
@@ -27,6 +30,11 @@ $app->get('/', 'HomePageController@show');
 # Main API Request is Forbidden
 $app->get('/api', function () {
     return response('Unauthorized.', 401);
+});
+
+# Go to Help Page
+$app->get('api/public/help', function () {
+    return redirect(Config::get('azure.help'));
 });
 
 # Create an User Request
@@ -93,8 +101,17 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     # New User Client Check/Select Username
     $app->post('api/newuser/name/{selectType}', 'AccountController@checkName');
 
-    # New User Client Save Look
+    # Save User Look
     $app->post('api/user/look/save', 'AccountController@saveLook');
+
+    # Get User (AzureID) Avatars
+    $app->get('api/user/avatars', 'AccountController@getAvatars');
+
+    # Create a New User Avatar
+    $app->post('api/user/avatars', 'AccountController@createAvatar');
+
+    # Get User (AzureID) Avatars
+    $app->get('api/user/avatars/check-name', 'AccountController@checkNewName');
 
     # User Messenger Not Read Discussions
     $app->get('api/user/discussions', 'AccountController@getDiscussions');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
+use App\Models\AzureId;
+use App\Models\User;
 use App\Models\UserPreferences;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -125,6 +127,60 @@ class AccountController extends BaseController
     public function savePreferences(Request $request)
     {
         UserPreferences::query()->where('user_id', $request->user()->uniqueId)->update((array)$request->json()->all());
+
+        return response(null, 200);
+    }
+
+    /**
+     * Get All E-Mail Accounts
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getAvatars(Request $request)
+    {
+        $userEmail = $request->user()->email;
+
+        $azureIdAccounts = AzureId::query()->where('mail', $userEmail)->first();
+
+        return response()->json($azureIdAccounts->relatedAccounts, 200);
+    }
+
+    /**
+     * Check if an Username is available
+     * for a new Avatar Account
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function checkNewName(Request $request)
+    {
+        $userName = $request->input('name');
+
+        if (DB::table('users')->where('username', $userName)->count() > 0)
+            return response()->json(['isAvailable' => false]);
+
+        return response()->json(['isAvailable' => true]);
+    }
+
+    public function createAvatar(Request $request)
+    {
+        $userName = $request->json()->get('name');
+
+        if (DB::table('users')->where('username', $userName)->count() > 0)
+            return response()->json(['isAvailable' => false]);
+
+        $userData = DB::table('users')->where('id', $request->user()->uniqueId)->first();
+
+        (new User)->store($userName, $userData->password, $userData->mail)->save();
+
+        $userNewData = User::query()->where('username', $userName)->first();
+
+        (new AzureId)->store($userNewData->uniqueId, $userData->mail)->save();
+
+        (new UserPreferences)->store($userNewData->uniqueId)->save();
+
+        Session::set('azureWEB', $userNewData);
 
         return response(null, 200);
     }

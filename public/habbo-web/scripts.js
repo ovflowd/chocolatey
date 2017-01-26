@@ -4082,7 +4082,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         habboWebLeaderboardsUrl: "/habbo-web-leaderboards/",
         habboWebNewsUrl: "/habbo-web-news/en/production/",
         habboWebPagesUrl: "/habbo-web-pages/production/",
-        imagingUrl: "/habbo-imaging",
+        imagingUrl: "https://www.habbo.de/habbo-imaging",
         lang: "en",
         hotel: "hhus",
         localizationSite: "com",

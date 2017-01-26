@@ -19,6 +19,7 @@
     RewriteRule ^habbo-imaging/badge/([^/]+) habbo-imaging/badge.php?badge=$1
     RewriteRule ^habbo-imaging/avatarimage habbo-imaging/avatarimage.php
     RewriteRule ^habbo-imaging/avatar/([^/]+) habbo-imaging/avatar.php?figure=$1
+    RewriteRule ^habbo-imaging/head/([^/]+) habbo-imaging/head.php?figure=$1
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
