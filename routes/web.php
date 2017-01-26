@@ -57,10 +57,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Change Password Request
     $app->post('api/settings/password/change', 'AccountSecurityController@changePassword');
-    // POST - currentPassword, password, passwordRepeated
-    // Invalid Password 409 {"error":"password.current_password.invalid"}
-    // Same as past 409 {"error":"password.used_earlier"}
-    // Success 204 - No Content
 
     # Resend E-mail Verification
     $app->post('api/settings/email/verification-resend', 'MailController@verify');

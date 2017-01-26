@@ -43,8 +43,8 @@ class AccountSecurityController extends BaseController
     {
         $userId = $request->user()->uniqueId;
 
-        if (DB::table('users')->where('id', $userId)->where('password',
-                md5($request->json()->get('password')))->count() == 0
+        if (DB::table('users')->where('id', $userId)
+                ->where('password', md5($request->json()->get('password')))->count() == 0
         )
             return response()->json(['error' => 'invalid_password'], 400);
 
@@ -91,6 +91,33 @@ class AccountSecurityController extends BaseController
      */
     public function reset(Request $request)
     {
+        return response(null, 204);
+    }
+
+    /**
+     * Change User Password
+     *
+     * @TODO: Implement Notification E-mail of Password change
+     *
+     * @param Request $request
+     * @return ResponseFactory
+     */
+    public function changePassword(Request $request)
+    {
+        $userId = $request->user()->uniqueId;
+
+        if (DB::table('users')->where('id', $userId)
+                ->where('password', md5($request->json()->get('currentPassword')))->count() == 0
+        )
+            return response()->json(['error' => 'password.current_password.invalid'], 409);
+
+        if (DB::table('users')->where('id', $userId)
+                ->where('password', md5($request->json()->get('password')))->count() == 1
+        )
+            return response()->json(['error' => 'password.used_earlier'], 409);
+
+        DB::table('users')->where('id', $userId)->update(['password' => md5($request->json()->get('password'))]);
+
         return response(null, 204);
     }
 }
