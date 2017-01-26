@@ -2,9 +2,9 @@
   "name": "sant0ro/azureWEB",
   "description": "The open source HabboWEB API",
   "keywords": [
-    "framework",
-    "laravel",
-    "lumen"
+    "Habbo",
+    "RaGEZONE",
+    "CMS"
   ],
   "license": "MIT",
   "type": "project",
@@ -23,11 +23,6 @@
   "autoload-dev": {
     "classmap": [
       "database/"
-    ]
-  },
-  "scripts": {
-    "post-root-package-install": [
-      "php -r \"copy('.env.example', '.env');\""
     ]
   },
   "minimum-stability": "dev",
