@@ -115,7 +115,7 @@
                 <p>FLASH NOT INSTALLED</p>
                 <p>
                     <a href="https://www.adobe.com/go/getflashplayer">
-                        <img src="{{$azure['url']}}/habbo-web/assets/images/Get_Flash_Player.png"
+                        <img src="{{$azure['url']}}/habbo-web/assets/images/get_flash_player.png"
                              alt="Get Adobe Flash player"/>
                     </a>
                 </p>

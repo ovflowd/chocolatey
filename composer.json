@@ -13,7 +13,8 @@
     "laravel/lumen-framework": "5.3.*",
     "vlucas/phpdotenv": "~2.2",
     "kirkbushell/eloquence": "~2.0",
-    "sofa/eloquence": "^5.3"
+    "sofa/eloquence": "^5.3",
+    "rdehnhardt/lumen-maintenance-mode": "^1.2"
   },
   "autoload": {
     "psr-4": {

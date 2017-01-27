@@ -394,7 +394,7 @@ small {
 }
 
 .with-bottom-error-image:before {
-    background-image: url(/web-img/habbo-web/stuff/error.png);
+    background-image: url(../images/error.png);
     bottom: 30px;
     content: '';
     display: block;
@@ -407,7 +407,7 @@ small {
 }
 
 .icon--facebook--footer, .icon--twitter--footer, .icon--youtube--footer, .habbo-image, .footer__sulake {
-    background-image: url(/web-img/habbo-web/stuff/mainsprite.png)
+    background-image: url(../images/sprite.png)
 }
 
 .icon--facebook--footer, .icon--twitter--footer, .icon--youtube--footer {
@@ -433,11 +433,8 @@ small {
 }
 
 .header {
-    background-image: url(/web-img/habbo-web/stuff/maintenance_battle.png);
     height: 111px;
-    background-repeat: repeat-x;
-    background-attachment: fixed;
-    background-position: 0px -50px;
+    background: url(../images/maintenance_battle.png) repeat-x fixed 0 -50px;
     overflow: hidden;
     position: relative
 }
@@ -461,7 +458,7 @@ small {
 }
 
 .habbo-image {
-    background-position: -188px 0;
+    background-position: 0 0;
     display: block;
     height: 73px;
     margin-top: 12px;

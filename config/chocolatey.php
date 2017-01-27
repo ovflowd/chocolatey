@@ -28,6 +28,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Hotel Maintenance
+    |--------------------------------------------------------------------------
+    |
+    | Enable the Hotel Maintenance
+    | <To enable Maintenance mode write 'php artisan down'>
+    | <To disable Maintenance mode write 'php artisan up'>
+    | *those commands need to be written on the console/terminal/cmd*
+    |
+    */
+
+    // Using this isn't Recommended
+    'forceMaintenance' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Arcturus Account
     |--------------------------------------------------------------------------
     |
@@ -55,8 +70,9 @@ return [
     */
 
     'twitter' => [
-        'name' => '@Habbo',
-        'key' => null
+        'name' => '@m0vame',
+        'username' => 'm0vame',
+        'key' => 502480771739684864
     ],
 
     /*

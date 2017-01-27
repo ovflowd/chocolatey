@@ -73,6 +73,8 @@ $app->register(App\Providers\AuthServiceProvider::class);
 
 $app->register(\Sofa\Eloquence\ServiceProvider::class);
 
+$app->register(Rdehnhardt\MaintenanceMode\Providers\MaintenanceModeServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Configure Sessions

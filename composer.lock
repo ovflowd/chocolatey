@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "99f48a649fb909a31155c755b4cbe677",
+    "content-hash": "2ff460e83b36d3ac5eee46ea49deb2ce",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1817,6 +1817,58 @@
                 "uuid"
             ],
             "time": "2016-11-22T19:21:44+00:00"
+        },
+        {
+            "name": "rdehnhardt/lumen-maintenance-mode",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rdehnhardt/lumen-maintenance-mode.git",
+                "reference": "be5e76fda6ceddb0d48d904e4881a0cf290bf09f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rdehnhardt/lumen-maintenance-mode/zipball/be5e76fda6ceddb0d48d904e4881a0cf290bf09f",
+                "reference": "be5e76fda6ceddb0d48d904e4881a0cf290bf09f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/lumen-framework": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.11",
+                "fzaninotto/faker": "v1.4.0",
+                "laravel/lumen": "~5.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rdehnhardt\\MaintenanceMode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Renato Dehnhardt",
+                    "email": "renatotkd@gmail.com"
+                },
+                {
+                    "name": "Vagner do Carmo",
+                    "email": "vluzrmos@gmail.com"
+                }
+            ],
+            "description": "Define application maintenance mode.",
+            "keywords": [
+                "lumen",
+                "maintenance",
+                "mode"
+            ],
+            "time": "2016-06-22T18:54:21+00:00"
         },
         {
             "name": "sofa/eloquence",
