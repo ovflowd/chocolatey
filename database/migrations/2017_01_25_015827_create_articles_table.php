@@ -14,8 +14,8 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_articles', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('chocolatey_articles', function (Blueprint $table) {
+            $table->integer('id');
             $table->string('title', 125);
             $table->string('description', 255);
             $table->text('content');
@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration
             $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('imageUrl', 255);
             $table->string('thumbnailUrl', 255);
+            $table->primary('id', 'chocolatey_articles_primary');
         });
     }
 
@@ -34,6 +35,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_articles');
+        Schema::dropIfExists('chocolatey_articles');
     }
 }

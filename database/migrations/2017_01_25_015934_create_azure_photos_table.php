@@ -14,17 +14,18 @@ class CreateAzurePhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_user_photos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('creator_id', 11);
+        Schema::create('chocolatey_user_photos', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('creator_id');
             $table->string('previewUrl', 255);
             $table->string('url', 255);
             $table->timestamp('time')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('tags', 255);
             $table->string('creator_name', 50);
-            $table->integer('version', 1)->default(1);
+            $table->integer('version')->default(1);
             $table->enum('type', ["PHOTO", "SELFIE"])->default("PHOTO");
-            $table->integer('room_id', 11);
+            $table->integer('room_id');
+            $table->primary('id', 'chocolatey_user_photos_primary');
         });
     }
 
@@ -35,6 +36,6 @@ class CreateAzurePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_user_photos');
+        Schema::dropIfExists('chocolatey_user_photos');
     }
 }

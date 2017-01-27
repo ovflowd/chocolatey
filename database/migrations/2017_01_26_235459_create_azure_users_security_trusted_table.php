@@ -13,10 +13,11 @@ class CreateAzureUsersSecurityTrustedTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_users_security_trusted', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id', 11);
+        Schema::create('chocolatey_users_security_trusted', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('user_id');
             $table->string('ip_address', 255);
+            $table->primary('id', 'chocolatey_users_security_trusted_primary');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateAzureUsersSecurityTrustedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_users_security_trusted');
+        Schema::dropIfExists('chocolatey_users_security_trusted');
     }
 }

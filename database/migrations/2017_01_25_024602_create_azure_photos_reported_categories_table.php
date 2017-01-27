@@ -14,13 +14,13 @@ class CreateAzurePhotosReportedCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_user_photos_reported_categories', function (Blueprint $table) {
-            $table->integer('report_category', 11);
+        Schema::create('chocolatey_user_photos_reported_categories', function (Blueprint $table) {
+            $table->integer('report_category');
             $table->string('description', 255);
-            $table->primary('report_category');
+            $table->primary('report_category', 'chocolatey_user_photos_reported_categories_primary');
         });
 
-        DB::table('azure_user_photos_reported_categories')->insert([
+        DB::table('chocolatey_user_photos_reported_categories')->insert([
             ['report_category' => '1', 'description' => 'Displays Sexual Content'],
             ['report_category' => '8', 'description' => 'Reveal Real Life Information'],
             ['report_category' => '19', 'description' => 'Contains Hate Speech'],
@@ -36,6 +36,6 @@ class CreateAzurePhotosReportedCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_user_photos_reported_categories');
+        Schema::dropIfExists('chocolatey_user_photos_reported_categories');
     }
 }

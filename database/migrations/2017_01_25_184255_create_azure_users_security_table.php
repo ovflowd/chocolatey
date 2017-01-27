@@ -13,13 +13,13 @@ class CreateAzureUsersSecurityTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_users_security', function (Blueprint $table) {
-            $table->integer('user_id', 11);
-            $table->integer('firstQuestion', 2);
-            $table->integer('secondQuestion', 2);
+        Schema::create('chocolatey_users_security', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->integer('firstQuestion');
+            $table->integer('secondQuestion');
             $table->string('firstAnswer', 50);
             $table->string('secondAnswer', 50);
-            $table->primary('user_id');
+            $table->primary('user_id', 'chocolatey_users_security_primary');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateAzureUsersSecurityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_users_security');
+        Schema::dropIfExists('chocolatey_users_security');
     }
 }

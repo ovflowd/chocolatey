@@ -181,8 +181,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function setTrustedAttribute($remoteAddress)
     {
-        $this->attributes['trusted'] = in_array($remoteAddress,
-            UserSecurity::where('user_id', $this->attributes['id'])->first()->trustedDevices);
+        $this->attributes['trusted'] = UserSecurity::where('user_id', $this->attributes['id'])->count() == 0 ?
+            true : in_array($remoteAddress, UserSecurity::where('user_id', $this->attributes['id'])
+                ->first()->trustedDevices);
     }
 
     /**
@@ -192,7 +193,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTrustedAttribute()
     {
-        return $this->attributes['trusted'];
+        return array_key_exists('trusted', $this->attributes) ? $this->attributes['trusted'] : true;
     }
 
     /**

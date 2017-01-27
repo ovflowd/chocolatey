@@ -13,12 +13,13 @@ class CreateAzurePhotosReportedTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_user_photos_reported', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('photo_id', 11);
-            $table->integer('reported_by', 11);
-            $table->integer('reason_id', 11);
+        Schema::create('chocolatey_user_photos_reported', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('photo_id');
+            $table->integer('reported_by');
+            $table->integer('reason_id');
             $table->enum('approved', ['0', '1', '2'])->default('0');
+            $table->primary('id', 'user_photos_reported_primary');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateAzurePhotosReportedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_user_photos_reported');
+        Schema::dropIfExists('chocolatey_user_photos_reported');
     }
 }

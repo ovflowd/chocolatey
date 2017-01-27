@@ -13,11 +13,11 @@ class CreateAzureUsersIdTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_users_id', function (Blueprint $table) {
+        Schema::create('chocolatey_users_id', function (Blueprint $table) {
             $table->string('mail', 125);
-            $table->integer('user_id', 11);
+            $table->integer('user_id');
             $table->enum('mail_verified', ['0', '1'])->default('0');
-            $table->primary('user_id');
+            $table->primary('user_id', 'chocolatey_users_id_primary');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateAzureUsersIdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_users_id');
+        Schema::dropIfExists('chocolatey_users_id');
     }
 }

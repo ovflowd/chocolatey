@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
@@ -24,14 +23,7 @@ class ClientController extends BaseController
     {
         $hotelUrl = Config::get('azure.url');
 
-        $accountType = in_array('NEW_USER', $request->user()->traits)
-            ? 'habbo-client-new-user' : 'habbo-client-user';
-
-        if ($accountType == 'habbo-client-new-user'):
-            $request->user()->traits = ["USER"];
-
-            Session::set('ChocolateyWEB', $request->user());
-        endif;
+        $accountType = in_array('NEW_USER', $request->user()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
 
         return response()->json(['clienturl' => "{$hotelUrl}client/{$accountType}"], 200, array(), JSON_UNESCAPED_SLASHES);
     }

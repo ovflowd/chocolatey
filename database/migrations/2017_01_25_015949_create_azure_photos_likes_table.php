@@ -13,10 +13,11 @@ class CreateAzurePhotosLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_user_photos_likes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('photo_id', 11);
+        Schema::create('chocolatey_user_photos_likes', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('photo_id');
             $table->string('username', 255);
+            $table->primary('id', 'chocolatey_user_photos_likes_primary');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateAzurePhotosLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_user_photos_likes');
+        Schema::dropIfExists('chocolatey_user_photos_likes');
     }
 }

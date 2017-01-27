@@ -13,12 +13,13 @@ class CreateAzureUsersMailRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_users_mail_requests', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('chocolatey_users_mail_requests', function (Blueprint $table) {
+            $table->integer('id');
             $table->string('token', 255);
             $table->enum('used', ['0', '1'])->default('0');
             $table->string('link', 255);
-            $table->integer('user_id', 11);
+            $table->integer('user_id');
+            $table->primary('id', 'chocolatey_users_mail_requests_primary');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateAzureUsersMailRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_users_mail_requests');
+        Schema::dropIfExists('chocolatey_users_mail_requests');
     }
 }

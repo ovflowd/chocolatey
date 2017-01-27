@@ -13,8 +13,8 @@ class CreateAzureUsersPreferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('azure_users_preferences', function (Blueprint $table) {
-            $table->integer('user_id', 11);
+        Schema::create('chocolatey_users_preferences', function (Blueprint $table) {
+            $table->integer('user_id');
             $table->enum('emailFriendRequestNotificationEnabled', ['1', '0'])->default('0');
             $table->enum('emailGiftNotificationEnabled', ['1', '0'])->default('0');
             $table->enum('emailGroupNotificationEnabled', ['1', '0'])->default('0');
@@ -26,7 +26,7 @@ class CreateAzureUsersPreferencesTable extends Migration
             $table->enum('offlineMessagingEnabled', ['1', '0'])->default('0');
             $table->enum('onlineStatusVisible', ['1', '0'])->default('1');
             $table->enum('profileVisible', ['1', '0'])->default('1');
-            $table->primary('user_id');
+            $table->primary('user_id', 'chocolatey_users_preferences_primary');
         });
     }
 
@@ -37,6 +37,6 @@ class CreateAzureUsersPreferencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('azure_users_preferences');
+        Schema::dropIfExists('chocolatey_users_preferences');
     }
 }
