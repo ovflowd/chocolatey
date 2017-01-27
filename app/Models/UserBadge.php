@@ -78,7 +78,7 @@ class UserBadge extends ChocolateyModel
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store an User Badge by AzureWEB. Badges need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store an User Badge by Chocolatey. Badges need be created from the Server.");
     }
 
     /**

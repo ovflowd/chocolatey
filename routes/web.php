@@ -33,7 +33,7 @@ $app->get('/api', function () {
 
 # Go to Help Page
 $app->get('api/public/help', function () {
-    return redirect(Config::get('azure.help'));
+    return redirect(Config::get('chocolatey.help'));
 });
 
 # Get Data from a Room

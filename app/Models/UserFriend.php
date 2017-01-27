@@ -63,6 +63,16 @@ class UserFriend extends ChocolateyModel
     ];
 
     /**
+     * Get User Friend Figure String
+     *
+     * @return string
+     */
+    public function getFigureStringAttribute()
+    {
+        return $this->getUserFriendData()->figureString;
+    }
+
+    /**
      * Get User Friend Data
      *
      * @return User
@@ -71,16 +81,6 @@ class UserFriend extends ChocolateyModel
     {
         return $this->friendData == null ?
             User::find($this->attributes['user_two_id']) : $this->friendData;
-    }
-
-    /**
-     * Get User Friend Figure String
-     *
-     * @return string
-     */
-    public function getFigureStringAttribute()
-    {
-        return $this->getUserFriendData()->figureString;
     }
 
     /**
@@ -121,6 +121,6 @@ class UserFriend extends ChocolateyModel
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store an User Friend by AzureWEB. Friends need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store an User Friend by Chocolatey. Friends need be created from the Server.");
     }
 }

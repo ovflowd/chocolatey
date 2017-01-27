@@ -53,7 +53,7 @@ class Photo extends ChocolateyModel
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Photo by AzureWEB. Photos need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store a Photo by Chocolatey. Photos need be created from the Server.");
     }
 
     /**

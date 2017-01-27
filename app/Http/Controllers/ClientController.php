@@ -21,7 +21,7 @@ class ClientController extends BaseController
      */
     public function getUrl(Request $request)
     {
-        $hotelUrl = Config::get('azure.url');
+        $hotelUrl = Config::get('chocolatey.url');
 
         $accountType = in_array('NEW_USER', $request->user()->traits)
             ? 'habbo-client-new-user' : 'habbo-client-user';

@@ -115,6 +115,6 @@ class UserGroup extends ChocolateyModel
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store an User Group by AzureWEB. Groups need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store an User Group by Chocolatey. Groups need be created from the Server.");
     }
 }

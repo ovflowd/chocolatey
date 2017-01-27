@@ -68,7 +68,7 @@ class GroupMember extends ChocolateyModel
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Guild by AzureWEB. Guilds need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store a Guild by Chocolatey. Guilds need be created from the Server.");
     }
 
     /**

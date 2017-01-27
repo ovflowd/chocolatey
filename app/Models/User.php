@@ -145,7 +145,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['password'] = md5($password);
         $this->attributes['mail'] = $email;
         $this->attributes['account_created'] = time();
-        $this->attributes['motto'] = Config::get('azure.motto');
+        $this->attributes['motto'] = Config::get('chocolatey.motto');
         $this->attributes['auth_ticket'] = '';
 
         return $this;

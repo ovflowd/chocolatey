@@ -21,6 +21,6 @@ class HomePageController extends BaseController
      */
     public function show(Request $request)
     {
-        return response(view('habbo-web', ['request' => $request, 'azure' => Config::get('azure')]), 200);
+        return response(view('habbo-web', ['request' => $request, 'azure' => Config::get('chocolatey')]), 200);
     }
 }

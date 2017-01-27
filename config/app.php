@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'AzureWEBEngine'),
+    'key' => env('APP_KEY', 'ChocolateyEngine'),
 
     'cipher' => 'AES-256-CBC',
 

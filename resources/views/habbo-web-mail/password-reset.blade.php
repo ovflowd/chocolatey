@@ -56,7 +56,7 @@
                 <tr>
                     <td align="center" class="m_-5141648218262187434footer"
                         style="font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;border-collapse:collapse;color:#818a91;border-top:1px solid #aaaaaa;font-size:10px;line-height:1.4;padding:10px">
-                        © 2017 AzureWEB
+                        © 2017 Chocolatey
                     </td>
                 </tr>
                 </tbody>

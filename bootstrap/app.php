@@ -30,8 +30,8 @@ $app->configure('app');
 # Configure Auth Provider
 $app->configure('auth');
 
-# Configure AzureWEB Provider
-$app->configure('azure');
+# Configure Chocolatey Provider
+$app->configure('chocolatey');
 
 
 /*

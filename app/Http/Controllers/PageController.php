@@ -28,7 +28,7 @@ class PageController extends BaseController
         $pageName = $pageArray[0];
 
         return response(view("habbo-web-pages.production.{$pageCategory}.{$pageLanguage}.$pageName",
-            ['azure' => Config::get('azure')]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
+            ['azure' => Config::get('chocolatey')]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }
 
     /**
@@ -45,6 +45,6 @@ class PageController extends BaseController
 
         $userData = ['id' => $request->user()->uniqueId, 'name' => $request->user()->name, 'token' => $userToken];
 
-        return response(view($clientType, ['azure' => Config::get('azure'), 'user' => $userData]));
+        return response(view($clientType, ['azure' => Config::get('chocolatey'), 'user' => $userData]));
     }
 }

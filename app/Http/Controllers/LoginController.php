@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Models\ChocolateyId;
 use App\Models\Ban;
+use App\Models\ChocolateyId;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

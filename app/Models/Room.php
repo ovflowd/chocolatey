@@ -139,7 +139,7 @@ class Room extends Model
      */
     public function getImageUrlAttribute()
     {
-        $roomName = Config::get('azure.arcturus');
+        $roomName = Config::get('chocolatey.arcturus');
 
         return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
@@ -153,7 +153,7 @@ class Room extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        $roomName = Config::get('azure.arcturus');
+        $roomName = Config::get('chocolatey.arcturus');
 
         return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
@@ -222,6 +222,6 @@ class Room extends Model
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Room by AzureWEB. Rooms need be created from the Server.");
+        throw new InvalidMutatorException("You cannot store a Room by Chocolatey. Rooms need be created from the Server.");
     }
 }
