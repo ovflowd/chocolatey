@@ -247,3 +247,15 @@ $app->get('/habbo-web-l10n/', function () {
 
 # Render a specific Language Ecosystem
 $app->get('/habbo-web-l10n/{language}', 'LanguageController@render');
+
+/*
+|--------------------------------------------------------------------------
+| Habbo WEB Leaderboards
+|--------------------------------------------------------------------------
+|
+| Here are the Rooms Routes
+|
+*/
+
+# Render a specific Language Ecosystem
+$app->get('/habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');

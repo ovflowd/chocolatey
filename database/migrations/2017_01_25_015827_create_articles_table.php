@@ -27,6 +27,15 @@ class CreateArticlesTable extends Migration
             $table->string('thumbnailUrl', 255);
             $table->primary('id', 'chocolatey_articles_primary');
         });
+
+        DB::table('chocolatey_articles')->insert([[
+            'title' => 'Welcome to Chocolatey',
+            'description' => "You had successfully installed Chocolatey. Now let's drink a cup of Hot Chocolate?",
+            'content' => "<b>It's good see that you chosed right!</b><br><h4>Chocolatey</h4> it's the right choose. We're glad you chosed us.<br><i>- Claudio Santoro</i>",
+            'author' => 'System',
+            'imageUrl' => 'http://www.habboloji.com/wp-content/uploads/2015/02/211baw_generic_large_promo.png',
+            'thumbnailUrl' => 'https://habboo-a.akamaihd.net/web_images/habbo-web-articles/lpromo_gen15_10_thumb.png'
+        ]]);
     }
 
     /**
