@@ -36,7 +36,8 @@
             }();
         </script>
         <script>
-            window.session = <?= \App\Facades\Session::get('azureWEB') ?>;
+            window.session = <?= !empty(\App\Facades\Session::get('ChocolateyWEB')) ?
+                \App\Facades\Session::get('ChocolateyWEB') : 'null'; ?>;
             window.partnerCodeInfo = null;
             window.banner = null;
         </script>

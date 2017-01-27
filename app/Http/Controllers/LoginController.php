@@ -40,13 +40,13 @@ class LoginController extends BaseController
             $userData = User::where('mail', $request->json()->get('email'))
                 ->where('password', md5($request->json()->get('password')))->first();
 
-            $userData->trusted = $request->ip();
-
             if ($userData == null)
                 return null;
 
             if (Ban::query()->where('user_id', $userData->uniqueId)->count() > 0)
                 return null;
+
+            $userData->trusted = $request->ip();
 
             Session::set('ChocolateyWEB', $userData);
 

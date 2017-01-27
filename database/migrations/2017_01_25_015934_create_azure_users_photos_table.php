@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAzurePhotosTable extends Migration
+class CreateAzureUsersPhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateAzurePhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('chocolatey_user_photos', function (Blueprint $table) {
+        Schema::create('chocolatey_users_photos', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('creator_id');
             $table->string('previewUrl', 255);
@@ -25,7 +25,7 @@ class CreateAzurePhotosTable extends Migration
             $table->integer('version')->default(1);
             $table->enum('type', ["PHOTO", "SELFIE"])->default("PHOTO");
             $table->integer('room_id');
-            $table->primary('id', 'chocolatey_user_photos_primary');
+            $table->primary('id', 'chocolatey_users_photos_primary');
         });
     }
 
@@ -36,6 +36,6 @@ class CreateAzurePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chocolatey_user_photos');
+        Schema::dropIfExists('chocolatey_users_photos');
     }
 }

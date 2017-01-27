@@ -15,11 +15,10 @@ class CreateArticlesCategoriesTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_articles_categories', function (Blueprint $table) {
-            $table->integer('link', 125);
+            $table->string('link', 50);
             $table->string('translate', 125);
-            $table->primary('link');
-            $table->unique('link');
-            $table->primary('id', 'chocolatey_articles_categories_primary');
+            $table->primary('link', 'chocolatey_articles_categories_primary');
+            $table->unique('link', 'chocolatey_articles_categories_unique');
         });
 
         DB::table('chocolatey_articles_categories')->insert([

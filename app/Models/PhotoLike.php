@@ -19,7 +19,7 @@ class PhotoLike extends AzureModel
      *
      * @var string
      */
-    protected $table = 'chocolatey_user_photos_likes';
+    protected $table = 'chocolatey_users_photos_likes';
 
     /**
      * Store a new Photo Data

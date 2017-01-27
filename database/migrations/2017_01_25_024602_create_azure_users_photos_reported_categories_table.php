@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAzurePhotosReportedCategoriesTable extends Migration
+class CreateAzureUsersPhotosReportedCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,13 @@ class CreateAzurePhotosReportedCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chocolatey_user_photos_reported_categories', function (Blueprint $table) {
+        Schema::create('chocolatey_users_photos_reported_categories', function (Blueprint $table) {
             $table->integer('report_category');
             $table->string('description', 255);
-            $table->primary('report_category', 'chocolatey_user_photos_reported_categories_primary');
+            $table->primary('report_category', 'chocolatey_users_photos_reported_categories_primary');
         });
 
-        DB::table('chocolatey_user_photos_reported_categories')->insert([
+        DB::table('chocolatey_users_photos_reported_categories')->insert([
             ['report_category' => '1', 'description' => 'Displays Sexual Content'],
             ['report_category' => '8', 'description' => 'Reveal Real Life Information'],
             ['report_category' => '19', 'description' => 'Contains Hate Speech'],
@@ -36,6 +36,6 @@ class CreateAzurePhotosReportedCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chocolatey_user_photos_reported_categories');
+        Schema::dropIfExists('chocolatey_users_photos_reported_categories');
     }
 }

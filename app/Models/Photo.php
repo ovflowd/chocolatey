@@ -15,7 +15,7 @@ class Photo extends AzureModel
      *
      * @var string
      */
-    protected $table = 'chocolatey_user_photos';
+    protected $table = 'chocolatey_users_photos';
 
     /**
      * The Appender(s) of the Model

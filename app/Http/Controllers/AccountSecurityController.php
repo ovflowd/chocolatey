@@ -30,7 +30,7 @@ class AccountSecurityController extends BaseController
     {
         $mailVerified = AzureId::where('user_id', $request->user()->uniqueId)->first()->emailVerified;
 
-        if ($mailVerified == 1)
+        if ($mailVerified == 0)
             return response('identity_verification_required', 200);
 
         $featureEnabled = UserSecurity::query()->where('user_id', $request->user()->uniqueId)->count();

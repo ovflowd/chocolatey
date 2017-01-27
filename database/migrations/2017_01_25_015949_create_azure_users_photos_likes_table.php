@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAzurePhotosLikesTable extends Migration
+class CreateAzureUsersPhotosLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAzurePhotosLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chocolatey_user_photos_likes', function (Blueprint $table) {
+        Schema::create('chocolatey_users_photos_likes', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('photo_id');
             $table->string('username', 255);
-            $table->primary('id', 'chocolatey_user_photos_likes_primary');
+            $table->primary('id', 'chocolatey_users_photos_likes_primary');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateAzurePhotosLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chocolatey_user_photos_likes');
+        Schema::dropIfExists('chocolatey_users_photos_likes');
     }
 }
