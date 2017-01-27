@@ -35,7 +35,11 @@ return [
     | You need provide your Arcturus Account
     | <If you don't have one yet, register at http://arcturus.wf>
     |
-    | Camera it's a Paid Feature! Support Arcturus by Purchasing it!
+    | <Camera it's a donation perk feature.>
+    | *Arcturus it's Open Source and Coded without any Refunds*
+    | *Give today a Donation and makes that the project continues being published and updated*
+    |
+    |                                   - The General
     |
     */
 

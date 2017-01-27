@@ -133,8 +133,6 @@ class Room extends Model
     /**
      * Get Image Url
      *
-     * @TODO: Need Configure for Arcturus Imaging Server
-     *
      * @return string
      */
     public function getImageUrlAttribute()
@@ -146,8 +144,6 @@ class Room extends Model
 
     /**
      * Get Thumbnail Url
-     *
-     * @TODO: Need Configure for Arcturus Imaging Server
      *
      * @return string
      */
