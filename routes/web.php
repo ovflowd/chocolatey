@@ -36,6 +36,9 @@ $app->get('api/public/help', function () {
     return redirect(Config::get('azure.help'));
 });
 
+# Get Data from a Room
+$app->get('api/public/rooms/{room}', 'RoomsController@getRoom');
+
 # Create an User Request
 $app->post('api/public/registration/new', 'LoginController@register');
 
@@ -259,3 +262,4 @@ $app->get('/habbo-web-l10n/{language}', 'LanguageController@render');
 
 # Render a specific Language Ecosystem
 $app->get('/habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');
+$app->get('/habbo-web-leaderboards//{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');

@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
@@ -13,7 +12,7 @@ use Sofa\Eloquence\Metable\InvalidMutatorException;
  * Class Room
  * @package App\Models
  */
-class Room extends Model implements AuthenticatableContract, AuthorizableContract
+class Room extends Model
 {
     use Eloquence, Mappable;
 
@@ -40,9 +39,11 @@ class Room extends Model implements AuthenticatableContract, AuthorizableContrac
         'uniqueId' => 'id',
         'ownerName' => 'owner_name',
         'ownerUniqueId' => 'owner_id',
-        'publicRoom' => 'is_public',
         'doorMode' => 'state',
-        'leaderboardValue' => 'score'
+        'leaderboardValue' => 'score',
+        'maximumVisitors' => 'users_max',
+        'habboGroupId' => 'guild_id',
+        'rating' => 'score',
     ];
 
     /**
@@ -57,9 +58,13 @@ class Room extends Model implements AuthenticatableContract, AuthorizableContrac
         'imageUrl',
         'leaderboardValue',
         'doorMode',
+        'maximumVisitors',
         'publicRoom',
         'ownerUniqueId',
-        'ownerName'
+        'ownerName',
+        'showOwnerName',
+        'categories',
+        'rating'
     ];
 
     /**
@@ -108,13 +113,50 @@ class Room extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
-     * The attributes that should be casted to native types.
+     * Get Room Tags
      *
-     * @var array
+     * @return array
      */
-    protected $casts = [
+    public function getTagsAttribute()
+    {
+        return !empty($this->attributes['tags']) ? explode(';', $this->attributes['tags']) : [];
+    }
 
-    ];
+    /**
+     * Get Image Url
+     *
+     * @TODO: Need Configure for Arcturus Imaging Server
+     *
+     * @return string
+     */
+    public function getImageUrlAttribute()
+    {
+        return 'https://habbo-stories-content.s3.amazonaws.com/fullroom-photo/hhus/' . $this->attributes['id'];
+    }
+
+    /**
+     * Get Thumbnail Url
+     *
+     * @TODO: Need Configure for Arcturus Imaging Server
+     *
+     * @return string
+     */
+    public function getThumbnailUrlAttribute()
+    {
+        return 'https://habbo-stories-content.s3.amazonaws.com/navigator-thumbnail/hhus/' . $this->attributes['id'];
+    }
+
+    /**
+     * Return if need show Owner Name
+     *
+     * @TODO: What this really does?
+     *
+     * @return bool
+     */
+    public function getShowOwnerNameAttribute()
+    {
+        return true;
+    }
 
     /**
      * Set a Leader Board Position
@@ -144,6 +186,20 @@ class Room extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getPublicRoomAttribute()
     {
         return $this->attributes['is_public'] == 1;
+    }
+
+    /**
+     * Get Room Category
+     *
+     * @return array
+     */
+    public function getCategoriesAttribute()
+    {
+        $roomCategory = DB::table('navigator_flatcats')->where('id', $this->attributes['category'])->first();
+
+        $roomCategory = str_replace('}', '', str_replace('${', '', $roomCategory->caption));
+
+        return [$roomCategory];
     }
 
     /**
