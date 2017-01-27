@@ -25,6 +25,13 @@ class UserPreferences extends Model
     protected $table = 'chocolatey_users_preferences';
 
     /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array

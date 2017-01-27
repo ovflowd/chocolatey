@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
  * Class PhotoReport
  * @package App\Models
  */
-class PhotoReport extends AzureModel
+class PhotoReport extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -16,12 +16,21 @@ class PhotoReport extends AzureModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'chocolatey_users_photos_reported';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
     /**
      * The Appender(s) of the Model
      *

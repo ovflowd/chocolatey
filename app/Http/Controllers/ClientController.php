@@ -23,7 +23,8 @@ class ClientController extends BaseController
     {
         $hotelUrl = Config::get('azure.url');
 
-        $accountType = in_array('NEW_USER', $request->user()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
+        $accountType = in_array('NEW_USER', $request->user()->traits)
+            ? 'habbo-client-new-user' : 'habbo-client-user';
 
         return response()->json(['clienturl' => "{$hotelUrl}client/{$accountType}"], 200, array(), JSON_UNESCAPED_SLASHES);
     }

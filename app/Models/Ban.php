@@ -6,7 +6,7 @@ namespace App\Models;
  * Class Ban
  * @package App\Models
  */
-class Ban extends AzureModel
+class Ban extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -14,12 +14,20 @@ class Ban extends AzureModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'bans';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * Store an User Ban

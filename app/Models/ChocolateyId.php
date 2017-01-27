@@ -6,10 +6,10 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class AzureMail
+ * Class ChocolateyId
  * @package App\Models
  */
-class AzureMail extends AzureModel
+class ChocolateyId extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -23,7 +23,24 @@ class AzureMail extends AzureModel
      *
      * @var string
      */
-    protected $table = 'chocolatey_users_mail_requests';
+    protected $table = 'chocolatey_users_id';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
+     * The Appender(s) of the Model
+     *
+     * @var array
+     */
+    protected $appends = [
+        'relatedAzureId',
+        'relatedAccounts'
+    ];
 
     /**
      * Store a new Azure Id Account
@@ -35,7 +52,7 @@ class AzureMail extends AzureModel
      */
     public function store($userId, $userMail)
     {
-        if (AzureId::query()->where('user_id', $userId)->count() > 0)
+        if (ChocolateyId::query()->where('user_id', $userId)->count() > 0)
             throw new ErrorException("An User with this Id already registered.");
 
         $this->attributes['user_id'] = $userId;
@@ -61,6 +78,6 @@ class AzureMail extends AzureModel
      */
     public function getRelatedAzureIdAttribute()
     {
-        return AzureId::query()->where('mail', $this->attributes['mail'])->get();
+        return ChocolateyId::query()->where('mail', $this->attributes['mail'])->get();
     }
 }

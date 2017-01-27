@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
@@ -29,6 +30,13 @@ class Room extends Model
      * @var string
      */
     protected $table = 'rooms';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that will be mapped
@@ -131,7 +139,9 @@ class Room extends Model
      */
     public function getImageUrlAttribute()
     {
-        return 'https://habbo-stories-content.s3.amazonaws.com/fullroom-photo/hhus/' . $this->attributes['id'];
+        $roomName = Config::get('azure.arcturus');
+
+        return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**
@@ -143,7 +153,9 @@ class Room extends Model
      */
     public function getThumbnailUrlAttribute()
     {
-        return 'https://habbo-stories-content.s3.amazonaws.com/navigator-thumbnail/hhus/' . $this->attributes['id'];
+        $roomName = Config::get('azure.arcturus');
+
+        return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**

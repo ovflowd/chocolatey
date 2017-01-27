@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -40,7 +40,8 @@ class PageController extends BaseController
      */
     public function getClient(Request $request, $clientType)
     {
-        DB::table('users')->where('id', $request->user()->uniqueId)->update(['auth_ticket' => ($userToken = (new ClientController)->generateToken())]);
+        User::find($request->user()->uniqueId)->update([
+            'auth_ticket' => ($userToken = (new ClientController)->generateToken())]);
 
         $userData = ['id' => $request->user()->uniqueId, 'name' => $request->user()->name, 'token' => $userToken];
 

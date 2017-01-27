@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Models\AzureId;
+use App\Models\ChocolateyId;
 use App\Models\User;
 use App\Models\UserPreferences;
+use App\Models\UserSettings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -26,9 +26,7 @@ class AccountController extends BaseController
      */
     public function checkName(Request $request)
     {
-        $desiredUsername = $request->json()->get('name');
-
-        if (User::where('username', $desiredUsername)->count() > 0)
+        if (User::where('username', $request->json()->get('name'))->count() > 0)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
@@ -42,11 +40,9 @@ class AccountController extends BaseController
      */
     public function selectName(Request $request)
     {
-        $desiredUsername = $request->json()->get('name');
+        User::find($request->user()->uniqueId)->update(['username' => $request->json()->get('name')]);
 
-        User::where('id', $request->user()->uniqueId)->update(['username' => $desiredUsername]);
-
-        Session::set('ChocolateyWEB', User::where('id', $request->user()->uniqueId)->first());
+        Session::set('ChocolateyWEB', User::find($request->user()->uniqueId));
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -62,10 +58,11 @@ class AccountController extends BaseController
         if ($request->json()->get('gender') != 'm' && $request->json()->get('gender') != 'f')
             return response(null, 400);
 
-        User::where('id', $request->user()->uniqueId)
-            ->update(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
+        User::find($request->user()->uniqueId)->update([
+            'look' => $request->json()->get('figure'),
+            'gender' => $request->json()->get('gender')]);
 
-        Session::set('ChocolateyWEB', ($userData = User::where('id', $request->user()->uniqueId)->first()));
+        Session::set('ChocolateyWEB', ($userData = User::find($request->user()->uniqueId)));
 
         return response()->json($userData);
     }
@@ -81,9 +78,7 @@ class AccountController extends BaseController
      */
     public function selectRoom(Request $request)
     {
-        $roomIndex = $request->json()->get('roomIndex');
-
-        if ($roomIndex != 1 && $roomIndex != 2 && $roomIndex != 3)
+        if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response(null, 400);
 
         return response(null, 200);
@@ -110,7 +105,7 @@ class AccountController extends BaseController
      */
     public function getPreferences(Request $request)
     {
-        $userPreferences = UserPreferences::where('user_id', $request->user()->uniqueId)->first();
+        $userPreferences = UserPreferences::find($request->user()->uniqueId);
 
         foreach ($userPreferences->getAttributes() as $attributeName => $attributeValue)
             $userPreferences->{$attributeName} = $attributeValue == 1;
@@ -126,7 +121,13 @@ class AccountController extends BaseController
      */
     public function savePreferences(Request $request)
     {
-        UserPreferences::query()->where('user_id', $request->user()->uniqueId)->update((array)$request->json()->all());
+        UserSettings::updateOrCreate([
+            'user_id' => $request->user()->uniqueId,
+            'block_following' => $request->json()->get('friendCanFollow') == false,
+            'block_friendrequests' => $request->json()->get('friendRequestEnabled') == false
+        ]);
+
+        UserPreferences::find($request->user()->uniqueId)->update((array)$request->json()->all());
 
         return response(null, 200);
     }
@@ -139,9 +140,7 @@ class AccountController extends BaseController
      */
     public function getAvatars(Request $request)
     {
-        $userEmail = $request->user()->email;
-
-        $azureIdAccounts = AzureId::where('mail', $userEmail)->first();
+        $azureIdAccounts = ChocolateyId::where('mail', $request->user()->email)->first();
 
         return response()->json($azureIdAccounts->relatedAccounts, 200);
     }
@@ -155,9 +154,7 @@ class AccountController extends BaseController
      */
     public function checkNewName(Request $request)
     {
-        $userName = $request->input('name');
-
-        if (DB::table('users')->where('username', $userName)->count() > 0)
+        if (User::where('username', $request->input('name'))->count() > 0)
             return response()->json(['isAvailable' => false]);
 
         return response()->json(['isAvailable' => true]);
@@ -171,15 +168,13 @@ class AccountController extends BaseController
      */
     public function createAvatar(Request $request)
     {
-        $userName = $request->json()->get('name');
-
-        if (DB::table('users')->where('username', $userName)->count() > 0)
+        if (User::where('username', $request->json()->get('name'))->count() > 0)
             return response()->json(['isAvailable' => false]);
 
-        $userData = DB::table('users')->where('id', $request->user()->uniqueId)->first();
+        $userData = User::find($request->user()->uniqueId);
 
         $this->createUser($request, [
-            'username' => $userName,
+            'username' => $request->json()->get('name'),
             'password' => $userData->password,
             'mail' => $userData->mail]);
 
@@ -200,7 +195,7 @@ class AccountController extends BaseController
 
         $userData = User::where('username', $userInfo['username'])->first();
 
-        (new AzureId)->store($userData->uniqueId, $userInfo['mail'])->save();
+        (new ChocolateyId)->store($userData->uniqueId, $userInfo['mail'])->save();
 
         (new UserPreferences)->store($userData->uniqueId)->save();
 

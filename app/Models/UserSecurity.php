@@ -6,7 +6,7 @@ namespace App\Models;
  * Class UserSecurity
  * @package App\Models
  */
-class UserSecurity extends AzureModel
+class UserSecurity extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -21,6 +21,13 @@ class UserSecurity extends AzureModel
      * @var string
      */
     protected $table = 'chocolatey_users_security';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes excluded from the model's JSON form.

@@ -6,7 +6,7 @@ namespace App\Models;
  * Class Article
  * @package App\Models
  */
-class Article extends AzureModel
+class Article extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -20,6 +20,13 @@ class Article extends AzureModel
      * @var string
      */
     protected $table = 'chocolatey_articles';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * Store a new CMS Article

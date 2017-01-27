@@ -6,7 +6,7 @@ namespace App\Models;
  * Class TrustedDevice
  * @package App\Models
  */
-class TrustedDevice extends AzureModel
+class TrustedDevice extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -21,6 +21,13 @@ class TrustedDevice extends AzureModel
      * @var string
      */
     protected $table = 'chocolatey_users_security_trusted';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * The attributes excluded from the model's JSON form.

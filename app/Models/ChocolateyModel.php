@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class AzureModel
  * @package App\Models
  */
-abstract class AzureModel extends Model
+abstract class ChocolateyModel extends Model
 {
 
 }

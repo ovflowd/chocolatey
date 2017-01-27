@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Models\AzureId;
+use App\Models\ChocolateyId;
 use App\Models\TrustedDevice;
 use App\Models\User;
 use App\Models\UserSecurity;
@@ -28,14 +28,12 @@ class AccountSecurityController extends BaseController
      */
     public function featureStatus(Request $request)
     {
-        $mailVerified = AzureId::where('user_id', $request->user()->uniqueId)->first()->emailVerified;
-
-        if ($mailVerified == 0)
+        if (ChocolateyId::find($request->user()->uniqueId)->emailVerified == 0)
             return response('identity_verification_required', 200);
 
-        $featureEnabled = UserSecurity::query()->where('user_id', $request->user()->uniqueId)->count();
+        $featureEnabled = UserSecurity::find($request->user()->uniqueId);
 
-        return response($featureEnabled > 0 ? 'enabled' : 'disabled', 200);
+        return response($featureEnabled !== null ? 'enabled' : 'disabled', 200);
     }
 
     /**
@@ -51,8 +49,8 @@ class AccountSecurityController extends BaseController
         )
             return response()->json(['error' => 'invalid_password'], 400);
 
-        if (UserSecurity::where('user_id', $request->user()->uniqueId)->count() > 0):
-            UserSecurity::where('user_id', $request->user()->uniqueId)->update([
+        if (UserSecurity::find($request->user()->uniqueId) !== null):
+            UserSecurity::find($request->user()->uniqueId)->update([
                 'firstQuestion' => $request->json()->get('questionId1'),
                 'secondQuestion' => $request->json()->get('questionId2'),
                 'firstAnswer' => $request->json()->get('answer1'),
@@ -78,7 +76,7 @@ class AccountSecurityController extends BaseController
      */
     public function disable(Request $request)
     {
-        UserSecurity::where('user_id', $request->user()->uniqueId)->delete();
+        UserSecurity::find($request->user()->uniqueId)->delete();
 
         return response(null, 204);
     }
@@ -91,7 +89,7 @@ class AccountSecurityController extends BaseController
      */
     public function reset(Request $request)
     {
-        TrustedDevice::where('user_id', $request->user()->uniqueId)->delete();
+        TrustedDevice::find($request->user()->uniqueId)->delete();
 
         return response(null, 204);
     }
@@ -106,19 +104,17 @@ class AccountSecurityController extends BaseController
      */
     public function changePassword(Request $request)
     {
-        $userId = $request->user()->uniqueId;
-
-        if (DB::table('users')->where('id', $userId)
+        if (DB::table('users')->where('id', $request->user()->uniqueId)
                 ->where('password', md5($request->json()->get('currentPassword')))->count() == 0
         )
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
-        if (DB::table('users')->where('id', $userId)
+        if (DB::table('users')->where('id', $request->user()->uniqueId)
                 ->where('password', md5($request->json()->get('password')))->count() == 1
         )
             return response()->json(['error' => 'password.used_earlier'], 409);
 
-        DB::table('users')->where('id', $userId)->update(['password' => md5($request->json()->get('password'))]);
+        User::find($request->user()->uniqueId)->update(['password' => md5($request->json()->get('password'))]);
 
         return response(null, 204);
     }
@@ -140,7 +136,7 @@ class AccountSecurityController extends BaseController
         if (strpos($request->json()->get('newEmail'), '@') == false)
             return response()->json(['error' => 'registration_email'], 400);
 
-        if (AzureId::where('mail', $request->json()->get('newEmail'))->count() > 0)
+        if (ChocolateyId::where('mail', $request->json()->get('newEmail'))->count() > 0)
             return response()->json(['error' => 'changeEmail.email_already_in_use'], 400);
 
         // @TODO: In the futurue the e-mail only will be changed after e-mail confirmation
@@ -159,10 +155,10 @@ class AccountSecurityController extends BaseController
      */
     public function getQuestions(Request $request)
     {
-        if (UserSecurity::query()->where('user_id', $request->user()->uniqueId)->count() == 0)
+        if (UserSecurity::find($request->user()->uniqueId) == null)
             return response(null, 200);
 
-        $userSecurity = UserSecurity::where('user_id', $request->user()->uniqueId)->first();
+        $userSecurity = UserSecurity::find($request->user()->uniqueId);
 
         $firstQuestion = new stdClass();
         $firstQuestion->questionId = $userSecurity->firstQuestion;
@@ -175,6 +171,12 @@ class AccountSecurityController extends BaseController
         return response()->json([$firstQuestion, $secondQuestion]);
     }
 
+    /**
+     * Verify User Security Questions
+     *
+     * @param Request $request
+     * @return ResponseFactory
+     */
     public function verifyQuestions(Request $request)
     {
         if (UserSecurity::where('user_id', $request->user()->uniqueId)

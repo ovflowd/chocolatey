@@ -8,7 +8,7 @@ use Sofa\Eloquence\Metable\InvalidMutatorException;
  * Class Photo
  * @package App\Models
  */
-class Photo extends AzureModel
+class Photo extends ChocolateyModel
 {
     /**
      * The table associated with the model.
@@ -16,6 +16,13 @@ class Photo extends AzureModel
      * @var string
      */
     protected $table = 'chocolatey_users_photos';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * The Appender(s) of the Model

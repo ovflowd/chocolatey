@@ -8,7 +8,7 @@ use InvalidArgumentException;
  * Class ArticleCategory
  * @package App\Models
  */
-class ArticleCategory extends AzureModel
+class ArticleCategory extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -16,12 +16,20 @@ class ArticleCategory extends AzureModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'chocolatey_articles_categories';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'link';
 
     /**
      * Store a New Article Category

@@ -80,7 +80,10 @@ class ArticleController extends BaseController
     {
         $articleId = substr($articleName, 0, strpos($articleName, '_'));
 
-        $articleContent = Article::where('id', $articleId)->first();
+        $articleContent = Article::find($articleId);
+
+        if ($articleContent == null)
+            return response(null, 404);
 
         $articleCategory = $articleContent->categories;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Models\AzureId;
+use App\Models\ChocolateyId;
 use App\Models\Ban;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -77,19 +77,16 @@ class LoginController extends BaseController
      */
     public function register(Request $request)
     {
-        $email = $request->json()->get('email');
-        $password = $request->json()->get('password');
-
-        if (strpos($email, '@') == false)
+        if (strpos($request->json()->get('email'), '@') == false)
             return response()->json(['error' => 'registration_email'], 409);
 
-        if (AzureId::query()->where('mail', $email)->count() > 0)
+        if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
         $userData = (new AccountController)->createUser($request, [
-            'username' => $this->generateUserName($email),
-            'password' => $password,
-            'mail' => $email], true);
+            'username' => $this->generateUserName($request->json()->get('email')),
+            'password' => $request->json()->get('password'),
+            'mail' => $request->json()->get('email')], true);
 
         return response()->json($userData, 200);
     }

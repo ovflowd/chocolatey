@@ -60,12 +60,10 @@ class PublicPhotosController extends BaseController
      */
     public function likePhoto(Request $request, $photoId)
     {
-        $userName = $request->user()->name;
-
-        if (PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->count() > 0)
+        if (PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
             return response(null, 200);
 
-        (new PhotoLike)->store($photoId, $userName)->save();
+        (new PhotoLike)->store($photoId, $request->user()->name)->save();
 
         return response(null, 200);
     }
@@ -79,12 +77,10 @@ class PublicPhotosController extends BaseController
      */
     public function unlikePhoto(Request $request, $photoId)
     {
-        $userName = $request->user()->name;
-
-        if (PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->count() == 0)
+        if (PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
             return response(null, 200);
 
-        PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->delete();
+        PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
         return response(null, 200);
     }

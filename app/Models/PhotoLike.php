@@ -6,7 +6,7 @@ namespace App\Models;
  * Class PhotoLike
  * @package App\Models
  */
-class PhotoLike extends AzureModel
+class PhotoLike extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -14,12 +14,20 @@ class PhotoLike extends AzureModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'chocolatey_users_photos_likes';
+
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
     /**
      * Store a new Photo Data

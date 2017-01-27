@@ -28,6 +28,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Arcturus Account
+    |--------------------------------------------------------------------------
+    |
+    | In Order to Use the Camera Successfully
+    | You need provide your Arcturus Account
+    | <If you don't have one yet, register at http://arcturus.wf>
+    |
+    | Camera it's a Paid Feature! Support Arcturus by Purchasing it!
+    |
+    */
+
+    'arcturus' => 'your-username',
+
+    /*
+    |--------------------------------------------------------------------------
     | Twitter Configuration
     |--------------------------------------------------------------------------
     |
