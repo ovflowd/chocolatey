@@ -25,12 +25,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'users';
+
     /**
      * The attributes that will be mapped
      *
@@ -47,6 +49,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'emailVerified' => 'mail_verified',
         'accountId' => 'id'
     ];
+
     /**
      * The Appender(s) of the Model
      *
@@ -71,6 +74,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'emailVerified',
         'accountId'
     ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -79,6 +83,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $fillable = [
         'email',
     ];
+
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -106,6 +111,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'points',
         'rank'
     ];
+
     /**
      * The attributes that should be casted to native types.
      *
@@ -168,13 +174,25 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * Set Trusted Attribute
+     * by a remote Address being in White list
+     *
+     * @param string $remoteAddress
+     */
+    public function setTrustedAttribute($remoteAddress)
+    {
+        $this->attributes['trusted'] = in_array($remoteAddress,
+            UserSecurity::where('user_id', $this->attributes['id'])->first()->trustedDevices);
+    }
+
+    /**
      * We don't care about this?
      *
      * @return bool
      */
     public function getTrustedAttribute()
     {
-        return true;
+        return $this->attributes['trusted'];
     }
 
     /**

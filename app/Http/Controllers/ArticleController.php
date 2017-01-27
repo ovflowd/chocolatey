@@ -42,8 +42,8 @@ class ArticleController extends BaseController
      */
     protected function front()
     {
-        return view('habbo-web-news.articles-front', ['set' => Article::query()
-            ->where('categories', 'like', '%all%')->orderBy('id', 'ASC')->limit(10)->get()]);
+        return view('habbo-web-news.articles-front',
+            ['set' => Article::where('categories', 'like', '%all%')->orderBy('id', 'ASC')->limit(10)->get()]);
     }
 
     /**
@@ -61,7 +61,7 @@ class ArticleController extends BaseController
         return view('habbo-web-news.articles-category', [
             'category' => $categoryName,
             'categories' => ArticleCategory::all(),
-            'articleSet' => Article::query()->where('categories', 'like', "%$categoryName%")
+            'articleSet' => Article::where('categories', 'like', "%$categoryName%")
                 ->where('id', '>=', $categoryPage == 1 ? $categoryPage : ($categoryPage * 3))
                 ->orderBy('id', 'ASC')->limit(10)->get()
         ]);
@@ -80,15 +80,14 @@ class ArticleController extends BaseController
     {
         $articleId = substr($articleName, 0, strpos($articleName, '_'));
 
-        /*** @var $articleContent Article */
-        $articleContent = Article::query()->where('id', $articleId)->first();
+        $articleContent = Article::where('id', $articleId)->first();
 
         $articleCategory = $articleContent->categories;
 
         return response(view('habbo-web-news.articles-view', [
             'article' => $articleContent,
-            'latest' => Article::query()->select('id', 'createdAt', 'title')->orderBy('id', 'ASC')->limit(10)->get(),
-            'related' => Article::query()->where('categories', 'like', '%' . end($articleCategory)->link . '%')
+            'latest' => Article::select('id', 'createdAt', 'title')->orderBy('id', 'ASC')->limit(10)->get(),
+            'related' => Article::where('categories', 'like', '%' . end($articleCategory)->link . '%')
                 ->orderBy('id', 'ASC')->limit(5)->get()
         ]), 200)->header('Content-Type', 'text/html; charset=UTF-8');
     }

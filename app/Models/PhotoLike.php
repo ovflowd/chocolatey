@@ -30,8 +30,8 @@ class PhotoLike extends AzureModel
      */
     public function store($photoId, $userName)
     {
-        $this->attributes['photoId'] = $photoId;
-        $this->attributes['userName'] = $userName;
+        $this->attributes['photo_id'] = $photoId;
+        $this->attributes['username'] = $userName;
 
         return $this;
     }

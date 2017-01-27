@@ -22,27 +22,31 @@ class AccountController extends BaseController
      * Check an User Name
      *
      * @param Request $request
-     * @param string $selectType
      * @return JsonResponse
      */
-    public function checkName(Request $request, $selectType)
+    public function checkName(Request $request)
     {
-        if ($selectType != 'select' && $selectType != 'check')
-            return response(null, 400);
-
         $desiredUsername = $request->json()->get('name');
 
-        if (DB::table('users')->where('username', $desiredUsername)->count() > 0)
+        if (User::where('username', $desiredUsername)->count() > 0)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
-        if ($selectType == 'select'):
-            $userData = $request->user();
-            $userData->name = $desiredUsername;
+        return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
+    }
 
-            DB::table('users')->where('id', $userData->uniqueId)->update(['username' => $userData->name]);
+    /**
+     * Select an User Name
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function selectName(Request $request)
+    {
+        $desiredUsername = $request->json()->get('name');
 
-            Session::set('azureWEB', $userData);
-        endif;
+        User::where('id', $request->user()->uniqueId)->update(['username' => $desiredUsername]);
+
+        Session::set('azureWEB', User::where('id', $request->user()->uniqueId)->first());
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -58,14 +62,10 @@ class AccountController extends BaseController
         if ($request->json()->get('gender') != 'm' && $request->json()->get('gender') != 'f')
             return response(null, 400);
 
-        $userData = $request->user();
-        $userData->figureString = $request->json()->get('figure');
-        $userData->gender = $request->json()->get('gender');
+        User::where('id', $request->user()->uniqueId)
+            ->update(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
 
-        DB::table('users')->where('id', $userData->uniqueId)->update(
-            ['look' => $userData->figureString, 'gender' => $userData->gender]);
-
-        Session::set('azureWEB', $userData);
+        Session::set('azureWEB', ($userData = User::where('id', $request->user()->uniqueId)->first()));
 
         return response()->json($userData);
     }
@@ -110,7 +110,7 @@ class AccountController extends BaseController
      */
     public function getPreferences(Request $request)
     {
-        $userPreferences = UserPreferences::query()->where('user_id', $request->user()->uniqueId)->first();
+        $userPreferences = UserPreferences::where('user_id', $request->user()->uniqueId)->first();
 
         foreach ($userPreferences->getAttributes() as $attributeName => $attributeValue)
             $userPreferences->{$attributeName} = $attributeValue == 1;
@@ -141,7 +141,7 @@ class AccountController extends BaseController
     {
         $userEmail = $request->user()->email;
 
-        $azureIdAccounts = AzureId::query()->where('mail', $userEmail)->first();
+        $azureIdAccounts = AzureId::where('mail', $userEmail)->first();
 
         return response()->json($azureIdAccounts->relatedAccounts, 200);
     }
@@ -163,6 +163,12 @@ class AccountController extends BaseController
         return response()->json(['isAvailable' => true]);
     }
 
+    /**
+     * Create a New User Avatar
+     *
+     * @param Request $request
+     * @return ResponseFactory
+     */
     public function createAvatar(Request $request)
     {
         $userName = $request->json()->get('name');
@@ -172,16 +178,38 @@ class AccountController extends BaseController
 
         $userData = DB::table('users')->where('id', $request->user()->uniqueId)->first();
 
-        (new User)->store($userName, $userData->password, $userData->mail)->save();
-
-        $userNewData = User::query()->where('username', $userName)->first();
-
-        (new AzureId)->store($userNewData->uniqueId, $userData->mail)->save();
-
-        (new UserPreferences)->store($userNewData->uniqueId)->save();
-
-        Session::set('azureWEB', $userNewData);
+        $this->createUser($request, [
+            'username' => $userName,
+            'password' => $userData->password,
+            'mail' => $userData->mail]);
 
         return response(null, 200);
+    }
+
+    /**
+     * Create a New User
+     *
+     * @param Request $request
+     * @param array $userInfo
+     * @param bool $newUser
+     * @return User
+     */
+    public function createUser(Request $request, array $userInfo, $newUser = false)
+    {
+        (new User)->store($userInfo['username'], $userInfo['password'], $userInfo['mail'])->save();
+
+        $userData = User::where('username', $userInfo['username'])->first();
+
+        (new AzureId)->store($userData->uniqueId, $userInfo['mail'])->save();
+
+        (new UserPreferences)->store($userData->uniqueId)->save();
+
+        $userData->trusted = $request->ip();
+
+        $userData->traits = $newUser ? ["NEW_USER", "USER"] : ["USER"];
+
+        Session::set('azureWEB', $userData);
+
+        return $userData;
     }
 }

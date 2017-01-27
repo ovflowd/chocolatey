@@ -28,11 +28,36 @@ class UserSecurity extends AzureModel
      * @var array
      */
     protected $hidden = [
-        'user_id'
+        'user_id',
     ];
 
     /**
-     * Store a new Azure Id Account
+     * The Appender(s) of the Model
+     *
+     * @var array
+     */
+    protected $appends = [
+        'trustedDevices'
+    ];
+
+    /**
+     * Get Trusted Devices
+     *
+     * @return mixed
+     */
+    public function getTrustedDevicesAttribute()
+    {
+        $deviceAddresses = [];
+
+        foreach (TrustedDevice::where('user_id', $this->attributes['user_id'])->get() as $device)
+            $deviceAddresses[] = $device->ip_address;
+
+        return $deviceAddresses;
+    }
+
+    /**
+     * Store a new User Security Metadata
+     *
      * @param int $userId
      * @param int $firstQuestion
      * @param int $secondQuestion

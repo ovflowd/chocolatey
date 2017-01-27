@@ -13,7 +13,6 @@
 # Main Request Route
 
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Redirect;
 
 $app->get('/', 'HomePageController@show');
 
@@ -84,6 +83,12 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     # User Security Settings Disable
     $app->get('api/safetylock/disable', 'AccountSecurityController@disable');
 
+    # User Security Settings getQuestions
+    $app->get('api/safetylock/questions', 'AccountSecurityController@getQuestions');
+
+    # User Security Settings Verify Questions
+    $app->post('api/safetylock/unlock', 'AccountSecurityController@verifyQuestions');
+
     # User Security Settings Reset Devices
     $app->get('api/safetylock/resetTrustedLogins', 'AccountSecurityController@reset');
 
@@ -98,8 +103,11 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
         return response(null, 204);
     });
 
-    # New User Client Check/Select Username
-    $app->post('api/newuser/name/{selectType}', 'AccountController@checkName');
+    # New User Client Check
+    $app->post('api/newuser/name/check', 'AccountController@checkName');
+
+    # New User Client Select Username
+    $app->post('api/newuser/name/select', 'AccountController@selectName');
 
     # Save User Look
     $app->post('api/user/look/save', 'AccountController@saveLook');
@@ -163,6 +171,12 @@ $app->get('/extradata/public/users/stories', function () {
 $app->group(['middleware' => 'auth'], function () use ($app) {
     # Report a Specific Photo
     $app->post('/extradata/private/creation/{photo}/report', 'PublicPhotosController@report');
+
+    # Like a Specific Photo
+    $app->post('/extradata/private/like/{photo}', 'PublicPhotosController@likePhoto');
+
+    # Like a Specific Photo
+    $app->post('/extradata/private/unlike/{photo}', 'PublicPhotosController@unlikePhoto');
 
     # Recent Photo Moderations
     # @TODO: Synchronize with Photo Moderations

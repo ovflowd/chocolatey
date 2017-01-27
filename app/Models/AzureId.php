@@ -17,12 +17,14 @@ class AzureId extends AzureModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'azure_users_id';
+
     /**
      * The Appender(s) of the Model
      *

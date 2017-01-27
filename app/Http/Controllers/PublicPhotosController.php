@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\PhotoLike;
 use App\Models\PhotoReport;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -46,6 +47,44 @@ class PublicPhotosController extends BaseController
             return response(null, 429);
 
         (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $userId)->save();
+
+        return response(null, 200);
+    }
+
+    /**
+     * Like a Photo
+     *
+     * @param Request $request
+     * @param int $photoId
+     * @return Response
+     */
+    public function likePhoto(Request $request, $photoId)
+    {
+        $userName = $request->user()->name;
+
+        if (PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->count() > 0)
+            return response(null, 200);
+
+        (new PhotoLike)->store($photoId, $userName)->save();
+
+        return response(null, 200);
+    }
+
+    /**
+     * Unlike a Photo
+     *
+     * @param Request $request
+     * @param int $photoId
+     * @return Response
+     */
+    public function unlikePhoto(Request $request, $photoId)
+    {
+        $userName = $request->user()->name;
+
+        if (PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->count() == 0)
+            return response(null, 200);
+
+        PhotoLike::query()->where('username', $userName)->where('photo_id', $photoId)->delete();
 
         return response(null, 200);
     }

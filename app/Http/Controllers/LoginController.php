@@ -6,7 +6,6 @@ use App\Facades\Session;
 use App\Models\AzureId;
 use App\Models\Ban;
 use App\Models\User;
-use App\Models\UserPreferences;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -38,16 +37,20 @@ class LoginController extends BaseController
     public function login(Request $request)
     {
         if ($request->json()->has('email') && $request->json()->has('password')):
-            Session::set('azureWEB', User::query()->where('mail', $request->json()->get('email'))
-                ->where('password', md5($request->json()->get('password')))->first());
+            $userData = User::where('mail', $request->json()->get('email'))
+                ->where('password', md5($request->json()->get('password')))->first();
 
-            if (Session::get('azureWEB') == null)
+            $userData->trusted = $request->ip();
+
+            if ($userData == null)
                 return null;
 
-            if (Ban::query()->where('user_id', Session::get('azureWEB')->id)->count() > 0)
+            if (Ban::query()->where('user_id', $userData->uniqueId)->count() > 0)
                 return null;
 
-            return Session::get('azureWEB');
+            Session::set('azureWEB', $userData);
+
+            return $userData;
         endif;
 
         return null;
@@ -83,17 +86,10 @@ class LoginController extends BaseController
         if (AzureId::query()->where('mail', $email)->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        (new User)->store($userName = $this->generateUserName($email), $password, $email)->save();
-
-        $userData = User::where('username', $userName)->first();
-
-        $userData->traits = ["NEW_USER", "USER"];
-
-        (new AzureId)->store($userData->uniqueId, $email)->save();
-
-        (new UserPreferences)->store($userData->uniqueId)->save();
-
-        Session::set('azureWEB', $userData);
+        $userData = (new AccountController)->createUser($request, [
+            'username' => $this->generateUserName($email),
+            'password' => $password,
+            'mail' => $email], true);
 
         return response()->json($userData, 200);
     }
