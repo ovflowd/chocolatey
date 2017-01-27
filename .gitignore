@@ -44,6 +44,7 @@ app/storage/
 public/storage
 storage/*.key
 storage/logs/*.log
+storage/framework/views/*.php
 .env.*.php
 .env.php
 .env
