@@ -20,7 +20,7 @@ class TrustedDevice extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_users_security_trusted';
+    protected $table = 'chocolatey_users_security_trusted';
 
     /**
      * The attributes excluded from the model's JSON form.

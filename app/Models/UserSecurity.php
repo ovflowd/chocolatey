@@ -20,7 +20,7 @@ class UserSecurity extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_users_security';
+    protected $table = 'chocolatey_users_security';
 
     /**
      * The attributes excluded from the model's JSON form.

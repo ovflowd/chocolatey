@@ -21,7 +21,7 @@ class ArticleCategory extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_articles_categories';
+    protected $table = 'chocolatey_articles_categories';
 
     /**
      * Store a New Article Category

@@ -48,7 +48,7 @@ class LoginController extends BaseController
             if (Ban::query()->where('user_id', $userData->uniqueId)->count() > 0)
                 return null;
 
-            Session::set('azureWEB', $userData);
+            Session::set('ChocolateyWEB', $userData);
 
             return $userData;
         endif;
@@ -63,7 +63,7 @@ class LoginController extends BaseController
      */
     public function logout()
     {
-        Session::erase('azureWEB');
+        Session::erase('ChocolateyWEB');
 
         return response(null, 200);
     }

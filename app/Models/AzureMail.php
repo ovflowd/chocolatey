@@ -23,7 +23,7 @@ class AzureMail extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_users_mail_requests';
+    protected $table = 'chocolatey_users_mail_requests';
 
     /**
      * Store a new Azure Id Account

@@ -30,7 +30,7 @@ class ClientController extends BaseController
         if ($accountType == 'habbo-client-new-user'):
             $request->user()->traits = ["USER"];
 
-            Session::set('azureWEB', $request->user());
+            Session::set('ChocolateyWEB', $request->user());
         endif;
 
         return response()->json(['clienturl' => "{$hotelUrl}client/{$accountType}"], 200, array(), JSON_UNESCAPED_SLASHES);

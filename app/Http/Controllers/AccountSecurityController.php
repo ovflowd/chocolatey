@@ -146,7 +146,7 @@ class AccountSecurityController extends BaseController
         // @TODO: In the futurue the e-mail only will be changed after e-mail confirmation
         User::where('id', $request->user()->uniqueId)->update(['mail' => $request->json()->get('newEmail')]);
 
-        Session::set('azureWEB', User::where('id', $request->user()->uniqueId)->first());
+        Session::set('ChocolateyWEB', User::where('id', $request->user()->uniqueId)->first());
 
         return response()->json(['email' => $request->json()->get('newEmail')], 200);
     }

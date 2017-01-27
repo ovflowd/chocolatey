@@ -21,7 +21,7 @@ class PhotoReport extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_user_photos_reported';
+    protected $table = 'chocolatey_user_photos_reported';
     /**
      * The Appender(s) of the Model
      *

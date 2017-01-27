@@ -46,7 +46,7 @@ class AccountController extends BaseController
 
         User::where('id', $request->user()->uniqueId)->update(['username' => $desiredUsername]);
 
-        Session::set('azureWEB', User::where('id', $request->user()->uniqueId)->first());
+        Session::set('ChocolateyWEB', User::where('id', $request->user()->uniqueId)->first());
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -65,7 +65,7 @@ class AccountController extends BaseController
         User::where('id', $request->user()->uniqueId)
             ->update(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
 
-        Session::set('azureWEB', ($userData = User::where('id', $request->user()->uniqueId)->first()));
+        Session::set('ChocolateyWEB', ($userData = User::where('id', $request->user()->uniqueId)->first()));
 
         return response()->json($userData);
     }
@@ -208,7 +208,7 @@ class AccountController extends BaseController
 
         $userData->traits = $newUser ? ["NEW_USER", "USER"] : ["USER"];
 
-        Session::set('azureWEB', $userData);
+        Session::set('ChocolateyWEB', $userData);
 
         return $userData;
     }

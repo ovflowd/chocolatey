@@ -22,7 +22,7 @@ class UserPreferences extends Model
      *
      * @var string
      */
-    protected $table = 'azure_users_preferences';
+    protected $table = 'chocolatey_users_preferences';
 
     /**
      * The attributes excluded from the model's JSON form.

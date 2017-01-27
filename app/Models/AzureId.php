@@ -23,7 +23,7 @@ class AzureId extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_users_id';
+    protected $table = 'chocolatey_users_id';
 
     /**
      * The Appender(s) of the Model

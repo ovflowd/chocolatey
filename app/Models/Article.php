@@ -19,7 +19,7 @@ class Article extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_articles';
+    protected $table = 'chocolatey_articles';
 
     /**
      * Store a new CMS Article

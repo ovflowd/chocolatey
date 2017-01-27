@@ -21,7 +21,7 @@ class PhotoReportCategory extends AzureModel
      *
      * @var string
      */
-    protected $table = 'azure_user_photos_reported_categories';
+    protected $table = 'chocolatey_user_photos_reported_categories';
 
     /**
      * Add a Report Category
