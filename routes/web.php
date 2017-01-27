@@ -39,6 +39,12 @@ $app->get('api/public/help', function () {
 # Get Data from a Room
 $app->get('api/public/rooms/{room}', 'RoomsController@getRoom');
 
+# Get User Public Data
+$app->get('api/public/users', 'ProfileController@getPublicData');
+
+# Get User Public Data
+$app->get('api/public/users/{userId}/profile', 'ProfileController@getPublicProfile');
+
 # Create an User Request
 $app->post('api/public/registration/new', 'LoginController@register');
 
@@ -118,6 +124,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     # Get User (AzureID) Avatars
     $app->get('api/user/avatars', 'AccountController@getAvatars');
 
+    # Get User Public Data
+    $app->get('api/user/profile', 'ProfileController@getProfile');
+
     # Create a New User Avatar
     $app->post('api/user/avatars', 'AccountController@createAvatar');
 
@@ -164,6 +173,12 @@ $app->get('/extradata', function () {
 
 # Show All Registered HabboWEB Photos
 $app->get('/extradata/public/photos', 'PublicPhotosController@show');
+
+# Get User Stories
+$app->get('extradata/public/users/{userId}/stories', 'ProfileController@getStories');
+
+# Get User Stories
+$app->get('extradata/public/users/{userId}/photos', 'ProfileController@getPhotos');
 
 # Public Stories
 $app->get('/extradata/public/users/stories', function () {

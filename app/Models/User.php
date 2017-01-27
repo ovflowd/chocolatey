@@ -72,6 +72,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'trusted',
         'country',
         'traits',
+        'uniqueId',
         'name',
         'figureString',
         'lastWebAccess',
@@ -79,7 +80,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'email',
         'identityId',
         'emailVerified',
-        'accountId'
+        'accountId',
+        'memberSince'
     ];
 
     /**
@@ -107,6 +109,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'account_day_of_birth',
         'last_online',
         'ip_current',
+        'last_login',
         'ip_register',
         'auth_ticket',
         'home_room',
@@ -272,7 +275,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getAccountCreatedAttribute()
     {
-        return date("Y-m-dTHH:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
+        return date("Y-m-d", $this->attributes['account_created'])
+            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
+    }
+
+    /**
+     * Get GTimestamp in Habbo Currency
+     *
+     * @return false|string
+     */
+    public function getMemberSinceAttribute()
+    {
+        return date("Y-m-d", $this->attributes['account_created'])
+            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
     }
 
     /**
@@ -282,7 +297,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getLastLoginAttribute()
     {
-        return date("Y-m-dTHH:i:s.ZZZZ+ZZZZ", $this->attributes['last_login']);
+        return date("Y-m-d", $this->attributes['last_login'])
+            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['last_login']);
     }
 
     /**

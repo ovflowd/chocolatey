@@ -3103,7 +3103,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         name: "@"
     }, controller: ["CONFIG", function (e) {
         var t = this;
-        t.imagingUrl = e.imagingUrl
+        t.imagingUrl = e.groupBadgeUrl
     }], controllerAs: "GroupBadgeController", templateUrl: "common/group-badge/group-badge.html"
 }),angular.module("google.analytics", []).factory("googleAnalytics", ["$window", function (e) {
     function t(t) {
@@ -4083,6 +4083,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         habboWebNewsUrl: "/habbo-web-news/en/production/",
         habboWebPagesUrl: "/habbo-web-pages/production/",
         imagingUrl: "https://www.habbo.de/habbo-imaging",
+        groupBadgeUrl: "/habbo-imaging",
         lang: "en",
         hotel: "hhus",
         localizationSite: "com",
