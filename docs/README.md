@@ -1,16 +1,13 @@
-![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
-<br><sup>chocolatey the Habbo.com Clone CMS</sup>
-
 <hr>
 ### Being Developed with love in Lumen
 
 <hr>
 ### This CMS works only with Arcturus
-#### Get Arcturus today by accessing http://arcturus.wf
+<b>Get Arcturus today by accessing http://arcturus.wf</b>
 
 <hr>
 ### Installation
-#### Installing a Production version of Chocolatey is really easy
+<b>Installing a Production version of Chocolatey is really easy</b>
 
 1. Download the latest <b>Chocolatey</b> release
 2. Extract it to your web-server <i>htdocs/public_html/wwwwroot/www</i> folder.
@@ -21,14 +18,14 @@
 
 <hr>
 ### Observations
-#### Entering at Maintenance Mode
+<b>Entering at Maintenance Mode</b>
 You can enter at the maintenance mode by opening your <i>Terminal/CMD/Console</i> on the Chocolatey folder and execute the following command.: `php artisan down`. This will enter the system in Maintenance Mode.
 
 You actually can edit the white-list IP addresses by editing the `.env` file.
 
 To get out from maintenance do the following command.: `php artisan up`.
 
-#### Editing your Logo
+<b>Editing your Logo</b>
 Editing your Logo on Chocolatey it's a little more difficult. And because that we will release a Plugin that replaces the Habbo Logo by your logo on the Sprites file.
   
 <hr>
