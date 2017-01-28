@@ -1,32 +1,45 @@
-# azureWEB
+![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
+<br><sup>chocolatey the Habbo.com Clone CMS</sup>
 
-Welcome to Azure Web. Azure Web is still in beta version, many bugs and glitches can occur. Also, the code is far from being perfect and needs a lot of optimization. Any and all help is welcome!
+<hr>
+### Being Developed with love in Lumen
 
-Azure Web is created by Azure Team:
->Claudio (sant0ro/bi0s/ovflowd)
+<hr>
+### This CMS works only with Arcturus
+#### Get Arcturus today by accessing http://arcturus.wf
 
->Boris (xDr).  
+<hr>
+### Installation
+#### Installing a Production version of Chocolatey is really easy
 
->Jarreth (Rockster).
+1. Download the latest <b>Chocolatey</b> release
+2. Extract it to your web-server <i>htdocs/public_html/wwwwroot/www</i> folder.
+3. Configure your `.env` file with your Database Credentials
+4. Edit `config/chocolatey.php` with some <i>optional</i> stuff. (Some fields are really required)
+5. To finally migrate the Chocolatey Database. Open your <i>Terminal/CMD/Console</i> on the Chocolatey folder And execute the following command.: `php artisan migrate`. <b>If all Database credentials are right, Chocolatey</b> will successfully deploy his Database.
+6. Open your Browser and be Happy.
 
->Mike (Mike Sant).
+<hr>
+### Observations
+#### Entering at Maintenance Mode
+You can enter at the maintenance mode by opening your <i>Terminal/CMD/Console</i> on the Chocolatey folder and execute the following command.: `php artisan down`. This will enter the system in Maintenance Mode.
 
->Caio (Flicker)
+You actually can edit the white-list IP addresses by editing the `.env` file.
 
-### Version
-build 500
+To get out from maintenance do the following command.: `php artisan up`.
 
-### Setup
->Extract and Execute azureweb.bat
->Access localhost
+#### Editing your Logo
+Editing your Logo on Chocolatey it's a little more difficult. And because that we will release a Plugin that replaces the Habbo Logo by your logo on the Sprites file.
+  
+<hr>
+### Collaborators
+* Claudio aka saamus
+* John aka Kylon
+* Mike aka CineXMike
 
-### Note
->To enter Phpmyadmin you need xampp on port 8080 to access so you can check things.
-
-
-### Known issues
->1. There CAN be a problem with chrome and entering the client 
-
->>>1.1. If this bug appears you should try to use Internet explore or Firefox 
-
->>>>>Sidenote on 1. Dont know where this problem come from so this problem is on the azureweb git and the yupi emu git.
+### Special Thanks
+1. Wesley aka The General
+2. Chris aka Leader (LeChris)
+3. Joorren because Joorren
+4. Cankiee aka Cankiee (loool)
+5. Martin aka Marit
