@@ -66,7 +66,7 @@ $app->post('api/public/forgotPassword/changePassword', 'AccountSecurityControlle
 # Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app) {
     # Authenticate User
-    $app->post('api/public/authentication/login', 'LoginController@attempt');
+    $app->post('api/public/authentication/login', 'LoginController@login');
 
     # Client URL
     $app->get('api/client/clienturl', 'ClientController@getUrl');
