@@ -23,7 +23,7 @@
             "spaweb": "1",
             "supersonic_application_key": "2c63c535",
             "connection.info.host": "{{$azure['emulator']['address']}}",
-            "sso.ticket": "{{$user['token']}}",
+            "sso.ticket": "{{$token}}",
             "client.notify.cross.domain": "0",
             "account_id": "{{$user['uniqueId']}}",
             "flash.client.url": "{{$azure['game']['gordon']}}",

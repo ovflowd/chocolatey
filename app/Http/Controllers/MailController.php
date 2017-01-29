@@ -26,6 +26,6 @@ class MailController extends BaseController
 
         //Send E-mail
 
-        return response(null, 200);
+        return response('', 200);
     }
 }

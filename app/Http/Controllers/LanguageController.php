@@ -23,6 +23,6 @@ class LanguageController extends BaseController
         $languageName = strstr($languageFile, '.json', true);
 
         return response(view("habbo-web-l10n.{$languageName}",
-            ['azure' => Config::get('chocolatey')]), 200)->header('Content-Type', 'application/json');
+            ['azure' => Config::get('chocolatey')]))->header('Content-Type', 'application/json');
     }
 }

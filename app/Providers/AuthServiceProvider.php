@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Facades\Session;
-use App\Http\Controllers\LoginController;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->app['auth']->viaRequest('api', function ($request) {
             $userData = Session::has('ChocolateyWEB') ? Session::get('ChocolateyWEB') : null;
-            
+
             return $request->path() == 'api/public/authentication/login'
                 ? Session::set('ChocolateyWEB', User::where('mail', $request->json()->get('email'))
                     ->where('password', hash('sha256', $request->json()->get('password')))->first()) : $userData;

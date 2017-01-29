@@ -12,7 +12,7 @@ use Sofa\Eloquence\Mappable;
 class Article extends ChocolateyModel
 {
     use Eloquence, Mappable;
-    
+
     /**
      * Disable Timestamps
      *
@@ -32,7 +32,7 @@ class Article extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'id';
-    
+
     /**
      * The attributes that will be mapped
      *
@@ -42,7 +42,7 @@ class Article extends ChocolateyModel
         'updatedAt' => 'updated_at',
         'createdAt' => 'created_at',
     ];
-    
+
     /**
      * The Appender(s) of the Model
      *
@@ -52,8 +52,8 @@ class Article extends ChocolateyModel
         'updatedAt',
         'createdAt',
     ];
-    
-        /**
+
+    /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
@@ -42,8 +41,7 @@ class PageController extends BaseController
     {
         $request->user()->update(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
         
-        $request->user()->token = $userToken;
-
-        return response(view($clientType, ['azure' => Config::get('chocolatey'), 'user' => $request->user()]));
+        return response(view($clientType, ['azure' => Config::get('chocolatey'),
+            'user' => $request->user(), 'token' => $userToken]));
     }
 }

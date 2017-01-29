@@ -13,6 +13,10 @@ use Sofa\Eloquence\Mappable;
 
 /**
  * Class User
+ * @property string trusted
+ * @property array|mixed traits
+ * @property mixed uniqueId
+ * @property string figureString
  * @package App\Models
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
@@ -32,6 +36,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string
      */
     protected $table = 'users';
+
+    /**
+     * If User is Trusted
+     *
+     * @var bool
+     */
+    public $trusted = false;
+
+    /**
+     * User Traits
+     *
+     * @var array
+     */
+    public $traits = ["USER"];
 
     /**
      * Primary Key of the Table
@@ -115,6 +133,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'auth_ticket',
         'home_room',
         'points',
+        'look',
         'online',
         'pixels',
         'credits',
@@ -143,7 +162,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function store($username, $password, $email)
     {
         $this->attributes['username'] = $username;
-        $this->attributes['password'] = md5($password);
+        $this->attributes['password'] = hash('sha256', $password);
         $this->attributes['mail'] = $email;
         $this->attributes['account_created'] = time();
         $this->attributes['motto'] = Config::get('chocolatey.motto');
@@ -151,7 +170,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         return $this;
     }
-    
+
     /**
      * Store an User Alias Set on Database
      */
@@ -161,7 +180,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         (new UserPreferences)->store($this->attributes['id'])->save();
     }
-    
+
     /**
      * Get Is User is Banned
      *
@@ -190,7 +209,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function setTraitsAttribute(array $accountType)
     {
-        $this->attributes['traits'] = $accountType;
+        $this->traits = $accountType;
     }
 
     /**
@@ -200,21 +219,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTraitsAttribute()
     {
-        return !empty($this->attributes['traits'])
-            ? $this->attributes['traits'] : ["USER"];
-    }
-
-    /**
-     * Set Trusted Attribute
-     * by a remote Address being in White list
-     *
-     * @param string $remoteAddress
-     */
-    public function setTrustedAttribute($remoteAddress)
-    {
-        $this->attributes['trusted'] = UserSecurity::where('user_id', $this->attributes['id'])->count() == 0 ?
-            true : in_array($remoteAddress, UserSecurity::where('user_id', $this->attributes['id'])
-                ->first()->trustedDevices);
+        return $this->traits;
     }
 
     /**
@@ -224,7 +229,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTrustedAttribute()
     {
-        return array_key_exists('trusted', $this->attributes) ? $this->attributes['trusted'] : true;
+        return UserSecurity::find($this->attributes['id']) == null ?
+            true : in_array($this->trusted, UserSecurity::find($this->attributes['id'])->trustedDevices);
     }
 
     /**
@@ -296,8 +302,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getAccountCreatedAttribute()
     {
-        return date("Y-m-d", $this->attributes['account_created'])
-            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
+        $accountCreated = array_key_exists('account_created', $this->attributes)
+            ? $this->attributes['account_created'] : time();
+
+        return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
     }
 
     /**
@@ -307,8 +315,21 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getMemberSinceAttribute()
     {
-        return date("Y-m-d", $this->attributes['account_created'])
-            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['account_created']);
+        $accountCreated = array_key_exists('account_created', $this->attributes)
+            ? $this->attributes['account_created'] : time();
+
+        return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
+    }
+
+    /**
+     * Retrieve User Figure String
+     *
+     * @return string
+     */
+    public function getFigureStringAttribute()
+    {
+        return array_key_exists('look', $this->attributes) && !empty($this->attributes['look']) ?
+            $this->attributes['look'] : 'hr-115-42.hd-195-19.ch-3030-82.lg-275-1408.fa-1201.ca-1804-64';
     }
 
     /**
@@ -318,8 +339,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getLastLoginAttribute()
     {
-        return date("Y-m-d", $this->attributes['last_login'])
-            . 'T' . date("H:i:s.ZZZZ+ZZZZ", $this->attributes['last_login']);
+        $lastLogin = array_key_exists('last_login', $this->attributes) ?
+            $this->attributes['last_login'] : time();
+
+        return date("Y-m-d", $lastLogin) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $lastLogin);
     }
 
     /**
@@ -329,6 +352,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getMailVerifiedAttribute()
     {
-        return $this->attributes['mail_verified'] == 1;
+        return array_key_exists('mail_verified', $this->attributes) ?
+            $this->attributes['mail_verified'] == 1 : false;
     }
 }

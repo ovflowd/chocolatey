@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Facades\Session;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
@@ -38,10 +39,10 @@ class Authenticate
         if ($this->auth->guard($guard)->guest()) {
             return response('Unauthorized.', 401);
         }
-        
-        if($request()->user()->isBanned == true) {
+
+        if ($request->user()->isBanned == true) {
             Session::erase('ChocolateyWEB');
-            
+
             return response('Unauthorized.', 401);
         }
 

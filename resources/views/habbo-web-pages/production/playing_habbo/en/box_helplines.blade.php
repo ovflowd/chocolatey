@@ -1,9 +1,10 @@
 <h3>Teen helplines</h3>
 <p>If you are feeling sad, being bullied, harming yourself or just want to talk to someone for advice and help about
     things outside {{ $azure['name'] }} , please contact these helplines.</p>
-<p>For player assistance,  {{ $azure['name'] }} bans, and other {{ $azure['name'] }} -related questions, you can contact the <a target="_blank"
-                                                                                                ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo
-    Helpdesk</a>.</p>
+<p>For player assistance, {{ $azure['name'] }} bans, and other {{ $azure['name'] }} -related questions, you can contact
+    the <a target="_blank"
+           ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo
+        Helpdesk</a>.</p>
 <h4>Australia</h4>
 <p><strong>Kids Help</strong></p>
 <ul>
@@ -72,7 +73,7 @@
 <h4>USA</h4>
 <p><strong>Teen Line</strong></p>
 <p>If you have a problem or just want to talk, you can call or text Teen Line or use their <a
-        href="https://teenlineonline.org/board/" target="_blank">message boards</a>.</p>
+            href="https://teenlineonline.org/board/" target="_blank">message boards</a>.</p>
 <ul>
     <li>Phone: 310-855-4673 (6pm to 10pm PST)</li>
     <li>Text TEEN to 839863 (5:30pm-9:30pm PST)</li>

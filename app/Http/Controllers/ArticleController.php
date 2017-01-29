@@ -83,7 +83,7 @@ class ArticleController extends BaseController
         $articleContent = Article::find($articleId);
 
         if ($articleContent == null)
-            return response(null, 404);
+            return response('', 404);
 
         $articleCategory = $articleContent->categories;
 

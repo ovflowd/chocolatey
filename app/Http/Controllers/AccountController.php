@@ -9,6 +9,7 @@ use App\Models\UserPreferences;
 use App\Models\UserSettings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -61,7 +62,7 @@ class AccountController extends BaseController
 
         Session::set('ChocolateyWEB', $request->user());
 
-        return response()->json($userData);
+        return response()->json($request->user());
     }
 
     /**
@@ -78,7 +79,7 @@ class AccountController extends BaseController
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response('', 400);
 
-        return response();
+        return response('');
     }
 
     /**
@@ -126,7 +127,7 @@ class AccountController extends BaseController
 
         UserPreferences::find($request->user()->uniqueId)->update((array)$request->json()->all());
 
-        return response();
+        return response('');
     }
 
     /**
@@ -172,7 +173,7 @@ class AccountController extends BaseController
 
         $this->createUser($request, $request->user()->getAttributes());
 
-        return response();
+        return response('');
     }
 
     /**
@@ -186,12 +187,15 @@ class AccountController extends BaseController
     public function createUser(Request $request, array $userInfo, $newUser = false)
     {
         $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['name'];
-        
-        $userData = (new User)->store($userName, $userInfo['password'], $userInfo['email'])->save();
-        
+
+        $userData = new User;
+        $userData->store($userName, $userInfo['password'], $userInfo['email'])->save();
+        $userData->fill(User::find($userData->uniqueId)->getAttributes());
+
         $userData->createData();
         $userData->trusted = $request->ip();
-        $userData->traits  = $newUser ? ["NEW_USER", "USER"] : ["USER"];
+        $userData->figureString = Config::get('chocolatey.figure');
+        $userData->traits = $newUser ? ["NEW_USER", "USER"] : ["USER"];
 
         Session::set('ChocolateyWEB', $userData);
 

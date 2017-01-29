@@ -13,7 +13,7 @@
 <hr>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/citizenship.png" alt=" {{ $azure['name'] }} citizenship"
         class="align-right"></p>
-<h3>Complete your  {{ $azure['name'] }} Citizenship</h3>
+<h3>Complete your {{ $azure['name'] }} Citizenship</h3>
 <p>To get to know the Hotel a bit better, start by clicking on the Help tool in the the top right corner in the
     hotel.</p>
 <hr>
@@ -28,9 +28,10 @@
 <hr>
 <h3>Check out the latest activities</h3>
 <p>Visit the <a href="/">Home</a> section of the website to find out all the latest news, competitions and general
-    goings-on in  {{ $azure['name'] }} </p>
-<p>Once you&apos;ve done a few of these, you will be well on your way to becoming a fully fledged  {{ $azure['name'] }} citizen!</p>
+    goings-on in {{ $azure['name'] }} </p>
+<p>Once you&apos;ve done a few of these, you will be well on your way to becoming a fully fledged {{ $azure['name'] }}
+    citizen!</p>
 <blockquote>
-    <h3>Join  {{ $azure['name'] }} </h3>
-    <p>Haven&apos;t registered for  {{ $azure['name'] }} yet? <a href="/registration">Join now</a>!</p>
+    <h3>Join {{ $azure['name'] }} </h3>
+    <p>Haven&apos;t registered for {{ $azure['name'] }} yet? <a href="/registration">Join now</a>!</p>
 </blockquote>

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Models\Ban;
 use App\Models\ChocolateyId;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -24,10 +22,15 @@ class LoginController extends BaseController
      */
     public function login(Request $request)
     {
-        return $request->user('api') ? response()->json($request->user(), 200)
-            : response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
+        if ($request->user('api')):
+            $request->user()->trusted = $request->ip();
+
+            return response()->json($request->user());
+        endif;
+
+        return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
     }
-    
+
     /**
      * Destroys the User Session
      *
@@ -37,7 +40,7 @@ class LoginController extends BaseController
     {
         Session::erase('ChocolateyWEB');
 
-        return response(null, 200);
+        return response('');
     }
 
     /**
@@ -55,8 +58,9 @@ class LoginController extends BaseController
         if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        $userData = (new AccountController)->createUser($request, $request->json()->only(['password', 'email']), true);
+        $userData = (new AccountController)
+            ->createUser($request, $request->json()->all(), true);
 
-        return response()->json($userData, 200);
+        return response()->json($userData);
     }
 }

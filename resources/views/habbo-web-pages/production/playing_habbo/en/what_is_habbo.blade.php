@@ -1,4 +1,4 @@
-<h1>What is  {{ $azure['name'] }} ?</h1>
+<h1>What is {{ $azure['name'] }} ?</h1>
 <p><a href="/registration" class="remove-link"><img
                 src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now.png" alt="Join now"
                 class="align-right"></a>
@@ -20,14 +20,14 @@
 <p>Do you love to chat and hang out with friends? <strong> {{ $azure['name'] }}
         Groups, forums and
         Roleplaying communities</strong> are a great place to start. Join the army and suit up
-    for duty, don your cape and save the universe, wear  {{ $azure['name'] }}
+    for duty, don your cape and save the universe, wear {{ $azure['name'] }}
     Couture as you strut
     down the runway, become a nurse and save pixel lives. Join in and start
     exploring the endless role-playing possibilities!</p>
 <h2>Express yourself</h2>
 <p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_16.png" alt="Express yourself" class="align-right">
 </p>
-<p>Creativity and individuality are welcomed in  {{ $azure['name'] }}  Every week we have tons of
+<p>Creativity and individuality are welcomed in {{ $azure['name'] }} Every week we have tons of
     awesome competitions for you to enter. From <strong>room building to Selfies, to pixel
         art videos and short story comps</strong> - there are tons of cool things to get your
     artistic juices flowing and win awesome achievements + prizes! Feeling creative?
@@ -36,36 +36,36 @@
 <p> {{ $azure['name'] }} is a <strong>free to play</strong> game, so you can
     explore a vast world of rooms,
     complete quests, chat and win prizes without ever having to pay a thing!</p>
-<p>Some in-game &apos;extras&apos; like pets,  {{ $azure['name'] }} Club
+<p>Some in-game &apos;extras&apos; like pets, {{ $azure['name'] }} Club
     membership, Builders Club membership
-    and furniture can be purchased with  {{ $azure['name'] }} Credits. For more
+    and furniture can be purchased with {{ $azure['name'] }} Credits. For more
     info about in-game
     extras, head to the <a href="/shop"> {{ $azure['name'] }} Mall</a>.</p>
 <h2>Always here to help&#x2026;</h2>
 <p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_17.png" alt="Always here to help"
         class="align-right"></p>
-<p>Official  {{ $azure['name'] }} Staff and Moderators monitor the Hotel in
+<p>Official {{ $azure['name'] }} Staff and Moderators monitor the Hotel in
     real-time so there is
     <strong>always someone nearby to lend a hand</strong> if you need it. You can also do a lot
-    to make sure you stay safe on  {{ $azure['name'] }} and on the internet. Read
+    to make sure you stay safe on {{ $azure['name'] }} and on the internet. Read
     our <a href="/playing-habbo/safety">Safety
         Tips</a> to find out how.</p>
 <p>As a popular online virtual world we are proud to have great <strong>in-depth
         knowledge of online safety</strong>, following international guidelines set out by
     government groups and teen organisations.</p>
 <h2>Play on desktop, iPad, Android</h2>
-<p>The  {{ $azure['name'] }} world is waiting for you - take a peek, watch this
+<p>The {{ $azure['name'] }} world is waiting for you - take a peek, watch this
     video!</p>
 <iframe src="//www.youtube.com/embed/Psd3nCVJjPM" frameborder="0" width="640" height="360"></iframe><p>Check out loads
     of more videos on <a href="https://www.youtube.com/user/habbo"
                          target="_blank"> {{ $azure['name'] }} &apos;s YouTube
         page</a>&#x2026;</p>
-<h2>Join  {{ $azure['name'] }} !</h2>
+<h2>Join {{ $azure['name'] }} !</h2>
 <p><a href="/registration" class="remove-link"><img
                 src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now.png" alt="Join now"
                 class="align-right"></a>
 </p>
 <p>Become a part of the world&apos;s biggest online community for teens. <a
-            href="/registration">Join  {{ $azure['name'] }}
+            href="/registration">Join {{ $azure['name'] }}
         now</a>!</p>
 <p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_14.png" alt="Fantasy furni"></p>

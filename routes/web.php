@@ -63,10 +63,13 @@ $app->post('api/public/forgotPassword/changePassword', 'AccountSecurityControlle
 // Used password in past: 400 - {"error":"password.used_earlier"}
 // Success: 204 - No Content
 
+# Authenticate User
+$app->post('api/public/authentication/login', 'LoginController@login');
+
 # Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app) {
-    # Authenticate User
-    $app->post('api/public/authentication/login', 'LoginController@login');
+    # Logout User
+    $app->post('api/public/authentication/logout', 'LoginController@logout');
 
     # Client URL
     $app->get('api/client/clienturl', 'ClientController@getUrl');
@@ -103,9 +106,6 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
 
     # Resend E-mail Verification
     $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
-
-    # Logout User
-    $app->post('api/public/authentication/logout', 'LoginController@logout');
 
     # Habbo Client Loginstep
     $app->post('/api/log/loginstep', function () {

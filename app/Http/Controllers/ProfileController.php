@@ -29,7 +29,7 @@ class ProfileController extends BaseController
         $userData = User::where('username', $request->input('name'))->first();
 
         if ($userData == null)
-            return response(null, 404);
+            return response('', 404);
 
         $userBadges = UserBadge::where('user_id', $userData->uniqueId)->where('slot_id', '>', 0)->get();
         $userPreferences = UserPreferences::find($userData->uniqueId);
@@ -51,12 +51,12 @@ class ProfileController extends BaseController
         $userData = User::find($userId);
 
         if ($userData == null)
-            return response(null, 404);
+            return response('', 404);
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
         if ($userPreferences != null && $userPreferences->profileVisible == '0')
-            return response(null, 404);
+            return response('', 404);
 
         $userProfile = new UserProfile($userData);
 
