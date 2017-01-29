@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
+use App\Facades\Generators;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use App\Models\UserPreferences;
@@ -191,11 +192,12 @@ class AccountController extends BaseController
      */
     public function createUser(Request $request, array $userInfo, $newUser = false)
     {
-        (new User)->store($userInfo['username'], $userInfo['password'], $userInfo['mail'])->save();
+        (new User)->store($newsUser ? ($userInfo['username'] = Generators::generateUserName($userInfo['email'])) : $userInfo['username'], 
+            $userInfo['password'], $userInfo['email'])->save();
 
         $userData = User::where('username', $userInfo['username'])->first();
 
-        (new ChocolateyId)->store($userData->uniqueId, $userInfo['mail'])->save();
+        (new ChocolateyId)->store($userData->uniqueId, $userInfo['email'])->save();
 
         (new UserPreferences)->store($userData->uniqueId)->save();
 
