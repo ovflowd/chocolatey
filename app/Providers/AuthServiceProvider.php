@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
             
             return $request->path() == 'api/public/authentication/login'
                 ? Session::set('ChocolateyWEB', User::where('mail', $request->json()->get('email'))
-                    ->where('password', md5($request->json()->get('password')))->first()) : $userData;
+                    ->where('password', hash('sha256', $request->json()->get('password')))->first()) : $userData;
         });
     }
 }
