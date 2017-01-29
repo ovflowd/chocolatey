@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
 /**
  * Class Article
  * @package App\Models
  */
 class Article extends ChocolateyModel
 {
+    use Eloquence, Mappable;
+    
     /**
      * Disable Timestamps
      *
@@ -27,6 +32,36 @@ class Article extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'id';
+    
+    /**
+     * The attributes that will be mapped
+     *
+     * @var array
+     */
+    protected $maps = [
+        'updatedAt' => 'updated_at',
+        'createdAt' => 'created_at',
+    ];
+    
+    /**
+     * The Appender(s) of the Model
+     *
+     * @var array
+     */
+    protected $appends = [
+        'updatedAt',
+        'createdAt',
+    ];
+    
+        /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'updated_at',
+        'created_at'
+    ];
 
     /**
      * Store a new CMS Article
