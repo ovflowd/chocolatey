@@ -21,8 +21,8 @@ class AuthServiceProvider extends ServiceProvider
             $userData = Session::has('ChocolateyWEB') ? Session::get('ChocolateyWEB') : null;
             
             return $request->path() == 'api/public/authentication/login'
-                ? User::where('mail', $request->json()->get('email'))
-                    ->where('password', md5($request->json()->get('password')))->first() : $userData;
+                ? Session::set('ChocolateyWEB', User::where('mail', $request->json()->get('email'))
+                    ->where('password', md5($request->json()->get('password')))->first()) : $userData;
         });
     }
 }
