@@ -19,9 +19,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->app['auth']->viaRequest('api', function ($request) {
             $userData = Session::has('ChocolateyWEB') ? Session::get('ChocolateyWEB') : null;
-
+            
             return $request->path() == 'api/public/authentication/login'
-                ? (new LoginController)->login($request) : $userData;
+                ? User::where('mail', $request->json()->get('email'))
+                    ->where('password', md5($request->json()->get('password')))->first() : $userData;
         });
     }
 }
