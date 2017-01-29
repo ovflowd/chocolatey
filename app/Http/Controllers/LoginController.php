@@ -22,40 +22,12 @@ class LoginController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function attempt(Request $request)
+    public function login(Request $request)
     {
         return $request->user('api') ? response()->json($request->user(), 200)
             : response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
     }
-
-    /**
-     * Does the Login on the System
-     *
-     * @param Request $request
-     * @return mixed
-     */
-    public function login(Request $request)
-    {
-        if ($request->json()->has('email') && $request->json()->has('password')):
-            $userData = User::where('mail', $request->json()->get('email'))
-                ->where('password', md5($request->json()->get('password')))->first();
-
-            if ($userData == null)
-                return null;
-
-            if (Ban::query()->where('user_id', $userData->uniqueId)->count() > 0)
-                return null;
-
-            $userData->trusted = $request->ip();
-
-            Session::set('ChocolateyWEB', $userData);
-
-            return $userData;
-        endif;
-
-        return null;
-    }
-
+    
     /**
      * Destroys the User Session
      *
