@@ -44,26 +44,15 @@ class AccountSecurityController extends BaseController
      */
     public function saveQuestions(Request $request)
     {
-        if (User::where('id', $request->user()->uniqueId)
-                ->where('password', md5($request->json()->get('password')))->count() == 0
-        )
+        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() == 0)
             return response()->json(['error' => 'invalid_password'], 400);
-
-        if (UserSecurity::find($request->user()->uniqueId) !== null):
-            UserSecurity::find($request->user()->uniqueId)->update([
-                'firstQuestion' => $request->json()->get('questionId1'),
-                'secondQuestion' => $request->json()->get('questionId2'),
-                'firstAnswer' => $request->json()->get('answer1'),
-                'secondAnswer' => $request->json()->get('answer2')]);
-
-            return response(null, 204);
-        endif;
-
-        (new UserSecurity)->store($request->user()->uniqueId,
-            $request->json()->get('questionId1'),
-            $request->json()->get('questionId2'),
-            $request->json()->get('answer1'),
-            $request->json()->get('answer2'))->save();
+        
+        UserSecurity::updateOrCreate([
+            'user_id' => $request->user()->uniqueId,
+            'firstQuestion' => $request->json()->get('questionId1'),
+            'secondQuestion' => $request->json()->get('questionId2'),
+            'firstAnswer' => $request->json()->get('answer1'),
+            'secondAnswer' => $request->json()->get('answer2')]);
 
         return response(null, 204);
     }
@@ -104,17 +93,13 @@ class AccountSecurityController extends BaseController
      */
     public function changePassword(Request $request)
     {
-        if (DB::table('users')->where('id', $request->user()->uniqueId)
-                ->where('password', md5($request->json()->get('currentPassword')))->count() == 0
-        )
+        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
-        if (DB::table('users')->where('id', $request->user()->uniqueId)
-                ->where('password', md5($request->json()->get('password')))->count() == 1
-        )
+        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() == 1)
             return response()->json(['error' => 'password.used_earlier'], 409);
 
-        User::find($request->user()->uniqueId)->update(['password' => md5($request->json()->get('password'))]);
+        User::find($request->user()->uniqueId)->update(['password' => hash('sha256', $request->json()->get('password'))]);
 
         return response(null, 204);
     }
@@ -130,7 +115,7 @@ class AccountSecurityController extends BaseController
      */
     public function changeMail(Request $request)
     {
-        if (User::where('id', $request->user()->uniqueId)->where('password', md5($request->json()->get('currentPassword')))->count() == 0)
+        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'changeEmail.invalid_password'], 400);
 
         if (strpos($request->json()->get('newEmail'), '@') == false)
@@ -140,9 +125,9 @@ class AccountSecurityController extends BaseController
             return response()->json(['error' => 'changeEmail.email_already_in_use'], 400);
 
         // @TODO: In the futurue the e-mail only will be changed after e-mail confirmation
-        User::where('id', $request->user()->uniqueId)->update(['mail' => $request->json()->get('newEmail')]);
+        $request->user()->update(['mail' => $request->json()->get('newEmail')]);
 
-        Session::set('ChocolateyWEB', User::where('id', $request->user()->uniqueId)->first());
+        Session::set('ChocolateyWEB', $request->user());
 
         return response()->json(['email' => $request->json()->get('newEmail')], 200);
     }
