@@ -55,7 +55,7 @@ class LoginController extends BaseController
         if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
+        $userData = (new AccountController)->createUser($request, $request->json()->only(['password', 'email']), true);
 
         return response()->json($userData, 200);
     }
