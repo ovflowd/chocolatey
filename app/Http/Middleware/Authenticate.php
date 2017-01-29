@@ -35,10 +35,13 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($request->path() == 'api/public/authentication/login')
-            return $next($request);
-
         if ($this->auth->guard($guard)->guest()) {
+            return response('Unauthorized.', 401);
+        }
+        
+        if($request()->user()->isBanned == true) {
+            Session::erase('ChocolateyWEB');
+            
             return response('Unauthorized.', 401);
         }
 
