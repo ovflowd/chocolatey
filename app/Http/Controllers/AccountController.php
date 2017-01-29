@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Session;
-use App\Facades\Generators;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use App\Models\UserPreferences;
@@ -41,9 +40,9 @@ class AccountController extends BaseController
      */
     public function selectName(Request $request)
     {
-        User::find($request->user()->uniqueId)->update(['username' => $request->json()->get('name')]);
+        $request->user()->update(['username' => $request->json()->get('name')]);
 
-        Session::set('ChocolateyWEB', User::find($request->user()->uniqueId));
+        Session::set('ChocolateyWEB', $request->user());
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -56,14 +55,11 @@ class AccountController extends BaseController
      */
     public function saveLook(Request $request)
     {
-        if ($request->json()->get('gender') != 'm' && $request->json()->get('gender') != 'f')
-            return response(null, 400);
-
-        User::find($request->user()->uniqueId)->update([
+        $request()->user()->update([
             'look' => $request->json()->get('figure'),
             'gender' => $request->json()->get('gender')]);
 
-        Session::set('ChocolateyWEB', ($userData = User::find($request->user()->uniqueId)));
+        Session::set('ChocolateyWEB', $request->user());
 
         return response()->json($userData);
     }
@@ -172,12 +168,9 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0)
             return response()->json(['isAvailable' => false]);
 
-        $userData = User::find($request->user()->uniqueId);
+        $request->user()->name = $request->json()->get('name');
 
-        $this->createUser($request, [
-            'username' => $request->json()->get('name'),
-            'password' => $userData->password,
-            'mail' => $userData->mail]);
+        $this->createUser($request, $request->user()->getAttributes());
 
         return response(null, 200);
     }
@@ -192,18 +185,13 @@ class AccountController extends BaseController
      */
     public function createUser(Request $request, array $userInfo, $newUser = false)
     {
-        (new User)->store($newsUser ? ($userInfo['username'] = Generators::generateUserName($userInfo['email'])) : $userInfo['username'], 
-            $userInfo['password'], $userInfo['email'])->save();
-
-        $userData = User::where('username', $userInfo['username'])->first();
-
-        (new ChocolateyId)->store($userData->uniqueId, $userInfo['email'])->save();
-
-        (new UserPreferences)->store($userData->uniqueId)->save();
-
+        $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['name'];
+        
+        $userData = (new User)->store($userName, $userInfo['password'], $userInfo['email'])->save();
+        
+        $userData->createData();
         $userData->trusted = $request->ip();
-
-        $userData->traits = $newUser ? ["NEW_USER", "USER"] : ["USER"];
+        $userData->traits  = $newUser ? ["NEW_USER", "USER"] : ["USER"];
 
         Session::set('ChocolateyWEB', $userData);
 
