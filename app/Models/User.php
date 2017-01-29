@@ -81,7 +81,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'identityId',
         'emailVerified',
         'accountId',
-        'memberSince'
+        'memberSince',
+        'isBanned'
     ];
 
     /**
@@ -149,6 +150,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['auth_ticket'] = '';
 
         return $this;
+    }
+    
+    /**
+     * Get Is User is Banned
+     *
+     * @return bool
+     */
+    public function getIsBannedAttribute()
+    {
+        return Ban::where('user_id', $this->attributes['id'])->count() != 0;
     }
 
     /**
