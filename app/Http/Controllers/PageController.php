@@ -41,10 +41,10 @@ class PageController extends BaseController
      */
     public function getClient(Request $request, $clientType)
     {
-        User::find($request->user()->uniqueId)->update(['auth_ticket' => ($userToken = Generators::generateToken())]);
+        $request->user()->update(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
+        
+        $request->user()->token = $userToken;
 
-        $userData = ['id' => $request->user()->uniqueId, 'name' => $request->user()->name, 'token' => $userToken];
-
-        return response(view($clientType, ['azure' => Config::get('chocolatey'), 'user' => $userData]));
+        return response(view($clientType, ['azure' => Config::get('chocolatey'), 'user' => $request->user()]));
     }
 }
