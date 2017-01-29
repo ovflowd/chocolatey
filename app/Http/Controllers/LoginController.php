@@ -55,66 +55,8 @@ class LoginController extends BaseController
         if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        $userData = (new AccountController)->createUser($request, [
-            'username' => $this->generateUserName($request->json()->get('email')),
-            'password' => $request->json()->get('password'),
-            'mail' => $request->json()->get('email')], true);
+        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
 
         return response()->json($userData, 200);
-    }
-
-    /**
-     * Return Random Username
-     *
-     * @param string $email
-     * @return mixed|string
-     */
-    protected function generateUserName($email)
-    {
-        $email = explode('@', $email);
-        $email = $email[0];
-
-        $username = '';
-        $username .= $this->symbols(rand(0, 9));
-        $username .= $this->symbols(rand(0, 9));
-
-        $username .= (sizeof($email) > 10 ? substr($email, 0, 10) : $email);
-        $username .= $this->symbols(rand(0, 9));
-        $username .= $this->symbols(rand(0, 9));
-
-        return User::query()->where('username', $username)->count() > 0
-            ? $this->generateUserName($email) : $username;
-    }
-
-    /**
-     * Random Symbols for Username
-     *
-     * @param int $rand
-     * @return string
-     */
-    protected function symbols($rand = 1)
-    {
-        switch ($rand):
-            case 1:
-                return '!';
-            case 2:
-                return '@';
-            case 3:
-                return '#';
-            case 4:
-                return '_';
-            case 5:
-                return '-';
-            case 6:
-                return '=';
-            case 7:
-                return '.';
-            case 8:
-                return '<';
-            case 9:
-                return '>';
-            default:
-                return '*';
-        endswitch;
     }
 }
