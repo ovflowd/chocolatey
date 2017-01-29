@@ -76,9 +76,9 @@ class AccountController extends BaseController
     public function selectRoom(Request $request)
     {
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
-            return response(null, 400);
+            return response('', 400);
 
-        return response(null, 200);
+        return response();
     }
 
     /**
@@ -126,7 +126,7 @@ class AccountController extends BaseController
 
         UserPreferences::find($request->user()->uniqueId)->update((array)$request->json()->all());
 
-        return response(null, 200);
+        return response();
     }
 
     /**
@@ -139,7 +139,7 @@ class AccountController extends BaseController
     {
         $azureIdAccounts = ChocolateyId::where('mail', $request->user()->email)->first();
 
-        return response()->json($azureIdAccounts->relatedAccounts, 200);
+        return response()->json($azureIdAccounts->relatedAccounts);
     }
 
     /**
@@ -172,7 +172,7 @@ class AccountController extends BaseController
 
         $this->createUser($request, $request->user()->getAttributes());
 
-        return response(null, 200);
+        return response();
     }
 
     /**
