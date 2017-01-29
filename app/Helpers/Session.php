@@ -55,10 +55,13 @@ class Session
      *
      * @param string $key
      * @param mixed $value
+     * @return mixed
      */
     public function set($key, $value)
     {
         $_SESSION[$key] = $value;
+        
+        return $value;
     }
 
     /**
