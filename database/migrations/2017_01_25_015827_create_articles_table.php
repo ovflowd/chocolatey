@@ -21,11 +21,10 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->string('author', 50);
             $table->string('categories', 255);
-            $table->timestamp('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updatedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('imageUrl', 255);
             $table->string('thumbnailUrl', 255);
             $table->primary('id', 'chocolatey_articles_primary');
+            $table->timestamps();
         });
 
         DB::table('chocolatey_articles')->insert([[
