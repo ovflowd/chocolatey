@@ -40,15 +40,9 @@ class PublicPhotosController extends BaseController
      */
     public function report(Request $request, $photoIdentifier)
     {
-        if (PhotoReport::query()->where('photo_id', $photoIdentifier)
-                ->where('reported_by', $userId = $request->user()->uniqueId)
-                ->where('approved', 0)->count() > 0
-        )
-            return response(null, 429);
+        (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
-        (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $userId)->save();
-
-        return response(null, 200);
+        return response();
     }
 
     /**
@@ -60,12 +54,12 @@ class PublicPhotosController extends BaseController
      */
     public function likePhoto(Request $request, $photoId)
     {
-        if (PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
-            return response(null, 200);
+        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
+            return response();
 
         (new PhotoLike)->store($photoId, $request->user()->name)->save();
 
-        return response(null, 200);
+        return response();
     }
 
     /**
@@ -77,11 +71,11 @@ class PublicPhotosController extends BaseController
      */
     public function unlikePhoto(Request $request, $photoId)
     {
-        if (PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
-            return response(null, 200);
+        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
+            return response();
 
-        PhotoLike::query()->where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
+        PhotoLike:where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
-        return response(null, 200);
+        return response();
     }
 }
