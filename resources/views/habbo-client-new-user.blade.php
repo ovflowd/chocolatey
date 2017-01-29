@@ -25,7 +25,7 @@
             "connection.info.host": "{{$azure['emulator']['address']}}",
             "sso.ticket": "{{$user['token']}}",
             "client.notify.cross.domain": "0",
-            "account_id": "{{$user['id']}}",
+            "account_id": "{{$user['uniqueId']}}",
             "flash.client.url": "{{$azure['game']['gordon']}}",
             "unique_habbo_id": "{{$user['id']}}",
             "new.user.flow.enabled": "true",
