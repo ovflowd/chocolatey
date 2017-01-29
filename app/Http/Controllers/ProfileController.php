@@ -32,7 +32,6 @@ class ProfileController extends BaseController
             return response(null, 404);
 
         $userBadges = UserBadge::where('user_id', $userData->uniqueId)->where('slot_id', '>', 0)->get();
-
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
         $userData->selectedBadges = $userBadges == null ? [] : $userBadges;
