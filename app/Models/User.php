@@ -153,6 +153,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
     
     /**
+     * Store an User Alias Set on Database
+     */
+    public function createData()
+    {
+        (new ChocolateyId)->store($this->attributes['id'], $this->attributes['mail'])->save();
+
+        (new UserPreferences)->store($this->attributes['id'])->save();
+    }
+    
+    /**
      * Get Is User is Banned
      *
      * @return bool
