@@ -1,10 +1,27 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
+    Options +FollowSymLinks
+    Options -Indexes
 
     RewriteEngine On
 
-    # Redirect All Requests To The Subfolder
-    RewriteRule ^ /public
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+    # Assets Exceptions
+    RewriteCond %{REQUEST_URI} !^/habbo-web/
+    RewriteCond %{REQUEST_URI} !^/habbo-imaging/
+
+    RewriteRule ^.*$ index.php [L]
+    
+    # Habbo Web Assets
+    RewriteRule ^habbo-web/(.*)$ public/habbo-web/$1 [L]
+
+    # Habbo-Imaging for Badge
+    RewriteRule ^habbo-imaging/badge/([^/]+) public/habbo-imaging/badge.php?badge=$1
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
