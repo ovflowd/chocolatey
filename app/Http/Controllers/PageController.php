@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Generators;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -40,8 +41,7 @@ class PageController extends BaseController
      */
     public function getClient(Request $request, $clientType)
     {
-        User::find($request->user()->uniqueId)->update([
-            'auth_ticket' => ($userToken = (new ClientController)->generateToken())]);
+        User::find($request->user()->uniqueId)->update(['auth_ticket' => ($userToken = Generators::generateToken())]);
 
         $userData = ['id' => $request->user()->uniqueId, 'name' => $request->user()->name, 'token' => $userToken];
 
