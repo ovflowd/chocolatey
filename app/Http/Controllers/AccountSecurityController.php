@@ -54,7 +54,7 @@ class AccountSecurityController extends BaseController
             'firstAnswer' => $request->json()->get('answer1'),
             'secondAnswer' => $request->json()->get('answer2')]);
 
-        return response(null, 204);
+        return response('', 204);
     }
 
     /**
@@ -67,7 +67,7 @@ class AccountSecurityController extends BaseController
     {
         UserSecurity::find($request->user()->uniqueId)->delete();
 
-        return response(null, 204);
+        return response('', 204);
     }
 
     /**
@@ -101,7 +101,7 @@ class AccountSecurityController extends BaseController
 
         User::find($request->user()->uniqueId)->update(['password' => hash('sha256', $request->json()->get('password'))]);
 
-        return response(null, 204);
+        return response('', 204);
     }
 
     /**
@@ -141,7 +141,7 @@ class AccountSecurityController extends BaseController
     public function getQuestions(Request $request)
     {
         if (UserSecurity::find($request->user()->uniqueId) == null)
-            return response(null, 200);
+            return response();
 
         $userSecurity = UserSecurity::find($request->user()->uniqueId);
 
@@ -171,9 +171,9 @@ class AccountSecurityController extends BaseController
             if ($request->json()->get('trust') == true)
                 (new TrustedDevice)->store($request->user()->uniqueId, $request->ip())->save();
 
-            return response(null, 204);
+            return response('', 204);
         endif;
 
-        return response(null, 409);
+        return response('', 409);
     }
 }
