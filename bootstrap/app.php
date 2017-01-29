@@ -67,8 +67,6 @@ $app->routeMiddleware([
 |--------------------------------------------------------------------------
 */
 
-$app->register(App\Providers\GeneratorsServiceProvider::class);
-
 $app->register(App\Providers\SessionServiceProvider::class);
 
 $app->register(App\Providers\AuthServiceProvider::class);
