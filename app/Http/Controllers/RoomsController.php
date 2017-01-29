@@ -44,11 +44,10 @@ class RoomsController extends BaseController
      */
     public function getRoom($roomId)
     {
-        if (Room::where('id', $roomId)->count() == 0)
+        if (Room::find($roomId) == null)
             return response()->json(['error' => 'not-found'], 404);
 
-        $roomData = Room::where('id', $roomId)->first();
-
+        $roomData = Room::find($roomId);
         $roomData->leaderboardRank = 0;
 
         return response()->json($roomData);
