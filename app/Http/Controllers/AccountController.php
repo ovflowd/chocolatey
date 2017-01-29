@@ -55,7 +55,7 @@ class AccountController extends BaseController
      */
     public function saveLook(Request $request)
     {
-        $request()->user()->update([
+        $request->user()->update([
             'look' => $request->json()->get('figure'),
             'gender' => $request->json()->get('gender')]);
 
