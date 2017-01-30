@@ -149,7 +149,7 @@ class Room extends Model
     {
         $roomName = Config::get('chocolatey.arcturus');
 
-        return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
+        return "http://arcturus.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**
@@ -161,7 +161,7 @@ class Room extends Model
     {
         $roomName = Config::get('chocolatey.arcturus');
 
-        return "http://mycensoredurl.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
+        return "http://arcturus.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**
