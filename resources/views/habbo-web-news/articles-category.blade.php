@@ -6,9 +6,9 @@
             <ul class="news-category__list">
                 @foreach ($categories as $articleCategory)
                     <li class="news-category__item">
-                        <a href="/community/category/{{$articleCategory->link}}"
+                        <a href="/community/category/{{$articleCategory->name}}"
                            translate="{{$articleCategory->translate}}"
-                           class="@if ($articleCategory->link == $category) news-category__link--active news-category__link @else news-category__link @endif">
+                           class="@if ($articleCategory->name == $category) news-category__link--active news-category__link @else news-category__link @endif">
                         </a>
                     </li>
                 @endforeach
@@ -34,7 +34,7 @@
                 <ul class="news-header__categories">
                     @foreach ($articleContent->categories as $articleCategory)
                         <li class="news-header__category">
-                            <a href="/community/category/{{$articleCategory->link}}/content"
+                            <a href="/community/category/{{$articleCategory->name}}/content"
                                class="news-header__category__link"
                                translate="{{$articleCategory->translate}}"></a>
                         </li>

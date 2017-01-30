@@ -1,7 +1,7 @@
 <h3>Teen helplines</h3>
 <p>If you are feeling sad, being bullied, harming yourself or just want to talk to someone for advice and help about
-    things outside {{ $azure['name'] }} , please contact these helplines.</p>
-<p>For player assistance, {{ $azure['name'] }} bans, and other {{ $azure['name'] }} -related questions, you can contact
+    things outside {{$chocolatey['name']}} , please contact these helplines.</p>
+<p>For player assistance, {{$chocolatey['name']}} bans, and other {{$chocolatey['name']}} -related questions, you can contact
     the <a target="_blank"
            ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo
         Helpdesk</a>.</p>

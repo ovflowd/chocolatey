@@ -9,8 +9,8 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": ">=5.6.4",
-    "laravel/lumen-framework": "5.3.*",
+    "php": ">=7.0.0",
+    "laravel/lumen-framework": "master",
     "vlucas/phpdotenv": "~2.2",
     "kirkbushell/eloquence": "~2.0",
     "sofa/eloquence": "^5.3",

@@ -51,16 +51,6 @@ class GroupMember extends ChocolateyModel
     ];
 
     /**
-     * Get User Group by Member Group Id
-     *
-     * @return UserGroup
-     */
-    public function getGuildAttribute()
-    {
-        return UserGroup::find($this->attributes['guild_id']);
-    }
-
-    /**
      * Store Function
      *
      * A Guild Member can't be inserted by the CMS.
@@ -72,11 +62,21 @@ class GroupMember extends ChocolateyModel
     }
 
     /**
+     * Get User Group by Member Group Id
+     *
+     * @return UserGroup
+     */
+    public function getGuildAttribute(): UserGroup
+    {
+        return UserGroup::find($this->attributes['guild_id']);
+    }
+
+    /**
      * Get Description Attribute
      *
      * @return string
      */
-    public function getDescriptionAttribute()
+    public function getDescriptionAttribute(): string
     {
         return "Badge {$this->attributes['badge_code']}";
     }

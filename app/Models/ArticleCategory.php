@@ -18,6 +18,15 @@ class ArticleCategory extends ChocolateyModel
     public $timestamps = false;
 
     /**
+     * Appenders Array
+     *
+     * @var array
+     */
+    protected $appends = [
+        'name'
+    ];
+
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -30,6 +39,16 @@ class ArticleCategory extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'link';
+
+    /**
+     * Get the Original Link Attribute
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->attributes['link'];
+    }
 
     /**
      * Store a New Article Category

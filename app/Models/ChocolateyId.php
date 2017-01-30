@@ -45,12 +45,12 @@ class ChocolateyId extends ChocolateyModel
     /**
      * Store a new Azure Id Account
      *
-     * @param string $userMail
      * @param int $userId
-     * @return $this
+     * @param string $userMail
+     * @return ChocolateyId
      * @throws ErrorException
      */
-    public function store($userId, $userMail)
+    public function store($userId, $userMail): ChocolateyId
     {
         if (ChocolateyId::query()->where('user_id', $userId)->count() > 0)
             throw new ErrorException("An User with this Id already registered.");

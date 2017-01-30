@@ -157,16 +157,23 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $username
      * @param string $password
      * @param string $email
+     * @param $address
      * @return $this
      */
-    public function store($username, $password, $email)
+    public function store(string $username, string $password, string $email, string $address = '')
     {
         $this->attributes['username'] = $username;
-        $this->attributes['password'] = hash('sha256', $password);
         $this->attributes['mail'] = $email;
-        $this->attributes['account_created'] = time();
+
         $this->attributes['motto'] = Config::get('chocolatey.motto');
+        $this->attributes['look'] = Config::get('chocolatey.figure');
         $this->attributes['auth_ticket'] = '';
+
+        $this->attributes['password'] = hash('sha256', $password);
+        $this->attributes['account_created'] = time();
+
+        $this->traits = ["NEW_USER", "USER"];
+        $this->trusted = $address;
 
         return $this;
     }
@@ -186,9 +193,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getIsBannedAttribute()
+    public function getIsBannedAttribute(): bool
     {
-        return Ban::where('user_id', $this->attributes['id'])->count() != 0;
+        return Ban::where('user_id', $this->attributes['id'])->first() ?? false;
     }
 
     /**
@@ -197,7 +204,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return string
      */
-    public function getCountryAttribute()
+    public function getCountryAttribute(): string
     {
         return 'com';
     }
@@ -217,7 +224,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return array
      */
-    public function getTraitsAttribute()
+    public function getTraitsAttribute(): array
     {
         return $this->traits;
     }
@@ -227,10 +234,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getTrustedAttribute()
+    public function getTrustedAttribute(): bool
     {
-        return UserSecurity::find($this->attributes['id']) == null ?
-            true : in_array($this->trusted, UserSecurity::find($this->attributes['id'])->trustedDevices);
+        if (UserSecurity::find($this->attributes['id']) == null)
+            return true;
+
+        return in_array($this->trusted, UserSecurity::find($this->attributes['id'])->trustedDevices);
     }
 
     /**
@@ -238,7 +247,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return string
      */
-    public function getIdentityTypeAttribute()
+    public function getIdentityTypeAttribute(): string
     {
         return 'HABBO';
     }
@@ -248,7 +257,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getIdentityVerifiedAttribute()
+    public function getIdentityVerifiedAttribute(): bool
     {
         return true;
     }
@@ -258,7 +267,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return int
      */
-    public function getLoginLogIdAttribute()
+    public function getLoginLogIdAttribute(): int
     {
         return 1;
     }
@@ -268,7 +277,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return int
      */
-    public function getSessionLoginIdAttribute()
+    public function getSessionLoginIdAttribute(): int
     {
         return 1;
     }
@@ -279,7 +288,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getHabboClubMemberAttribute()
+    public function getHabboClubMemberAttribute(): bool
     {
         return true;
     }
@@ -290,7 +299,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getBuildersClubMemberAttribute()
+    public function getBuildersClubMemberAttribute(): bool
     {
         return true;
     }
@@ -298,12 +307,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get GTimestamp in Habbo Currency
      *
-     * @return false|string
+     * @return string
      */
-    public function getAccountCreatedAttribute()
+    public function getAccountCreatedAttribute(): string
     {
-        $accountCreated = array_key_exists('account_created', $this->attributes)
-            ? $this->attributes['account_created'] : time();
+        $accountCreated = $this->attributes['account_created'] ?? time();
 
         return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
     }
@@ -311,12 +319,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     /**
      * Get GTimestamp in Habbo Currency
      *
-     * @return false|string
+     * @return string
      */
-    public function getMemberSinceAttribute()
+    public function getMemberSinceAttribute(): string
     {
-        $accountCreated = array_key_exists('account_created', $this->attributes)
-            ? $this->attributes['account_created'] : time();
+        $accountCreated = $this->attributes['account_created'] ?? time();
 
         return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
     }
@@ -326,10 +333,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return string
      */
-    public function getFigureStringAttribute()
+    public function getFigureStringAttribute(): string
     {
-        return array_key_exists('look', $this->attributes) && !empty($this->attributes['look']) ?
-            $this->attributes['look'] : 'hr-115-42.hd-195-19.ch-3030-82.lg-275-1408.fa-1201.ca-1804-64';
+        return $this->attributes['look'] ?? 'hr-115-42.hd-195-19.ch-3030-82.lg-275-1408.fa-1201.ca-1804-64';
     }
 
     /**
@@ -337,10 +343,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return false|string
      */
-    public function getLastLoginAttribute()
+    public function getLastLoginAttribute(): string
     {
-        $lastLogin = array_key_exists('last_login', $this->attributes) ?
-            $this->attributes['last_login'] : time();
+        $lastLogin = $this->attributes['last_login'] ?? time();
 
         return date("Y-m-d", $lastLogin) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $lastLogin);
     }
@@ -350,9 +355,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getMailVerifiedAttribute()
+    public function getMailVerifiedAttribute(): bool
     {
-        return array_key_exists('mail_verified', $this->attributes) ?
-            $this->attributes['mail_verified'] == 1 : false;
+        return $this->attributes['mail_verified'] ?? false;
     }
 }

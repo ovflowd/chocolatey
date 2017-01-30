@@ -46,9 +46,9 @@ class PhotoReport extends ChocolateyModel
      * @param int $photoId
      * @param int $reasonId
      * @param int $reportedBy
-     * @return $this
+     * @return PhotoReport
      */
-    public function store($photoId, $reasonId, $reportedBy)
+    public function store($photoId, $reasonId, $reportedBy): PhotoReport
     {
         $this->attributes['photo_id'] = $photoId;
         $this->attributes['reason_id'] = $reasonId;

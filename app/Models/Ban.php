@@ -39,9 +39,9 @@ class Ban extends ChocolateyModel
      * @param int $banExpire
      * @param string $ipAddress
      * @param string $machineId
-     * @return $this
+     * @return Ban
      */
-    public function store($userId, $userStaffId, $banReason, $banType = 'account', $banExpire = 0, $ipAddress = '', $machineId = '')
+    public function store($userId, $userStaffId, $banReason, $banType = 'account', $banExpire = 0, $ipAddress = '', $machineId = ''): Ban
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['user_staff_id'] = $userStaffId;

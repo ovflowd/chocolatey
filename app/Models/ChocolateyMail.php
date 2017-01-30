@@ -37,10 +37,10 @@ class ChocolateyMail extends ChocolateyModel
      *
      * @param string $userMail
      * @param int $userId
-     * @return $this
+     * @return ChocolateyMail
      * @throws ErrorException
      */
-    public function store($userId, $userMail)
+    public function store($userId, $userMail): ChocolateyMail
     {
         if (ChocolateyId::query()->where('user_id', $userId)->count() > 0)
             throw new ErrorException("An User with this Id already registered.");

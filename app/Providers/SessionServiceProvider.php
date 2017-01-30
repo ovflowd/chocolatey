@@ -21,5 +21,7 @@ class SessionServiceProvider extends ServiceProvider
         $this->app->bind('azuresession', function () {
             return Session::getInstance();
         });
+
+        Session::getInstance()->start();
     }
 }

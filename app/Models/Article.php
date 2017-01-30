@@ -19,6 +19,7 @@ class Article extends ChocolateyModel
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * The table associated with the model.
      *
@@ -73,9 +74,9 @@ class Article extends ChocolateyModel
      * @param string $categories
      * @param string $imageUrl
      * @param string $thumbnailUrl
-     * @return $this
+     * @return Article
      */
-    public function store($title, $description, $content, $author, $categories, $imageUrl, $thumbnailUrl)
+    public function store($title, $description, $content, $author, $categories, $imageUrl, $thumbnailUrl): Article
     {
         $this->attributes['title'] = $title;
         $this->attributes['description'] = $description;
@@ -93,7 +94,7 @@ class Article extends ChocolateyModel
      *
      * @return array
      */
-    public function getCategoriesAttribute()
+    public function getCategoriesAttribute(): array
     {
         $categories = [];
 

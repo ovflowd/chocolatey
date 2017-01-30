@@ -125,9 +125,9 @@ class Room extends Model
      *
      * @return array
      */
-    public function getTagsAttribute()
+    public function getTagsAttribute(): array
     {
-        return !empty($this->attributes['tags']) ? explode(';', $this->attributes['tags']) : [];
+        return explode(';', $this->attributes['tags'] ?? '');
     }
 
     /**
@@ -135,7 +135,7 @@ class Room extends Model
      *
      * @return string
      */
-    public function getImageUrlAttribute()
+    public function getImageUrlAttribute(): string
     {
         $roomName = Config::get('chocolatey.arcturus');
 
@@ -147,7 +147,7 @@ class Room extends Model
      *
      * @return string
      */
-    public function getThumbnailUrlAttribute()
+    public function getThumbnailUrlAttribute(): string
     {
         $roomName = Config::get('chocolatey.arcturus');
 
@@ -161,7 +161,7 @@ class Room extends Model
      *
      * @return bool
      */
-    public function getShowOwnerNameAttribute()
+    public function getShowOwnerNameAttribute(): bool
     {
         return true;
     }
@@ -179,9 +179,9 @@ class Room extends Model
     /**
      * Get Leader Board Rank
      *
-     * @return mixed
+     * @return int
      */
-    public function getLeaderBoardRankAttribute()
+    public function getLeaderBoardRankAttribute(): int
     {
         return $this->attributes['leaderboardRank'];
     }
@@ -191,7 +191,7 @@ class Room extends Model
      *
      * @return bool
      */
-    public function getPublicRoomAttribute()
+    public function getPublicRoomAttribute(): bool
     {
         return $this->attributes['is_public'] == 1;
     }
@@ -201,7 +201,7 @@ class Room extends Model
      *
      * @return array
      */
-    public function getCategoriesAttribute()
+    public function getCategoriesAttribute(): array
     {
         $roomCategory = DB::table('navigator_flatcats')->where('id', $this->attributes['category'])->first();
 

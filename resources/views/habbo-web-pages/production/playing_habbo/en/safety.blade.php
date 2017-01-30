@@ -23,7 +23,7 @@
         class="align-right"></p>
 <h3>Keep Your Pals In Pixels</h3>
 <p>Do not meet up with someone you only know from the internet! People aren&apos;t always who they claim to be. If a
-    {{ $azure['name'] }} asks you to meet with them in real life say &quot;No,
+    {{$chocolatey['name']}} asks you to meet with them in real life say &quot;No,
     thanks!&quot; and immediately tell a moderator, your
     parents or another trusted adult.</p>
 <hr>
@@ -42,7 +42,7 @@
 <hr>
 <p><img src="https://habboo-a.akamaihd.net/c_images/Security/safetytips7_n.png" alt="Be a smart surfer"
         class="align-right"></p>
-<h3>Stick To The Real {{ $azure['name'] }} </h3>
+<h3>Stick To The Real {{$chocolatey['name']}} </h3>
 <p>Websites that offer free prizes, credits, furni, or &quot;staff rights&quot; are ALL scams designed to steal your
     password. Never give them your login details or download files from these websites. They could be keyloggers or
     viruses!</p>

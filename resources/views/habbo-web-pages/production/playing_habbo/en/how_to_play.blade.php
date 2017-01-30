@@ -4,16 +4,16 @@
 <p>Here are some ideas:</p>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/navigator.png" alt="Navigator" class="align-right"></p>
 <h3>Explore rooms</h3>
-<p>Click the Navigator and choose one of the public rooms where you can chat with other {{ $azure['name'] }} s.</p>
+<p>Click the Navigator and choose one of the public rooms where you can chat with other {{$chocolatey['name']}} s.</p>
 <hr>
 <p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/askfriend.png" alt="Ask to be friend" class="align-right">
 </p>
 <h3>Make friends</h3>
-<p>Click on a {{ $azure['name'] }} , ask them to be your friend or give them respect!</p>
+<p>Click on a {{$chocolatey['name']}} , ask them to be your friend or give them respect!</p>
 <hr>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/citizenship.png" alt=" {{ $azure['name'] }} citizenship"
+<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/citizenship.png" alt=" {{$chocolatey['name']}} citizenship"
         class="align-right"></p>
-<h3>Complete your {{ $azure['name'] }} Citizenship</h3>
+<h3>Complete your {{$chocolatey['name']}} Citizenship</h3>
 <p>To get to know the Hotel a bit better, start by clicking on the Help tool in the the top right corner in the
     hotel.</p>
 <hr>
@@ -28,10 +28,10 @@
 <hr>
 <h3>Check out the latest activities</h3>
 <p>Visit the <a href="/">Home</a> section of the website to find out all the latest news, competitions and general
-    goings-on in {{ $azure['name'] }} </p>
-<p>Once you&apos;ve done a few of these, you will be well on your way to becoming a fully fledged {{ $azure['name'] }}
+    goings-on in {{$chocolatey['name']}} </p>
+<p>Once you&apos;ve done a few of these, you will be well on your way to becoming a fully fledged {{$chocolatey['name']}}
     citizen!</p>
 <blockquote>
-    <h3>Join {{ $azure['name'] }} </h3>
-    <p>Haven&apos;t registered for {{ $azure['name'] }} yet? <a href="/registration">Join now</a>!</p>
+    <h3>Join {{$chocolatey['name']}} </h3>
+    <p>Haven&apos;t registered for {{$chocolatey['name']}} yet? <a href="/registration">Join now</a>!</p>
 </blockquote>

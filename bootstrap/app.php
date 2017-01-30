@@ -1,7 +1,5 @@
 <?php
 
-use App\Facades\Session;
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
 # Load ENV Environment
@@ -69,19 +67,13 @@ $app->routeMiddleware([
 
 $app->register(App\Providers\SessionServiceProvider::class);
 
+$app->register(App\Providers\ViewServiceProvider::class);
+
 $app->register(App\Providers\AuthServiceProvider::class);
 
 $app->register(\Sofa\Eloquence\ServiceProvider::class);
 
 $app->register(Rdehnhardt\MaintenanceMode\Providers\MaintenanceModeServiceProvider::class);
-
-/*
-|--------------------------------------------------------------------------
-| Configure Sessions
-|--------------------------------------------------------------------------
-*/
-
-Session::start();
 
 /*
 |--------------------------------------------------------------------------

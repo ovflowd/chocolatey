@@ -58,6 +58,9 @@ class ArticleController extends BaseController
      */
     protected function category($countryId, $categoryName, $categoryPage)
     {
+        //var_dump(ArticleCategory::all());
+
+
         return view('habbo-web-news.articles-category', [
             'category' => $categoryName,
             'categories' => ArticleCategory::all(),

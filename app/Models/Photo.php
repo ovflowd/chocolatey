@@ -61,7 +61,7 @@ class Photo extends ChocolateyModel
      *
      * @return string
      */
-    public function getIdAttribute()
+    public function getIdAttribute(): string
     {
         return "{$this->attributes['id']}";
     }
@@ -71,7 +71,7 @@ class Photo extends ChocolateyModel
      *
      * @return string
      */
-    public function getCreatorUniqueIdAttribute()
+    public function getCreatorUniqueIdAttribute(): string
     {
         return "{$this->attributes['creator_id']}";
     }
@@ -81,7 +81,7 @@ class Photo extends ChocolateyModel
      *
      * @return int
      */
-    public function getVersionAttribute()
+    public function getVersionAttribute(): int
     {
         return 1;
     }
@@ -92,9 +92,9 @@ class Photo extends ChocolateyModel
      *
      * @return array(string)
      */
-    public function getTagsAttribute()
+    public function getTagsAttribute(): array
     {
-        return empty($this->attributes['tags']) ? [] : explode(',', $this->attributes['tags']);
+        return explode(',', $this->attributes['tags'] ?? '');
     }
 
     /**
@@ -103,7 +103,7 @@ class Photo extends ChocolateyModel
      *
      * @return int
      */
-    public function getTimeAttribute()
+    public function getTimeAttribute(): int
     {
         return strtotime($this->attributes['time']);
     }
@@ -113,13 +113,8 @@ class Photo extends ChocolateyModel
      *
      * @return array
      */
-    public function getLikesAttribute()
+    public function getLikesAttribute(): array
     {
-        $likes = [];
-
-        foreach (PhotoLike::query()->select('username')->where('photo_id', $this->attributes['id'])->get() as $like)
-            $likes[] = $like->username;
-
-        return $likes;
+        return PhotoLike::query()->select('username')->where('photo_id', $this->attributes['id'])->get(['username'])->toArray();
     }
 }

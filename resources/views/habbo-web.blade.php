@@ -6,29 +6,29 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="robots" content="NOODP">
-        <title>{{$azure['name']}}</title>
+        <title>{{$chocolatey['name']}}</title>
         <meta name="description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
         <meta property="og:type" content="website">
-        <meta property="og:site_name" content="{{$azure['name']}}">
-        <meta property="og:title" content="{{$azure['name']}}">
+        <meta property="og:site_name" content="{{$chocolatey['name']}}">
+        <meta property="og:title" content="{{$chocolatey['name']}}">
         <meta property="og:description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
         <meta property="og:image:height" content="628">
         <meta property="og:image:width" content="1200">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{$azure['name']}}">
+        <meta name="twitter:title" content="{{$chocolatey['name']}}">
         <meta name="twitter:description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
-        <meta name="twitter:site" content="{{$azure['twitter']['name']}}">
+        <meta name="twitter:site" content="{{$chocolatey['twitter']['name']}}">
         <meta name="fragment" content="!">
         <meta name="revision" content="f05e1ca">
         <meta name="viewport"
               content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
         <meta name="prerender-status-code" prerender-status-code="">
         <meta name="prerender-header" prerender-header="">
-        <link rel="shortcut icon" href="{{$azure['url']}}habbo-web/favicon.ico">
-        <link rel="stylesheet" href="{{$azure['url']}}habbo-web/app.css">
+        <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
+        <link rel="stylesheet" href="{{$chocolatey['url']}}habbo-web/app.css">
         <script>
             !function () {
                 var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -36,8 +36,7 @@
             }();
         </script>
         <script>
-            window.session = <?= !empty(\App\Facades\Session::get('ChocolateyWEB')) ?
-                \App\Facades\Session::get('ChocolateyWEB') : 'null'; ?>;
+            window.session = {!! $user !!};
             window.partnerCodeInfo = null;
             window.banner = null;
         </script>
@@ -49,7 +48,7 @@
     <habbo-client></habbo-client>
 </div>
 <habbo-eu-cookie-banner habbo-require-no-session></habbo-eu-cookie-banner>
-<script src="{{$azure['url']}}habbo-web/vendor.js"></script>
-<script src="{{$azure['url']}}habbo-web/scripts.js"></script>
+<script src="{{$chocolatey['url']}}habbo-web/vendor.js"></script>
+<script src="{{$chocolatey['url']}}habbo-web/scripts.js"></script>
 </body>
 </html>
