@@ -7,6 +7,10 @@
     "CMS"
   ],
   "license": "MIT",
+  "support": {
+    "issues": "https://github.com/sant0ro/chocolatey/issues",
+    "source": "https://github.com/sant0ro/chocolatey/"
+  },
   "type": "project",
   "repositories": [
     {
