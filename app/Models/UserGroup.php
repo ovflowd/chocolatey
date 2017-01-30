@@ -84,13 +84,24 @@ class UserGroup extends ChocolateyModel
     ];
 
     /**
+     * Store Function
+     *
+     * A Group can't be inserted by the CMS.
+     * Only by the Emulator
+     */
+    public function store()
+    {
+        throw new InvalidMutatorException("You cannot store an User Group by Chocolatey. Groups need be created from the Server.");
+    }
+
+    /**
      * Return if is Admin
      *
      * @TODO: Link with User Data
      *
      * @return bool
      */
-    public function getIsAdminAttribute()
+    public function getIsAdminAttribute(): bool
     {
         return false;
     }
@@ -102,19 +113,8 @@ class UserGroup extends ChocolateyModel
      *
      * @return string
      */
-    public function getTypeAttribute()
+    public function getTypeAttribute(): string
     {
         return 'NORMAL';
-    }
-
-    /**
-     * Store Function
-     *
-     * A Group can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException("You cannot store an User Group by Chocolatey. Groups need be created from the Server.");
     }
 }

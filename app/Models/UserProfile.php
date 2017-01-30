@@ -47,15 +47,18 @@ class UserProfile
      * UserProfile constructor.
      *
      * @param User $userData
-     * @internal param User $userId
+     * @return UserProfile
      */
     public function __construct(User $userData)
     {
         $this->setUser($userData);
+
         $this->setFriends();
         $this->setBadges();
         $this->setGroups();
         $this->setRooms();
+
+        return $this;
     }
 
     /**
@@ -73,12 +76,7 @@ class UserProfile
      */
     protected function setFriends()
     {
-        $userFriends = UserFriend::where('user_one_id', $this->user->uniqueId)->get();
-
-        if ($userFriends == null)
-            return;
-
-        $this->friends = $userFriends;
+        $this->friends = UserFriend::where('user_one_id', $this->user->uniqueId)->get() ?? [];
     }
 
     /**
@@ -86,12 +84,7 @@ class UserProfile
      */
     protected function setBadges()
     {
-        $userBadges = UserBadge::where('user_id', $this->user->uniqueId)->get();
-
-        if ($userBadges == null)
-            return;
-
-        $this->badges = $userBadges;
+        $this->badges = UserBadge::where('user_id', $this->user->uniqueId)->get() ?? [];
     }
 
     /**
@@ -99,17 +92,7 @@ class UserProfile
      */
     protected function setGroups()
     {
-        $userGroups = [];
-
-        $groupsData = GroupMember::where('user_id', $this->user->uniqueId)->get();
-
-        if ($groupsData == null)
-            return;
-
-        foreach ($groupsData as $groupData)
-            $userGroups[] = $groupData->guild;
-
-        $this->groups = $userGroups;
+        $this->groups = GroupMember::where('user_id', $this->user->uniqueId)->get(['guild']) ?? [];
     }
 
     /**
@@ -117,16 +100,6 @@ class UserProfile
      */
     public function setRooms()
     {
-        $userRooms = Room::where('owner_id', $this->user->uniqueId)->get();
-
-        if ($userRooms == null)
-            return;
-
-        $leaderRank = 1;
-
-        foreach ($userRooms as $room)
-            $room->leaderboardRank = $leaderRank++;
-
-        $this->rooms = $userRooms;
+        $this->rooms = Room::where('owner_id', $this->user->uniqueId)->get() ?? [];
     }
 }

@@ -42,9 +42,6 @@ class ChocolateyMail extends ChocolateyModel
      */
     public function store($userId, $userMail): ChocolateyMail
     {
-        if (ChocolateyId::query()->where('user_id', $userId)->count() > 0)
-            throw new ErrorException("An User with this Id already registered.");
-
         $this->attributes['user_id'] = $userId;
         $this->attributes['mail'] = $userMail;
 

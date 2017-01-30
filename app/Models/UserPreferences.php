@@ -44,9 +44,9 @@ class UserPreferences extends Model
      * Store an User Preference set on the Database
      *
      * @param int $userId
-     * @return $this
+     * @return UserPreferences
      */
-    public function store($userId)
+    public function store($userId): UserPreferences
     {
         $this->attributes['user_id'] = $userId;
 

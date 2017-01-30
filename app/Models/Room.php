@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
@@ -121,6 +120,17 @@ class Room extends Model
     ];
 
     /**
+     * Store Function
+     *
+     * A Room can't be inserted by the CMS.
+     * Only by the Emulator
+     */
+    public function store()
+    {
+        throw new InvalidMutatorException("You cannot store a Room by Chocolatey. Rooms need be created from the Server.");
+    }
+
+    /**
      * Get Room Tags
      *
      * @return array
@@ -171,7 +181,7 @@ class Room extends Model
      *
      * @param int $roomPosition
      */
-    public function setLeaderBoardRankAttribute($roomPosition)
+    public function setLeaderBoardRankAttribute(int $roomPosition = 1)
     {
         $this->attributes['leaderboardRank'] = $roomPosition;
     }
@@ -203,21 +213,6 @@ class Room extends Model
      */
     public function getCategoriesAttribute(): array
     {
-        $roomCategory = DB::table('navigator_flatcats')->where('id', $this->attributes['category'])->first();
-
-        $roomCategory = str_replace('}', '', str_replace('${', '', $roomCategory->caption));
-
-        return [$roomCategory];
-    }
-
-    /**
-     * Store Function
-     *
-     * A Room can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException("You cannot store a Room by Chocolatey. Rooms need be created from the Server.");
+        return [str_replace('}', '', str_replace('${', '', FlatCat::find($this->attributes['category'])))];
     }
 }

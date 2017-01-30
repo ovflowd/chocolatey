@@ -86,7 +86,7 @@ class UserBadge extends ChocolateyModel
      *
      * @return string
      */
-    public function getDescriptionAttribute()
+    public function getDescriptionAttribute(): string
     {
         return "Badge {$this->attributes['badge_code']}";
     }

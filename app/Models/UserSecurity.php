@@ -50,16 +50,11 @@ class UserSecurity extends ChocolateyModel
     /**
      * Get Trusted Devices
      *
-     * @return mixed
+     * @return array
      */
-    public function getTrustedDevicesAttribute()
+    public function getTrustedDevicesAttribute(): array
     {
-        $deviceAddresses = [];
-
-        foreach (TrustedDevice::where('user_id', $this->attributes['user_id'])->get() as $device)
-            $deviceAddresses[] = $device->ip_address;
-
-        return $deviceAddresses;
+        return TrustedDevice::where('user_id', $this->attributes['user_id'])->get(['ip_address'])->toArray();
     }
 
     /**
@@ -70,9 +65,9 @@ class UserSecurity extends ChocolateyModel
      * @param int $secondQuestion
      * @param string $firstAnswer
      * @param string $secondAnswer
-     * @return $this
+     * @return UserSecurity
      */
-    public function store($userId, $firstQuestion, $secondQuestion, $firstAnswer, $secondAnswer)
+    public function store($userId, $firstQuestion, $secondQuestion, $firstAnswer, $secondAnswer): UserSecurity
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['firstQuestion'] = $firstQuestion;

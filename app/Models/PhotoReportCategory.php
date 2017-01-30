@@ -40,9 +40,6 @@ class PhotoReportCategory extends ChocolateyModel
      */
     public function store($reportCategory, $description): PhotoReportCategory
     {
-        if (PhotoReportCategory::query()->where('report_category', $reportCategory)->count() > 0)
-            throw new InvalidMutatorException("Already Exists a Category with this Id");
-
         $this->attributes['report_category'] = $reportCategory;
         $this->attributes['description'] = $description;
 

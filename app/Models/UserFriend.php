@@ -63,11 +63,22 @@ class UserFriend extends ChocolateyModel
     ];
 
     /**
+     * Store Function
+     *
+     * A User Friend can't be inserted by the CMS.
+     * Only by the Emulator
+     */
+    public function store()
+    {
+        throw new InvalidMutatorException("You cannot store an User Friend by Chocolatey. Friends need be created from the Server.");
+    }
+
+    /**
      * Get User Friend Figure String
      *
      * @return string
      */
-    public function getFigureStringAttribute()
+    public function getFigureStringAttribute(): string
     {
         return $this->getUserFriendData()->figureString;
     }
@@ -77,10 +88,9 @@ class UserFriend extends ChocolateyModel
      *
      * @return User
      */
-    protected function getUserFriendData()
+    protected function getUserFriendData(): ?User
     {
-        return $this->friendData == null ?
-            User::find($this->attributes['user_two_id']) : $this->friendData;
+        return User::find($this->attributes['user_two_id']);
     }
 
     /**
@@ -88,7 +98,7 @@ class UserFriend extends ChocolateyModel
      *
      * @return string
      */
-    public function getMottoAttribute()
+    public function getMottoAttribute(): string
     {
         return $this->getUserFriendData()->motto;
     }
@@ -98,7 +108,7 @@ class UserFriend extends ChocolateyModel
      *
      * @return string
      */
-    public function getNameAttribute()
+    public function getNameAttribute(): string
     {
         return $this->getUserFriendData()->name;
     }
@@ -106,21 +116,10 @@ class UserFriend extends ChocolateyModel
     /**
      * Get User Friend UniqueId
      *
-     * @return string
+     * @return int
      */
-    public function getUniqueIdAttribute()
+    public function getUniqueIdAttribute(): int
     {
         return $this->getUserFriendData()->uniqueId;
-    }
-
-    /**
-     * Store Function
-     *
-     * A User Friend can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException("You cannot store an User Friend by Chocolatey. Friends need be created from the Server.");
     }
 }
