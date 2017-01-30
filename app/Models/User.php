@@ -123,7 +123,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'real_name',
         'account_day_of_birth',
         'last_online',
-        'ip_current',
         'last_login',
         'ip_register',
         'auth_ticket',
