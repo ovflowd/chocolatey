@@ -24,7 +24,7 @@ class LoginController extends BaseController
     {
         if ($request->user('api')):
             $request->user()->trusted = $request->ip();
-
+            $request->user()->ip_current = $request->ip();
             return response()->json($request->user());
         endif;
 
