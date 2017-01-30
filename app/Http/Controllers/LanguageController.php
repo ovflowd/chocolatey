@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -18,11 +17,10 @@ class LanguageController extends BaseController
      * @param $languageFile
      * @return Response
      */
-    public function render($languageFile)
+    public function render($languageFile): Response
     {
         $languageName = strstr($languageFile, '.json', true);
 
-        return response(view("habbo-web-l10n.{$languageName}",
-            ['azure' => Config::get('chocolatey')]))->header('Content-Type', 'application/json');
+        return response(view("habbo-web-l10n.{$languageName}"))->header('Content-Type', 'application/json');
     }
 }

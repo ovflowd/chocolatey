@@ -24,13 +24,11 @@ class RoomsController extends BaseController
      * @param string $roomInterval
      * @return JsonResponse
      */
-    public function getLeader(Request $request, $countryId, $roomRange, $roomInterval)
+    public function getLeader(Request $request, $countryId, $roomRange, $roomInterval): JsonResponse
     {
-        $leaderBoard = Room::orderBy('score', 'DESC')->limit(50)->get();
-
         $leaderRank = 1;
 
-        foreach ($leaderBoard as $room)
+        foreach (($leaderBoard = Room::orderBy('score', 'DESC')->limit(50)->get()) as $room)
             $room->leaderboardRank = $leaderRank++;
 
         return response()->json($leaderBoard, 200, array(), JSON_UNESCAPED_SLASHES);
@@ -42,14 +40,8 @@ class RoomsController extends BaseController
      * @param int $roomId
      * @return JsonResponse
      */
-    public function getRoom($roomId)
+    public function getRoom($roomId): JsonResponse
     {
-        if (Room::find($roomId) == null)
-            return response()->json(['error' => 'not-found'], 404);
-
-        $roomData = Room::find($roomId);
-        $roomData->leaderboardRank = 0;
-
-        return response()->json($roomData);
+        return response()->json(Room::find($roomId) ?? ['error' => 'not-found']);
     }
 }

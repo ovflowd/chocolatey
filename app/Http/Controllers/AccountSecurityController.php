@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\UserSecurity;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Laravel\Lumen\Http\ResponseFactory;
+use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use stdClass;
 
@@ -23,9 +23,9 @@ class AccountSecurityController extends BaseController
      * Check if Feature Status is Enabled
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return Response
      */
-    public function featureStatus(Request $request)
+    public function featureStatus(Request $request): Response
     {
         if (ChocolateyId::find($request->user()->uniqueId)->emailVerified == 0)
             return response('identity_verification_required', 200);
@@ -39,9 +39,9 @@ class AccountSecurityController extends BaseController
      * Save Security Questions
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function saveQuestions(Request $request)
+    public function saveQuestions(Request $request): JsonResponse
     {
         if (User::where('password', hash('sha256', $request->json()->get('password')))->count() == 0)
             return response()->json(['error' => 'invalid_password'], 400);
@@ -53,33 +53,33 @@ class AccountSecurityController extends BaseController
             'firstAnswer' => $request->json()->get('answer1'),
             'secondAnswer' => $request->json()->get('answer2')]);
 
-        return response('', 204);
+        return response()->json('', 204);
     }
 
     /**
      * Disable Safety Lock
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function disable(Request $request)
+    public function disable(Request $request): JsonResponse
     {
         UserSecurity::find($request->user()->uniqueId)->delete();
 
-        return response('', 204);
+        return response()->json('', 204);
     }
 
     /**
      * Reset Trusted Devices
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function reset(Request $request)
+    public function reset(Request $request): JsonResponse
     {
         TrustedDevice::find($request->user()->uniqueId)->delete();
 
-        return response('', 204);
+        return response()->json('', 204);
     }
 
     /**
@@ -88,9 +88,9 @@ class AccountSecurityController extends BaseController
      * @TODO: Implement Notification E-mail of Password change
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function changePassword(Request $request)
+    public function changePassword(Request $request): JsonResponse
     {
         if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'password.current_password.invalid'], 409);
@@ -100,7 +100,7 @@ class AccountSecurityController extends BaseController
 
         User::find($request->user()->uniqueId)->update(['password' => hash('sha256', $request->json()->get('password'))]);
 
-        return response('', 204);
+        return response()->json('', 204);
     }
 
     /**
@@ -112,7 +112,7 @@ class AccountSecurityController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function changeMail(Request $request)
+    public function changeMail(Request $request): JsonResponse
     {
         if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'changeEmail.invalid_password'], 400);
@@ -135,12 +135,12 @@ class AccountSecurityController extends BaseController
      * Get User Security Questions
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function getQuestions(Request $request)
+    public function getQuestions(Request $request): JsonResponse
     {
         if (UserSecurity::find($request->user()->uniqueId) == null)
-            return response();
+            return response()->json();
 
         $userSecurity = UserSecurity::find($request->user()->uniqueId);
 
@@ -159,9 +159,9 @@ class AccountSecurityController extends BaseController
      * Verify User Security Questions
      *
      * @param Request $request
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function verifyQuestions(Request $request)
+    public function verifyQuestions(Request $request): JsonResponse
     {
         if (UserSecurity::where('user_id', $request->user()->uniqueId)
                 ->where('firstAnswer', $request->json()->get('answer1'))
@@ -170,9 +170,9 @@ class AccountSecurityController extends BaseController
             if ($request->json()->get('trust') == true)
                 (new TrustedDevice)->store($request->user()->uniqueId, $request->ip())->save();
 
-            return response('', 204);
+            return response()->json('', 204);
         endif;
 
-        return response('', 409);
+        return response()->json('', 409);
     }
 }

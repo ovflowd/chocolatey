@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -18,9 +18,9 @@ class LoginController extends BaseController
      * Handles the Response of the Login Attempt
      *
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
         if ($request->user('api')):
             $request->user()->trusted = $request->ip();
@@ -34,13 +34,13 @@ class LoginController extends BaseController
     /**
      * Destroys the User Session
      *
-     * @return Response
+     * @return JsonResponse
      */
-    public function logout()
+    public function logout(): JsonResponse
     {
         Session::erase('ChocolateyWEB');
 
-        return response('');
+        return response()->json();
     }
 
     /**
@@ -48,9 +48,9 @@ class LoginController extends BaseController
      * and do the Login of the User
      *
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function register(Request $request)
+    public function register(Request $request): JsonResponse
     {
         if (strpos($request->json()->get('email'), '@') == false)
             return response()->json(['error' => 'registration_email'], 409);

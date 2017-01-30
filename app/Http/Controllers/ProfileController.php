@@ -9,7 +9,6 @@ use App\Models\UserPreferences;
 use App\Models\UserProfile;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -24,17 +23,16 @@ class ProfileController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function getPublicData(Request $request)
+    public function getPublicData(Request $request): JsonResponse
     {
         $userData = User::where('username', $request->input('name'))->first();
 
         if ($userData == null)
-            return response('', 404);
+            return response()->json('', 404);
 
-        $userBadges = UserBadge::where('user_id', $userData->uniqueId)->where('slot_id', '>', 0)->get();
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
-        $userData->selectedBadges = $userBadges == null ? [] : $userBadges;
+        $userData->selectedBadges = UserBadge::where('user_id', $userData->uniqueId)->where('slot_id', '>', 0)->get() ?? [];
         $userData->profileVisible = $userPreferences == null ? true : $userPreferences->profileVisible == '1';
 
         return response()->json($userData);
@@ -44,23 +42,21 @@ class ProfileController extends BaseController
      * Get Public User Profile
      *
      * @param int $userId
-     * @return ResponseFactory
+     * @return JsonResponse
      */
-    public function getPublicProfile($userId)
+    public function getPublicProfile($userId): JsonResponse
     {
         $userData = User::find($userId);
 
         if ($userData == null)
-            return response('', 404);
+            return response()->json('', 404);
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
         if ($userPreferences != null && $userPreferences->profileVisible == '0')
-            return response('', 404);
+            return response()->json('', 404);
 
-        $userProfile = new UserProfile($userData);
-
-        return response()->json($userProfile);
+        return response()->json(new UserProfile($userData));
     }
 
     /**
@@ -69,11 +65,9 @@ class ProfileController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function getProfile(Request $request)
+    public function getProfile(Request $request): JsonResponse
     {
-        $userProfile = new UserProfile($request->user());
-
-        return response()->json($userProfile);
+        return response()->json(new UserProfile($request->user()));
     }
 
     /**
@@ -81,10 +75,9 @@ class ProfileController extends BaseController
      *
      * @TODO: Implement Habbo Stories
      *
-     * @param Request $request
      * @return JsonResponse
      */
-    public function getStories(Request $request)
+    public function getStories(): JsonResponse
     {
         return response()->json([]);
     }
@@ -95,7 +88,7 @@ class ProfileController extends BaseController
      * @param Request $request
      * @return JsonResponse
      */
-    public function getPhotos(Request $request)
+    public function getPhotos(Request $request): JsonResponse
     {
         if (Photo::where('creator_id', $request->user()->uniqueId)->count() == 0)
             return response()->json([]);

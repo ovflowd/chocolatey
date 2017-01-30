@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use App\Models\PhotoLike;
 use App\Models\PhotoReport;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -20,9 +20,9 @@ class PublicPhotosController extends BaseController
      *
      * @TODO: Exclude Approved Reported Photos from the List
      *
-     * @return Response
+     * @return JsonResponse
      */
-    public function show()
+    public function show(): JsonResponse
     {
         return response()->json(Photo::all(), 200, array(), JSON_UNESCAPED_SLASHES);
     }
@@ -36,14 +36,13 @@ class PublicPhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoIdentifier
-     * @return Response
+     * @return JsonResponse
      */
-    public function report(Request $request, $photoIdentifier)
+    public function report(Request $request, $photoIdentifier): JsonResponse
     {
-        (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'),
-            $request->user()->uniqueId)->save();
+        (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
-        return response('');
+        return response()->json();
     }
 
     /**
@@ -51,16 +50,16 @@ class PublicPhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoId
-     * @return Response
+     * @return JsonResponse
      */
-    public function likePhoto(Request $request, $photoId)
+    public function likePhoto(Request $request, $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
-            return response();
+            return response()->json();
 
         (new PhotoLike)->store($photoId, $request->user()->name)->save();
 
-        return response('');
+        return response()->json();
     }
 
     /**
@@ -68,15 +67,15 @@ class PublicPhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoId
-     * @return Response
+     * @return JsonResponse
      */
-    public function unlikePhoto(Request $request, $photoId)
+    public function unlikePhoto(Request $request, $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
-            return response();
+            return response()->json();
 
         PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
-        return response('');
+        return response()->json();
     }
 }

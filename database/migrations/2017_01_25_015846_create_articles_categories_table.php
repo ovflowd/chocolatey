@@ -25,11 +25,11 @@ class CreateArticlesCategoriesTable extends Migration
             ['link' => 'all', 'translate' => 'NEWS_CATEGORY_ALL'],
             ['link' => 'ambassadors', 'translate' => 'NEWS_CATEGORY_AMBASSADORS'],
             ['link' => 'baw', 'translate' => 'NEWS_CATEGORY_BAW'],
-            ['link' => 'campaign-activities', 'translate' => 'NEWS_CATEGORY_CAMPAIGNS_ACTIVITIES'],
-            ['link' => 'credit-promo', 'translate' => 'NEWS_CATEGORY_CREDIT_PROMO'],
+            ['link' => 'campaign.activities', 'translate' => 'NEWS_CATEGORY_CAMPAIGNS_ACTIVITIES'],
+            ['link' => 'credit.promo', 'translate' => 'NEWS_CATEGORY_CREDIT_PROMO'],
             ['link' => 'fansites', 'translate' => 'NEWS_CATEGORY_FANSITES'],
             ['link' => 'safety', 'translate' => 'NEWS_CATEGORY_SAFETY'],
-            ['link' => 'technical-updates', 'translate' => 'NEWS_CATEGORY_TECHNICAL_UPDATES']
+            ['link' => 'technical.updates', 'translate' => 'NEWS_CATEGORY_TECHNICAL_UPDATES']
         ]);
     }
 
