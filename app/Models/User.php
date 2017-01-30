@@ -29,28 +29,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
     /**
      * If User is Trusted
      *
      * @var bool
      */
     public $trusted = false;
-
     /**
      * User Traits
      *
      * @var array
      */
     public $traits = ["USER"];
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
     /**
      * Primary Key of the Table
      *

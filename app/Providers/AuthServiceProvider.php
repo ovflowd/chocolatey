@@ -6,6 +6,10 @@ use App\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AuthServiceProvider
+ * @package App\Providers
+ */
 class AuthServiceProvider extends ServiceProvider
 {
     /**

@@ -1,5 +1,5 @@
 {
-  "name": "sant0ro/azureWEB",
+  "name": "sant0ro/chocolatey",
   "description": "The open source HabboWEB API",
   "keywords": [
     "Habbo",
@@ -12,7 +12,6 @@
     "php": ">=7.0.0",
     "laravel/lumen-framework": "master",
     "vlucas/phpdotenv": "~2.2",
-    "kirkbushell/eloquence": "~2.0",
     "sofa/eloquence": "^5.3",
     "rdehnhardt/lumen-maintenance-mode": "^1.2"
   },
