@@ -166,6 +166,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         $this->attributes['password'] = hash('sha256', $password);
         $this->attributes['account_created'] = time();
+        
+        $this->attribute['ip_current'] = $address;
 
         $this->traits = ["NEW_USER", "USER"];
         $this->trusted = $address;
