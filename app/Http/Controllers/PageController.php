@@ -19,11 +19,26 @@ class PageController extends BaseController
      * @param string $pageFile
      * @return Response
      */
-    public function show($pageCategory, $pageFile): Response
+    public function show(string $pageCategory, string $pageFile): Response
     {
         $pageLanguage = ($pageArray = explode('.', $pageFile))[1];
 
         return response(view("habbo-web-pages.production.{$pageCategory}.{$pageLanguage}.{$pageArray[0]}"));
+    }
+
+    /**
+     * Render a HabboWEB Page
+     *
+     * @param string $pageCategory
+     * @param string $subCategory
+     * @param string $pageFile
+     * @return Response
+     */
+    public function showWithSub(string $pageCategory, string $subCategory, string $pageFile): Response
+    {
+        $pageLanguage = ($pageArray = explode('.', $pageFile))[1];
+
+        return response(view("habbo-web-pages.production.{$pageCategory}.{$subCategory}.{$pageLanguage}.{$pageArray[0]}"));
     }
 
     /**

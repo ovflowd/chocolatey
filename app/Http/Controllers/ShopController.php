@@ -71,4 +71,40 @@ class ShopController extends BaseController
         return $paymentCheckout != null ? redirect($paymentCheckout->redirect)
             : response(view('failed-payment'), 400);
     }
+
+    /**
+     * Get User Purchase History
+     *
+     * @TODO: User Purchase History will be coded on the Future
+     * @TODO: All Purchases of the CMS are Manually, so will be difficult track.
+     * @TODO: Probably Administrators will Manually Insert History Through HK
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getHistory(Request $request): JsonResponse
+    {
+        return response()->json([]);
+    }
+
+    /**
+     * Redeem Voucher
+     *
+     * @TODO: Need to Test if really works
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function redeem(Request $request): JsonResponse
+    {
+        $voucher = DB::table('vouchers')->where('code', $request->json()->get('voucherCode'))->first();
+
+        if ($voucher == null)
+            return response()->json('', 404);
+
+        DB::table('users')->where('id', $request->user()->uniqueId)->increment('credits', $voucher->credits);
+        DB::table('users')->where('id', $request->user()->uniqueId)->increment('pixels', $voucher->points);
+
+        return response()->json();
+    }
 }

@@ -47,7 +47,7 @@ class Purse
      */
     public function __construct(int $userId)
     {
-        $userBalance = DB::table('users')->where('id', $userId)->select(['credits, pixels'])->get();
+        $userBalance = DB::table('users')->where('id', $userId)->select(['credits', 'pixels'])->first();
 
         $this->creditBalance = $userBalance->credits;
         $this->diamondBalance = $userBalance->pixels;

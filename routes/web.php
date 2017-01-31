@@ -156,18 +156,30 @@ $app->get('/shopapi', function () {
     return response('Unauthorized.', 401);
 });
 
-# Show All Registered HabboWEB Photos
+# Get a List of all Shop Countries
 $app->get('/shopapi/public/countries', 'ShopController@listCountries');
 
-# Show All Registered HabboWEB Photos
+# Get the Inventory of a specific Country
 $app->get('/shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
 
 # Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app) {
-    # Show All Registered HabboWEB Photos
+    # Get User Purse
     $app->get('/shopapi/purse', 'ShopController@getPurse');
 
-    # Show All Registered HabboWEB Photos
+    # Get User Purchase History
+    $app->get('/shopapi/history', 'ShopController@getHistory');
+
+    # Get a List of all Shop Countries
+    $app->get('/shopapi/countries', 'ShopController@listCountries');
+
+    # Redeem a Voucher
+    $app->post('/shopapi/voucher/redeem', 'ShopController@redeem');
+
+    # Get the Inventory of a specific Country
+    $app->get('/shopapi/inventory/{countryCode}', 'ShopController@getInventory');
+
+    # Redirect to Purchase Proceed
     $app->get('/shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
 });
 
@@ -235,6 +247,9 @@ $app->get('/habbo-web-pages/', function () {
 
 # Request a Specific View of HabboWEB Pages
 $app->get('/habbo-web-pages/production/{category}/{view}', 'PageController@show');
+
+# Request a Specific View of HabboWEB Pages
+$app->get('/habbo-web-pages/production/{category}/{subcategory}/{view}', 'PageController@showWithSub');
 
 # Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app) {
