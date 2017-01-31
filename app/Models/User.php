@@ -152,7 +152,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $username
      * @param string $password
      * @param string $email
-     * @param $address
+     * @param string $address
      * @return $this
      */
     public function store(string $username, string $password, string $email, string $address = '')

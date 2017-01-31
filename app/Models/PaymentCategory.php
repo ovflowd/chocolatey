@@ -3,10 +3,10 @@
 namespace App\Models;
 
 /**
- * Class PhotoLike
+ * Class PaymentCategory
  * @package App\Models
  */
-class PhotoLike extends ChocolateyModel
+class PaymentCategory extends ChocolateyModel
 {
     /**
      * Disable Timestamps
@@ -20,7 +20,7 @@ class PhotoLike extends ChocolateyModel
      *
      * @var string
      */
-    protected $table = 'chocolatey_users_photos_likes';
+    protected $table = 'chocolatey_shop_payment_categories';
 
     /**
      * Primary Key of the Table
@@ -30,16 +30,13 @@ class PhotoLike extends ChocolateyModel
     protected $primaryKey = 'id';
 
     /**
-     * Store a new Photo Data
-     *
-     * @param int $photoId
-     * @param string $userName
-     * @return PhotoLike
+     * Store an Shop Country
+     * @param string $paymentName
+     * @return PaymentCategory
      */
-    public function store(int $photoId, string $userName): PhotoLike
+    public function store(string $paymentName): PaymentCategory
     {
-        $this->attributes['photo_id'] = $photoId;
-        $this->attributes['username'] = $userName;
+        $this->attributes['payment_type'] = $paymentName;
 
         return $this;
     }

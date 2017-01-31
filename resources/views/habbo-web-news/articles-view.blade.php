@@ -11,12 +11,12 @@
         <h1 class="news-header__wrapper news-header__title">Race to the limit!</h1>
         <aside class="news-header__wrapper news-header__info">
             <time class="news-header__date">
-                @{{ <?= strtotime($article->createdAt) ?> | date: 'mediumDate' }}
+                {{date('M j, Y' , strtotime($articleContent->createdAt))}}
             </time>
             <ul class="news-header__categories">
                 @foreach ($article->categories as $articleCategory)
                     <li class="news-header__category">
-                        <a href="/community/category/{{$articleCategory->link}}"
+                        <a href="/community/category/{{$articleCategory->name}}"
                            class="news-header__category__link"
                            translate="{{$articleCategory->translate}}"></a>
                     </li>

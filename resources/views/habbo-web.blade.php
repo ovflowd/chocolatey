@@ -37,6 +37,7 @@
         </script>
         <script>
             window.session = {!! $user !!};
+            window.geoLocation = {!! json_encode((object)$chocolatey['location']) !!};
             window.partnerCodeInfo = null;
             window.banner = null;
         </script>

@@ -14,12 +14,12 @@
             </a>
             <aside class="news-header__wrapper news-header__info">
                 <time class="news-header__date">
-                    @{{ <?= strtotime($articleContent->createdAt) ?> | date: 'mediumDate' }}
+                    {{date('M j, Y' , strtotime($articleContent->createdAt))}}
                 </time>
                 <ul class="news-header__categories">
                     @foreach ($articleContent->categories as $articleCategory)
                         <li class="news-header__category">
-                            <a href="/community/category/{{$articleCategory->link}}/content"
+                            <a href="/community/category/{{$articleCategory->name}}/content"
                                class="news-header__category__link"
                                translate="{{$articleCategory->translate}}"></a>
                         </li>

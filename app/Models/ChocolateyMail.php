@@ -40,7 +40,7 @@ class ChocolateyMail extends ChocolateyModel
      * @return ChocolateyMail
      * @throws ErrorException
      */
-    public function store($userId, $userMail): ChocolateyMail
+    public function store(int $userId, string $userMail): ChocolateyMail
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['mail'] = $userMail;

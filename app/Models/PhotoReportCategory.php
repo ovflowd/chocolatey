@@ -36,7 +36,7 @@ class PhotoReportCategory extends ChocolateyModel
      * @param string $description
      * @return PhotoReportCategory
      */
-    public function store($reportCategory, $description): PhotoReportCategory
+    public function store(int $reportCategory, string $description): PhotoReportCategory
     {
         $this->attributes['report_category'] = $reportCategory;
         $this->attributes['description'] = $description;

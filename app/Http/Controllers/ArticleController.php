@@ -36,8 +36,8 @@ class ArticleController extends BaseController
      */
     protected function front(): Response
     {
-        return response(view('habbo-web-news.articles-front',
-            ['set' => Article::where('categories', 'like', '%all%')->orderBy('id', 'ASC')->limit(10)->get()]));
+        return response(view('habbo-web-news.articles-front', ['set' =>
+            Article::orderBy('id', 'ASC')->limit(10)->get()]));
     }
 
     /**

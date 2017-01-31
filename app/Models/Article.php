@@ -67,16 +67,16 @@ class Article extends ChocolateyModel
     /**
      * Store a new CMS Article
      *
-     * @param int $title
+     * @param string $title
      * @param string $description
      * @param string $content
-     * @param int $author
+     * @param string $author
      * @param string $categories
      * @param string $imageUrl
      * @param string $thumbnailUrl
      * @return Article
      */
-    public function store($title, $description, $content, $author, $categories, $imageUrl, $thumbnailUrl): Article
+    public function store(string $title, string $description, string $content, string $author, string $categories, string $imageUrl, string $thumbnailUrl): Article
     {
         $this->attributes['title'] = $title;
         $this->attributes['description'] = $description;

@@ -46,7 +46,7 @@ class UserPreferences extends Model
      * @param int $userId
      * @return UserPreferences
      */
-    public function store($userId): UserPreferences
+    public function store(int $userId): UserPreferences
     {
         $this->attributes['user_id'] = $userId;
 

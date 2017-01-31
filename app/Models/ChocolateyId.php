@@ -50,7 +50,7 @@ class ChocolateyId extends ChocolateyModel
      * @return ChocolateyId
      * @throws ErrorException
      */
-    public function store($userId, $userMail): ChocolateyId
+    public function store(int $userId, string $userMail): ChocolateyId
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['mail'] = $userMail;

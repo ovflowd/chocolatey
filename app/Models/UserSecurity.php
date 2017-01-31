@@ -67,7 +67,7 @@ class UserSecurity extends ChocolateyModel
      * @param string $secondAnswer
      * @return UserSecurity
      */
-    public function store($userId, $firstQuestion, $secondQuestion, $firstAnswer, $secondAnswer): UserSecurity
+    public function store(int $userId, int $firstQuestion, int $secondQuestion, string $firstAnswer, string $secondAnswer): UserSecurity
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['firstQuestion'] = $firstQuestion;

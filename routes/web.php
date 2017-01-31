@@ -156,6 +156,21 @@ $app->get('/shopapi', function () {
     return response('Unauthorized.', 401);
 });
 
+# Show All Registered HabboWEB Photos
+$app->get('/shopapi/public/countries', 'ShopController@listCountries');
+
+# Show All Registered HabboWEB Photos
+$app->get('/shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
+
+# Middleware that Requires Authentication
+$app->group(['middleware' => 'auth'], function () use ($app) {
+    # Show All Registered HabboWEB Photos
+    $app->get('/shopapi/purse', 'ShopController@getPurse');
+
+    # Show All Registered HabboWEB Photos
+    $app->get('/shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Habbo Extradata Routes
