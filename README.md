@@ -62,8 +62,8 @@ Editing your Logo on **Chocolatey** it's a little more difficult. And because th
 * Mike aka CineXMike
 
 ### Special Thanks
-1. Wesley aka The General
-2. Chris aka Leader (LeChris)
-3. Joorren because Joorren
-4. Cankiee aka Cankiee (loool)
-5. Martin aka Marit
+* Wesley aka The General
+* Chris aka Leader (LeChris)
+* Joorren because Joorren
+* Cankiee aka Cankiee (loool)
+* Martin aka Marit
