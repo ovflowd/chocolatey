@@ -29,4 +29,15 @@ class ClientController extends BaseController
         return response()->json(['clienturl' => "{$hotelUrl}client/{$accountType}"],
             200, [], JSON_UNESCAPED_SLASHES);
     }
+
+    /**
+     * Get HabboWEB Ads Interstitial
+     *
+     * @param string $interstitialType
+     * @return Response
+     */
+    public function getInterstitial(string $interstitialType): Response
+    {
+        return response(view('habbo-web-ads.interstitial'));
+    }
 }

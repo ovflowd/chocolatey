@@ -311,3 +311,14 @@ $app->get('/habbo-web-l10n/{language}', 'LanguageController@render');
 # Render a specific Language Ecosystem
 $app->get('/habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');
 $app->get('/habbo-web-leaderboards//{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');
+
+/*
+|--------------------------------------------------------------------------
+| Habbo WEB ADS
+|--------------------------------------------------------------------------
+|
+| Here comes the Advertisement Routes
+|
+*/
+
+$app->get('/habbo-web-ads/{interstitial}', 'ClientController@getInterstitial');

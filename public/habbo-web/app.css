@@ -2496,7 +2496,7 @@ habbo-header-small .header__habbo__logo {
 }
 
 .header__login__button:active, .header__login__button:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #267b91;
 }
 
 .header__login__icon {
@@ -2581,7 +2581,7 @@ habbo-header-small .header__habbo__logo {
 }
 
 .hotel-button:active, .hotel-button:hover {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid #fffd70;
 }
 
 .hotel-button__text:active, .hotel-button__text:hover, .navigation__link--community:active, .navigation__link--community:hover, .navigation__link--home:active, .navigation__link--home:hover, .navigation__link--playing-habbo:active, .navigation__link--playing-habbo:hover, .navigation__link--shop:active, .navigation__link--shop:hover, .user-menu__name:active, .user-menu__name:hover, .user-menu__toggle:active, .user-menu__toggle:hover {
@@ -5348,7 +5348,7 @@ register-banner {
     color: #fff;
     font-size: 32px;
     padding: 12px 24px;
-    border: solid #8eda55;
+    border: 2px solid #8eda55;
     margin-bottom: 4px;
     text-transform: uppercase;
     width: 100%;

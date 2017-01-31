@@ -1052,7 +1052,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     bindings: {active: "@"},
     controllerAs: "NavigationController",
     templateUrl: "common/header/navigation/navigation.html"
-}), angular.module("hotel.button", ["locale", "templates"]).component("habboHotelButton", {templateUrl: "common/header/hotel-button/hotel-button.html"}), angular.module("header.ad", ["ad.unit", "templates"]).component("habboHeaderAd", {
+}), angular.module("hotel.button", ["locale", "templates"]).component("habboHotelButton", {templateUrl: "common/header/hotel-button/hotel-button.html"}), angular.module("header.ad", ["templates"]).component("habboHeaderAd", {
     controller: ["$scope", "$location", function (e, t) {
         function o() {
             n.hasAd = r()
@@ -1133,7 +1133,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         size: [300, 250]
     }, leaderboard: {id: "div-gpt-ad-2", size: [728, 90]}, mobileLeaderboard: {size: [320, 50]}
 }).config(["DOUBLE_CLICK_UNITS", "DoubleClickProvider", function (e, t) {
-    var o = "/108596585/Habbo_WEB_IAB";
+    var o = "";
     t.defineSlot(o, [e.inlineRectangle.size], e.inlineRectangle.id).defineSlot(o, [e.leaderboard.size, e.mobileLeaderboard.size], e.leaderboard.id), t.defineSizeMapping(e.leaderboard.id).addSize([768, 0], e.leaderboard.size).addSize([0, 0], e.mobileLeaderboard.size)
 }]).component("habboAdDoubleClick", {
     bindings: {unit: "@"},
@@ -2467,7 +2467,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             })
         }
     }
-}]),angular.module("news", ["ad.unit", "compile", "locale", "moderation.notification", "promos.service", "router", "templates", "web.pages"]).config(["$stateProvider", function (e) {
+}]),angular.module("news", ["compile", "locale", "moderation.notification", "promos.service", "router", "templates", "web.pages"]).config(["$stateProvider", function (e) {
     e.statePublic("home.news", {
         url: "/",
         controller: "NewsController",
@@ -2617,7 +2617,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             })
         }
     })
-}]),angular.module("fansites", ["ad.unit", "locale", "router", "templates", "web.pages"]).config(["$stateProvider", function (e) {
+}]),angular.module("fansites", ["locale", "router", "templates", "web.pages"]).config(["$stateProvider", function (e) {
     e.statePublic("community.fansites", {
         url: "/fansites",
         controller: "FansitesController",
@@ -2646,7 +2646,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             })
         }
     }
-}]),angular.module("category", ["ad.unit", "category.service", "compile", "locale", "router", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}]),angular.module("category", ["category.service", "compile", "locale", "router", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     e.statePublic("community.category", {
         url: "/category/{category:(?:[^/]+)}{archive:(?:/[^0-9lst/]+)?}/{page}",
         controller: "CategoryController",
@@ -2683,7 +2683,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             })
         }
     }
-}]),angular.module("article", ["ad.unit", "article.service", "compile", "lightbox", "locale", "router", "social.share", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}]),angular.module("article", ["article.service", "compile", "lightbox", "locale", "router", "social.share", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     e.statePublic("community.article", {
         url: "/article/:id/:title",
         controller: "ArticleController",
@@ -3841,7 +3841,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }
     });
     return s.photosForUser = i("photos"), s.storiesForUser = i("stories"), s
-}]),angular.module("playing.habbo", ["ad.unit", "header", "locale", "router", "tabs", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}]),angular.module("playing.habbo", ["header", "locale", "router", "tabs", "templates", "web.pages"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     var o = ["what-is-habbo", "how-to-play", "habbo-way", "safety", "help"];
     e.statePublic("playingHabbo", {
         url: "/playing-habbo",

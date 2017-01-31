@@ -77,6 +77,8 @@ class AccountController extends BaseController
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response('', 400);
 
+        $request->user()->traits = ["USER"];
+
         return response()->json('');
     }
 

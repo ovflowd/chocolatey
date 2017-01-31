@@ -73,6 +73,36 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable ADS for Users
+    |--------------------------------------------------------------------------
+    |
+    | This Setting Will Enable Advertisement for ANY User
+    | In order to get it fully working, you need configure the settings above
+    |
+    */
+
+    'ads' => [
+        'enabled' => true,
+        'adsene-key' => 'YOUR-ADSENE-KEY' //DEFAULT: /108596585/HABBO_Video
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | CORS (Access Cross Origin)
+    |--------------------------------------------------------------------------
+    |
+    | Select the Domains that can Access this site.
+    |
+    */
+
+    'cors' => [
+        'http://imasdk.googleapis.com',
+        'http://127.0.0.1',
+        'http://localhost'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Twitter Configuration
     |--------------------------------------------------------------------------
     |
@@ -141,6 +171,17 @@ return [
         'sant0ro',
         'saamus'
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Contact E-mail
+    |--------------------------------------------------------------------------
+    |
+    | This is the E-Mail of the Contact
+    |
+    */
+
+    'contact' => 'santoro@inboxalias.com',
 
     /*
     |--------------------------------------------------------------------------

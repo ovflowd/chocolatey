@@ -285,22 +285,26 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Get the HabboClub Attribute
      * In a Retro Habbo everyone is HC, yeah?
      *
+     * @WARNING: This is used for Advertisement
+     *
      * @return bool
      */
     public function getHabboClubMemberAttribute(): bool
     {
-        return true;
+        return Config::get('chocolatey.ads.enabled') == false;
     }
 
     /**
      * Get the Builders Club Attribute
      * In a Retro Habbo everyone is BC, yeah?
      *
+     * @WARNING: This is used for Advertisement
+     *
      * @return bool
      */
     public function getBuildersClubMemberAttribute(): bool
     {
-        return true;
+        return Config::get('chocolatey.ads.enabled') == false;
     }
 
     /**
