@@ -24,9 +24,7 @@ class ArticleController extends BaseController
     {
         $categoryName = str_replace('.html', '', strstr($articleCategory, '_', true));
 
-        $categoryPage = str_replace('lmth.', '', strstr(strrev($articleCategory), '_', true));
-
-        return $articleCategory == 'front.html' ? $this->front() : $this->category($countryId, $categoryName, $categoryPage);
+        return $articleCategory == 'front.html' ? $this->front() : $this->category($countryId, $categoryName);
     }
 
     /**
@@ -47,17 +45,16 @@ class ArticleController extends BaseController
      *
      * @param string $countryId
      * @param string $categoryName
-     * @param string $categoryPage
      * @return Response
      */
-    protected function category($countryId, $categoryName, $categoryPage): Response
+    protected function category($countryId, $categoryName): Response
     {
         return response(view('habbo-web-news.articles-category', [
             'category' => $categoryName,
             'categories' => ArticleCategory::all(),
-            'articleSet' => Article::where('categories', 'like', "%$categoryName%")
-                ->where('id', '>=', $categoryPage == 1 ? $categoryPage : ($categoryPage * 3))
-                ->orderBy('id', 'ASC')->limit(10)->get()
+            'articleSet' => $categoryName != 'all' ?
+                Article::where('categories', 'like', "%$categoryName%")->get()
+                : Article::all()
         ]));
     }
 

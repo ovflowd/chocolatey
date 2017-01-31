@@ -16,28 +16,24 @@ class PaymentMethod extends ChocolateyModel
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'chocolatey_shop_payment_methods';
-
-    /**
-     * Primary Key of the Table
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
     /**
      * Purchase Params
      *
      * @var array
      */
     public $purchaseParams = null;
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'chocolatey_shop_payment_methods';
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
     /**
      * The Appender(s) of the Model
      *
