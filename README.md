@@ -27,14 +27,9 @@ For development purposes and to create test and educational local Habbo.com webs
 
 #### How i can have a full experience with Chocolatey?
 
-**Chocolatey** is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source
-Habbo Emulator. 
-
-**Chocolatey** only support it.
-
-Also **Chocolatey** only supports php 7.0+ environments, php 5.X is no longer supported.
-
-You can actually use **Chocolatey** in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
+* **Chocolatey** is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source Habbo Emulator. **Chocolatey** only support it.
+* Also **Chocolatey** only supports php 7.0+ environments, php 5.X is no longer supported.
+* You can actually use **Chocolatey** in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
 
 <hr>
 ### Installation
