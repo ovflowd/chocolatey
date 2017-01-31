@@ -1,12 +1,37 @@
 ![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
 <br><sup>chocolatey the Habbo.com Clone CMS</sup>
 
-<hr>
-### Being Developed with love in Lumen
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+
+The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.
 
 <hr>
-### This CMS works only with Arcturus
-#### Get Arcturus today by accessing http://arcturus.wf
+### About
+#### What is?
+
+<b>Chocolatey</b> it's an open source content management system made with php. It uses Laravel's Lumen Micro Framework to handle all the API Requests and uses Habbo's Angular Module for rendering all views and requests.
+
+#### What it uses?
+
+1. php 7.0+ to implement it backend;
+2. Laravel Lumen 5.4 to design it backend;
+3. Angular 1.6.1 to design it frontend;
+4. Eloquent ORM to handle & itterate with database;
+5. Blade Template Engine to construct a dynamic template;
+6. SQL to design the database schema;
+
+#### For what i use Chocolatey?
+
+For development purposes and to create test and educational local Habbo.com website (CMS) clones.
+
+#### How i can have a full experience with Chocolatey?
+
+<b>Chocolatey</b> is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source
+Habbo Emulator. <b>Chocolatey</b> only support it.
+
+Also <b>Chocolatey</b> only supports php 7.0+ environments, php 5.X is no longer supported.
+
+You can actually use <b>Chocolatey</b> in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
 
 <hr>
 ### Installation
