@@ -27,7 +27,9 @@ For development purposes and to create test and educational local Habbo.com webs
 #### How i can have a full experience with Chocolatey?
 
 <b>Chocolatey</b> is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source
-Habbo Emulator. <b>Chocolatey</b> only support it.
+Habbo Emulator. 
+
+<b>Chocolatey</b> only support it.
 
 Also <b>Chocolatey</b> only supports php 7.0+ environments, php 5.X is no longer supported.
 
