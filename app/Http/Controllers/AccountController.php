@@ -77,7 +77,7 @@ class AccountController extends BaseController
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response('', 400);
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
@@ -125,7 +125,7 @@ class AccountController extends BaseController
 
         UserPreferences::find($request->user()->uniqueId)->update((array)$request->json()->all());
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
@@ -171,7 +171,7 @@ class AccountController extends BaseController
 
         $this->createUser($request, $request->user()->getAttributes());
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
@@ -184,14 +184,27 @@ class AccountController extends BaseController
      */
     public function createUser(Request $request, array $userInfo, bool $newUser = false): ?User
     {
-        $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['name'];
+        $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['username'];
+        $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
 
         $userData = new User;
-        $userData->store($userName, $userInfo['password'], $userInfo['email'], $request->ip())->save();
+        $userData->store($userName, $userInfo['password'], $userMail, $request->ip())->save();
         $userData->createData();
 
         Session::set('ChocolateyWEB', $userData);
 
         return $userData;
+    }
+
+    /**
+     * Change Logged In User
+     *
+     * @param Request $request
+     */
+    public function selectAvatar(Request $request)
+    {
+        $userData = User::find($request->json()->get('uniqueId'));
+
+        Session::set('ChocolateyWEB', $userData);
     }
 }

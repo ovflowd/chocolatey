@@ -41,6 +41,25 @@ class UserPreferences extends Model
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'emailFriendRequestNotificationEnabled',
+        'emailGiftNotificationEnabled',
+        'emailGroupNotificationEnabled',
+        'emailMiniMailNotificationEnabled',
+        'emailNewsletterEnabled',
+        'emailRoomMessageNotificationEnabled',
+        'friendCanFollow',
+        'friendRequestEnabled',
+        'offlineMessagingEnabled',
+        'onlineStatusVisible',
+        'profileVisible'
+    ];
+
+    /**
      * Store an User Preference set on the Database
      *
      * @param int $userId

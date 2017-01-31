@@ -92,10 +92,11 @@ class AccountSecurityController extends BaseController
      */
     public function changePassword(Request $request): JsonResponse
     {
-        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
+        if (strlen($request->json()->get('password')) < 6)
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
-        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() == 1)
+        //@TODO: This search the whole base. If anyone has the same password.. This will give error. Is this good?
+        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 409);
 
         User::find($request->user()->uniqueId)->update(['password' => hash('sha256', $request->json()->get('password'))]);
@@ -140,7 +141,7 @@ class AccountSecurityController extends BaseController
     public function getQuestions(Request $request): JsonResponse
     {
         if (UserSecurity::find($request->user()->uniqueId) == null)
-            return response()->json();
+            return response()->json('');
 
         $userSecurity = UserSecurity::find($request->user()->uniqueId);
 

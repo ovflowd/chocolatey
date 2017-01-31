@@ -130,6 +130,9 @@ $app->group(['middleware' => 'auth'], function () use ($app) {
     # Create a New User Avatar
     $app->post('api/user/avatars', 'AccountController@createAvatar');
 
+    # Select an User Avatar
+    $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
+
     # Get User (AzureID) Avatars
     $app->get('api/user/avatars/check-name', 'AccountController@checkNewName');
 

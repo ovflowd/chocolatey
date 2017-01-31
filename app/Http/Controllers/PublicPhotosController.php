@@ -42,7 +42,7 @@ class PublicPhotosController extends BaseController
     {
         (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
@@ -55,11 +55,11 @@ class PublicPhotosController extends BaseController
     public function likePhoto(Request $request, $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
-            return response()->json();
+            return response()->json('');
 
         (new PhotoLike)->store($photoId, $request->user()->name)->save();
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
@@ -72,10 +72,10 @@ class PublicPhotosController extends BaseController
     public function unlikePhoto(Request $request, $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
-            return response()->json();
+            return response()->json('');
 
         PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
-        return response()->json();
+        return response()->json('');
     }
 }

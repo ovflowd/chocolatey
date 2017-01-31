@@ -40,7 +40,7 @@ class LoginController extends BaseController
     {
         Session::erase('ChocolateyWEB');
 
-        return response()->json();
+        return response()->json('');
     }
 
     /**
