@@ -39,6 +39,9 @@ class GroupMember extends ChocolateyModel
     protected $hidden = [
         'id',
         'member_since',
+        'guild_id',
+        'level_id',
+        'user_id'
     ];
 
     /**

@@ -92,7 +92,10 @@ class UserProfile
      */
     protected function setGroups()
     {
-        $this->groups = GroupMember::where('user_id', $this->user->uniqueId)->get(['guild']) ?? [];
+        $groups = GroupMember::where('user_id', $this->user->uniqueId)->get() ?? [];
+
+        foreach ($groups as $group)
+            $this->groups[] = $group->guild;
     }
 
     /**
