@@ -41,7 +41,7 @@
                             {{$relatedContent->title}}
                         </a>
                         <time class="news-box__date">
-                            (@{{ <?= strtotime($relatedContent->createdAt) ?> | date: 'mediumDate' }})
+                            ({{date('M j, Y' , strtotime($relatedContent->createdAt))}})
                         </time>
                     </li>
                 @endforeach
@@ -56,7 +56,7 @@
                             {{$relatedContent->title}}
                         </a>
                         <time class="news-box__date">
-                            (@{{ <?= strtotime($relatedContent->createdAt) ?> | date: 'mediumDate' }})
+                            ({{date('M j, Y' , strtotime($relatedContent->createdAt))}})
                         </time>
                     </li>
                 @endforeach
