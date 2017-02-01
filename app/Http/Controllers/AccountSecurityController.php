@@ -197,7 +197,7 @@ class AccountSecurityController extends BaseController
         )
             return response()->json(['error' => 'password.used_earlier'], 400);
 
-        $mailRequest->update(['used', '1']);
+        $mailRequest->update(['used' => '1']);
 
         DB::table('users')->where('mail', $mailRequest->mail)
             ->update(['password' => hash('sha256', $request->json()->get('password'))]);

@@ -225,9 +225,12 @@ class AccountController extends BaseController
         if ($mailRequest == null)
             return response()->json(['error' => 'activation.invalid_token'], 400);
 
-        Mail::where('token', $request->json()->get('token'))->update(['used'])
+        $mailRequest->update(['used' => '1']);
 
         DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
+
+        if($request->user() !== null)
+            $request->user()->mailVerified = true;
 
         return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }

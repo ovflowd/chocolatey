@@ -50,21 +50,12 @@ $app->post('api/public/registration/new', 'LoginController@register');
 
 # Confirm E-mail
 $app->post('api/public/registration/activate', 'AccountController@confirmActivation');
-// URI: /activate/{{TOKEN}}
-// POST - token
-// Invalid Token: 400 {"error":"activation.invalid_token"}
-// Success: 200 {"email":"claudio.santoro@uiot.org","emailVerified":true,"identityVerified":true}
 
 # Change Password Request
 $app->post('api/public/forgotPassword/send', 'MailController@forgotPassword');
 
 # Confirm E-mail
 $app->post('api/public/forgotPassword/changePassword', 'AccountSecurityController@confirmChangePassword');
-// URI: /reset-password/{{TOKEN}}
-// POST - password, token
-// Invalid Token: 404 - No Content
-// Used password in past: 400 - {"error":"password.used_earlier"}
-// Success: 204 - No Content
 
 # Authenticate User
 $app->post('api/public/authentication/login', 'LoginController@login');
