@@ -3048,7 +3048,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }[e || "big"]
     }, r.getImagerUrl = function (r, n) {
         var i = o(n), s = t.createHash(r + i + a);
-        return e.imagingUrl + "/avatar/" + encodeURIComponent(r + "," + i + "," + s) + ".png"
+        return e.imagingUrl + "/avatarimage?figure=" + encodeURIComponent(r + "," + i + "," + s) + "&size=l&headonly=1"
     }, r.getLegacyImagerUrl = function (t, o) {
         return e.imagingUrl + "/avatarimage?" + $.param({
                 user: t,
