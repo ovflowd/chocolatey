@@ -18,24 +18,45 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 class MailController extends BaseController
 {
     /**
+     * Send an Email
+     *
+     * @param array $configuration
+     */
+    public function send(array $configuration)
+    {
+        Mail::send('habbo-web-mail.confirm-mail', $configuration, function ($message) use ($configuration) {
+            $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
+            $message->to($configuration['mail']);
+        });
+    }
+
+    /**
+     * Prepare the E-Mail
+     *
+     * @param string $email
+     * @param string $url
+     * @return string
+     */
+    public function prepare(string $email, string $url): string
+    {
+        (new MailModel)->store($token = uniqid('HabboMail', true), $url, $email)->save();
+
+        return $token;
+    }
+
+    /**
      * Resend E-mail Verification
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response|ResponseFactory
+     * @return JsonResponse
      */
-    public function verify(Request $request)
+    public function verify(Request $request): JsonResponse
     {
-        (new MailModel)->store($token = uniqid('HabboMail', true), 'public/registration/activate',
-            $request->user()->email)->save();
-
-        Mail::send('habbo-web-mail.confirm-mail', [
+        $this->send([
             'name' => $request->user()->name,
             'mail' => $request->user()->email,
-            'url' => "/activate/{$token}"
-        ], function ($message) use ($request) {
-            $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
-            $message->to($request->user()->email);
-        });
+            'url' => "/activate/{$this->prepare($request->user()->email, 'public/registration/activate')}"
+        ]);
 
         return response()->json('');
     }
@@ -51,16 +72,11 @@ class MailController extends BaseController
         if (($user = User::where('mail', $request->json()->get('email'))->first()) == null)
             return response()->json('');
 
-        (new MailModel)->store($token = uniqid('HabboMail', true), 'public/forgotPassword', $user->email)->save();
-
-        Mail::send('habbo-web-mail.password-reset', [
+        $this->send([
             'name' => $user->name,
             'mail' => $user->email,
-            'url' => "/reset-password/{$token}"
-        ], function ($message) use ($user) {
-            $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
-            $message->to($user->email);
-        });
+            'url' => "/activate/{$this->prepare($user->email, 'public/forgotPassword')}"
+        ]);
 
         return response()->json('');
     }
