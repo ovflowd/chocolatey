@@ -3046,6 +3046,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             large: {width: 128, height: 220},
             largehead: {width: 108, height: 124}
         }[e || "big"]
+    }, r.getBodyImageUrl = function (r, n) {
+        var i = o(n), s = t.createHash(r + i + a);
+        return e.imagingUrl + "/avatar/" + encodeURIComponent(r + "," + i + "," + s) + ".png"
     }, r.getImagerUrl = function (r, n) {
         var i = o(n), s = t.createHash(r + i + a);
         return e.imagingUrl + "/avatarimage?figure=" + encodeURIComponent(r + "," + i + "," + s) + "&size=l&headonly=1"
@@ -3079,7 +3082,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 action: r.action,
                 gesture: r.gesture
             }, a = t.generatePose(o);
-            return r.figure ? t.getImagerUrl(r.figure, a) : r.user ? t.getImagerUrl(r.figure, a) : void 0
+            return r.action == 'stand' ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
+                    r.user ? t.getImagerUrl(r.figure, a) : void 0
         }
 
         var r = this;
