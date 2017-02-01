@@ -184,7 +184,7 @@ class AccountController extends BaseController
      * @param bool $newUser If is a New User
      * @return User
      */
-    public function createUser(Request $request, array $userInfo, bool $newUser = false): ?User
+    public function createUser(Request $request, array $userInfo, bool $newUser = false): User
     {
         $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['username'];
         $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
