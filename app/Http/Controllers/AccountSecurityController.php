@@ -27,7 +27,7 @@ class AccountSecurityController extends BaseController
      */
     public function featureStatus(Request $request): Response
     {
-        if (ChocolateyId::find($request->user()->uniqueId)->emailVerified == 0)
+        if ($request->user()->emailVerified == false)
             return response('identity_verification_required', 200);
 
         $featureEnabled = UserSecurity::find($request->user()->uniqueId);
