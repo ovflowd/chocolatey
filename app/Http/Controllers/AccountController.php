@@ -195,6 +195,15 @@ class AccountController extends BaseController
         $userData->store($userName, $userInfo['password'], $userMail, $request->ip())->save();
         $userData->createData();
 
+        $mailController = new MailController;
+
+        $mailController->send([
+            'mail' => $userMail,
+            'name' => $userName,
+            'url' => "/activate/{$mailController
+            ->prepare($request->user()->email, 'public/registration/activate')}"
+        ]);
+
         Session::set('ChocolateyWEB', $userData);
 
         return $userData;
@@ -229,7 +238,7 @@ class AccountController extends BaseController
 
         DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
 
-        if($request->user() !== null)
+        if ($request->user() !== null)
             $request->user()->mailVerified = true;
 
         return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
