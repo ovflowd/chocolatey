@@ -28,7 +28,7 @@
         </p>
     </header>
     <div class="news-article">
-        {{$article->content}}
+        {!! $article->content !!}
     </div>
 
     <div class="news-footer">
