@@ -38,6 +38,13 @@ class Room extends Model
     protected $primaryKey = 'id';
 
     /**
+     * Leader Board Rank
+     *
+     * @var int
+     */
+    public $leaderboardRank = 1;
+
+    /**
      * The attributes that will be mapped
      *
      * @var array
@@ -183,7 +190,7 @@ class Room extends Model
      */
     public function setLeaderBoardRankAttribute(int $roomPosition = 1)
     {
-        $this->attributes['leaderboardRank'] = $roomPosition;
+        $this->leaderboardRank = $roomPosition;
     }
 
     /**
@@ -193,7 +200,7 @@ class Room extends Model
      */
     public function getLeaderBoardRankAttribute(): int
     {
-        return $this->attributes['leaderboardRank'];
+        return $this->leaderboardRank;
     }
 
     /**
