@@ -48,6 +48,19 @@ class UserSecurity extends ChocolateyModel
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id',
+        'firstQuestion',
+        'secondQuestion',
+        'firstAnswer',
+        'secondAnswer'
+    ];
+
+    /**
      * Get Trusted Devices
      *
      * @return array
