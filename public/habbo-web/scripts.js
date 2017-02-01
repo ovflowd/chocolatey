@@ -3082,7 +3082,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 action: r.action,
                 gesture: r.gesture
             }, a = t.generatePose(o);
-            return r.action == 'stand' ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
+            return r.action ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
                     r.user ? t.getImagerUrl(r.figure, a) : void 0
         }
 
