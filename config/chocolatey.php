@@ -62,6 +62,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Hotel Maintenance
+    |--------------------------------------------------------------------------
+    |
+    | This is used for Registration
+    | Without a valid Recaptcha Key you cannot Register on the Hotel
+    | Get Your Recapthca Key HERE: <https://google.com/recaptcha>
+    |
+    */
+
+    'recaptcha' => '6LdhyucSAAAAAKNhbY53azV2gZul4DcD8Xo111yp',
+
+    /*
+    |--------------------------------------------------------------------------
     | Default User Figure String
     |--------------------------------------------------------------------------
     |
@@ -114,6 +127,24 @@ return [
         'name' => '@m0vame',
         'username' => 'm0vame',
         'key' => 502480771739684864
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Facebook Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This will be used to Promote your Facebook Page
+    | This also will be used for Facebook Login
+    |
+    */
+
+    'facebook' => [
+        'page' => 'universalinternetofthings',
+        'app' => [
+            'key' => 'YOUR-API-KEY',
+            'secret' => ''
+        ]
     ],
 
     /*
@@ -178,6 +209,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This is the E-Mail of the Contact
+    | This E-Mail is used for Sending E-Mails too
     |
     */
 

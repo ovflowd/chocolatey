@@ -55,6 +55,9 @@ $app->post('api/public/registration/activate', 'AccountController@confirmActivat
 // Invalid Token: 400 {"error":"activation.invalid_token"}
 // Success: 200 {"email":"claudio.santoro@uiot.org","emailVerified":true,"identityVerified":true}
 
+# Change Password Request
+$app->post('api/public/forgotPassword/send', 'MailController@forgotPassword');
+
 # Confirm E-mail
 $app->post('api/public/forgotPassword/changePassword', 'AccountSecurityController@confirmChangePassword');
 // URI: /reset-password/{{TOKEN}}

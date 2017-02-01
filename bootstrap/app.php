@@ -25,6 +25,9 @@ $app->withEloquent();
 # Configure App Provider
 $app->configure('app');
 
+# Configure Mail Provider
+$app->configure('mail');
+
 # Configure Auth Provider
 $app->configure('auth');
 
@@ -64,6 +67,8 @@ $app->routeMiddleware([
 | Register Service Providers
 |--------------------------------------------------------------------------
 */
+
+$app->register(App\Providers\AppServiceProvider::class);
 
 $app->register(App\Providers\SessionServiceProvider::class);
 

@@ -1601,5 +1601,9 @@
   "CFH_REASON_RECEIVED_REPORTER_SEXUAL_WEBCAM_IMAGES": "You have reported a user for asking/offering sexual webcam or images. For your own safety, celebrate your anonymity on {{$chocolatey['name']}} and keep personal information to yourself. Mods will take a look at this in the meantime.",
   "MODERATOR_MESSAGETEMPLATE_4": "Please use the Help Tool for your query by clicking on 'Customer Support & Helpdesk' at the bottom of the home page.",
   "MODERATOR_MESSAGETEMPLATE_1": "Celebrate your anonymity on {{$chocolatey['name']}}. For your safety, it's best to keep personal information to yourself.",
-  "CFH_CLOSED_ABUSIVE": "Mods looked into the case reported by you. Legit emergency calls only, please! Misusing the system is not cool."
+  "CFH_CLOSED_ABUSIVE": "Mods looked into the case reported by you. Legit emergency calls only, please! Misusing the system is not cool.",
+  "RSS_URI": "{{$chocolatey['url']}}rss.xml",
+  "TWITTER_URI": "https://twitter.com/{{$chocolatey['twitter']['username']}}",
+  "FACEBOOK_URI": "https://facebook.com/{{$chocolatey['facebook']['page']}}",
+  "HOTEL_URI": "{{$chocolatey['url']}}"
 }

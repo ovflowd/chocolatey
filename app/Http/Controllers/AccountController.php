@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
+use App\Models\Mail;
 use App\Models\User;
 use App\Models\UserPreferences;
 use App\Models\UserSettings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -208,5 +210,25 @@ class AccountController extends BaseController
         $userData = User::find($request->json()->get('uniqueId'));
 
         Session::set('ChocolateyWEB', $userData);
+    }
+
+    /**
+     * Confirm E-Mail Activation
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function confirmActivation(Request $request): JsonResponse
+    {
+        $mailRequest = Mail::where('token', $request->json()->get('token'))->where('used', '0')->first();
+
+        if ($mailRequest == null)
+            return response()->json(['error' => 'activation.invalid_token'], 400);
+
+        Mail::where('token', $request->json()->get('token'))->update(['used'])
+
+        DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
+
+        return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
 }

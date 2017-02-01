@@ -40,6 +40,7 @@
             window.geoLocation = {!! json_encode((object)$chocolatey['location']) !!};
             window.partnerCodeInfo = null;
             window.banner = null;
+            window.chocolatey = {captcha: '{{$chocolatey['recaptcha']}}', facebook: '{{$chocolatey['facebook']['app']['key']}}'};
         </script>
     </head>
 <body habbo-client-disable-scrollbars ng-cloak>

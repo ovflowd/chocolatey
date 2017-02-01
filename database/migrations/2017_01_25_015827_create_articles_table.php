@@ -28,6 +28,8 @@ class CreateArticlesTable extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
+        DB::update('ALTER TABLE chocolatey_articles MODIFY COLUMN id INT AUTO_INCREMENT');
+
         DB::table('chocolatey_articles')->insert([[
             'title' => 'Welcome to Chocolatey',
             'description' => "You had successfully installed Chocolatey. Now let's drink a cup of Hot Chocolate?",

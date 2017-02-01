@@ -27,6 +27,8 @@ class CreateAzureUsersPhotosTable extends Migration
             $table->integer('room_id');
             $table->primary('id', 'chocolatey_users_photos_primary');
         });
+
+        DB::update('ALTER TABLE chocolatey_users_photos MODIFY COLUMN id INT AUTO_INCREMENT');
     }
 
     /**

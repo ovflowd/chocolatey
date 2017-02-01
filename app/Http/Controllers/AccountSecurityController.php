@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
+use App\Models\Mail;
 use App\Models\TrustedDevice;
 use App\Models\User;
 use App\Models\UserSecurity;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use stdClass;
 
@@ -175,5 +177,31 @@ class AccountSecurityController extends BaseController
         endif;
 
         return response()->json('', 409);
+    }
+
+    /**
+     * Confirm User Change Password
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function confirmChangePassword(Request $request): JsonResponse
+    {
+        $mailRequest = Mail::where('token', $request->json()->get('token'))->where('used', '0')->first();
+
+        if ($mailRequest == null)
+            return response()->json('', 404);
+
+        if (User::where('mail', $mailRequest->mail)
+                ->where('password', hash('sha256', $request->json()->get('password')))->count() >= 1
+        )
+            return response()->json(['error' => 'password.used_earlier'], 400);
+
+        $mailRequest->update(['used', '1']);
+
+        DB::table('users')->where('mail', $mailRequest->mail)
+            ->update(['password' => hash('sha256', $request->json()->get('password'))]);
+
+        return response()->json('');
     }
 }

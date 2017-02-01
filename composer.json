@@ -72,7 +72,9 @@
     "laravel/lumen-framework": "5.4.*",
     "vlucas/phpdotenv": "~2.2",
     "sofa/eloquence": "master",
-    "rdehnhardt/lumen-maintenance-mode": "master"
+    "rdehnhardt/lumen-maintenance-mode": "master",
+    "guzzlehttp/guzzle": "^6.2",
+    "illuminate/mail": "5.4.*"
   },
   "autoload": {
     "psr-4": {

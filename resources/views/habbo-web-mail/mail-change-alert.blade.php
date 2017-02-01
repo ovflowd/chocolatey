@@ -9,7 +9,7 @@
                 <tr>
                     <td align="left" class="m_5540581390057463289header"
                         style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;border-collapse:collapse;padding:10px 0 0 0">
-                        <img src="?ui=2&amp;ik=79e7aa03b9&amp;view=fimg&amp;th=159d6bac8f355b87&amp;attid=0.1.1&amp;disp=emb&amp;attbid=ANGjdJ-0UwhdAKISaMEqHPQpKcqk87hqdgTqlAmD3GFuMrxkFgzsHWFwtTKIw1HZWAFpRMy_DvpJpzZjihSpHIf37JDzXRyzozFVgt04ViDgIClXHu6YbfrVCKTe3gM&amp;sz=w220-h80&amp;ats=1485369097203&amp;rm=159d6bac8f355b87&amp;zw&amp;atsh=1"
+                        <img src="http://imgur.com/HAs98Uo.png"
                              alt="Habbo" height="40" width="110" class="CToWUd">
                     </td>
                 </tr>

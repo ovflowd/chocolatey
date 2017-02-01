@@ -1404,5 +1404,9 @@
   "CFH_REASON_RECEIVED_REPORTER_SEXUAL_WEBCAM_IMAGES": "Você reportou %username% por webcam. Para a sua própria segurança, celebre a sua anonimidade no {{$chocolatey['name']}} Hotel e mantenha as suas informações pessoais para você mesmo. Enquanto isso, os Moderadores irão verificar o seu caso.",
   "MODERATOR_MESSAGETEMPLATE_4": "Por favor use a Ferramenta de Ajuda clicando em \"Contate-nos\" no final da página inicial.",
   "MODERATOR_MESSAGETEMPLATE_1": "Utilize o Botão do Pânico, se precisar fugir de situações inapropriadas ou desconfortáveis.",
-  "CFH_CLOSED_ABUSIVE": "Os Moderadores verificaram o caso que você reportou. Por favor, somente abra Pedidos de Ajuda legítimos! Usar esse sistema sem necessidade não é legal."
+  "CFH_CLOSED_ABUSIVE": "Os Moderadores verificaram o caso que você reportou. Por favor, somente abra Pedidos de Ajuda legítimos! Usar esse sistema sem necessidade não é legal.",
+  "RSS_URI": "{{$chocolatey['url']}}rss.xml",
+  "TWITTER_URI": "https://twitter.com/{{$chocolatey['twitter']['username']}}",
+  "FACEBOOK_URI": "https://facebook.com/{{$chocolatey['facebook']['page']}}",
+  "HOTEL_URI": "{{$chocolatey['url']}}"
 }
