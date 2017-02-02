@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -50,7 +51,9 @@ class PageController extends BaseController
      */
     public function getClient(Request $request, $clientType): Response
     {
-        $request->user()->update(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
+        // Temporary Fix until know how to Update non Mapped Columns
+        DB::table('users')->where('id', $request->user()->uniqueId)
+            ->update(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
 
         return response(view($clientType, ['token' => $userToken]));
     }
