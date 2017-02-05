@@ -1,7 +1,7 @@
 ![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
 <br><sup>chocolatey the Habbo.com Clone CMS</sup>
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]() [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development)
 
 The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.
 
