@@ -72,7 +72,7 @@ class ArticleController extends BaseController
         $articleContent = Article::find(substr($articleName, 0, strpos($articleName, '_')));
 
         if ($articleContent == null)
-            return response()->json('', 404);
+            return response()->json(null, 404);
 
         return response(view('habbo-web-news.articles-view', [
             'article' => $articleContent,

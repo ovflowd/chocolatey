@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChocolateyId;
 use App\Models\Mail;
+use App\Models\Question;
 use App\Models\TrustedDevice;
 use App\Models\User;
 use App\Models\UserSecurity;
@@ -12,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
-use stdClass;
 
 /**
  * Class AccountSecurityController
@@ -54,7 +54,7 @@ class AccountSecurityController extends BaseController
             'firstAnswer' => $request->json()->get('answer1'),
             'secondAnswer' => $request->json()->get('answer2')]);
 
-        return response()->json('', 204);
+        return response()->json(null, 204);
     }
 
     /**
@@ -67,7 +67,7 @@ class AccountSecurityController extends BaseController
     {
         UserSecurity::find($request->user()->uniqueId)->delete();
 
-        return response()->json('', 204);
+        return response()->json(null, 204);
     }
 
     /**
@@ -80,7 +80,7 @@ class AccountSecurityController extends BaseController
     {
         TrustedDevice::find($request->user()->uniqueId)->delete();
 
-        return response()->json('', 204);
+        return response()->json(null, 204);
     }
 
     /**
@@ -100,16 +100,14 @@ class AccountSecurityController extends BaseController
         if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 409);
 
-        User::find($request->user()->uniqueId)->update(['password' => hash('sha256', $request->json()->get('password'))]);
+        User::find($request->user()->uniqueId)->update(['password' =>
+            hash('sha256', $request->json()->get('password'))]);
 
-        return response()->json('', 204);
+        return response()->json(null, 204);
     }
 
     /**
      * Change User E-mail
-     *
-     * @TODO: Implement Notification of E-mail Change
-     * @TODO: Implement Confirmation of E-mail Change
      *
      * @param Request $request
      * @return JsonResponse
@@ -119,28 +117,38 @@ class AccountSecurityController extends BaseController
         if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'changeEmail.invalid_password'], 400);
 
-        if (strpos($request->json()->get('newEmail'), '@') == false)
-            return response()->json(['error' => 'registration_email'], 400);
-
         if (ChocolateyId::where('mail', $request->json()->get('newEmail'))->count() > 0)
             return response()->json(['error' => 'changeEmail.email_already_in_use'], 400);
 
+        $this->sendChangeMailConfirmation($request);
+
+        return response()->json(['email' => $request->json()->get('newEmail')], 200);
+    }
+
+    /**
+     * Send the E-Mail confirmation
+     *
+     * @param Request $request
+     */
+    protected function sendChangeMailConfirmation(Request $request)
+    {
         $mailController = new MailController;
 
         $mailController->send([
             'mail' => $request->user()->email,
             'newMail' => $request->json()->get('newEmail'),
-            'name' => $request->user()->name],
-            'habbo-web-mail.mail-change-alert');
+            'name' => $request->user()->name
+        ], 'habbo-web-mail.mail-change-alert');
+
+        $generatedToken = $mailController->prepare(
+            $request->user()->email,
+            "change-email/{$request->json()->get('newEmail')}");
 
         $mailController->send([
             'mail' => $request->json()->get('newEmail'),
             'name' => $request->user()->name,
-            'url' => "/activate/{$mailController
-            ->prepare($request->user()->email, "change-email/{$request->json()->get('newEmail')}")}"
+            'url' => "/activate/{$generatedToken}"
         ], 'habbo-web-mail.confirm-mail-change');
-
-        return response()->json(['email' => $request->json()->get('newEmail')], 200);
     }
 
     /**
@@ -156,15 +164,12 @@ class AccountSecurityController extends BaseController
 
         $userSecurity = UserSecurity::find($request->user()->uniqueId);
 
-        $firstQuestion = new stdClass();
-        $firstQuestion->questionId = $userSecurity->firstQuestion;
-        $firstQuestion->questionKey = "IDENTITY_SAFETYQUESTION_{$userSecurity->firstQuestion}";
-
-        $secondQuestion = new stdClass();
-        $secondQuestion->questionId = $userSecurity->secondQuestion;
-        $secondQuestion->questionKey = "IDENTITY_SAFETYQUESTION_{$userSecurity->secondQuestion}";
-
-        return response()->json([$firstQuestion, $secondQuestion]);
+        return response()->json([
+            new Question($userSecurity->firstQuestion,
+                "IDENTITY_SAFETYQUESTION_{$userSecurity->firstQuestion}"),
+            new Question($userSecurity->secondQuestion,
+                "IDENTITY_SAFETYQUESTION_{$userSecurity->secondQuestion}")
+        ]);
     }
 
     /**
@@ -182,10 +187,10 @@ class AccountSecurityController extends BaseController
             if ($request->json()->get('trust') == true)
                 (new TrustedDevice)->store($request->user()->uniqueId, $request->ip())->save();
 
-            return response()->json('', 204);
+            return response()->json(null, 204);
         endif;
 
-        return response()->json('', 409);
+        return response()->json(null, 409);
     }
 
     /**
@@ -199,7 +204,7 @@ class AccountSecurityController extends BaseController
         $mailRequest = Mail::where('token', $request->json()->get('token'))->where('used', '0')->first();
 
         if ($mailRequest == null)
-            return response()->json('', 404);
+            return response()->json(null, 404);
 
         if (User::where('password', hash('sha256', $request->json()->get('password')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 400);

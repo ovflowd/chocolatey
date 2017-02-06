@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
-use App\Models\Mail;
 use App\Models\User;
 use App\Models\UserPreferences;
 use App\Models\UserSettings;
@@ -229,9 +228,7 @@ class AccountController extends BaseController
      */
     public function confirmActivation(Request $request): JsonResponse
     {
-        $mailRequest = Mail::where('token', $request->json()->get('token'))->where('used', '0')->first();
-
-        if ($mailRequest == null)
+        if (($mailRequest = (new MailController)->getMail($request->json()->get('token'))) == null)
             return response()->json(['error' => 'activation.invalid_token'], 400);
 
         if (strpos($mailRequest->link, 'change-email') !== false):
@@ -239,10 +236,7 @@ class AccountController extends BaseController
 
             DB::table('users')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
             DB::table('chocolatey_users_id')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
-            DB::table('users')->where('mail', $mail)->update(['mail_verified' => 1]);
         endif;
-
-        $mailRequest->update(['used' => '1']);
 
         DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
 

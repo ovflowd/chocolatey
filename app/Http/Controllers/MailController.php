@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mail as MailModel;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -79,5 +80,21 @@ class MailController extends BaseController
         ]);
 
         return response()->json('');
+    }
+
+    /**
+     * Get E-Mail by Controller
+     *
+     * @param string $token
+     * @return Mail|Model|null
+     */
+    public function getMail(string $token)
+    {
+        $mailRequest = Mail::where('token', $token)->where('used', '0')->first();
+
+        if($mailRequest !== null)
+            $mailRequest->update(['used' => '1']);
+
+        return $mailRequest;
     }
 }

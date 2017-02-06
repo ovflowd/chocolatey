@@ -100,7 +100,7 @@ class ShopController extends BaseController
         $voucher = DB::table('vouchers')->where('code', $request->json()->get('voucherCode'))->first();
 
         if ($voucher == null)
-            return response()->json('', 404);
+            return response()->json(null, 404);
 
         DB::table('users')->where('id', $request->user()->uniqueId)->increment('credits', $voucher->credits);
         DB::table('users')->where('id', $request->user()->uniqueId)->increment('pixels', $voucher->points);
