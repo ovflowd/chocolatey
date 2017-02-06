@@ -8,7 +8,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
-use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -17,6 +16,23 @@ use Laravel\Lumen\Routing\Controller as BaseController;
  */
 class MailController extends BaseController
 {
+    /**
+     * Resend E-mail Verification
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function verify(Request $request): JsonResponse
+    {
+        $this->send([
+            'name' => $request->user()->name,
+            'mail' => $request->user()->email,
+            'url' => "/activate/{$this->prepare($request->user()->email, 'public/registration/activate')}"
+        ]);
+
+        return response()->json('');
+    }
+
     /**
      * Send an Email
      *
@@ -43,23 +59,6 @@ class MailController extends BaseController
         (new MailModel)->store($token = uniqid('HabboMail', true), $url, $email)->save();
 
         return $token;
-    }
-
-    /**
-     * Resend E-mail Verification
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function verify(Request $request): JsonResponse
-    {
-        $this->send([
-            'name' => $request->user()->name,
-            'mail' => $request->user()->email,
-            'url' => "/activate/{$this->prepare($request->user()->email, 'public/registration/activate')}"
-        ]);
-
-        return response()->json('');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Facades\Session;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -21,7 +22,12 @@ class Maintenance
      */
     public function handle($request, Closure $next)
     {
-        return Config::get('chocolatey.forceMaintenace') ?
-            response()->json(['error' => 'maintenance'], 503) : $next($request);
+        if (Config::get('chocolatey.forceMaintenance')):
+            Session::erase('ChocolateyWEB');
+
+            return response()->json(['error' => 'maintenance'], 503);
+        endif;
+
+        return $next($request);
     }
 }

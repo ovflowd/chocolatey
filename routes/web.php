@@ -26,158 +26,162 @@ $app->get('/', 'HomePageController@show');
 |
 */
 
+# Maintenance Middleware
+$app->group(['middleware' => 'maintenance'], function () use ($app) {
+
 # Main API Request is Forbidden
-$app->get('/api', function () {
-    return response('Unauthorized.', 401);
-});
-
-# Go to Help Page
-$app->get('api/public/help', function () {
-    return redirect(Config::get('chocolatey.help'));
-});
-
-# Get Data from a Room
-$app->get('api/public/rooms/{room}', 'RoomsController@getRoom');
-
-# Get User Public Data
-$app->get('api/public/users', 'ProfileController@getPublicData');
-
-# Get User Public Data
-$app->get('api/public/users/{userId}/profile', 'ProfileController@getPublicProfile');
-
-# Create an User Request
-$app->post('api/public/registration/new', 'LoginController@register');
-
-# Confirm E-mail
-$app->post('api/public/registration/activate', 'AccountController@confirmActivation');
-
-# Change Password Request
-$app->post('api/public/forgotPassword/send', 'MailController@forgotPassword');
-
-# Confirm E-mail
-$app->post('api/public/forgotPassword/changePassword', 'AccountSecurityController@confirmChangePassword');
-
-# Authenticate User
-$app->post('api/public/authentication/login', 'LoginController@login');
-
-# Middleware that Requires Authentication
-$app->group(['middleware' => 'auth'], function () use ($app) {
-    # Logout User
-    $app->post('api/public/authentication/logout', 'LoginController@logout');
-
-    # Client URL
-    $app->get('api/client/clienturl', 'ClientController@getUrl');
-
-    # Change Password Request
-    $app->post('api/settings/password/change', 'AccountSecurityController@changePassword');
-
-    # Resend E-mail Verification
-    $app->post('api/settings/email/verification-resend', 'MailController@verify');
-
-    # User Privacy Settings
-    $app->get('api/user/preferences', 'AccountController@getPreferences');
-
-    # User Privacy Settings Changes
-    $app->post('api/user/preferences/save', 'AccountController@savePreferences');
-
-    # User Security Settings Request
-    $app->get('api/safetylock/featureStatus', 'AccountSecurityController@featureStatus');
-
-    # User Security Settings Save
-    $app->post('api/safetylock/save', 'AccountSecurityController@saveQuestions');
-
-    # User Security Settings Disable
-    $app->get('api/safetylock/disable', 'AccountSecurityController@disable');
-
-    # User Security Settings getQuestions
-    $app->get('api/safetylock/questions', 'AccountSecurityController@getQuestions');
-
-    # User Security Settings Verify Questions
-    $app->post('api/safetylock/unlock', 'AccountSecurityController@verifyQuestions');
-
-    # User Security Settings Reset Devices
-    $app->get('api/safetylock/resetTrustedLogins', 'AccountSecurityController@reset');
-
-    # Resend E-mail Verification
-    $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
-
-    # Habbo Client Loginstep
-    $app->post('/api/log/loginstep', function () {
-        return response(null, 204);
+    $app->get('/api', function () {
+        return response('Unauthorized.', 401);
     });
 
-    # New User Client Check
-    $app->post('api/newuser/name/check', 'AccountController@checkName');
+# Go to Help Page
+    $app->get('api/public/help', function () {
+        return redirect(Config::get('chocolatey.help'));
+    });
 
-    # New User Client Select Username
-    $app->post('api/newuser/name/select', 'AccountController@selectName');
+# Get Data from a Room
+    $app->get('api/public/rooms/{room}', 'RoomsController@getRoom');
 
-    # Save User Look
-    $app->post('api/user/look/save', 'AccountController@saveLook');
+# Get User Public Data
+    $app->get('api/public/users', 'ProfileController@getPublicData');
 
-    # Get User (AzureID) Avatars
-    $app->get('api/user/avatars', 'AccountController@getAvatars');
+# Get User Public Data
+    $app->get('api/public/users/{userId}/profile', 'ProfileController@getPublicProfile');
 
-    # Get User Public Data
-    $app->get('api/user/profile', 'ProfileController@getProfile');
+# Create an User Request
+    $app->post('api/public/registration/new', 'LoginController@register');
 
-    # Create a New User Avatar
-    $app->post('api/user/avatars', 'AccountController@createAvatar');
+# Confirm E-mail
+    $app->post('api/public/registration/activate', 'AccountController@confirmActivation');
 
-    # Select an User Avatar
-    $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
+# Change Password Request
+    $app->post('api/public/forgotPassword/send', 'MailController@forgotPassword');
 
-    # Get User (AzureID) Avatars
-    $app->get('api/user/avatars/check-name', 'AccountController@checkNewName');
+# Confirm E-mail
+    $app->post('api/public/forgotPassword/changePassword', 'AccountSecurityController@confirmChangePassword');
 
-    # User Messenger Not Read Discussions
-    $app->get('api/user/discussions', 'AccountController@getDiscussions');
-
-    # New User Client Select Room
-    $app->post('api/newuser/room/select', 'AccountController@selectRoom');
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| Habbo ShopAPI Routes
-|--------------------------------------------------------------------------
-|
-| Here are registered all shop pages related routes
-| You can simply went to their respective controllers.
-|
-*/
-
-# Main ShopAPI Request is Forbidden
-$app->get('/shopapi', function () {
-    return response('Unauthorized.', 401);
-});
-
-# Get a List of all Shop Countries
-$app->get('/shopapi/public/countries', 'ShopController@listCountries');
-
-# Get the Inventory of a specific Country
-$app->get('/shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
+# Authenticate User
+    $app->post('api/public/authentication/login', 'LoginController@login');
 
 # Middleware that Requires Authentication
-$app->group(['middleware' => 'auth'], function () use ($app) {
-    # Get User Purse
-    $app->get('/shopapi/purse', 'ShopController@getPurse');
+    $app->group(['middleware' => 'auth'], function () use ($app) {
+        # Logout User
+        $app->post('api/public/authentication/logout', 'LoginController@logout');
 
-    # Get User Purchase History
-    $app->get('/shopapi/history', 'ShopController@getHistory');
+        # Client URL
+        $app->get('api/client/clienturl', 'ClientController@getUrl');
 
-    # Get a List of all Shop Countries
-    $app->get('/shopapi/countries', 'ShopController@listCountries');
+        # Change Password Request
+        $app->post('api/settings/password/change', 'AccountSecurityController@changePassword');
 
-    # Redeem a Voucher
-    $app->post('/shopapi/voucher/redeem', 'ShopController@redeem');
+        # Resend E-mail Verification
+        $app->post('api/settings/email/verification-resend', 'MailController@verify');
 
-    # Get the Inventory of a specific Country
-    $app->get('/shopapi/inventory/{countryCode}', 'ShopController@getInventory');
+        # User Privacy Settings
+        $app->get('api/user/preferences', 'AccountController@getPreferences');
 
-    # Redirect to Purchase Proceed
-    $app->get('/shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
+        # User Privacy Settings Changes
+        $app->post('api/user/preferences/save', 'AccountController@savePreferences');
+
+        # User Security Settings Request
+        $app->get('api/safetylock/featureStatus', 'AccountSecurityController@featureStatus');
+
+        # User Security Settings Save
+        $app->post('api/safetylock/save', 'AccountSecurityController@saveQuestions');
+
+        # User Security Settings Disable
+        $app->get('api/safetylock/disable', 'AccountSecurityController@disable');
+
+        # User Security Settings getQuestions
+        $app->get('api/safetylock/questions', 'AccountSecurityController@getQuestions');
+
+        # User Security Settings Verify Questions
+        $app->post('api/safetylock/unlock', 'AccountSecurityController@verifyQuestions');
+
+        # User Security Settings Reset Devices
+        $app->get('api/safetylock/resetTrustedLogins', 'AccountSecurityController@reset');
+
+        # Resend E-mail Verification
+        $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
+
+        # Habbo Client Loginstep
+        $app->post('/api/log/loginstep', function () {
+            return response(null, 204);
+        });
+
+        # New User Client Check
+        $app->post('api/newuser/name/check', 'AccountController@checkName');
+
+        # New User Client Select Username
+        $app->post('api/newuser/name/select', 'AccountController@selectName');
+
+        # Save User Look
+        $app->post('api/user/look/save', 'AccountController@saveLook');
+
+        # Get User (AzureID) Avatars
+        $app->get('api/user/avatars', 'AccountController@getAvatars');
+
+        # Get User Public Data
+        $app->get('api/user/profile', 'ProfileController@getProfile');
+
+        # Create a New User Avatar
+        $app->post('api/user/avatars', 'AccountController@createAvatar');
+
+        # Select an User Avatar
+        $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
+
+        # Get User (AzureID) Avatars
+        $app->get('api/user/avatars/check-name', 'AccountController@checkNewName');
+
+        # User Messenger Not Read Discussions
+        $app->get('api/user/discussions', 'AccountController@getDiscussions');
+
+        # New User Client Select Room
+        $app->post('api/newuser/room/select', 'AccountController@selectRoom');
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Habbo ShopAPI Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here are registered all shop pages related routes
+    | You can simply went to their respective controllers.
+    |
+    */
+
+# Main ShopAPI Request is Forbidden
+    $app->get('/shopapi', function () {
+        return response('Unauthorized.', 401);
+    });
+
+# Get a List of all Shop Countries
+    $app->get('/shopapi/public/countries', 'ShopController@listCountries');
+
+# Get the Inventory of a specific Country
+    $app->get('/shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
+
+# Middleware that Requires Authentication
+    $app->group(['middleware' => 'auth'], function () use ($app) {
+        # Get User Purse
+        $app->get('/shopapi/purse', 'ShopController@getPurse');
+
+        # Get User Purchase History
+        $app->get('/shopapi/history', 'ShopController@getHistory');
+
+        # Get a List of all Shop Countries
+        $app->get('/shopapi/countries', 'ShopController@listCountries');
+
+        # Redeem a Voucher
+        $app->post('/shopapi/voucher/redeem', 'ShopController@redeem');
+
+        # Get the Inventory of a specific Country
+        $app->get('/shopapi/inventory/{countryCode}', 'ShopController@getInventory');
+
+        # Redirect to Purchase Proceed
+        $app->get('/shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
+    });
 });
 
 /*

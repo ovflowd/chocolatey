@@ -22,28 +22,24 @@ class Room extends Model
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'rooms';
-
-    /**
-     * Primary Key of the Table
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
     /**
      * Leader Board Rank
      *
      * @var int
      */
     public $leaderboardRank = 1;
-
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'rooms';
+    /**
+     * Primary Key of the Table
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
     /**
      * The attributes that will be mapped
      *
