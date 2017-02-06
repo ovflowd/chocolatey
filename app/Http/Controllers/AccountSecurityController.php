@@ -126,10 +126,20 @@ class AccountSecurityController extends BaseController
         if (ChocolateyId::where('mail', $request->json()->get('newEmail'))->count() > 0)
             return response()->json(['error' => 'changeEmail.email_already_in_use'], 400);
 
-        // @TODO: In the future the e-mail only will be changed after e-mail confirmation
-        $request->user()->update(['mail' => $request->json()->get('newEmail')]);
+        $mailController = new MailController;
 
-        Session::set('ChocolateyWEB', $request->user());
+        $mailController->send([
+            'mail' => $request->user()->email,
+            'newMail' => $request->json()->get('newEmail'),
+            'name' => $request->user()->name],
+            'habbo-web-mail.mail-change-alert');
+
+        $mailController->send([
+            'mail' => $request->json()->get('newEmail'),
+            'name' => $request->user()->name,
+            'url' => "/activate/{$mailController
+            ->prepare($request->user()->email, "change-email/{$request->json()->get('newEmail')}")}"
+        ], 'habbo-web-mail.confirm-mail-change');
 
         return response()->json(['email' => $request->json()->get('newEmail')], 200);
     }
@@ -192,9 +202,7 @@ class AccountSecurityController extends BaseController
         if ($mailRequest == null)
             return response()->json('', 404);
 
-        if (User::where('mail', $mailRequest->mail)
-                ->where('password', hash('sha256', $request->json()->get('password')))->count() >= 1
-        )
+        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 400);
 
         $mailRequest->update(['used' => '1']);

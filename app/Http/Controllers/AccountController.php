@@ -191,18 +191,18 @@ class AccountController extends BaseController
         $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['username'];
         $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
 
-        $userData = new User;
-        $userData->store($userName, $userInfo['password'], $userMail, $request->ip())->save();
-        $userData->createData();
-
         $mailController = new MailController;
 
         $mailController->send([
             'mail' => $userMail,
             'name' => $userName,
             'url' => "/activate/{$mailController
-            ->prepare($request->user()->email, 'public/registration/activate')}"
+            ->prepare($userMail, 'public/registration/activate')}"
         ]);
+
+        $userData = new User;
+        $userData->store($userName, $userInfo['password'], $userMail, $request->ip())->save();
+        $userData->createData();
 
         Session::set('ChocolateyWEB', $userData);
 
@@ -233,6 +233,14 @@ class AccountController extends BaseController
 
         if ($mailRequest == null)
             return response()->json(['error' => 'activation.invalid_token'], 400);
+
+        if (strpos($mailRequest->link, 'change-email') !== false):
+            $mail = str_replace('change-email/', '', $mailRequest->link);
+
+            DB::table('users')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+            DB::table('chocolatey_users_id')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+            DB::table('users')->where('mail', $mail)->update(['mail_verified' => 1]);
+        endif;
 
         $mailRequest->update(['used' => '1']);
 

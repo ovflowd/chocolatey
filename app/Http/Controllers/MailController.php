@@ -21,10 +21,11 @@ class MailController extends BaseController
      * Send an Email
      *
      * @param array $configuration
+     * @param string $view
      */
-    public function send(array $configuration)
+    public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
     {
-        Mail::send('habbo-web-mail.confirm-mail', $configuration, function ($message) use ($configuration) {
+        Mail::send($view, $configuration, function ($message) use ($configuration) {
             $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
             $message->to($configuration['mail']);
         });
