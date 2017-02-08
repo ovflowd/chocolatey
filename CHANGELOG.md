@@ -1,5 +1,24 @@
 # Change Log
 
+## [Unreleased](https://github.com/sant0ro/chocolatey/tree/HEAD)
+
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.850...HEAD)
+
+**Closed issues:**
+
+- Remove Age Restriction on Chocolatey [\#12](https://github.com/sant0ro/chocolatey/issues/12)
+- Code other Mail Systems [\#7](https://github.com/sant0ro/chocolatey/issues/7)
+
+## [1.850](https://github.com/sant0ro/chocolatey/tree/1.850) (2017-02-06)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.801...1.850)
+
+## [1.801](https://github.com/sant0ro/chocolatey/tree/1.801) (2017-02-02)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.800...1.801)
+
+**Closed issues:**
+
+- Auth Ticket: Not being Updated [\#4](https://github.com/sant0ro/chocolatey/issues/4)
+
 ## [1.800](https://github.com/sant0ro/chocolatey/tree/1.800) (2017-02-01)
 [Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.700...1.800)
 
