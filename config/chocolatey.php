@@ -28,6 +28,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Hotel Path
+    |--------------------------------------------------------------------------
+    |
+    | This is used when you're working in subdirectories.
+    | WARNING: This is not RECOMMENDED! Chocolatey NEED be INSTALLED on the DocumentRoot ('/')
+    | WARNING: This it's only a partial fix!
+    |
+    */
+
+    'path' => '/',
+
+    /*
+    |--------------------------------------------------------------------------
     | Hotel Maintenance
     |--------------------------------------------------------------------------
     |
