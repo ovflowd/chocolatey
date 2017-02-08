@@ -39,7 +39,7 @@ return [
     */
 
     // Using this isn't Recommended
-    'forceMaintenance' => true,
+    'forceMaintenance' => false,
 
     /*
     |--------------------------------------------------------------------------

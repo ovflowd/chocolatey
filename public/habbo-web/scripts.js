@@ -4091,7 +4091,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         lang: "en",
         hotel: "hhus",
         localizationSite: "com",
-        minAge: parseInt("13", 10),
+        minAge: parseInt("0", 10),
         rpxLocale: "en",
         rpxTokenUrl: "/api/public/authentication/rpx",
         offerToroEnabled: "false",
