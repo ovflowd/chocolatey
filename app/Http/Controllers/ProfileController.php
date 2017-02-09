@@ -85,11 +85,10 @@ class ProfileController extends BaseController
     /**
      * Get User Photos
      *
-     * @param Request $request
      * @param int $userId
      * @return JsonResponse
      */
-    public function getPhotos(Request $request, int $userId): JsonResponse
+    public function getPhotos(int $userId): JsonResponse
     {
         if (Photo::where('creator_id', $userId)->count() == 0)
             return response()->json([]);
