@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.901](https://github.com/sant0ro/chocolatey/tree/1.901) (2017-02-09)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.900...1.901)
+
+**Closed issues:**
+
+- Habbo's Angular Timestamp Pattern [\#3](https://github.com/sant0ro/chocolatey/issues/3)
+
 ## [1.900](https://github.com/sant0ro/chocolatey/tree/1.900) (2017-02-09)
 [Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.860...1.900)
 
