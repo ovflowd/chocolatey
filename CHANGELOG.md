@@ -1,8 +1,17 @@
 # Change Log
 
-## [Unreleased](https://github.com/sant0ro/chocolatey/tree/HEAD)
+## [1.900](https://github.com/sant0ro/chocolatey/tree/1.900) (2017-02-09)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.860...1.900)
 
-[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.850...HEAD)
+**Closed issues:**
+
+- Bug when Chocolatey is not on Root [\#11](https://github.com/sant0ro/chocolatey/issues/11)
+
+## [1.860](https://github.com/sant0ro/chocolatey/tree/1.860) (2017-02-08)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.855...1.860)
+
+## [1.855](https://github.com/sant0ro/chocolatey/tree/1.855) (2017-02-08)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.850...1.855)
 
 **Closed issues:**
 
