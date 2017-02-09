@@ -4083,7 +4083,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         badgeUrl: "https://habboo-a.akamaihd.net/c_images/album1584",
         googlePlayUrl: "https://play.google.com/store/apps/details?id=air.com.sulake.habboair",
         habboWebAdsUrl: window.chocolatey.url + "habbo-web-ads/",
-        habboWebLeaderboardsUrl: "habbo-web-leaderboards/",
+        habboWebLeaderboardsUrl: window.chocolatey.url + "habbo-web-leaderboards",
         habboWebNewsUrl: window.chocolatey.url + "habbo-web-news/en/production/",
         habboWebPagesUrl: window.chocolatey.url + "habbo-web-pages/production/",
         imagingUrl: "https://www.habbo.de/habbo-imaging",

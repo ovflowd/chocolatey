@@ -105,7 +105,7 @@ class Photo extends ChocolateyModel
      */
     public function getTimeAttribute(): int
     {
-        return strtotime($this->attributes['time']);
+        return strtotime($this->attributes['time']) * 1000;
     }
 
     /**

@@ -35,12 +35,12 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
 # Main API Request is Forbidden
     $app->get($path . 'api', function () {
-        return response($path . 'Unauthorized.', 401);
+        return response('Unauthorized.', 401);
     });
 
 # Go to Help Page
     $app->get($path . 'api/public/help', function () {
-        return redirect(Config::get($path . 'chocolatey.help'));
+        return redirect(Config::get('chocolatey.help'));
     });
 
 # Get Data from a Room
@@ -157,7 +157,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
 # Main ShopAPI Request is Forbidden
     $app->get($path . 'shopapi', function () {
-        return response($path . 'Unauthorized.', 401);
+        return response('Unauthorized.', 401);
     });
 
 # Get a List of all Shop Countries
@@ -200,7 +200,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
 # Main Extradata Request is Forbidden
 $app->get($path . 'extradata', function () {
-    return response($path . 'Unauthorized.', 401);
+    return response('Unauthorized.', 401);
 });
 
 # Show All Registered HabboWEB Photos
@@ -214,7 +214,7 @@ $app->get($path . 'extradata/public/users/{userId}/photos', 'ProfileController@g
 
 # Public Stories
 $app->get($path . 'extradata/public/users/stories', function () {
-    return response()->json($path . 'aaa');
+    return response()->json('');
 });
 
 # Middleware that Requires Authentication
@@ -247,7 +247,7 @@ $app->group(['middleware' => 'auth'], function () use ($app, $path) {
 
 # Main HabboPAGES Request is Forbidden
 $app->get($path . 'habbo-web-pages/', function () {
-    return response($path . 'Unauthorized.', 401);
+    return response('Unauthorized.', 401);
 });
 
 # Request a Specific View of HabboWEB Pages
@@ -274,7 +274,7 @@ $app->group(['middleware' => 'auth'], function () use ($app, $path) {
 
 # Main HabboNEWS Request is Forbidden
 $app->get($path . 'habbo-web-news/', function () {
-    return response($path . 'Unauthorized.', 401);
+    return response('Unauthorized.', 401);
 });
 
 # Request a set of Articles, generally a category or front page
@@ -295,7 +295,7 @@ $app->get($path . 'habbo-web-news/{country}/production/articles/{article}', 'Art
 
 # Main HabboLanguages Request is Forbidden
 $app->get($path . 'habbo-web-l10n/', function () {
-    return response($path . 'Unauthorized.', 401);
+    return response('Unauthorized.', 401);
 });
 
 # Render a specific Language Ecosystem
@@ -312,7 +312,6 @@ $app->get($path . 'habbo-web-l10n/{language}', 'LanguageController@render');
 
 # Render a specific Language Ecosystem
 $app->get($path . 'habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');
-$app->get($path . 'habbo-web-leaderboards//{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');
 
 /*
 |--------------------------------------------------------------------------

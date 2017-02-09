@@ -88,7 +88,7 @@ class UserFriend extends ChocolateyModel
      *
      * @return User
      */
-    protected function getUserFriendData(): ?User
+    protected function getUserFriendData(): User
     {
         return User::find($this->attributes['user_two_id']);
     }
