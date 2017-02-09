@@ -16,7 +16,7 @@ class RoomsController extends BaseController
     /**
      * Get LeaderBoard Data
      *
-     * @TODO: Make Possible Filter with all the Possible Criterias
+     * @TODO: Make Possible Filter with all the Possible Criteria
      *
      * @param Request $request
      * @param string $countryId
@@ -28,7 +28,7 @@ class RoomsController extends BaseController
     {
         $leaderRank = 1;
 
-        foreach (($leaderBoard = Room::orderBy('users', 'DESC')->orderBy('score', 'DESC')->limit(50)->get()) as $room)
+        foreach (($leaderBoard = Room::orderBy('score', 'DESC')->orderBy('users', 'DESC')->limit(50)->get()) as $room)
             $room->leaderboardRank = $leaderRank++;
 
         return response()->json($leaderBoard, 200, array(), JSON_UNESCAPED_SLASHES);

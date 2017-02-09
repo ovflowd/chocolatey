@@ -1815,7 +1815,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     }, o.isOpen = function () {
         return Boolean(t) && t.open
     }, o
-}]),angular.module("security.login.form", ["air.download.link", "captcha.modal", "claim.password", "form", "locale", "notifier", "recover.password.modal", "security.facebook.connect", "security.login.rpx", "security.login.shake", "security.service", "templates"]).component("habboLoginForm", {
+}]),angular.module("security.login.form", ["air.download.link", "captcha.modal", "claim.password", "form", "locale", "notifier", "recover.password.modal", "security.facebook.connect", "security.login.shake", "security.service", "templates"]).component("habboLoginForm", {
     bindings: {onLogin: "&"},
     controller: ["$element", "$location", "$scope", "$window", "LOGIN_EVENTS", "captchaModal", "notifier", "recoverPasswordModal", "security", function (e, t, o, r, a, n, i, s, l) {
         function c() {
