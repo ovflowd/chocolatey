@@ -61,4 +61,14 @@
             <p class="news-header__wrapper news-header__summary">{{$articleContent->description}}</p>
         </article>
     @endforeach
+
+    <footer>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/community/category/{{$category}}/{{$nextPage}}" translate="NEWS_NEXT" class="news-category__next"></a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
 </section>

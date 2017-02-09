@@ -20,11 +20,14 @@ class ArticleController extends BaseController
      * @param string $articleCategory
      * @return Response
      */
-    public function many($countryId, $articleCategory): Response
+    public function many(string $countryId, string $articleCategory): Response
     {
-        $categoryName = str_replace('.html', '', strstr($articleCategory, '_', true));
+        $categoryName = strstr(($articleCategory = str_replace('.html', '', $articleCategory)), '_', true);
 
-        return $articleCategory == 'front.html' ? $this->front() : $this->category($countryId, $categoryName);
+        $categoryPage = strstr(strrev($articleCategory), '_', true);
+
+        return $articleCategory == 'front.html' ? $this->front() :
+            $this->category($countryId, $categoryName, $categoryPage, $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
     }
 
     /**
@@ -45,16 +48,23 @@ class ArticleController extends BaseController
      *
      * @param string $countryId
      * @param string $categoryName
+     * @param int $categoryPage
+     * @param int $start
      * @return Response
      */
-    protected function category($countryId, $categoryName): Response
+    protected function category(string $countryId, string $categoryName, int $categoryPage, int $start): Response
     {
+        $category = ArticleCategory::find($categoryName);
+
+        $articles = Article::where('id', '>=', $start)->limit(10)->get()->filter(function ($item) use ($category) {
+            return $category->link == 'all' || in_array($category, $item->categories);
+        });
+
         return response(view('habbo-web-news.articles-category', [
             'category' => $categoryName,
+            'nextPage' => ($categoryPage + 1),
             'categories' => ArticleCategory::all(),
-            'articleSet' => $categoryName != 'all' ?
-                Article::where('categories', 'like', "%$categoryName%")->get()
-                : Article::all()
+            'articleSet' => $articles
         ]));
     }
 
@@ -67,7 +77,7 @@ class ArticleController extends BaseController
      * @param string $articleName
      * @return Response
      */
-    public function one($countryId, $articleName): Response
+    public function one(string $countryId, string $articleName): Response
     {
         $articleContent = Article::find(substr($articleName, 0, strpos($articleName, '_')));
 
