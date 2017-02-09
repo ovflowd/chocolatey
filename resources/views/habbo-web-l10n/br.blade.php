@@ -75,7 +75,7 @@
   "FORM_NEW_EMAIL_LABEL": "Novo e-mail",
   "HEAD_TITLE_PHOTOS": "Fotos",
   "SHOP_PAYMENTMETHOD_TITLE_ES_SMSMX2": "<B>SMS</B> (OPERATORS)",
-  "SHOP_NOTICE_PROVIDER_TITLE": "{{$chocolatey['name']}} é uma marca registrada da:",
+  "SHOP_NOTICE_PROVIDER_TITLE": "",
   "SHOP_PAYMENTMETHOD_TITLE_ES_SMSMX4": "<B>SMS</B> (OPERATORS)",
   "SHOP_PAYMENTMETHOD_TITLE_COM_BOKU_IE": "<B>Mobile Phone</B> (Vodafone, O2, Meteor, Three)",
   "HEAD_TITLE_EMAIL_CHANGE": "Modificar e-mail",

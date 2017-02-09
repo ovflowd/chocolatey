@@ -76,7 +76,7 @@
   "FORM_NEW_EMAIL_LABEL": "New Email",
   "HEAD_TITLE_PHOTOS": "Photos",
   "SHOP_PAYMENTMETHOD_TITLE_ES_SMSMX2": "<B>SMS</B> (OPERATORS)",
-  "SHOP_NOTICE_PROVIDER_TITLE": "{{$chocolatey['name']}} is owned and operated by:",
+  "SHOP_NOTICE_PROVIDER_TITLE": "",
   "SHOP_PAYMENTMETHOD_TITLE_ES_SMSMX4": "<B>SMS</B> (OPERATORS)",
   "SHOP_PAYMENTMETHOD_TITLE_COM_BOKU_IE": "<B>Mobile Phone</B> (Vodafone, O2, Meteor, Three)",
   "SHOP_PAYMENTMETHOD_TITLE_COM_BOKU_ID": "<B>Mobile Phone</B> (Indosat, Telkomsel XL, Axiata)",
