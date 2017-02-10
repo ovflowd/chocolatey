@@ -29,9 +29,9 @@
                                 <td valign="top">
 
                                     <p style="font-family:Verdana,Arial,sans-serif;font-size:20px;padding-top:15px">
-                                        Thanks for the order: {{$purchaseId}}.<br><br>Product: {{$product['name']}}
+                                        Thanks for the order: {{$purchaseId}}.<br><br>Product: {{$product->name}}
                                         <br>
-                                        Price: {{$product['price']}}
+                                        Price: {{$product->price}}
                                     </p>
                                 </td>
                             </tr>

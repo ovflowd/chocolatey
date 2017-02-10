@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Purse;
+use App\Models\ShopHistory;
 use App\Models\ShopInventory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -56,20 +57,20 @@ class ShopController extends BaseController
     /**
      * Proceed Payment Checkout
      *
-     * @param int $paymentCategory
-     * @param string $countryCode
+     * @param string $paymentCategory
+     * @param int $countryCode
      * @param int $shopItem
      * @param int $paymentMethod
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
-    public function proceed(int $paymentCategory, string $countryCode, int $shopItem, int $paymentMethod)
+    public function proceed(string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
         $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
             ->where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
-        return $paymentCheckout != null ? redirect($paymentCheckout->redirect)
-            : response(view('failed-payment'), 400);
+        return $paymentCheckout != null ? response(view('habbo-web-payments.proceed', ['payment' => $paymentCheckout]))
+            : response(view('habbo-web-payments.failed-payment'), 400);
     }
 
     /**
@@ -78,24 +79,30 @@ class ShopController extends BaseController
      * @TODO: Code Business Logic
      *
      * @param Request $request
-     * @param int $paymentCategory
-     * @param string $countryCode
+     * @param string $paymentCategory
+     * @param int $countryCode
      * @param int $shopItem
      * @param int $paymentMethod
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
-    public function success(Request $request, int $paymentCategory, string $countryCode, int $shopItem, int $paymentMethod)
+    public function success(Request $request, string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
         $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
             ->where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
-        $checkOutId = rand(0, 99) + $shopItem * $request->user()->uniqueId + rand(0, 99);
+        $purchaseItem = (new ShopHistory)->store($paymentMethod, $request->user()->uniqueId, $shopItem);
+        $purchaseItem->save();
 
-        //@TODO: Do Business Logic Here
+        (new MailController)->send([
+            'mail' => $request->user()->email,
+            'product' => DB::table('chocolatey_shop_items')->where('id', $shopItem)->first(),
+            'purchaseId' => $purchaseItem->transactionId
+        ], 'habbo-web-mail.purchase-confirmation');
 
-        return $paymentCheckout != null ? response(view('success-payment', ['checkoutId' => $checkOutId]), 200)
-            : response(view('failed-payment'), 404);
+        return $paymentCheckout != null ? response(view('habbo-web-payments.success-payment', [
+            'checkoutId' => $purchaseItem->transactionId]), 200)
+            : response(view('habbo-web-payments.canceled-payment'), 500);
     }
 
     /**
@@ -110,8 +117,7 @@ class ShopController extends BaseController
      */
     public function getHistory(Request $request): JsonResponse
     {
-        //PATTERN: [{"creationTime":"2017-02-10T14:19:39.000+0000","transactionSystemName":"Paymentez Direct Products Creditcard","credits":28,"price":"BRL 9.99"}]
-        return response()->json([]);
+        return response()->json(ShopHistory::where('user_id', $request->user()->uniqueId)->get());
     }
 
     /**

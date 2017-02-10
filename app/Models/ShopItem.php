@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
+
 /**
  * Class ShopItem
  * @property mixed uniqueId
@@ -9,6 +12,8 @@ namespace App\Models;
  */
 class ShopItem extends ChocolateyModel
 {
+    use Eloquence, Mappable;
+
     /**
      * Disable Timestamps
      *
@@ -38,6 +43,15 @@ class ShopItem extends ChocolateyModel
     protected $appends = [
         'paymentMethods',
         'uniqueId'
+    ];
+
+    /**
+     * The attributes that will be mapped
+     *
+     * @var array
+     */
+    protected $maps = [
+        'paymentMethods' => 'payment_methods'
     ];
 
     /**
@@ -78,6 +92,9 @@ class ShopItem extends ChocolateyModel
     public function getPaymentMethodsAttribute(): array
     {
         $paymentMethods = [];
+
+        if (!array_key_exists('payment_methods', $this->attributes))
+            return $paymentMethods;
 
         foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory):
             $paymentMethod = PaymentMethod::where('localizationKey', $shopCategory)->first();

@@ -190,7 +190,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
         $app->get($path . 'shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
 
         # Redirect to Success Purchase
-        $app->get($path . 'shopapi/success/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@success');
+        $app->post($path . 'shopapi/success/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@success');
     });
 });
 

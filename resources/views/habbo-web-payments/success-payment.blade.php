@@ -8,14 +8,12 @@
 <div class="center">
     <img src="{{$chocolatey['url']}}/habbo-web/assets/images/credits_teaser_success.png" srcset="{{$chocolatey['url']}}/habbo-web/assets/images/credits_teaser_success.png 1x, {{$chocolatey['url']}}/habbo-web/assets/images/credits_teaser_success_big.png 2x" alt="Success" width="145" height="146">
     <h1>Congratulations!</h1>
-    <p>Número do pedido: {{$checkoutId}}</p>
+    <p>Order Number: {{$checkoutId}}</p>
+    <p><b>Now you need wait the approval.</b></p>
     <button onclick="window.close();">Ok</button>
 
     <script>
         window.opener.postMessage({ status: 'SUCCESS', txId: {{$checkoutId}}, priceInCents: 0, currency: '*' }, '*');
     </script>
-
 </div>
-
-
 </body></html>

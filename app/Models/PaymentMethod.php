@@ -143,7 +143,7 @@ class PaymentMethod extends ChocolateyModel
      *
      * @return string
      */
-    public function getCategoryAttribute():string
+    public function getCategoryAttribute(): string
     {
         return PaymentCategory::find($this->attributes['category'])->payment_type;
     }
