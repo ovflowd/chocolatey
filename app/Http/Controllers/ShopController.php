@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Http\Redirector;
 use Laravel\Lumen\Http\ResponseFactory;
@@ -152,6 +153,6 @@ class ShopController extends BaseController
      */
     public function getWall(Request $request): JsonResponse
     {
-        return response()->json(['url' => "https://www.offertoro.com/ifr/show/2150/s-hhus-bf01d11c861e8785afe95065caa7f182/1308"]);
+        return response()->json(['url' => Config::get('chocolatey.earn_link')]);
     }
 }

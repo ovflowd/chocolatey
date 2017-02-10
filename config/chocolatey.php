@@ -291,5 +291,27 @@ return [
     'security' => [
         'hash' => 'md5',
         'session' => 'azureWEB'
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable/Disable Earn Credits
+    |--------------------------------------------------------------------------
+    |
+    | This will Enable/Disable Earn Credits Promo
+    |
+    */
+
+    'earn' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Earn Credits Link
+    |--------------------------------------------------------------------------
+    |
+    | The URL for Earn Credits Promo
+    |
+    */
+
+    'earn_link' => 'https://www.offertoro.com/ifr/show/2150/s-hhus-bf01d11c861e8785afe95065caa7f182/1308'
 ];
