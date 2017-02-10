@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -24,9 +23,8 @@ class LoginController extends BaseController
     public function login(Request $request): JsonResponse
     {
         if ($request->user('api')):
-            $request->user()->trusted = $request->ip();
-            $request->user()->ip_current = $request->ip();
-            $request->user()->update(['last_login' => time()]);
+            $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
+
             return response()->json($request->user());
         endif;
 

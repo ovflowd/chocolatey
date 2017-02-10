@@ -61,7 +61,7 @@ class ArticleController extends BaseController
                 return $category->name == 'all' || in_array($category, $item->categories);
             });
 
-        if($articles->count() == 0)
+        if ($articles->count() == 0)
             return response()->json(null, 404);
 
         return response(view('habbo-web-news.articles-category', [

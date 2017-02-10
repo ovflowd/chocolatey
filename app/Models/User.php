@@ -14,7 +14,6 @@ use Sofa\Eloquence\Mappable;
 /**
  * Class User
  * @property string trusted
- * @property array|mixed traits
  * @property mixed uniqueId
  * @property string figureString
  * @package App\Models
@@ -29,24 +28,21 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var bool
      */
     public $timestamps = false;
-    /**
-     * If User is Trusted
-     *
-     * @var bool
-     */
-    public $trusted = false;
+
     /**
      * User Traits
      *
      * @var array
      */
     public $traits = ["USER"];
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'users';
+
     /**
      * Primary Key of the Table
      *
@@ -109,7 +105,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'id',
         'username',
         'auth_ticket',
-        'last_login'
+        'last_login',
+        ''
     ];
 
     /**
@@ -133,6 +130,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'home_room',
         'points',
         'look',
+        'ip_current',
         'online',
         'pixels',
         'credits',
@@ -174,7 +172,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['ip_current'] = $address;
 
         $this->traits = ["NEW_USER", "USER"];
-        $this->trusted = $address;
 
         return $this;
     }
@@ -240,7 +237,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         if (UserSecurity::find($this->attributes['id']) == null)
             return true;
 
-        return in_array($this->trusted, UserSecurity::find($this->attributes['id'])->trustedDevices);
+        return in_array($this->attributes['ip_current'],
+            UserSecurity::find($this->attributes['id'])->trustedDevices);
     }
 
     /**
@@ -360,7 +358,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getMailVerifiedAttribute(): bool
+    public function getEmailVerifiedAttribute(): bool
     {
         return $this->attributes['mail_verified'] ?? false;
     }

@@ -67,7 +67,10 @@ class UserSecurity extends ChocolateyModel
      */
     public function getTrustedDevicesAttribute(): array
     {
-        return TrustedDevice::where('user_id', $this->attributes['user_id'])->get(['ip_address'])->toArray();
+        return TrustedDevice::where('user_id', $this->attributes['user_id'])->get(['ip_address'])
+            ->map(function ($item) {
+                return $item->ip_address;
+            })->toArray();
     }
 
     /**

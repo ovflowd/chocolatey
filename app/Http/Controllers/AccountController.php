@@ -241,8 +241,30 @@ class AccountController extends BaseController
         DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
 
         if ($request->user() !== null)
-            $request->user()->mailVerified = true;
+            $request->user()->emailVerified = true;
 
         return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
+    }
+
+    /**
+     * Send User Forgot E-Mail
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function forgotPassword(Request $request): JsonResponse
+    {
+        if (($user = User::where('mail', $request->json()->get('email'))->first()) == null)
+            return response()->json(['email' => $request->json()->get('email')]);
+
+        $mailController = new MailController;
+
+        $mailController->send([
+            'name' => $user->name,
+            'mail' => $user->email,
+            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}"
+        ], 'habbo-web-mail.password-reset');
+
+        return response()->json(['email' => $user->email]);
     }
 }

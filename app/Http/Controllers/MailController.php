@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mail as MailModel;
-use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
@@ -68,26 +67,6 @@ class MailController extends BaseController
     }
 
     /**
-     * Send User Forgot E-Mail
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function forgotPassword(Request $request): JsonResponse
-    {
-        if (($user = User::where('mail', $request->json()->get('email'))->first()) == null)
-            return response()->json('');
-
-        $this->send([
-            'name' => $user->name,
-            'mail' => $user->email,
-            'url' => "/activate/{$this->prepare($user->email, 'public/forgotPassword')}"
-        ]);
-
-        return response()->json('');
-    }
-
-    /**
      * Get E-Mail by Controller
      *
      * @param string $token
@@ -95,7 +74,7 @@ class MailController extends BaseController
      */
     public function getMail(string $token)
     {
-        $mailRequest = Mail::where('token', $token)->where('used', '0')->first();
+        $mailRequest = MailModel::where('token', $token)->where('used', '0')->first();
 
         if ($mailRequest !== null)
             $mailRequest->update(['used' => '1']);
