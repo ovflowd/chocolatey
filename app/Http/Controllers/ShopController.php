@@ -139,7 +139,9 @@ class ShopController extends BaseController
         DB::table('users')->where('id', $request->user()->uniqueId)->increment('credits', $voucher->credits);
         DB::table('users')->where('id', $request->user()->uniqueId)->increment('pixels', $voucher->points);
 
-        return response()->json(null);
+        DB::table('vouchers')->where('code', $request->json()->get('voucherCode'))->delete();
+
+        return response()->json(null, 204);
     }
 
     /**
