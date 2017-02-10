@@ -63,7 +63,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'creationTime' => 'account_created',
         'email' => 'mail',
         'identityId' => 'id',
-        'emailVerified' => 'mail_verified',
         'accountId' => 'id'
     ];
 
@@ -101,12 +100,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'email',
+        'mail',
         'id',
         'username',
         'auth_ticket',
         'last_login',
-        ''
+        'mail_verified'
     ];
 
     /**
@@ -360,6 +359,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getEmailVerifiedAttribute(): bool
     {
-        return $this->attributes['mail_verified'] ?? false;
+        return $this->attributes['mail_verified'] == 1;
     }
 }

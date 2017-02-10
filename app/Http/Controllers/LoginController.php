@@ -22,7 +22,7 @@ class LoginController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
-        if ($request->user('api')):
+        if ($request->user()):
             $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
 
             return response()->json($request->user());

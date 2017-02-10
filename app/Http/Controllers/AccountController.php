@@ -9,7 +9,6 @@ use App\Models\UserPreferences;
 use App\Models\UserSettings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -234,14 +233,15 @@ class AccountController extends BaseController
         if (strpos($mailRequest->link, 'change-email') !== false):
             $mail = str_replace('change-email/', '', $mailRequest->link);
 
-            DB::table('users')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
-            DB::table('chocolatey_users_id')->where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+            User::where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+
+            ChocolateyId::where('mail', $mailRequest->mail)->update(['mail' => $mail]);
         endif;
 
-        DB::table('users')->where('mail', $mailRequest->mail)->update(['mail_verified' => 1]);
+        User::where('mail', $mailRequest->mail)->update(['mail_verified' => '1']);
 
-        if ($request->user() !== null)
-            $request->user()->emailVerified = true;
+        if ($request->user())
+            Session::set('ChocolateyWEB', User::where('mail', $mailRequest->mail)->first());
 
         return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }

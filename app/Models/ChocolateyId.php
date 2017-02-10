@@ -43,6 +43,15 @@ class ChocolateyId extends ChocolateyModel
     ];
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'mail'
+    ];
+
+    /**
      * Store a new Azure Id Account
      *
      * @param int $userId
