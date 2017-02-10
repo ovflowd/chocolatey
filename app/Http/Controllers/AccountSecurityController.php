@@ -187,8 +187,6 @@ class AccountSecurityController extends BaseController
             if ($request->json()->get('trust') == true)
                 (new TrustedDevice)->store($request->user()->uniqueId, $request->ip())->save();
 
-            $request->user()->trusted = true;
-
             return response()->json(null, 204);
         endif;
 
