@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.000](https://github.com/sant0ro/chocolatey/tree/2.000) (2017-02-10)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.906...2.000)
+
+## [1.906](https://github.com/sant0ro/chocolatey/tree/1.906) (2017-02-10)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.905...1.906)
+
 ## [1.905](https://github.com/sant0ro/chocolatey/tree/1.905) (2017-02-10)
 [Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.901...1.905)
 
