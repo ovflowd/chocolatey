@@ -26,7 +26,7 @@ class ArticleController extends BaseController
 
         $categoryPage = strstr(strrev($articleCategory), '_', true);
 
-        return $articleCategory == 'front.html' ? $this->front() :
+        return $articleCategory == 'front' ? $this->front() :
             $this->category($countryId, $categoryName, $categoryPage, $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
     }
 
