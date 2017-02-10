@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.905](https://github.com/sant0ro/chocolatey/tree/1.905) (2017-02-10)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.901...1.905)
+
+**Closed issues:**
+
+- Articles Pagination [\#6](https://github.com/sant0ro/chocolatey/issues/6)
+
 ## [1.901](https://github.com/sant0ro/chocolatey/tree/1.901) (2017-02-09)
 [Full Changelog](https://github.com/sant0ro/chocolatey/compare/1.900...1.901)
 

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Config;
 $path = Config::get('chocolatey.path');
 
 # Main Route
-$app->get($path . '', 'HomePageController@show');
+$app->get($path, 'HomePageController@show');
 
 /*
 |--------------------------------------------------------------------------
@@ -30,47 +30,48 @@ $app->get($path . '', 'HomePageController@show');
 |
 */
 
+# Logout User
+$app->post($path . 'api/public/authentication/logout', 'LoginController@logout');
+
 # Maintenance Middleware
 $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
-# Main API Request is Forbidden
+    # Main API Request is Forbidden
     $app->get($path . 'api', function () {
         return response('Unauthorized.', 401);
     });
 
-# Go to Help Page
+    # Go to Help Page
     $app->get($path . 'api/public/help', function () {
         return redirect(Config::get('chocolatey.help'));
     });
 
-# Get Data from a Room
+    # Get Data from a Room
     $app->get($path . 'api/public/rooms/{room}', 'RoomsController@getRoom');
 
-# Get User Public Data
+    # Get User Public Data
     $app->get($path . 'api/public/users', 'ProfileController@getPublicData');
 
-# Get User Public Data
+    # Get User Public Data
     $app->get($path . 'api/public/users/{userId}/profile', 'ProfileController@getPublicProfile');
 
-# Create an User Request
+    # Create an User Request
     $app->post($path . 'api/public/registration/new', 'LoginController@register');
 
-# Confirm E-mail
+    # Confirm E-mail
     $app->post($path . 'api/public/registration/activate', 'AccountController@confirmActivation');
 
-# Change Password Request
+    # Change Password Request
     $app->post($path . 'api/public/forgotPassword/send', 'MailController@forgotPassword');
 
-# Confirm E-mail
+    # Confirm E-mail
     $app->post($path . 'api/public/forgotPassword/changePassword', 'AccountSecurityController@confirmChangePassword');
 
-# Authenticate User
+    # Authenticate User
     $app->post($path . 'api/public/authentication/login', 'LoginController@login');
 
-# Middleware that Requires Authentication
+    # Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app, $path) {
-        # Logout User
-        $app->post($path . 'api/public/authentication/logout', 'LoginController@logout');
 
         # Client URL
         $app->get($path . 'api/client/clienturl', 'ClientController@getUrl');
@@ -110,7 +111,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
         # Habbo Client Loginstep
         $app->post($path . 'api/log/loginstep', function () {
-            return response(null, 204);
+            return response()->json(null, 204);
         });
 
         # New User Client Check
@@ -144,7 +145,6 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
         $app->post($path . 'api/newuser/room/select', 'AccountController@selectRoom');
     });
 
-
     /*
     |--------------------------------------------------------------------------
     | Habbo ShopAPI Routes
@@ -155,18 +155,18 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
     |
     */
 
-# Main ShopAPI Request is Forbidden
+    # Main ShopAPI Request is Forbidden
     $app->get($path . 'shopapi', function () {
         return response('Unauthorized.', 401);
     });
 
-# Get a List of all Shop Countries
+    # Get a List of all Shop Countries
     $app->get($path . 'shopapi/public/countries', 'ShopController@listCountries');
 
-# Get the Inventory of a specific Country
+    # Get the Inventory of a specific Country
     $app->get($path . 'shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
 
-# Middleware that Requires Authentication
+    # Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app, $path) {
         # Get User Purse
         $app->get($path . 'shopapi/purse', 'ShopController@getPurse');
