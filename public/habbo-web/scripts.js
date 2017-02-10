@@ -3391,7 +3391,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             }
         })
     }], controllerAs: "HabboAccordionGridController", template: "<ul ng-transclude></ul>", transclude: !0
-}),angular.module("shop", ["config", "header", "locale", "prepaid", "router", "shop.footer", "store", "subscriptions", "system.data", "tabs", "templates", "transactions"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}),angular.module("shop", ["config", "earn.credits", "header", "locale", "prepaid", "router", "shop.footer", "store", "subscriptions", "system.data", "tabs", "templates", "transactions"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     e.statePublic("shop", {
         url: "/shop?country",
         "abstract": !0,
@@ -4094,7 +4094,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         minAge: parseInt("0", 10),
         rpxLocale: "en",
         rpxTokenUrl: window.chocolatey.url + "api/public/authentication/rpx",
-        offerToroEnabled: "false",
+        offerToroEnabled: "true",
         twitterAccount: "@Habbo",
         adyenPublicKey: "10001|DB119F7832E23CBEDA2A330D3C13310D78ABA07136CDFFFA3D798BDFE4A903D5A079EE09710BBEC72573F0CA80D48DD0380D8AC1B0FDBCB978E69E9BE92ABDC27020858A52DC8D7A9C2D77B071FE1E6A3177E4E73E8E7CFC4A13C881BBBEF3C2EFBB24475818AB9E56BC597BABFD306593C3DF2B16F49D38F560212C183492EE7D0750CE84AB3509563CB3C99EC0B815CF5211E793500110B2A53DCAD793E267677BBE89035E5E9662FD2DB94A5EECBD6FB81F5DAF7205F9EBF15963639FC72DF0875CC2249FB31B300CC8183B2C948B3B3843C414677C9EC82C6A2D4CBF937B57FD03A53B0A8A56369AD490CEAB9EED18FE77E7B9032445A57A06CE23DE6115"
     }), angular.module("locale", ["angularMoment", "pascalprecht.translate"]), angular.module("angularMoment").run(["amMoment", function (e) {

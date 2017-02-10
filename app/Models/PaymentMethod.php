@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use stdClass;
+use Sofa\Eloquence\Eloquence;
+use Sofa\Eloquence\Mappable;
 
 /**
  * Class PaymentMethod
@@ -10,30 +11,36 @@ use stdClass;
  */
 class PaymentMethod extends ChocolateyModel
 {
+    use Eloquence, Mappable;
+
     /**
      * Disable Timestamps
      *
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * Purchase Params
      *
-     * @var array
+     * @var PurchaseParam
      */
     public $purchaseParams = null;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'chocolatey_shop_payment_methods';
+
     /**
      * Primary Key of the Table
      *
      * @var string
      */
     protected $primaryKey = 'id';
+
     /**
      * The Appender(s) of the Model
      *
@@ -43,8 +50,25 @@ class PaymentMethod extends ChocolateyModel
         'disclaimerRequired',
         'premiumSms',
         'purchaseParams',
-        'requestPath',
-        'smallPrint'
+        'requestPath'
+    ];
+
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'disclaimer'
+    ];
+
+    /**
+     * The attributes that will be mapped
+     *
+     * @var array
+     */
+    protected $maps = [
+        'disclaimerRequired' => 'disclaimer'
     ];
 
     /**
@@ -72,7 +96,7 @@ class PaymentMethod extends ChocolateyModel
      */
     public function getDisclaimerRequiredAttribute(): bool
     {
-        return false;
+        return $this->attributes['disclaimer'] == 1;
     }
 
     /**
@@ -98,9 +122,9 @@ class PaymentMethod extends ChocolateyModel
     /**
      * Get the Purchase Params
      *
-     * @return array
+     * @return PurchaseParam
      */
-    public function getPurchaseParamsAttribute()
+    public function getPurchaseParamsAttribute(): PurchaseParam
     {
         return $this->purchaseParams;
     }
@@ -111,21 +135,16 @@ class PaymentMethod extends ChocolateyModel
      */
     public function setPurchaseParams(array $parameters)
     {
-        $params = new stdClass();
-        $params->countryId = $parameters[0];
-        $params->pricePointId = $parameters[1];
-        $params->paymentMethodId = $this->attributes['id'];
-
-        $this->purchaseParams = $params;
+        $this->purchaseParams = new PurchaseParam($parameters[0], $parameters[1], $this->attributes['id']);
     }
 
     /**
-     * Get Small Print Attribute
+     * Get Category Payment Type
      *
      * @return string
      */
-    public function getSmallPrintAttribute(): string
+    public function getCategoryAttribute():string
     {
-        return 'null';
+        return PaymentCategory::find($this->attributes['category'])->payment_type;
     }
 }

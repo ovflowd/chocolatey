@@ -171,6 +171,9 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
         # Get User Purse
         $app->get($path . 'shopapi/purse', 'ShopController@getPurse');
 
+        # Get Offers Page
+        $app->get($path . 'shopapi/offerwall/url', 'ShopController@getWall');
+
         # Get User Purchase History
         $app->get($path . 'shopapi/history', 'ShopController@getHistory');
 
@@ -185,6 +188,9 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 
         # Redirect to Purchase Proceed
         $app->get($path . 'shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
+
+        # Redirect to Success Purchase
+        $app->get($path . 'shopapi/success/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@success');
     });
 });
 

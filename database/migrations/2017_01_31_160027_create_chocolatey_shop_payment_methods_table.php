@@ -20,6 +20,9 @@ class CreateChocolateyShopPaymentMethodsTable extends Migration
             $table->string('buttonText', 255)->nullable();
             $table->string('localizationKey', 125)->default('paypal');
             $table->string('name', 125)->default('PayPal');
+            $table->integer('category')->default(1);
+            $table->boolean('disclaimer')->default(false);
+            $table->text('smallPrint')->nullable();
             $table->primary('id', 'chocolatey_shop_payment_methods_primary');
         });
 

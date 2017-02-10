@@ -16,7 +16,7 @@ class CreateChocolateyShopPaymentCheckoutTable extends Migration
     {
         Schema::create('chocolatey_shop_payment_checkout', function (Blueprint $table) {
             $table->integer('id');
-            $table->string('category', 50)->default('online');
+            $table->integer('category')->default(1);
             $table->string('country', 50)->default('all');
             $table->integer('item')->default(1);
             $table->integer('method')->default(1);

@@ -56,13 +56,13 @@ class ShopController extends BaseController
     /**
      * Proceed Payment Checkout
      *
-     * @param string $paymentCategory
+     * @param int $paymentCategory
      * @param string $countryCode
      * @param int $shopItem
-     * @param string $paymentMethod
+     * @param int $paymentMethod
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
-    public function proceed(string $paymentCategory, string $countryCode, int $shopItem, string $paymentMethod)
+    public function proceed(int $paymentCategory, string $countryCode, int $shopItem, int $paymentMethod)
     {
         $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
             ->where('category', $paymentCategory)->where('country', $countryCode)
@@ -70,6 +70,32 @@ class ShopController extends BaseController
 
         return $paymentCheckout != null ? redirect($paymentCheckout->redirect)
             : response(view('failed-payment'), 400);
+    }
+
+    /**
+     * Success Payment Checkout
+     *
+     * @TODO: Code Business Logic
+     *
+     * @param Request $request
+     * @param int $paymentCategory
+     * @param string $countryCode
+     * @param int $shopItem
+     * @param int $paymentMethod
+     * @return RedirectResponse|Response|Redirector|ResponseFactory
+     */
+    public function success(Request $request, int $paymentCategory, string $countryCode, int $shopItem, int $paymentMethod)
+    {
+        $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
+            ->where('category', $paymentCategory)->where('country', $countryCode)
+            ->where('item', $shopItem)->where('method', $paymentMethod)->first();
+
+        $checkOutId = rand(0, 99) + $shopItem * $request->user()->uniqueId + rand(0, 99);
+
+        //@TODO: Do Business Logic Here
+
+        return $paymentCheckout != null ? response(view('success-payment', ['checkoutId' => $checkOutId]), 200)
+            : response(view('failed-payment'), 404);
     }
 
     /**
@@ -84,6 +110,7 @@ class ShopController extends BaseController
      */
     public function getHistory(Request $request): JsonResponse
     {
+        //PATTERN: [{"creationTime":"2017-02-10T14:19:39.000+0000","transactionSystemName":"Paymentez Direct Products Creditcard","credits":28,"price":"BRL 9.99"}]
         return response()->json([]);
     }
 
@@ -106,5 +133,19 @@ class ShopController extends BaseController
         DB::table('users')->where('id', $request->user()->uniqueId)->increment('pixels', $voucher->points);
 
         return response()->json('');
+    }
+
+    /**
+     * Get Offer Wall
+     *
+     * @TODO: Need to Know how this really works!
+     * @TODO: Ability of custom this shit
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getWall(Request $request): JsonResponse
+    {
+        return response()->json(['url' => "https://www.offertoro.com/ifr/show/2150/s-hhus-bf01d11c861e8785afe95065caa7f182/1308"]);
     }
 }
