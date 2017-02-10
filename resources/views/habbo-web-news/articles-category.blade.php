@@ -6,16 +6,23 @@
             <ul class="news-category__list">
                 @foreach ($categories as $articleCategory)
                     <li class="news-category__item">
-                        <a href="/community/category/{{$articleCategory->name}}"
-                           translate="{{$articleCategory->translate}}"
-                           class="@if ($articleCategory->name == $category) news-category__link--active news-category__link @else news-category__link @endif">
-                        </a>
+                        @if ($articleCategory->name == $category->name)
+                            <a href="/community/category/{{$articleCategory->name}}"
+                               translate="{{$articleCategory->translate}}"
+                               class="news-category__link--active news-category__link">
+                            </a>
+                        @else
+                            <a href="/community/category/{{$articleCategory->name}}"
+                               translate="{{$articleCategory->translate}}"
+                               class="news-category__link">
+                            </a>
+                        @endif
                     </li>
                 @endforeach
             </ul>
         </nav>
     </header>
-    @foreach ($articleSet as $articleContent)
+    @foreach ($articles as $articleContent)
         <article class="news-header">
             @if($articleContent->roomId != 0)
                 <a href="/hotel?room={{$articleContent->roomId}}"
@@ -40,7 +47,8 @@
                              alt="Race to the limit!" class="news-header__image news-header__image--featured">
                     </figure>
                 </a>
-                <a href="/community/article/{{$articleContent->id}}/content" class="news-header__link news-header__wrapper">
+                <a href="/community/article/{{$articleContent->id}}/content"
+                   class="news-header__link news-header__wrapper">
                     <h2 class="news-header__title">{{$articleContent->title}}</h2>
                 </a>
             @endif
@@ -65,9 +73,18 @@
     <footer>
         <nav>
             <ul>
-                <li>
-                    <a href="/community/category/{{$category}}/{{$nextPage}}" translate="NEWS_NEXT" class="news-category__next"></a>
-                </li>
+                @if($page > 1)
+                    <li>
+                        <a href="/community/category/{{$category->name}}/{{$page - 1}}" translate="NEWS_PREVIOUS"
+                           class="news-category__previous"></a>
+                    </li>
+                @endif
+                @if($articles->count() == 10)
+                    <li>
+                        <a href="/community/category/{{$category->name}}/{{$page + 1}}" translate="NEWS_NEXT"
+                           class="news-category__next"></a>
+                    </li>
+                @endif
             </ul>
         </nav>
     </footer>

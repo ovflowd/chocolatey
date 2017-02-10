@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -25,6 +26,7 @@ class LoginController extends BaseController
         if ($request->user('api')):
             $request->user()->trusted = $request->ip();
             $request->user()->ip_current = $request->ip();
+            $request->user()->update(['last_login' => time()]);
             return response()->json($request->user());
         endif;
 
@@ -60,6 +62,8 @@ class LoginController extends BaseController
 
         $userData = (new AccountController)
             ->createUser($request, $request->json()->all(), true);
+
+        $userData->update(['last_login' => time()]);
 
         return response()->json($userData);
     }

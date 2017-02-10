@@ -108,7 +108,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'email',
         'id',
         'username',
-        'auth_ticket'
+        'auth_ticket',
+        'last_login'
     ];
 
     /**

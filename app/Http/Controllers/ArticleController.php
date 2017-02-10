@@ -22,12 +22,14 @@ class ArticleController extends BaseController
      */
     public function many(string $countryId, string $articleCategory): Response
     {
-        $categoryName = strstr(($articleCategory = str_replace('.html', '', $articleCategory)), '_', true);
+        $category = ArticleCategory::find(strstr(($articleCategory =
+            str_replace('.html', '', $articleCategory)), '_', true));
 
         $categoryPage = strstr(strrev($articleCategory), '_', true);
 
         return $articleCategory == 'front' ? $this->front() :
-            $this->category($countryId, $categoryName, $categoryPage, $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
+            $this->category($countryId, $category, $categoryPage,
+                $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
     }
 
     /**
@@ -47,24 +49,26 @@ class ArticleController extends BaseController
      * @TODO: Proper Way to use Country ID
      *
      * @param string $countryId
-     * @param string $categoryName
+     * @param ArticleCategory $category
      * @param int $categoryPage
      * @param int $start
      * @return Response
      */
-    protected function category(string $countryId, string $categoryName, int $categoryPage, int $start): Response
+    protected function category(string $countryId, ArticleCategory $category, int $categoryPage, int $start): Response
     {
-        $category = ArticleCategory::find($categoryName);
+        $articles = Article::where('id', '>=', $start)
+            ->limit(10)->get()->filter(function ($item) use ($category) {
+                return $category->name == 'all' || in_array($category, $item->categories);
+            });
 
-        $articles = Article::where('id', '>=', $start)->limit(10)->get()->filter(function ($item) use ($category) {
-            return $category->link == 'all' || in_array($category, $item->categories);
-        });
+        if($articles->count() == 0)
+            return response()->json(null, 404);
 
         return response(view('habbo-web-news.articles-category', [
-            'category' => $categoryName,
-            'nextPage' => ($categoryPage + 1),
+            'category' => $category,
+            'page' => $categoryPage,
             'categories' => ArticleCategory::all(),
-            'articleSet' => $articles
+            'articles' => $articles
         ]));
     }
 
@@ -79,16 +83,17 @@ class ArticleController extends BaseController
      */
     public function one(string $countryId, string $articleName): Response
     {
-        $articleContent = Article::find(substr($articleName, 0, strpos($articleName, '_')));
-
-        if ($articleContent == null)
+        if (($article = Article::find(strstr($articleName, '_', true))) == null)
             return response()->json(null, 404);
 
+        $related = ($latest = Article::all())->filter(function ($item) use ($article) {
+            return in_array($article->categories[0], $item->categories);
+        });
+
         return response(view('habbo-web-news.articles-view', [
-            'article' => $articleContent,
-            'latest' => Article::select('id', 'createdAt', 'title')->orderBy('id', 'ASC')->limit(10)->get(),
-            'related' => Article::where('categories', 'like', '%' . $articleContent->categories[0]->link . '%')
-                ->orderBy('id', 'ASC')->limit(5)->get()
+            'article' => $article,
+            'latest' => $latest->slice(0, 5),
+            'related' => $related->slice(0, 5)
         ]));
     }
 }
