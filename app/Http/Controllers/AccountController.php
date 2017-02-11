@@ -28,6 +28,9 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
+        if(strlen($request->json()->get('name')) >= 50 || strpos($request->json()->get('name'), 'MOD_') !== false)
+            return response()->json(['code' => 'INVALID_NAME', 'validationResult' => null, 'suggestions' => []]);
+
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
 
