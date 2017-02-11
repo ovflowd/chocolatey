@@ -286,6 +286,8 @@ return [
     | Security related Settings
     | Like Password Hashing
     |
+    | Available Hashes: http://php.net/manual/en/function.hash-algos.php
+    |
     */
 
     'security' => [
