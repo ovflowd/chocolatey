@@ -11,6 +11,7 @@ use App\Models\UserSecurity;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -44,7 +45,7 @@ class AccountSecurityController extends BaseController
      */
     public function saveQuestions(Request $request): JsonResponse
     {
-        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() == 0)
+        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->count() == 0)
             return response()->json(['error' => 'invalid_password'], 400);
 
         UserSecurity::updateOrCreate([
@@ -97,11 +98,11 @@ class AccountSecurityController extends BaseController
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
         //@TODO: This search the whole base. If anyone has the same password.. This will give error. Is this good?
-        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() >= 1)
+        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('currentPassword')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 409);
 
         User::find($request->user()->uniqueId)->update(['password' =>
-            hash('sha256', $request->json()->get('password'))]);
+            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null, 204);
     }
@@ -114,7 +115,7 @@ class AccountSecurityController extends BaseController
      */
     public function changeMail(Request $request): JsonResponse
     {
-        if (User::where('password', hash('sha256', $request->json()->get('currentPassword')))->count() == 0)
+        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('currentPassword')))->count() == 0)
             return response()->json(['error' => 'changeEmail.invalid_password'], 400);
 
         if (ChocolateyId::where('mail', $request->json()->get('newEmail'))->count() > 0)
@@ -206,13 +207,13 @@ class AccountSecurityController extends BaseController
         if ($mailRequest == null)
             return response()->json(null, 404);
 
-        if (User::where('password', hash('sha256', $request->json()->get('password')))->count() >= 1)
+        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 400);
 
         $mailRequest->update(['used' => '1']);
 
         DB::table('users')->where('mail', $mailRequest->mail)
-            ->update(['password' => hash('sha256', $request->json()->get('password'))]);
+            ->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json('');
     }

@@ -289,7 +289,7 @@ return [
     */
 
     'security' => [
-        'hash' => 'md5',
+        'hash' => 'sha256',
         'session' => 'azureWEB'
     ],
 

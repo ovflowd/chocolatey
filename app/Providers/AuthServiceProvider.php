@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Facades\Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -26,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
 
             return $request->path() == 'api/public/authentication/login'
                 ? Session::set('ChocolateyWEB', User::where('mail', $request->json()->get('email'))
-                    ->where('password', hash('sha256', $request->json()->get('password')))->first()) : $userData;
+                    ->where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->first()) : $userData;
         });
     }
 }

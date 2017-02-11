@@ -165,7 +165,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['look'] = Config::get('chocolatey.figure');
         $this->attributes['auth_ticket'] = '';
 
-        $this->attributes['password'] = hash('sha256', $password);
+        $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), $password);
         $this->attributes['account_created'] = time();
 
         $this->attributes['ip_current'] = $address;
@@ -357,7 +357,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getEmailVerifiedAttribute(): bool
+    public function getEmailVerifiedAttribute(): b
     {
         return array_key_exists('mail_verified', $this->attributes)
             ? $this->attributes['mail_verified'] == true : false;
