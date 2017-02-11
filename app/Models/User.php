@@ -357,7 +357,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return bool
      */
-    public function getEmailVerifiedAttribute(): b
+    public function getEmailVerifiedAttribute(): bool
     {
         return array_key_exists('mail_verified', $this->attributes)
             ? $this->attributes['mail_verified'] == true : false;
