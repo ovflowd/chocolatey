@@ -292,7 +292,7 @@ return [
 
     'security' => [
         'hash' => 'sha256',
-        'session' => 'azureWEB'
+        'session' => 'ChocolateyWEB'
     ],
 
     /*

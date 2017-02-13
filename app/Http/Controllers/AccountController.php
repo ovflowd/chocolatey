@@ -9,6 +9,7 @@ use App\Models\UserPreferences;
 use App\Models\UserSettings;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -28,7 +29,7 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
-        if(strlen($request->json()->get('name')) >= 50 || strpos($request->json()->get('name'), 'MOD_') !== false)
+        if (strlen($request->json()->get('name')) >= 50 || strpos($request->json()->get('name'), 'MOD_') !== false)
             return response()->json(['code' => 'INVALID_NAME', 'validationResult' => null, 'suggestions' => []]);
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
@@ -44,7 +45,7 @@ class AccountController extends BaseController
     {
         $request->user()->update(['username' => $request->json()->get('name')]);
 
-        Session::set('ChocolateyWEB', $request->user());
+        Session::set(Config::get('chocolatey.security.session'), $request->user());
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -61,7 +62,7 @@ class AccountController extends BaseController
             'look' => $request->json()->get('figure'),
             'gender' => $request->json()->get('gender')]);
 
-        Session::set('ChocolateyWEB', $request->user());
+        Session::set(Config::get('chocolatey.security.session'), $request->user());
 
         return response()->json($request->user());
     }
@@ -205,7 +206,7 @@ class AccountController extends BaseController
         $userData->store($userName, $userInfo['password'], $userMail, $request->ip())->save();
         $userData->createData();
 
-        Session::set('ChocolateyWEB', $userData);
+        Session::set(Config::get('chocolatey.security.session'), $userData);
 
         return $userData;
     }
@@ -219,7 +220,7 @@ class AccountController extends BaseController
     {
         $userData = User::find($request->json()->get('uniqueId'));
 
-        Session::set('ChocolateyWEB', $userData);
+        Session::set(Config::get('chocolatey.security.session'), $userData);
     }
 
     /**
@@ -230,23 +231,20 @@ class AccountController extends BaseController
      */
     public function confirmActivation(Request $request): JsonResponse
     {
-        if (($mailRequest = (new MailController)->getMail($request->json()->get('token'))) == null)
+        if (($mail = (new MailController)->getMail($request->json()->get('token'))) == null)
             return response()->json(['error' => 'activation.invalid_token'], 400);
 
-        if (strpos($mailRequest->link, 'change-email') !== false):
-            $mail = str_replace('change-email/', '', $mailRequest->link);
+        if (strpos($mail->link, 'change-email') !== false):
+            $mail = str_replace('change-email/', '', $mail->link);
 
-            User::where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+            User::where('mail', $mail->mail)->update(['mail' => $mail]);
 
-            ChocolateyId::where('mail', $mailRequest->mail)->update(['mail' => $mail]);
+            ChocolateyId::where('mail', $mail->mail)->update(['mail' => $mail]);
         endif;
 
-        User::where('mail', $mailRequest->mail)->update(['mail_verified' => '1']);
+        User::where('mail', $mail->mail)->update(['mail_verified' => '1']);
 
-        if ($request->user())
-            Session::set('ChocolateyWEB', User::where('mail', $mailRequest->mail)->first());
-
-        return response()->json(['email' => $mailRequest->mail, 'emailVerified' => true, 'identityVerified' => true]);
+        return response()->json(['email' => $mail->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
 
     /**

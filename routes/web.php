@@ -109,7 +109,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
         # Resend E-mail Verification
         $app->post($path . 'api/settings/email/change', 'AccountSecurityController@changeMail');
 
-        # Habbo Client Loginstep
+        # Habbo Client Login step
         $app->post($path . 'api/log/loginstep', function () {
             return response()->json(null, 204);
         });

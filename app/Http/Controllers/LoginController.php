@@ -6,6 +6,7 @@ use App\Facades\Session;
 use App\Models\ChocolateyId;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -38,9 +39,9 @@ class LoginController extends BaseController
      */
     public function logout(): JsonResponse
     {
-        Session::erase('ChocolateyWEB');
+        Session::erase(Config::get('chocolatey.security.session'));
 
-        return response()->json('');
+        return response()->json(null);
     }
 
     /**
@@ -58,8 +59,7 @@ class LoginController extends BaseController
         if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        $userData = (new AccountController)
-            ->createUser($request, $request->json()->all(), true);
+        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
 
         $userData->update(['last_login' => time()]);
 

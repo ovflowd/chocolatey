@@ -18,7 +18,7 @@ class SessionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('azuresession', function () {
+        $this->app->bind('chocosession', function () {
             return Session::getInstance();
         });
 

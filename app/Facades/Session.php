@@ -17,7 +17,7 @@ class Session extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'azuresession';
+        return 'chocosession';
     }
 }
 

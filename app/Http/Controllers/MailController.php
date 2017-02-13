@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Mail as MailModel;
 use Exception;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -70,7 +69,7 @@ class MailController extends BaseController
      * Get E-Mail by Controller
      *
      * @param string $token
-     * @return Mail|Model|null
+     * @return object
      */
     public function getMail(string $token)
     {
