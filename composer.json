@@ -73,7 +73,8 @@
     "vlucas/phpdotenv": "~2.2",
     "sofa/eloquence": "master",
     "rdehnhardt/lumen-maintenance-mode": "master",
-    "illuminate/mail": "5.4.*"
+    "illuminate/mail": "5.4.*",
+    "intervention/image": "^2.3"
   },
   "autoload": {
     "psr-4": {
