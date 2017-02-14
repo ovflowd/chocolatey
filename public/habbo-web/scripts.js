@@ -3048,12 +3048,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }[e || "big"]
     }, r.getBodyImageUrl = function (r, n) {
         var i = o(n), s = t.createHash(r + i + a);
-        return e.imagingUrl + "/avatar/" + encodeURIComponent(r + "," + i + "," + s) + ".png"
+        return window.chocolatey.url + "habbo-imaging/avatar/" + encodeURIComponent(r + "," + i + "," + s) + ".png"
     }, r.getImagerUrl = function (r, n) {
         var i = o(n), s = t.createHash(r + i + a);
-        return e.imagingUrl + "/avatarimage?figure=" + encodeURIComponent(r + "," + i + "," + s) + "&size=l&headonly=1"
+        return window.chocolatey.url + "habbo-imaging/avatarimage?figure=" + encodeURIComponent(r + "," + i + "," + s) + "&size=l&headonly=1"
     }, r.getLegacyImagerUrl = function (t, o) {
-        return e.imagingUrl + "/avatarimage?" + $.param({
+        return window.chocolatey.url + "habbo-imaging/avatarimage?" + $.param({
                 user: t,
                 headonly: 2 === o.s || 3 === o.s || 5 === o.s ? 1 : 0,
                 size: {0: "b", 1: "s", 2: "b", 3: "s", 4: "l", 5: "l"}[o.s],
@@ -3083,7 +3083,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 gesture: r.gesture
             }, a = t.generatePose(o);
             return r.action ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
-                    r.user ? t.getImagerUrl(r.figure, a) : void 0
+                    r.user ? t.getLegacyImagerUrl(r.user, a) : void 0
         }
 
         var r = this;

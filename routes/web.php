@@ -12,6 +12,8 @@
 
 # Main Request Route
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 # Configure Sub Paths
@@ -328,4 +330,23 @@ $app->get($path . 'habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{dat
 |
 */
 
+# Get Interstitial Client ADS
 $app->get($path . 'habbo-web-ads/{interstitial}', 'ClientController@getInterstitial');
+
+/*
+|--------------------------------------------------------------------------
+| Miscellaneous
+|--------------------------------------------------------------------------
+|
+| Other Routes used by Habbo
+|
+*/
+
+# Get Habbo RSS
+$app->get($path . 'rss.xml', 'ArticleController@getRss');
+
+# Get Special AvatarImage for BigHead providing Username or Figure
+$app->get($path . 'habbo-imaging/avatarimage', 'ImagingController@getUserHead');
+
+# Get Special AvatarImage for Body Look only providing Figure
+$app->get($path . 'habbo-imaging/avatar/{figure}', 'ImagingController@getUserBody');
