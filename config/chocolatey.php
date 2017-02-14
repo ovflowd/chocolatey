@@ -237,7 +237,17 @@ return [
     |
     */
 
-    'motto' => "I'm an Azure Lover!",
+    'motto' => "I'm an Arcturus Lover!",
+
+    /*
+    |--------------------------------------------------------------------------
+    | Habbo Imaging Service Provider
+    |--------------------------------------------------------------------------
+    |
+    | Imaging Service Provider
+    |
+    */
+    'imaging' => 'https://www.habbo.de/habbo-imaging/',
 
     /*
     |--------------------------------------------------------------------------
