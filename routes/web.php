@@ -12,8 +12,6 @@
 
 # Main Request Route
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 # Configure Sub Paths
@@ -350,3 +348,9 @@ $app->get($path . 'habbo-imaging/avatarimage', 'ImagingController@getUserHead');
 
 # Get Special AvatarImage for Body Look only providing Figure
 $app->get($path . 'habbo-imaging/avatar/{figure}', 'ImagingController@getUserBody');
+
+# Get Group Badge
+$app->get($path . 'habbo-imaging/badge/{badgeCode}', 'ImagingController@getGroupBadge');
+
+# Get Youtube Thumbnail
+$app->get($path . 'youtube', 'ImagingController@getYoutubeThumbnail');

@@ -74,6 +74,8 @@ $app->register(\Sofa\Eloquence\ServiceProvider::class);
 
 $app->register(Rdehnhardt\MaintenanceMode\Providers\MaintenanceModeServiceProvider::class);
 
+$app->register(Intervention\Image\ImageServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

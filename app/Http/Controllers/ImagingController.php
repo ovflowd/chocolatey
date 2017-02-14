@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use Laravel\Lumen\Http\Redirector;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -39,5 +41,29 @@ class ImagingController extends BaseController
     public function getUserBody(string $figure)
     {
         return redirect(Config::get('chocolatey.imaging') . "avatar/{$figure}");
+    }
+
+    /**
+     * Get Youtube Thumbnail
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function getYoutubeThumbnail(Request $request)
+    {
+        return Image::make($request->input('url'))->response('jpg');
+    }
+
+    /**
+     * Return Group Badge
+     *
+     * @param string $badgeCode
+     * @return mixed
+     */
+    public function getGroupBadge(string $badgeCode)
+    {
+        $imagePath = DB::table('emulator_settings')->where('key', 'imager.location.output.badges')->first();
+
+        return Image::make("{$imagePath->value}/{$badgeCode}.png")->response('png');
     }
 }

@@ -7,9 +7,6 @@
     # Habbo Web Assets
     RewriteRule ^habbo-web/(.*)$ public/habbo-web/$1 [L]
 
-    # Habbo-Imaging for Badge
-    RewriteRule ^habbo-imaging/badge/([^/]+) public/habbo-imaging/badge.php?badge=$1
-
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
