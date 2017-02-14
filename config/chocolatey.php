@@ -122,9 +122,7 @@ return [
     */
 
     'cors' => [
-        'http://imasdk.googleapis.com',
-        'http://127.0.0.1',
-        'http://localhost'
+        '*'
     ],
 
     /*
