@@ -54,4 +54,14 @@ class Ban extends ChocolateyModel
 
         return $this;
     }
+
+    /**
+     * Get Ban Expire Attribute
+     *
+     * @return string
+     */
+    public function getBanExpireAttribute(): string
+    {
+        return date('M/d/Y h:m A', $this->attributes['ban_expire']);
+    }
 }

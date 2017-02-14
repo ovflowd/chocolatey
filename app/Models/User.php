@@ -91,7 +91,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'emailVerified',
         'accountId',
         'memberSince',
-        'isBanned'
+        'isBanned',
+        'banDetails'
     ];
 
     /**
@@ -192,7 +193,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getIsBannedAttribute(): bool
     {
-        return Ban::where('user_id', $this->attributes['id'])->first() ?? false;
+        return Ban::where('user_id', $this->attributes['id'])->first() !== null;
+    }
+
+    /**
+     * Get Ban Details
+     *
+     * @return Ban
+     */
+    public function getBanDetailsAttribute()
+    {
+        return Ban::where('user_id', $this->attributes['id'])->first();
     }
 
     /**

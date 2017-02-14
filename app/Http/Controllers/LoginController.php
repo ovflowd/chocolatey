@@ -24,6 +24,11 @@ class LoginController extends BaseController
     public function login(Request $request): JsonResponse
     {
         if ($request->user()):
+            if ($request->user()->isBanned)
+                return response()->json(['message' => 'login.user_banned',
+                    'expiryTime' => $request->user()->banDetails->ban_expire,
+                    'reason' => $request->user()->banDetails->ban_reason], 401);
+
             $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
 
             return response()->json($request->user());
