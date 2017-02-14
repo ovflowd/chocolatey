@@ -3,25 +3,7 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
-# User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-
-# Sensitive or high-churn files:
-.idea/dataSources/
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/dataSources.local.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-
-# Gradle:
-.idea/gradle.xml
-.idea/libraries
-
-# Mongo Explorer plugin:
-.idea/mongoSettings.xml
+.idea/
 
 ## File-based project format:
 *.iws
@@ -43,3 +25,30 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+### Composer template
+composer.phar
+/vendor/
+
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+### Laravel template
+vendor/
+node_modules/
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+storage/*.key
+storage/logs/*.log
+storage/framework/views/*.php
+.env.*.php
+.env.php
+.env
+*.env
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.rocketeer/

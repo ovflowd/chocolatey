@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    Options -Indexes
+
+    RewriteEngine On
+
+    # Habbo Web Assets
+    RewriteRule ^habbo-web/(.*)$ public/habbo-web/$1 [L]
+
+    # Habbo-Imaging for Badge
+    RewriteRule ^habbo-imaging/badge/([^/]+) public/habbo-imaging/badge.php?badge=$1
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+    RewriteRule ^.*$ index.php [L]
+    
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
