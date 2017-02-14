@@ -2032,7 +2032,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }
     }
 }]),angular.module("head.service", ["locale", "ui.router"]).constant("HEAD_DEFAULTS", {
-    title: "Habbo",
+    title: window.chocolatey.name,
     description: "Join millions in the planet's most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.",
     image: "https://habboo-a.akamaihd.net/habbo-web/america/en/assets/images/app_summary_image-1200x628.85a9f5dc.png",
     imageHeight: 628,
@@ -2050,7 +2050,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             o.title = e
         })
     }, o.getFullTitle = function () {
-        return "Habbo" === o.title ? o.title : o.title + r
+        return window.chocolatey.name === o.title ? o.title : o.title + r
     }, o
 }]).run(["$rootScope", "Head", function (e, t) {
     e.$on("$stateChangeStart", function () {
@@ -4090,7 +4090,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         groupBadgeUrl: window.chocolatey.url + "/habbo-imaging",
         lang: "en",
         hotel: "hhus",
-        localizationSite: "com",
+        localizationSite: window.chocolatey.lang,
         minAge: parseInt("0", 10),
         rpxLocale: "en",
         rpxTokenUrl: window.chocolatey.url + "api/public/authentication/rpx",
@@ -4104,7 +4104,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     }]), angular.module("noCAPTCHA").config(["noCAPTCHAProvider", function (e) {
         e.setLanguage("en"), e.setSiteKey(window.chocolatey.captcha)
     }]), angular.module("pascalprecht.translate").config(["$translateProvider", function (e) {
-        e.preferredLanguage("com"), e.useStaticFilesLoader({
+        e.preferredLanguage(window.chocolatey.lang), e.useStaticFilesLoader({
             prefix: window.chocolatey.url + "habbo-web-l10n/",
             suffix: ".json"
         }), e.useSanitizeValueStrategy("escapeParameters")

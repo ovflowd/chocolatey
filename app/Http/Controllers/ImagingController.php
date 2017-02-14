@@ -64,6 +64,9 @@ class ImagingController extends BaseController
     {
         $imagePath = DB::table('emulator_settings')->where('key', 'imager.location.output.badges')->first();
 
-        return Image::make("{$imagePath->value}/{$badgeCode}.png")->response('png');
+        $badgeCode = str_replace('.gif', '', $badgeCode);
+
+        return Image::make("{$imagePath->value}/{$badgeCode}.png")->response('gif');
+
     }
 }

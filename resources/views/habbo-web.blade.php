@@ -45,7 +45,9 @@
                 facebook: '{{$chocolatey['facebook']['app']['key']}}',
                 url: '{{$chocolatey['url']}}',
                 base: '{{$chocolatey['path']}}',
-                earn: '{{$chocolatey['earn'] == 1 ? 'true' : 'false'}}'};
+                earn: '{{$chocolatey['earn'] == 1 ? 'true' : 'false'}}',
+                name: '{{$chocolatey['name']}}',
+                lang: '{{$chocolatey['language']}}'};
         </script>
     </head>
 <body habbo-client-disable-scrollbars ng-cloak>
