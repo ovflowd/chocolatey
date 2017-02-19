@@ -43,6 +43,8 @@ public/storage
 storage/*.key
 storage/logs/*.log
 storage/framework/views/*.php
+composer.json
+composwer.lock
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
