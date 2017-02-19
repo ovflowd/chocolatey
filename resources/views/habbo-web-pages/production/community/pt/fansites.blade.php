@@ -1,5 +1,5 @@
 <h1>F&#xE3;-sites oficiais</h1>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Fansites/habbo_friends.png" alt="Fansites" class="align-right"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/habbo_friends.png" alt="Fansites" class="align-right"></p>
 <p>Nossas F&#xE3; Sites Oficias s&#xE3;o as seguintes:</p>
 <ul>
     <li><a href="http://www.beatshabbo.com.br" target="_blank">Beats{{$chocolatey['name']}}</a></li>

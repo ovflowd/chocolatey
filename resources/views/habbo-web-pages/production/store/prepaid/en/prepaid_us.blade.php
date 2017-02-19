@@ -4,7 +4,7 @@
     are valid in all {{$chocolatey['name']}} hotels! You can buy one with a credit card or with PayPal. Once you have the code, come back
     to this page and enter the code in the voucher code field. (Remember to log in first.)</p>
 <p><a href="http://www.pcgamesupply.com/buygames/habbo-hotel-credits-game-card/" class="remove-link"
-      target="_blank"><img src="https://habboo-a.akamaihd.net/c_images/Prepaid/pcgamesupply_logo_161x60.png"
+      target="_blank"><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/pcgamesupply_logo_161x60.png"
                            alt="PCGameSupply"></a></p>
 <h3>Gift cards</h3>
 <p>If you have a gift card from Subway, CVS/pharmacy, Burger King, Dollar General, Shell, Circle K or oBucks, you can

@@ -2,29 +2,29 @@
 <p>Depois de montar o seu visual super style, descansar confortavelmente no seu mega quarto e conferir as dicas de
     Frank, o Staff do Hotel, o que mais voc&#xEA; pode fazer?</p>
 <p>Aqui v&#xE3;o algumas ideias:</p>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/navigator_br.png" alt="Navegador" class="align-right"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/navigator_br.png" alt="Navegador" class="align-right"></p>
 <h3>Explore os quartos</h3>
 <p>Clique no navegador e escolha qualquer um dos Quartos P&#xFA;blicos onde voc&#xEA; pode conhecer outros {{$chocolatey['name']}}s e
     fazer novos amigos.</p>
 <hr>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/ask_friend_br.png" alt="Fa&#xE7;a amigos"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ask_friend_br.png" alt="Fa&#xE7;a amigos"
         class="align-right"></p>
 <h3>Fa&#xE7;a amigos</h3>
 <p>Clique em qualquer {{$chocolatey['name']}} e pe&#xE7;a a sua amizade ou d&#xEA; respeitos. Voc&#xEA; vai fazer v&#xE1;rios amigos!</p>
 <hr>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/citizenship_br.png" alt="Cidadania {{$chocolatey['name']}}"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/citizenship_br.png" alt="Cidadania {{$chocolatey['name']}}"
         class="align-right"></p>
 <h3>Complete a sua Cidadania {{$chocolatey['name']}}</h3>
 <p>Para conhecer melhor o {{$chocolatey['name']}} Hotel, que tal come&#xE7;ar clicando na Ferramenta de Ajuda no canto superior direito da
     tela?</p>
 <hr>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/gamehub_br.png" alt="Sala de Jogos" class="align-right">
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/gamehub_br.png" alt="Sala de Jogos" class="align-right">
 </p>
 <h3>Visite a Sala de jogos</h3>
 <p>Procure a Sala de Jogos na lista de quartos p&#xFA;blicos no Navegador. Quando chegar l&#xE1;, use qualquer uma das m&#xE1;quinas
     para ir a um quarto de jogo diferente!</p>
 <hr>
-<p><img src="https://habboo-a.akamaihd.net/c_images/HowToPlay/shop.png" alt="{{$chocolatey['name']}} Loja" class="align-right"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/shop.png" alt="{{$chocolatey['name']}} Loja" class="align-right"></p>
 <h3>V&#xE1; de compras</h3>
 <p>D&#xEA; uma passadinha na se&#xE7;&#xE3;o de Duckets da {{$chocolatey['name']}} Loja e veja tudo o que voc&#xEA; pode fazer com os
     Duckets gr&#xE1;tis que voc&#xEA; recebe diariamente!</p>
