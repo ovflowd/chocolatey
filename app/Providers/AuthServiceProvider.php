@@ -37,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function auth(Request $request)
     {
-        return Session::set('ChocolateyWEB', User::where('mail', $request->json()->get('email'))
+        return Session::set(Config::get('chocolatey.security.session'), User::where('mail', $request->json()->get('email'))
             ->where('password', hash(Config::get('chocolatey.security.hash'),
                 $request->json()->get('password')))->first());
     }
