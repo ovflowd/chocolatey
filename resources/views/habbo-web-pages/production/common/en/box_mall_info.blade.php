@@ -6,7 +6,7 @@
     banned.</p>
 <p>{{$chocolatey['name']}} has different <strong>spending limits</strong> for different payment options. They are all
     listed on our <a
-            href="https://www.habbo.com/api/public/help?returnTo=https://help.habbo.com/entries/347508-What-are-the-spending-limits-on-Habbo-"
+            href="{{$chocolatey['url']}}api/public/help?returnTo=https://help.habbo.com/entries/347508-What-are-the-spending-limits-on-Habbo-"
             target="_blank">Spending Limits page</a> in {{$chocolatey['name']}} Helpdesk.</p>
 <p>Got a query about your <strong>{{$chocolatey['name']}} account, a purchase or a feature</strong>? Find your answer at
     the <a

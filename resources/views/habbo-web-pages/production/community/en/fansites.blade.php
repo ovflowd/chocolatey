@@ -1,5 +1,5 @@
 <h1>Official fansites</h1>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Fansites/habbo_friends.png" alt="Fansites" class="align-right"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/habbo_friends.png" alt="Fansites" class="align-right"></p>
 <p>Our official fansites at the moment are (fanfare):</p>
 <ul>
     <li><a href="http://habboquests.com/" target="_blank">http://habboquests.com/</a></li>

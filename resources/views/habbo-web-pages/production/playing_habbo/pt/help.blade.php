@@ -11,7 +11,7 @@
     voc&#xEA; pode utilizar o bot&#xE3;o Calar em qualquer quarto. Esse bot&#xE3;o aparece quando clicamos no usu&#xE1;rio
     que desejamos silenciar. Sua fun&#xE7;&#xE3;o &#xE9; silenciar um {{$chocolatey['name']}} por um tempo determinado: 2, 5 ou 10
     minutos.</p>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/report_br.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_br.png"
         alt="Clique no usu&#xE1;rio para calar, moderar ou reportar" class="align-right"></p>
 <ol>
     <li>Clique no usu&#xE1;rio. Um menu de op&#xE7;&#xF5;es ir&#xE1; aparecer.</li>
@@ -44,7 +44,7 @@
         pode intervir.
     </li>
 </ol>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/help_button_br.png" alt="Bot&#xE3;o Ajuda" class="align-right">
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/help_button_br.png" alt="Bot&#xE3;o Ajuda" class="align-right">
 </p>
 <p>Outra maneira de denunciar &#xE9; a seguinte:</p>
 <ol>
@@ -69,9 +69,9 @@
     <li>Voc&#xEA; ter&#xE1; que dar mais informa&#xE7;&#xF5;es sobre o que aconteceu.</li>
     <li>Um Moderador entrar&#xE1; em a&#xE7;&#xE3;o.</li>
 </ol>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/report_im_br.png" alt="Denunciando um {{$chocolatey['name']}} no Bate-Papo"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_im_br.png" alt="Denunciando um {{$chocolatey['name']}} no Bate-Papo"></p>
 <h2>F&#xF3;rum de Grupo</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/flag_3.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/flag_3.png"
         alt="bandeira laranja para denunciar t&#xF3;picos e posts de F&#xF3;runs" class="align-right"></p>
 <p>Voc&#xEA; pode denunciar qualquer conte&#xFA;do inapropriado em t&#xF3;picos e posts de F&#xF3;runs de Grupo:</p>
 <ol>
@@ -80,7 +80,7 @@
     <li>Um Moderador entrar&#xE1; em a&#xE7;&#xE3;o.</li>
 </ol>
 <h2>Em alguma p&#xE1;gina do Hotel</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/reportroom.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/reportroom.png"
         alt="White flag for reporting room home pages or camera pics" class="align-right"></p>
 <p>Voc&#xEA; pode denunciar uma foto, um quarto ou uma imagem de quarto inapropriados.</p>
 <ol>

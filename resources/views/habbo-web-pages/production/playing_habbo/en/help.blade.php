@@ -12,7 +12,7 @@
     ignore. This is
     an ideal solution for teasing, spamming or when you simply want to say &quot;Bye Felicia!&quot; but don&apos;t know
     how.</p>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/report_4.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_4.png"
         alt="Click an avatar to ignore, moderate or report" class="align-right"></p>
 <ol>
     <li>Click on their avatar. A drop-down menu will appear.</li>
@@ -49,7 +49,7 @@
         may intervene.
     </li>
 </ol>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/help_button.png" alt="Help button" class="align-right"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/help_button.png" alt="Help button" class="align-right"></p>
 <p>Another way of doing the same is this:</p>
 <ol>
     <li>Click <em>Help</em> in the top right corner.</li>
@@ -70,11 +70,11 @@
     <li>You will be asked for more information about what happened.</li>
     <li>A Moderator will then take appropriate action.</li>
 </ol>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/report_im.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_im.png"
         alt="Reporting a  {{$chocolatey['name']}} in personal messaging">
 </p>
 <h2>In a group forum</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/flag_3.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/flag_3.png"
         alt="Orange flag for reporting forum threads and posts" class="align-right"></p>
 <p>You can <strong>report an inappropriate group forum thread or post</strong>:</p>
 <ol>
@@ -83,7 +83,7 @@
     <li>A Moderator will then take appropriate action.</li>
 </ol>
 <h2>On a web page</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/Help/reportroom.png"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/reportroom.png"
         alt="White flag for reporting room home pages or camera pics" class="align-right"></p>
 <p>You can <strong>report an inappropriate photo, room or room image on a room homepage or photo page</strong>:</p>
 <ol>

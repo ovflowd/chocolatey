@@ -1,12 +1,12 @@
 <h1>O que &#xE9; o {{$chocolatey['name']}}?</h1>
 <p><a href="/registration" class="remove-link"><img
-                src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now_br.png" alt="Entre agora"
+                src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now_br.png" alt="Entre agora"
                 class="align-right"></a></p>
 <p>O {{$chocolatey['name']}} Hotel &#xE9; uma comunidade virtual de pixels onde voc&#xEA; pode <strong>criar seu pr&#xF3;prio avatar,
         fazer amigos, bater papo, construir quartos, desenvolver seus pr&#xF3;prios jogos e jog&#xE1;-los</strong> e
     muito mais! Quase tudo &#xE9; poss&#xED;vel nesse lugar t&#xE3;o diferente, com gente incr&#xED;vel&#x2026;</p>
 <h2>Muito mais que um simples jogo&#x2026;</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_15.png" alt="Encontre a sua turma"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_15.png" alt="Encontre a sua turma"
         class="align-right"></p>
 <p>Vestir o seu avatar com o estilo mais cool e original n&#xE3;o &#xE9; a &#xFA;nica maneira de se divertir no {{$chocolatey['name']}}
     Hotel. Quer se tornar o arquiteto do s&#xE9;culo e <strong>criar as constru&#xE7;&#xF5;es mais impressionantes do
@@ -21,7 +21,7 @@
     arrase na passarela ou corra para a emerg&#xEA;ncia e comece a salvar vidas pixeladas. Entre e explore uma
     infinidade de RPGs do {{$chocolatey['name']}} Hotel!</p>
 <h2>Seja voc&#xEA; mesmo</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_16.png" alt="Seja voc&#xEA; mesmo"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_16.png" alt="Seja voc&#xEA; mesmo"
         class="align-right"></p>
 <p>Criatividade e originalidade s&#xE3;o super bem-vinddas no {{$chocolatey['name']}} Hotel! Toda semana temos v&#xE1;rias competi&#xE7;&#xF5;es
     novas para voc&#xEA; participar. De <strong>competi&#xE7;&#xF5;es de quarto a selfies, passando por pixel-art e v&#xED;deos</strong>,
@@ -36,7 +36,7 @@
     (moedas). Para mais informa&#xE7;&#xE3;o sobre esses itens, d&#xEA; uma olhada na <a href="/shop">{{$chocolatey['name']}} Shop</a>.
 </p>
 <h2>Sempre prontos para ajudar&#x2026;</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_17.png" alt="Sempre prontos para ajudar"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_17.png" alt="Sempre prontos para ajudar"
         class="align-right"></p>
 <p>A Equipe Staff do {{$chocolatey['name']}} Hotel e os Moderadores controlam a comunidade em tempo real e <strong>sempre h&#xE1; algu&#xE9;m
         por perto para ajudar</strong> se voc&#xEA; precisar. Voc&#xEA; tamb&#xE9;m pode contribuir para a sua pr&#xF3;pria
@@ -51,8 +51,8 @@
     no nosso <a href="https://www.youtube.com/user/habbo" target="_blank">Canal YouTube {{$chocolatey['name']}}</a>&#x2026;</p>
 <h2>Junte-se ao {{$chocolatey['name']}} Hotel!</h2>
 <p><a href="/registration" class="remove-link"><img
-                src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now_br.png" alt="Entre agora"
+                src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now_br.png" alt="Entre agora"
                 class="align-right"></a></p>
 <p>Seja parte da maior comunidade online para adolescentes do mundo! <a href="/registration">Entre no {{$chocolatey['name']}} Hotel
         agora</a>!</p>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_14.png" alt="Fantasy furni"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_14.png" alt="Fantasy furni"></p>

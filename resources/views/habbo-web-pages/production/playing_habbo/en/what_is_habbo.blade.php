@@ -1,6 +1,6 @@
 <h1>What is {{$chocolatey['name']}} ?</h1>
 <p><a href="/registration" class="remove-link"><img
-                src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now.png" alt="Join now"
+                src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now.png" alt="Join now"
                 class="align-right"></a>
 </p>
 <p> {{$chocolatey['name']}} is an online vintage pixel-art style virtual community
@@ -9,7 +9,7 @@
     and so much more! Almost anything is possible in this strange place full of
     awesome people&#x2026;</p>
 <h2>More than just a game&#x2026;</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_15.png" alt="Find your community"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_15.png" alt="Find your community"
         class="align-right"></p>
 <p>Styling your avatar in the most on-trend styles isn&apos;t the only way to have fun
     in {{$chocolatey['name']}} . Want to be the architect of the century and <strong>build dazzling
@@ -25,7 +25,7 @@
     down the runway, become a nurse and save pixel lives. Join in and start
     exploring the endless role-playing possibilities!</p>
 <h2>Express yourself</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_16.png" alt="Express yourself" class="align-right">
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_16.png" alt="Express yourself" class="align-right">
 </p>
 <p>Creativity and individuality are welcomed in {{$chocolatey['name']}} Every week we have tons of
     awesome competitions for you to enter. From <strong>room building to Selfies, to pixel
@@ -42,7 +42,7 @@
     info about in-game
     extras, head to the <a href="/shop"> {{$chocolatey['name']}} Mall</a>.</p>
 <h2>Always here to help&#x2026;</h2>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_17.png" alt="Always here to help"
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_17.png" alt="Always here to help"
         class="align-right"></p>
 <p>Official {{$chocolatey['name']}} Staff and Moderators monitor the Hotel in
     real-time so there is
@@ -62,10 +62,10 @@
         page</a>&#x2026;</p>
 <h2>Join {{$chocolatey['name']}} !</h2>
 <p><a href="/registration" class="remove-link"><img
-                src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/join_now.png" alt="Join now"
+                src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now.png" alt="Join now"
                 class="align-right"></a>
 </p>
 <p>Become a part of the world&apos;s biggest online community for teens. <a
             href="/registration">Join {{$chocolatey['name']}}
         now</a>!</p>
-<p><img src="https://habboo-a.akamaihd.net/c_images/WhatIsHabbo/ill_14.png" alt="Fantasy furni"></p>
+<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_14.png" alt="Fantasy furni"></p>

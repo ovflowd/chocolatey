@@ -23,7 +23,7 @@
     <strong>Raspe COM CUIDADO</strong>. Cart&#xF5;es rasurados ou danificados N&#xC3;O s&#xE3;o reembols&#xE1;veis!</p>
 <h3>E-prepag</h3>
 <p><a href="https://www.e-prepag.com.br/" class="remove-link" target="_blank"><img
-                src="https://habboo-a.akamaihd.net/c_images/Prepaid/logo_eprepag_255x60.png" alt="E-Prepag"
+                src="{{$chocolatey['url']}}habbo-web/assets/web-images/logo_eprepag_255x60.png" alt="E-Prepag"
                 class="align-right"></a></p>
 <p>Voc&#xEA; pode adquirir c&#xF3;digos de {{$chocolatey['name']}} Cr&#xE9;ditos com a <a href="https://www.e-prepag.com.br/"
                                                                         target="_blank">E-prepag</a> atrav&#xE9;s de
@@ -57,5 +57,5 @@
     ou PayPal. Volte a essa p&#xE1;gina e introduza o c&#xF3;digo no campo correspondente (lembre-se de fazer o login
     antes).</p>
 <p><a href="http://www.pcgamesupply.com/buygames/habbo-hotel-credits-game-card/" class="remove-link"
-      target="_blank"><img src="https://habboo-a.akamaihd.net/c_images/Prepaid/pcgamesupply_logo_161x60.png"
+      target="_blank"><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/pcgamesupply_logo_161x60.png"
                            alt="PCGameSupply"></a></p>
