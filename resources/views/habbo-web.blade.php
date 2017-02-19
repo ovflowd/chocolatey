@@ -47,7 +47,10 @@
                 base: '{{$chocolatey['path']}}',
                 earn: '{{$chocolatey['earn'] == 1 ? 'true' : 'false'}}',
                 name: '{{$chocolatey['name']}}',
-                lang: '{{$chocolatey['language']}}'};
+                lang: '{{$chocolatey['language']}}',
+                album: '{{$chocolatey['badges']}}',
+                plang: '{{$chocolatey['pages-language}}'
+            };
         </script>
     </head>
 <body habbo-client-disable-scrollbars ng-cloak>
