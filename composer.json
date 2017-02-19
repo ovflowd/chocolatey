@@ -14,18 +14,6 @@
   "type": "project",
   "repositories": [
     {
-      "url": "https://github.com/laravel/lumen.git",
-      "type": "git"
-    },
-    {
-      "url": "https://github.com/rdehnhardt/lumen-maintenance-mode.git",
-      "type": "git"
-    },
-    {
-      "url": "https://github.com/vlucas/phpdotenv.git",
-      "type": "git"
-    },
-    {
       "type": "package",
       "package": {
         "name": "sofa/hookable",
@@ -72,9 +60,17 @@
     "laravel/lumen-framework": "5.4.*",
     "vlucas/phpdotenv": "~2.2",
     "sofa/eloquence": "master",
-    "rdehnhardt/lumen-maintenance-mode": "master",
+    "rdehnhardt/lumen-maintenance-mode": "^1.2",
     "illuminate/mail": "5.4.*",
     "intervention/image": "^2.3"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "./post-install.sh"
+    ],
+   "post-update-cmd": [
+      "./post-install.sh"
+   ]
   },
   "autoload": {
     "psr-4": {
