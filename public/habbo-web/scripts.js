@@ -2039,7 +2039,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     imageWidth: 1200,
     "twitter:card": "summary_large_image"
 }).factory("Head", ["$translate", "HEAD_DEFAULTS", function (e, t) {
-    var o = {}, r = "";
+    var o = {}, r = " - " + window.chocolatey.name;
     return o.setDefaults = function () {
         o.title = t.title, o.title = t.title, o.description = t.description, o.image = t.image, o.imageHeight = t.imageHeight, o.imageWidth = t.imageWidth, o["twitter:card"] = t["twitter:card"]
     }, o.set = function (e, t) {
@@ -4080,7 +4080,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         extraDataUrl: window.chocolatey.url + "extradata",
         shopUrl: window.chocolatey.url + "shopapi",
         appStoreUrl: "https://itunes.apple.com/app/id794866182",
-        badgeUrl: "https://habboo-a.akamaihd.net/c_images/album1584",
+        badgeUrl: window.chocolatey.album,
         googlePlayUrl: "https://play.google.com/store/apps/details?id=air.com.sulake.habboair",
         habboWebAdsUrl: window.chocolatey.url + "habbo-web-ads/",
         habboWebLeaderboardsUrl: window.chocolatey.url + "habbo-web-leaderboards",
@@ -4088,7 +4088,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         habboWebPagesUrl: window.chocolatey.url + "habbo-web-pages/production/",
         imagingUrl: "https://www.habbo.de/habbo-imaging",
         groupBadgeUrl: window.chocolatey.url + "/habbo-imaging",
-        lang: "en",
+        lang: window.chocolatey.plang,
         hotel: "hhus",
         localizationSite: window.chocolatey.lang,
         minAge: parseInt("0", 10),

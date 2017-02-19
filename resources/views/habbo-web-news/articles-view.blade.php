@@ -8,7 +8,7 @@
             </figure>
         </div>
         <habbo-social-share type="news"></habbo-social-share>
-        <h1 class="news-header__wrapper news-header__title">Race to the limit!</h1>
+        <h1 class="news-header__wrapper news-header__title">{{$articleContent->title}}</h1>
         <aside class="news-header__wrapper news-header__info">
             <time class="news-header__date">
                 {{date('M j, Y' , strtotime($article->createdAt))}}

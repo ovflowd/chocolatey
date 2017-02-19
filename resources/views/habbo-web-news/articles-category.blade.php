@@ -31,7 +31,7 @@
                         <img src="{{$articleContent->thumbnailUrl}}"
                              alt="{{$articleContent->title}}" class="news-header__image news-header__image--thumbnail">
                         <img src="{{$articleContent->imageUrl}}"
-                             alt="Race to the limit!" class="news-header__image news-header__image--featured">
+                             alt="{{$articleContent->title}}" class="news-header__image news-header__image--featured">
                     </figure>
                 </a>
                 <a href="/hotel?room={{$articleContent->roomId}}" class="news-header__link news-header__wrapper">
@@ -44,7 +44,7 @@
                         <img src="{{$articleContent->thumbnailUrl}}"
                              alt="{{$articleContent->title}}" class="news-header__image news-header__image--thumbnail">
                         <img src="{{$articleContent->imageUrl}}"
-                             alt="Race to the limit!" class="news-header__image news-header__image--featured">
+                             alt="{{$articleContent->title}}" class="news-header__image news-header__image--featured">
                     </figure>
                 </a>
                 <a href="/community/article/{{$articleContent->id}}/content"
