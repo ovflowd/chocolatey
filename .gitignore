@@ -45,10 +45,6 @@ public/storage
 storage/*.key
 storage/logs/*.log
 storage/framework/views/*.php
-.env.*.php
-.env.php
-.env
-*.env
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
