@@ -26,7 +26,8 @@ class AccountController extends BaseController
      */
     public function checkName(Request $request): JsonResponse
     {
-        if (User::where('username', $request->json()->get('name'))->count() > 0)
+        if (User::where('username', $request->json()->get('name'))->count() > 0 && 
+            !$request->json()->get('name') != $request->user()->name)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
         if (strlen($request->json()->get('name')) >= 50 || strpos($request->json()->get('name'), 'MOD_') !== false)
