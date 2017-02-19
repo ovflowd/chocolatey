@@ -49,7 +49,7 @@
                 name: '{{$chocolatey['name']}}',
                 lang: '{{$chocolatey['language']}}',
                 album: '{{$chocolatey['badges']}}',
-                plang: '{{$chocolatey['pages-language}}'
+                plang: '{{$chocolatey['pages-language']}}'
             };
         </script>
     </head>

@@ -2039,7 +2039,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     imageWidth: 1200,
     "twitter:card": "summary_large_image"
 }).factory("Head", ["$translate", "HEAD_DEFAULTS", function (e, t) {
-    var o = {}, r = "";
+    var o = {}, r = " - " + window.chocolatey.name;
     return o.setDefaults = function () {
         o.title = t.title, o.title = t.title, o.description = t.description, o.image = t.image, o.imageHeight = t.imageHeight, o.imageWidth = t.imageWidth, o["twitter:card"] = t["twitter:card"]
     }, o.set = function (e, t) {
