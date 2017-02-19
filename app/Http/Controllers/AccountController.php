@@ -19,6 +19,19 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 class AccountController extends BaseController
 {
     /**
+     * Filter an Username from the Invalid Names Base
+     *
+     * @param string $userName
+     * @return bool
+     */
+    protected function filterName(string $userName): bool
+    {
+        return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
+                return $username == $userName;
+            })) == 0;
+    }
+
+    /**
      * Check an User Name
      *
      * @param Request $request
@@ -29,7 +42,7 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != $request->user()->name)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
-        if (strlen($request->json()->get('name')) >= 50 || strpos($request->json()->get('name'), 'MOD_') !== false)
+        if (strlen($request->json()->get('name')) > 50 || $this->filterName($request->json()->get('name')))
             return response()->json(['code' => 'INVALID_NAME', 'validationResult' => null, 'suggestions' => []]);
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
