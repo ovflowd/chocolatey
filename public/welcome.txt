@@ -1,0 +1,1 @@
+The Public Folder Works. You can put your SWF content inside here.

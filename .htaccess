@@ -1,8 +1,12 @@
 <IfModule mod_rewrite.c>
     Options +FollowSymLinks
     Options -Indexes
+    Options -MultiViews
 
     RewriteEngine On
+
+    # Security Modules
+    RewriteRule ^(app/|resources/|bootrstrap/|config/|database/|routes/|storage/|docs/|vendor/) - [F,L,NC]
 
     # Habbo Web Assets
     RewriteRule ^habbo-web/(.*)$ public/habbo-web/$1 [L]

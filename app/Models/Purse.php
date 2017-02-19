@@ -25,6 +25,13 @@ class Purse
     public $buildersClubFurniLimit = 0;
 
     /**
+     * Remaining Builders Club Days
+     *
+     * @var int
+     */
+    public $buildersClubDays = 0;
+
+    /**
      * User Habbo Club Days
      *
      * @var int
@@ -47,9 +54,13 @@ class Purse
      */
     public function __construct(int $userId)
     {
-        $userBalance = DB::table('users')->where('id', $userId)->select(['credits', 'pixels'])->first();
+        $userCredits = DB::table('users')->where('id', $userId)->select(['credits'])->first();
+        $userDiamonds = DB::table('users_currency')->where('user_id', $userId)->where('type', 5)->first();
+        $habboDays = DB::table('users_settings')->where('user_id', $userId)->select(['club_expire_timestamp'])->first();
+        $habboDays = floor(($habboDays->club_expire_timestamp ?? 0) - time() / 86400);
 
-        $this->creditBalance = $userBalance->credits;
-        $this->diamondBalance = $userBalance->pixels;
+        $this->creditBalance = $userCredits->credits;
+        $this->diamondBalance = $userDiamonds->amount ?? 0;
+        $this->habboClubDays = $habboDays > 0 ? $habboDays : 0;
     }
 }

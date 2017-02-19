@@ -169,7 +169,7 @@ class AccountController extends BaseController
      */
     public function checkNewName(Request $request): JsonResponse
     {
-        if (User::where('username', $request->input('name'))->count() > 0)
+        if (User::where('username', $request->input('name'))->count() > 0 || !$this->filterName($request->input('name')))
             return response()->json(['isAvailable' => false]);
 
         return response()->json(['isAvailable' => true]);
@@ -208,11 +208,8 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send([
-            'mail' => $userMail,
-            'name' => $userName,
-            'url' => "/activate/{$mailController
-            ->prepare($userMail, 'public/registration/activate')}"
+        $mailController->send(['mail' => $userMail, 'name' => $userName,
+            'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}"
         ]);
 
         $userData = new User;
