@@ -57,7 +57,7 @@ class Purse
         $userCredits = DB::table('users')->where('id', $userId)->select(['credits'])->first();
         $userDiamonds = DB::table('users_currency')->where('user_id', $userId)->where('type', 5)->first();
         $habboDays = DB::table('users_settings')->where('user_id', $userId)->select(['club_expire_timestamp'])->first();
-        $habboDays = floor(($habboDays->club_expire_timestamp ?? 0) - time() / 86400);
+        $habboDays = floor((($habboDays->club_expire_timestamp ?? 0) - time()) / 86400);
 
         $this->creditBalance = $userCredits->credits;
         $this->diamondBalance = $userDiamonds->amount ?? 0;
