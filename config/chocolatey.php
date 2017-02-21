@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost:80/',
+    'url' => 'http://localhost/',
 
     /*
     |--------------------------------------------------------------------------
@@ -289,8 +289,8 @@ return [
         'gordon' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/',
         'flash' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/Habbo.swf',
         'gamedata' => [
-            'figuredata' => 'https://uiotassets.blob.core.windows.net/unity/gamedata/figuredata.xml',
-            'furnidata' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/',
+            'figuredata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/figuredata.xml',
+            'furnidata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/furnidata.xml/',
             'productdata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/productdata.txt',
             'variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_variables.txt',
             'texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_flash_texts.txt',
