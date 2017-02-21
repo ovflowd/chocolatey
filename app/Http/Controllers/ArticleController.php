@@ -41,7 +41,7 @@ class ArticleController extends BaseController
     protected function front(): Response
     {
         return response(view('habbo-web-news.articles-front', ['set' =>
-            Article::orderBy('id', 'ASC')->limit(10)->get()]));
+            Article::orderBy('id', 'DESC')->limit(10)->get()]));
     }
 
     /**
@@ -58,7 +58,7 @@ class ArticleController extends BaseController
     protected function category(string $countryId, ArticleCategory $category, int $categoryPage, int $start): Response
     {
         $articles = Article::where('id', '>=', $start)
-            ->limit(10)->get()->filter(function ($item) use ($category) {
+            ->limit(10)->orderBy('id', 'DESC')->get()->filter(function ($item) use ($category) {
                 return $category->name == 'all' || in_array($category, $item->categories);
             });
 
