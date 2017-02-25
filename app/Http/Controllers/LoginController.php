@@ -68,6 +68,9 @@ class LoginController extends BaseController
 
         $userData->update(['last_login' => time()]);
 
+        if(Config::get('chocolatey.vote.enabled'))
+            Session::set('VotePolicy', true);
+
         return response()->json($userData);
     }
 }

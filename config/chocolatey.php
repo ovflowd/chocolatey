@@ -353,7 +353,7 @@ return [
     */
 
     'vote' => [
-        'enabled' => true,
+        'enabled' => false,
         'name' => 'Habbo'
     ]
 ];

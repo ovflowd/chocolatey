@@ -1408,5 +1408,6 @@
   "RSS_URI": "{{$chocolatey['url']}}rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey['twitter']['username']}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey['facebook']['page']}}",
-  "HOTEL_URI": "{{$chocolatey['url']}}"
+  "HOTEL_URI": "{{$chocolatey['url']}}",
+  "NAVIGATION_HOUSEKEEPING": "Painel de Controle"
 }

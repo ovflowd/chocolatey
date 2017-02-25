@@ -33,6 +33,11 @@ $app->get($path, 'HomePageController@show');
 # Logout User
 $app->post($path . 'api/public/authentication/logout', 'LoginController@logout');
 
+# Main API Request is Forbidden
+$app->get($path . 'espreso', function () {
+    return response(view('errors.espreso'), 401);
+});
+
 # Maintenance Middleware
 $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
 

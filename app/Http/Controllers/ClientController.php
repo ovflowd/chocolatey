@@ -21,12 +21,9 @@ class ClientController extends BaseController
      */
     public function getUrl(Request $request)
     {
-        if (($newUser = in_array('NEW_USER', $request->user()->traits)) && Config::get('chocolatey.vote.enabled'))
-            return redirect('https://findretros.com/rankings/vote/' . Config::get('chocolatey.vote.name'));
-
         $hotelUrl = Config::get('chocolatey.url');
 
-        $accountType = $newUser ? 'habbo-client-new-user' : 'habbo-client-user';
+        $accountType = in_array('NEW_USER', $request->user()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
 
         return response()->json(['clienturl' => "{$hotelUrl}client/{$accountType}"],
             200, [], JSON_UNESCAPED_SLASHES);

@@ -3239,7 +3239,7 @@ habbo-header-small .header__habbo__logo {
     width: 46px;
 }
 
-.user-menu__link--help:active, .user-menu__link--help:hover, .user-menu__link--logout:active, .user-menu__link--logout:hover, .user-menu__link--profile:active, .user-menu__link--profile:hover, .user-menu__link--settings:active, .user-menu__link--settings:hover, .user-menu__link:active, .user-menu__link:hover {
+.user-menu__link--help:active, .user-menu__link--help:hover, .user-menu__link--logout:active, .user-menu__link--logout:hover, .user-menu__link--profile:active, .user-menu__link--profile:hover, .user-menu__link--settings:active, .user-menu__link--settings:hover, .user-menu__link--housekeeping:active, .user-menu__link--housekeeping:hover, .user-menu__link:active, .user-menu__link:hover {
     border-bottom: 0 solid #267b91;
 }
 
@@ -3297,7 +3297,7 @@ habbo-header-small .header__habbo__logo {
     padding: 1px 12px 0;
 }
 
-.user-menu__link--help, .user-menu__link--logout, .user-menu__link--profile, .user-menu__link--settings {
+.user-menu__link--help, .user-menu__link--logout, .user-menu__link--profile, .user-menu__link--settings, .user-menu__link--housekeeping {
     padding-left: 24px;
     line-height: 22px;
 }
@@ -3347,7 +3347,7 @@ habbo-header-small .header__habbo__logo {
     left: 0;
 }
 
-.user-menu__link--help:before, .user-menu__link--logout:before, .user-menu__link--settings:before {
+.user-menu__link--help:before, .user-menu__link--logout:before, .user-menu__link--settings:before, .user-menu__link--housekeeping:before {
     margin-top: -9px;
     top: 50%;
     left: 0;
@@ -3406,8 +3406,18 @@ habbo-header-small .header__habbo__logo {
     position: relative;
 }
 
+.user-menu__link--housekeeping {
+    position: relative;
+}
+
 .user-menu__link--settings:before {
     background: url(assets/images/sprite.png) -384px -458px;
+    height: 18px;
+    position: absolute;
+}
+
+.user-menu__link--housekeeping:before {
+    background: url(assets/images/sprite.png) -344px -458px;
     height: 18px;
     position: absolute;
 }
@@ -6278,8 +6288,8 @@ habbo-report {
 }
 
 .report-form__submit:hover {
-    background-color: #f9586d;
-    border-color: #ff9598;
+    background-color: #820022;
+    border: 2px solid #ff9598 !important;
 }
 
 .report-form__submit:active, .report-form__submit:disabled {
