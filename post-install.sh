@@ -1,9 +1,7 @@
 #/bin/bash
 
-set -e
-
-find ./vendor -name ".git" -exec rm -rf {} \;
-find ./vendor -name ".gitignore" -exec rm {} \;
-find ./vendor -name "*.md" -exec rm -rf {} \;
+find ./vendor -name ".git" -exec rm -rf {} \; 2>/dev/null
+find ./vendor -name ".gitignore" -exec rm {} \; 2>/dev/null
+find ./vendor -name "*.md" -exec rm -rf {} \; 2>/dev/null
 
 echo "Removing Useless Files"
