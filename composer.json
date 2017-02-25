@@ -1,0 +1,95 @@
+{
+  "name": "sant0ro/chocolatey",
+  "description": "The open source HabboWEB API",
+  "keywords": [
+    "Habbo",
+    "RaGEZONE",
+    "CMS"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/sant0ro/chocolatey/issues",
+    "source": "https://github.com/sant0ro/chocolatey/"
+  },
+  "type": "project",
+  "repositories": [
+    {
+      "url": "https://github.com/laravel/lumen.git",
+      "type": "git"
+    },
+    {
+      "url": "https://github.com/rdehnhardt/lumen-maintenance-mode.git",
+      "type": "git"
+    },
+    {
+      "url": "https://github.com/vlucas/phpdotenv.git",
+      "type": "git"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "sofa/hookable",
+        "version": "master",
+        "autoload": {
+          "psr-4": {
+            "Sofa\\Hookable\\": "src/"
+          }
+        },
+        "source": {
+          "url": "https://github.com/jarektkaczyk/hookable.git",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "sofa/eloquence",
+        "version": "master",
+        "require": {
+          "sofa/hookable": "master",
+          "illuminate/database": "5.4.*"
+        },
+        "autoload": {
+          "psr-4": {
+            "Sofa\\Eloquence\\": "src"
+          },
+          "files": [
+            "src/helpers.php"
+          ]
+        },
+        "source": {
+          "url": "https://github.com/jarektkaczyk/eloquence.git",
+          "type": "git",
+          "reference": "master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "laravel/lumen-framework": "5.4.*",
+    "vlucas/phpdotenv": "~2.2",
+    "sofa/eloquence": "master",
+    "rdehnhardt/lumen-maintenance-mode": "master",
+    "illuminate/mail": "5.4.*",
+    "intervention/image": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "database/"
+    ]
+  },
+  "scripts": {
+    "post-update-cmd": "./post-install.sh",
+    "post-install-cmd": "./post-install.sh"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
