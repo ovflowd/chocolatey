@@ -86,6 +86,10 @@
       "database/"
     ]
   },
+  "scripts": {
+    "post-update-cmd": "./post-install.sh",
+    "post-install-cmd": "./post-install.sh"
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "64441a0a5fd52fc9b70ef2d52eca896b",
+    "hash": "8b6a6eaba9b11abf7ee0120890901a77",
     "content-hash": "05e1331860132e7f17b47b6c61aa7af7",
     "packages": [
         {
@@ -1873,7 +1873,7 @@
                     "src/helpers.php"
                 ]
             },
-            "time": "2016-01-14 23:12:48"
+            "time": "2017-02-22 16:30:20"
         },
         {
             "name": "sofa/hookable",
@@ -1889,7 +1889,7 @@
                     "Sofa\\Hookable\\": "src/"
                 }
             },
-            "time": "2016-01-14 21:06:40"
+            "time": "2017-02-22 16:30:20"
         },
         {
             "name": "swiftmailer/swiftmailer",
