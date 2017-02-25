@@ -1481,5 +1481,6 @@
   "CFH_CLOSED_ABUSIVE": "L@s mods miraron el caso que has reportado. ¡Sólo emergencias reales, por favor! El uso inapropiado del sistema no está bien.",  "RSS_URI": "{{$chocolatey['url']}}rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey['twitter']['username']}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey['facebook']['page']}}",
-  "HOTEL_URI": "{{$chocolatey['url']}}"
+  "HOTEL_URI": "{{$chocolatey['url']}}",
+  "NAVIGATION_HOUSEKEEPING": "Panel de Control"
 }

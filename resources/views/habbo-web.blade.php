@@ -37,20 +37,10 @@
         </script>
         <script>
             window.session = {!! $user !!};
+            window.chocolatey = {captcha: '{{$chocolatey['recaptcha']}}', facebook: '{{$chocolatey['facebook']['app']['key']}}', url: '{{$chocolatey['url']}}', base: '{{$chocolatey['path']}}', earn: '{{$chocolatey['earn'] == 1 ? 'true' : 'false'}}', name: '{{$chocolatey['name']}}', lang: '{{$chocolatey['language']}}', album: '{{$chocolatey['badges']}}', plang: '{{$chocolatey['pages-language']}}'};
             window.geoLocation = {!! json_encode((object)$chocolatey['location']) !!};
             window.partnerCodeInfo = null;
             window.banner = null;
-            window.chocolatey = {
-                captcha: '{{$chocolatey['recaptcha']}}',
-                facebook: '{{$chocolatey['facebook']['app']['key']}}',
-                url: '{{$chocolatey['url']}}',
-                base: '{{$chocolatey['path']}}',
-                earn: '{{$chocolatey['earn'] == 1 ? 'true' : 'false'}}',
-                name: '{{$chocolatey['name']}}',
-                lang: '{{$chocolatey['language']}}',
-                album: '{{$chocolatey['badges']}}',
-                plang: '{{$chocolatey['pages-language']}}'
-            };
         </script>
     </head>
 <body habbo-client-disable-scrollbars ng-cloak>
