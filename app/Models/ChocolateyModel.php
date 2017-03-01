@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class AzureModel
+ * Class ChocolateyModel
  * @package App\Models
  */
 abstract class ChocolateyModel extends Model

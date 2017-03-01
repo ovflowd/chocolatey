@@ -107,7 +107,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'auth_ticket',
         'last_login',
         'ip_current',
-        'mail_verified'
+        'ip_register',
+        'mail_verified',
+        'look',
+        'gender'
     ];
 
     /**
@@ -235,7 +238,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTraitsAttribute(): array
     {
-        if($this->attributes['rank'] >= 6)
+        if(array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 6)
             return ["STAFF"];
 
         return $this->traits;
