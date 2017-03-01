@@ -183,7 +183,7 @@ class AccountController extends BaseController
      */
     public function createAvatar(Request $request): JsonResponse
     {
-        if (User::where('username', $request->json()->get('name'))->count() > 0)
+        if (User::where('username', $request->json()->get('name'))->count() > 0 || !$this->filterName($request->json()->get('name')))
             return response()->json(['isAvailable' => false]);
 
         $request->user()->name = $request->json()->get('name');
