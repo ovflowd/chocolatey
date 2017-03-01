@@ -25,9 +25,7 @@ class LoginController extends BaseController
     {
         if ($request->user()):
             if ($request->user()->isBanned)
-                return response()->json(['message' => 'login.user_banned',
-                    'expiryTime' => $request->user()->banDetails->ban_expire,
-                    'reason' => $request->user()->banDetails->ban_reason], 401);
+                $this->sendBanMessage($request);
 
             $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
 
@@ -35,6 +33,19 @@ class LoginController extends BaseController
         endif;
 
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
+    }
+
+    /**
+     * Return the Ban Message
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function sendBanMessage(Request $request): JsonResponse
+    {
+        return response()->json(['message' => 'login.user_banned',
+            'expiryTime' => $request->user()->banDetails->ban_expire,
+            'reason' => $request->user()->banDetails->ban_reason], 401);
     }
 
     /**
@@ -68,7 +79,7 @@ class LoginController extends BaseController
 
         $userData->update(['last_login' => time()]);
 
-        if(Config::get('chocolatey.vote.enabled'))
+        if (Config::get('chocolatey.vote.enabled'))
             Session::set('VotePolicy', true);
 
         return response()->json($userData);

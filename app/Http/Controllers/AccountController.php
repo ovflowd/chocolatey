@@ -92,7 +92,7 @@ class AccountController extends BaseController
     public function selectRoom(Request $request): JsonResponse
     {
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
-            return response('', 400);
+            return response(null, 400);
 
         $request->user()->traits = ["USER"];
 
@@ -136,15 +136,15 @@ class AccountController extends BaseController
      */
     public function savePreferences(Request $request): JsonResponse
     {
-        UserSettings::updateOrCreate([
-            'user_id' => $request->user()->uniqueId,
+        UserSettings::updateOrCreate(['user_id' => $request->user()->uniqueId], [
             'block_following' => $request->json()->get('friendCanFollow') == false,
             'block_friendrequests' => $request->json()->get('friendRequestEnabled') == false
         ]);
 
-        UserPreferences::find($request->user()->uniqueId)->update((array)$request->json()->all());
+        foreach((array)$request->json()->all() as $setting => $value)
+            UserPreferences::find($request->user()->uniqueId)->update([$setting => $value == true ? '1' : '0']);
 
-        return response()->json('');
+        return response()->json(null);
     }
 
     /**
