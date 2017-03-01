@@ -24,11 +24,11 @@ class AccountController extends BaseController
      * @param string $userName
      * @return bool
      */
-    protected function filterName(string $userName): bool
+    protected function filterName(string $userName):bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-                return $username == $userName;
-            })) == 0;
+            return strpos($userName, $username) !== false;
+        })) == 0;
     }
 
     /**
@@ -42,8 +42,8 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != $request->user()->name)
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
 
-        if (strlen($request->json()->get('name')) > 50 || $this->filterName($request->json()->get('name')))
-            return response()->json(['code' => 'INVALID_NAME', 'validationResult' => null, 'suggestions' => []]);
+        if (strlen($request->json()->get('name')) > 50 || !$this->filterName($request->json()->get('name')))
+            return response()->json(['code' => 'INVALID_NAME', 'validationResult' => ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS'], 'suggestions' => []]);
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }

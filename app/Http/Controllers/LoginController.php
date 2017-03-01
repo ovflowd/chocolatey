@@ -77,7 +77,7 @@ class LoginController extends BaseController
 
         $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
 
-        $userData->update(['last_login' => time()]);
+        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip()]);
 
         if (Config::get('chocolatey.vote.enabled'))
             Session::set('VotePolicy', true);
