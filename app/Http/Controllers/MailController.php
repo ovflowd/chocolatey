@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mail as MailModel;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -41,14 +40,10 @@ class MailController extends BaseController
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
     {
-        try {
-            Mail::send($view, $configuration, function ($message) use ($configuration) {
-                $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
-                $message->to($configuration['mail']);
-            });
-        } catch (Exception $e) {
-            // Ignored
-        }
+        @Mail::send($view, $configuration, function ($message) use ($configuration) {
+            $message->from(Config::get('chocolatey.contact'), Config::get('chocolatey.name'));
+            $message->to($configuration['mail']);
+        });
     }
 
     /**

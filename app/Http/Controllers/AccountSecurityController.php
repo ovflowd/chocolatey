@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ChocolateyId;
-use App\Models\Mail;
 use App\Models\Question;
 use App\Models\TrustedDevice;
 use App\Models\User;
@@ -202,19 +201,17 @@ class AccountSecurityController extends BaseController
      */
     public function confirmChangePassword(Request $request): JsonResponse
     {
-        $mailRequest = Mail::where('token', $request->json()->get('token'))->where('used', '0')->first();
-
-        if ($mailRequest == null)
+        if (($mail = (new MailController)->getMail($request->json()->get('token'))) == null)
             return response()->json(null, 404);
 
         if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->count() >= 1)
             return response()->json(['error' => 'password.used_earlier'], 400);
 
-        $mailRequest->update(['used' => '1']);
+        $mail->update(['used' => '1']);
 
-        DB::table('users')->where('mail', $mailRequest->mail)
+        DB::table('users')->where('mail', $mail->mail)
             ->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
-        return response()->json('');
+        return response()->json(null);
     }
 }
