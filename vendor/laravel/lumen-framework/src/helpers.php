@@ -201,7 +201,7 @@ if (! function_exists('factory')) {
         $arguments = func_get_args();
 
         if (isset($arguments[1]) && is_string($arguments[1])) {
-            return $factory->of($arguments[0], $arguments[1])->times(isset($arguments[2]) ? $arguments[2] : 1);
+            return $factory->of($arguments[0], $arguments[1])->times(isset($arguments[2]) ? $arguments[2] : null);
         } elseif (isset($arguments[1])) {
             return $factory->of($arguments[0])->times($arguments[1]);
         } else {
@@ -291,8 +291,7 @@ if (! function_exists('route')) {
      */
     function route($name, $parameters = [], $secure = null)
     {
-        return (new Laravel\Lumen\Routing\UrlGenerator(app()))
-                ->route($name, $parameters, $secure);
+        return app('url')->route($name, $parameters, $secure);
     }
 }
 
@@ -339,8 +338,7 @@ if (! function_exists('url')) {
      */
     function url($path = null, $parameters = [], $secure = null)
     {
-        return (new Laravel\Lumen\Routing\UrlGenerator(app()))
-                                ->to($path, $parameters, $secure);
+        return app('url')->to($path, $parameters, $secure);
     }
 }
 
