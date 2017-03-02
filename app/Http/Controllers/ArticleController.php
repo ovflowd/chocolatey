@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\ArticleCategory;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -101,10 +100,9 @@ class ArticleController extends BaseController
     /**
      * Get All Habbo Articles as XML/RSS
      *
-     * @param Request $request
      * @return Response
      */
-    public function getRss(Request $request)
+    public function getRss()
     {
         return response(view('habbo-rss', [
             'articles' => Article::limit(20)->get()
