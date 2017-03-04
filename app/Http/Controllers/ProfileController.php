@@ -27,7 +27,7 @@ class ProfileController extends BaseController
     {
         $userData = User::where('username', $request->input('name'))->first();
 
-        if ($userData == null)
+        if ($userData == null || $userData->isBanned)
             return response()->json(null, 404);
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
