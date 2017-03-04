@@ -4440,7 +4440,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         habboWebNewsUrl: window.chocolatey.url + "habbo-web-news/en/production/",
         habboWebPagesUrl: window.chocolatey.url + "habbo-web-pages/production/",
         imagingUrl: "https://www.habbo.de/habbo-imaging",
-        groupBadgeUrl: window.chocolatey.url + "/habbo-imaging",
+        groupBadgeUrl: window.chocolatey.url + "habbo-imaging",
         lang: window.chocolatey.plang,
         hotel: "hhus",
         localizationSite: window.chocolatey.lang,
