@@ -25,7 +25,7 @@ class LoginController extends BaseController
     {
         if ($request->user()):
             if ($request->user()->isBanned)
-                $this->sendBanMessage($request);
+                return $this->sendBanMessage($request);
 
             $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
 
