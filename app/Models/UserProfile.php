@@ -103,6 +103,6 @@ class UserProfile
      */
     public function setRooms()
     {
-        $this->rooms = Room::where('owner_id', $this->user->uniqueId)->get() ?? [];
+        $this->rooms = Room::where('owner_id', $this->user->uniqueId)->where('state', '!=', 'invisible')->get() ?? [];
     }
 }

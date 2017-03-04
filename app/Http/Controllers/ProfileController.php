@@ -49,7 +49,7 @@ class ProfileController extends BaseController
     {
         $userData = User::find($userId);
 
-        if ($userData == null)
+        if ($userData == null || $userData->isBanned)
             return response()->json(null, 404);
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
