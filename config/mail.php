@@ -4,6 +4,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Enable Mailing System
+    |--------------------------------------------------------------------------
+    |
+    | Chocolatey allows sending E-Mails. But you will need enable the
+    | mailing system.
+    |
+    | BE SURE: That you Have a SMTP Server Installed on your Computer
+    | Or that the configuration ABOVE are correctly configured!
+    |
+    | For Newbies: We recommend the SMTP Server explained on Chocolatey's Repo
+    |
+    */
+
+    'enable' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Mail Driver
     |--------------------------------------------------------------------------
     |
@@ -16,7 +33,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => 'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +46,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'localhost'),
+    'host' => 'localhost',
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +59,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 25),
+    'port' => 25,
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +73,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'contact@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example Hotel'),
+        'address' => 'santoro@inboxalias.com',
+        'name' => 'Habbo Hotel',
     ],
 
     /*
