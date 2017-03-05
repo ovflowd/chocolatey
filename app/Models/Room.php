@@ -136,9 +136,11 @@ class Room extends Model
      * @param int $floorPaper
      * @param int $wallPaper
      * @param float $landscapePaper
+     * @param int $ownerId
+     * @param string $ownerName
      * @return Room
      */
-    public function store(string $roomName, string $description, string $model, int $maxUsers, int $roomCategory, int $floorPaper, int $wallPaper, float $landscapePaper = 0.00)
+    public function store(string $roomName, string $description, string $model, int $maxUsers, int $roomCategory, int $floorPaper, int $wallPaper, float $landscapePaper = 0.00, int $ownerId, string $ownerName)
     {
         $this->attributes['name'] = $roomName;
         $this->attributes['description'] = $description;
@@ -151,6 +153,8 @@ class Room extends Model
         $this->attributes['thickness_wall'] = 0;
         $this->attributes['wall_height'] = -1;
         $this->attributes['thickness_floor'] = 0;
+        $this->attributes['owner_id'] = $ownerId;
+        $this->attributes['owner_name'] = $ownerName;
 
         return $this;
     }
