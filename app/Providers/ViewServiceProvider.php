@@ -23,5 +23,7 @@ class ViewServiceProvider extends ServiceProvider
         View::share('chocolatey', Config::get('chocolatey'));
 
         View::share('user', Session::get(Config::get('chocolatey.security.session')) ?? 'null');
+
+        View::share('mail', Config::get('mail'));
     }
 }

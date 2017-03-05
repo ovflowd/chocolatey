@@ -81,6 +81,8 @@ $app->register(Rdehnhardt\MaintenanceMode\Providers\MaintenanceModeServiceProvid
 
 $app->register(Intervention\Image\ImageServiceProviderLumen::class);
 
+$app->register(App\Providers\NuxServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

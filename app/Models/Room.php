@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class Room
@@ -22,24 +21,28 @@ class Room extends Model
      * @var bool
      */
     public $timestamps = false;
+
     /**
      * Leader Board Rank
      *
      * @var int
      */
     public $leaderboardRank = 1;
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'rooms';
+
     /**
      * Primary Key of the Table
      *
      * @var string
      */
     protected $primaryKey = 'id';
+
     /**
      * The attributes that will be mapped
      *
@@ -123,14 +126,33 @@ class Room extends Model
     ];
 
     /**
-     * Store Function
+     * Stores a new Room
      *
-     * A Room can't be inserted by the CMS.
-     * Only by the Emulator
+     * @param string $roomName
+     * @param string $description
+     * @param string $model
+     * @param int $maxUsers
+     * @param int $roomCategory
+     * @param int $floorPaper
+     * @param int $wallPaper
+     * @param float $landscapePaper
+     * @return Room
      */
-    public function store()
+    public function store(string $roomName, string $description, string $model, int $maxUsers, int $roomCategory, int $floorPaper, int $wallPaper, float $landscapePaper = 0.00)
     {
-        throw new InvalidMutatorException("You cannot store a Room by Chocolatey. Rooms need be created from the Server.");
+        $this->attributes['name'] = $roomName;
+        $this->attributes['description'] = $description;
+        $this->attributes['model'] = $model;
+        $this->attributes['users_max'] = $maxUsers;
+        $this->attributes['category'] = $roomCategory;
+        $this->attributes['paper_floor'] = $floorPaper;
+        $this->attributes['paper_wall'] = $wallPaper;
+        $this->attributes['paper_landscape'] = $landscapePaper;
+        $this->attributes['thickness_wall'] = 0;
+        $this->attributes['wall_height'] = -1;
+        $this->attributes['thickness_floor'] = 0;
+
+        return $this;
     }
 
     /**

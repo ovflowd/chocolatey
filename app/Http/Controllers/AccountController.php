@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Nux;
 use App\Facades\Session;
 use App\Models\ChocolateyId;
 use App\Models\User;
@@ -95,9 +96,11 @@ class AccountController extends BaseController
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response('', 400);
 
-        $request->user()->traits = ["USER"];
+        $nuxRoom = Nux::generateRoom($request);
 
-        return response('');
+        $request->user()->traits = $nuxRoom ? ["USER"] : ["NEW_USER", "USER"];
+
+        return response('', $nuxRoom ? 200 : 400);
     }
 
     /**
@@ -209,7 +212,7 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send(['mail' => $userMail, 'name' => $userName,
+        $mailController->send(['mail' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
             'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}"
         ]);
 
@@ -274,7 +277,8 @@ class AccountController extends BaseController
         $mailController->send([
             'name' => $user->name,
             'mail' => $user->email,
-            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}"
+            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}",
+            'subject' => 'Password reset confirmation'
         ], 'habbo-web-mail.password-reset');
 
         return response()->json(['email' => $user->email]);

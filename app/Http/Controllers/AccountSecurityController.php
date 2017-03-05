@@ -137,7 +137,8 @@ class AccountSecurityController extends BaseController
         $mailController->send([
             'mail' => $request->user()->email,
             'newMail' => $request->json()->get('newEmail'),
-            'name' => $request->user()->name
+            'name' => $request->user()->name,
+            'subject' => 'Email change alert'
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = $mailController->prepare(
@@ -147,7 +148,8 @@ class AccountSecurityController extends BaseController
         $mailController->send([
             'mail' => $request->json()->get('newEmail'),
             'name' => $request->user()->name,
-            'url' => "/activate/{$generatedToken}"
+            'url' => "/activate/{$generatedToken}",
+            'subject' => 'Email change confirmation'
         ], 'habbo-web-mail.confirm-mail-change');
     }
 
