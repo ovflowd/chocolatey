@@ -62,7 +62,7 @@ final class Nux
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 12, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 15542, 'x' => 10, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
@@ -80,14 +80,14 @@ final class Nux
             ['room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '']
-        );
+        ]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 22988, 'wall_pos' => ':w=4,2 l=0,35 l', 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 23163, 'wall_pos' => ':w=4,8 l=0,43 r', 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 23261, 'wall_pos' => ':w=2,10 l=2,34 l', 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 23331, 'wall_pos' => ':w=2,10 l=2,29 l', 'extra_data' => '']
-        );
+        ]);
 
         return true;
     }
@@ -99,7 +99,7 @@ final class Nux
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 16715, 'x' => 5, 'y' => 11, 'z' => 1.30000, 'rot' => 0, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 16732, 'x' => 3, 'y' => 10, 'z' => 0.40000, 'rot' => 0, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 17016, 'x' => 3, 'y' => 9, 'z' => 0.00000, 'rot' => 2, 'extra_data' => '1'],
@@ -139,9 +139,9 @@ final class Nux
             ['room_id' => $room->id, 'item_id' => 18070, 'x' => 8, 'y' => 2, 'z' => 1.50000, 'rot' => 0, 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 18079, 'x' => 9, 'y' => 8, 'z' => 0.00000, 'rot' => 0, 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 18363, 'x' => 3, 'y' => 9, 'z' => 0.80000, 'rot' => 0, 'extra_data' => '2']
-        );
+        ]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 22996, 'wall_pos' => ':w=4,8 l=7,45 r', 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 22996, 'wall_pos' => ':w=4,8 l=9,45 l', 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 23063, 'wall_pos' => ':w=2,10 l=10,56 l', 'extra_data' => ''],
@@ -152,7 +152,7 @@ final class Nux
             ['room_id' => $room->id, 'item_id' => 23078, 'wall_pos' => ':w=10,1 l=0,26 r', 'extra_data' => '3'],
             ['room_id' => $room->id, 'item_id' => 23229, 'wall_pos' => ':w=4,3 l=6,49 l', 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 23229, 'wall_pos' => ':w=4,5 l=11,45 l', 'extra_data' => '1']
-        );
+        ]);
 
         return true;
     }
@@ -170,7 +170,7 @@ final class Nux
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 16904, 'x' => 4, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
@@ -190,15 +190,15 @@ final class Nux
             ['room_id' => $room->id, 'item_id' => 18048, 'x' => 7, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 18082, 'x' => 6, 'y' => 3, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 18082, 'x' => 9, 'y' => 3, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '']
-        );
+        ]);
 
-        DB::table('items')->insert(
+        DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 23008, 'wall_pos' => ':w=4,8 l=0,27 r', 'extra_data' => '2'],
             ['room_id' => $room->id, 'item_id' => 23013, 'wall_pos' => ':w=2,10 l=2,44 l', 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 23014, 'wall_pos' => ':w=8,1 l=14,27 r', 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 23236, 'wall_pos' => ':w=6,1 l=5,31 r', 'extra_data' => '1'],
             ['room_id' => $room->id, 'item_id' => 23239, 'wall_pos' => ':w=4,7 l=4,29 l', 'extra_data' => '']
-        );
+        ]);
 
         return true;
     }
