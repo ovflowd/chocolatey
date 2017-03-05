@@ -98,7 +98,8 @@ class ShopController extends BaseController
         (new MailController)->send([
             'mail' => $request->user()->email,
             'product' => DB::table('chocolatey_shop_items')->where('id', $shopItem)->first(),
-            'purchaseId' => $purchaseItem->transactionId
+            'purchaseId' => $purchaseItem->transactionId,
+            'subject' => 'Purchase completed'
         ], 'habbo-web-mail.purchase-confirmation');
 
         return $paymentCheckout != null ? response(view('habbo-web-payments.success-payment', [

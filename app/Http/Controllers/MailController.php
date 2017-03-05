@@ -16,23 +16,6 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 class MailController extends BaseController
 {
     /**
-     * Resend E-mail Verification
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function verify(Request $request): JsonResponse
-    {
-        $this->send([
-            'name' => $request->user()->name,
-            'mail' => $request->user()->email,
-            'url' => "/activate/{$this->prepare($request->user()->email, 'public/registration/activate')}"
-        ]);
-
-        return response()->json('');
-    }
-
-    /**
      * Send an Email
      *
      * @param array $configuration
