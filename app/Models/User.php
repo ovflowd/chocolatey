@@ -16,6 +16,7 @@ use Sofa\Eloquence\Mappable;
  * @property string trusted
  * @property mixed uniqueId
  * @property string figureString
+ * @property string name
  * @package App\Models
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract

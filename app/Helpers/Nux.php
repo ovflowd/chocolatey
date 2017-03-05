@@ -57,7 +57,7 @@ final class Nux
      */
     protected function createBedRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403);
+        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -94,7 +94,7 @@ final class Nux
 
     protected function createPoolRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10);
+        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -165,7 +165,7 @@ final class Nux
      */
     protected function createClubRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403);
+        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
