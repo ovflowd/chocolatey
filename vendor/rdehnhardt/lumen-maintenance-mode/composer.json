@@ -1,0 +1,42 @@
+{
+  "name": "rdehnhardt/lumen-maintenance-mode",
+  "type": "library",
+  "description": "Define application maintenance mode.",
+  "keywords": ["lumen", "maintenance", "mode"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Renato Dehnhardt",
+      "email": "renatotkd@gmail.com"
+    },
+    {
+      "name": "Vagner do Carmo",
+      "email": "vluzrmos@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/lumen-framework": "~5.0"
+  },
+  "require-dev": {
+    "laravel/lumen":"~5.0",
+    "phpunit/phpunit": "~4.0",
+    "fzaninotto/faker": "v1.4.0",
+    "fabpot/php-cs-fixer": "~1.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rdehnhardt\\MaintenanceMode\\": "src"
+    }
+  }
+  ,
+  "autoload-dev": {
+    "psr-4": {
+      "Rdehnhardt\\MaintenanceMode\\Testing\\": "src/tests/MaintenanceMode/"
+    }
+  },
+  "config":{
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev"
+}
