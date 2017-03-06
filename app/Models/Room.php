@@ -9,6 +9,7 @@ use Sofa\Eloquence\Mappable;
 
 /**
  * Class Room
+ * @property int id
  * @package App\Models
  */
 class Room extends Model
