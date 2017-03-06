@@ -14,7 +14,7 @@ use Sofa\Eloquence\Mappable;
 /**
  * Class User
  * @property string trusted
- * @property mixed uniqueId
+ * @property int uniqueId
  * @property string figureString
  * @property string name
  * @package App\Models
