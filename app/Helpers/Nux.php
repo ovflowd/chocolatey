@@ -57,29 +57,29 @@ final class Nux
      */
     protected function createBedRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
+        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
             ['room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 12, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 12, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
             ['room_id' => $room->id, 'item_id' => 15542, 'x' => 10, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 15542, 'x' => 10, 'y' => 12, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 16412, 'x' => 9, 'y' => 5, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 16435, 'x' => 7, 'y' => 5, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 16486, 'x' => 8, 'y' => 5, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 17816, 'x' => 6, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '4'],
-            ['room_id' => $room->id, 'item_id' => 17816, 'x' => 9, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '4'],
-            ['room_id' => $room->id, 'item_id' => 17824, 'x' => 7, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 17894, 'x' => 9, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18074, 'x' => 8, 'y' => 4, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 18817, 'x' => 3, 'y' => 10, 'z' => '0.01000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '']
+            ['room_id' => $room->id, 'item_id' => 15542, 'x' => 10, 'y' => 12, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 16412, 'x' => 9, 'y' => 5, 'z' => '1.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 16435, 'x' => 7, 'y' => 5, 'z' => '1.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 16486, 'x' => 8, 'y' => 5, 'z' => '1.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 17816, 'x' => 6, 'y' => 2, 'z' => '1.00000', 'rot' => 0, 'extra_data' => '4'],
+            ['room_id' => $room->id, 'item_id' => 17816, 'x' => 9, 'y' => 2, 'z' => '1.00000', 'rot' => 0, 'extra_data' => '4'],
+            ['room_id' => $room->id, 'item_id' => 17824, 'x' => 7, 'y' => 2, 'z' => '1.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 17894, 'x' => 9, 'y' => 10, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18074, 'x' => 8, 'y' => 4, 'z' => '1.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 18817, 'x' => 3, 'y' => 10, 'z' => '0.01000', 'rot' => 2, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '']
         ]);
 
         DB::table('items')->insert([
@@ -94,7 +94,7 @@ final class Nux
 
     protected function createPoolRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);
+        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -165,31 +165,31 @@ final class Nux
      */
     protected function createClubRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room'", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
+        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 0.0, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
-            ['room_id' => $room->id, 'item_id' => 16904, 'x' => 4, 'y' => 11, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 8, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 8, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16907, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 16907, 'x' => 5, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 16909, 'x' => 4, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16909, 'x' => 4, 'y' => 10, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '1'],
-            ['room_id' => $room->id, 'item_id' => 16913, 'x' => 6, 'y' => 7, 'z' => '1.30000', 'rot' => 4, 'extra_data' => '3'],
-            ['room_id' => $room->id, 'item_id' => 16913, 'x' => 9, 'y' => 7, 'z' => '1.30000', 'rot' => 4, 'extra_data' => '3'],
-            ['room_id' => $room->id, 'item_id' => 17189, 'x' => 10, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 6, 'y' => 7, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '3'],
-            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 7, 'y' => 7, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '3'],
-            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 8, 'y' => 7, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '3'],
-            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 9, 'y' => 7, 'z' => '0.00000', 'rot' => 4, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 16904, 'x' => 4, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 6, 'y' => 10, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 8, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16905, 'x' => 8, 'y' => 10, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16907, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 6, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 16907, 'x' => 5, 'y' => 10, 'z' => '0.00000', 'rot' => 6, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 16909, 'x' => 4, 'y' => 9, 'z' => '0.00000', 'rot' => 2, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16909, 'x' => 4, 'y' => 10, 'z' => '0.00000', 'rot' => 2, 'extra_data' => '1'],
+            ['room_id' => $room->id, 'item_id' => 16913, 'x' => 6, 'y' => 7, 'z' => '1.30000', 'rot' => 0, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 16913, 'x' => 9, 'y' => 7, 'z' => '1.30000', 'rot' => 0, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 17189, 'x' => 10, 'y' => 2, 'z' => '1.00000', 'rot' => 0, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 6, 'y' => 7, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 7, 'y' => 7, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 8, 'y' => 7, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '3'],
+            ['room_id' => $room->id, 'item_id' => 17573, 'x' => 9, 'y' => 7, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '3'],
             ['room_id' => $room->id, 'item_id' => 18048, 'x' => 7, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18082, 'x' => 6, 'y' => 3, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
-            ['room_id' => $room->id, 'item_id' => 18082, 'x' => 9, 'y' => 3, 'z' => '1.00000', 'rot' => 4, 'extra_data' => '']
+            ['room_id' => $room->id, 'item_id' => 18082, 'x' => 6, 'y' => 3, 'z' => '1.00000', 'rot' => 2, 'extra_data' => ''],
+            ['room_id' => $room->id, 'item_id' => 18082, 'x' => 9, 'y' => 3, 'z' => '1.00000', 'rot' => 6, 'extra_data' => '']
         ]);
 
         DB::table('items')->insert([
