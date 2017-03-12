@@ -1,16 +1,14 @@
-<?php $azure = \Illuminate\Support\Facades\Config::get('chocolatey'); ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{$azure['name']}}</title>
+    <title>{{$chocolatey['name']}}</title>
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{$azure['url']}}habbo-web/favicon.ico">
+    <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
     <link rel="stylesheet" type="text/css"
-          href="{{$azure['url']}}/habbo-web/assets/css/maintenance.css">
-    <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
+          href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
     <script>!function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
             "http:" !== window.location.protocol && "https:" !== window.location.protocol && (e.href = "http:"), e.href += "//fonts.googleapis.com/css?family=Ubuntu:regular,bold|Ubuntu+Condensed:lighter,regular,bold", e.rel = "stylesheet", e.type = "text/css", t.parentNode.insertBefore(e, t)
@@ -19,19 +17,17 @@
 <body>
 <div class="content">
     <div class="header">
-        <div class="wrapper"><a href="{{$azure['url']}}" class="habbo-image"></a></div>
+        <div class="wrapper"><a href="{{$chocolatey['url']}}" class="habbo-image"></a></div>
     </div>
     <div class="wrapper">
         <div class="page-content">
             <div class="main">
-                <div class="box with-bottom-error-image"><h1>Stop! Maintenance</h1>
-
-                    <p>We're really sorry but we're on Maintenance. You can check further updates
-                        by accessing our Twitter.
-                        We apologize a lot about this</p></div>
+                <div class="box with-bottom-error-image"><h1>{{$maintenance['title']}}</h1>
+                    <p>{{$maintenance['text']}}</p>
+                </div>
             </div>
             <div class="aside">
-                <a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/{{$azure['twitter']['username']}}">{{$azure['twitter']['title']}}</a>
+                <a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/{{$chocolatey['twitter']['username']}}">{{$chocolatey['twitter']['title']}}</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
