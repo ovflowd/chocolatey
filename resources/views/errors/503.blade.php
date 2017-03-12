@@ -30,18 +30,9 @@
                         by accessing our Twitter.
                         We apologize a lot about this</p></div>
             </div>
-            <div class="aside"><a class="twitter-timeline" href="https://twitter.com/{{$azure['twitter']['username']}}"
-                                  data-widget-id="{{$azure['twitter']['key']}}" height="400"
-                                  width="300">{{$azure['twitter']['name']}}</a>
-                <script>!function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                        if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = p + "://platform.twitter.com/widgets.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, "script", "twitter-wjs");</script>
+            <div class="aside">
+                <a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/{{$azure['twitter']['username']}}">{{$azure['twitter']['title']}}</a>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
     </div>

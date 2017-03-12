@@ -135,9 +135,8 @@ return [
     */
 
     'twitter' => [
-        'name' => '@m0vame',
-        'username' => 'm0vame',
-        'key' => 502480771739684864
+        'title' => 'Tweets by @m0vame',
+        'username' => 'm0vame'
     ],
 
     /*
