@@ -41,21 +41,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Hotel Maintenance
-    |--------------------------------------------------------------------------
-    |
-    | Enable the Hotel Maintenance
-    | <To enable Maintenance mode write 'php artisan down'>
-    | <To disable Maintenance mode write 'php artisan up'>
-    | *those commands need to be written on the console/terminal/cmd*
-    |
-    */
-
-    // Using this isn't Recommended
-    'forceMaintenance' => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Arcturus Account
     |--------------------------------------------------------------------------
     |
