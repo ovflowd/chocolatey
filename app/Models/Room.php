@@ -167,7 +167,9 @@ class Room extends Model
      */
     public function getTagsAttribute(): array
     {
-        return explode(';', $this->attributes['tags'] ?? '');
+        $tags = explode(';', $this->attributes['tags'] ?? '');
+
+        return [$tags[0], $tags[1]];
     }
 
     /**
@@ -177,9 +179,7 @@ class Room extends Model
      */
     public function getImageUrlAttribute(): string
     {
-        $roomName = Config::get('chocolatey.arcturus');
-
-        return "http://arcturus.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
+        return "http://arcturus.wf/full_{$this->attributes['id']}.png";
     }
 
     /**
@@ -189,9 +189,9 @@ class Room extends Model
      */
     public function getThumbnailUrlAttribute(): string
     {
-        $roomName = Config::get('chocolatey.arcturus');
+        $userName = Config::get('chocolatey.arcturus');
 
-        return "http://arcturus.wf/camera/{$roomName}/thumbnail_{$this->attributes['id']}.png";
+        return "http://arcturus.wf/camera/{$userName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**
