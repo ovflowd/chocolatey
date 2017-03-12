@@ -41,21 +41,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Hotel Maintenance
-    |--------------------------------------------------------------------------
-    |
-    | Enable the Hotel Maintenance
-    | <To enable Maintenance mode write 'php artisan down'>
-    | <To disable Maintenance mode write 'php artisan up'>
-    | *those commands need to be written on the console/terminal/cmd*
-    |
-    */
-
-    // Using this isn't Recommended
-    'forceMaintenance' => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Arcturus Account
     |--------------------------------------------------------------------------
     |
@@ -135,9 +120,8 @@ return [
     */
 
     'twitter' => [
-        'name' => '@m0vame',
-        'username' => 'm0vame',
-        'key' => 502480771739684864
+        'title' => 'Tweets by @m0vame',
+        'username' => 'm0vame'
     ],
 
     /*
@@ -285,6 +269,22 @@ return [
             'override_variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
             'override_texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
+    ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Loading Screen
+    |--------------------------------------------------------------------------
+    |
+    | Configure the text of Loading Screen.
+    |
+    */
+    
+    'loading' => [
+        'Loading Habbo Hotel',
+        'See those Yellow Duckies, It\'s Wesley, no?',
+        'I would like to eat some chocolate cookies.. You know.',
+        'Claudio it\'s you?'
     ],
 
     /*

@@ -21,10 +21,7 @@ class Maintenance
      */
     public function handle($request, Closure $next)
     {
-        if (Config::get('chocolatey.forceMaintenance')):
-            return response()->json(['error' => 'maintenance'], 503);
-        endif;
-
-        return $next($request);
+        return Config::get('maintenance.enforce') ? response()->json(['error' => 'maintenance'], 503) :
+            $next($request);
     }
 }

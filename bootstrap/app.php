@@ -31,6 +31,8 @@ $app->configure('auth');
 # Configure Chocolatey Provider
 $app->configure('chocolatey');
 
+# Configure Maintenance Provider
+$app->configure('maintenance');
 
 /*
 |--------------------------------------------------------------------------

@@ -20,7 +20,7 @@
         <meta name="twitter:title" content="{{$chocolatey['name']}}">
         <meta name="twitter:description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
-        <meta name="twitter:site" content="{{$chocolatey['twitter']['name']}}">
+        <meta name="twitter:site" content="{{$chocolatey['twitter']['title']}}">
         <meta name="fragment" content="!">
         <meta name="revision" content="f05e1ca">
         <meta name="viewport"
