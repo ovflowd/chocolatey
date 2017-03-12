@@ -285,6 +285,22 @@ return [
             'override_texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Loading Screen
+    |--------------------------------------------------------------------------
+    |
+    | Configure the text of Loading Screen.
+    |
+    */
+    
+    'loading' => [
+        'Loading Habbo Hotel',
+        'See those Yellow Duckies, It\'s Wesley, no?',
+        'I would like to eat some chocolate cookies.. You know.',
+        'Claudio it\'s you?'
+    ],
 
     /*
     |--------------------------------------------------------------------------
