@@ -1,3 +1,4 @@
 *.html linguist-language=PHP
 *.js linguist-language=PHP
 *.css linguist-language=PHP
+docs/_layouts/default.html -linguist-language=PHP
