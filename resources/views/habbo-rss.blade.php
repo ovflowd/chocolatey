@@ -8,7 +8,7 @@
         <atom:link href="{{$chocolatey['url']}}rss.xml" rel="self" type="application/rss+xml"/>
         @foreach($articles as $article)
             <item>
-                <title><![CDATA[{{$article->name}}]]></title>
+                <title><![CDATA[{{$article->title}}]]></title>
                 <description><![CDATA[{{$article->description}}]]></description>
                 <link>{{$chocolatey['url']}}community/article/{{$article->id}}/content</link>
                 <guid isPermaLink="false">{{$article->id}}</guid>
