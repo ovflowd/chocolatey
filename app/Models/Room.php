@@ -169,7 +169,7 @@ class Room extends Model
     {
         $tags = explode(';', $this->attributes['tags'] ?? '');
 
-        return [$tags[0], $tags[1]];
+        return [$tags['0'], $tags['1']];
     }
 
     /**
