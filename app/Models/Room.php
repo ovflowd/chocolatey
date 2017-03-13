@@ -167,13 +167,15 @@ class Room extends Model
      */
     public function getTagsAttribute(): array
     {
-        $tags = explode(';', $this->attributes['tags'] ?? '');
-
-        return [$tags[0], $tags[1]];
+        return array_filter(explode(';', $this->attributes['tags']), function ($element) {
+            return !empty($element);
+        });
     }
 
     /**
      * Get Image Url
+     *
+     * @TODO: Get Real Full Room Image
      *
      * @return string
      */
