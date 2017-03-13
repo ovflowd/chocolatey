@@ -181,7 +181,7 @@ class Room extends Model
      */
     public function getImageUrlAttribute(): string
     {
-        return "http://arcturus.wf/full_{$this->attributes['id']}.png";
+        return "https://arcturus.wf/full_{$this->attributes['id']}.png";
     }
 
     /**
@@ -193,7 +193,7 @@ class Room extends Model
     {
         $userName = Config::get('chocolatey.arcturus');
 
-        return "http://arcturus.wf/camera/{$userName}/thumbnail_{$this->attributes['id']}.png";
+        return "https://arcturus.wf/camera/{$userName}/thumbnail_{$this->attributes['id']}.png";
     }
 
     /**
