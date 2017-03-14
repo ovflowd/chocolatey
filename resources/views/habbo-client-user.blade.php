@@ -19,7 +19,7 @@
             "has.identity": "1",
             "avatareditor.promohabbos": "https://www.habbo.com.br/api/public/lists/hotlooks",
             "productdata.load.url": "{{$chocolatey['game']['gamedata']['productdata']}}",
-            "client.starting.revolving": "Quando voc\u00EA menos esperar...terminaremos de carregar.../Carregando mensagem divertida! Por favor espere./Voc\u00EA quer batatas fritas para acompanhar?/Siga o pato amarelo./O tempo \u00E9 apenas uma ilus\u00E3o./J\u00E1 chegamos?!/Eu gosto da sua camiseta./Olhe para um lado. Olhe para o outro. Pisque duas vezes. Pronto!/N\u00E3o \u00E9 voc\u00EA, sou eu./Shhh! Estou tentando pensar aqui./Carregando o universo de pixels.",
+            "client.starting.revolving": "{{ htmlspecialchars_decode(implode('/', $chocolatey['loading'])) }}",
             "external.override.variables.txt": "{{$chocolatey['game']['gamedata']['override_variables']}}",
             "spaweb": "1",
             "supersonic_application_key": "2c63c535",
