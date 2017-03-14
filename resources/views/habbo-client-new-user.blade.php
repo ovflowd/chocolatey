@@ -87,7 +87,7 @@
             "new.user.flow.room.description.12": "Ambient retro Lava Lamp glow included",
             "new.user.flow.room.description.11": "Ain't no party like a Penumbra party!",
             "new.user.flow.room.description.10": "For the Habbo who really likes shiny things",
-            "client.starting.revolving": "{{ implode('/', $chocolatey['loading']) }}",
+            "client.starting.revolving": "{{ htmlspecialchars_decode(implode('/', $chocolatey['loading'])) }}",
         };
     </script>
     <script type="text/javascript"
