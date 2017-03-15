@@ -46,3 +46,8 @@ storage/framework/views/*.php
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+# Ignore Do
+docs/
+docs
+docs/*
