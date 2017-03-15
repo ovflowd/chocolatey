@@ -19,7 +19,7 @@
             "has.identity": "1",
             "avatareditor.promohabbos": "https://www.habbo.com.br/api/public/lists/hotlooks",
             "productdata.load.url": "{{$chocolatey['game']['gamedata']['productdata']}}",
-            "client.starting.revolving": "{{ htmlspecialchars_decode(implode('/', $chocolatey['loading'])) }}",
+            "client.starting.revolving": "{!! implode('/', $chocolatey['loading']) !!}",
             "external.override.variables.txt": "{{$chocolatey['game']['gamedata']['override_variables']}}",
             "spaweb": "1",
             "supersonic_application_key": "2c63c535",
