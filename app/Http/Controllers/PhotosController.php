@@ -7,13 +7,14 @@ use App\Models\PhotoLike;
 use App\Models\PhotoReport;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PublicPhotosController
+ * Class PhotosController
  * @package App\Http\Controllers
  */
-class PublicPhotosController extends BaseController
+class PhotosController extends BaseController
 {
     /**
      * Render a set of Public HabboWEB Photos
@@ -35,12 +36,12 @@ class PublicPhotosController extends BaseController
      * @MODERATION: Reporting Status (0 = Not Reviewed, 1 = Report Approved, 2 = Report Not Approved
      *
      * @param Request $request
-     * @param int $photoIdentifier
+     * @param int $photoId
      * @return JsonResponse
      */
-    public function report(Request $request, $photoIdentifier): JsonResponse
+    public function report(Request $request, int $photoId): JsonResponse
     {
-        (new PhotoReport)->store($photoIdentifier, $request->json()->get('reason'), $request->user()->uniqueId)->save();
+        (new PhotoReport)->store($photoId, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
         return response()->json('');
     }
@@ -52,7 +53,7 @@ class PublicPhotosController extends BaseController
      * @param int $photoId
      * @return JsonResponse
      */
-    public function likePhoto(Request $request, $photoId): JsonResponse
+    public function likePhoto(Request $request, int $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
             return response()->json('');
@@ -69,7 +70,7 @@ class PublicPhotosController extends BaseController
      * @param int $photoId
      * @return JsonResponse
      */
-    public function unlikePhoto(Request $request, $photoId): JsonResponse
+    public function unlikePhoto(Request $request, int $photoId): JsonResponse
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
             return response()->json('');
@@ -77,5 +78,24 @@ class PublicPhotosController extends BaseController
         PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
         return response()->json('');
+    }
+
+    /**
+     * Delete a Photo
+     *
+     * @param Request $request
+     * @param int $photoId
+     * @return Response
+     */
+    public function delete(Request $request, int $photoId): Response
+    {
+        $photo = Photo::find($photoId);
+
+        if ($photo == null || $photo->creator_id != $request->user()->uniqueId)
+            return response('', 401);
+
+        $photo->delete();
+
+        return response('');
     }
 }

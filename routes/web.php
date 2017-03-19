@@ -215,7 +215,7 @@ $app->get($path . 'extradata', function () {
 });
 
 # Show All Registered HabboWEB Photos
-$app->get($path . 'extradata/public/photos', 'PublicPhotosController@show');
+$app->get($path . 'extradata/public/photos', 'PhotosController@show');
 
 # Get User Stories
 $app->get($path . 'extradata/public/users/{userId}/stories', 'ProfileController@getStories');
@@ -231,13 +231,16 @@ $app->get($path . 'extradata/public/users/stories', function () {
 # Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app, $path) {
     # Report a Specific Photo
-    $app->post($path . 'extradata/private/creation/{photo}/report', 'PublicPhotosController@report');
+    $app->post($path . 'extradata/private/creation/{photo}/report', 'PhotosController@report');
 
     # Like a Specific Photo
-    $app->post($path . 'extradata/private/like/{photo}', 'PublicPhotosController@likePhoto');
+    $app->post($path . 'extradata/private/like/{photo}', 'PhotosController@likePhoto');
+
+    # Delete a Specific Photo
+    $app->delete($path . 'extradata/private/photo/{photo}', 'PhotosController@delete');
 
     # Like a Specific Photo
-    $app->post($path . 'extradata/private/unlike/{photo}', 'PublicPhotosController@unlikePhoto');
+    $app->post($path . 'extradata/private/unlike/{photo}', 'PhotosController@unlikePhoto');
 
     # Recent Photo Moderations
     # @TODO: Synchronize with Photo Moderations

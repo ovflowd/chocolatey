@@ -7,12 +7,13 @@
     <title>{{$chocolatey['name']}}</title>
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
-    <link rel="stylesheet" type="text/css"
-          href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
-    <script>!function () {
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
+    <script>
+        !function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
             "http:" !== window.location.protocol && "https:" !== window.location.protocol && (e.href = "http:"), e.href += "//fonts.googleapis.com/css?family=Ubuntu:regular,bold|Ubuntu+Condensed:lighter,regular,bold", e.rel = "stylesheet", e.type = "text/css", t.parentNode.insertBefore(e, t)
-        }()</script>
+        }()
+    </script>
 </head>
 <body>
 <div class="content">
@@ -27,7 +28,8 @@
                 </div>
             </div>
             <div class="aside">
-                <a class="twitter-timeline" data-width="300" data-height="400" href="https://twitter.com/{{$chocolatey['twitter']['username']}}">{{$chocolatey['twitter']['title']}}</a>
+                <a class="twitter-timeline" data-width="300" data-height="400"
+                   href="https://twitter.com/{{$chocolatey['twitter']['username']}}">{{$chocolatey['twitter']['title']}}</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
