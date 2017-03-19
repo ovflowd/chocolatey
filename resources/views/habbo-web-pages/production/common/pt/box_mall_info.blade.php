@@ -1,7 +1,7 @@
 <h3>Informa&#xE7;&#xE3;o e Ajuda</h3>
 <p>Voc&#xEA; sempre se perguntou <strong>onde &#xE9; que voc&#xEA; encontra todas essas coisas maravilhosas do {{$chocolatey['name']}}
         Hotel?</strong> Veja aqui <a target="_blank"
-                                     ng-href="@{{'https://help.habbo.com.br/entries/98050198-Informa%C3%A7%C3%A3o-sobre-Habbo-Compras' | zendeskRedirectUrl}}">descri&#xE7;&#xF5;es
+                                     ng-href="@{{'https://help.habbo.com.br/entries/98050198-Informa%C3%A7%C3%A3o-sobre-{{$chocolatey['name']}}-Compras' | zendeskRedirectUrl}}">descri&#xE7;&#xF5;es
         detalhadas de nossos produtos</a> na Ferramenta de Ajuda {{$chocolatey['name']}}!</p>
 <p><strong>Aqui, voc&#xEA; encontra TODOS os m&#xE9;todos oficiais para a aquisi&#xE7;&#xE3;o de produtos {{$chocolatey['name']}}</strong>.
     Adquirir qualquer produto {{$chocolatey['name']}} atrav&#xE9;s de meios n&#xE3;o oficiais ocasionar&#xE1; o banimento permanente de

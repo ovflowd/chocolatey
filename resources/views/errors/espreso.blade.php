@@ -7,13 +7,13 @@
     <title>{{$chocolatey['name']}}</title>
     <meta name="description" content="">
     <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
-    <link rel="stylesheet" type="text/css"
-          href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
-    <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
-    <script>!function () {
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
+    <script>
+        !function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
             "http:" !== window.location.protocol && "https:" !== window.location.protocol && (e.href = "http:"), e.href += "//fonts.googleapis.com/css?family=Ubuntu:regular,bold|Ubuntu+Condensed:lighter,regular,bold", e.rel = "stylesheet", e.type = "text/css", t.parentNode.insertBefore(e, t)
-        }()</script>
+        }()
+    </script>
 </head>
 <body>
 <div class="content">
