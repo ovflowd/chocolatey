@@ -1,15 +1,14 @@
-<?php $azure = \Illuminate\Support\Facades\Config::get('chocolatey'); ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{$azure['name']}}</title>
+    <title>{{$chocolatey['name']}}</title>
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{$azure['url']}}habbo-web/favicon.ico">
+    <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
     <link rel="stylesheet" type="text/css"
-          href="{{$azure['url']}}/habbo-web/assets/css/maintenance.css">
+          href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
     <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
     <script>!function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -19,7 +18,7 @@
 <body>
 <div class="content">
     <div class="header">
-        <div class="wrapper"><a href="{{$azure['url']}}" class="habbo-image"></a></div>
+        <div class="wrapper"><a href="{{$chocolatey['url']}}" class="habbo-image"></a></div>
     </div>
     <div class="wrapper">
         <div class="page-content">
