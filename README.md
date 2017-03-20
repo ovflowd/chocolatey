@@ -6,6 +6,7 @@
 The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.
 
 <hr>
+
 ### About
 
 #### What is?
@@ -32,11 +33,13 @@ For development purposes and to create test and educational local Habbo.com webs
 * You can actually use **Chocolatey** in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
 
 <hr>
+
 ### Installation
 
 Check our Wiki Page for Installation Tutorials, by clicking [here](https://github.com/sant0ro/chocolatey/wiki/Installing-Chocolatey)
 
 <hr>
+
 ### Observations
 
 * We recommend that you see our Wiki to get know about all our Tutorials/Guides and FAQ pages. Click [here](https://github.com/sant0ro/chocolatey/wiki) to go to the Wiki Summary.
@@ -44,6 +47,7 @@ Check our Wiki Page for Installation Tutorials, by clicking [here](https://githu
 * Remember that we don't support **Arcturus** bugs related things. If you have any Issue that isn't directly related to Chocolatey, pleae use RageZONE Help Section.
   
 <hr>
+
 ### Collaborators
 * Claudio aka saamus
 * John aka Kylon
