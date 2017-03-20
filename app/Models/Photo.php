@@ -88,6 +88,16 @@ class Photo extends ChocolateyModel
     {
         return "{$this->attributes['id']}";
     }
+    
+    /**
+     * Get the URL of the Photo
+     *
+     * @return string
+     */
+    public function getUrlAttribute(): string
+    {
+        return str_replace('http', '', str_replace('https', '', $this->attributes['url']));
+    }
 
     /**
      * Get the Version Attribute
