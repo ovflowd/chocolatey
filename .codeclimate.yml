@@ -1,0 +1,25 @@
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+ratings:
+  paths:
+  - "**.inc"
+  - "**.module"
+  - "**.php"
+exclude_paths:
+- config/
+- build/
+- vendor/
+- public/
