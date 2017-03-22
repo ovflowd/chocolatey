@@ -23,7 +23,7 @@ class MailController extends BaseController
     {
         if (Config::get('mail.enable'))
             Mail::send($view, $configuration, function ($message) use ($configuration) {
-                $message->from(Config::get('mail.from.address'), Config::get('chocolatey.name'));
+                $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
                 $message->to($configuration['mail'])->subject($configuration['subject']);
             });
     }
