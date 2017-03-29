@@ -110,6 +110,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'ip_current',
         'ip_register',
         'mail_verified',
+        'account_day_of_birth',
         'look',
         'gender'
     ];
