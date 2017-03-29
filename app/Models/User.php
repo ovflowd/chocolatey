@@ -111,6 +111,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'ip_register',
         'mail_verified',
         'account_day_of_birth',
+        'real_name',
         'look',
         'gender'
     ];

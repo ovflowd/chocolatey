@@ -137,8 +137,8 @@ return [
     'facebook' => [
         'page' => 'universalinternetofthings',
         'app' => [
-            'key' => 'YOUR-API-KEY',
-            'secret' => ''
+            'key' => '291048761330015',
+            'secret' => 'aae5846816cb0310caac605ce0374e74'
         ]
     ],
 

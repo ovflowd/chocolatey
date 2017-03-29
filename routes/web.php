@@ -75,6 +75,9 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
     # Authenticate User
     $app->post($path . 'api/public/authentication/login', 'LoginController@login');
 
+    # Facebook Login
+    $app->post($path . 'api/public/authentication/facebook', 'LoginController@facebook');
+
     # Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app, $path) {
 
