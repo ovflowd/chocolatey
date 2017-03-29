@@ -85,7 +85,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app, $path) {
         $app->post($path . 'api/settings/password/change', 'AccountSecurityController@changePassword');
 
         # Resend E-mail Verification
-        $app->post($path . 'api/settings/email/verification-resend', 'MailController@verify');
+        $app->post($path . 'api/settings/email/verification-resend', 'AccountController@verifyAccount');
 
         # User Privacy Settings
         $app->get($path . 'api/user/preferences', 'AccountController@getPreferences');

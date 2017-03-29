@@ -274,13 +274,27 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send([
-            'name' => $user->name,
-            'mail' => $user->email,
-            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}",
-            'subject' => 'Password reset confirmation'
+        $mailController->send(['name' => $user->name, 'mail' => $user->email, 'subject' => 'Password reset confirmation',
+            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}"
         ], 'habbo-web-mail.password-reset');
 
         return response()->json(['email' => $user->email]);
+    }
+
+    /**
+     * Send an Account Confirmation E-Mail
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function verifyAccount(Request $request): Response
+    {
+        $mailController = new MailController;
+
+        $mailController->send(['name' => $request->user()->name, 'mail' => $request->user()->email, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
+            'url' => "/activate/{$mailController->prepare($request->user()->email, 'public/registration/activate')}"
+        ]);
+
+        return response(null);
     }
 }
