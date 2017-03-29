@@ -8,6 +8,7 @@ use Sofa\Eloquence\Mappable;
 
 /**
  * Class ShopHistory
+ * @property int transactionId
  * @package App\Models
  */
 class ShopHistory extends ChocolateyModel

@@ -88,7 +88,7 @@ class Photo extends ChocolateyModel
     {
         return "{$this->attributes['id']}";
     }
-    
+
     /**
      * Get the URL of the Photo
      *

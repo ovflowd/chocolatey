@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Facades\Session;
 use App\Models\ChocolateyId;
+use App\Models\User;
+use Facebook\Facebook;
+use Facebook\GraphNodes\GraphUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -77,11 +80,57 @@ class LoginController extends BaseController
 
         $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
 
-        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip()]);
+        $dateOfBirth = strtotime("{$request->json()->get('birthdate')->day}/{$request->json()->get('birthdate')->month}/{$request->json()->get('birthdate')->year}");
+
+        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
         if (Config::get('chocolatey.vote.enabled'))
             Session::set('VotePolicy', true);
 
         return response()->json($userData);
+    }
+
+    /**
+     * Create or Login a Facebook User
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function facebook(Request $request): JsonResponse
+    {
+        $fbUser = $this->fbAuth($request);
+
+        if (User::query()->where('real_name', $fbUser->getId())->count() > 0):
+            Session::set(Config::get('chocolatey.security.session'), ($userData = User::where('real_name', $fbUser->getId())->first()));
+
+            return response()->json($userData);
+        endif;
+
+        $userData = (new AccountController)->createUser($request, [
+            'email' => $fbUser->getEmail(),
+            'password' => uniqid()
+        ], true);
+
+        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
+
+        return response()->json($userData);
+    }
+
+    /**
+     * Doex Facebook Authentication
+     *
+     * @param Request $request
+     * @return GraphUser
+     */
+    protected function fbAuth(Request $request): GraphUser
+    {
+        $facebook = new Facebook([
+            'app_id' => Config::get('chocolatey.facebook.app.key'),
+            'app_secret' => Config::get('chocolatey.facebook.app.secret')
+        ]);
+
+        $facebook->setDefaultAccessToken($request->json()->get('accessToken'));
+
+        return $facebook->get('/me?fields=id,name,email')->getGraphUser();
     }
 }

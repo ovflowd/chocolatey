@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'name' => 'Habbo',
+    'hotelName' => 'Habbo',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/',
+    'hotelUrl' => 'http://localhost/',
 
     /*
     |--------------------------------------------------------------------------
@@ -138,7 +138,7 @@ return [
         'page' => 'universalinternetofthings',
         'app' => [
             'key' => 'YOUR-API-KEY',
-            'secret' => ''
+            'secret' => 'YOU-SECRET-KEY'
         ]
     ],
 
@@ -152,9 +152,9 @@ return [
     |
     */
 
-    'language' => 'com',
+    'siteLanguage' => 'com',
 
-    'pages-language' => 'en',
+    'pageLanguage' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +179,7 @@ return [
     |
     */
 
-    'badges' => 'https://habboo-a.akamaihd.net/c_images/album1584',
+    'badgeRepository' => 'https://habboo-a.akamaihd.net/c_images/album1584',
 
     /*
     |--------------------------------------------------------------------------
@@ -266,8 +266,8 @@ return [
             'productdata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/productdata.txt',
             'variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_variables.txt',
             'texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_flash_texts.txt',
-            'override_variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
-            'override_texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
+            'overrideVariables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
+            'overrideTexts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
     
@@ -280,22 +280,6 @@ return [
     |
     */
     
-    'loading' => [
-        'Loading Habbo Hotel',
-        'See those Yellow Duckies, It\'s Wesley, no?',
-        'I would like to eat some chocolate cookies.. You know.',
-        'Claudio it\'s you?'
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Loading Screen
-    |--------------------------------------------------------------------------
-    |
-    | Configure the text of Loading Screen.
-    |
-    */
-
     'loading' => [
         'Loading Habbo Hotel',
         'See those Yellow Duckies, It\'s Wesley, no?',

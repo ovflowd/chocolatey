@@ -207,12 +207,12 @@ class AccountController extends BaseController
      */
     public function createUser(Request $request, array $userInfo, bool $newUser = false): User
     {
-        $userName = $newUser ? uniqid(strstr($userInfo['email'], '@', true)) : $userInfo['username'];
+        $userName = $newUser ? $this->uniqueName($userInfo['email']) : $userInfo['username'];
         $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
 
         $mailController = new MailController;
 
-        $mailController->send(['mail' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
+        $mailController->send(['email' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
             'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}"
         ]);
 
@@ -223,6 +223,24 @@ class AccountController extends BaseController
         Session::set(Config::get('chocolatey.security.session'), $userData);
 
         return $userData;
+    }
+
+    /**
+     * Create Random Unique Username
+     *
+     * @WARNING: Doesn't create Like Habbo Way
+     *
+     * @param string $userMail
+     * @return string
+     */
+    protected function uniqueName(string $userMail): string
+    {
+        $partialMail = strstr($userMail, '@', true);
+
+        $firstPart = substr(uniqid(), 0, 4);
+        $secondPart = substr(uniqid(), 6, 10);
+
+        return $firstPart . $partialMail . $secondPart;
     }
 
     /**
@@ -274,13 +292,27 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send([
-            'name' => $user->name,
-            'mail' => $user->email,
-            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}",
-            'subject' => 'Password reset confirmation'
+        $mailController->send(['name' => $user->name, 'email' => $user->email, 'subject' => 'Password reset confirmation',
+            'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}"
         ], 'habbo-web-mail.password-reset');
 
         return response()->json(['email' => $user->email]);
+    }
+
+    /**
+     * Send an Account Confirmation E-Mail
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function verifyAccount(Request $request): Response
+    {
+        $mailController = new MailController;
+
+        $mailController->send(['name' => $request->user()->name, 'email' => $request->user()->email, 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
+            'url' => "/activate/{$mailController->prepare($request->user()->email, 'public/registration/activate')}"
+        ]);
+
+        return response(null);
     }
 }

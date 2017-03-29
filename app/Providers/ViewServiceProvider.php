@@ -20,12 +20,12 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        View::share('chocolatey', Config::get('chocolatey'));
+        View::share('chocolatey', json_decode(json_encode(Config::get('chocolatey'))));
 
-        View::share('user', Session::get(Config::get('chocolatey.security.session')) ?? 'null');
+        View::share('user', json_decode(json_encode(Session::get(Config::get('chocolatey.security.session')) ?? 'null')));
 
-        View::share('mail', Config::get('mail'));
+        View::share('mail', json_decode(json_encode(Config::get('mail'))));
 
-        View::share('maintenance', Config::get('maintenance'));
+        View::share('maintenance', json_decode(json_encode(Config::get('maintenance'))));
     }
 }

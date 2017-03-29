@@ -10,7 +10,7 @@
 <p>Si <strong>un Habbo dit des choses qui peuvent te mettre mal &#xE0; l&apos;aise</strong>, tu peux les ignorer. C&apos;est
     la solution id&#xE9;ale contre les taquineries, le spam, ou tout simplement quand tu veux lui dire &quot;Hasta la
     vista&quot; mais tu ne sais pas comment.</p>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_FR.png"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_FR.png"
         alt="Clique sur un avatar pour l&apos;ignorer, mod&#xE9;rer ou rapporter" class="align-right"></p>
 <ol>
     <li>Cliquer sur un avatar. Un menu appara&#xEE;tra.</li>
@@ -44,7 +44,8 @@
         un gardien pourra intervenir.
     </li>
 </ol>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/help_button_fr.png" alt="Bouton d&apos;Aide" class="align-right">
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/help_button_fr.png" alt="Bouton d&apos;Aide"
+        class="align-right">
 </p>
 <p>Un autre moyen de rapporter un Habbo:</p>
 <ol>
@@ -64,9 +65,11 @@
     <li>On te demandera plus d&apos;information sur ce qu&apos;il s&apos;est pass&#xE9;.</li>
     <li>Un mod&#xE9;rateur prendra la sanction ad&#xE9;quate.</li>
 </ol>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_im_fr.png" alt="Rapporter un Habbo depuis la console"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_im_fr.png"
+        alt="Rapporter un Habbo depuis la console"></p>
 <h2>Dans un forum de groupe</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/flag_3.png" alt="Drapeau orange pour signaler un commentaire"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/flag_3.png"
+        alt="Drapeau orange pour signaler un commentaire"
         class="align-right"></p>
 <p>Tu peux <strong>signaler un sujet ou un commentaire inappropri&#xE9; dans les forums de groupe</strong></p>
 <ol>
@@ -75,7 +78,7 @@
     <li>Un mod&#xE9;rateur prendra la sanction ad&#xE9;quate.</li>
 </ol>
 <h2>Sur la page web</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/reportroom.png"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/reportroom.png"
         alt="White flag for reporting room home pages or camera pics" class="align-right"></p>
 <p>Tu peux <strong>rapporter une photo inappropri&#xE9;e, un appart ou ou la homepage d&apos;un appart</strong>&thinsp;:
 </p>
