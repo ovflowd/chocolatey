@@ -9,7 +9,7 @@
 <h4>Einen Habbo ignorieren</h4>
 <p>Wenn <strong>ein Habbo Dinge sagt, die dich unwohl f&#xFC;hlen lassen</strong>, kannst du diesen ignorieren. Das ist
     eine ideale L&#xF6;sung bei Qu&#xE4;lgeistern oder Spammern.</p>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/report_2_de.png"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_2_de.png"
         alt="Klicke auf einen Avatar zum ignorieren, moderieren oder melden" class="align-right"></p>
 <ol>
     <li>Klicke auf seinen Avatar. Es erscheint ein Drop-down Men&#xFC;.</li>
@@ -43,7 +43,7 @@
         w&#xE4;hlst, kann es sein, dass sich ein W&#xE4;chter darum k&#xFC;mmert.
     </li>
 </ol>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/help_button_de.png" alt="Hilfe-Schaltfl&#xE4;che"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/help_button_de.png" alt="Hilfe-Schaltfl&#xE4;che"
         class="align-right"></p>
 <p><strong>Eine andere Art, einen Habbo zu melden</strong>, ist folgende:</p>
 <ol>
@@ -65,9 +65,10 @@
     <li>Es &#xF6;ffnet sich ein Fenster wo du erkl&#xE4;ren kannst, was passiert ist.</li>
     <li>Moderatoren k&#xF6;nnen so die erforderlichen Ma&#xDF;nahmen ergreifen.</li>
 </ol>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/report_im_de.png" alt="Chatnachricht im Chatfenster melden"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_im_de.png"
+        alt="Chatnachricht im Chatfenster melden"></p>
 <h2>In einem Gruppenforum</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/flag_3.png"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/flag_3.png"
         alt="Orangene Flagge um Forumsbeitrag und -nachricht zu melden" class="align-right"></p>
 <p>Du kannst <strong>ein unangemessener Gruppenforumsbeitrag oder eine Nachricht melden</strong>:</p>
 <ol>
@@ -76,7 +77,7 @@
     <li>Moderatoren k&#xF6;nnen so die erforderlichen Ma&#xDF;nahmen ergreifen.</li>
 </ol>
 <h2>Auf der Webseite</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/reportroom.png"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/reportroom.png"
         alt="Weisse Flagge um Raum Homepages oder Kamerafotos zu melden" class="align-right"></p>
 <p>Du kannst <strong>ein unangebrachtes Foto, einen unangebrachten Raum, oder ein unangebrachtes Raumfoto auf der Raum
         Homepage oder der Fotoseite melden</strong>:</p>
@@ -105,5 +106,5 @@
 <h2>Habbo Kundenbetreuung</h2>
 <p>Wenn du ein <strong>Problem mit deinem Account hast, ein Fehler beim Talerkauf aufgetreten ist, oder aber du Fragen
         zu einem Accountbann hast</strong> wende dich an unseren <a target="_blank"
-                                                                    ng-href="{{'https://help.habbo.com' | zendeskRedirectUrl}}">Kundendienst</a>.
+                                                                    ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Kundendienst</a>.
 </p>

@@ -6,18 +6,18 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="robots" content="NOODP">
-        <title>{{$chocolatey->name}}</title>
+        <title>{{$chocolatey->hotelName}}</title>
         <meta name="description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
         <meta property="og:type" content="website">
-        <meta property="og:site_name" content="{{$chocolatey->name}}">
-        <meta property="og:title" content="{{$chocolatey->name}}">
+        <meta property="og:site_name" content="{{$chocolatey->hotelName}}">
+        <meta property="og:title" content="{{$chocolatey->hotelName}}">
         <meta property="og:description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
         <meta property="og:image:height" content="628">
         <meta property="og:image:width" content="1200">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{$chocolatey->name}}">
+        <meta name="twitter:title" content="{{$chocolatey->hotelName}}">
         <meta name="twitter:description"
               content="Join millions in the planet&apos;s most popular virtual world for teens. Create your avatar, meet new friends, role play, and build amazing spaces.">
         <meta name="twitter:site" content="{{$chocolatey->twitter->title}}">
@@ -27,8 +27,8 @@
               content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
         <meta name="prerender-status-code" prerender-status-code="">
         <meta name="prerender-header" prerender-header="">
-        <link rel="shortcut icon" href="{{$chocolatey->url}}habbo-web/favicon.ico">
-        <link rel="stylesheet" href="{{$chocolatey->url}}habbo-web/app.css">
+        <link rel="shortcut icon" href="{{$chocolatey->hotelUrl}}habbo-web/favicon.ico">
+        <link rel="stylesheet" href="{{$chocolatey->hotelUrl}}habbo-web/app.css">
         <script>
             !function () {
                 var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -37,7 +37,7 @@
         </script>
         <script>
             window.session = {!! $user !!};
-            window.chocolatey = {captcha: '{{$chocolatey->recaptcha}}', facebook: '{{$chocolatey->facebook->app->key}}', url: '{{$chocolatey->url}}', base: '{{$chocolatey->path}}', earn: '{{$chocolatey->earn == 1 ? 'true' : 'false'}}', name: '{{$chocolatey->name}}', lang: '{{$chocolatey->language}}', album: '{{$chocolatey->badges}}', plang: '{{$chocolatey->pagelanguage}}'};
+            window.chocolatey = {captcha: '{{$chocolatey->recaptcha}}', facebook: '{{$chocolatey->facebook->app->key}}', url: '{{$chocolatey->hotelUrl}}', base: '{{$chocolatey->path}}', earn: '{{$chocolatey->earn == 1 ? 'true' : 'false'}}', name: '{{$chocolatey->hotelName}}', lang: '{{$chocolatey->siteLanguage}}', album: '{{$chocolatey->badgeRepository}}', plang: '{{$chocolatey->pageLanguage}}'};
             window.geoLocation = {!! json_encode((object)$chocolatey->location) !!};
             window.partnerCodeInfo = null;
             window.banner = null;
@@ -50,7 +50,7 @@
     <habbo-client></habbo-client>
 </div>
 <habbo-eu-cookie-banner habbo-require-no-session></habbo-eu-cookie-banner>
-<script src="{{$chocolatey->url}}habbo-web/vendor.js"></script>
-<script src="{{$chocolatey->url}}habbo-web/scripts.js"></script>
+<script src="{{$chocolatey->hotelUrl}}habbo-web/vendor.js"></script>
+<script src="{{$chocolatey->hotelUrl}}habbo-web/scripts.js"></script>
 </body>
 </html>

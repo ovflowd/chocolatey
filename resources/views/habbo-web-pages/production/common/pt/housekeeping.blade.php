@@ -1,4 +1,5 @@
-<p>O Painel de Controle é uma área Administrativa usada para gerenciar o Servidor. Se você faz parte da equipe administrativa,
+<p>O Painel de Controle é uma área Administrativa usada para gerenciar o Servidor. Se você faz parte da equipe
+    administrativa,
          Você pode acessar o painel pressionando o botão para baixo.</p>
 <hr>
 <blockquote>

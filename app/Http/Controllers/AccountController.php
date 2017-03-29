@@ -212,7 +212,7 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send(['email' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
+        $mailController->send(['email' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
             'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}"
         ]);
 
@@ -309,7 +309,7 @@ class AccountController extends BaseController
     {
         $mailController = new MailController;
 
-        $mailController->send(['name' => $request->user()->name, 'email' => $request->user()->email, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
+        $mailController->send(['name' => $request->user()->name, 'email' => $request->user()->email, 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
             'url' => "/activate/{$mailController->prepare($request->user()->email, 'public/registration/activate')}"
         ]);
 

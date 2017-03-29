@@ -1,7 +1,7 @@
 <html>
 <head>
-    <script type="text/javascript" src="{{$chocolatey->url}}/habbo-web/assets/js/jquery.js"></script>
-    <script type="text/javascript" src="{{$chocolatey->url}}/habbo-web/assets/js/swfobject.js"></script>
+    <script type="text/javascript" src="{{$chocolatey->hotelUrl}}/habbo-web/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="{{$chocolatey->hotelUrl}}/habbo-web/assets/js/swfobject.js"></script>
     <script type="text/javascript">
         var flashvars = {
             "external.texts.txt": "{{$chocolatey->game->gamedata->texts}}",
@@ -9,12 +9,12 @@
             "furnidata.load.url": "{{$chocolatey->game->gamedata->furnidata}}",
             "external.variables.txt": "{{$chocolatey->game->gamedata->variables}}",
             "client.allow.cross.domain": "1",
-            "url.prefix": "{{$chocolatey->url}}",
+            "url.prefix": "{{$chocolatey->hotelUrl}}",
             "external.override.texts.txt": "{{$chocolatey->game->gamedata->overrideTexts}}",
-            "supersonic_custom_css": "{{$chocolatey->url}}/habbo-web/assets/css/hotel.css",
+            "supersonic_custom_css": "{{$chocolatey->hotelUrl}}/habbo-web/assets/css/hotel.css",
             "external.figurepartlist.txt": "{{$chocolatey->game->gamedata->figuredata}}",
             "flash.client.origin": "popup",
-            "client.starting": "Please Wait! {{$chocolatey->name}} is Loading...",
+            "client.starting": "Please Wait! {{$chocolatey->hotelName}} is Loading...",
             "processlog.enabled": "1",
             "has.identity": "1",
             "avatareditor.promohabbos": "https://www.habbo.com.br/api/public/lists/hotlooks",
@@ -32,7 +32,7 @@
         };
     </script>
     <script type="text/javascript"
-            src="{{$chocolatey->url}}/habbo-web/habboapi.js"></script>
+            src="{{$chocolatey->hotelUrl}}/habbo-web/habboapi.js"></script>
     <script type="text/javascript">
         var params = {
             "base": "{{$chocolatey->game->gordon}}",
@@ -40,14 +40,14 @@
             "menu": "false",
             "wmode": "opaque"
         };
-        swfobject.embedSWF('{{$chocolatey->game->flash}}', 'flash-container', '100%', '100%', '11.1.0', ' {{$chocolatey->url}}/habbo-web/assets/flash/expressInstall.swf', flashvars, params, null, null);
+        swfobject.embedSWF('{{$chocolatey->game->flash}}', 'flash-container', '100%', '100%', '11.1.0', ' {{$chocolatey->hotelUrl}}/habbo-web/assets/flash/expressInstall.swf', flashvars, params, null, null);
     </script>
     <style type="text/css" media="screen">
         #flash-container {
             visibility: hidden
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{$chocolatey->url}}/habbo-web/assets/css/hotel.css">
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey->hotelUrl}}/habbo-web/assets/css/hotel.css">
 </head>
 <body>
 <div id="client-ui">
@@ -57,7 +57,7 @@
                 <p>FLASH NOT INSTALLED</p>
                 <p>
                     <a href="https://www.adobe.com/go/getflashplayer">
-                        <img src="{{$chocolatey->url}}/habbo-web/assets/images/get_flash_player.png"
+                        <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/get_flash_player.png"
                              alt="Get Adobe Flash player"/>
                     </a>
                 </p>

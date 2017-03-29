@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'name' => 'Habbo',
+    'hotelName' => 'Habbo',
 
     /*
     |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/',
+    'hotelUrl' => 'http://localhost/',
 
     /*
     |--------------------------------------------------------------------------
@@ -152,9 +152,9 @@ return [
     |
     */
 
-    'language' => 'com',
+    'siteLanguage' => 'com',
 
-    'pagelanguage' => 'en',
+    'pageLanguage' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +179,7 @@ return [
     |
     */
 
-    'badges' => 'https://habboo-a.akamaihd.net/c_images/album1584',
+    'badgeRepository' => 'https://habboo-a.akamaihd.net/c_images/album1584',
 
     /*
     |--------------------------------------------------------------------------

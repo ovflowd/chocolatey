@@ -1,11 +1,13 @@
 <h1>Habbo, c&apos;est quoi?</h1>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey->url}}habbo-web/assets/web-images/join_now_FR.png"
-                                                    alt="Rejoins-nous" class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_FR.png"
+                alt="Rejoins-nous" class="align-right"></a></p>
 <p>Habbo est une communaut&#xE9; virtuelle en ligne pixelis&#xE9;e et vintage o&#xF9; tu pourras <strong>cr&#xE9;er ton
         propre avatar, te faire des amis, discuter, cr&#xE9;er des apparts, construire des jeux et y participer</strong>
     et bien plus encore! Presque tout est possible dans ce lieu &#xE9;trange, plein de gens incroyables&#x2026;</p>
 <h2>Plus qu&apos;un jeu&#x2026;</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_15.png" alt="Trouve ta place" class="align-right"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_15.png" alt="Trouve ta place" class="align-right">
+</p>
 <p>Relooker ton avatar avec toutes les tendances les plus folles n&apos;est pas la seule fa&#xE7;on de s&apos;amuser sur
     Habbo. Tu veux &#xEA;tre l&apos;architecte du si&#xE8;cle et <strong>construire des structures
         &#xE9;blouissantes</strong>? Le Builders Club est pour toi! Tu veux montrer <strong>tes comp&#xE9;tences de fou
@@ -18,7 +20,7 @@
     et sauve des vies de pixels. Inscris-toi et commence &#xE0; explorer les possibilit&#xE9;s infinies de r&#xF4;le!
 </p>
 <h2>Exprime-toi</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_16.png" alt="Exprime-toi" class="align-right"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_16.png" alt="Exprime-toi" class="align-right"></p>
 <p>La cr&#xE9;ativit&#xE9; et l&apos;originalit&#xE9; sont les bienvenues sur Habbo! Chaque semaine, nous avons de
     supers comp&#xE9;titions que tu peux rejoindre. Des <strong>constructions d&apos;apparts aux selfies, des vid&#xE9;os
         style pixel-art et comp&#xE9;titions d&apos;&#xE9;criture</strong> - une tonne de trucs cools t&apos;attendent
@@ -31,7 +33,7 @@
     au Buider Club et autres mobis peuvent &#xEA;tre achet&#xE9;s avec des Cr&#xE9;dits Habbo. Pour plus d&apos;informations
     sur les suppl&#xE9;ments dans le jeu, consulter <a href="/shop">Habbo Shopping</a>.</p>
 <h2>Toujours l&#xE0; pour aider&#x2026;</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_17.png" alt="Toujours l&#xE0; pour aider"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_17.png" alt="Toujours l&#xE0; pour aider"
         class="align-right"></p>
 <p>Habbo est surveill&#xE9; tous les jours de la semaine par des mod&#xE9;rateurs professionnels donc il y a <strong>toujours
         quelqu&apos;un pour t&apos;aider</strong> si tu as besoin d&apos;aide. Tu peux aussi faire beaucup de choses
@@ -47,8 +49,9 @@
     vid&#xE9;os Habbo sur notre <a href="https://www.youtube.com/playlist?list=PL074A16CEC751C213" target="_blank">Page
         Youtube</a>&#x2026;</p>
 <h2>Rejoins Habbo</h2>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey->url}}habbo-web/assets/web-images/join_now_FR.png"
-                                                    alt="Rejoins Habbo" class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_FR.png"
+                alt="Rejoins Habbo" class="align-right"></a></p>
 <p>Rejoins la plus grande communaut&#xE9; virtuelle en ligne pour adolescents. <a href="/registration">Rejoins Habbo
         maintenant</a>!</p>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_14.png" alt="Des mobis fantastiques"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_14.png" alt="Des mobis fantastiques"></p>

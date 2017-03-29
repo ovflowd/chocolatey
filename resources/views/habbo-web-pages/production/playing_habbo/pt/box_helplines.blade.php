@@ -1,9 +1,11 @@
 <h3>Centros de Ajuda</h3>
 <p>Se voc&#xEA; se sente triste, est&#xE1; sofrendo bullying, tendo maus pensamentos sobre voc&#xEA; mesmo ou apenas
-    quer falar com algu&#xE9;m e pedir conselhos e ajuda sobre coisas fora do {{$chocolatey->name}} Hotel, entre em contato com esses
+    quer falar com algu&#xE9;m e pedir conselhos e ajuda sobre coisas fora do {{$chocolatey->hotelName}} Hotel, entre em
+    contato com esses
     centros.</p>
-<p>Para ajuda relacionada ao {{$chocolatey->name}} Hotel, bans e problemas com a sua conta, entre em contato com a <a target="_blank"
-                                                                                                      ng-href="@{{'https://help.habbo.com.br/home' | zendeskRedirectUrl}}">Ferramenta
+<p>Para ajuda relacionada ao {{$chocolatey->hotelName}} Hotel, bans e problemas com a sua conta, entre em contato com a
+    <a target="_blank"
+       ng-href="@{{'https://help.habbo.com.br/home' | zendeskRedirectUrl}}">Ferramenta
         de Ajuda</a>.</p>
 <h4>Brasil</h4>
 <p><strong>SaferNet</strong></p>

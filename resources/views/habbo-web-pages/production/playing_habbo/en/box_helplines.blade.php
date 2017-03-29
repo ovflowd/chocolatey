@@ -1,7 +1,8 @@
 <h3>Teen helplines</h3>
 <p>If you are feeling sad, being bullied, harming yourself or just want to talk to someone for advice and help about
-    things outside {{$chocolatey->name}} , please contact these helplines.</p>
-<p>For player assistance, {{$chocolatey->name}} bans, and other {{$chocolatey->name}} -related questions, you can
+    things outside {{$chocolatey->hotelName}} , please contact these helplines.</p>
+<p>For player assistance, {{$chocolatey->hotelName}} bans, and other {{$chocolatey->hotelName}} -related questions, you
+    can
     contact
     the <a target="_blank"
            ng-href="@{{'https://help.habbo.com' | zendeskRedirectUrl}}">Habbo

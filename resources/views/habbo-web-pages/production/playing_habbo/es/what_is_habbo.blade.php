@@ -1,11 +1,13 @@
 <h1>&#xBF;Qu&#xE9; es Habbo?</h1>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey->url}}habbo-web/assets/web-images/join_now_es.png"
-                                                    alt="&#xDA;nete ahora" class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_es.png"
+                alt="&#xDA;nete ahora" class="align-right"></a></p>
 <p>&#xA1;Habbo es una comunidad virtual online de estilo vintage en donde puedes <strong>crear tu propio avatar, hacer
         amigos, chatear, construir salas y dise&#xF1;ar juegos,</strong> y mucho m&#xE1;s! Casi todo es posible en este
     sorprendente lugar repleto de gente incre&#xED;ble&#x2026;</p>
 <h2>M&#xE1;s que un simple juego&#x2026;</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_15.png" alt="Encuentra tu comunidad" class="align-right">
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_15.png" alt="Encuentra tu comunidad"
+        class="align-right">
 </p>
 <p>Vestir tu avatar con los estilos m&#xE1;s modernos no es la &#xFA;nica forma de divertirse en Habbo. &#xBF;Quieres
     ser el arquitecto del siglo y <strong>construir deslumbrantes estructuras</strong>? &#xA1;Entonces el Club del
@@ -20,7 +22,8 @@
     en una enfermera y ayuda a curar los p&#xED;xeles de nuestros pacientes enfermos. &#xA1;&#xDA;nete ya a nuestra
     comunidad y empieza a explorar un universo infinito de situaciones!</p>
 <h2>Expr&#xE9;sate</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_16.png" alt="Express yourself" class="align-right"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_16.png" alt="Express yourself"
+        class="align-right"></p>
 <p>&#xA1;La creatividad e imaginaci&#xF3;n son siempre bienvenidas en Habbo! Todas las semanas tenemos montones de
     concursos en los que poder participar. Desde <strong>competiciones de salas y fotos, hasta pixel-art, v&#xED;deos y
         concursos de looks</strong> &#xA1;Hay miles de cosas con las que poder dejar fluir tu imaginaci&#xF3;n y ganar
@@ -33,7 +36,7 @@
     Arquitecto y furnis. Para m&#xE1;s informaci&#xF3;n sobre c&#xF3;mo conseguir cr&#xE9;ditos visita la secci&#xF3;n
     <a href="/shop">Habbo Compras</a></p>
 <h2>Siempre dispuestos a ayudar&#x2026;</h2>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_17.png" alt="Pincha aqu&#xED; si necesitas ayuda"
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_17.png" alt="Pincha aqu&#xED; si necesitas ayuda"
         class="align-right"></p>
 <p>Los Staff de Habbo moderan el Hotel en tiempo real, por lo que <strong>siempre tendr&#xE1;s alguien cerca a qui&#xE9;n
         poder pedirle ayuda</strong> si lo necesitas. Si quieres jugar a Habbo y navegar por Internet de forma segura te
@@ -47,8 +50,9 @@
     nuestros v&#xED;deos en nuestra p&#xE1;gina de <a href="https://www.youtube.com/user/ESHabbo" target="_blank">Youtube</a>
 </p>
 <h2>&#xA1;&#xDA;nete a Habbo!</h2>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey->url}}habbo-web/assets/web-images/join_now_es.png"
-                                                    alt="&#xDA;nete ahora " class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_es.png"
+                alt="&#xDA;nete ahora " class="align-right"></a></p>
 <p>&#xA1;Forma parte de una de las mayores comunidades virtuales para j&#xF3;venes! <a href="/registration">&#xDA;nete a
         Habbo ahora</a></p>
-<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/ill_14.png" alt="Furni Fantas&#xED;a"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_14.png" alt="Furni Fantas&#xED;a"></p>
