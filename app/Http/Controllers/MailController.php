@@ -21,11 +21,13 @@ class MailController extends BaseController
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
     {
-        if (Config::get('mail.enable'))
-            Mail::send($view, $configuration, function ($message) use ($configuration) {
-                $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
-                $message->to($configuration['mail'])->subject($configuration['subject']);
-            });
+        if (!Config::get('mail.enable'))
+            return;
+
+        Mail::send($view, $configuration, function ($message) use ($configuration) {
+            $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+            $message->to($configuration['email'])->subject($configuration['subject']);
+        });
     }
 
     /**

@@ -27,7 +27,7 @@
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;padding:0;margin:0 0 16px 0">
                             A yellow ducky told us that you need to reset your password for the {{$chocolatey->name}}
                             account connected
-                            to {{$sendMail}}
+                            to {{$email}}
                         </p>
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;margin:16px 0 16px 0;padding:0">
                             The link below will expire <span class="aBn" data-term="goog_1172259623" tabindex="0"><span

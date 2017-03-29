@@ -26,7 +26,7 @@
                             Hey there {{$name}}!</h1>
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;padding:0;margin:0 0 16px 0">
                             A yellow ducky told us that you requested to change your email address of the {{$chocolatey->name}} account
-                            to the email address: {{$newMail}}
+                            to the email address: {{$email}}
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;margin:16px 0 16px 0;padding:0">
                             If you requested this change, you can disregard this email.</p>
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;margin:16px 0 16px 0;padding:0">
