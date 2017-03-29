@@ -213,7 +213,7 @@ class AccountController extends BaseController
         $mailController = new MailController;
 
         $mailController->send(['mail' => $userMail, 'name' => $userName, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
-            'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}"
+            'url' => "/activate/{$mailController->prepare($userMail, 'public/registration/activate')}", 'sendMail' => $request->user()->email
         ]);
 
         $userData = new User;
@@ -274,7 +274,7 @@ class AccountController extends BaseController
 
         $mailController = new MailController;
 
-        $mailController->send(['name' => $user->name, 'mail' => $user->email, 'subject' => 'Password reset confirmation',
+        $mailController->send(['name' => $user->name, 'mail' => $user->email, 'sendMail' => $user->email, 'subject' => 'Password reset confirmation',
             'url' => "/reset-password/{$mailController->prepare($user->email, 'public/forgotPassword')}"
         ], 'habbo-web-mail.password-reset');
 
@@ -292,7 +292,7 @@ class AccountController extends BaseController
         $mailController = new MailController;
 
         $mailController->send(['name' => $request->user()->name, 'mail' => $request->user()->email, 'subject' => 'Welcome to ' . Config::get('chocolatey.name'),
-            'url' => "/activate/{$mailController->prepare($request->user()->email, 'public/registration/activate')}"
+            'url' => "/activate/{$mailController->prepare($request->user()->email, 'public/registration/activate')}", 'sendMail' => $request->user()->email
         ]);
 
         return response(null);

@@ -1,53 +1,53 @@
 <html>
 <head>
-    <script type="text/javascript" src="{{$chocolatey['url']}}/habbo-web/assets/js/jquery.js"></script>
-    <script type="text/javascript" src="{{$chocolatey['url']}}/habbo-web/assets/js/swfobject.js"></script>
+    <script type="text/javascript" src="{{$chocolatey->url}}/habbo-web/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="{{$chocolatey->url}}/habbo-web/assets/js/swfobject.js"></script>
     <script type="text/javascript">
         var flashvars = {
-            "external.texts.txt": "{{$chocolatey['game']['gamedata']['texts']}}",
-            "connection.info.port": "{{$chocolatey['emulator']['port']}}",
-            "furnidata.load.url": "{{$chocolatey['game']['gamedata']['furnidata']}}",
-            "external.variables.txt": "{{$chocolatey['game']['gamedata']['variables']}}",
+            "external.texts.txt": "{{$chocolatey->game->gamedata->texts}}",
+            "connection.info.port": "{{$chocolatey->emulator->port}}",
+            "furnidata.load.url": "{{$chocolatey->game->gamedata->furnidata}}",
+            "external.variables.txt": "{{$chocolatey->game->gamedata->variables}}",
             "client.allow.cross.domain": "1",
-            "url.prefix": "{{$chocolatey['url']}}",
-            "external.override.texts.txt": "{{$chocolatey['game']['gamedata']['override_texts']}}",
-            "supersonic_custom_css": "{{$chocolatey['url']}}/habbo-web/assets/css/hotel.css",
-            "external.figurepartlist.txt": "{{$chocolatey['game']['gamedata']['figuredata']}}",
+            "url.prefix": "{{$chocolatey->url}}",
+            "external.override.texts.txt": "{{$chocolatey->game->gamedata->overrideTexts}}",
+            "supersonic_custom_css": "{{$chocolatey->url}}/habbo-web/assets/css/hotel.css",
+            "external.figurepartlist.txt": "{{$chocolatey->game->gamedata->figuredata}}",
             "flash.client.origin": "popup",
-            "client.starting": "Please Wait! {{$chocolatey['name']}} is Loading...",
+            "client.starting": "Please Wait! {{$chocolatey->name}} is Loading...",
             "processlog.enabled": "1",
             "has.identity": "1",
             "avatareditor.promohabbos": "https://www.habbo.com.br/api/public/lists/hotlooks",
-            "productdata.load.url": "{{$chocolatey['game']['gamedata']['productdata']}}",
-            "client.starting.revolving": "{!! implode('/', $chocolatey['loading']) !!}",
-            "external.override.variables.txt": "{{$chocolatey['game']['gamedata']['override_variables']}}",
+            "productdata.load.url": "{{$chocolatey->game->gamedata->productdata}}",
+            "client.starting.revolving": "{!! implode('/', $chocolatey->loading) !!}",
+            "external.override.variables.txt": "{{$chocolatey->game->gamedata->overrideVariables}}",
             "spaweb": "1",
             "supersonic_application_key": "2c63c535",
-            "connection.info.host": "{{$chocolatey['emulator']['address']}}",
+            "connection.info.host": "{{$chocolatey->emulator->address}}",
             "sso.ticket": "{{$token}}",
             "client.notify.cross.domain": "0",
-            "account_id": "{{$user['uniqueId']}}",
-            "flash.client.url": "{{$chocolatey['game']['gordon']}}",
-            "unique_habbo_id": "{{$user['id']}}",
+            "account_id": "{{$user->uniqueId}}",
+            "flash.client.url": "{{$chocolatey->game->gordon}}",
+            "unique_habbo_id": "{{$user->id}}",
         };
     </script>
     <script type="text/javascript"
-            src="{{$chocolatey['url']}}/habbo-web/habboapi.js"></script>
+            src="{{$chocolatey->url}}/habbo-web/habboapi.js"></script>
     <script type="text/javascript">
         var params = {
-            "base": "{{$chocolatey['game']['gordon']}}",
+            "base": "{{$chocolatey->game->gordon}}",
             "allowScriptAccess": "always",
             "menu": "false",
             "wmode": "opaque"
         };
-        swfobject.embedSWF('{{$chocolatey['game']['flash']}}', 'flash-container', '100%', '100%', '11.1.0', ' {{$chocolatey['url']}}/habbo-web/assets/flash/expressInstall.swf', flashvars, params, null, null);
+        swfobject.embedSWF('{{$chocolatey->game->flash}}', 'flash-container', '100%', '100%', '11.1.0', ' {{$chocolatey->url}}/habbo-web/assets/flash/expressInstall.swf', flashvars, params, null, null);
     </script>
     <style type="text/css" media="screen">
         #flash-container {
             visibility: hidden
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{{$chocolatey['url']}}/habbo-web/assets/css/hotel.css">
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey->url}}/habbo-web/assets/css/hotel.css">
 </head>
 <body>
 <div id="client-ui">
@@ -57,7 +57,7 @@
                 <p>FLASH NOT INSTALLED</p>
                 <p>
                     <a href="https://www.adobe.com/go/getflashplayer">
-                        <img src="{{$chocolatey['url']}}/habbo-web/assets/images/get_flash_player.png"
+                        <img src="{{$chocolatey->url}}/habbo-web/assets/images/get_flash_player.png"
                              alt="Get Adobe Flash player"/>
                     </a>
                 </p>

@@ -4,4 +4,4 @@
     Tambi&#xE9;n incluye una lista de n&#xFA;meros de tel&#xE9;fono y p&#xE1;ginas web en caso de que necesites hablar
     con alguien.
     Si no encuentras una respuesta adecuada en esta p&#xE1;gina, ponte en contacto con el <a
-            href="https://help.habbo.es/" target="_blank">Ayudante de {{$chocolatey['name']}}</a>.</p>
+            href="https://help.habbo.es/" target="_blank">Ayudante de {{$chocolatey->name}}</a>.</p>

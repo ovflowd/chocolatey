@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{$chocolatey['name']}}</title>
+    <title>{{$chocolatey->name}}</title>
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
+    <link rel="shortcut icon" href="{{$chocolatey->url}}habbo-web/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey->url}}/habbo-web/assets/css/maintenance.css">
     <script>
         !function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -18,7 +18,7 @@
 <body>
 <div class="content">
     <div class="header">
-        <div class="wrapper"><a href="{{$chocolatey['url']}}" class="habbo-image"></a></div>
+        <div class="wrapper"><a href="{{$chocolatey->url}}" class="habbo-image"></a></div>
     </div>
     <div class="wrapper">
         <div class="page-content">
@@ -29,7 +29,7 @@
                         This happen because you didn't configured espreso integration correctly, or, Espreso is still
                         under development.</p>
                     <a href="/">You can go back to earlier page.</a>
-                    <img style="float:right" src="{{$chocolatey['url']}}habbo-web/assets/images/frank.gif"/>
+                    <img style="float:right" src="{{$chocolatey->url}}habbo-web/assets/images/frank.gif"/>
                 </div>
             </div>
         </div>

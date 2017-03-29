@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td valign="top">
-                                    © 2017 {{$chocolatey['name']}} by Chocolatey
+                                    © 2017 {{$chocolatey->name}} by Chocolatey
                                 </td>
                             </tr>
                             </tbody>

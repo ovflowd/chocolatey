@@ -8,7 +8,7 @@
 <p>Si <strong>un Habbo est&#xE1; diciendo cosas que te hacen sentir inc&#xF3;modo</strong>, puedes seleccionar la opci&#xF3;n
     &quot;ignorar!. Esta es una soluci&#xF3;n ideal para provocaciones, spam o cuando simplemente quieres que te dejen
     tranquilo y no sabes c&#xF3;mo decirlo.</p>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_es.png"
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/report_es.png"
         alt="Haz clic en un avatar para ignorar, moderar o reportar" class="align-right"></p>
 <ol>
     <li>Haz clic en su avatar. Se desplegar&#xE1; un men&#xFA;.</li>
@@ -42,7 +42,7 @@
     <li>Finalmente haz clic en <em>Pedir Ayuda</em>. Si eliges <em>Acosos</em> un Guardi&#xE1;n podr&#xE1; intervenir.
     </li>
 </ol>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/help_button_es.png" alt="Bot&#xF3;n de Ayuda" class="align-right">
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/help_button_es.png" alt="Bot&#xF3;n de Ayuda" class="align-right">
 </p>
 <p>Otra manera de hacer lo mismo es &#xE9;sta:</p>
 <ol>
@@ -64,9 +64,9 @@
     <li>Te preguntar&#xE1;n m&#xE1;s detalles sobre lo ocurrido.</li>
     <li>Tras valorar lo sucedido, un Moderador tomar&#xE1; la acci&#xF3;n adecuada.</li>
 </ol>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/report_im_es.png" alt="Reportar a un Habbo en consola"></p>
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/report_im_es.png" alt="Reportar a un Habbo en consola"></p>
 <h2>En un foro de grupo</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/flag_3.png"
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/flag_3.png"
         alt="Bandera naranja para reportar hilos y post de un foro" class="align-right"></p>
 <p>Puedes <strong>reportar un hilo o post inapropiado de un foro de grupo</strong>:</p>
 <ol>
@@ -75,7 +75,7 @@
     <li>Tras valorar la situaci&#xF3;n, un moderador tomar&#xE1; las medidas oportunas.</li>
 </ol>
 <h2>En una p&#xE1;gina web</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/reportroom.png"
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/reportroom.png"
         alt="White flag for reporting room home pages or camera pics" class="align-right"></p>
 <p>Puedes <strong>reportar una imagen inapropiada, sala o imagen de sala en una room homepage o p&#xE1;gina de
         fotos</strong>:</p>

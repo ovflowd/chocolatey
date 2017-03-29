@@ -154,7 +154,7 @@ return [
 
     'language' => 'com',
 
-    'pages-language' => 'en',
+    'pagelanguage' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -266,8 +266,8 @@ return [
             'productdata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/productdata.txt',
             'variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_variables.txt',
             'texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_flash_texts.txt',
-            'override_variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
-            'override_texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
+            'overrideVariables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
+            'overrideTexts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
     

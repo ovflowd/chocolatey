@@ -1,5 +1,5 @@
 <h1>Fansite Oficiales</h1>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/habbo_friends.png" alt="Fansites" class="align-right"></p>
+<p><img src="{{$chocolatey->url}}habbo-web/assets/web-images/habbo_friends.png" alt="Fansites" class="align-right"></p>
 <p>Estas son las Fansites Oficiales del Hotel:</p>
 <ul>
     <li><a href="http://habtium.es" target="_blank">http://habtium.es</a></li>
@@ -13,5 +13,5 @@
     llegue ese momento, lo comunicaremos en la web. &#xA1;Consulta el <a
             href="https://help.habbo.es/entries/23966066-Nueva-Pol%C3%ADtica-de-Fansites" target="_blank">Reglamento
         Fansite</a> si tienes alguna duda!</p>
-<p>&#xA1;Adem&#xE1;s, recuerda mantener siempre tus datos de acceso a {{$chocolatey['name']}} en privado! &#xA1;No los uses para
+<p>&#xA1;Adem&#xE1;s, recuerda mantener siempre tus datos de acceso a {{$chocolatey->name}} en privado! &#xA1;No los uses para
     registrarte en otras p&#xE1;ginas web!</p>

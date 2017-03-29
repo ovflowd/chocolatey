@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{$chocolatey['name']}}</title>
+    <title>{{$chocolatey->name}}</title>
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{$chocolatey['url']}}habbo-web/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="{{$chocolatey['url']}}/habbo-web/assets/css/maintenance.css">
+    <link rel="shortcut icon" href="{{$chocolatey->url}}habbo-web/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{$chocolatey->url}}/habbo-web/assets/css/maintenance.css">
     <script>
         !function () {
             var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -18,18 +18,18 @@
 <body>
 <div class="content">
     <div class="header">
-        <div class="wrapper"><a href="{{$chocolatey['url']}}" class="habbo-image"></a></div>
+        <div class="wrapper"><a href="{{$chocolatey->url}}" class="habbo-image"></a></div>
     </div>
     <div class="wrapper">
         <div class="page-content">
             <div class="main">
-                <div class="box with-bottom-error-image"><h1>{{$maintenance['title']}}</h1>
-                    <p>{{$maintenance['text']}}</p>
+                <div class="box with-bottom-error-image"><h1>{{$maintenance->title}}</h1>
+                    <p>{{$maintenance->text}}</p>
                 </div>
             </div>
             <div class="aside">
                 <a class="twitter-timeline" data-width="300" data-height="400"
-                   href="https://twitter.com/{{$chocolatey['twitter']['username']}}">{{$chocolatey['twitter']['title']}}</a>
+                   href="https://twitter.com/{{$chocolatey->twitter->username}}">{{$chocolatey->twitter->tittle}}</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
