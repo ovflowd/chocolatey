@@ -28,7 +28,7 @@
             "client.notify.cross.domain": "0",
             "account_id": "{{$user->uniqueId}}",
             "flash.client.url": "{{$chocolatey->game->gordon}}",
-            "unique_habbo_id": "{{$user->id}}",
+            "unique_habbo_id": "{{$user->uniqueId}}",
         };
     </script>
     <script type="text/javascript"
