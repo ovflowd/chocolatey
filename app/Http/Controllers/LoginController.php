@@ -78,9 +78,9 @@ class LoginController extends BaseController
         if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0)
             return response()->json(['error' => 'registration_email_in_use'], 409);
 
-        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
+        $dateOfBirth = strtotime("{$request->json()->get('birthdate')['day']}/{$request->json()->get('birthdate')['month']}/{$request->json()->get('birthdate')['year']}");
 
-        $dateOfBirth = strtotime("{$request->json()->get('birthdate')->day}/{$request->json()->get('birthdate')->month}/{$request->json()->get('birthdate')->year}");
+        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
 
         $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
