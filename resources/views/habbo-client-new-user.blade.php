@@ -27,7 +27,7 @@
             "client.notify.cross.domain": "0",
             "account_id": "{{$user->uniqueId}}",
             "flash.client.url": "{{$chocolatey->game->gordon}}",
-            "unique_habbo_id": "{{$user->id}}",
+            "unique_habbo_id": "{{$user->uniqueId}}",
             "new.user.flow.enabled": "true",
             "new.user.flow.onboarding.choose.your.room": "Choose your room",
             "new.user.flow.figure.ok": "Figure change ok!",
