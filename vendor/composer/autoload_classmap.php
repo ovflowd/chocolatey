@@ -13,7 +13,6 @@ return array(
     'CreateAzureUsersPhotosLikesTable' => $baseDir . '/database/migrations/2017_01_25_015949_create_azure_users_photos_likes_table.php',
     'CreateAzureUsersPhotosReportedCategoriesTable' => $baseDir . '/database/migrations/2017_01_25_024602_create_azure_users_photos_reported_categories_table.php',
     'CreateAzureUsersPhotosReportedTable' => $baseDir . '/database/migrations/2017_01_25_024353_create_azure_users_photos_reported_table.php',
-    'CreateAzureUsersPhotosTable' => $baseDir . '/database/migrations/2017_01_25_015934_create_azure_users_photos_table.php',
     'CreateAzureUsersPreferencesTable' => $baseDir . '/database/migrations/2017_01_25_184504_create_azure_users_preferences_table.php',
     'CreateAzureUsersSecurityTable' => $baseDir . '/database/migrations/2017_01_25_184255_create_azure_users_security_table.php',
     'CreateAzureUsersSecurityTrustedTable' => $baseDir . '/database/migrations/2017_01_26_235459_create_azure_users_security_trusted_table.php',

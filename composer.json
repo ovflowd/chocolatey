@@ -62,7 +62,8 @@
     "sofa/eloquence": "master",
     "rdehnhardt/lumen-maintenance-mode": "^1.2",
     "illuminate/mail": "5.4.*",
-    "intervention/image": "^2.3"
+    "intervention/image": "^2.3",
+    "facebook/graph-sdk": "^5.4"
   },
   "autoload": {
     "psr-4": {

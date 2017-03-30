@@ -1,11 +1,13 @@
 <h1>Was ist Habbo?</h1>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now_de.png"
-                                                    alt="Hier anmelden" class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_de.png"
+                alt="Hier anmelden" class="align-right"></a></p>
 <p>Habbo ist eine virtuelle online Community im vintage Pixelkunst Style wo du deinen eigenen <strong>Avatar kreieren,
         Freunde finden, chatten, R&#xE4;ume bauen, entwerfen + Spiele spielen</strong> kannst und vieles mehr! Es ist
     fast alles m&#xF6;glich in diesem seltsamen Ort mit vielen tollen Leuten&#x2026;</p>
 <h2>Mehr als nur ein Spiel&#x2026;</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_15.png" alt="Finde deine Community" class="align-right">
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_15.png" alt="Finde deine Community"
+        class="align-right">
 </p>
 <p>Deinen Habbo mit den trendigsten Styles zu stylen ist nicht das einzige, um in Habbo Spass zu haben. M&#xF6;chtest du
     den Architekt des Jahrhunderts werden und <strong>umwerfende Bauwerke bauen</strong>? Dann ist der Builders Club
@@ -19,7 +21,8 @@
     Piste herumstolzierst, werde eine Krankenschwester und rette Pixelleben. Mach mit und entdecke die endlosen
     Rollenspiel M&#xF6;glichkeiten!</p>
 <h2>&#xC4;ussere dich</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_16.png" alt="&#xC4;ussere dich " class="align-right"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_16.png" alt="&#xC4;ussere dich "
+        class="align-right"></p>
 <p>Kreativit&#xE4;t und Individualit&#xE4;t sind in Habbo willkommen! Jede Woche haben wir eine Menge toller Wettbewerbe
     f&#xFC;r dich. Von <strong>Raum bauen und Selfies bis hin zu Pixelkunst Videos und Kurzgeschichten
         Wettbewerben</strong> - es gibt eine Menge cooler Dinge um deine K&#xFC;nstlerischen F&#xE4;higkeiten unter
@@ -32,7 +35,7 @@
     k&#xF6;nnen mit HabboTaler gekauft werden. F&#xFC;r weitere Infos zu den in-game Extras, gehe zum <a href="/shop">HabboShop</a>.
 </p>
 <h2>Immer da um zu helfen&#x2026;</h2>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_17.png" alt="Immer da um zu helfen..."
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_17.png" alt="Immer da um zu helfen..."
         class="align-right"></p>
 <p>Offizielle Habbo Staffs und Moderatoren moderieren das Hotel in Echtzeit, damit <strong>immer jemand in der N&#xE4;he
         ist, um zu helfen</strong> wenn du Hilfe brauchst. Du kannst ebenfalls viel tun um sicher zu stellen, dass du
@@ -46,8 +49,9 @@
     weitere Videos auf der <a href="https://www.youtube.com/user/habbo" target="_blank">Habbo YouTube Seite</a> an&#x2026;
 </p>
 <h2>Melde dich jetzt bei Habbo an!</h2>
-<p><a href="/registration" class="remove-link"><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/join_now_de.png"
-                                                    alt="Melde dich jetzt an" class="align-right"></a></p>
+<p><a href="/registration" class="remove-link"><img
+                src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/join_now_de.png"
+                alt="Melde dich jetzt an" class="align-right"></a></p>
 <p>Werde ein Teil der weltweit gr&#xF6;&#xDF;ten Online-Community f&#xFC;r Teenager. <a href="/registration">Melde dich
         jetzt bei Habbo an</a>!</p>
-<p><img src="{{$chocolatey['url']}}habbo-web/assets/web-images/ill_14.png" alt="Fantasie M&#xF6;belst&#xFC;ck"></p>
+<p><img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/ill_14.png" alt="Fantasie M&#xF6;belst&#xFC;ck"></p>

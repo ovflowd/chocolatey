@@ -3,6 +3,7 @@
 namespace Rdehnhardt\MaintenanceMode\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Rdehnhardt\MaintenanceMode\MaintenanceModeService;

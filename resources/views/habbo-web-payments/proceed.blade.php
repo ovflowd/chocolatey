@@ -2,19 +2,19 @@
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="{{$chocolatey['url']}}/habbo-web/assets/css/habbo.css" rel="stylesheet">
+    <link href="{{$chocolatey->hotelUrl}}/habbo-web/assets/css/habbo.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Ubuntu:normal|Ubuntu+Condensed:normal" rel=stylesheet>
 </head>
 <body>
 <div class="center">
-    <img src="{{$chocolatey['url']}}/habbo-web/assets/images/load_anim_sml.png"
-         srcset="{{$chocolatey['url']}}/habbo-web/assets/images/load_anim_sml.png 1x, {{$chocolatey['url']}}/habbo-web/assets/images/load_anim_sml_big.png 2x"
+    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_sml.png"
+         srcset="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_sml.png 1x, {{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_sml_big.png 2x"
          class="spinner spinner--small"
          alt="Loading"
          width="32"
          height="32">
-    <img src="{{$chocolatey['url']}}/habbo-web/assets/images/load_anim_lrg.png"
-         srcset="{{$chocolatey['url']}}/habbo-web/assets/images/load_anim_lrg.png 1x, /{{$chocolatey['url']}}/habbo-web/assets/images/load_anim_lrg_big.png 2x"
+    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_lrg.png"
+         srcset="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_lrg.png 1x, /{{$chocolatey->hotelUrl}}/habbo-web/assets/images/load_anim_lrg_big.png 2x"
          class="spinner spinner--large"
          alt="Loading"
          width="68"

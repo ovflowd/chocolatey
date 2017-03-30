@@ -50,6 +50,7 @@ return array(
     'Illuminate\\Auth\\' => array($vendorDir . '/illuminate/auth'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Facebook\\' => array($vendorDir . '/facebook/graph-sdk/src/Facebook'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Cron\\' => array($vendorDir . '/mtdowling/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),

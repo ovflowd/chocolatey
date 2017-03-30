@@ -15,6 +15,7 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         'bee9632da3ca00a99623b9c35d0c4f8b' => __DIR__ . '/..' . '/laravel/lumen-framework/src/helpers.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c3506a526c5ff171720322fdf42d15c3' => __DIR__ . '/..' . '/sofa/eloquence/src/helpers.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -88,6 +89,7 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         'F' => 
         array (
             'FastRoute\\' => 10,
+            'Facebook\\' => 9,
         ),
         'D' => 
         array (
@@ -281,6 +283,10 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -324,7 +330,6 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         'CreateAzureUsersPhotosLikesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_015949_create_azure_users_photos_likes_table.php',
         'CreateAzureUsersPhotosReportedCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_024602_create_azure_users_photos_reported_categories_table.php',
         'CreateAzureUsersPhotosReportedTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_024353_create_azure_users_photos_reported_table.php',
-        'CreateAzureUsersPhotosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_015934_create_azure_users_photos_table.php',
         'CreateAzureUsersPreferencesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_184504_create_azure_users_preferences_table.php',
         'CreateAzureUsersSecurityTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_184255_create_azure_users_security_table.php',
         'CreateAzureUsersSecurityTrustedTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_26_235459_create_azure_users_security_trusted_table.php',
