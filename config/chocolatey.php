@@ -94,7 +94,7 @@ return [
 
     'ads' => [
         'enabled' => true,
-        'adsene-key' => 'YOUR-ADSENE-KEY' //DEFAULT: /108596585/HABBO_Video
+        'adseneKey' => 'YOUR-ADSENE-KEY' //DEFAULT: /108596585/HABBO_Video
     ],
 
     /*
@@ -270,7 +270,7 @@ return [
             'overrideTexts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Loading Screen
@@ -279,7 +279,7 @@ return [
     | Configure the text of Loading Screen.
     |
     */
-    
+
     'loading' => [
         'Loading Habbo Hotel',
         'See those Yellow Duckies, It\'s Wesley, no?',

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <head>
     <meta charset=UTF-8>
     <title></title>
@@ -116,11 +114,11 @@
             l(e);
             var t = w.getRemainingTime(), n = E(e.type);
             m(-1 !== v ? {
-                    category: "interstitial",
-                    name: n,
-                    duration: v,
-                    remaining: -1 === t ? 0 : t
-                } : {category: "interstitial", name: n})
+                category: "interstitial",
+                name: n,
+                duration: v,
+                remaining: -1 === t ? 0 : t
+            } : {category: "interstitial", name: n})
         }
 
         function s(e) {
@@ -156,7 +154,7 @@
             })[0]
         }
 
-        var A, p, w, v, f = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu={{$chocolatey->ads->adsene-key}}&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=https%3A%2F%2F{{$chocolatey->hotelUrl}}&correlator=[timestamp]", y = document.getElementById("adContainer");
+        var A, p, w, v, f = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu={{$chocolatey->ads->adseneKey}}&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=https%3A%2F%2F{{$chocolatey->hotelUrl}}&correlator=[timestamp]", y = document.getElementById("adContainer");
         window.onload = function () {
             e(), t(), n(), o()
         }, window.onerror = function (e) {
@@ -166,6 +164,4 @@
             }, "*")
         }
     }();</script>
-<script src=https://imasdk.googleapis.com/js/sdkloader/ima3.js onload=onload onerror=onerror async></script>
-</body>
-</html>
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" onload=onload onerror=onerror async></script>
