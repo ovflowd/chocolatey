@@ -36,7 +36,7 @@
             }();
         </script>
         <script>
-            window.session = {!! json_encode($user) !!};
+            window.session = {!! $user !!};
             window.chocolatey = {captcha: '{{$chocolatey->recaptcha}}', facebook: '{{$chocolatey->facebook->app->key}}', url: '{{$chocolatey->hotelUrl}}', base: '{{$chocolatey->path}}', earn: '{{$chocolatey->earn == 1 ? 'true' : 'false'}}', name: '{{$chocolatey->hotelName}}', lang: '{{$chocolatey->siteLanguage}}', album: '{{$chocolatey->badgeRepository}}', plang: '{{$chocolatey->pageLanguage}}'};
             window.geoLocation = {!! json_encode((object)$chocolatey->location) !!};
             window.partnerCodeInfo = null;
