@@ -3768,7 +3768,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     })
 }]).run(["$rootScope", "$state", "Session", function (e, t, o) {
     e.$on("$stateChangeStart", function (e, r) {
-        "registration" === r.name && (o.hasSession() || bowser.android || bowser.ios) && (e.preventDefault(), t.go("home.news"))
+        "registration" === r.name && (o.hasSession()) && (e.preventDefault(), t.go("home.news"))
     })
 }]),angular.module("registration.form", ["ngMessages", "birthdate", "config", "form", "google.analytics", "locale", "notifier", "registration.partner", "registration.policies", "registration.service", "router", "security", "system.data", "templates"]).component("habboRegistrationForm", {
     controller: ["$scope", "$state", "$stateParams", "CAPTCHA_EVENTS", "CONFIG", "SystemData", "googleAnalytics", "notifier", "registration", function (e, t, o, r, a, n, i, s, l) {
@@ -4162,7 +4162,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     ), e.put("home/news/news.html",
         '<habbo-moderation-notification habbo-require-session></habbo-moderation-notification><section><h1 translate="NEWS_TITLE"></h1><div class="main main--fixed"><habbo-compile data="NewsController.promos"></habbo-compile><div class="news__navigation"><a href="/community/category/all" class="news__more" translate="NEWS_MORE"></a></div></div><habbo-ad-unit unit="inlineRectangle" class="aside aside--fixed"></habbo-ad-unit><habbo-web-pages key="common/box_learn_how_to_stay_safe" class="aside aside--box aside--fixed"></habbo-web-pages><habbo-web-pages key="common/box_parents_guide" class="aside aside--box aside--fixed"></habbo-web-pages></section>'
     ), e.put("home/register-banner/register-banner.html",
-        '<div class="register-banner__hotel"></div><div class="register-banner__wrapper"><div class="register-banner__register"><h1 class="register-banner__logo">Habbo</h1><h2 class="register-banner__title" translate="HEADER_TITLE"></h2><a href="/registration" habbo-android-download-link habbo-ios-download-link class="register-banner__button" translate="REGISTER_PROMPT"></a><habbo-local-register-banner></habbo-local-register-banner></div></div>'
+        '<div class="register-banner__hotel"></div><div class="register-banner__wrapper"><div class="register-banner__register"><h1 class="register-banner__logo">Habbo</h1><h2 class="register-banner__title" translate="HEADER_TITLE"></h2><a href="/registration" class="register-banner__button" translate="REGISTER_PROMPT"></a><habbo-local-register-banner></habbo-local-register-banner></div></div>'
     ), e.put("hotel/client/client.html",
         '<div ngsf-fullscreen habbo-client-close-fullscreen-on-hide ng-class="{ \'client--visible\': ClientController.visible }" class="client"><div class="client__buttons"><button ng-click="ClientController.close()" habbo-client-close-expander class="client__close"><i class="client__close__icon icon icon--habbo"></i><div habbo-client-close-expand class="client__close__expand"><div class="client__close__text" translate="CLIENT_TO_WEB_BUTTON"></div></div></button> <button ngsf-toggle-fullscreen class="client__fullscreen"><i show-if-fullscreen="false" class="client__fullscreen__icon icon icon--fullscreen"></i> <i show-if-fullscreen class="client__fullscreen__icon icon icon--fullscreen-back"></i></button></div><iframe id="hotel-client" ng-if="ClientController.isOpen && ClientController.flashEnabled" ng-src="{{ ClientController.client.clienturl }}" habbo-client-communication class="client__frame"></iframe><habbo-client-reload ng-if="ClientController.isOpen && ClientController.flashEnabled && !ClientController.running" reload="ClientController.reload()"></habbo-client-reload><habbo-client-error ng-if="ClientController.isOpen && !ClientController.flashEnabled"></habbo-client-error><habbo-client-closed ng-if="!ClientController.isOpen"></habbo-client-closed><habbo-interstitial></habbo-interstitial></div>'
     ), e.put("profile/creation/creation-content.html",
@@ -4462,4 +4462,5 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             suffix: ".json"
         }), e.useSanitizeValueStrategy("escapeParameters")
     }])
+>>>>>>> master
 }();
