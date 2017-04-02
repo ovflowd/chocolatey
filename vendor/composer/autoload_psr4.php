@@ -22,6 +22,7 @@ return array(
     'Rdehnhardt\\MaintenanceMode\\' => array($vendorDir . '/rdehnhardt/lumen-maintenance-mode/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+    'Nubs\\RandomNameGenerator\\' => array($vendorDir . '/nubs/random-name-generator/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Laravel\\Lumen\\' => array($vendorDir . '/laravel/lumen-framework/src'),
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),

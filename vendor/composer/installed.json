@@ -2785,5 +2785,56 @@
             "facebook",
             "sdk"
         ]
+    },
+    {
+        "name": "nubs/random-name-generator",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nubs/random-name-generator.git",
+            "reference": "7004eb1724e1c4a154553e44312b7045fe412b77"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nubs/random-name-generator/zipball/7004eb1724e1c4a154553e44312b7045fe412b77",
+            "reference": "7004eb1724e1c4a154553e44312b7045fe412b77",
+            "shasum": ""
+        },
+        "require": {
+            "php": "~5.6 || ~7.0"
+        },
+        "require-dev": {
+            "cinam/randomizer": ">=1.1.1,<2.0",
+            "phpunit/phpunit": "~5.0",
+            "satooshi/php-coveralls": "~1.0",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2016-12-04T01:57:19+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Nubs\\RandomNameGenerator\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Spencer Rinehart",
+                "email": "anubis@overthemonkey.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A library to create interesting, sometimes entertaining, random names.",
+        "keywords": [
+            "alliteration",
+            "generator",
+            "random",
+            "video game"
+        ]
     }
 ]
