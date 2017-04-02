@@ -33,7 +33,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     }, d.open = function (e, t) {
         function a(o) {
             o.originalEvent.data && o.originalEvent.data.status && (p = o.originalEvent.data.status, "SUCCESS" !== p && "PENDING" !== p || (l.update(), u(t.countryCode), d.getItemName(t).then(function (e) {
-                var r = o.originalEvent.data.txId, a = o.originalEvent.data.currency, i = o.originalEvent.data.priceInCents, s = _(t.categories).sort().join(", "), l = Number(i / 100).toFixed(2);
+                var r = o.originalEvent.data.txId, a = o.originalEvent.data.currency,
+                    i = o.originalEvent.data.priceInCents, s = _(t.categories).sort().join(", "),
+                    l = Number(i / 100).toFixed(2);
                 n.trackTransaction(r, e, t.id, s, l, a)
             })), d.sendShopTrackingEvents(p, t.id, e.id))
         }
@@ -90,21 +92,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 
         var i = ["builders", "subscription"], s = this;
         s.translationKey = n() ? "SHOP_SUBSCRIPTION_SUBSCRIBE_BUTTON" : "SHOP_PAYMENT_BUTTON", s.paymentInProgress = !1, o.hasSession() ? s.purchase = function () {
-<<<<<<< HEAD
-                s.paymentInProgress = !0, a.open(s.method, s.item).then(function () {
-                    e.$emit(t.shopPaymentClose)
-                })["finally"](function () {
-                    s.paymentInProgress = !1
-                })
-            } : s.purchase = r.open
-=======
             s.paymentInProgress = !0, a.open(s.method, s.item).then(function () {
                 e.$emit(t.shopPaymentClose)
             })["finally"](function () {
                 s.paymentInProgress = !1
             })
         } : s.purchase = r.open
->>>>>>> master
     }],
     controllerAs: "PaymentButtonController",
     templateUrl: "shop/payment-details/payment-steps/payment-button/payment-button.html"
@@ -277,7 +270,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }
     }
 }), angular.module("password.strength.service", []).factory("passwordStrength", function () {
-    var e = "abcdefghijklmnopqrstuvwxyz", t = "01234567890", o = /\d/g, r = "\\!@#$%&/()=?¿", a = /[$-\/:-?{-~!^_`\[\]]/g, n = /(?=([a-z]{2}))/g, i = /(?=([A-Z]{2}))/g, s = /(?=(\d{2}))/g, l = /^[0-9]*$/g, c = /^([a-z]|[A-Z])*$/g;
+    var e = "abcdefghijklmnopqrstuvwxyz", t = "01234567890", o = /\d/g, r = "\\!@#$%&/()=?¿",
+        a = /[$-\/:-?{-~!^_`\[\]]/g, n = /(?=([a-z]{2}))/g, i = /(?=([A-Z]{2}))/g, s = /(?=(\d{2}))/g, l = /^[0-9]*$/g,
+        c = /^([a-z]|[A-Z])*$/g;
     return function (u) {
         var d, m, p, h, f = 0, b = {pos: {}, neg: {}}, g = {pos: {}, neg: {seqLetter: 0, seqNumber: 0, seqSymbol: 0}};
         if (u) {
@@ -1406,21 +1401,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         var r = this;
         r.save = function () {
             e.privacySettingsForm.$pristine ? o.success("SETTINGS_SAVED_OK") : (r.sendInProgress = !0, r.privacySettings.$save().then(function () {
-<<<<<<< HEAD
-                    t.trackEvent("Privacy settings", "Saved"), o.success("SETTINGS_SAVED_OK"), e.privacySettingsForm.$setPristine()
-                })["catch"](function () {
-                    o.error("ERROR_SERVER")
-                })["finally"](function () {
-                    r.sendInProgress = !1
-                }))
-=======
                 t.trackEvent("Privacy settings", "Saved"), o.success("SETTINGS_SAVED_OK"), e.privacySettingsForm.$setPristine()
             })["catch"](function () {
                 o.error("ERROR_SERVER")
             })["finally"](function () {
                 r.sendInProgress = !1
             }))
->>>>>>> master
         }
     }],
     controllerAs: "PrivacySettingsFormController",
@@ -1874,17 +1860,10 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         p.loginInProgress = !1, p.login = function () {
             var o = t.search().captchaToken || r.captchaToken;
             p.email = e.find("[type=email]").val(), p.password = e.find("[type=password]").val(), o ? u({
-<<<<<<< HEAD
-                    email: p.email,
-                    password: p.password,
-                    captchaToken: o
-                }) : h ? c() : u({email: p.email, password: p.password})
-=======
                 email: p.email,
                 password: p.password,
                 captchaToken: o
             }) : h ? c() : u({email: p.email, password: p.password})
->>>>>>> master
         }
     }],
     controllerAs: "LoginController",
@@ -1903,13 +1882,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 
     function l(t) {
         return t.trusted ? e.when(t) : n.open().then(function (e) {
-<<<<<<< HEAD
-                return _.assign(t, e)
-            })
-=======
             return _.assign(t, e)
         })
->>>>>>> master
     }
 
     var c = {};
@@ -2116,7 +2090,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         return n = n || e.get("security"), n.forceLogout("/?error=banned&" + $.param(o))
     }
 
-    var n, i = ["login.user_banned", "login.identity_banned", "login.avatar_banned", "user.identity_banned", "user.avatar_banned"], s = {};
+    var n,
+        i = ["login.user_banned", "login.identity_banned", "login.avatar_banned", "user.identity_banned", "user.avatar_banned"],
+        s = {};
     return s.responseError = function (e) {
         return o(e) ? a(e) : t.reject(e)
     }, s
@@ -2131,9 +2107,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     var n = {};
     return n.show = function (n) {
         if ("banned" === n.error) {
-            var i = n.sanctionReasonId ? "CFH_REASON_" + n.sanctionReasonId.toUpperCase() : "CFH_REASON_AUTO_TRIGGER", s = "true" === n.permanentBan ? "CFH_REASON_RESOLVED_TARGET_BAN_PERMANENT" : "CFH_REASON_RESOLVED_TARGET_BAN", l = "MODERATOR_MSG_POSTFIX";
+            var i = n.sanctionReasonId ? "CFH_REASON_" + n.sanctionReasonId.toUpperCase() : "CFH_REASON_AUTO_TRIGGER",
+                s = "true" === n.permanentBan ? "CFH_REASON_RESOLVED_TARGET_BAN_PERMANENT" : "CFH_REASON_RESOLVED_TARGET_BAN",
+                l = "MODERATOR_MSG_POSTFIX";
             return e.all([t(s), t(i), t(l)]).then(function (e) {
-                var t = e[0], i = e[1], s = e[2], l = -1 === t.indexOf("%") ? t : t.substring(0, t.indexOf("%")), c = n.reason;
+                var t = e[0], i = e[1], s = e[2], l = -1 === t.indexOf("%") ? t : t.substring(0, t.indexOf("%")),
+                    c = n.reason;
                 _.endsWith(n.reason, s) && -1 !== n.reason.indexOf(i) && _.startsWith(n.reason, l) || (c = i);
                 var u = n.expiryTime, d = {
                     message: n.message,
@@ -2213,17 +2192,10 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }), e.$watchGroup(["BirthdateController.day", "BirthdateController.month", "BirthdateController.year"], function (e) {
             var t = parseInt(e[0], 10), o = parseInt(e[1], 10), r = parseInt(e[2], 10);
             _.isNaN(t) || _.isNaN(o) || _.isNaN(r) ? n.FormController.birthdate.$pristine || n.FormController.birthdate.$setViewValue(null) : n.FormController.birthdate.$setViewValue({
-<<<<<<< HEAD
-                    day: t,
-                    month: o,
-                    year: r
-                })
-=======
                 day: t,
                 month: o,
                 year: r
             })
->>>>>>> master
         })
     }],
     controllerAs: "BirthdateController",
@@ -2305,15 +2277,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         onEnter: ["creations", "index", "Head", function (e, t, o) {
             var r = e[t];
             "SELFIE" === r.type ? o.setTitle("HEAD_TITLE_SELFIE", {name: r.creator_name}) : o.setTitle("HEAD_TITLE_CREATION", {
-<<<<<<< HEAD
-                    creation: r.title,
-                    name: r.creator_name
-                }), o.image = r.url, o.imageHeight = r.contentHeight, o.imageWidth = r.contentWidth
-=======
                 creation: r.title,
                 name: r.creator_name
             }), o.image = r.url, o.imageHeight = r.contentHeight, o.imageWidth = r.contentWidth
->>>>>>> master
         }],
         resolve: {
             creations: ["$stateParams", "Creations", function (e, t) {
@@ -2929,33 +2895,34 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     }, i
 }]),angular.module("official.room.avatar", ["locale", "templates"]).component("officialRoomAvatar", {templateUrl: "common/official-room-avatar/official-room-avatar.html"}),angular.module("notifier", ["locale"]).factory("notifier", ["$q", "$translate", function (e, t) {
     var o = {
-        extendedTimeOut: 1e3,
-        hideDuration: 300,
-        positionClass: "toast-top-center",
-        preventDuplicates: !0,
-        progressBar: !0,
-        showDuration: 300,
-        timeOut: 2e4
-    }, r = _.extend({}, o, {
-        extendedTimeOut: 0,
-        hideDuration: 0,
-        positionClass: "toast-top-center toast-sticky",
-        timeOut: 0,
-        tapToDismiss: !1
-    }), a = _.partialRight(toastr.success, "", o), n = _.partialRight(toastr.error, "", o), i = _.partialRight(toastr.error, r), s = function (e) {
-        return function (o, r) {
-            t(o, r).then(e)["catch"](e)
-        }
-    }, l = function (o) {
-        return function (r, a, n) {
-            e.all([t(a, n), t(r), t("OK_BUTTON")]).then(function (e) {
-                var t = o(e[0] + '<button class="toast-button">' + e[2] + "</button>", e[1]);
-                t.delegate("button", "click", function () {
-                    toastr.options.hideDuration = 0, toastr.clear(t, {force: !0})
+            extendedTimeOut: 1e3,
+            hideDuration: 300,
+            positionClass: "toast-top-center",
+            preventDuplicates: !0,
+            progressBar: !0,
+            showDuration: 300,
+            timeOut: 2e4
+        }, r = _.extend({}, o, {
+            extendedTimeOut: 0,
+            hideDuration: 0,
+            positionClass: "toast-top-center toast-sticky",
+            timeOut: 0,
+            tapToDismiss: !1
+        }), a = _.partialRight(toastr.success, "", o), n = _.partialRight(toastr.error, "", o),
+        i = _.partialRight(toastr.error, r), s = function (e) {
+            return function (o, r) {
+                t(o, r).then(e)["catch"](e)
+            }
+        }, l = function (o) {
+            return function (r, a, n) {
+                e.all([t(a, n), t(r), t("OK_BUTTON")]).then(function (e) {
+                    var t = o(e[0] + '<button class="toast-button">' + e[2] + "</button>", e[1]);
+                    t.delegate("button", "click", function () {
+                        toastr.options.hideDuration = 0, toastr.clear(t, {force: !0})
+                    })
                 })
-            })
-        }
-    };
+            }
+        };
     return {success: s(a), error: s(n), errorSticky: l(i)}
 }]),angular.module("navigate.to.on.key", []).directive("habboNavigateToOnKey", ["$document", function (e) {
     function t(e) {
@@ -3081,7 +3048,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 
     var r = {}, a = "ef2356a4926bf225eb86c75c52309c32";
     return r.generatePose = function (e) {
-        var t = e.size || "big", o = e.direction || "sw", r = e.headDirection || o, a = e.action || "stand", n = e.gesture || "smile", i = {};
+        var t = e.size || "big", o = e.direction || "sw", r = e.headDirection || o, a = e.action || "stand",
+            n = e.gesture || "smile", i = {};
         return i.s = {big: 0, bighead: 2, smallhead: 3, large: 4, largehead: 5}[t.toLowerCase()], i.g = {
             none: 0,
             smile: 1,
@@ -3147,11 +3115,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 gesture: r.gesture
             }, a = t.generatePose(o);
             return r.action ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
-<<<<<<< HEAD
-                    r.user ? t.getLegacyImagerUrl(r.user, a) : void 0
-=======
                 r.user ? t.getLegacyImagerUrl(r.user, a) : void 0
->>>>>>> master
         }
 
         var r = this;
@@ -3286,7 +3250,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         restrict: "A", link: function (t, o, r) {
             t.$watch(r.habboCreationHref, function (t) {
                 if (t) {
-                    var o = "PHOTO" === t.type ? "photo" : "story", a = ["profile", e(t.creator_name), o, t.id].join("/");
+                    var o = "PHOTO" === t.type ? "photo" : "story",
+                        a = ["profile", e(t.creator_name), o, t.id].join("/");
                     t.pool && (a += "?pool=" + t.pool), r.$set("href", "/" + a)
                 }
             })
@@ -3351,7 +3316,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }]),angular.module("ad.unit", ["ad.double.click", "security", "templates"]).component("habboAdUnit", {
     bindings: {unit: "@"},
     controller: ["$location", "Session", function (e, t) {
-        var o = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i, r = this;
+        var o = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i,
+            r = this;
         r.hasAds = t.hasAds, r.isAdsPrevented = function () {
             var t = e.search(), r = _(t).values().find(function (e) {
                 return o.test(e)
@@ -3490,13 +3456,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }).filter("paymentCategory", function () {
     return function (e, t) {
         return t ? _.filter(e, function (e) {
-<<<<<<< HEAD
-                return e.category === t
-            }) : e
-=======
             return e.category === t
         }) : e
->>>>>>> master
     }
 }).filter("payment", ["paymentCategoryFilter", function (e) {
     return function (t, o) {
@@ -3507,13 +3468,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }]),angular.module("shop.service", ["ngResource", "config", "safe.transform.response", "security", "storage"]).factory("Shop", ["$resource", "CONFIG", "Session", "httpCache", "safeTransformResponse", function (e, t, o, r, a) {
     function n(e) {
         return e = e || [], 1 === e.length ? [] : (e.unshift("all"), _.map(e, function (e) {
-<<<<<<< HEAD
-                return {key: e, translateKey: "SHOP_PAYMENT_METHOD_" + e.toUpperCase()}
-            }))
-=======
             return {key: e, translateKey: "SHOP_PAYMENT_METHOD_" + e.toUpperCase()}
         }))
->>>>>>> master
     }
 
     var i = e(t.shopUrl + "/:resource/:subresource", {}, {
@@ -3632,15 +3588,6 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     var a = {};
     return a.hasAccessToPrivate = function () {
         return t.hasSession() ? e.when() : o.open()["catch"](function () {
-<<<<<<< HEAD
-                return e.reject({access: !1})
-            })
-    }, a.hasAccessToTrusted = function () {
-        return a.hasAccessToPrivate().then(function () {
-            return t.isTrusted() ? e.when() : r.open()["catch"](function () {
-                    return e.reject({access: !1})
-                })
-=======
             return e.reject({access: !1})
         })
     }, a.hasAccessToTrusted = function () {
@@ -3648,7 +3595,6 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             return t.isTrusted() ? e.when() : r.open()["catch"](function () {
                 return e.reject({access: !1})
             })
->>>>>>> master
         })
     }, a.hasAccessToHabboAccountTrusted = function () {
         return a.hasAccessToTrusted().then(function () {
@@ -3814,19 +3760,11 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     var s = {};
     return s.register = function (s) {
         return a.register(s.birthdate), a.isLocked() ? t.reject({data: {error: "age"}}) : e.post(r.apiUrl + "/public/registration/new", s).then(function (e) {
-<<<<<<< HEAD
-                var r = t.defer();
-                return 204 === e.status ? (n.trackEvent("Registration", "Registered", "Staff"), r.resolve(e)) : (n.trackEvent("Registration", "Registered", "User"), o.piwikTrack && (o._spef.push(["trackGoal", 1]), o.piwikTrack()), i.init(e.data).then(function () {
-                        r.resolve(e)
-                    })), r.promise
-            })
-=======
             var r = t.defer();
             return 204 === e.status ? (n.trackEvent("Registration", "Registered", "Staff"), r.resolve(e)) : (n.trackEvent("Registration", "Registered", "User"), o.piwikTrack && (o._spef.push(["trackGoal", 1]), o.piwikTrack()), i.init(e.data).then(function () {
                 r.resolve(e)
             })), r.promise
         })
->>>>>>> master
     }, s
 }]),angular.module("registration", ["events", "header", "hotel.closed", "locale", "registration.form", "router", "security", "system.data", "templates"]).config(["$stateProvider", function (e) {
     e.statePublic("registration", {
@@ -4138,7 +4076,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     })
 }]).controller("ActivateController", ["$state", "notifier", function (e, t) {
     t.success("ACTIVATE_SUCCESS"), e.go("home.news")
-}]),angular.module("templates", []).run(["$templateCache", function(e) {
+}]),angular.module("templates", []).run(["$templateCache", function (e) {
     e.put("community/community.html",
         '<habbo-header-small active="community"></habbo-header-small><habbo-tabs><habbo-tab path="/community/photos" translation-key="COMMUNITY_PHOTOS_TAB"></habbo-tab><habbo-tab path="/community/rooms" translation-key="COMMUNITY_ROOMS_TAB"></habbo-tab><habbo-tab path="/community/fansites" translation-key="COMMUNITY_FANSITES_TAB"></habbo-tab><habbo-tab path="/community/category" alternative-path="/community/article" translation-key="COMMUNITY_NEWS_TAB"></habbo-tab></habbo-tabs><main ui-view></main>'
     ), e.put("dev/dev.html",
@@ -4232,7 +4170,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         '<habbo-header-small></habbo-header-small><main class="wrapper wrapper--content"><section class="main"><habbo-message-container type="exclamation"><h2 translate="EMAIL_REPORT_UNAUTHORIZED_TITLE"></h2><h4 class="email-report-unauthorized-form__email">{{:: EmailReportUnauthorizedController.email}}</h4><p translate="EMAIL_REPORT_UNAUTHORIZED_TEXT"></p><habbo-email-report-unauthorized-form emailaddress="EmailReportUnauthorizedController.email" hash="EmailReportUnauthorizedController.hash"></habbo-email-report-unauthorized-form></habbo-message-container></section></main>'
     ), e.put("home/messaging/messaging.html",
         '<section><h1 translate="MESSAGING_TITLE"></h1><habbo-discussions items="MessagingController.discussions"></habbo-discussions></section>'
-    ),e.put("home/housekeeping/housekeeping.html",
+    ), e.put("home/housekeeping/housekeeping.html",
         '<section><h1>Housekeeping</h1><habbo-web-pages key="common/housekeeping"></habbo-web-pages></section>'
     ), e.put("home/news/news.html",
         '<habbo-moderation-notification habbo-require-session></habbo-moderation-notification><section><h1 translate="NEWS_TITLE"></h1><div class="main main--fixed"><habbo-compile data="NewsController.promos"></habbo-compile><div class="news__navigation"><a href="/community/category/all" class="news__more" translate="NEWS_MORE"></a></div></div><habbo-ad-unit unit="inlineRectangle" class="aside aside--fixed"></habbo-ad-unit><habbo-web-pages key="common/box_learn_how_to_stay_safe" class="aside aside--box aside--fixed"></habbo-web-pages><habbo-web-pages key="common/box_parents_guide" class="aside aside--box aside--fixed"></habbo-web-pages></section>'
@@ -4499,7 +4437,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         notify: _.noop,
         notifyException: _.noop
     }), angular.module("app").config(["$sceDelegateProvider", function (e) {
-        var t = e.resourceUrlWhitelist(), o = "https://*.habbo.com/**,https://habboo-a.akamaihd.net/**,https://www.offertoro.com/**".split(",");
+        var t = e.resourceUrlWhitelist(),
+            o = "https://*.habbo.com/**,https://habboo-a.akamaihd.net/**,https://www.offertoro.com/**".split(",");
         t = t.concat(o), e.resourceUrlWhitelist(t)
     }]).config(["$compileProvider", function (t) {
         t.debugInfoEnabled(!e)
@@ -4537,8 +4476,4 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             suffix: ".json"
         }), e.useSanitizeValueStrategy("escapeParameters")
     }])
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
 }();
