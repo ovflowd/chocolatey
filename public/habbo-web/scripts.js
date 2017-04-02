@@ -13,8 +13,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     return d.getItemName = function (o) {
         var r = ["CREDITS_AMOUNT"];
         return o.creditAmount ? (o.doubleCredits && r.push("DOUBLE_CREDITS_PREFIX"), t(r, {value: o.creditAmount}).then(function (e) {
-                return _([e.DOUBLE_CREDITS_PREFIX, e.CREDITS_AMOUNT]).compact().join(" ")
-            })) : e.when(o.name)
+            return _([e.DOUBLE_CREDITS_PREFIX, e.CREDITS_AMOUNT]).compact().join(" ")
+        })) : e.when(o.name)
     }, d.sendShopTrackingEvents = function (e, t, r) {
         var a = "Item: " + t + ", Method: " + r;
         switch (e) {
@@ -90,12 +90,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 
         var i = ["builders", "subscription"], s = this;
         s.translationKey = n() ? "SHOP_SUBSCRIPTION_SUBSCRIBE_BUTTON" : "SHOP_PAYMENT_BUTTON", s.paymentInProgress = !1, o.hasSession() ? s.purchase = function () {
-                s.paymentInProgress = !0, a.open(s.method, s.item).then(function () {
-                    e.$emit(t.shopPaymentClose)
-                })["finally"](function () {
-                    s.paymentInProgress = !1
-                })
-            } : s.purchase = r.open
+            s.paymentInProgress = !0, a.open(s.method, s.item).then(function () {
+                e.$emit(t.shopPaymentClose)
+            })["finally"](function () {
+                s.paymentInProgress = !1
+            })
+        } : s.purchase = r.open
     }],
     controllerAs: "PaymentButtonController",
     templateUrl: "shop/payment-details/payment-steps/payment-button/payment-button.html"
@@ -1397,12 +1397,12 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         var r = this;
         r.save = function () {
             e.privacySettingsForm.$pristine ? o.success("SETTINGS_SAVED_OK") : (r.sendInProgress = !0, r.privacySettings.$save().then(function () {
-                    t.trackEvent("Privacy settings", "Saved"), o.success("SETTINGS_SAVED_OK"), e.privacySettingsForm.$setPristine()
-                })["catch"](function () {
-                    o.error("ERROR_SERVER")
-                })["finally"](function () {
-                    r.sendInProgress = !1
-                }))
+                t.trackEvent("Privacy settings", "Saved"), o.success("SETTINGS_SAVED_OK"), e.privacySettingsForm.$setPristine()
+            })["catch"](function () {
+                o.error("ERROR_SERVER")
+            })["finally"](function () {
+                r.sendInProgress = !1
+            }))
         }
     }],
     controllerAs: "PrivacySettingsFormController",
@@ -1856,10 +1856,10 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         p.loginInProgress = !1, p.login = function () {
             var o = t.search().captchaToken || r.captchaToken;
             p.email = e.find("[type=email]").val(), p.password = e.find("[type=password]").val(), o ? u({
-                    email: p.email,
-                    password: p.password,
-                    captchaToken: o
-                }) : h ? c() : u({email: p.email, password: p.password})
+                email: p.email,
+                password: p.password,
+                captchaToken: o
+            }) : h ? c() : u({email: p.email, password: p.password})
         }
     }],
     controllerAs: "LoginController",
@@ -1878,8 +1878,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 
     function l(t) {
         return t.trusted ? e.when(t) : n.open().then(function (e) {
-                return _.assign(t, e)
-            })
+            return _.assign(t, e)
+        })
     }
 
     var c = {};
@@ -2183,10 +2183,10 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         }), e.$watchGroup(["BirthdateController.day", "BirthdateController.month", "BirthdateController.year"], function (e) {
             var t = parseInt(e[0], 10), o = parseInt(e[1], 10), r = parseInt(e[2], 10);
             _.isNaN(t) || _.isNaN(o) || _.isNaN(r) ? n.FormController.birthdate.$pristine || n.FormController.birthdate.$setViewValue(null) : n.FormController.birthdate.$setViewValue({
-                    day: t,
-                    month: o,
-                    year: r
-                })
+                day: t,
+                month: o,
+                year: r
+            })
         })
     }],
     controllerAs: "BirthdateController",
@@ -2268,9 +2268,9 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         onEnter: ["creations", "index", "Head", function (e, t, o) {
             var r = e[t];
             "SELFIE" === r.type ? o.setTitle("HEAD_TITLE_SELFIE", {name: r.creator_name}) : o.setTitle("HEAD_TITLE_CREATION", {
-                    creation: r.title,
-                    name: r.creator_name
-                }), o.image = r.url, o.imageHeight = r.contentHeight, o.imageWidth = r.contentWidth
+                creation: r.title,
+                name: r.creator_name
+            }), o.image = r.url, o.imageHeight = r.contentHeight, o.imageWidth = r.contentWidth
         }],
         resolve: {
             creations: ["$stateParams", "Creations", function (e, t) {
@@ -3104,7 +3104,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 gesture: r.gesture
             }, a = t.generatePose(o);
             return r.action ? t.getBodyImageUrl(r.figure, a) : r.figure ? t.getImagerUrl(r.figure, a) :
-                    r.user ? t.getLegacyImagerUrl(r.user, a) : void 0
+                r.user ? t.getLegacyImagerUrl(r.user, a) : void 0
         }
 
         var r = this;
@@ -3443,8 +3443,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }).filter("paymentCategory", function () {
     return function (e, t) {
         return t ? _.filter(e, function (e) {
-                return e.category === t
-            }) : e
+            return e.category === t
+        }) : e
     }
 }).filter("payment", ["paymentCategoryFilter", function (e) {
     return function (t, o) {
@@ -3455,8 +3455,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }]),angular.module("shop.service", ["ngResource", "config", "safe.transform.response", "security", "storage"]).factory("Shop", ["$resource", "CONFIG", "Session", "httpCache", "safeTransformResponse", function (e, t, o, r, a) {
     function n(e) {
         return e = e || [], 1 === e.length ? [] : (e.unshift("all"), _.map(e, function (e) {
-                return {key: e, translateKey: "SHOP_PAYMENT_METHOD_" + e.toUpperCase()}
-            }))
+            return {key: e, translateKey: "SHOP_PAYMENT_METHOD_" + e.toUpperCase()}
+        }))
     }
 
     var i = e(t.shopUrl + "/:resource/:subresource", {}, {
@@ -3575,13 +3575,13 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     var a = {};
     return a.hasAccessToPrivate = function () {
         return t.hasSession() ? e.when() : o.open()["catch"](function () {
-                return e.reject({access: !1})
-            })
+            return e.reject({access: !1})
+        })
     }, a.hasAccessToTrusted = function () {
         return a.hasAccessToPrivate().then(function () {
             return t.isTrusted() ? e.when() : r.open()["catch"](function () {
-                    return e.reject({access: !1})
-                })
+                return e.reject({access: !1})
+            })
         })
     }, a.hasAccessToHabboAccountTrusted = function () {
         return a.hasAccessToTrusted().then(function () {
@@ -3747,11 +3747,11 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     var s = {};
     return s.register = function (s) {
         return a.register(s.birthdate), a.isLocked() ? t.reject({data: {error: "age"}}) : e.post(r.apiUrl + "/public/registration/new", s).then(function (e) {
-                var r = t.defer();
-                return 204 === e.status ? (n.trackEvent("Registration", "Registered", "Staff"), r.resolve(e)) : (n.trackEvent("Registration", "Registered", "User"), o.piwikTrack && (o._spef.push(["trackGoal", 1]), o.piwikTrack()), i.init(e.data).then(function () {
-                        r.resolve(e)
-                    })), r.promise
-            })
+            var r = t.defer();
+            return 204 === e.status ? (n.trackEvent("Registration", "Registered", "Staff"), r.resolve(e)) : (n.trackEvent("Registration", "Registered", "User"), o.piwikTrack && (o._spef.push(["trackGoal", 1]), o.piwikTrack()), i.init(e.data).then(function () {
+                r.resolve(e)
+            })), r.promise
+        })
     }, s
 }]),angular.module("registration", ["events", "header", "hotel.closed", "locale", "registration.form", "router", "security", "system.data", "templates"]).config(["$stateProvider", function (e) {
     e.statePublic("registration", {

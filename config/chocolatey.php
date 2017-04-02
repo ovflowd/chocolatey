@@ -255,19 +255,21 @@ return [
     | Settings for the SWF Configuration
     | Like Gordon Path, Flash File, Etc
     |
+    | @Attention.: Arcturus 1.4 uses PRODUCTION-201611291003-338511768
+    |
     */
 
     'game' => [
-        'gordon' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/',
-        'flash' => 'http://uiotassets.blob.core.windows.net/unity/gordon/PRODUCTION-201601012205-226667486/Habbo.swf',
+        'gordon' => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/',
+        'flash' => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/Habbo.swf',
         'gamedata' => [
-            'figuredata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/figuredata.xml',
-            'furnidata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/furnidata.xml/',
-            'productdata' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/productdata.txt',
-            'variables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_variables.txt',
-            'texts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/external_flash_texts.txt',
-            'overrideVariables' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_override_variables.txt',
-            'overrideTexts' => 'http://uiotassets.blob.core.windows.net/unity/gamedata/override/external_flash_override_texts.txt',
+            'figuredata' => 'http://localhost/public/swf/gamedata/figuredata.xml',
+            'furnidata' => 'http://localhost/public/swf/gamedata/furnidata.xml/',
+            'productdata' => 'http://localhost/public/swf/gamedata/productdata.txt',
+            'variables' => 'http://localhost/public/swf/gamedata/external_variables.txt',
+            'texts' => 'http://localhost/public/swf/gamedata/external_flash_texts.txt',
+            'overrideVariables' => 'http://localhost/public/swf/override/external_override_variables.txt',
+            'overrideTexts' => 'http://localhost/public/swf/gamedata/override/external_flash_override_texts.txt',
         ]
     ],
 
