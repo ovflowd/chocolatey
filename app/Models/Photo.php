@@ -96,7 +96,7 @@ class Photo extends ChocolateyModel
      */
     public function getUrlAttribute(): string
     {
-        return str_replace('http', '', str_replace('https', '', $this->attributes['url']));
+        return str_replace('http:', '', str_replace('https:', '', $this->attributes['url']));
     }
 
     /**
