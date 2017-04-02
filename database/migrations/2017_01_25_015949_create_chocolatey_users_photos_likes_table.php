@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAzureUsersPhotosLikesTable extends Migration
+class CreateChocolateyUsersPhotosLikesTable extends Migration
 {
     /**
      * Run the migrations.

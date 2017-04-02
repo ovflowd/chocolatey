@@ -138,7 +138,9 @@ class Photo extends ChocolateyModel
      */
     public function getLikesAttribute(): array
     {
-        return PhotoLike::query()->select('username')->where('photo_id', $this->attributes['id'])->get(['username'])->toArray();
+        return array_map(function (array $item) {
+            return $item['username'];
+        }, PhotoLike::query()->select('username')->where('photo_id', $this->attributes['id'])->get(['username'])->toArray());
     }
 
     /**

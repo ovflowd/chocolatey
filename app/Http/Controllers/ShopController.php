@@ -70,6 +70,9 @@ class ShopController extends BaseController
             ->where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
+        if ((strtotime($paymentCheckout->generated_at) + 172800) < time())
+            return response(view('habbo-web-payments.canceled-payment'), 400);
+
         return $paymentCheckout != null ? response(view('habbo-web-payments.proceed', ['payment' => $paymentCheckout]))
             : response(view('habbo-web-payments.failed-payment'), 400);
     }
@@ -92,6 +95,9 @@ class ShopController extends BaseController
             ->where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
+        if ($paymentCheckout == null)
+            return response(view('habbo-web-payments.canceled-payment'), 500);
+
         $purchaseItem = (new ShopHistory)->store($paymentMethod, $request->user()->uniqueId, $shopItem);
         $purchaseItem->save();
 
@@ -99,9 +105,10 @@ class ShopController extends BaseController
             'product' => DB::table('chocolatey_shop_items')->where('id', $shopItem)->first(), 'subject' => 'Purchase completed'
         ], 'habbo-web-mail.purchase-confirmation');
 
-        return $paymentCheckout != null ? response(view('habbo-web-payments.success-payment', [
-            'checkoutId' => $purchaseItem->transactionId]), 200)
-            : response(view('habbo-web-payments.canceled-payment'), 500);
+        $paymentCheckout->delete();
+
+        return response(view('habbo-web-payments.success-payment', [
+            'checkoutId' => $purchaseItem->transactionId]), 200);
     }
 
     /**
