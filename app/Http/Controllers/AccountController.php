@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use Nubs\RandomNameGenerator\Alliteration;
 
 /**
  * Class AccountController
@@ -235,12 +236,11 @@ class AccountController extends BaseController
      */
     protected function uniqueName(string $userMail): string
     {
+        $partialName = explode(' ', (new Alliteration())->getName());
+
         $partialMail = strstr($userMail, '@', true);
 
-        $firstPart = substr(uniqid(), 0, 4);
-        $secondPart = substr(uniqid(), 6, 10);
-
-        return $firstPart . $partialMail . $secondPart;
+        return strtolower($partialName[0] . $partialMail . $partialName[1]);
     }
 
     /**

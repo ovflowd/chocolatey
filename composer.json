@@ -63,7 +63,8 @@
     "rdehnhardt/lumen-maintenance-mode": "^1.2",
     "illuminate/mail": "5.4.*",
     "intervention/image": "^2.3",
-    "facebook/graph-sdk": "^5.4"
+    "facebook/graph-sdk": "^5.4",
+    "nubs/random-name-generator": "^2.1"
   },
   "autoload": {
     "psr-4": {
