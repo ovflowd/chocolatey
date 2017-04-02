@@ -21,6 +21,7 @@ class CreateChocolateyShopPaymentCheckoutTable extends Migration
             $table->integer('item')->default(1);
             $table->integer('method')->default(1);
             $table->string('redirect', 255);
+            $table->timestamp('generated_at');
             $table->primary('id', 'chocolatey_shop_payment_checkout_primary');
         });
 
