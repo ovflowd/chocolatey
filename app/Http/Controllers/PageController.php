@@ -23,7 +23,7 @@ class PageController extends BaseController
     {
         $pageArray = explode('.', $pageFile);
 
-        return response(view("habbo-web-pages.production.{$pageCategory}.{$pageArray[0]}"));
+        return response(view("habbo-web-pages.{$pageCategory}.{$pageArray[0]}"));
     }
 
     /**
@@ -38,7 +38,7 @@ class PageController extends BaseController
     {
         $pageArray = explode('.', $pageFile);
 
-        return response(view("habbo-web-pages.production.{$pageCategory}.{$subCategory}.{$pageArray[0]}"));
+        return response(view("habbo-web-pages.{$pageCategory}.{$subCategory}.{$pageArray[0]}"));
     }
 
     /**

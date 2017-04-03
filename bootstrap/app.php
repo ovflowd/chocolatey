@@ -93,7 +93,16 @@ $app->register(App\Providers\NuxServiceProvider::class);
 
 # Enable Lumen Controllers & Routes
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+    require __DIR__ . '/../routes/main.php';
+    require __DIR__ . '/../routes/api.php';
+    require __DIR__ . '/../routes/extra.php';
     require __DIR__ . '/../routes/web.php';
+    require __DIR__ . '/../routes/lang.php';
+    require __DIR__ . '/../routes/lead.php';
+    require __DIR__ . '/../routes/shop.php';
+    require __DIR__ . '/../routes/ads.php';
+    require __DIR__ . '/../routes/news.php';
+    require __DIR__ . '/../routes/misc.php';
 });
 
 return $app;
