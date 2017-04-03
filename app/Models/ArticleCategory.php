@@ -4,6 +4,7 @@ namespace App\Models;
 
 /**
  * Class ArticleCategory
+ * @property string name
  * @package App\Models
  */
 class ArticleCategory extends ChocolateyModel

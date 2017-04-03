@@ -27,9 +27,8 @@ class ArticleController extends BaseController
 
         $categoryPage = strstr(strrev($articleCategory), '_', true);
 
-        return $articleCategory == 'front' ? $this->front() :
-            $this->category($countryId, $category, $categoryPage,
-                $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
+        return $articleCategory == 'front' ? $this->front() : $this->category($countryId, $category, $categoryPage,
+            $categoryPage == 1 ? 0 : (10 * ($categoryPage - 1)));
     }
 
     /**
@@ -56,19 +55,12 @@ class ArticleController extends BaseController
      */
     protected function category(string $countryId, ArticleCategory $category, int $categoryPage, int $start): Response
     {
-        $articles = Article::where('id', '>=', $start)
-            ->limit(10)->orderBy('id', 'DESC')->get()->filter(function ($item) use ($category) {
-                return $category->name == 'all' || in_array($category, $item->categories);
-            });
-
-        if ($articles->count() == 0)
-            return response()->json(null, 404);
+        $articles = Article::where('id', '>=', $start)->limit(10)->orderBy('id', 'DESC')->get()->filter(function ($item) use ($category) {
+            return $category->name == 'all' || in_array($category, $item->categories);
+        });
 
         return response(view('habbo-web-news.articles-category', [
-            'category' => $category,
-            'page' => $categoryPage,
-            'categories' => ArticleCategory::all(),
-            'articles' => $articles
+            'category' => $category, 'page' => $categoryPage, 'categories' => ArticleCategory::all(), 'articles' => $articles
         ]));
     }
 
@@ -90,11 +82,9 @@ class ArticleController extends BaseController
             return in_array($article->categories[0], $item->categories);
         });
 
-        return response(view('habbo-web-news.articles-view', [
-            'article' => $article,
-            'latest' => $latest->slice(0, 5),
-            'related' => $related->slice(0, 5)
-        ]));
+        return response(view('habbo-web-news.articles-view',
+            ['article' => $article, 'latest' => $latest->slice(0, 5), 'related' => $related->slice(0, 5)]
+        ));
     }
 
     /**
