@@ -71,12 +71,12 @@
     <li>{!! trans('playing_habbo/help.web_list_four') !!}</li>
 </ol>
 <hr>
-<h2>Safety Tips</h2>
-<p>On our <a href="/playing-habbo/safety">Safety Tips</a> page you&apos;ll find <strong>suggestions on how to have fun without putting yourself at risk</strong>. Check it out, there&apos;s lots of helpful information!</p>
-<h2>{{$chocolatey->hotelName}} Way</h2>
-<p>Haven&apos;t read <a href="/playing-habbo/habbo-way">The {{$chocolatey->hotelName}} Way</a> yet? Please do! This stuff is really important. It&apos;s <strong>a set of simple rules</strong> to follow so that the hotel remains a fun place to hang out.</p>
-<h2>How to play</h2>
-<p>Looking for <strong>ideas on what to do in {{$chocolatey->hotelName}} </strong>? Read our <a href="/playing-habbo/how-to-play">guide on how to play</a>!</p>
-<p>If you need <strong>instructions on how to use furni, effects, or any other tool</strong> in the Hotel, click the <em>Help</em> button in the top right corner, then click <em>Ask for instructions</em> and a Helper will be on their way.</p>
-<h2> {{$chocolatey->hotelName}} Help Desk</h2>
-<p>If you have a <strong>problem with your {{$chocolatey->hotelName}} account, there was an error with the credits you bought or you have questions about a banned account</strong>, find your answer in our Customer Support &amp; Helpdesk</a> pages.</p>
+<h2>{!! trans('playing_habbo/help.tips_title') !!}</h2>
+<p>{!! trans('playing_habbo/help.tips') !!}</p>
+<h2>{!! trans('playing_habbo/help.way_title', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
+<p>{!! trans('playing_habbo/help.way', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<h2>{!! trans('playing_habbo/help.play_title') !!}</h2>
+<p>{!! trans('playing_habbo/help.play') !!}</p>
+<p>{!! trans('playing_habbo/help.play_two') !!}</p>
+<h2>{!! trans('playing_habbo/help.desk_title', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
+<p>{!! trans('playing_habbo/help.desk', ['hotelName' => $chocolatey->hotelName]) !!}</p>
