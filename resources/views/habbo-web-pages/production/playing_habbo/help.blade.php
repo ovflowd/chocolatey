@@ -1,79 +1,79 @@
-<h1>How to deal with a problem in {{$chocolatey->hotelName}} </h1>
-<p>You may occasionally come across the odd misbehaving {{$chocolatey->hotelName}} . Never fear, help is at hand! On this page we&apos;ll tell you what tools work best in tricky situations.</p>
-<h2>In a room</h2>
-<p>When you&apos;re in a room and another {{$chocolatey->hotelName}} is being out-of-line, click on their avatar and a drop-down menu will appear. This lets you either ignore, moderate or in really disruptive cases, report them.</p>
-<h4>Ignoring a {{$chocolatey->hotelName}}</h4>
-<p>If <strong>a {{$chocolatey->hotelName}} is saying things which make you feel uncomfortable</strong>, you can put them on ignore. This is an ideal solution for teasing, spamming or when you simply want to say &quot;Bye Felicia!&quot; but don&apos;t know how.</p>
+<h1>{!! trans('playing_habbo/help.title', ['hotelName' => $chocolatey->hotelName]) !!}</h1>
+<p>{!! trans('playing_habbo/help.may', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<h2>{!! trans('playing_habbo/help.room_title') !!}</h2>
+<p>{!! trans('playing_habbo/help.room', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<h4>{!! trans('playing_habbo/help.ignoring_title', ['hotelName' => $chocolatey->hotelName]) !!}</h4>
+<p>{!! trans('playing_habbo/help.ignoring', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_4.png" alt="Click an avatar to ignore, moderate or report" class="align-right">
 </p>
 <ol>
-    <li>Click on their avatar. A drop-down menu will appear.</li>
-    <li>Choose the <em>Ignore</em> option.</li>
-    <li>You won&apos;t see what the {{$chocolatey->hotelName}} says anymore. If you want to un-ignore later, click the avatar again and choose <em>Listen</em>.</li>
+    <li>{!! trans('playing_habbo/help.ignoring_list_one') !!}</li>
+    <li>{!! trans('playing_habbo/help.ignoring_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.ignoring_list_three', ['hotelName' => $chocolatey->hotelName]) !!}</li>
 </ol>
-<h4>Moderating a {{$chocolatey->hotelName}} </h4>
-<p><strong>In your own rooms, or if you have room rights</strong>, you can decide who can visit the room, and you have the power to mute, kick or ban other users. This allows you to play an active part in the general {{$chocolatey->hotelName}} moderation and to contribute to a safer and more enjoyable community.</p>
-<p>Read more on {{$chocolatey->hotelName}} Helpdesk about room moderation tools and room settings.</p>
-<h4>Reporting a {{$chocolatey->hotelName}} </h4>
-<p>If <strong>things are getting heated in a room</strong>: {{$chocolatey->hotelName}} s are talking about meeting in real life, want to video call, exchange personal contact details or someone&apos;s being badly bullied&#x2026; consider reporting that person. No one likes a tattle-tale, so remember to use this only when someone is intentionally doing harm to others or themselves.</p>
+<h4>{!! trans('playing_habbo/help.moderating_title', ['hotelName' => $chocolatey->hotelName]) !!}</h4>
+<p>{!! trans('playing_habbo/help.moderating', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/help.moderating_two', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<h4>{!! trans('playing_habbo/help.reporting_title', ['hotelName' => $chocolatey->hotelName]) !!}</h4>
+<p>{!! trans('playing_habbo/help.reporting', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <ol>
-    <li>Click on the trouble-making {{$chocolatey->hotelName}} &apos;s avatar. A drop-down menu will appear.</li>
-    <li>Choose <em>Report</em></li>
-    <li>Highlight the lines of chat that you feel the moderator need to see.</li>
-    <li>Choose a topic for your call that best matches your problem.</li>
-    <li>Tell the moderator what happened.</li>
-    <li>Send the help request and the moderator will try to resolve the issue. If you chose <em>Bullying</em> a Guardian may intervene.</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_one', ['hotelName' => $chocolatey->hotelName]) !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_three') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_four') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_five') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_list_six') !!}</li>
 </ol>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/help_button.png" alt="Help button" class="align-right">
 </p>
-<p>Another way of doing the same is this:</p>
+<p>{!! trans('playing_habbo/help.reporting_two') !!}</p>
 <ol>
-    <li>Click <em>Help</em> in the top right corner.</li>
-    <li>Choose <em>Someone is misbehaving</em>. You&apos;ll see a list of all {{$chocolatey->hotelName}} s in the room.</li>
-    <li>Click the badly-behaving {{$chocolatey->hotelName}} .</li>
-    <li>Highlight the lines of chat you feel the moderator need to see.</li>
-    <li>Choose a topic for your call.</li>
-    <li>Tell the moderator what happened.</li>
-    <li>Send the help request and the moderator will try to resolve the issue.</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_one') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_three') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_four') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_five') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_six') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_two_list_seven') !!}</li>
 </ol>
 <hr>
-<h2>In personal messaging/chat</h2>
-<p>If <strong>you are chatting to someone on PM and they are making you feel uncomfortable</strong>:</p>
+<h2>{!! trans('playing_habbo/help.reporting_three') !!}</h2>
+<p>{!! trans('playing_habbo/help.reporting_four') !!}</p>
 <ol>
-    <li>Click the <em>Report</em> button below the other {{$chocolatey->hotelName}} &apos;s picture in the chat window.</li>
-    <li>You will be asked for more information about what happened.</li>
-    <li>A Moderator will then take appropriate action.</li>
+    <li>{!! trans('playing_habbo/help.reporting_four_list_one', ['hotelName' => $chocolatey->hotelName]) !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_four_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_four_list_three') !!}</li>
 </ol>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_im.png" alt="Reporting a  {{$chocolatey->hotelName}} in personal messaging">
 </p>
-<h2>In a group forum</h2>
+<h2>{!! trans('playing_habbo/help.reporting_five') !!}</h2>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/flag_3.png" alt="Orange flag for reporting forum threads and posts" class="align-right">
 </p>
-<p>You can <strong>report an inappropriate group forum thread or post</strong>:</p>
+<p>{!! trans('playing_habbo/help.reporting_six') !!}</p>
 <ol>
-    <li>Click the orange flag icon in the forum.</li>
-    <li>You will be asked for more information about the situation.</li>
-    <li>A Moderator will then take appropriate action.</li>
+    <li>{!! trans('playing_habbo/help.reporting_six_list_one') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_six_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.reporting_six_list_three') !!}</li>
 </ol>
-<h2>On a web page</h2>
+<h2>{!! trans('playing_habbo/help.web_title') !!}</h2>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/reportroom.png" alt="White flag for reporting room home pages or camera pics" class="align-right">
 </p>
-<p>You can <strong>report an inappropriate photo, room or room image on a room homepage or photo page</strong>:</p>
+<p>{!! trans('playing_habbo/help.web') !!}</p>
 <ol>
-    <li>Click the white flag icon</li>
-    <li>Choose a topic for your call that best matches your problem</li>
-    <li>Let us know what&apos;s wrong with the room or photo</li>
-    <li>A Moderator will then take appropriate action</li>
+    <li>{!! trans('playing_habbo/help.web_list_one') !!}</li>
+    <li>{!! trans('playing_habbo/help.web_list_two') !!}</li>
+    <li>{!! trans('playing_habbo/help.web_list_three') !!}</li>
+    <li>{!! trans('playing_habbo/help.web_list_four') !!}</li>
 </ol>
 <hr>
 <h2>Safety Tips</h2>
 <p>On our <a href="/playing-habbo/safety">Safety Tips</a> page you&apos;ll find <strong>suggestions on how to have fun without putting yourself at risk</strong>. Check it out, there&apos;s lots of helpful information!</p>
-<h2> {{$chocolatey->hotelName}} Way</h2>
+<h2>{{$chocolatey->hotelName}} Way</h2>
 <p>Haven&apos;t read <a href="/playing-habbo/habbo-way">The {{$chocolatey->hotelName}} Way</a> yet? Please do! This stuff is really important. It&apos;s <strong>a set of simple rules</strong> to follow so that the hotel remains a fun place to hang out.</p>
 <h2>How to play</h2>
 <p>Looking for <strong>ideas on what to do in {{$chocolatey->hotelName}} </strong>? Read our <a href="/playing-habbo/how-to-play">guide on how to play</a>!</p>
