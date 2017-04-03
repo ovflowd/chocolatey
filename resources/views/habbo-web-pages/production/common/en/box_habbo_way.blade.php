@@ -1,5 +1,2 @@
-<h3> {{$chocolatey->hotelName}} Way</h3>
-<p>Follow the <a href="/playing-habbo/habbo-way"> {{$chocolatey->hotelName}} Way</a> - a series of guidelines to keep
-    you
-    on
-    the right side of fun!</p>
+<h3>{!! trans('common/box_habbo_way.title', ['hotelName' => $chocolatey->hotelName]) !!}</h3>
+<p>{!! trans('common/box_habbo_way.description', ['hotelName' => $chocolatey->hotelName]) !!}</p>

@@ -1,2 +1,2 @@
-<h3>Safety tips</h3>
-<p>Protect yourself with awareness! Learn how to <a href="/playing-habbo/safety">stay safe on the internet</a>.</p>
+<h3>{!! trans('common/box_learn_how_to_stay_safe.title') !!}</h3>
+<p>{!! trans('common/box_learn_how_to_stay_safe.description') !!}</p>

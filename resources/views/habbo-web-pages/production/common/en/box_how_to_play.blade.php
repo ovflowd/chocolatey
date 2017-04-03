@@ -1,3 +1,2 @@
-<h3>How to Play</h3>
-<p>Get creative, get constructive, get social! See our <a href="/playing-habbo/how-to-play">tips on what to do
-        in {{$chocolatey->hotelName}} </a>.</p>
+<h3>{!! trans('common/box_how_to_play.title') !!}</h3>
+<p>{!! trans('common/box_how_to_play.description', ['hotelName' => $chocolatey->hotelName]) !!}</p>
