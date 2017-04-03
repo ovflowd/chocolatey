@@ -21,7 +21,7 @@ return [
     'citizenship' => 'To get to know the Hotel a bit better, start by clicking on the Help tool in the the top right corner in the hotel.',
     'rooms_title' => 'Visit game rooms',
     'rooms' => 'Find the Game Hub in the list of public rooms in the navigator. Once there, use any of the arcade machines to go to a game room!',
-    'shop_title' => '>Go shopping',
+    'shop_title' => 'Go shopping',
     'shop' => 'Go to the Duckets shop and see what your free duckets can get you!',
     'activities_title' => 'Check out the latest activities',
     'activities' => 'Visit the <a href="/">Home</a> section of the website to find out all the latest news, competitions and general goings-on in :hotelName',
