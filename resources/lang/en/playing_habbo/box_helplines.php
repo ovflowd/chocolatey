@@ -5,6 +5,7 @@
  *
  * @template Helplines Playing Habbo Box
  * @uri /playing_habbo/box_helplines.en.html
+ * @language en (english)
  */
 
 return [

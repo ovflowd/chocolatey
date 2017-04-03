@@ -5,6 +5,7 @@
  *
  * @template How to Play Playing Habbo Page
  * @uri /playing_habbo/how_to_play.en.html
+ * @language en (english)
  */
 
 return [

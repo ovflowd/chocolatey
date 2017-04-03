@@ -5,6 +5,7 @@
  *
  * @template Habbo Way Common Box
  * @uri /common/box_habbo_way.en.html
+ * @language en (english)
  */
 
 return [

@@ -5,6 +5,7 @@
  *
  * @template Account Issues Common Box
  * @uri /common/box_account_issues.en.html
+ * @language en (english)
  */
 
 return [

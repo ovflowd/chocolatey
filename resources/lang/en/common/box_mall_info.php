@@ -5,6 +5,7 @@
  *
  * @template Mall Info Common Box
  * @uri /common/box_mall_info.en.html
+ * @language en (english)
  */
 
 return [

@@ -5,6 +5,7 @@
  *
  * @template Fansites Community Page
  * @uri /community/fansites.en.html
+ * @language en (english)
  */
 
 return [

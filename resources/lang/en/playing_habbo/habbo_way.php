@@ -5,6 +5,7 @@
  *
  * @template Habbo Way Playing Habbo Page
  * @uri /playing_habbo/habbo_way.en.html
+ * @language en (english)
  */
 
 return [

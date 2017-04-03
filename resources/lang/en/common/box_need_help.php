@@ -5,6 +5,7 @@
  *
  * @template Need Help Common Box
  * @uri /common/box_need_help.en.html
+ * @language en (english)
  */
 
 return [

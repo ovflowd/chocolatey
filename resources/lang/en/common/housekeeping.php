@@ -5,6 +5,7 @@
  *
  * @template Go to Housekeeping Common Box
  * @uri /common/housekeeping.en.html
+ * @language en (english)
  */
 
 return [

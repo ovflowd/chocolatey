@@ -5,6 +5,7 @@
  *
  * @template How to Play Habbo Common Box
  * @uri /common/box_how_to_play.en.html
+ * @language en (english)
  */
 
 return [
