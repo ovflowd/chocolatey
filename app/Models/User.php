@@ -113,7 +113,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'account_day_of_birth',
         'real_name',
         'look',
-        'gender'
+        'gender',
+        'credits',
+        'pixels'
     ];
 
     /**
@@ -179,6 +181,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['ip_current'] = $address;
 
         $this->traits = ["NEW_USER", "USER"];
+
+        $this->save();
+        $this->createData();
 
         return $this;
     }
@@ -328,7 +333,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get GTimestamp in Habbo Currency
+     * Get GTimestamp in Habbo UserCurrency
      *
      * @return string
      */
@@ -340,7 +345,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get GTimestamp in Habbo Currency
+     * Get GTimestamp in Habbo UserCurrency
      *
      * @return string
      */
@@ -362,7 +367,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get GTimestamp in Habbo Currency
+     * Get GTimestamp in Habbo UserCurrency
      *
      * @return false|string
      */

@@ -21,9 +21,9 @@ class PageController extends BaseController
      */
     public function show(string $pageCategory, string $pageFile): Response
     {
-        $pageLanguage = ($pageArray = explode('.', $pageFile))[1];
+        $pageArray = explode('.', $pageFile);
 
-        return response(view("habbo-web-pages.production.{$pageCategory}.{$pageLanguage}.{$pageArray[0]}"));
+        return response(view("habbo-web-pages.{$pageCategory}.{$pageArray[0]}"));
     }
 
     /**
@@ -36,9 +36,9 @@ class PageController extends BaseController
      */
     public function showWithSub(string $pageCategory, string $subCategory, string $pageFile): Response
     {
-        $pageLanguage = ($pageArray = explode('.', $pageFile))[1];
+        $pageArray = explode('.', $pageFile);
 
-        return response(view("habbo-web-pages.production.{$pageCategory}.{$subCategory}.{$pageLanguage}.{$pageArray[0]}"));
+        return response(view("habbo-web-pages.{$pageCategory}.{$subCategory}.{$pageArray[0]}"));
     }
 
     /**

@@ -28,8 +28,7 @@ class RoomsController extends BaseController
     {
         $leaderRank = 1;
 
-        foreach (($leaderBoard = Room::where('state', '!=', 'invisible')->orderBy('score', 'DESC')->orderBy('users', 'DESC')
-            ->limit(50)->get()) as $room)
+        foreach (($leaderBoard = Room::where('state', '!=', 'invisible')->orderBy('score', 'DESC')->orderBy('users', 'DESC')->limit(50)->get()) as $room)
             $room->leaderboardRank = $leaderRank++;
 
         return response()->json($leaderBoard, 200, array(), JSON_UNESCAPED_SLASHES);
