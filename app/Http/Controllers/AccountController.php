@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Nux;
-use App\Helpers\Mail;
+use App\Facades\Mail;
 use App\Helpers\User as UserHelper;
 use App\Models\ChocolateyId;
 use App\Models\User;
