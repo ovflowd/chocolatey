@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmulatorSettings;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use Laravel\Lumen\Http\Redirector;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -25,10 +25,8 @@ class ImagingController extends BaseController
      */
     public function getUserHead(Request $request)
     {
-        return redirect(Config::get('chocolatey.imaging') . 'avatarimage?figure='
-            . ($request->has('figure') ? $request->input('figure') :
-                User::where('username', $request->input('user'))->first()->figureString)
-            . '&size=l&headonly=1');
+        return redirect(Config::get('chocolatey.imaging') . 'avatarimage?figure=' . ($request->has('figure') ? $request->input('figure') :
+                User::where('username', $request->input('user'))->first()->figureString) . '&size=l&headonly=1');
     }
 
     /**
@@ -62,7 +60,7 @@ class ImagingController extends BaseController
      */
     public function getGroupBadge(string $badgeCode)
     {
-        $imagePath = DB::table('emulator_settings')->where('key', 'imager.location.output.badges')->first();
+        $imagePath = EmulatorSettings::where('key', 'imager.location.output.badges')->first();
 
         $badgeCode = str_replace('.gif', '', $badgeCode);
 

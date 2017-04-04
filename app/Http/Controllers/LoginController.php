@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Session;
+use App\Helpers\User as UserHelper;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use Facebook\Facebook;
@@ -26,13 +26,13 @@ class LoginController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
-        if ($request->user()):
-            if ($request->user()->isBanned)
+        UserHelper::getInstance()->loginUser($request);
+
+        if (UserHelper::getInstance()->hasSession()):
+            if (UserHelper::getUser()->isBanned)
                 return $this->sendBanMessage($request);
 
-            $request->user()->update(['last_login' => time(), 'ip_current' => $request->ip()]);
-
-            return response()->json($request->user());
+            return response()->json(UserHelper::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
         endif;
 
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
@@ -58,7 +58,7 @@ class LoginController extends BaseController
      */
     public function logout(): JsonResponse
     {
-        Session::erase(Config::get('chocolatey.security.session'));
+        UserHelper::getInstance()->eraseSession();
 
         return response()->json(null);
     }
@@ -80,14 +80,11 @@ class LoginController extends BaseController
 
         $dateOfBirth = strtotime("{$request->json()->get('birthdate')['day']}/{$request->json()->get('birthdate')['month']}/{$request->json()->get('birthdate')['year']}");
 
-        $userData = (new AccountController)->createUser($request, $request->json()->all(), true);
+        (new AccountController)->createUser($request, $request->json()->all(), true);
 
-        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
+        UserHelper::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
-        if (Config::get('chocolatey.vote.enabled'))
-            Session::set('VotePolicy', true);
-
-        return response()->json($userData);
+        return response()->json(UserHelper::getUser());
     }
 
     /**
@@ -100,34 +97,25 @@ class LoginController extends BaseController
     {
         $fbUser = $this->fbAuth($request);
 
-        if (User::query()->where('real_name', $fbUser->getId())->count() > 0):
-            Session::set(Config::get('chocolatey.security.session'), ($userData = User::where('real_name', $fbUser->getId())->first()));
+        if (User::query()->where('real_name', $fbUser->getId())->count() > 0)
+            return response()->json(UserHelper::getInstance()->setSession(User::where('real_name', $fbUser->getId())->first()));
 
-            return response()->json($userData);
-        endif;
+        (new AccountController)->createUser($request, ['email' => $fbUser->getEmail(), 'password' => uniqid()], true);
 
-        $userData = (new AccountController)->createUser($request, [
-            'email' => $fbUser->getEmail(),
-            'password' => uniqid()
-        ], true);
+        UserHelper::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 
-        $userData->update(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
-
-        return response()->json($userData);
+        return response()->json(UserHelper::getUser());
     }
 
     /**
-     * Doex Facebook Authentication
+     * Do Facebook Authentication
      *
      * @param Request $request
      * @return GraphUser
      */
     protected function fbAuth(Request $request): GraphUser
     {
-        $facebook = new Facebook([
-            'app_id' => Config::get('chocolatey.facebook.app.key'),
-            'app_secret' => Config::get('chocolatey.facebook.app.secret')
-        ]);
+        $facebook = new Facebook(['app_id' => Config::get('chocolatey.facebook.app.key'), 'app_secret' => Config::get('chocolatey.facebook.app.secret')]);
 
         $facebook->setDefaultAccessToken($request->json()->get('accessToken'));
 

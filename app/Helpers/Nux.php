@@ -92,6 +92,12 @@ final class Nux
         return true;
     }
 
+    /**
+     * Create the Pool Room
+     *
+     * @param User $user
+     * @return bool
+     */
     protected function createPoolRoom(User $user): bool
     {
         $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);

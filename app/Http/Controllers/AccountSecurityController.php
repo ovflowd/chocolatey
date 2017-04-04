@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Mail;
+use App\Helpers\User as UserHelper;
 use App\Models\ChocolateyId;
 use App\Models\Question;
 use App\Models\TrustedDevice;
@@ -11,7 +13,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -96,12 +97,7 @@ class AccountSecurityController extends BaseController
         if (strlen($request->json()->get('password')) < 6)
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
-        //@TODO: This search the whole base. If anyone has the same password.. This will give error. Is this good?
-        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('currentPassword')))->count() >= 1)
-            return response()->json(['error' => 'password.used_earlier'], 409);
-
-        User::find($request->user()->uniqueId)->update(['password' =>
-            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserHelper::updateUser(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null, 204);
     }
@@ -132,16 +128,14 @@ class AccountSecurityController extends BaseController
      */
     protected function sendChangeMailConfirmation(Request $request)
     {
-        $mailController = new MailController;
-
-        $mailController->send(['email' => $request->user()->email,
+        Mail::getInstance()->send(['email' => $request->user()->email,
             'name' => $request->user()->name, 'subject' => 'Email change alert'
         ], 'habbo-web-mail.mail-change-alert');
 
-        $generatedToken = $mailController->prepare($request->user()->email,
+        $generatedToken = Mail::getInstance()->store($request->user()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
-        $mailController->send(['email' => $request->json()->get('newEmail'), 'name' => $request->user()->name,
+        Mail::getInstance()->send(['email' => $request->json()->get('newEmail'), 'name' => $request->user()->name,
             'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}"
         ], 'habbo-web-mail.confirm-mail-change');
     }
@@ -175,10 +169,9 @@ class AccountSecurityController extends BaseController
      */
     public function verifyQuestions(Request $request): JsonResponse
     {
-        if (UserSecurity::where('user_id', $request->user()->uniqueId)
-                ->where('firstAnswer', $request->json()->get('answer1'))
-                ->where('secondAnswer', $request->json()->get('answer2'))->count() > 0
-        ):
+        $questions = UserSecurity::find($request->user()->uniqueId);
+
+        if ($questions->firstAnswer == $request->json()->get('answer1') && $questions->secondAnswer == $request->json()->get('answer2')):
             if ($request->json()->get('trust') == true)
                 (new TrustedDevice)->store($request->user()->uniqueId, $request->ip())->save();
 
@@ -196,16 +189,10 @@ class AccountSecurityController extends BaseController
      */
     public function confirmChangePassword(Request $request): JsonResponse
     {
-        if (($mail = (new MailController)->getMail($request->json()->get('token'))) == null)
+        if (Mail::getInstance()->getByToken($request->json()->get('token')) == null)
             return response()->json(null, 404);
 
-        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->count() >= 1)
-            return response()->json(['error' => 'password.used_earlier'], 400);
-
-        $mail->update(['used' => '1']);
-
-        DB::table('users')->where('mail', $mail->mail)
-            ->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserHelper::getInstance()->updateData(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null);
     }
