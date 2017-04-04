@@ -28,19 +28,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Hotel Path
-    |--------------------------------------------------------------------------
-    |
-    | This is used when you're working in subdirectories.
-    | WARNING: This is not RECOMMENDED! Chocolatey NEED be INSTALLED on the DocumentRoot ('/')
-    | WARNING: This it's only a partial fix!
-    |
-    */
-
-    'path' => '/',
-
-    /*
-    |--------------------------------------------------------------------------
     | Arcturus Account
     |--------------------------------------------------------------------------
     |
@@ -183,17 +170,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Help Website Redirect
-    |--------------------------------------------------------------------------
-    |
-    | Redirect URL
-    |
-    */
-
-    'help' => 'https://help.habbo.com/',
-
-    /*
-    |--------------------------------------------------------------------------
     | Invalid Usernames
     |--------------------------------------------------------------------------
     |
@@ -304,46 +280,5 @@ return [
     'security' => [
         'hash' => 'sha256',
         'session' => 'ChocolateyWEB'
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Enable/Disable Earn Credits
-    |--------------------------------------------------------------------------
-    |
-    | This will Enable/Disable Earn Credits Promo
-    |
-    */
-
-    'earn' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Earn Credits Link
-    |--------------------------------------------------------------------------
-    |
-    | The URL for Earn Credits Promo
-    |
-    */
-
-    'earn_link' => 'https://www.offertoro.com/ifr/show/2150/s-hhus-bf01d11c861e8785afe95065caa7f182/1308',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Vote System
-    |--------------------------------------------------------------------------
-    |
-    | Enable/Disable Voting System
-    |
-    | Pattern.: https://findretros.com/rankings/vote/{VoteName}
-    |
-    | Warning.: Be sure to configure RETURN URL to
-    |               http://your-hotel-name.com/hotel
-    |
-    */
-
-    'vote' => [
-        'enabled' => false,
-        'name' => 'Habbo'
     ]
 ];

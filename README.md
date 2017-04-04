@@ -1,3 +1,8 @@
+**READ [THIS](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating) BEFORE CREATING AN ISSUE!!!**
+
+
+<hr>
+
 ![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
 <br><sup>chocolatey the Habbo.com Clone CMS</sup>
 
@@ -53,6 +58,12 @@ Check our Wiki Page for Installation Tutorials, by clicking [here](https://githu
 * John aka Kylon
 * Mike aka CineXMike
 * s150217754
+
+#### Collaborating
+
+Before Collaborating, **PLEASE** Check [this](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating)
+
+Anyone is **free** to collaborate.
 
 ### Special Thanks
 * Wesley aka The General
