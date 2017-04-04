@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Mail;
-use App\Helpers\User;
-use App\Models\Checkout;
+use App\Facades\Mail;
+use App\Facades\User;
 use App\Models\Country;
+use App\Models\PaymentCheckout;
 use App\Models\Purse;
 use App\Models\ShopHistory;
 use App\Models\ShopInventory;
@@ -69,7 +69,7 @@ class ShopController extends BaseController
      */
     public function proceed(string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
-        $paymentCheckout = Checkout::where('category', $paymentCategory)->where('country', $countryCode)
+        $paymentCheckout = PaymentCheckout::where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
         if ((strtotime($paymentCheckout->generated_at) + 172800) < time())
@@ -93,7 +93,7 @@ class ShopController extends BaseController
      */
     public function success(Request $request, string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
-        $paymentCheckout = Checkout::where('category', $paymentCategory)->where('country', $countryCode)
+        $paymentCheckout = PaymentCheckout::where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
         if ($paymentCheckout == null)
@@ -101,7 +101,7 @@ class ShopController extends BaseController
 
         $purchaseItem = (new ShopHistory)->store($paymentMethod, $request->user()->uniqueId, $shopItem);
 
-        Mail::getInstance()->send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
+        Mail::send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
             'product' => ShopItem::find($shopItem), 'subject' => 'Purchase completed'
         ], 'habbo-web-mail.purchase-confirmation');
 

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Helpers\User;
+use App\Facades\User;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -22,7 +22,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::share('chocolatey', json_decode(json_encode(Config::get('chocolatey'))));
 
-        View::share('user', User::getInstance()->getSession() ?? 'null');
+        View::share('user', User::getSession() ?? 'null');
 
         View::share('mail', json_decode(json_encode(Config::get('mail'))));
 

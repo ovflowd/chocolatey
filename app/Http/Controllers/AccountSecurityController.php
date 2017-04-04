@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Mail;
-use App\Helpers\User as UserHelper;
+use App\Facades\Mail;
+use App\Facades\User as UserFacade;
 use App\Models\ChocolateyId;
 use App\Models\Question;
 use App\Models\TrustedDevice;
@@ -97,7 +97,7 @@ class AccountSecurityController extends BaseController
         if (strlen($request->json()->get('password')) < 6)
             return response()->json(['error' => 'password.current_password.invalid'], 409);
 
-        UserHelper::updateUser(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserFacade::updateUser(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null, 204);
     }
@@ -128,14 +128,14 @@ class AccountSecurityController extends BaseController
      */
     protected function sendChangeMailConfirmation(Request $request)
     {
-        Mail::getInstance()->send(['email' => $request->user()->email,
+        Mail::send(['email' => $request->user()->email,
             'name' => $request->user()->name, 'subject' => 'Email change alert'
         ], 'habbo-web-mail.mail-change-alert');
 
-        $generatedToken = Mail::getInstance()->store($request->user()->email,
+        $generatedToken = Mail::store($request->user()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
-        Mail::getInstance()->send(['email' => $request->json()->get('newEmail'), 'name' => $request->user()->name,
+        Mail::send(['email' => $request->json()->get('newEmail'), 'name' => $request->user()->name,
             'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}"
         ], 'habbo-web-mail.confirm-mail-change');
     }
@@ -189,10 +189,10 @@ class AccountSecurityController extends BaseController
      */
     public function confirmChangePassword(Request $request): JsonResponse
     {
-        if (Mail::getInstance()->getByToken($request->json()->get('token')) == null)
+        if (Mail::getByToken($request->json()->get('token')) == null)
             return response()->json(null, 404);
 
-        UserHelper::getInstance()->updateData(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserFacade::updateData(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null);
     }

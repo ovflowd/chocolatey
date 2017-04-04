@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Nux;
 use App\Facades\Mail;
-use App\Helpers\User as UserHelper;
+use App\Facades\Nux;
+use App\Facades\User as UserFacade;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use App\Models\UserPreferences;
@@ -60,7 +60,7 @@ class AccountController extends BaseController
      */
     public function selectName(Request $request): JsonResponse
     {
-        UserHelper::updateUser(['username' => $request->json()->get('name')]);
+        UserFacade::updateUser(['username' => $request->json()->get('name')]);
 
         return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
     }
@@ -73,7 +73,7 @@ class AccountController extends BaseController
      */
     public function saveLook(Request $request): JsonResponse
     {
-        UserHelper::updateUser(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
+        UserFacade::updateUser(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
 
         return response()->json($request->user());
     }
@@ -92,7 +92,7 @@ class AccountController extends BaseController
         if (!in_array($request->json()->get('roomIndex'), [1, 2, 3]))
             return response('', 400);
 
-        UserHelper::updateUser(Nux::generateRoom($request) ? ['traits' => ["USER"]] : ['traits' => ["NEW_USER", "USER"]]);
+        UserFacade::updateUser(Nux::generateRoom($request) ? ['traits' => ["USER"]] : ['traits' => ["NEW_USER", "USER"]]);
 
         return response(null, 200);
     }
@@ -180,7 +180,7 @@ class AccountController extends BaseController
         if (User::where('username', $request->json()->get('name'))->count() > 0 || !$this->filterName($request->json()->get('name')))
             return response()->json(['isAvailable' => false]);
 
-        $this->createUser($request, UserHelper::getInstance()->updateData($request->user(),
+        $this->createUser($request, UserFacade::updateData($request->user(),
             ['name' => $request->json()->get('name')])->getAttributes());
 
         return response()->json('');
@@ -199,13 +199,13 @@ class AccountController extends BaseController
         $userName = $newUser ? $this->uniqueName($userInfo['email']) : $userInfo['username'];
         $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
 
-        $token = Mail::getInstance()->store($userMail, 'public/registration/activate');
+        $token = Mail::store($userMail, 'public/registration/activate');
 
-        Mail::getInstance()->send(['email' => $userMail, 'name' => $userName,
+        Mail::send(['email' => $userMail, 'name' => $userName,
             'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName')
         ]);
 
-        return UserHelper::getInstance()->setSession((new User)->store($userName, $userInfo['password'], $userMail, $request->ip()));
+        return UserFacade::setSession((new User)->store($userName, $userInfo['password'], $userMail, $request->ip()));
     }
 
     /**
@@ -230,7 +230,7 @@ class AccountController extends BaseController
      */
     public function selectAvatar(Request $request)
     {
-        UserHelper::getInstance()->setSession(User::find($request->json()->get('uniqueId')));
+        UserFacade::setSession(User::find($request->json()->get('uniqueId')));
     }
 
     /**
@@ -241,7 +241,7 @@ class AccountController extends BaseController
      */
     public function confirmActivation(Request $request): JsonResponse
     {
-        if (Mail::getInstance()->getByToken($request->json()->get('token')) == null)
+        if (Mail::getByToken($request->json()->get('token')) == null)
             return response()->json(['error' => 'activation.invalid_token'], 400);
 
         if (strpos(Mail::getMail()->link, 'change-email') !== false):
@@ -268,9 +268,9 @@ class AccountController extends BaseController
         if (($user = User::where('mail', $request->json()->get('email'))->first()) == null)
             return response()->json(['email' => $request->json()->get('email')]);
 
-        $token = Mail::getInstance()->store($user->email, 'public/forgotPassword');
+        $token = Mail::store($user->email, 'public/forgotPassword');
 
-        Mail::getInstance()->send(['name' => $user->name, 'email' => $user->email, 'subject' => 'Password reset confirmation',
+        Mail::send(['name' => $user->name, 'email' => $user->email, 'subject' => 'Password reset confirmation',
             'url' => "/reset-password/{$token}"
         ], 'habbo-web-mail.password-reset');
 
@@ -285,9 +285,9 @@ class AccountController extends BaseController
      */
     public function verifyAccount(Request $request): Response
     {
-        $token = Mail::getInstance()->store($request->user()->email, 'public/registration/activate');
+        $token = Mail::store($request->user()->email, 'public/registration/activate');
 
-        Mail::getInstance()->send(['name' => $request->user()->name, 'email' => $request->user()->email,
+        Mail::send(['name' => $request->user()->name, 'email' => $request->user()->email,
             'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName')
         ]);
 

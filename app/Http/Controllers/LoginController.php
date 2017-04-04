@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\User as UserHelper;
+use App\Facades\User as UserFacade;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use Facebook\Facebook;
@@ -26,13 +26,13 @@ class LoginController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
-        UserHelper::getInstance()->loginUser($request);
+        UserFacade::loginUser($request);
 
-        if (UserHelper::getInstance()->hasSession()):
-            if (UserHelper::getUser()->isBanned)
+        if (UserFacade::hasSession()):
+            if (UserFacade::getUser()->isBanned)
                 return $this->sendBanMessage($request);
 
-            return response()->json(UserHelper::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
+            return response()->json(UserFacade::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
         endif;
 
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
@@ -58,7 +58,7 @@ class LoginController extends BaseController
      */
     public function logout(): JsonResponse
     {
-        UserHelper::getInstance()->eraseSession();
+        UserFacade::eraseSession();
 
         return response()->json(null);
     }
@@ -82,9 +82,9 @@ class LoginController extends BaseController
 
         (new AccountController)->createUser($request, $request->json()->all(), true);
 
-        UserHelper::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
+        UserFacade::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
-        return response()->json(UserHelper::getUser());
+        return response()->json(UserFacade::getUser());
     }
 
     /**
@@ -98,13 +98,13 @@ class LoginController extends BaseController
         $fbUser = $this->fbAuth($request);
 
         if (User::query()->where('real_name', $fbUser->getId())->count() > 0)
-            return response()->json(UserHelper::getInstance()->setSession(User::where('real_name', $fbUser->getId())->first()));
+            return response()->json(UserFacade::setSession(User::where('real_name', $fbUser->getId())->first()));
 
         (new AccountController)->createUser($request, ['email' => $fbUser->getEmail(), 'password' => uniqid()], true);
 
-        UserHelper::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
+        UserFacade::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 
-        return response()->json(UserHelper::getUser());
+        return response()->json(UserFacade::getUser());
     }
 
     /**

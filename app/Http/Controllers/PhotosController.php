@@ -37,13 +37,13 @@ class PhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoId
-     * @return JsonResponse
+     * @return Response
      */
-    public function report(Request $request, int $photoId): JsonResponse
+    public function report(Request $request, int $photoId): Response
     {
         (new PhotoReport)->store($photoId, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
-        return response()->json('');
+        return response(null);
     }
 
     /**
@@ -51,16 +51,16 @@ class PhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoId
-     * @return JsonResponse
+     * @return Response
      */
-    public function likePhoto(Request $request, int $photoId): JsonResponse
+    public function likePhoto(Request $request, int $photoId): Response
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
-            return response()->json('');
+            return response(null);
 
         (new PhotoLike)->store($photoId, $request->user()->name)->save();
 
-        return response()->json('');
+        return response(null);
     }
 
     /**
@@ -68,16 +68,16 @@ class PhotosController extends BaseController
      *
      * @param Request $request
      * @param int $photoId
-     * @return JsonResponse
+     * @return Response
      */
-    public function unlikePhoto(Request $request, int $photoId): JsonResponse
+    public function unlikePhoto(Request $request, int $photoId): Response
     {
         if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
-            return response()->json('');
+            return response(null);
 
         PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
-        return response()->json('');
+        return response(null);
     }
 
     /**
@@ -92,10 +92,10 @@ class PhotosController extends BaseController
         $photo = Photo::find($photoId);
 
         if ($photo == null || $photo->creator_id != $request->user()->uniqueId)
-            return response('', 401);
+            return response(null, 401);
 
         $photo->delete();
 
-        return response('');
+        return response(null);
     }
 }

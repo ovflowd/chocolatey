@@ -55,7 +55,7 @@ class ChocolateyMail extends ChocolateyModel
      */
     public function getRelatedAccountsAttribute()
     {
-        return User::query()->where('mail', $this->attributes['mail'])->get();
+        return User::where('mail', $this->attributes['mail'])->get();
     }
 
     /**
@@ -65,6 +65,6 @@ class ChocolateyMail extends ChocolateyModel
      */
     public function getRelatedAzureIdAttribute()
     {
-        return ChocolateyId::query()->where('mail', $this->attributes['mail'])->get();
+        return ChocolateyId::where('mail', $this->attributes['mail'])->get();
     }
 }

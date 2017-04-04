@@ -5,10 +5,10 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class Checkout
+ * Class PaymentCheckout
  * @package App\Models
  */
-class Checkout extends ChocolateyModel
+class PaymentCheckout extends ChocolateyModel
 {
     /**
      * Disable Timestamps

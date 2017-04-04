@@ -32,8 +32,7 @@ class ProfileController extends BaseController
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
-        $userData->selectedBadges = UserBadge::where('user_id',
-                $userData->uniqueId)->where('slot_id', '>', 0)->orderBy('slot_id', 'ASC')->get() ?? [];
+        $userData->selectedBadges = UserBadge::where('user_id', $userData->uniqueId)->where('slot_id', '>', 0)->orderBy('slot_id', 'ASC')->get() ?? [];
         $userData->profileVisible = $userPreferences == null ? true : $userPreferences->profileVisible == '1';
 
         return response()->json($userData);

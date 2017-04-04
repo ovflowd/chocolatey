@@ -18,7 +18,7 @@ class User
      *
      * @return UserModel|null
      */
-    public static function getUser()
+    public function getUser()
     {
         return self::getInstance()->getSession();
     }
@@ -56,7 +56,7 @@ class User
      * @param array $parameters
      * @return UserModel
      */
-    public static function updateUser(array $parameters)
+    public function updateUser(array $parameters)
     {
         return self::getInstance()->updateSession($parameters);
     }

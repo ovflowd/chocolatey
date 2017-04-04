@@ -24,7 +24,7 @@ class Mail
      *
      * @return MailModel|null
      */
-    public static function getMail()
+    public function getMail()
     {
         return self::getInstance()->get();
     }
@@ -87,32 +87,6 @@ class Mail
     }
 
     /**
-     * Get an E-mail by Token
-     *
-     * @param string $token
-     * @return MailModel
-     */
-    public function getByToken(string $token)
-    {
-        $mailRequest = MailModel::where('token', $token)->where('used', '0')->first();
-
-        $mailRequest->update(['used' => '1']);
-
-        return $this->set($mailRequest);
-    }
-
-    /**
-     * Set Mail Model in Cache
-     *
-     * @param MailModel $model
-     * @return MailModel
-     */
-    public function set(MailModel $model)
-    {
-        return $this->mailModel = $model;
-    }
-
-    /**
      * Update Mail Model Data
      *
      * @param string $token
@@ -137,5 +111,31 @@ class Mail
     public function has(string $token)
     {
         return Mail::getInstance()->getByToken($token) !== null;
+    }
+
+    /**
+     * Get an E-mail by Token
+     *
+     * @param string $token
+     * @return MailModel
+     */
+    public function getByToken(string $token)
+    {
+        $mailRequest = MailModel::where('token', $token)->where('used', '0')->first();
+
+        $mailRequest->update(['used' => '1']);
+
+        return $this->set($mailRequest);
+    }
+
+    /**
+     * Set Mail Model in Cache
+     *
+     * @param MailModel $model
+     * @return MailModel
+     */
+    public function set(MailModel $model)
+    {
+        return $this->mailModel = $model;
     }
 }

@@ -73,6 +73,8 @@ $app->register(App\Providers\AppServiceProvider::class);
 
 $app->register(App\Providers\SessionServiceProvider::class);
 
+$app->register(App\Providers\UserServiceProvider::class);
+
 $app->register(App\Providers\ViewServiceProvider::class);
 
 $app->register(App\Providers\AuthServiceProvider::class);
@@ -84,6 +86,8 @@ $app->register(Rdehnhardt\MaintenanceMode\Providers\MaintenanceModeServiceProvid
 $app->register(Intervention\Image\ImageServiceProviderLumen::class);
 
 $app->register(App\Providers\NuxServiceProvider::class);
+
+$app->register(App\Providers\MailServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
