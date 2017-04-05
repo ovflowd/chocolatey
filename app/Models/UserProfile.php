@@ -3,41 +3,40 @@
 namespace App\Models;
 
 /**
- * Class UserProfile
- * @package App\Models
+ * Class UserProfile.
  */
 class UserProfile
 {
     /**
-     * User Data
+     * User Data.
      *
      * @var User
      */
     public $user;
 
     /**
-     * User Friends
+     * User Friends.
      *
      * @var UserFriend[]|array
      */
     public $friends = [];
 
     /**
-     * User Badges
+     * User Badges.
      *
      * @var UserBadge[]|array
      */
     public $badges = [];
 
     /**
-     * User Groups
+     * User Groups.
      *
      * @var UserGroup[]|array
      */
     public $groups = [];
 
     /**
-     * User Rooms
+     * User Rooms.
      *
      * @var Room[]|array
      */
@@ -47,6 +46,7 @@ class UserProfile
      * UserProfile constructor.
      *
      * @param User $userData
+     *
      * @return UserProfile
      */
     public function __construct(User $userData)
@@ -62,7 +62,7 @@ class UserProfile
     }
 
     /**
-     * Set User Data
+     * Set User Data.
      *
      * @param User $userData
      */
@@ -72,7 +72,7 @@ class UserProfile
     }
 
     /**
-     * Set User Friends
+     * Set User Friends.
      */
     protected function setFriends()
     {
@@ -80,7 +80,7 @@ class UserProfile
     }
 
     /**
-     * Set User Badges
+     * Set User Badges.
      */
     protected function setBadges()
     {
@@ -88,18 +88,19 @@ class UserProfile
     }
 
     /**
-     * Set User Groups
+     * Set User Groups.
      */
     protected function setGroups()
     {
         $groups = GroupMember::where('user_id', $this->user->uniqueId)->get() ?? [];
 
-        foreach ($groups as $group)
+        foreach ($groups as $group) {
             $this->groups[] = $group->guild;
+        }
     }
 
     /**
-     * Set User Rooms
+     * Set User Rooms.
      */
     public function setRooms()
     {

@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-# Load ENV Environment
-(new Dotenv\Dotenv(__DIR__ . '/../'))->load();
+// Load ENV Environment
+(new Dotenv\Dotenv(__DIR__.'/../'))->load();
 
 /*
 |--------------------------------------------------------------------------
@@ -11,27 +11,27 @@ require_once __DIR__ . '/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 */
 
-# Create Lumen Application
+// Create Lumen Application
 $app = new Laravel\Lumen\Application(
-    realpath(__DIR__ . '/../')
+    realpath(__DIR__.'/../')
 );
 
-# Enable Laravel Facades (DB::)
+// Enable Laravel Facades (DB::)
 $app->withFacades();
 
-# Enable Laravel Eloquent Models
+// Enable Laravel Eloquent Models
 $app->withEloquent();
 
-# Configure Mail Provider
+// Configure Mail Provider
 $app->configure('mail');
 
-# Configure Auth Provider
+// Configure Auth Provider
 $app->configure('auth');
 
-# Configure Chocolatey Provider
+// Configure Chocolatey Provider
 $app->configure('chocolatey');
 
-# Configure Maintenance Provider
+// Configure Maintenance Provider
 $app->configure('maintenance');
 
 /*
@@ -56,10 +56,10 @@ $app->singleton(
 |--------------------------------------------------------------------------
 */
 
-# Add Auth Middleware
+// Add Auth Middleware
 $app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
-    'cors' => App\Http\Middleware\Cors::class,
+    'auth'        => App\Http\Middleware\Authenticate::class,
+    'cors'        => App\Http\Middleware\Cors::class,
     'maintenance' => App\Http\Middleware\Maintenance::class,
 ]);
 
@@ -95,18 +95,18 @@ $app->register(App\Providers\MailServiceProvider::class);
 |--------------------------------------------------------------------------
 */
 
-# Enable Lumen Controllers & Routes
+// Enable Lumen Controllers & Routes
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__ . '/../routes/main.php';
-    require __DIR__ . '/../routes/api.php';
-    require __DIR__ . '/../routes/extra.php';
-    require __DIR__ . '/../routes/web.php';
-    require __DIR__ . '/../routes/lang.php';
-    require __DIR__ . '/../routes/lead.php';
-    require __DIR__ . '/../routes/shop.php';
-    require __DIR__ . '/../routes/ads.php';
-    require __DIR__ . '/../routes/news.php';
-    require __DIR__ . '/../routes/misc.php';
+    require __DIR__.'/../routes/main.php';
+    require __DIR__.'/../routes/api.php';
+    require __DIR__.'/../routes/extra.php';
+    require __DIR__.'/../routes/web.php';
+    require __DIR__.'/../routes/lang.php';
+    require __DIR__.'/../routes/lead.php';
+    require __DIR__.'/../routes/shop.php';
+    require __DIR__.'/../routes/ads.php';
+    require __DIR__.'/../routes/news.php';
+    require __DIR__.'/../routes/misc.php';
 });
 
 return $app;

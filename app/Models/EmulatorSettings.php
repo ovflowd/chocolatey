@@ -5,13 +5,12 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class EmulatorSettings
- * @package App\Models
+ * Class EmulatorSettings.
  */
 class EmulatorSettings extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,14 +24,14 @@ class EmulatorSettings extends ChocolateyModel
     protected $table = 'emulator_settings';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store Function
+     * Store Function.
      */
     public function store()
     {

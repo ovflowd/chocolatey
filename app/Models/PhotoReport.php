@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Class PhotoReport
- * @package App\Models
+ * Class PhotoReport.
  */
 class PhotoReport extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,27 +24,28 @@ class PhotoReport extends ChocolateyModel
     protected $table = 'chocolatey_users_photos_reported';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
     protected $appends = [
-        'reason_category'
+        'reason_category',
     ];
 
     /**
-     * Store a new Photo Report
+     * Store a new Photo Report.
      *
      * @param int $photoId
      * @param int $reasonId
      * @param int $reportedBy
+     *
      * @return PhotoReport
      */
     public function store(int $photoId, int $reasonId, int $reportedBy): PhotoReport
@@ -59,7 +59,7 @@ class PhotoReport extends ChocolateyModel
     }
 
     /**
-     * Get the Report Category Content
+     * Get the Report Category Content.
      *
      * @return Builder
      */

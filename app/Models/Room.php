@@ -8,23 +8,23 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Room
+ * Class Room.
+ *
  * @property int id
- * @package App\Models
  */
 class Room extends Model
 {
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Leader Board Rank
+     * Leader Board Rank.
      *
      * @var int
      */
@@ -38,30 +38,30 @@ class Room extends Model
     protected $table = 'rooms';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
-        'uniqueId' => 'id',
-        'ownerName' => 'owner_name',
-        'ownerUniqueId' => 'owner_id',
-        'doorMode' => 'state',
+        'uniqueId'         => 'id',
+        'ownerName'        => 'owner_name',
+        'ownerUniqueId'    => 'owner_id',
+        'doorMode'         => 'state',
         'leaderboardValue' => 'score',
-        'maximumVisitors' => 'users_max',
-        'habboGroupId' => 'guild_id',
-        'rating' => 'score',
+        'maximumVisitors'  => 'users_max',
+        'habboGroupId'     => 'guild_id',
+        'rating'           => 'score',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -78,7 +78,7 @@ class Room extends Model
         'ownerName',
         'showOwnerName',
         'categories',
-        'rating'
+        'rating',
     ];
 
     /**
@@ -123,25 +123,26 @@ class Room extends Model
         'roller_speed',
         'promoted',
         'trade_mode',
-        'move_diagonally'
+        'move_diagonally',
     ];
 
     /**
-     * Stores a new Room
+     * Stores a new Room.
      *
      * @param string $roomName
      * @param string $description
      * @param string $model
-     * @param int $maxUsers
-     * @param int $roomCategory
-     * @param int $floorPaper
-     * @param int $wallPaper
-     * @param float $landscapePaper
-     * @param int $ownerId
+     * @param int    $maxUsers
+     * @param int    $roomCategory
+     * @param int    $floorPaper
+     * @param int    $wallPaper
+     * @param float  $landscapePaper
+     * @param int    $ownerId
      * @param string $ownerName
+     *
      * @return Room
      */
-    public function store(string $roomName, string $description, string $model, int $maxUsers, int $roomCategory, int $floorPaper, int $wallPaper, float $landscapePaper = 0.00, int $ownerId, string $ownerName)
+    public function store(string $roomName, string $description, string $model, int $maxUsers, int $roomCategory, int $floorPaper, int $wallPaper, float $landscapePaper, int $ownerId, string $ownerName)
     {
         $this->attributes['name'] = $roomName;
         $this->attributes['description'] = $description;
@@ -161,7 +162,7 @@ class Room extends Model
     }
 
     /**
-     * Get Room Tags
+     * Get Room Tags.
      *
      * @return array
      */
@@ -173,7 +174,7 @@ class Room extends Model
     }
 
     /**
-     * Get Image Url
+     * Get Image Url.
      *
      * @TODO: Get Real Full Room Image
      *
@@ -185,7 +186,7 @@ class Room extends Model
     }
 
     /**
-     * Get Thumbnail Url
+     * Get Thumbnail Url.
      *
      * @return string
      */
@@ -197,7 +198,7 @@ class Room extends Model
     }
 
     /**
-     * Return if need show Owner Name
+     * Return if need show Owner Name.
      *
      * @TODO: What this really does?
      *
@@ -209,7 +210,7 @@ class Room extends Model
     }
 
     /**
-     * Set a Leader Board Position
+     * Set a Leader Board Position.
      *
      * @param int $roomPosition
      */
@@ -219,7 +220,7 @@ class Room extends Model
     }
 
     /**
-     * Get Leader Board Rank
+     * Get Leader Board Rank.
      *
      * @return int
      */
@@ -229,7 +230,7 @@ class Room extends Model
     }
 
     /**
-     * Get if the Room is Public
+     * Get if the Room is Public.
      *
      * @return bool
      */
@@ -239,7 +240,7 @@ class Room extends Model
     }
 
     /**
-     * Get Room Category
+     * Get Room Category.
      *
      * @return array
      */

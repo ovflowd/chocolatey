@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class Ban
- * @package App\Models
+ * Class Ban.
  */
 class Ban extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,22 +22,23 @@ class Ban extends ChocolateyModel
     protected $table = 'bans';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store an User Ban
+     * Store an User Ban.
      *
-     * @param int $userId
-     * @param int $userStaffId
+     * @param int    $userId
+     * @param int    $userStaffId
      * @param string $banReason
-     * @param string $banType (Account, IP, Machine, Super)
-     * @param int $banExpire
+     * @param string $banType     (Account, IP, Machine, Super)
+     * @param int    $banExpire
      * @param string $ipAddress
      * @param string $machineId
+     *
      * @return Ban
      */
     public function store(int $userId, int $userStaffId, string $banReason, $banType = 'account', $banExpire = 0, $ipAddress = '', $machineId = ''): Ban
@@ -56,7 +56,7 @@ class Ban extends ChocolateyModel
     }
 
     /**
-     * Get Ban Expire Attribute
+     * Get Ban Expire Attribute.
      *
      * @return string
      */

@@ -10,5 +10,5 @@
 |
 */
 
-# Main Request Route
+// Main Request Route
 $app->get('/', 'HomePageController@show');

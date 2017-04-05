@@ -32,11 +32,11 @@ class CreateChocolateyShopItemsTable extends Migration
 
         DB::table('chocolatey_shop_items')->insert([
             ['countryCode' => 'us', 'categories' => 'HABBO_CLUB', 'iconId' => 5, 'name' => 'Habbo Club - 1 month'],
-            ['countryCode' => 'us', 'categories' => 'BUILDERS_CLUB', 'iconId' => 6, 'name' => 'Builders Club - 1 month']
+            ['countryCode' => 'us', 'categories' => 'BUILDERS_CLUB', 'iconId' => 6, 'name' => 'Builders Club - 1 month'],
         ]);
 
         DB::table('chocolatey_shop_items')->insert([
-            ['countryCode' => 'us', 'creditAmount' => 600, 'name' => '600 Credits & Diamonds']
+            ['countryCode' => 'us', 'creditAmount' => 600, 'name' => '600 Credits & Diamonds'],
         ]);
     }
 
