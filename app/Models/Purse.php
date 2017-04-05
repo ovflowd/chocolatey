@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
-
 /**
  * Class Purse
  * @package App\Models
@@ -54,12 +52,10 @@ class Purse
      */
     public function __construct(int $userId)
     {
-        $userCredits = DB::table('users')->where('id', $userId)->select(['credits'])->first();
-        $userDiamonds = DB::table('users_currency')->where('user_id', $userId)->where('type', 5)->first();
-        $habboDays = DB::table('users_settings')->where('user_id', $userId)->select(['club_expire_timestamp'])->first();
-        $habboDays = floor((($habboDays->club_expire_timestamp ?? 0) - time()) / 86400);
+        $userDiamonds = UserCurrency::where('user_id', $userId)->where('type', 5)->first();
+        $habboDays = floor(((UserSettings::where('user_id', $userId)->first()->club_expire_timestamp ?? 0) - time()) / 86400);
 
-        $this->creditBalance = $userCredits->credits;
+        $this->creditBalance = User::find($userId)->credits;
         $this->diamondBalance = $userDiamonds->amount ?? 0;
         $this->habboClubDays = $habboDays > 0 ? $habboDays : 0;
     }

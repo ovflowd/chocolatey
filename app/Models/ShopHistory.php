@@ -148,6 +148,8 @@ class ShopHistory extends ChocolateyModel
         $this->attributes['user_id'] = $userId;
         $this->attributes['item_id'] = $itemId;
 
+        $this->save();
+
         return $this;
     }
 }

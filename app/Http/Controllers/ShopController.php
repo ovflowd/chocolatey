@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Mail;
+use App\Facades\User;
 use App\Models\Country;
+use App\Models\PaymentCheckout;
 use App\Models\Purse;
 use App\Models\ShopHistory;
 use App\Models\ShopInventory;
+use App\Models\ShopItem;
+use App\Models\Voucher;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Http\Redirector;
 use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -66,8 +69,7 @@ class ShopController extends BaseController
      */
     public function proceed(string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
-        $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
-            ->where('category', $paymentCategory)->where('country', $countryCode)
+        $paymentCheckout = PaymentCheckout::where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
         if ((strtotime($paymentCheckout->generated_at) + 172800) < time())
@@ -91,24 +93,21 @@ class ShopController extends BaseController
      */
     public function success(Request $request, string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
     {
-        $paymentCheckout = DB::table('chocolatey_shop_payment_checkout')
-            ->where('category', $paymentCategory)->where('country', $countryCode)
+        $paymentCheckout = PaymentCheckout::where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
         if ($paymentCheckout == null)
             return response(view('habbo-web-payments.canceled-payment'), 500);
 
         $purchaseItem = (new ShopHistory)->store($paymentMethod, $request->user()->uniqueId, $shopItem);
-        $purchaseItem->save();
 
-        (new MailController)->send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
-            'product' => DB::table('chocolatey_shop_items')->where('id', $shopItem)->first(), 'subject' => 'Purchase completed'
+        Mail::send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
+            'product' => ShopItem::find($shopItem), 'subject' => 'Purchase completed'
         ], 'habbo-web-mail.purchase-confirmation');
 
         $paymentCheckout->delete();
 
-        return response(view('habbo-web-payments.success-payment', [
-            'checkoutId' => $purchaseItem->transactionId]), 200);
+        return response(view('habbo-web-payments.success-payment', ['checkoutId' => $purchaseItem->transactionId]), 200);
     }
 
     /**
@@ -136,30 +135,14 @@ class ShopController extends BaseController
      */
     public function redeem(Request $request): JsonResponse
     {
-        $voucher = DB::table('vouchers')->where('code', $request->json()->get('voucherCode'))->first();
-
-        if ($voucher == null)
+        if (($voucher = Voucher::where('code', $request->json()->get('voucherCode'))->first()) == null)
             return response()->json(null, 404);
 
-        DB::table('users')->where('id', $request->user()->uniqueId)->increment('credits', $voucher->credits);
-        DB::table('users')->where('id', $request->user()->uniqueId)->increment('pixels', $voucher->points);
+        User::getUser()->increment('credits', $voucher->credits);
+        User::getUser()->increment('pixels', $voucher->points);
 
-        DB::table('vouchers')->where('code', $request->json()->get('voucherCode'))->delete();
+        $voucher->delete();
 
         return response()->json(null, 204);
-    }
-
-    /**
-     * Get Offer Wall
-     *
-     * @TODO: Need to Know how this really works!
-     * @TODO: Ability of custom this shit
-     *
-     * @param Request $request
-     * @return mixed
-     */
-    public function getWall(Request $request): JsonResponse
-    {
-        return response()->json(['url' => Config::get('chocolatey.earn_link')]);
     }
 }
