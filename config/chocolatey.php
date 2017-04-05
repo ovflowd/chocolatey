@@ -80,8 +80,8 @@ return [
     */
 
     'ads' => [
-        'enabled' => true,
-        'adseneKey' => 'YOUR-ADSENE-KEY' //DEFAULT: /108596585/HABBO_Video
+        'enabled'   => true,
+        'adseneKey' => 'YOUR-ADSENE-KEY', //DEFAULT: /108596585/HABBO_Video
     ],
 
     /*
@@ -94,7 +94,7 @@ return [
     */
 
     'cors' => [
-        '*'
+        '*',
     ],
 
     /*
@@ -107,8 +107,8 @@ return [
     */
 
     'twitter' => [
-        'title' => 'Tweets by @m0vame',
-        'username' => 'm0vame'
+        'title'    => 'Tweets by @m0vame',
+        'username' => 'm0vame',
     ],
 
     /*
@@ -123,10 +123,10 @@ return [
 
     'facebook' => [
         'page' => 'universalinternetofthings',
-        'app' => [
-            'key' => 'YOUR-API-KEY',
-            'secret' => 'YOU-SECRET-KEY'
-        ]
+        'app'  => [
+            'key'    => 'YOUR-API-KEY',
+            'secret' => 'YOU-SECRET-KEY',
+        ],
     ],
 
     /*
@@ -153,8 +153,8 @@ return [
     */
 
     'location' => [
-        'country' => 'us',
-        'continent' => 'na'
+        'country'   => 'us',
+        'continent' => 'na',
     ],
 
     /*
@@ -184,7 +184,7 @@ return [
         'Admin_',
         'ovflowd',
         'sant0ro',
-        'saamus'
+        'saamus',
     ],
 
     /*
@@ -220,7 +220,7 @@ return [
 
     'emulator' => [
         'address' => '127.0.0.1',
-        'port' => 30000
+        'port'    => 30000,
     ],
 
     /*
@@ -236,17 +236,17 @@ return [
     */
 
     'game' => [
-        'gordon' => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/',
-        'flash' => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/Habbo.swf',
+        'gordon'   => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/',
+        'flash'    => 'http://localhost/public/swf/gordon/PRODUCTION-201611291003-338511768/Habbo.swf',
         'gamedata' => [
-            'figuredata' => 'http://localhost/public/swf/gamedata/figuredata.xml',
-            'furnidata' => 'http://localhost/public/swf/gamedata/furnidata.xml/',
-            'productdata' => 'http://localhost/public/swf/gamedata/productdata.txt',
-            'variables' => 'http://localhost/public/swf/gamedata/external_variables.txt',
-            'texts' => 'http://localhost/public/swf/gamedata/external_flash_texts.txt',
+            'figuredata'        => 'http://localhost/public/swf/gamedata/figuredata.xml',
+            'furnidata'         => 'http://localhost/public/swf/gamedata/furnidata.xml/',
+            'productdata'       => 'http://localhost/public/swf/gamedata/productdata.txt',
+            'variables'         => 'http://localhost/public/swf/gamedata/external_variables.txt',
+            'texts'             => 'http://localhost/public/swf/gamedata/external_flash_texts.txt',
             'overrideVariables' => 'http://localhost/public/swf/override/external_override_variables.txt',
-            'overrideTexts' => 'http://localhost/public/swf/gamedata/override/external_flash_override_texts.txt',
-        ]
+            'overrideTexts'     => 'http://localhost/public/swf/gamedata/override/external_flash_override_texts.txt',
+        ],
     ],
 
     /*
@@ -262,7 +262,7 @@ return [
         'Loading Habbo Hotel',
         'See those Yellow Duckies, It\'s Wesley, no?',
         'I would like to eat some chocolate cookies.. You know.',
-        'Claudio it\'s you?'
+        'Claudio it\'s you?',
     ],
 
     /*
@@ -278,7 +278,7 @@ return [
     */
 
     'security' => [
-        'hash' => 'sha256',
-        'session' => 'ChocolateyWEB'
-    ]
+        'hash'    => 'sha256',
+        'session' => 'ChocolateyWEB',
+    ],
 ];

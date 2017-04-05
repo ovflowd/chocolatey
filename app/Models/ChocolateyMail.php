@@ -6,13 +6,12 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class ChocolateyMail
- * @package App\Models
+ * Class ChocolateyMail.
  */
 class ChocolateyMail extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -26,19 +25,21 @@ class ChocolateyMail extends ChocolateyModel
     protected $table = 'chocolatey_users_mail_requests';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store a new Azure Id Account
+     * Store a new Azure Id Account.
      *
      * @param string $userMail
-     * @param int $userId
-     * @return ChocolateyMail
+     * @param int    $userId
+     *
      * @throws ErrorException
+     *
+     * @return ChocolateyMail
      */
     public function store(int $userId, string $userMail): ChocolateyMail
     {
@@ -49,7 +50,7 @@ class ChocolateyMail extends ChocolateyModel
     }
 
     /**
-     * Get All Accounts related with this E-mail
+     * Get All Accounts related with this E-mail.
      *
      * @return Collection|static[]
      */
@@ -59,7 +60,7 @@ class ChocolateyMail extends ChocolateyModel
     }
 
     /**
-     * Get All AzureId with this E-mail
+     * Get All AzureId with this E-mail.
      *
      * @return Collection|static[]
      */

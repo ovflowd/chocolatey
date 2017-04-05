@@ -3,13 +3,12 @@
 namespace App\Helpers;
 
 /**
- * Class Session
- * @package App\Helpers
+ * Class Session.
  */
 class Session
 {
     /**
-     * Create and return a Session instance
+     * Create and return a Session instance.
      *
      * @return Session
      */
@@ -25,7 +24,7 @@ class Session
     }
 
     /**
-     * Rename the Session ID
+     * Rename the Session ID.
      *
      * @param string $name
      */
@@ -35,7 +34,7 @@ class Session
     }
 
     /**
-     * Start Session Handler
+     * Start Session Handler.
      */
     public function start()
     {
@@ -43,7 +42,7 @@ class Session
     }
 
     /**
-     * Stop Session Handler
+     * Stop Session Handler.
      */
     public function destroy()
     {
@@ -51,10 +50,11 @@ class Session
     }
 
     /**
-     * Store a Variable in the Session
+     * Store a Variable in the Session.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return mixed
      */
     public function set($key, $value)
@@ -65,9 +65,10 @@ class Session
     }
 
     /**
-     * Get a Attribute Value from Session
+     * Get a Attribute Value from Session.
      *
      * @param string $key
+     *
      * @return mixed
      */
     public function get($key)
@@ -76,9 +77,10 @@ class Session
     }
 
     /**
-     * Check if a Key exists in the Session
+     * Check if a Key exists in the Session.
      *
      * @param mixed $key
+     *
      * @return bool
      */
     public function has($key)
@@ -87,7 +89,7 @@ class Session
     }
 
     /**
-     * Erase a Attribute from Session
+     * Erase a Attribute from Session.
      *
      * @param string $key
      */

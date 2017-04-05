@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class UserSettings
- * @package App\Models
+ * Class UserSettings.
  */
 class UserSettings extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -30,11 +29,11 @@ class UserSettings extends ChocolateyModel
     protected $fillable = [
         'user_id',
         'block_following',
-        'block_friendrequests'
+        'block_friendrequests',
     ];
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */

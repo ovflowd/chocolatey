@@ -5,13 +5,12 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class UserCurrency
- * @package App\Models
+ * Class UserCurrency.
  */
 class UserCurrency extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,20 +24,20 @@ class UserCurrency extends ChocolateyModel
     protected $table = 'users_currency';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A UserCurrency can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a UserCurrency by Chocolatey. UserCurrency are created by the Emulator.");
+        throw new InvalidMutatorException('You cannot store a UserCurrency by Chocolatey. UserCurrency are created by the Emulator.');
     }
 }
