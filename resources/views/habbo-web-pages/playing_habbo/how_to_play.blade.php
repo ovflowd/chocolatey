@@ -5,7 +5,7 @@
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/navigator.png" alt="Navigator" class="align-right">
 </p>
 <h3>{!! trans('playing_habbo/how_to_play.explore_title') !!}</h3>
-<p>{!! trans('playing_habbo/how_to_play.explore', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/how_to_play.explore', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <hr>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/askfriend.png" alt="Ask to be friend" class="align-right">
@@ -33,8 +33,8 @@
 <hr>
 <h3>{!! trans('playing_habbo/how_to_play.activities_title') !!}</h3>
 <p>{!! trans('playing_habbo/how_to_play.activities', ['hotelName' => $chocolatey->hotelName]) !!}</p>
-<p>{!! trans('playing_habbo/how_to_play.activities_two', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/how_to_play.activities_two', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <blockquote>
     <h3>{!! trans('playing_habbo/how_to_play.join_title', ['hotelName' => $chocolatey->hotelName]) !!}</h3>
-    <p>{!! trans('playing_habbo/how_to_play.join', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+    <p>{!! trans('playing_habbo/how_to_play.join', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 </blockquote>
