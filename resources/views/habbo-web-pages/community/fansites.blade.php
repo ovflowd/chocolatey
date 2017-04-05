@@ -8,5 +8,5 @@
         <a href="http://ragezone.com/" target="_blank">RaGEZONE</a>
     </li>
 </ul>
-<p>{!! trans('community/fansites.policy') !!}</p>
+<p>{!! trans('community/fansites.policy',['hotelName' => $chocolatey->hotelName]) !!}</p>
 <p>{!! trans('community/fansites.remember', ['hotelName' => $chocolatey->hotelName]) !!}</p>

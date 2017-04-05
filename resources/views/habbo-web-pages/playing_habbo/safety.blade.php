@@ -28,7 +28,7 @@
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/safetytips5_n.png" alt="Don&apos;t be scared to speak up" class="align-right">
 </p>
 <h3>{!! trans('playing_habbo/safety.scared_title') !!}</h3>
-<p>{!! trans('playing_habbo/safety.scared') !!}</p>
+<p>{!! trans('playing_habbo/safety.scared', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <hr>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/safetytips6_n.png" alt="Ban the cam" class="align-right">
@@ -40,4 +40,4 @@
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/safetytips7_n.png" alt="Be a smart surfer" class="align-right">
 </p>
 <h3>{!! trans('playing_habbo/safety.stick_title', ['hotelName' => $chocolatey->hotelName]) !!}</h3>
-<p>{!! trans('playing_habbo/safety.stick') !!}</p>
+<p>{!! trans('playing_habbo/safety.stick',['hotelName' => $chocolatey->hotelName]) !!}</p>
