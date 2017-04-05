@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Helplines Playing Habbo Box
- * @uri /playing_habbo/box_helplines.en.html
- * @language en (english)
+ * @uri /playing_habbo/box_helplines.fr.html
+ * @language fr (french)
  */
 
 return [

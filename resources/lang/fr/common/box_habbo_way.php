@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Habbo Way Common Box
- * @uri /common/box_habbo_way.en.html
- * @language en (english)
+ * @uri /common/box_habbo_way.fr.html
+ * @language fr (french)
  */
 
 return [

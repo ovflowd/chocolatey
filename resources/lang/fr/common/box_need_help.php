@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Need Help Common Box
- * @uri /common/box_need_help.en.html
- * @language en (english)
+ * @uri /common/box_need_help.fr.html
+ * @language fr (french)
  */
 
 return [

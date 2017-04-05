@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template What Is Habbo Playing Habbo Page
- * @uri /playing_habbo/what_is_habbo.en.html
- * @language en (english)
+ * @uri /playing_habbo/what_is_habbo.fr.html
+ * @language fr (french)
  */
 
 return [

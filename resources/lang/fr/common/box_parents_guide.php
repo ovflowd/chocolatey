@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Parents Guide Common Box
- * @uri /common/box_parents_guide.en.html
- * @language en (english)
+ * @uri /common/box_parents_guide.fr.html
+ * @language fr (french)
  */
 
 return [

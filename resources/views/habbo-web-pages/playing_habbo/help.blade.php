@@ -2,7 +2,7 @@
 <p>{!! trans('playing_habbo/help.may', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <h2>{!! trans('playing_habbo/help.room_title') !!}</h2>
 <p>{!! trans('playing_habbo/help.room', ['hotelName' => $chocolatey->hotelName]) !!}</p>
-<h4>{!! trans('playing_habbo/help.ignoring_title', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</h4>
+<h4>{!! trans('playing_habbo/help.ignoring_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h4>
 <p>{!! trans('playing_habbo/help.ignoring', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_4.png" alt="Click an avatar to ignore, moderate or report" class="align-right">
@@ -10,12 +10,12 @@
 <ol>
     <li>{!! trans('playing_habbo/help.ignoring_list_one') !!}</li>
     <li>{!! trans('playing_habbo/help.ignoring_list_two') !!}</li>
-    <li>{!! trans('playing_habbo/help.ignoring_list_three', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</li>
+    <li>{!! trans('playing_habbo/help.ignoring_list_three', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</li>
 </ol>
-<h4>{!! trans('playing_habbo/help.moderating_title', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</h4>
+<h4>{!! trans('playing_habbo/help.moderating_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h4>
 <p>{!! trans('playing_habbo/help.moderating', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <p>{!! trans('playing_habbo/help.moderating_two', ['hotelName' => $chocolatey->hotelName]) !!}</p>
-<h4>{!! trans('playing_habbo/help.reporting_title', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</h4>
+<h4>{!! trans('playing_habbo/help.reporting_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h4>
 <p>{!! trans('playing_habbo/help.reporting', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <ol>
     <li>{!! trans('playing_habbo/help.reporting_list_one', ['hotelName' => $chocolatey->hotelName]) !!}</li>
@@ -73,8 +73,8 @@
 <hr>
 <h2>{!! trans('playing_habbo/help.tips_title') !!}</h2>
 <p>{!! trans('playing_habbo/help.tips') !!}</p>
-<h2>{!! trans('playing_habbo/help.way_title', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</h2>
-<p>{!! trans('playing_habbo/help.way', ['hotelName' => $chocolatey->hotelName], ['shortName' => $chocolatey->shortName]) !!}</p>
+<h2>{!! trans('playing_habbo/help.way_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h2>
+<p>{!! trans('playing_habbo/help.way', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <h2>{!! trans('playing_habbo/help.play_title') !!}</h2>
 <p>{!! trans('playing_habbo/help.play') !!}</p>
 <p>{!! trans('playing_habbo/help.play_two') !!}</p>

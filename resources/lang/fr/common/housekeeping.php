@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Go to Housekeeping Common Box
- * @uri /common/housekeeping.en.html
- * @language en (english)
+ * @uri /common/housekeeping.fr.html
+ * @language fr (english)
  */
 
 return [

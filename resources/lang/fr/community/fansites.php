@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Fansites Community Page
- * @uri /community/fansites.en.html
- * @language en (english)
+ * @uri /community/fansites.fr.html
+ * @language fr (french)
  */
 
 return [

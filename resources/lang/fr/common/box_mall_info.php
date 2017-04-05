@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Mall Info Common Box
- * @uri /common/box_mall_info.en.html
- * @language en (english)
+ * @uri /common/box_mall_info.fr.html
+ * @language fr (french)
  */
 
 return [

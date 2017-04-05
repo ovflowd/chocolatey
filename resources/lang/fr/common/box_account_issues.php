@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Account Issues Common Box
- * @uri /common/box_account_issues.en.html
- * @language en (english)
+ * @uri /common/box_account_issues.fr.html
+ * @language fr (french)
  */
 
 return [

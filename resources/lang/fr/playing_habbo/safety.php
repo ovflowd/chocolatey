@@ -4,8 +4,8 @@
  * Chocolatey Language Template.
  *
  * @template Safety Playing Habbo Page
- * @uri /playing_habbo/safety.en.html
- * @language en (english)
+ * @uri /playing_habbo/safety.fr.html
+ * @language fr (french)
  */
 
 return [
