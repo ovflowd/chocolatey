@@ -7,16 +7,16 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class ShopHistory
+ * Class ShopHistory.
+ *
  * @property int transactionId
- * @package App\Models
  */
 class ShopHistory extends ChocolateyModel
 {
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -30,24 +30,24 @@ class ShopHistory extends ChocolateyModel
     protected $table = 'chocolatey_shop_history';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
         'transactionSystemName' => 'payment_method',
-        'transactionId' => 'id'
+        'transactionId'         => 'id',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -57,7 +57,7 @@ class ShopHistory extends ChocolateyModel
         'credits',
         'price',
         'transactionId',
-        'product'
+        'product',
     ];
 
     /**
@@ -70,22 +70,22 @@ class ShopHistory extends ChocolateyModel
         'updated_at',
         'approved_by',
         'user_id',
-        'item_id'
+        'item_id',
     ];
 
     /**
-     * Get Creation Time Attribute
+     * Get Creation Time Attribute.
      *
      * @return string
      */
     public function getCreationTimeAttribute(): string
     {
-        return date("Y-m-d", strtotime($this->attributes['created_at'])) . 'T' .
-            date("H:i:s.ZZZZ+ZZZZ", strtotime($this->attributes['created_at']));
+        return date('Y-m-d', strtotime($this->attributes['created_at'])).'T'.
+            date('H:i:s.ZZZZ+ZZZZ', strtotime($this->attributes['created_at']));
     }
 
     /**
-     * Get Payment Method Name
+     * Get Payment Method Name.
      *
      * @return string
      */
@@ -95,7 +95,7 @@ class ShopHistory extends ChocolateyModel
     }
 
     /**
-     * Get Transaction Id
+     * Get Transaction Id.
      *
      * @return int
      */
@@ -105,7 +105,7 @@ class ShopHistory extends ChocolateyModel
     }
 
     /**
-     * Get Amount of Given Credits
+     * Get Amount of Given Credits.
      *
      * @return int
      */
@@ -115,7 +115,7 @@ class ShopHistory extends ChocolateyModel
     }
 
     /**
-     * Get Product Attribute
+     * Get Product Attribute.
      *
      * @return mixed|object|array
      */
@@ -125,7 +125,7 @@ class ShopHistory extends ChocolateyModel
     }
 
     /**
-     * Get Price Attribute
+     * Get Price Attribute.
      *
      * @return string
      */
@@ -135,11 +135,12 @@ class ShopHistory extends ChocolateyModel
     }
 
     /**
-     * Store a new Purchase
+     * Store a new Purchase.
      *
      * @param int $paymentMethod
      * @param int $userId
      * @param int $itemId
+     *
      * @return ShopHistory
      */
     public function store(int $paymentMethod, int $userId, int $itemId): ShopHistory

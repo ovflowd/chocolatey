@@ -3,34 +3,33 @@
 namespace App\Models;
 
 /**
- * Class PurchaseParam
- * @package App\Models
+ * Class PurchaseParam.
  */
 class PurchaseParam
 {
     /**
-     * Country Id
+     * Country Id.
      *
      * @var int
      */
     public $countryId;
 
     /**
-     * Price Point Id
+     * Price Point Id.
      *
      * @var int
      */
     public $pricePointId;
 
     /**
-     * Payment Method Id
+     * Payment Method Id.
      *
      * @var int
      */
     public $paymentMethodId;
 
     /**
-     * Create a new Purchase Param
+     * Create a new Purchase Param.
      *
      * @param int $countryId
      * @param int $pricePointId

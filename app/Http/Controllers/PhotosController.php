@@ -11,13 +11,12 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PhotosController
- * @package App\Http\Controllers
+ * Class PhotosController.
  */
 class PhotosController extends BaseController
 {
     /**
-     * Render a set of Public HabboWEB Photos
+     * Render a set of Public HabboWEB Photos.
      *
      * @TODO: Exclude Approved Reported Photos from the List
      *
@@ -25,7 +24,7 @@ class PhotosController extends BaseController
      */
     public function show(): JsonResponse
     {
-        return response()->json(Photo::all(), 200, array(), JSON_UNESCAPED_SLASHES);
+        return response()->json(Photo::all(), 200, [], JSON_UNESCAPED_SLASHES);
     }
 
     /**
@@ -36,44 +35,49 @@ class PhotosController extends BaseController
      * @MODERATION: Reporting Status (0 = Not Reviewed, 1 = Report Approved, 2 = Report Not Approved
      *
      * @param Request $request
-     * @param int $photoId
+     * @param int     $photoId
+     *
      * @return Response
      */
     public function report(Request $request, int $photoId): Response
     {
-        (new PhotoReport)->store($photoId, $request->json()->get('reason'), $request->user()->uniqueId)->save();
+        (new PhotoReport())->store($photoId, $request->json()->get('reason'), $request->user()->uniqueId)->save();
 
         return response(null);
     }
 
     /**
-     * Like a Photo
+     * Like a Photo.
      *
      * @param Request $request
-     * @param int $photoId
+     * @param int     $photoId
+     *
      * @return Response
      */
     public function likePhoto(Request $request, int $photoId): Response
     {
-        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0)
+        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0) {
             return response(null);
+        }
 
-        (new PhotoLike)->store($photoId, $request->user()->name)->save();
+        (new PhotoLike())->store($photoId, $request->user()->name)->save();
 
         return response(null);
     }
 
     /**
-     * Unlike a Photo
+     * Unlike a Photo.
      *
      * @param Request $request
-     * @param int $photoId
+     * @param int     $photoId
+     *
      * @return Response
      */
     public function unlikePhoto(Request $request, int $photoId): Response
     {
-        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0)
+        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0) {
             return response(null);
+        }
 
         PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
 
@@ -81,18 +85,20 @@ class PhotosController extends BaseController
     }
 
     /**
-     * Delete a Photo
+     * Delete a Photo.
      *
      * @param Request $request
-     * @param int $photoId
+     * @param int     $photoId
+     *
      * @return Response
      */
     public function delete(Request $request, int $photoId): Response
     {
         $photo = Photo::find($photoId);
 
-        if ($photo == null || $photo->creator_id != $request->user()->uniqueId)
+        if ($photo == null || $photo->creator_id != $request->user()->uniqueId) {
             return response(null, 401);
+        }
 
         $photo->delete();
 

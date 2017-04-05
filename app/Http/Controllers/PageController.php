@@ -7,16 +7,16 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PageController
- * @package App\Http\Controllers
+ * Class PageController.
  */
 class PageController extends BaseController
 {
     /**
-     * Render a HabboWEB Page
+     * Render a HabboWEB Page.
      *
      * @param string $pageCategory
      * @param string $pageFile
+     *
      * @return Response
      */
     public function show(string $pageCategory, string $pageFile): Response
@@ -27,11 +27,12 @@ class PageController extends BaseController
     }
 
     /**
-     * Render a HabboWEB Page
+     * Render a HabboWEB Page.
      *
      * @param string $pageCategory
      * @param string $subCategory
      * @param string $pageFile
+     *
      * @return Response
      */
     public function showWithSub(string $pageCategory, string $subCategory, string $pageFile): Response
@@ -42,10 +43,11 @@ class PageController extends BaseController
     }
 
     /**
-     * Get Client View
+     * Get Client View.
      *
      * @param Request $request
-     * @param string $clientType
+     * @param string  $clientType
+     *
      * @return Response
      */
     public function getClient(Request $request, $clientType): Response

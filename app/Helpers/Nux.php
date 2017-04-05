@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class Nux
- * @package App\Helpers
+ * Class Nux.
  */
 final class Nux
 {
     /**
-     * Create and return a Nux instance
+     * Create and return a Nux instance.
      *
      * @return Nux
      */
@@ -30,9 +29,10 @@ final class Nux
     }
 
     /**
-     * Generate a NUX Room
+     * Generate a NUX Room.
      *
      * @param Request $request
+     *
      * @return bool
      */
     public function generateRoom(Request $request): bool
@@ -40,24 +40,25 @@ final class Nux
         switch ($request->json()->get('roomIndex')):
             case 1:
                 return $this->createBedRoom($request->user());
-            case 2:
+        case 2:
                 return $this->createPoolRoom($request->user());
-            case 3:
+        case 3:
                 return $this->createClubRoom($request->user());
-            default:
+        default:
                 return false;
         endswitch;
     }
 
     /**
-     * Create the NUX Bed Room
+     * Create the NUX Bed Room.
      *
      * @param User $user
+     *
      * @return bool
      */
     protected function createBedRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
+        $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -79,28 +80,29 @@ final class Nux
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18835, 'x' => 3, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 9, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18835, 'x' => 5, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => ''],
         ]);
 
         DB::table('items')->insert([
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 22988, 'wall_pos' => ':w=4,2 l=0,35 l', 'extra_data' => ''],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23163, 'wall_pos' => ':w=4,8 l=0,43 r', 'extra_data' => '1'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23261, 'wall_pos' => ':w=2,10 l=2,34 l', 'extra_data' => ''],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23331, 'wall_pos' => ':w=2,10 l=2,29 l', 'extra_data' => '']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23331, 'wall_pos' => ':w=2,10 l=2,29 l', 'extra_data' => ''],
         ]);
 
         return true;
     }
 
     /**
-     * Create the Pool Room
+     * Create the Pool Room.
      *
      * @param User $user
+     *
      * @return bool
      */
     protected function createPoolRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);
+        $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -144,7 +146,7 @@ final class Nux
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18061, 'x' => 10, 'y' => 8, 'z' => 0.00000, 'rot' => 4, 'extra_data' => '1'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18070, 'x' => 8, 'y' => 2, 'z' => 1.50000, 'rot' => 0, 'extra_data' => '1'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18079, 'x' => 9, 'y' => 8, 'z' => 0.00000, 'rot' => 0, 'extra_data' => '1'],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18363, 'x' => 3, 'y' => 9, 'z' => 0.80000, 'rot' => 0, 'extra_data' => '2']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18363, 'x' => 3, 'y' => 9, 'z' => 0.80000, 'rot' => 0, 'extra_data' => '2'],
         ]);
 
         DB::table('items')->insert([
@@ -157,21 +159,22 @@ final class Nux
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23078, 'wall_pos' => ':w=8,1 l=13,33 r', 'extra_data' => '1'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23078, 'wall_pos' => ':w=10,1 l=0,26 r', 'extra_data' => '3'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23229, 'wall_pos' => ':w=4,3 l=6,49 l', 'extra_data' => '1'],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23229, 'wall_pos' => ':w=4,5 l=11,45 l', 'extra_data' => '1']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23229, 'wall_pos' => ':w=4,5 l=11,45 l', 'extra_data' => '1'],
         ]);
 
         return true;
     }
 
     /**
-     * Create the NUX Club Room
+     * Create the NUX Club Room.
      *
      * @param User $user
+     *
      * @return bool
      */
     protected function createClubRoom(User $user): bool
     {
-        $room = (new Room)->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 409, 1902, 0.0, $user->uniqueId, $user->name);
+        $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 409, 1902, 0.0, $user->uniqueId, $user->name);
         $room->save();
 
         DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
@@ -195,7 +198,7 @@ final class Nux
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 17573, 'x' => 9, 'y' => 7, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '3'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18048, 'x' => 7, 'y' => 2, 'z' => '1.00000', 'rot' => 4, 'extra_data' => ''],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18082, 'x' => 6, 'y' => 3, 'z' => '1.00000', 'rot' => 2, 'extra_data' => ''],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18082, 'x' => 9, 'y' => 3, 'z' => '1.00000', 'rot' => 6, 'extra_data' => '']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 18082, 'x' => 9, 'y' => 3, 'z' => '1.00000', 'rot' => 6, 'extra_data' => ''],
         ]);
 
         DB::table('items')->insert([
@@ -203,7 +206,7 @@ final class Nux
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23013, 'wall_pos' => ':w=2,10 l=2,44 l', 'extra_data' => ''],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23014, 'wall_pos' => ':w=8,1 l=14,27 r', 'extra_data' => '1'],
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23236, 'wall_pos' => ':w=6,1 l=5,31 r', 'extra_data' => '1'],
-            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23239, 'wall_pos' => ':w=4,7 l=4,29 l', 'extra_data' => '']
+            ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 23239, 'wall_pos' => ':w=4,7 l=4,29 l', 'extra_data' => ''],
         ]);
 
         return true;

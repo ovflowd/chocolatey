@@ -26,7 +26,7 @@ class CreateChocolateyShopPaymentCategoriesTable extends Migration
         DB::table('chocolatey_shop_payment_categories')->insert([
             ['payment_type' => 'online', 'country_code' => 'all'],
             ['payment_type' => 'online', 'country_code' => 'us'],
-            ['payment_type' => 'online', 'country_code' => 'br']
+            ['payment_type' => 'online', 'country_code' => 'br'],
         ]);
     }
 

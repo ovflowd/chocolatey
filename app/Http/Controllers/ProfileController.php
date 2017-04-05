@@ -12,23 +12,24 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ProfileController
- * @package App\Http\Controllers
+ * Class ProfileController.
  */
 class ProfileController extends BaseController
 {
     /**
-     * Get Public User Data
+     * Get Public User Data.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function getPublicData(Request $request): JsonResponse
     {
         $userData = User::where('username', $request->input('name'))->first();
 
-        if ($userData == null || $userData->isBanned)
+        if ($userData == null || $userData->isBanned) {
             return response()->json(null, 404);
+        }
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
@@ -39,30 +40,34 @@ class ProfileController extends BaseController
     }
 
     /**
-     * Get Public User Profile
+     * Get Public User Profile.
      *
      * @param int $userId
+     *
      * @return JsonResponse
      */
     public function getPublicProfile($userId): JsonResponse
     {
         $userData = User::find($userId);
 
-        if ($userData == null || $userData->isBanned)
+        if ($userData == null || $userData->isBanned) {
             return response()->json(null, 404);
+        }
 
         $userPreferences = UserPreferences::find($userData->uniqueId);
 
-        if ($userPreferences != null && $userPreferences->profileVisible == '0')
+        if ($userPreferences != null && $userPreferences->profileVisible == '0') {
             return response()->json(null, 404);
+        }
 
         return response()->json(new UserProfile($userData));
     }
 
     /**
-     * Get Private User Profile
+     * Get Private User Profile.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function getProfile(Request $request): JsonResponse
@@ -71,7 +76,7 @@ class ProfileController extends BaseController
     }
 
     /**
-     * Get User Stories
+     * Get User Stories.
      *
      * @TODO: Implement Habbo Stories
      *
@@ -83,15 +88,17 @@ class ProfileController extends BaseController
     }
 
     /**
-     * Get User Photos
+     * Get User Photos.
      *
      * @param int $userId
+     *
      * @return JsonResponse
      */
     public function getPhotos(int $userId): JsonResponse
     {
-        if (Photo::where('creator_id', $userId)->count() == 0)
+        if (Photo::where('creator_id', $userId)->count() == 0) {
             return response()->json([]);
+        }
 
         $userPhotos = Photo::where('creator_id', $userId)->get();
 

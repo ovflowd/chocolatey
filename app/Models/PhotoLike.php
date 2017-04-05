@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class PhotoLike
- * @package App\Models
+ * Class PhotoLike.
  */
 class PhotoLike extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,17 +22,18 @@ class PhotoLike extends ChocolateyModel
     protected $table = 'chocolatey_users_photos_likes';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store a new Photo Data
+     * Store a new Photo Data.
      *
-     * @param int $photoId
+     * @param int    $photoId
      * @param string $userName
+     *
      * @return PhotoLike
      */
     public function store(int $photoId, string $userName): PhotoLike

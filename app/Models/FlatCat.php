@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class FlatCat
- * @package App\Models
+ * Class FlatCat.
  */
 class FlatCat extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,7 +22,7 @@ class FlatCat extends ChocolateyModel
     protected $table = 'navigator_flatcats';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */

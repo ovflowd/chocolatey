@@ -7,15 +7,14 @@ use Sofa\Eloquence\Mappable;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class UserGroup
- * @package App\Models
+ * Class UserGroup.
  */
 class UserGroup extends ChocolateyModel
 {
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -29,22 +28,22 @@ class UserGroup extends ChocolateyModel
     protected $table = 'guilds';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
-        'badgeCode' => 'badge',
-        'roomId' => 'room_id',
-        'primaryColour' => 'color_one',
-        'secondaryColour' => 'color_two'
+        'badgeCode'       => 'badge',
+        'roomId'          => 'room_id',
+        'primaryColour'   => 'color_one',
+        'secondaryColour' => 'color_two',
     ];
 
     /**
@@ -66,11 +65,11 @@ class UserGroup extends ChocolateyModel
         'read_forum',
         'post_messages',
         'post_threads',
-        'mod_forum'
+        'mod_forum',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -80,22 +79,22 @@ class UserGroup extends ChocolateyModel
         'primaryColour',
         'secondaryColour',
         'type',
-        'isAdmin'
+        'isAdmin',
     ];
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A Group can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store an User Group by Chocolatey. Groups need be created from the Server.");
+        throw new InvalidMutatorException('You cannot store an User Group by Chocolatey. Groups need be created from the Server.');
     }
 
     /**
-     * Return if is Admin
+     * Return if is Admin.
      *
      * @TODO: Link with User Data
      *
@@ -107,7 +106,7 @@ class UserGroup extends ChocolateyModel
     }
 
     /**
-     * Get the Group Type
+     * Get the Group Type.
      *
      * @TODO: What NORMAL means?
      *
