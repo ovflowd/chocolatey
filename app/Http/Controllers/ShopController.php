@@ -72,11 +72,13 @@ class ShopController extends BaseController
         $paymentCheckout = PaymentCheckout::where('category', $paymentCategory)->where('country', $countryCode)
             ->where('item', $shopItem)->where('method', $paymentMethod)->first();
 
+        if($paymentCheckout == null)
+            return response(view('habbo-web-payments.failed-payment'), 400);
+
         if ((strtotime($paymentCheckout->generated_at) + 172800) < time())
             return response(view('habbo-web-payments.canceled-payment'), 400);
 
-        return $paymentCheckout != null ? response(view('habbo-web-payments.proceed', ['payment' => $paymentCheckout]))
-            : response(view('habbo-web-payments.failed-payment'), 400);
+        return response(view('habbo-web-payments.proceed', ['payment' => $paymentCheckout]));
     }
 
     /**
