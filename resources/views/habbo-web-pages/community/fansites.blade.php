@@ -2,7 +2,7 @@
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/habbo_friends.png" alt="Fansites" class="align-right">
 </p>
-<p>{!! trans('community/fansites.heading') !!}</p>
+<p>{!! trans('community/fansites.heading',['hotelName' => $chocolatey->hotelName]) !!}</p>
 <ul>
     <li>
         <a href="http://ragezone.com/" target="_blank">RaGEZONE</a>
