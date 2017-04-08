@@ -7,8 +7,7 @@ use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
 /**
- * Class Authenticate
- * @package App\Http\Middleware
+ * Class Authenticate.
  */
 class Authenticate
 {
@@ -22,7 +21,7 @@ class Authenticate
     /**
      * Create a new middleware instance.
      *
-     * @param  Auth $auth
+     * @param Auth $auth
      */
     public function __construct(Auth $auth)
     {
@@ -32,9 +31,10 @@ class Authenticate
     /**
      * Handle an incoming request.
      *
-     * @param  Request $request
-     * @param  Closure $next
-     * @param  string|null $guard
+     * @param Request     $request
+     * @param Closure     $next
+     * @param string|null $guard
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)

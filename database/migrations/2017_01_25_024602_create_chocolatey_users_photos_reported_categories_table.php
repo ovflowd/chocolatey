@@ -25,7 +25,7 @@ class CreateChocolateyUsersPhotosReportedCategoriesTable extends Migration
             ['report_category' => '8', 'description' => 'Reveal Real Life Information'],
             ['report_category' => '19', 'description' => 'Contains Hate Speech'],
             ['report_category' => '20', 'description' => 'Advocates Violence or Harm'],
-            ['report_category' => '32', 'description' => 'Promotes Illegal Activity']
+            ['report_category' => '32', 'description' => 'Promotes Illegal Activity'],
         ]);
     }
 

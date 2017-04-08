@@ -5,13 +5,12 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class PaymentCheckout
- * @package App\Models
+ * Class PaymentCheckout.
  */
 class PaymentCheckout extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,20 +24,20 @@ class PaymentCheckout extends ChocolateyModel
     protected $table = 'chocolatey_shop_payment_checkout';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A Checkout can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Payment Checkout by Chocolatey. Checkouts are created by the Engine.");
+        throw new InvalidMutatorException('You cannot store a Payment Checkout by Chocolatey. Checkouts are created by the Engine.');
     }
 }

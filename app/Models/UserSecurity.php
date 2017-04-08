@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class UserSecurity
- * @package App\Models
+ * Class UserSecurity.
  */
 class UserSecurity extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,7 +22,7 @@ class UserSecurity extends ChocolateyModel
     protected $table = 'chocolatey_users_security';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
@@ -39,12 +38,12 @@ class UserSecurity extends ChocolateyModel
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
     protected $appends = [
-        'trustedDevices'
+        'trustedDevices',
     ];
 
     /**
@@ -57,11 +56,11 @@ class UserSecurity extends ChocolateyModel
         'firstQuestion',
         'secondQuestion',
         'firstAnswer',
-        'secondAnswer'
+        'secondAnswer',
     ];
 
     /**
-     * Get Trusted Devices
+     * Get Trusted Devices.
      *
      * @return array
      */
@@ -74,13 +73,14 @@ class UserSecurity extends ChocolateyModel
     }
 
     /**
-     * Store a new User Security Metadata
+     * Store a new User Security Metadata.
      *
-     * @param int $userId
-     * @param int $firstQuestion
-     * @param int $secondQuestion
+     * @param int    $userId
+     * @param int    $firstQuestion
+     * @param int    $secondQuestion
      * @param string $firstAnswer
      * @param string $secondAnswer
+     *
      * @return UserSecurity
      */
     public function store(int $userId, int $firstQuestion, int $secondQuestion, string $firstAnswer, string $secondAnswer): UserSecurity

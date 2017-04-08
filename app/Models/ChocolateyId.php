@@ -6,13 +6,12 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class ChocolateyId
- * @package App\Models
+ * Class ChocolateyId.
  */
 class ChocolateyId extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -26,20 +25,20 @@ class ChocolateyId extends ChocolateyModel
     protected $table = 'chocolatey_users_id';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'user_id';
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
     protected $appends = [
         'relatedAzureId',
-        'relatedAccounts'
+        'relatedAccounts',
     ];
 
     /**
@@ -48,16 +47,18 @@ class ChocolateyId extends ChocolateyModel
      * @var array
      */
     protected $fillable = [
-        'mail'
+        'mail',
     ];
 
     /**
-     * Store a new Azure Id Account
+     * Store a new Azure Id Account.
      *
-     * @param int $userId
+     * @param int    $userId
      * @param string $userMail
-     * @return ChocolateyId
+     *
      * @throws ErrorException
+     *
+     * @return ChocolateyId
      */
     public function store(int $userId, string $userMail): ChocolateyId
     {
@@ -68,7 +69,7 @@ class ChocolateyId extends ChocolateyModel
     }
 
     /**
-     * Get All Accounts related with this E-mail
+     * Get All Accounts related with this E-mail.
      *
      * @return Collection|static[]
      */
@@ -78,12 +79,12 @@ class ChocolateyId extends ChocolateyModel
     }
 
     /**
-     * Get All AzureId with this E-mail
+     * Get All AzureId with this E-mail.
      *
      * @return Collection|static[]
      */
     public function getRelatedAzureIdAttribute()
     {
-        return ChocolateyId::query()->where('mail', $this->attributes['mail'])->get();
+        return self::query()->where('mail', $this->attributes['mail'])->get();
     }
 }

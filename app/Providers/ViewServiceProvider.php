@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ViewServiceProvider
- * @package App\Providers
+ * Class ViewServiceProvider.
  */
 class ViewServiceProvider extends ServiceProvider
 {
     /**
-     * Configures all Global Blade Variables
+     * Configures all Global Blade Variables.
      *
      * @return void
      */

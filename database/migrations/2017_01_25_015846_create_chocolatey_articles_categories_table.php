@@ -29,7 +29,7 @@ class CreateChocolateyArticlesCategoriesTable extends Migration
             ['link' => 'credit.promo', 'translate' => 'NEWS_CATEGORY_CREDIT_PROMO'],
             ['link' => 'fansites', 'translate' => 'NEWS_CATEGORY_FANSITES'],
             ['link' => 'safety', 'translate' => 'NEWS_CATEGORY_SAFETY'],
-            ['link' => 'technical.updates', 'translate' => 'NEWS_CATEGORY_TECHNICAL_UPDATES']
+            ['link' => 'technical.updates', 'translate' => 'NEWS_CATEGORY_TECHNICAL_UPDATES'],
         ]);
     }
 

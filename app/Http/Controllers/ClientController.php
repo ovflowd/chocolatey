@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ClientController
- * @package App\Http\Controllers
+ * Class ClientController.
  */
 class ClientController extends BaseController
 {
     /**
-     * Returns the Client URL
+     * Returns the Client URL.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function getUrl(Request $request)
@@ -30,9 +30,10 @@ class ClientController extends BaseController
     }
 
     /**
-     * Get HabboWEB Ads Interstitial
+     * Get HabboWEB Ads Interstitial.
      *
      * @param string $interstitialType
+     *
      * @return Response
      */
     public function getInterstitial(string $interstitialType): Response

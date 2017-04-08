@@ -7,8 +7,7 @@ use Sofa\Eloquence\Mappable;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class Photo
- * @package App\Models
+ * Class Photo.
  */
 class Photo extends ChocolateyModel
 {
@@ -22,26 +21,26 @@ class Photo extends ChocolateyModel
     protected $table = 'camera_web';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
-        'creator_id' => 'user_id',
-        'previewUrl' => 'url',
+        'creator_id'       => 'user_id',
+        'previewUrl'       => 'url',
         'creator_uniqueId' => 'user_id',
-        'time' => 'timestamp'
+        'time'             => 'timestamp',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -55,7 +54,7 @@ class Photo extends ChocolateyModel
         'version',
         'type',
         'room_id',
-        'creator_name'
+        'creator_name',
     ];
 
     /**
@@ -64,23 +63,23 @@ class Photo extends ChocolateyModel
      * @var array
      */
     protected $casts = [
-        'tags' => 'array',
-        'creator_uniqueId' => 'string'
+        'tags'             => 'array',
+        'creator_uniqueId' => 'string',
     ];
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A photo can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Photo by Chocolatey. Photos need be created from the Server.");
+        throw new InvalidMutatorException('You cannot store a Photo by Chocolatey. Photos need be created from the Server.');
     }
 
     /**
-     * Get the Unique Id of the Photo
+     * Get the Unique Id of the Photo.
      *
      * @return string
      */
@@ -90,7 +89,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get the URL of the Photo
+     * Get the URL of the Photo.
      *
      * @return string
      */
@@ -100,7 +99,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get the Version Attribute
+     * Get the Version Attribute.
      *
      * @return int
      */
@@ -111,7 +110,7 @@ class Photo extends ChocolateyModel
 
     /**
      * Get All Tags
-     * Transforming it on an Array
+     * Transforming it on an Array.
      *
      * @return array(string)
      */
@@ -122,7 +121,7 @@ class Photo extends ChocolateyModel
 
     /**
      * Get Formatted Time
-     * Convert Date to UNIX Timestamp
+     * Convert Date to UNIX Timestamp.
      *
      * @return int
      */
@@ -132,7 +131,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get Photo Likes Directly as Username
+     * Get Photo Likes Directly as Username.
      *
      * @return array
      */
@@ -144,7 +143,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get the Photo Type Attribute
+     * Get the Photo Type Attribute.
      *
      * @return string
      */
@@ -154,7 +153,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get Room Id
+     * Get Room Id.
      *
      * @TODO: Add real RoomID
      *
@@ -166,7 +165,7 @@ class Photo extends ChocolateyModel
     }
 
     /**
-     * Get User Name
+     * Get User Name.
      *
      * @return string
      */
