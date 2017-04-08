@@ -26,7 +26,7 @@ return [
     'shop'              => 'Regarde la cat&#xE9;gorie Duckets de la boutique pour savoir ce que tu peux avoir!',
     'activities_title'  => 'Jette un oeil sur les derni&#xE8;res activit&#xE9;s',
     'activities'        => 'Visite la <a href="/">Page d&apos;Accueil</a> du site pour trouver les derni&#xE8;res news, comp&#xE9;titions ou autres informations!',
-    'activities_two'    => 'Une fois que tu auras fait tes premiers pas, tu seras sur le bon chemin pour &#xEA;tre un Citoyen &#xE0; part enti&#xE8;re de :shortName!',
+    'activities_two'    => 'Une fois que tu auras fait tes premiers pas, tu seras sur le bon chemin pour &#xEA;tre un Citoyen &#xE0; part enti&#xE8;re de :hotelName!',
     // Footer Section
     'join_title' => 'Rejoins :hotelName',
     'join'       => 'Tu n&apos;as pas encore de compte :shortName? <a href="/registration">Rejoins-nous maintenant</a>!',
