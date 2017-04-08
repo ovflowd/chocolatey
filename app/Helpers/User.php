@@ -109,8 +109,10 @@ class User
      */
     public function loginUser(Request $request)
     {
-        return $this->setSession(UserModel::where('mail', $request->json()->get('email'))
-            ->where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->first());
+        $user = UserModel::where('mail', $request->json()->get('email'))->where('password',
+            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->first();
+
+        return $user != null ? $this->setSession($user) : null;
     }
 
     /**
