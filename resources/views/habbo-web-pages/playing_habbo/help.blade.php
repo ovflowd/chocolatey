@@ -16,7 +16,7 @@
 <p>{!! trans('playing_habbo/help.moderating', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <p>{!! trans('playing_habbo/help.moderating_two', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <h4>{!! trans('playing_habbo/help.reporting_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h4>
-<p>{!! trans('playing_habbo/help.reporting', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/help.reporting', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <ol>
     <li>{!! trans('playing_habbo/help.reporting_list_one', ['hotelName' => $chocolatey->hotelName]) !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_list_two', ['shortName' => $chocolatey->shortName]) !!}</li>
@@ -31,10 +31,8 @@
 <p>{!! trans('playing_habbo/help.reporting_two', ['shortName' => $chocolatey->shortName]) !!}</p>
 <ol>
     <li>{!! trans('playing_habbo/help.reporting_two_list_one') !!}</li>
-
     <li>{!! trans('playing_habbo/help.reporting_two_list_two', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_three', ['hotelName' => $chocolatey->hotelName]) !!}</li>
-    
     <li>{!! trans('playing_habbo/help.reporting_two_list_four') !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_five') !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_six') !!}</li>
@@ -78,7 +76,6 @@
 <h2>{!! trans('playing_habbo/help.way_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h2>
 <p>{!! trans('playing_habbo/help.way', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <h2>{!! trans('playing_habbo/help.play_title') !!}</h2>
-
 <p>{!! trans('playing_habbo/help.play', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <p>{!! trans('playing_habbo/help.play_two') !!}</p>
 <h2>{!! trans('playing_habbo/help.desk_title', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
