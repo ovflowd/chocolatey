@@ -5632,7 +5632,7 @@ habbo-client-error {
 }
 
 .client-error__flash {
-    background-image: url(assets/images/Get_Flash_Player.png);
+    background-image: url(assets/images/get_flash_player.png);
     display: inline-block;
     height: 39px;
     margin: 12px 12px 0;

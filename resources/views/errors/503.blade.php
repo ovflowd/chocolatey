@@ -29,7 +29,7 @@
             </div>
             <div class="aside">
                 <a class="twitter-timeline" data-width="300" data-height="400"
-                   href="https://twitter.com/{{$chocolatey->twitter->username}}">{{$chocolatey->twitter->tittle}}</a>
+                   href="https://twitter.com/{{$chocolatey->twitter->username}}">{{$chocolatey->twitter->title}}</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
         </div>
