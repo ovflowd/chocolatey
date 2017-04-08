@@ -5,13 +5,12 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class UserFriend
- * @package App\Models
+ * Class UserFriend.
  */
 class UserFriend extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,14 +24,14 @@ class UserFriend extends ChocolateyModel
     protected $table = 'messenger_friendships';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * User Friend Data
+     * User Friend Data.
      *
      * @var User
      */
@@ -47,11 +46,11 @@ class UserFriend extends ChocolateyModel
         'user_one_id',
         'user_two_id',
         'relation',
-        'friends_since'
+        'friends_since',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -59,22 +58,22 @@ class UserFriend extends ChocolateyModel
         'figureString',
         'motto',
         'name',
-        'uniqueId'
+        'uniqueId',
     ];
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A User Friend can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store an User Friend by Chocolatey. Friends need be created from the Server.");
+        throw new InvalidMutatorException('You cannot store an User Friend by Chocolatey. Friends need be created from the Server.');
     }
 
     /**
-     * Get User Friend Figure String
+     * Get User Friend Figure String.
      *
      * @return string
      */
@@ -84,7 +83,7 @@ class UserFriend extends ChocolateyModel
     }
 
     /**
-     * Get User Friend Data
+     * Get User Friend Data.
      *
      * @return User
      */
@@ -94,7 +93,7 @@ class UserFriend extends ChocolateyModel
     }
 
     /**
-     * Get User Friend Motto
+     * Get User Friend Motto.
      *
      * @return string
      */
@@ -104,7 +103,7 @@ class UserFriend extends ChocolateyModel
     }
 
     /**
-     * Get User Friend Name
+     * Get User Friend Name.
      *
      * @return string
      */
@@ -114,7 +113,7 @@ class UserFriend extends ChocolateyModel
     }
 
     /**
-     * Get User Friend UniqueId
+     * Get User Friend UniqueId.
      *
      * @return int
      */

@@ -7,20 +7,19 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail as MailFacade;
 
 /**
- * Class Mail
- * @package App\Helpers
+ * Class Mail.
  */
 class Mail
 {
     /**
-     * Stored Mail Model
+     * Stored Mail Model.
      *
      * @var MailModel|null
      */
     protected $mailModel = null;
 
     /**
-     * Quick Way to get Cached MailModel
+     * Quick Way to get Cached MailModel.
      *
      * @return MailModel|null
      */
@@ -30,7 +29,7 @@ class Mail
     }
 
     /**
-     * Return cached Mail Model
+     * Return cached Mail Model.
      *
      * @return MailModel|null
      */
@@ -40,7 +39,7 @@ class Mail
     }
 
     /**
-     * Create and return a Mail instance
+     * Create and return a Mail instance.
      *
      * @return Mail
      */
@@ -56,15 +55,16 @@ class Mail
     }
 
     /**
-     * Send an Email
+     * Send an Email.
      *
-     * @param array $configuration
+     * @param array  $configuration
      * @param string $view
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
     {
-        if (Config::get('mail.enable') == false)
+        if (Config::get('mail.enable') == false) {
             return;
+        }
 
         MailFacade::send($view, $configuration, function ($message) use ($configuration) {
             $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
@@ -73,24 +73,26 @@ class Mail
     }
 
     /**
-     * Store an E-mail
+     * Store an E-mail.
      *
      * @param string $email
      * @param string $url
+     *
      * @return string
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel)->store($token = uniqid('HabboMail', true), $url, $email)->save();
+        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email)->save();
 
         return $token;
     }
 
     /**
-     * Update Mail Model Data
+     * Update Mail Model Data.
      *
      * @param string $token
-     * @param array $parameters
+     * @param array  $parameters
+     *
      * @return MailModel
      */
     public function update(string $token, array $parameters)
@@ -103,20 +105,22 @@ class Mail
     }
 
     /**
-     * Return if Exists E-Mail with that Token
+     * Return if Exists E-Mail with that Token.
      *
      * @param string $token
+     *
      * @return bool
      */
     public function has(string $token)
     {
-        return Mail::getInstance()->getByToken($token) !== null;
+        return self::getInstance()->getByToken($token) !== null;
     }
 
     /**
-     * Get an E-mail by Token
+     * Get an E-mail by Token.
      *
      * @param string $token
+     *
      * @return MailModel
      */
     public function getByToken(string $token)
@@ -129,9 +133,10 @@ class Mail
     }
 
     /**
-     * Set Mail Model in Cache
+     * Set Mail Model in Cache.
      *
      * @param MailModel $model
+     *
      * @return MailModel
      */
     public function set(MailModel $model)

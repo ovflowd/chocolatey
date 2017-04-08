@@ -6,15 +6,14 @@ use App\Helpers\User;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class AuthServiceProvider
- * @package App\Providers
+ * Class AuthServiceProvider.
  */
 class AuthServiceProvider extends ServiceProvider
 {
     /**
      * Boot the authentication services for the application.
      * If an User is stored in the Session recover it
-     * Only will recover if the Path() isn't the Authentcation Path
+     * Only will recover if the Path() isn't the Authentcation Path.
      *
      * @return void
      */

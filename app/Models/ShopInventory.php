@@ -3,41 +3,40 @@
 namespace App\Models;
 
 /**
- * Class ShopInventory
- * @package App\Models
+ * Class ShopInventory.
  */
 class ShopInventory
 {
     /**
-     * Payment Categories of the Country
+     * Payment Categories of the Country.
      *
      * @var PaymentCategory[]
      */
     public $paymentCategories = [];
 
     /**
-     * Inventory Items
+     * Inventory Items.
      *
      * @var array
      */
     public $pricePoints = [];
 
     /**
-     * If double Credits are Enabled
+     * If double Credits are Enabled.
      *
      * @var bool
      */
     public $doubleCredits = false;
 
     /**
-     * Country Meta Data
+     * Country Meta Data.
      *
      * @var Country
      */
     public $country = null;
 
     /**
-     * Create a Shop Inventory
+     * Create a Shop Inventory.
      *
      * @param Country $country
      */
@@ -49,7 +48,7 @@ class ShopInventory
     }
 
     /**
-     * Set the Country Metadata
+     * Set the Country Metadata.
      *
      * @param Country $country
      */
@@ -59,7 +58,7 @@ class ShopInventory
     }
 
     /**
-     * Set the Payment Methods
+     * Set the Payment Methods.
      *
      * @param string $countryCode
      */
@@ -67,14 +66,15 @@ class ShopInventory
     {
         $paymentMethods = [];
 
-        foreach (PaymentCategory::where('country_code', $countryCode)->get(['payment_type']) as $paymentMethod)
+        foreach (PaymentCategory::where('country_code', $countryCode)->get(['payment_type']) as $paymentMethod) {
             $paymentMethods[] = $paymentMethod->payment_type;
+        }
 
         $this->paymentCategories = $paymentMethods;
     }
 
     /**
-     * Get All Shop Items from this Country Code
+     * Get All Shop Items from this Country Code.
      *
      * @param string $countryCode
      */
