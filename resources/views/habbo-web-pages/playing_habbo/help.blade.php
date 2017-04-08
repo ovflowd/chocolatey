@@ -3,7 +3,7 @@
 <h2>{!! trans('playing_habbo/help.room_title') !!}</h2>
 <p>{!! trans('playing_habbo/help.room', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <h4>{!! trans('playing_habbo/help.ignoring_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h4>
-<p>{!! trans('playing_habbo/help.ignoring', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/help.ignoring', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/report_4.png" alt="Click an avatar to ignore, moderate or report" class="align-right">
 </p>
@@ -31,8 +31,10 @@
 <p>{!! trans('playing_habbo/help.reporting_two', ['shortName' => $chocolatey->shortName]) !!}</p>
 <ol>
     <li>{!! trans('playing_habbo/help.reporting_two_list_one') !!}</li>
-    <li>{!! trans('playing_habbo/help.reporting_two_list_two', ['hotelName' => $chocolatey->hotelName]) !!}</li>
+
+    <li>{!! trans('playing_habbo/help.reporting_two_list_two', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_three', ['hotelName' => $chocolatey->hotelName]) !!}</li>
+    
     <li>{!! trans('playing_habbo/help.reporting_two_list_four') !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_five') !!}</li>
     <li>{!! trans('playing_habbo/help.reporting_two_list_six') !!}</li>
@@ -76,7 +78,8 @@
 <h2>{!! trans('playing_habbo/help.way_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h2>
 <p>{!! trans('playing_habbo/help.way', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <h2>{!! trans('playing_habbo/help.play_title') !!}</h2>
-<p>{!! trans('playing_habbo/help.play', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+
+<p>{!! trans('playing_habbo/help.play', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <p>{!! trans('playing_habbo/help.play_two') !!}</p>
 <h2>{!! trans('playing_habbo/help.desk_title', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
 <p>{!! trans('playing_habbo/help.desk', ['hotelName' => $chocolatey->hotelName]) !!}</p>
