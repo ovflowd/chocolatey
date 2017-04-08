@@ -6,15 +6,14 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Article
- * @package App\Models
+ * Class Article.
  */
 class Article extends ChocolateyModel
 {
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -28,14 +27,14 @@ class Article extends ChocolateyModel
     protected $table = 'chocolatey_articles';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
@@ -45,7 +44,7 @@ class Article extends ChocolateyModel
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -61,11 +60,11 @@ class Article extends ChocolateyModel
      */
     protected $hidden = [
         'updated_at',
-        'created_at'
+        'created_at',
     ];
 
     /**
-     * Store a new CMS Article
+     * Store a new CMS Article.
      *
      * @param string $title
      * @param string $description
@@ -74,6 +73,7 @@ class Article extends ChocolateyModel
      * @param string $categories
      * @param string $imageUrl
      * @param string $thumbnailUrl
+     *
      * @return Article
      */
     public function store(string $title, string $description, string $content, string $author, string $categories, string $imageUrl, string $thumbnailUrl): Article
@@ -90,7 +90,7 @@ class Article extends ChocolateyModel
     }
 
     /**
-     * Get All Article Categories from the Article
+     * Get All Article Categories from the Article.
      *
      * @return array
      */
@@ -98,8 +98,9 @@ class Article extends ChocolateyModel
     {
         $categories = [];
 
-        foreach (explode(',', $this->attributes['categories']) as $articleCategory)
+        foreach (explode(',', $this->attributes['categories']) as $articleCategory) {
             $categories[] = ArticleCategory::query()->where('link', $articleCategory)->first();
+        }
 
         return $categories;
     }

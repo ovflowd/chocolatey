@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
- * @package App\Models
+ * Class User.
  */
 class UserPreferences extends Model
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,7 +24,7 @@ class UserPreferences extends Model
     protected $table = 'chocolatey_users_preferences';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
@@ -37,7 +36,7 @@ class UserPreferences extends Model
      * @var array
      */
     protected $hidden = [
-        'user_id'
+        'user_id',
     ];
 
     /**
@@ -56,13 +55,14 @@ class UserPreferences extends Model
         'friendRequestEnabled',
         'offlineMessagingEnabled',
         'onlineStatusVisible',
-        'profileVisible'
+        'profileVisible',
     ];
 
     /**
-     * Store an User Preference set on the Database
+     * Store an User Preference set on the Database.
      *
      * @param int $userId
+     *
      * @return UserPreferences
      */
     public function store(int $userId): UserPreferences

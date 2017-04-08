@@ -6,13 +6,12 @@ use App\Helpers\User;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class UserServiceProvider
- * @package App\Providers
+ * Class UserServiceProvider.
  */
 class UserServiceProvider extends ServiceProvider
 {
     /**
-     * Register the Session Service Provider
+     * Register the Session Service Provider.
      *
      * @return void
      */

@@ -3,15 +3,15 @@
 namespace App\Models;
 
 /**
- * Class Country
+ * Class Country.
+ *
  * @property mixed countryCode
  * @property mixed uniqueId
- * @package App\Models
  */
 class Country extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,25 +25,27 @@ class Country extends ChocolateyModel
     protected $table = 'chocolatey_shop_countries';
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
     protected $appends = [
-        'uniqueId'
+        'uniqueId',
     ];
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store an Shop Country
+     * Store an Shop Country.
+     *
      * @param string $countryCode
      * @param string $name
+     *
      * @return Country
      */
     public function store(string $countryCode, string $name): Country
@@ -55,7 +57,7 @@ class Country extends ChocolateyModel
     }
 
     /**
-     * Get Unique Id
+     * Get Unique Id.
      *
      * @return int
      */

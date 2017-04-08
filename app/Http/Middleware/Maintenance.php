@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class Maintenance
- * @package App\Http\Middleware
+ * Class Maintenance.
  */
 class Maintenance
 {
     /**
      * Handle an incoming request.
      *
-     * @param  Request $request
-     * @param  Closure $next
+     * @param Request $request
+     * @param Closure $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)

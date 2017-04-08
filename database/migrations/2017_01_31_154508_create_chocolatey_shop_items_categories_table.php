@@ -24,7 +24,7 @@ class CreateChocolateyShopItemsCategoriesTable extends Migration
             ['category_name' => 'HABBO_CLUB'],
             ['category_name' => 'BUNDLE'],
             ['category_name' => 'BUILDERS_CLUB'],
-            ['category_name' => 'CREDITS']
+            ['category_name' => 'CREDITS'],
         ]);
     }
 

@@ -29,7 +29,7 @@ class CreateChocolateyShopPaymentMethodsTable extends Migration
         DB::update('ALTER TABLE chocolatey_shop_payment_methods MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_shop_payment_methods')->insert([
-            ['name' => 'PayPal', 'localizationKey' => 'paypal']
+            ['name' => 'PayPal', 'localizationKey' => 'paypal'],
         ]);
     }
 

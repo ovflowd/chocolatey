@@ -8,13 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class User
- * @package App\Helpers
+ * Class User.
  */
 class User
 {
     /**
-     * Quick Way to Get User Data
+     * Quick Way to Get User Data.
      *
      * @return UserModel|null
      */
@@ -25,7 +24,7 @@ class User
 
     /**
      * Get User Data from Session
-     * If User Session doesn't exists, return null
+     * If User Session doesn't exists, return null.
      *
      * @return UserModel|null
      */
@@ -35,7 +34,7 @@ class User
     }
 
     /**
-     * Create and return a User instance
+     * Create and return a User instance.
      *
      * @return User
      */
@@ -51,9 +50,10 @@ class User
     }
 
     /**
-     * Quick Way to Update User Data
+     * Quick Way to Update User Data.
      *
      * @param array $parameters
+     *
      * @return UserModel
      */
     public function updateUser(array $parameters)
@@ -62,9 +62,10 @@ class User
     }
 
     /**
-     * Update User Data without overwriting Session
+     * Update User Data without overwriting Session.
      *
      * @param array $parameters
+     *
      * @return UserModel
      */
     public function updateSession(array $parameters)
@@ -73,9 +74,10 @@ class User
     }
 
     /**
-     * Set User Data on Session
+     * Set User Data on Session.
      *
      * @param UserModel $user
+     *
      * @return UserModel
      */
     public function setSession(UserModel $user)
@@ -84,10 +86,11 @@ class User
     }
 
     /**
-     * Update User Data by User Model
+     * Update User Data by User Model.
      *
      * @param UserModel $user
-     * @param array $parameters
+     * @param array     $parameters
+     *
      * @return UserModel
      */
     public function updateData(UserModel $user, array $parameters)
@@ -98,9 +101,10 @@ class User
     }
 
     /**
-     * Set Session From Login Credentials
+     * Set Session From Login Credentials.
      *
      * @param Request $request
+     *
      * @return UserModel
      */
     public function loginUser(Request $request)
@@ -112,17 +116,17 @@ class User
     }
 
     /**
-     * Return if USer Session Exists
+     * Return if USer Session Exists.
      *
      * @return bool
      */
     public function hasSession()
     {
-        return (bool)Session::get(Config::get('chocolatey.security.session'));
+        return (bool) Session::get(Config::get('chocolatey.security.session'));
     }
 
     /**
-     * Erase User Session
+     * Erase User Session.
      */
     public function eraseSession()
     {

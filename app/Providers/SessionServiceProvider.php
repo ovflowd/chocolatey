@@ -6,13 +6,12 @@ use App\Helpers\Session;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class SessionServiceProvider
- * @package App\Providers
+ * Class SessionServiceProvider.
  */
 class SessionServiceProvider extends ServiceProvider
 {
     /**
-     * Register the Session Service Provider
+     * Register the Session Service Provider.
      *
      * @return void
      */

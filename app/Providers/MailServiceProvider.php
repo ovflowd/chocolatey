@@ -6,13 +6,12 @@ use App\Helpers\Mail;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class MailServiceProvider
- * @package App\Providers
+ * Class MailServiceProvider.
  */
 class MailServiceProvider extends ServiceProvider
 {
     /**
-     * Register the Session Service Provider
+     * Register the Session Service Provider.
      *
      * @return void
      */

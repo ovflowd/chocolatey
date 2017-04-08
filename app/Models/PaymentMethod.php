@@ -6,22 +6,21 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class PaymentMethod
- * @package App\Models
+ * Class PaymentMethod.
  */
 class PaymentMethod extends ChocolateyModel
 {
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Purchase Params
+     * Purchase Params.
      *
      * @var PurchaseParam
      */
@@ -35,14 +34,14 @@ class PaymentMethod extends ChocolateyModel
     protected $table = 'chocolatey_shop_payment_methods';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -50,7 +49,7 @@ class PaymentMethod extends ChocolateyModel
         'disclaimerRequired',
         'premiumSms',
         'purchaseParams',
-        'requestPath'
+        'requestPath',
     ];
 
     /**
@@ -59,24 +58,26 @@ class PaymentMethod extends ChocolateyModel
      * @var array
      */
     protected $hidden = [
-        'disclaimer'
+        'disclaimer',
     ];
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
-        'disclaimerRequired' => 'disclaimer'
+        'disclaimerRequired' => 'disclaimer',
     ];
 
     /**
-     * Store an Shop Country
+     * Store an Shop Country.
+     *
      * @param string $methodName
      * @param string $code
      * @param string $buttonImageUrl
      * @param string $buttonText
+     *
      * @return PaymentMethod
      */
     public function store(string $methodName, string $code, string $buttonImageUrl, string $buttonText): PaymentMethod
@@ -90,7 +91,7 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Get Disclaimer Required Attribute
+     * Get Disclaimer Required Attribute.
      *
      * @return bool
      */
@@ -100,7 +101,7 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Get Premium SMS Attribute
+     * Get Premium SMS Attribute.
      *
      * @return bool
      */
@@ -110,7 +111,7 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Get Request Path Attribute
+     * Get Request Path Attribute.
      *
      * @return string
      */
@@ -120,7 +121,7 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Get the Purchase Params
+     * Get the Purchase Params.
      *
      * @return PurchaseParam
      */
@@ -130,7 +131,8 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Set Purchase Params
+     * Set Purchase Params.
+     *
      * @param array $parameters
      */
     public function setPurchaseParams(array $parameters)
@@ -139,7 +141,7 @@ class PaymentMethod extends ChocolateyModel
     }
 
     /**
-     * Get Category Payment Type
+     * Get Category Payment Type.
      *
      * @return string
      */
