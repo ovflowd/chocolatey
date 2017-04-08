@@ -32,7 +32,7 @@
 <h4>{!! trans('playing_habbo/habbo_way.scam_title') !!}</h4>
 <p>{!! trans('playing_habbo/habbo_way.scam') !!}</p>
 <h4>{!! trans('playing_habbo/habbo_way.trick_title', ['shortName' => $chocolatey->shortName]) !!}</h4>
-<p>{!! trans('playing_habbo/habbo_way.title', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/habbo_way.trick', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/habboway_7b.png" alt="Don&apos;t sell for real money" class="align-right">
 </p>

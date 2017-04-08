@@ -16,7 +16,7 @@
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/citizenship.png" alt=" {{$chocolatey->hotelName}} citizenship" class="align-right">
 </p>
-<h3>{!! trans('playing_habbo/how_to_play.citizenship_title', ['hotelName' => $chocolatey->hotelName]) !!}</h3>
+<h3>{!! trans('playing_habbo/how_to_play.citizenship_title', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</h3>
 <p>{!! trans('playing_habbo/how_to_play.citizenship') !!}</p>
 <hr>
 <p>
