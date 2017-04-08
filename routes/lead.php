@@ -9,5 +9,5 @@
 |
 */
 
-# Render a specific Language Ecosystem
+// Render a specific Language Ecosystem
 $app->get('habbo-web-leaderboards/{countryId}/visited-rooms/{range}/{data}', 'RoomsController@getLeader');

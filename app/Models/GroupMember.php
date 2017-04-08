@@ -5,13 +5,12 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class GroupMember
- * @package App\Models
+ * Class GroupMember.
  */
 class GroupMember extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -25,7 +24,7 @@ class GroupMember extends ChocolateyModel
     protected $table = 'guilds_members';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
@@ -41,31 +40,31 @@ class GroupMember extends ChocolateyModel
         'member_since',
         'guild_id',
         'level_id',
-        'user_id'
+        'user_id',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
     protected $appends = [
-        'guild'
+        'guild',
     ];
 
     /**
-     * Store Function
+     * Store Function.
      *
      * A Guild Member can't be inserted by the CMS.
      * Only by the Emulator
      */
     public function store()
     {
-        throw new InvalidMutatorException("You cannot store a Guild by Chocolatey. Guilds need be created from the Server.");
+        throw new InvalidMutatorException('You cannot store a Guild by Chocolatey. Guilds need be created from the Server.');
     }
 
     /**
-     * Get User Group by Member Group Id
+     * Get User Group by Member Group Id.
      *
      * @return UserGroup
      */
@@ -75,7 +74,7 @@ class GroupMember extends ChocolateyModel
     }
 
     /**
-     * Get Description Attribute
+     * Get Description Attribute.
      *
      * @return string
      */

@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class PaymentCategory
- * @package App\Models
+ * Class PaymentCategory.
  */
 class PaymentCategory extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,15 +22,17 @@ class PaymentCategory extends ChocolateyModel
     protected $table = 'chocolatey_shop_payment_categories';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * Store an Shop Country
+     * Store an Shop Country.
+     *
      * @param string $paymentName
+     *
      * @return PaymentCategory
      */
     public function store(string $paymentName): PaymentCategory

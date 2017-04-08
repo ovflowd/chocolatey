@@ -3,26 +3,26 @@
 namespace App\Models;
 
 /**
- * Class ArticleCategory
+ * Class ArticleCategory.
+ *
  * @property string name
- * @package App\Models
  */
 class ArticleCategory extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * Appenders Array
+     * Appenders Array.
      *
      * @var array
      */
     protected $appends = [
-        'name'
+        'name',
     ];
 
     /**
@@ -33,14 +33,14 @@ class ArticleCategory extends ChocolateyModel
     protected $table = 'chocolatey_articles_categories';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'link';
 
     /**
-     * Get the Original Link Attribute
+     * Get the Original Link Attribute.
      *
      * @return string
      */
@@ -50,10 +50,11 @@ class ArticleCategory extends ChocolateyModel
     }
 
     /**
-     * Store a New Article Category
+     * Store a New Article Category.
      *
      * @param string $link
      * @param string $translate
+     *
      * @return $this
      */
     public function store(string $link, string $translate)

@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class Mail
- * @package App\Models
+ * Class Mail.
  */
 class Mail extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,7 +22,7 @@ class Mail extends ChocolateyModel
     protected $table = 'chocolatey_users_mail_requests';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
@@ -35,15 +34,16 @@ class Mail extends ChocolateyModel
      * @var array
      */
     protected $fillable = [
-        'used'
+        'used',
     ];
 
     /**
-     * Store a Mail Request
+     * Store a Mail Request.
      *
      * @param string $token
      * @param string $link
      * @param string $userMail
+     *
      * @return Mail
      */
     public function store(string $token, string $link, string $userMail): Mail

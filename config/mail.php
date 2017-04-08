@@ -74,7 +74,7 @@ return [
 
     'from' => [
         'address' => 'santoro@inboxalias.com',
-        'name' => 'Habbo Hotel',
+        'name'    => 'Habbo Hotel',
     ],
 
     /*

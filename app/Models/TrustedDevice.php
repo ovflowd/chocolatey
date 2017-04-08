@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class TrustedDevice
- * @package App\Models
+ * Class TrustedDevice.
  */
 class TrustedDevice extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,7 +22,7 @@ class TrustedDevice extends ChocolateyModel
     protected $table = 'chocolatey_users_security_trusted';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
@@ -39,10 +38,11 @@ class TrustedDevice extends ChocolateyModel
     ];
 
     /**
-     * Store a new TrustedDevice
+     * Store a new TrustedDevice.
      *
-     * @param int $userId
+     * @param int    $userId
      * @param string $ipAddress
+     *
      * @return TrustedDevice
      */
     public function store(int $userId, string $ipAddress): TrustedDevice

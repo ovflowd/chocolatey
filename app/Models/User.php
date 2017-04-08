@@ -12,30 +12,30 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class User
+ * Class User.
+ *
  * @property string trusted
  * @property int uniqueId
  * @property string figureString
  * @property string name
- * @package App\Models
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, Eloquence, Mappable;
 
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
     public $timestamps = false;
 
     /**
-     * User Traits
+     * User Traits.
      *
      * @var array
      */
-    public $traits = ["USER"];
+    public $traits = ['USER'];
 
     /**
      * The table associated with the model.
@@ -45,30 +45,30 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $table = 'users';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that will be mapped
+     * The attributes that will be mapped.
      *
      * @var array
      */
     protected $maps = [
-        'uniqueId' => 'id',
-        'name' => 'username',
-        'figureString' => 'look',
+        'uniqueId'      => 'id',
+        'name'          => 'username',
+        'figureString'  => 'look',
         'lastWebAccess' => 'last_login',
-        'creationTime' => 'account_created',
-        'email' => 'mail',
-        'identityId' => 'id',
-        'accountId' => 'id'
+        'creationTime'  => 'account_created',
+        'email'         => 'mail',
+        'identityId'    => 'id',
+        'accountId'     => 'id',
     ];
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -93,7 +93,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'accountId',
         'memberSince',
         'isBanned',
-        'banDetails'
+        'banDetails',
     ];
 
     /**
@@ -115,7 +115,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'look',
         'gender',
         'credits',
-        'pixels'
+        'pixels',
     ];
 
     /**
@@ -145,7 +145,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'credits',
         'gender',
         'points',
-        'rank'
+        'rank',
     ];
 
     /**
@@ -158,12 +158,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
-     * Store an User on the Database
+     * Store an User on the Database.
      *
      * @param string $username
      * @param string $password
      * @param string $email
      * @param string $address
+     *
      * @return User
      */
     public function store(string $username, string $password, string $email, string $address = ''): User
@@ -180,7 +181,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         $this->attributes['ip_current'] = $address;
 
-        $this->traits = ["NEW_USER", "USER"];
+        $this->traits = ['NEW_USER', 'USER'];
 
         $this->save();
         $this->createData();
@@ -189,17 +190,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Store an User Alias Set on Database
+     * Store an User Alias Set on Database.
      */
     public function createData()
     {
-        (new ChocolateyId)->store($this->attributes['id'], $this->attributes['mail'])->save();
+        (new ChocolateyId())->store($this->attributes['id'], $this->attributes['mail'])->save();
 
-        (new UserPreferences)->store($this->attributes['id'])->save();
+        (new UserPreferences())->store($this->attributes['id'])->save();
     }
 
     /**
-     * Get Is User is Banned
+     * Get Is User is Banned.
      *
      * @return bool
      */
@@ -209,7 +210,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get Ban Details
+     * Get Ban Details.
      *
      * @return Ban
      */
@@ -219,7 +220,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get Current User Country
+     * Get Current User Country.
+     *
      * @TODO: Implement this in a proper way
      *
      * @return string
@@ -230,7 +232,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Set the Trait Attribute
+     * Set the Trait Attribute.
      *
      * @param array $accountType
      */
@@ -246,8 +248,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTraitsAttribute(): array
     {
-        if (array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 6)
-            return ["STAFF"];
+        if (array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 6) {
+            return ['STAFF'];
+        }
 
         return $this->traits;
     }
@@ -259,8 +262,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTrustedAttribute(): bool
     {
-        if (UserSecurity::find($this->attributes['id']) == null)
+        if (UserSecurity::find($this->attributes['id']) == null) {
             return true;
+        }
 
         return in_array($this->attributes['ip_current'],
             UserSecurity::find($this->attributes['id'])->trustedDevices);
@@ -287,7 +291,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * We don't care about this
+     * We don't care about this.
      *
      * @return int
      */
@@ -297,7 +301,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * We don't care about this
+     * We don't care about this.
      *
      * @return int
      */
@@ -333,7 +337,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get GTimestamp in Habbo UserCurrency
+     * Get GTimestamp in Habbo UserCurrency.
      *
      * @return string
      */
@@ -341,11 +345,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
+        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
-     * Get GTimestamp in Habbo UserCurrency
+     * Get GTimestamp in Habbo UserCurrency.
      *
      * @return string
      */
@@ -353,11 +357,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date("Y-m-d", $accountCreated) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $accountCreated);
+        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
-     * Retrieve User Figure String
+     * Retrieve User Figure String.
      *
      * @return string
      */
@@ -367,7 +371,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
-     * Get GTimestamp in Habbo UserCurrency
+     * Get GTimestamp in Habbo UserCurrency.
      *
      * @return false|string
      */
@@ -375,11 +379,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $lastLogin = $this->attributes['last_login'] ?? time();
 
-        return date("Y-m-d", $lastLogin) . 'T' . date("H:i:s.ZZZZ+ZZZZ", $lastLogin);
+        return date('Y-m-d', $lastLogin).'T'.date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
     }
 
     /**
-     * Get E-Mail Verified Attribute
+     * Get E-Mail Verified Attribute.
      *
      * @return bool
      */

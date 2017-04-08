@@ -9,5 +9,5 @@
 |
 */
 
-# Get Interstitial Client ADS
+// Get Interstitial Client ADS
 $app->get('habbo-web-ads/{interstitial}', 'ClientController@getInterstitial');

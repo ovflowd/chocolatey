@@ -3,13 +3,12 @@
 namespace App\Models;
 
 /**
- * Class ShopCategory
- * @package App\Models
+ * Class ShopCategory.
  */
 class ShopCategory extends ChocolateyModel
 {
     /**
-     * Disable Timestamps
+     * Disable Timestamps.
      *
      * @var bool
      */
@@ -23,14 +22,14 @@ class ShopCategory extends ChocolateyModel
     protected $table = 'chocolatey_shop_items_categories';
 
     /**
-     * Primary Key of the Table
+     * Primary Key of the Table.
      *
      * @var string
      */
     protected $primaryKey = 'category_name';
 
     /**
-     * The Appender(s) of the Model
+     * The Appender(s) of the Model.
      *
      * @var array
      */
@@ -39,9 +38,10 @@ class ShopCategory extends ChocolateyModel
     ];
 
     /**
-     * Store an Shop Country
+     * Store an Shop Country.
      *
      * @param string $categoryName
+     *
      * @return ShopCategory
      */
     public function store(string $categoryName): ShopCategory
@@ -52,7 +52,7 @@ class ShopCategory extends ChocolateyModel
     }
 
     /**
-     * Get Shop Category Name
+     * Get Shop Category Name.
      *
      * @return string
      */

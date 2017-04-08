@@ -2,15 +2,145 @@
 
 ## [Unreleased](https://github.com/sant0ro/chocolatey/tree/HEAD)
 
-[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.305...HEAD)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.700...HEAD)
 
 **Closed issues:**
 
+- Language stuck to NL? [\#135](https://github.com/sant0ro/chocolatey/issues/135)
+
+**Merged pull requests:**
+
+- Merging Binaries with Master [\#137](https://github.com/sant0ro/chocolatey/pull/137) ([sant0ro](https://github.com/sant0ro))
+- Apply fixes from StyleCI [\#136](https://github.com/sant0ro/chocolatey/pull/136) ([sant0ro](https://github.com/sant0ro))
+
+## [2.700](https://github.com/sant0ro/chocolatey/tree/2.700) (2017-04-04)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.500...2.700)
+
+**Closed issues:**
+
+- Change password? [\#134](https://github.com/sant0ro/chocolatey/issues/134)
+
+**Merged pull requests:**
+
+- Fixes date not loading on photos [\#132](https://github.com/sant0ro/chocolatey/pull/132) ([dominicusdev](https://github.com/dominicusdev))
+
+## [2.500](https://github.com/sant0ro/chocolatey/tree/2.500) (2017-04-02)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2500...2.500)
+
+## [2500](https://github.com/sant0ro/chocolatey/tree/2500) (2017-04-02)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.415...2500)
+
+**Implemented enhancements:**
+
+- HabboMail Security Enhancement [\#127](https://github.com/sant0ro/chocolatey/issues/127)
+
+**Fixed bugs:**
+
+- Likes on photos [\#126](https://github.com/sant0ro/chocolatey/issues/126)
+
+**Closed issues:**
+
+- chocolatey path bug? [\#128](https://github.com/sant0ro/chocolatey/issues/128)
+- Predefined random nicknames [\#125](https://github.com/sant0ro/chocolatey/issues/125)
+- ADS [\#122](https://github.com/sant0ro/chocolatey/issues/122)
+- Image source not readable? [\#120](https://github.com/sant0ro/chocolatey/issues/120)
+- Adding Sub Categories [\#119](https://github.com/sant0ro/chocolatey/issues/119)
+- Photos not loading [\#118](https://github.com/sant0ro/chocolatey/issues/118)
+- Vendor [\#117](https://github.com/sant0ro/chocolatey/issues/117)
+- Loading loop [\#116](https://github.com/sant0ro/chocolatey/issues/116)
+- Blank page [\#114](https://github.com/sant0ro/chocolatey/issues/114)
+- Issues with reCaptcha [\#112](https://github.com/sant0ro/chocolatey/issues/112)
+
+**Merged pull requests:**
+
+- Updated Development [\#129](https://github.com/sant0ro/chocolatey/pull/129) ([sant0ro](https://github.com/sant0ro))
+- Updated Binaries [\#124](https://github.com/sant0ro/chocolatey/pull/124) ([sant0ro](https://github.com/sant0ro))
+- Remove iOS/Android redirection for enable mobile/tablet registration [\#123](https://github.com/sant0ro/chocolatey/pull/123) ([BobyTS](https://github.com/BobyTS))
+- Fixes not loading photos [\#121](https://github.com/sant0ro/chocolatey/pull/121) ([dominicusdev](https://github.com/dominicusdev))
+
+## [2.415](https://github.com/sant0ro/chocolatey/tree/2.415) (2017-03-31)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.410...2.415)
+
+**Closed issues:**
+
+- client-new-user error [\#115](https://github.com/sant0ro/chocolatey/issues/115)
+- Unable to Load Chocolatey [\#113](https://github.com/sant0ro/chocolatey/issues/113)
+
+## [2.410](https://github.com/sant0ro/chocolatey/tree/2.410) (2017-03-30)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.405...2.410)
+
+**Closed issues:**
+
+- ViewServiceProvider [\#111](https://github.com/sant0ro/chocolatey/issues/111)
+
+## [2.405](https://github.com/sant0ro/chocolatey/tree/2.405) (2017-03-30)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.400...2.405)
+
+**Merged pull requests:**
+
+- Update .htaccess [\#110](https://github.com/sant0ro/chocolatey/pull/110) ([scottstamp](https://github.com/scottstamp))
+
+## [2.400](https://github.com/sant0ro/chocolatey/tree/2.400) (2017-03-30)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.355...2.400)
+
+**Implemented enhancements:**
+
+- Rename Settings Variables [\#107](https://github.com/sant0ro/chocolatey/issues/107)
+- Chocolatey Blade Variables [\#106](https://github.com/sant0ro/chocolatey/issues/106)
+- Account Date of Birth [\#66](https://github.com/sant0ro/chocolatey/issues/66)
+
+**Fixed bugs:**
+
+- Mail Issue [\#104](https://github.com/sant0ro/chocolatey/issues/104)
+
+**Closed issues:**
+
+- Registration Error [\#109](https://github.com/sant0ro/chocolatey/issues/109)
+- Register does not work [\#103](https://github.com/sant0ro/chocolatey/issues/103)
+- Maintenance Text Within Espreso [\#77](https://github.com/sant0ro/chocolatey/issues/77)
+- Code Facebook Login/Auth [\#49](https://github.com/sant0ro/chocolatey/issues/49)
+- Facebook Login/Register is not working [\#48](https://github.com/sant0ro/chocolatey/issues/48)
+- Code a way to Espreso override HabboWEB Templates [\#9](https://github.com/sant0ro/chocolatey/issues/9)
+- Code Habbo's Unread Messages [\#5](https://github.com/sant0ro/chocolatey/issues/5)
+
+## [2.355](https://github.com/sant0ro/chocolatey/tree/2.355) (2017-03-20)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.350...2.355)
+
+**Closed issues:**
+
+- Translate HabboWEB Pages [\#74](https://github.com/sant0ro/chocolatey/issues/74)
+
+**Merged pull requests:**
+
+- Updating Binaries [\#101](https://github.com/sant0ro/chocolatey/pull/101) ([sant0ro](https://github.com/sant0ro))
+- Updating Master [\#100](https://github.com/sant0ro/chocolatey/pull/100) ([sant0ro](https://github.com/sant0ro))
+- Merging Updates [\#99](https://github.com/sant0ro/chocolatey/pull/99) ([sant0ro](https://github.com/sant0ro))
+- Updated Room Thumbnail/Screenshot URL [\#98](https://github.com/sant0ro/chocolatey/pull/98) ([s150217754](https://github.com/s150217754))
+- Fixed NUX [\#97](https://github.com/sant0ro/chocolatey/pull/97) ([s150217754](https://github.com/s150217754))
+- Moved images to web-images [\#96](https://github.com/sant0ro/chocolatey/pull/96) ([s150217754](https://github.com/s150217754))
+
+## [2.350](https://github.com/sant0ro/chocolatey/tree/2.350) (2017-03-19)
+[Full Changelog](https://github.com/sant0ro/chocolatey/compare/2.305...2.350)
+
+**Closed issues:**
+
+- No Owner for NUX Furni [\#95](https://github.com/sant0ro/chocolatey/issues/95)
+- Chocolatey not working on IIS [\#94](https://github.com/sant0ro/chocolatey/issues/94)
+- Community Photos [\#93](https://github.com/sant0ro/chocolatey/issues/93)
+- Client new user [\#92](https://github.com/sant0ro/chocolatey/issues/92)
+- ErrorException in Facade.php [\#91](https://github.com/sant0ro/chocolatey/issues/91)
+- Impossible acces on Housekeeping \(espreso\). [\#90](https://github.com/sant0ro/chocolatey/issues/90)
+- Impossible delete picture. [\#89](https://github.com/sant0ro/chocolatey/issues/89)
+- "Https" and localhost problem. [\#88](https://github.com/sant0ro/chocolatey/issues/88)
+- XML Parsing Error [\#87](https://github.com/sant0ro/chocolatey/issues/87)
+- Apostrophe Symbol in Client Revolving Message [\#85](https://github.com/sant0ro/chocolatey/issues/85)
+- Photos [\#84](https://github.com/sant0ro/chocolatey/issues/84)
 - Unable to load Rooms page [\#81](https://github.com/sant0ro/chocolatey/issues/81)
 - Twitter Widget [\#75](https://github.com/sant0ro/chocolatey/issues/75)
 
 **Merged pull requests:**
 
+- Fixes Client Revolving Message [\#86](https://github.com/sant0ro/chocolatey/pull/86) ([s150217754](https://github.com/s150217754))
 - Fixes Empty RSS Title [\#83](https://github.com/sant0ro/chocolatey/pull/83) ([s150217754](https://github.com/s150217754))
 
 ## [2.305](https://github.com/sant0ro/chocolatey/tree/2.305) (2017-03-13)
