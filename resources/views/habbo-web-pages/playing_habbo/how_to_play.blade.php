@@ -11,7 +11,7 @@
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/askfriend.png" alt="Ask to be friend" class="align-right">
 </p>
 <h3>{!! trans('playing_habbo/how_to_play.friends_title') !!}</h3>
-<p>{!! trans('playing_habbo/how_to_play.friends', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/how_to_play.friends', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <hr>
 <p>
     <img src="{{$chocolatey->hotelUrl}}habbo-web/assets/web-images/citizenship.png" alt=" {{$chocolatey->hotelName}} citizenship" class="align-right">
