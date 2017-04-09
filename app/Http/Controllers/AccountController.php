@@ -51,7 +51,7 @@ class AccountController extends BaseController
     protected function filterName(string $userName): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-            return strpos($userName, $username) !== false;
+            return stripos($userName, $username) !== false;
         })) == 0;
     }
 
