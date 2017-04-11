@@ -18,7 +18,7 @@
 <p>{!! trans('playing_habbo/what_is_habbo.creativity', ['hotelName' => $chocolatey->hotelName]) !!}</p>
 <h2>{!! trans('playing_habbo/what_is_habbo.forever', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
 <p>{!! trans('playing_habbo/what_is_habbo.free_to_play', ['hotelName' => $chocolatey->hotelName]) !!}</p>
-<p>{!! trans('playing_habbo/what_is_habbo.extras', ['hotelName' => $chocolatey->hotelName]) !!}</p>
+<p>{!! trans('playing_habbo/what_is_habbo.extras', ['hotelName' => $chocolatey->hotelName, 'shortName' => $chocolatey->shortName]) !!}</p>
 <h2>{!! trans('playing_habbo/what_is_habbo.here_to_fuck') !!}</h2>
 <p>
     <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/ill_17.png" alt="Always here to help" class="align-right">

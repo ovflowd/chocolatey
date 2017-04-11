@@ -1,7 +1,12 @@
+**READ [THIS](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating) BEFORE CREATING AN ISSUE!!!**
+
+
+<hr>
+
 ![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)
 <br><sup>chocolatey the Habbo.com Clone CMS</sup>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development) [![Github All Releases](https://img.shields.io/github/downloads/sant0ro/chocolatey/total.svg)]() [![GitHub release](https://img.shields.io/github/release/sant0ro/chocolatey.svg)]() [![Code Climate](https://codeclimate.com/github/sant0ro/chocolatey/badges/gpa.svg)](https://codeclimate.com/github/sant0ro/chocolatey) [![Inline docs](http://inch-ci.org/github/sant0ro/chocolatey.svg?branch=master)](http://inch-ci.org/github/sant0ro/chocolatey)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development) [![Github All Releases](https://img.shields.io/github/downloads/sant0ro/chocolatey/total.svg)]() [![GitHub release](https://img.shields.io/github/release/sant0ro/chocolatey.svg)]() [![Code Climate](https://codeclimate.com/github/sant0ro/chocolatey/badges/gpa.svg)](https://codeclimate.com/github/sant0ro/chocolatey) [![Inline docs](http://inch-ci.org/github/sant0ro/chocolatey.svg?branch=master)](http://inch-ci.org/github/sant0ro/chocolatey) [![StyleCI](https://styleci.io/repos/79750909/shield?branch=master)](https://styleci.io/repos/79750909)
 
 The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.
 
@@ -53,6 +58,12 @@ Check our Wiki Page for Installation Tutorials, by clicking [here](https://githu
 * John aka Kylon
 * Mike aka CineXMike
 * s150217754
+
+#### Collaborating
+
+Before Collaborating, **PLEASE** Check [this](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating)
+
+Anyone is **free** to collaborate.
 
 ### Special Thanks
 * Wesley aka The General
