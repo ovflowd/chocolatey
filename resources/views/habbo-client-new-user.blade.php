@@ -9,7 +9,7 @@
             "furnidata.load.url": "{{$chocolatey->game->gamedata->furnidata}}",
             "external.variables.txt": "{{$chocolatey->game->gamedata->variables}}",
             "client.allow.cross.domain": "1",
-            "url.prefix": "{{$chocolatey->hotelUrl}}/",
+            "url.prefix": "{{$chocolatey->hotelUrl}}",
             "external.override.texts.txt": "{{$chocolatey->game->gamedata->overrideTexts}}",
             "supersonic_custom_css": "{{$chocolatey->hotelUrl}}/habbo-web/assets/css/hotel.css",
             "external.figurepartlist.txt": "{{$chocolatey->game->gamedata->figuredata}}",
