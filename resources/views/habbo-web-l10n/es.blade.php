@@ -1478,9 +1478,9 @@
   "CFH_REASON_RECEIVED_REPORTER_SEXUAL_WEBCAM_IMAGES": "Has reportado a un/-a usuari@ por pedir/ofrecer imágenes o webcam sexuales. Por tu propia seguridad celebra tu anonimato en {{$chocolatey->hotelName}} y guarda para ti mismo tu info personal. L@s mods le echarán un vistazo mientras tanto.",
   "MODERATOR_MESSAGETEMPLATE_4": "¿Quizás el ambiente esté un poco cargado? Relax, por favor. Hay sitios mejores que {{$chocolatey->hotelName}} para tratar este tipo de asuntos.",
   "MODERATOR_MESSAGETEMPLATE_1": "Si te encuentras en una situación desagradable en {{$chocolatey->hotelName}} , al pinchar en \"Ayuda\" puedes hacer clic en \"Quiero abandonar la sala\". Es una forma fácil de escapar de ahí.",
-  "CFH_CLOSED_ABUSIVE": "L@s mods miraron el caso que has reportado. ¡Sólo emergencias reales, por favor! El uso inapropiado del sistema no está bien.",  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "CFH_CLOSED_ABUSIVE": "L@s mods miraron el caso que has reportado. ¡Sólo emergencias reales, por favor! El uso inapropiado del sistema no está bien.",  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Panel de Control"
 }

@@ -27,8 +27,8 @@
               content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
         <meta name="prerender-status-code" prerender-status-code="">
         <meta name="prerender-header" prerender-header="">
-        <link rel="shortcut icon" href="{{$chocolatey->hotelUrl}}habbo-web/favicon.ico">
-        <link rel="stylesheet" href="{{$chocolatey->hotelUrl}}habbo-web/app.css">
+        <link rel="shortcut icon" href="{{$chocolatey->hotelUrl}}/habbo-web/favicon.ico">
+        <link rel="stylesheet" href="{{$chocolatey->hotelUrl}}/habbo-web/app.css">
         <script>
             !function () {
                 var e = document.createElement("link"), t = document.getElementsByTagName("script")[0];
@@ -37,7 +37,7 @@
         </script>
         <script>
             window.session = {!! $user !!};
-            window.chocolatey = {captcha: '{{$chocolatey->recaptcha}}', facebook: '{{$chocolatey->facebook->app->key}}', url: '{{$chocolatey->hotelUrl}}', name: '{{$chocolatey->hotelName}}', lang: '{{$chocolatey->siteLanguage}}', album: '{{$chocolatey->badgeRepository}}', plang: '{{env('APP_LOCALE', 'en')}}'};
+            window.chocolatey = {captcha: '{{$chocolatey->recaptcha}}', facebook: '{{$chocolatey->facebook->app->key}}', url: '{{$chocolatey->hotelUrl}}/', name: '{{$chocolatey->hotelName}}', lang: '{{$chocolatey->siteLanguage}}', album: '{{$chocolatey->badgeRepository}}', plang: '{{env('APP_LOCALE', 'en')}}'};
             window.geoLocation = {!! json_encode((object)$chocolatey->location) !!};
             window.partnerCodeInfo = null;
             window.banner = null;
@@ -50,7 +50,7 @@
     <habbo-client></habbo-client>
 </div>
 <habbo-eu-cookie-banner habbo-require-no-session></habbo-eu-cookie-banner>
-<script src="{{$chocolatey->hotelUrl}}habbo-web/vendor.js"></script>
-<script src="{{$chocolatey->hotelUrl}}habbo-web/scripts.js"></script>
+<script src="{{$chocolatey->hotelUrl}}/habbo-web/vendor.js"></script>
+<script src="{{$chocolatey->hotelUrl}}/habbo-web/scripts.js"></script>
 </body>
 </html>
