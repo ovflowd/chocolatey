@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{$chocolatey->hotelName}}</title>
     <meta name="description" content="">
-    <link rel="shortcut icon" href="{{$chocolatey->hotelUrl}}habbo-web/favicon.ico">
+    <link rel="shortcut icon" href="{{$chocolatey->hotelUrl}}/habbo-web/favicon.ico">
     <link rel="stylesheet" type="text/css" href="{{$chocolatey->hotelUrl}}/habbo-web/assets/css/maintenance.css">
     <script>
         !function () {
@@ -18,7 +18,7 @@
 <body>
 <div class="content">
     <div class="header">
-        <div class="wrapper"><a href="{{$chocolatey->hotelUrl}}" class="habbo-image"></a></div>
+        <div class="wrapper"><a href="{{$chocolatey->hotelUrl}}/" class="habbo-image"></a></div>
     </div>
     <div class="wrapper">
         <div class="page-content">
@@ -29,7 +29,7 @@
                         This happen because you didn't configured espreso integration correctly, or, Espreso is still
                         under development.</p>
                     <a href="/">You can go back to earlier page.</a>
-                    <img style="float:right" src="{{$chocolatey->hotelUrl}}habbo-web/assets/images/frank.gif"/>
+                    <img style="float:right" src="{{$chocolatey->hotelUrl}}/habbo-web/assets/images/frank.gif"/>
                 </div>
             </div>
         </div>

@@ -1395,9 +1395,9 @@
   "MODERATOR_MESSAGETEMPLATE_4": "Zu deiner eigenen Sicherheit raten wir davon ab, deine E-Mail-Adresse, deinen Messenger-Namen oder Social Network Profile zu teilen.",
   "MODERATOR_MESSAGETEMPLATE_1": "Wenn dich jemand ärgert, klicke ihn an und klicke dann auf \"Ignorieren\", um ihn für dich stumm zu stellen und lösche ihn aus deiner Freundesliste.",
   "CFH_CLOSED_ABUSIVE": "Die Moderatoren haben sich deinen Hilferuf angeschaut. Bitte melde nur echte Verstöße ! Es ist nicht cool das System zu missbrauchen.",
-  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Systemsteuerung"
 }

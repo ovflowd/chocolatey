@@ -870,7 +870,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function newPivot(Model $parent, array $attributes, $table, $exists, $using = null)
     {
-        return $using ? new $using($parent, $attributes, $table, $exists)
+        return $using ? $using::fromRawAttributes($parent, $attributes, $table, $exists)
                       : new Pivot($parent, $attributes, $table, $exists);
     }
 
@@ -1105,13 +1105,26 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * Get the auto incrementing key type.
+     * Get the auto-incrementing key type.
      *
      * @return string
      */
     public function getKeyType()
     {
         return $this->keyType;
+    }
+
+    /**
+     * Set the data type for the primary key.
+     *
+     * @param  string  $type
+     * @return $this
+     */
+    public function setKeyType($type)
+    {
+        $this->keyType = $type;
+
+        return $this;
     }
 
     /**

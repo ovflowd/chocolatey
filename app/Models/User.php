@@ -116,6 +116,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'gender',
         'credits',
         'pixels',
+        'home_room',
     ];
 
     /**

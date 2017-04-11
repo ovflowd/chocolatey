@@ -44,14 +44,14 @@ class Worker
      *
      * @var bool
      */
-    protected $shouldQuit = false;
+    public $shouldQuit = false;
 
     /**
      * Indicates if the worker is paused.
      *
      * @var bool
      */
-    protected $paused = false;
+    public $paused = false;
 
     /**
      * Create a new queue worker.
@@ -567,5 +567,26 @@ class Worker
     public function setCache(CacheContract $cache)
     {
         $this->cache = $cache;
+    }
+
+    /**
+     * Get the queue manager instance.
+     *
+     * @return \Illuminate\Queue\QueueManager
+     */
+    public function getManager()
+    {
+        return $this->manager;
+    }
+
+    /**
+     * Set the queue manager instance.
+     *
+     * @param  \Illuminate\Queue\QueueManager  $manager
+     * @return void
+     */
+    public function setManager(QueueManager $manager)
+    {
+        $this->manager = $manager;
     }
 }
