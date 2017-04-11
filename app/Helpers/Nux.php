@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Room;
 use App\Models\User;
+use App\Models\RoomItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -60,8 +61,8 @@ final class Nux
     {
         $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
         $room->save();
-
-        DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
+        
+        Users::find($user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 15542, 'x' => 9, 'y' => 9, 'z' => '0.00000', 'rot' => 4, 'extra_data' => ''],
@@ -105,7 +106,7 @@ final class Nux
         $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 307, 3104, 1.10, $user->uniqueId, $user->name);
         $room->save();
 
-        DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
+        Users::find($user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 16715, 'x' => 5, 'y' => 11, 'z' => 1.30000, 'rot' => 0, 'extra_data' => ''],
@@ -177,7 +178,7 @@ final class Nux
         $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 409, 1902, 0.0, $user->uniqueId, $user->name);
         $room->save();
 
-        DB::table('users')->where('id', $user->uniqueId)->update(['home_room' => $room->id]);
+        Users::find($user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
             ['user_id' => $user->uniqueId, 'room_id' => $room->id, 'item_id' => 16904, 'x' => 4, 'y' => 11, 'z' => '0.00000', 'rot' => 0, 'extra_data' => '1'],

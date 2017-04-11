@@ -13,7 +13,7 @@ return [
     'title' => 'How to deal with a problem in :hotelName',
     'may'   => 'You may occasionally come across the odd misbehaving :hotelName . Never fear, help is at hand! On this page we&apos;ll tell you what tools work best in tricky situations.',
     // Room Section
-    'room_title'               => 'In a room<',
+    'room_title'               => 'In a room',
     'room'                     => 'When you&apos;re in a room and another :hotelName is being out-of-line, click on their avatar and a drop-down menu will appear. This lets you either ignore, moderate or in really disruptive cases, report them.',
     'ignoring_title'           => 'Ignoring a :hotelName',
     'ignoring'                 => 'If <strong>a :hotelName is saying things which make you feel uncomfortable</strong>, you can put them on ignore. This is an ideal solution for teasing, spamming or when you simply want to say &quot;Bye Felicia!&quot; but don&apos;t know how.',
@@ -22,7 +22,7 @@ return [
     'ignoring_list_three'      => 'You won&apos;t see what the :hotelName says anymore. If you want to un-ignore later, click the avatar again and choose <em>Listen</em>.',
     'moderating_title'         => 'Moderating a :hotelName',
     'moderating'               => '<strong>In your own rooms, or if you have room rights</strong>, you can decide who can visit the room, and you have the power to mute, kick or ban other users. This allows you to play an active part in the general :hotelName moderation and to contribute to a safer and more enjoyable community.',
-    'moderating_two'           => '>Read more on :hotelName Helpdesk about room moderation tools and room settings.',
+    'moderating_two'           => 'Read more on :hotelName Helpdesk about room moderation tools and room settings.',
     'reporting_title'          => 'Reporting a :hotelName',
     'reporting'                => 'If <strong>things are getting heated in a room</strong>: :hotelName s are talking about meeting in real life, want to video call, exchange personal contact details or someone&apos;s being badly bullied&#x2026; consider reporting that person. No one likes a tattle-tale, so remember to use this only when someone is intentionally doing harm to others or themselves.',
     'reporting_list_one'       => 'Click on the trouble-making :hotelName &apos;s avatar. A drop-down menu will appear.',
