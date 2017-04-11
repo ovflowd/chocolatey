@@ -28,7 +28,7 @@
                             email {{$email}}
                         </p>
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;margin:16px 0 16px 0;padding:0">
-                            <a href="{{$chocolatey->hotelUrl}}{{$url}}"
+                            <a href="{{$chocolatey->hotelUrl}}/{{$url}}"
                                style="text-decoration:none;color:#ffffff;background-color:#00813e;border-radius:5px;display:inline-block;font-family:'Ubuntu Condensed','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:18px;padding:8px 24px"
                                target="_blank">Click here to securely activate your account</a></p>
                         <p style="color:#000000;font-family:'Ubuntu','Trebuchet MS','Lucida Grande','Lucida Sans Unicode','Lucida Sans',Tahoma,sans-serif;font-size:16px;line-height:1.4;margin:16px 0 16px 0;padding:0">

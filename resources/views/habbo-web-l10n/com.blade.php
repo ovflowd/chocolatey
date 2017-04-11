@@ -1602,9 +1602,9 @@
   "MODERATOR_MESSAGETEMPLATE_4": "Please use the Help Tool for your query by clicking on 'Customer Support & Helpdesk' at the bottom of the home page.",
   "MODERATOR_MESSAGETEMPLATE_1": "Celebrate your anonymity on {{$chocolatey->hotelName}}. For your safety, it's best to keep personal information to yourself.",
   "CFH_CLOSED_ABUSIVE": "Mods looked into the case reported by you. Legit emergency calls only, please! Misusing the system is not cool.",
-  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Housekeeping"
 }

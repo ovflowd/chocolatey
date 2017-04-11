@@ -1351,9 +1351,9 @@
   "MODERATOR_MESSAGETEMPLATE_4": "Deze vraag kan beter beantwoord worden door de Help Tool. Klik hiervoor op 'Contact' onderaan de homepage.",
   "MODERATOR_MESSAGETEMPLATE_1": "Geef nooit persoonlijke informatie weg aan anderen en vraag er ook niet om. Je kan nooit zeker weten met wie je te maken hebt op het internet.",
   "CFH_CLOSED_ABUSIVE": "Mods hebben jouw oproep afgehandeld. Let op: alleen serieuze aangiftes worden behandeld! Misbruik van het systeem is niet cool.",
-  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Control Panel"
 }

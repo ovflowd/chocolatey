@@ -1405,9 +1405,9 @@
   "MODERATOR_MESSAGETEMPLATE_4": "Por favor use a Ferramenta de Ajuda clicando em \"Contate-nos\" no final da página inicial.",
   "MODERATOR_MESSAGETEMPLATE_1": "Utilize o Botão do Pânico, se precisar fugir de situações inapropriadas ou desconfortáveis.",
   "CFH_CLOSED_ABUSIVE": "Os Moderadores verificaram o caso que você reportou. Por favor, somente abra Pedidos de Ajuda legítimos! Usar esse sistema sem necessidade não é legal.",
-  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Painel de Controle"
 }
