@@ -1390,9 +1390,9 @@
   "MODERATOR_MESSAGETEMPLATE_4": "Tu es responsable des trocs que tu effectues. Rien ne pourra être rendu en cas de désaccord.",
   "MODERATOR_MESSAGETEMPLATE_1": "Si quelqu'un t'ennuie ou t'insulte, utilise le bouton 'Ignorer' pour cacher ses paroles.",
   "CFH_CLOSED_ABUSIVE": "Les Modérateurs ont étudié le cas que tu as rapporté. N'envoie que des demandes urgentes et justifiées, s'il te plaît ! Fais bon usage du système.",
-  "RSS_URI": "{{$chocolatey->hotelUrl}}rss.xml",
+  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
-  "HOTEL_URI": "{{$chocolatey->hotelUrl}}",
+  "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Panneau de configuration"
 }
