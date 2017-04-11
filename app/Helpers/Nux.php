@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use App\Models\Room;
 use App\Models\User;
-use App\Models\RoomItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,7 +60,7 @@ final class Nux
     {
         $room = (new Room())->store("{$user->name}'s room", "{$user->name} has entered the building", 'model_h', 25, 12, 610, 2403, 0.0, $user->uniqueId, $user->name);
         $room->save();
-        
+
         Users::find($user->uniqueId)->update(['home_room' => $room->id]);
 
         DB::table('items')->insert([
