@@ -33,7 +33,7 @@ class LoginController extends BaseController
                 return $this->sendBanMessage($request);
             }
 
-        return response()->json(UserFacade::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
+            return response()->json(UserFacade::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
         endif;
 
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
@@ -49,8 +49,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(Request $request): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime'                   => $request->user()->banDetails->ban_expire,
-            'reason'                       => $request->user()->banDetails->ban_reason, ], 401);
+            'expiryTime' => $request->user()->banDetails->ban_expire,
+            'reason' => $request->user()->banDetails->ban_reason,], 401);
     }
 
     /**

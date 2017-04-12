@@ -51,8 +51,8 @@ class AccountController extends BaseController
     protected function filterName(string $userName): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-            return stripos($userName, $username) !== false;
-        })) == 0;
+                return stripos($userName, $username) !== false;
+            })) == 0;
     }
 
     /**
@@ -145,11 +145,11 @@ class AccountController extends BaseController
     public function savePreferences(Request $request): Response
     {
         UserSettings::updateOrCreate(['user_id' => $request->user()->uniqueId], [
-            'block_following'      => $request->json()->get('friendCanFollow') == false ? '1' : '0',
+            'block_following' => $request->json()->get('friendCanFollow') == false ? '1' : '0',
             'block_friendrequests' => $request->json()->get('friendRequestEnabled') == false ? '1' : '0',
         ]);
 
-        foreach ((array) $request->json()->all() as $setting => $value) {
+        foreach ((array)$request->json()->all() as $setting => $value) {
             UserPreferences::find($request->user()->uniqueId)->update([$setting => $value == true ? '1' : '0']);
         }
 
@@ -178,7 +178,7 @@ class AccountController extends BaseController
      */
     public function checkNewName(Request $request): JsonResponse
     {
-        return response()->json(['isAvailable' => User::where('username', $request->input('name'))->count() > 0 || !$this->filterName($request->input('name')) == false]);
+        return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() > 0 || !$this->filterName($request->input('name'))) == false]);
     }
 
     /**
@@ -194,8 +194,7 @@ class AccountController extends BaseController
             return response()->json(['isAvailable' => false]);
         }
 
-        $this->createUser($request, UserFacade::updateData($request->user(),
-            ['name' => $request->json()->get('name')])->getAttributes());
+        $this->createUser($request, ['username' => $request->json()->get('name'), 'email' => $request->user()->email, 'password' => openssl_random_pseudo_bytes(20)]);
 
         return response()->json('');
     }
@@ -204,23 +203,20 @@ class AccountController extends BaseController
      * Create a New User.
      *
      * @param Request $request
-     * @param array   $userInfo
-     * @param bool    $newUser  If is a New User
+     * @param array $userInfo
+     * @param bool $newUser If is a New User
      *
      * @return User
      */
     public function createUser(Request $request, array $userInfo, bool $newUser = false): User
     {
         $userName = $newUser ? $this->uniqueName($userInfo['email']) : $userInfo['username'];
-        $userMail = $newUser ? $userInfo['email'] : $userInfo['mail'];
 
-        $token = Mail::store($userMail, 'public/registration/activate');
+        $token = Mail::store($userInfo['email'], 'public/registration/activate');
 
-        Mail::send(['email' => $userMail, 'name' => $userName,
-            'url'           => "/activate/{$token}", 'subject' => 'Welcome to '.Config::get('chocolatey.hotelName'),
-        ]);
+        Mail::send(['email' => $userInfo['email'], 'name' => $userName, 'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName')]);
 
-        return UserFacade::setSession((new User())->store($userName, $userInfo['password'], $userMail, $request->ip()));
+        return UserFacade::setSession((new User)->store($userName, $userInfo['password'], $userInfo['email'], $request->ip(), $newUser));
     }
 
     /**
@@ -236,7 +232,7 @@ class AccountController extends BaseController
     {
         $partialName = explode(' ', (new Alliteration())->getName());
 
-        return strtolower($partialName[0].strstr($userMail, '@', true).$partialName[1]);
+        return strtolower($partialName[0] . strstr($userMail, '@', true) . $partialName[1]);
     }
 
     /**
@@ -265,9 +261,9 @@ class AccountController extends BaseController
         if (strpos(Mail::getMail()->link, 'change-email') !== false):
             $email = str_replace('change-email/', '', Mail::getMail()->link);
 
-        User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
+            User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
 
-        ChocolateyId::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
+            ChocolateyId::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
         endif;
 
         User::where('mail', Mail::getMail()->mail)->update(['mail_verified' => '1']);
@@ -291,7 +287,7 @@ class AccountController extends BaseController
         $token = Mail::store($user->email, 'public/forgotPassword');
 
         Mail::send(['name' => $user->name, 'email' => $user->email, 'subject' => 'Password reset confirmation',
-            'url'          => "/reset-password/{$token}",
+            'url' => "/reset-password/{$token}",
         ], 'habbo-web-mail.password-reset');
 
         return response()->json(['email' => $user->email]);
@@ -309,7 +305,7 @@ class AccountController extends BaseController
         $token = Mail::store($request->user()->email, 'public/registration/activate');
 
         Mail::send(['name' => $request->user()->name, 'email' => $request->user()->email,
-            'url'          => "/activate/{$token}", 'subject' => 'Welcome to '.Config::get('chocolatey.hotelName'),
+            'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
         ]);
 
         return response(null);

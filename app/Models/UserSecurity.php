@@ -75,9 +75,9 @@ class UserSecurity extends ChocolateyModel
     /**
      * Store a new User Security Metadata.
      *
-     * @param int    $userId
-     * @param int    $firstQuestion
-     * @param int    $secondQuestion
+     * @param int $userId
+     * @param int $firstQuestion
+     * @param int $secondQuestion
      * @param string $firstAnswer
      * @param string $secondAnswer
      *

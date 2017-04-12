@@ -46,7 +46,7 @@ class PageController extends BaseController
      * Get Client View.
      *
      * @param Request $request
-     * @param string  $clientType
+     * @param string $clientType
      *
      * @return Response
      */

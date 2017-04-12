@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class RoomItem.
  */
@@ -31,13 +29,36 @@ class RoomItem extends ChocolateyModel
     protected $primaryKey = 'id';
 
     /**
-     * Store Function.
+     * Store a RoomItem
      *
-     * An RoomItem can't be inserted by the CMS.
-     * Only by the Emulator
+     * @param int $userId
+     * @param int $roomId
+     * @param int $itemId
+     * @param int $xPosition
+     * @param int $yPosition
+     * @param string $zPosition
+     * @param int $rotation
+     * @param string $extraData
+     * @param string $wallPosition
+     * @return $this
      */
-    public function store()
+    public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = '')
     {
-        throw new InvalidMutatorException('You cannot store an RoomItem Chocolatey. RoomItems are created by the Emulator.');
+        $this->attributes['user_id'] = $userId;
+        $this->attributes['room_id'] = $roomId;
+        $this->attributes['item_id'] = $itemId;
+        $this->attributes['x'] = $xPosition;
+        $this->attributes['y'] = $yPosition;
+        $this->attributes['z'] = $zPosition;
+        $this->attributes['rot'] = $rotation;
+        $this->attributes['extra_data'] = $extraData;
+
+        if (!empty($wallPosition)) {
+            $this->attributes['wall_pos'] = $wallPosition;
+        }
+
+        $this->save();
+
+        return $this;
     }
 }

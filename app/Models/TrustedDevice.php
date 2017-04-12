@@ -40,7 +40,7 @@ class TrustedDevice extends ChocolateyModel
     /**
      * Store a new TrustedDevice.
      *
-     * @param int    $userId
+     * @param int $userId
      * @param string $ipAddress
      *
      * @return TrustedDevice

@@ -31,11 +31,11 @@ class Ban extends ChocolateyModel
     /**
      * Store an User Ban.
      *
-     * @param int    $userId
-     * @param int    $userStaffId
+     * @param int $userId
+     * @param int $userStaffId
      * @param string $banReason
-     * @param string $banType     (Account, IP, Machine, Super)
-     * @param int    $banExpire
+     * @param string $banType (Account, IP, Machine, Super)
+     * @param int $banExpire
      * @param string $ipAddress
      * @param string $machineId
      *
