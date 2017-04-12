@@ -41,8 +41,8 @@ class UserBadge extends ChocolateyModel
      */
     protected $maps = [
         'badgeIndex' => 'slot_id',
-        'code'       => 'badge_code',
-        'name'       => 'badge_code',
+        'code' => 'badge_code',
+        'name' => 'badge_code',
     ];
 
     /**

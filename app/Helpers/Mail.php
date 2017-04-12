@@ -57,7 +57,7 @@ class Mail
     /**
      * Send an Email.
      *
-     * @param array  $configuration
+     * @param array $configuration
      * @param string $view
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
@@ -91,7 +91,7 @@ class Mail
      * Update Mail Model Data.
      *
      * @param string $token
-     * @param array  $parameters
+     * @param array $parameters
      *
      * @return MailModel
      */

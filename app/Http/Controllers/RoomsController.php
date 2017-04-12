@@ -18,9 +18,9 @@ class RoomsController extends BaseController
      * @TODO: Make Possible Filter with all the Possible Criteria
      *
      * @param Request $request
-     * @param string  $countryId
-     * @param string  $roomRange
-     * @param string  $roomInterval
+     * @param string $countryId
+     * @param string $roomRange
+     * @param string $roomInterval
      *
      * @return JsonResponse
      */

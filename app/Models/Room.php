@@ -50,14 +50,14 @@ class Room extends Model
      * @var array
      */
     protected $maps = [
-        'uniqueId'         => 'id',
-        'ownerName'        => 'owner_name',
-        'ownerUniqueId'    => 'owner_id',
-        'doorMode'         => 'state',
+        'uniqueId' => 'id',
+        'ownerName' => 'owner_name',
+        'ownerUniqueId' => 'owner_id',
+        'doorMode' => 'state',
         'leaderboardValue' => 'score',
-        'maximumVisitors'  => 'users_max',
-        'habboGroupId'     => 'guild_id',
-        'rating'           => 'score',
+        'maximumVisitors' => 'users_max',
+        'habboGroupId' => 'guild_id',
+        'rating' => 'score',
     ];
 
     /**
@@ -132,12 +132,12 @@ class Room extends Model
      * @param string $roomName
      * @param string $description
      * @param string $model
-     * @param int    $maxUsers
-     * @param int    $roomCategory
-     * @param int    $floorPaper
-     * @param int    $wallPaper
-     * @param float  $landscapePaper
-     * @param int    $ownerId
+     * @param int $maxUsers
+     * @param int $roomCategory
+     * @param int $floorPaper
+     * @param int $wallPaper
+     * @param float $landscapePaper
+     * @param int $ownerId
      * @param string $ownerName
      *
      * @return Room
@@ -157,6 +157,8 @@ class Room extends Model
         $this->attributes['thickness_floor'] = 0;
         $this->attributes['owner_id'] = $ownerId;
         $this->attributes['owner_name'] = $ownerName;
+
+        $this->save();
 
         return $this;
     }

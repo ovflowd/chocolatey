@@ -52,11 +52,11 @@ class AccountSecurityController extends BaseController
         }
 
         UserSecurity::updateOrCreate([
-            'user_id'        => $request->user()->uniqueId,
-            'firstQuestion'  => $request->json()->get('questionId1'),
+            'user_id' => $request->user()->uniqueId,
+            'firstQuestion' => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer'    => $request->json()->get('answer1'),
-            'secondAnswer'   => $request->json()->get('answer2'), ]);
+            'firstAnswer' => $request->json()->get('answer1'),
+            'secondAnswer' => $request->json()->get('answer2'),]);
 
         return response()->json(null, 204);
     }
@@ -139,14 +139,14 @@ class AccountSecurityController extends BaseController
     protected function sendChangeMailConfirmation(Request $request)
     {
         Mail::send(['email' => $request->user()->email,
-            'name'          => $request->user()->name, 'subject' => 'Email change alert',
+            'name' => $request->user()->name, 'subject' => 'Email change alert',
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = Mail::store($request->user()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
         Mail::send(['email' => $request->json()->get('newEmail'), 'name' => $request->user()->name,
-            'subject'       => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
+            'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
         ], 'habbo-web-mail.confirm-mail-change');
     }
 
@@ -189,7 +189,7 @@ class AccountSecurityController extends BaseController
                 (new TrustedDevice())->store($request->user()->uniqueId, $request->ip())->save();
             }
 
-        return response()->json(null, 204);
+            return response()->json(null, 204);
         endif;
 
         return response()->json(null, 409);

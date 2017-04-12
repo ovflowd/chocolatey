@@ -33,10 +33,10 @@ class Photo extends ChocolateyModel
      * @var array
      */
     protected $maps = [
-        'creator_id'       => 'user_id',
-        'previewUrl'       => 'url',
+        'creator_id' => 'user_id',
+        'previewUrl' => 'url',
         'creator_uniqueId' => 'user_id',
-        'time'             => 'timestamp',
+        'time' => 'timestamp',
     ];
 
     /**
@@ -63,7 +63,7 @@ class Photo extends ChocolateyModel
      * @var array
      */
     protected $casts = [
-        'tags'             => 'array',
+        'tags' => 'array',
         'creator_uniqueId' => 'string',
     ];
 
