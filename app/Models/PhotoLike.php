@@ -31,7 +31,7 @@ class PhotoLike extends ChocolateyModel
     /**
      * Store a new Photo Data.
      *
-     * @param int $photoId
+     * @param int    $photoId
      * @param string $userName
      *
      * @return PhotoLike
