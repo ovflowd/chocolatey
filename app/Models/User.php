@@ -57,14 +57,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $maps = [
-        'uniqueId'      => 'id',
-        'name'          => 'username',
-        'figureString'  => 'look',
+        'uniqueId' => 'id',
+        'name' => 'username',
+        'figureString' => 'look',
         'lastWebAccess' => 'last_login',
-        'creationTime'  => 'account_created',
-        'email'         => 'mail',
-        'identityId'    => 'id',
-        'accountId'     => 'id',
+        'creationTime' => 'account_created',
+        'email' => 'mail',
+        'identityId' => 'id',
+        'accountId' => 'id',
     ];
 
     /**
@@ -165,10 +165,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $password
      * @param string $email
      * @param string $address
-     *
+     * @param bool $newUser
      * @return User
      */
-    public function store(string $username, string $password, string $email, string $address = ''): User
+    public function store(string $username, string $password, string $email, string $address = '', bool $newUser = true): User
     {
         $this->attributes['username'] = $username;
         $this->attributes['mail'] = $email;
@@ -182,7 +182,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         $this->attributes['ip_current'] = $address;
 
-        $this->traits = ['NEW_USER', 'USER'];
+        $this->traits = $newUser ? ['NEW_USER', 'USER'] : ['USER'];
 
         $this->save();
         $this->createData();
@@ -346,7 +346,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -358,7 +358,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -380,7 +380,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $lastLogin = $this->attributes['last_login'] ?? time();
 
-        return date('Y-m-d', $lastLogin).'T'.date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
+        return date('Y-m-d', $lastLogin) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
     }
 
     /**
