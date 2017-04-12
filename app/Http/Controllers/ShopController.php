@@ -63,9 +63,9 @@ class ShopController extends BaseController
      * Proceed Payment Checkout.
      *
      * @param string $paymentCategory
-     * @param int $countryCode
-     * @param int $shopItem
-     * @param int $paymentMethod
+     * @param int    $countryCode
+     * @param int    $shopItem
+     * @param int    $paymentMethod
      *
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
@@ -91,10 +91,10 @@ class ShopController extends BaseController
      * @TODO: Code Business Logic
      *
      * @param Request $request
-     * @param string $paymentCategory
-     * @param int $countryCode
-     * @param int $shopItem
-     * @param int $paymentMethod
+     * @param string  $paymentCategory
+     * @param int     $countryCode
+     * @param int     $shopItem
+     * @param int     $paymentMethod
      *
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
@@ -110,7 +110,7 @@ class ShopController extends BaseController
         $purchaseItem = (new ShopHistory())->store($paymentMethod, $request->user()->uniqueId, $shopItem);
 
         Mail::send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
-            'product' => ShopItem::find($shopItem), 'subject' => 'Purchase completed',
+            'product'       => ShopItem::find($shopItem), 'subject' => 'Purchase completed',
         ], 'habbo-web-mail.purchase-confirmation');
 
         $paymentCheckout->delete();

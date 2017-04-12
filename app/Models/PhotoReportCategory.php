@@ -31,7 +31,7 @@ class PhotoReportCategory extends ChocolateyModel
     /**
      * Add a Report Category.
      *
-     * @param int $reportCategory
+     * @param int    $reportCategory
      * @param string $description
      *
      * @return PhotoReportCategory
