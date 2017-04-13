@@ -56,7 +56,7 @@ class User
      * Update User Data by User Model.
      *
      * @param UserModel $user
-     * @param array $parameters
+     * @param array     $parameters
      *
      * @return UserModel
      */
@@ -100,7 +100,7 @@ class User
      */
     public function hasSession()
     {
-        return (bool)Session::get(Config::get('chocolatey.security.session'));
+        return (bool) Session::get(Config::get('chocolatey.security.session'));
     }
 
     /**
@@ -121,7 +121,7 @@ class User
     public function filterName(string $userName): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-                return stripos($userName, $username) !== false;
-            })) == 0;
+            return stripos($userName, $username) !== false;
+        })) == 0;
     }
 }
