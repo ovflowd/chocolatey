@@ -135,11 +135,9 @@ class AccountController extends BaseController
     /**
      * Get All E-Mail Accounts.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function getAvatars(Request $request): JsonResponse
+    public function getAvatars(): JsonResponse
     {
         return response()->json(ChocolateyId::where('mail', UserFacade::getUser()->email)->first()->relatedAccounts);
     }

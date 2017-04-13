@@ -53,7 +53,7 @@ class ChocolateyId extends ChocolateyModel
     /**
      * Store a new Azure Id Account.
      *
-     * @param int    $userId
+     * @param int $userId
      * @param string $userMail
      *
      * @throws ErrorException

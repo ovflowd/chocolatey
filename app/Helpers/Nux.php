@@ -40,11 +40,11 @@ final class Nux
         switch ($request->json()->get('roomIndex')):
             case 1:
                 return $this->createBedRoom($request->user());
-        case 2:
+            case 2:
                 return $this->createPoolRoom($request->user());
-        case 3:
+            case 3:
                 return $this->createClubRoom($request->user());
-        default:
+            default:
                 return false;
         endswitch;
     }

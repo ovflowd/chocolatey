@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
@@ -17,14 +16,13 @@ class RoomsController extends BaseController
      *
      * @TODO: Make Possible Filter with all the Possible Criteria
      *
-     * @param Request $request
-     * @param string  $countryId
-     * @param string  $roomRange
-     * @param string  $roomInterval
+     * @param string $countryId
+     * @param string $roomRange
+     * @param string $roomInterval
      *
      * @return JsonResponse
      */
-    public function getLeader(Request $request, $countryId, $roomRange, $roomInterval): JsonResponse
+    public function getLeader($countryId, $roomRange, $roomInterval): JsonResponse
     {
         $leaderRank = 1;
 

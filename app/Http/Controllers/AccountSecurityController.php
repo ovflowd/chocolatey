@@ -23,11 +23,9 @@ class AccountSecurityController extends BaseController
     /**
      * Check if Feature Status is Enabled.
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function featureStatus(Request $request): Response
+    public function featureStatus(): Response
     {
         if (UserFacade::getUser()->emailVerified == false) {
             return response('identity_verification_required', 200);
@@ -55,8 +53,8 @@ class AccountSecurityController extends BaseController
             'user_id' => UserFacade::getUser()->uniqueId,
             'firstQuestion' => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer'    => $request->json()->get('answer1'),
-            'secondAnswer'   => $request->json()->get('answer2'), ]);
+            'firstAnswer' => $request->json()->get('answer1'),
+            'secondAnswer' => $request->json()->get('answer2'),]);
 
         return response()->json(null, 204);
     }
@@ -64,11 +62,9 @@ class AccountSecurityController extends BaseController
     /**
      * Disable Safety Lock.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function disable(Request $request): JsonResponse
+    public function disable(): JsonResponse
     {
         UserSecurity::find(UserFacade::getUser()->uniqueId)->delete();
 
@@ -78,11 +74,9 @@ class AccountSecurityController extends BaseController
     /**
      * Reset Trusted Devices.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function reset(Request $request): JsonResponse
+    public function reset(): JsonResponse
     {
         TrustedDevice::find(UserFacade::getUser()->uniqueId)->delete();
 
@@ -153,11 +147,9 @@ class AccountSecurityController extends BaseController
     /**
      * Get User Security Questions.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function getQuestions(Request $request): JsonResponse
+    public function getQuestions(): JsonResponse
     {
         if (UserSecurity::find(UserFacade::getUser()->uniqueId) == null) {
             return response()->json('');
@@ -189,7 +181,7 @@ class AccountSecurityController extends BaseController
                 (new TrustedDevice())->store(UserFacade::getUser()->uniqueId, $request->ip())->save();
             }
 
-        return response()->json(null, 204);
+            return response()->json(null, 204);
         endif;
 
         return response()->json(null, 409);

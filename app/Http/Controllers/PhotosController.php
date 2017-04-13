@@ -36,7 +36,7 @@ class PhotosController extends BaseController
      * @MODERATION: Reporting Status (0 = Not Reviewed, 1 = Report Approved, 2 = Report Not Approved
      *
      * @param Request $request
-     * @param int     $photoId
+     * @param int $photoId
      *
      * @return Response
      */
@@ -50,12 +50,11 @@ class PhotosController extends BaseController
     /**
      * Like a Photo.
      *
-     * @param Request $request
-     * @param int     $photoId
+     * @param int $photoId
      *
      * @return Response
      */
-    public function likePhoto(Request $request, int $photoId): Response
+    public function likePhoto(int $photoId): Response
     {
         if (PhotoLike::where('username', UserFacade::getUser()->name)->where('photo_id', $photoId)->count() > 0) {
             return response(null);
@@ -69,12 +68,11 @@ class PhotosController extends BaseController
     /**
      * Unlike a Photo.
      *
-     * @param Request $request
-     * @param int     $photoId
+     * @param int $photoId
      *
      * @return Response
      */
-    public function unlikePhoto(Request $request, int $photoId): Response
+    public function unlikePhoto(int $photoId): Response
     {
         if (PhotoLike::where('username', UserFacade::getUser()->name)->where('photo_id', $photoId)->count() == 0) {
             return response(null);
@@ -88,12 +86,11 @@ class PhotosController extends BaseController
     /**
      * Delete a Photo.
      *
-     * @param Request $request
-     * @param int     $photoId
+     * @param int $photoId
      *
      * @return Response
      */
-    public function delete(Request $request, int $photoId): Response
+    public function delete(int $photoId): Response
     {
         $photo = Photo::find($photoId);
 
