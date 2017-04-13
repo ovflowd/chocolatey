@@ -28,7 +28,7 @@ class NuxController extends BaseController
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
         }
 
-        if (strlen($request->json()->get('name')) > 50 || !UserFacade::filterName($request->json()->get('name'))) {
+        if (!UserFacade::filterName($request->json()->get('name'))) {
             return response()->json(['code' => 'INVALID_NAME', 'validationResult' => ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS'], 'suggestions' => []]);
         }
 

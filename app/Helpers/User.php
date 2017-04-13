@@ -120,8 +120,8 @@ class User
      */
     public function filterName(string $userName): bool
     {
-        return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
+        return ((count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
             return stripos($userName, $username) !== false;
-        })) == 0;
+        })) == 0) && strlen($userName) <= 50 && strlen($userName) >= 4);
     }
 }
