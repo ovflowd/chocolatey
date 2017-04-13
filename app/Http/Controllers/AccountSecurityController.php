@@ -55,8 +55,8 @@ class AccountSecurityController extends BaseController
             'user_id' => UserFacade::getUser()->uniqueId,
             'firstQuestion' => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer' => $request->json()->get('answer1'),
-            'secondAnswer' => $request->json()->get('answer2'),]);
+            'firstAnswer'    => $request->json()->get('answer1'),
+            'secondAnswer'   => $request->json()->get('answer2'), ]);
 
         return response()->json(null, 204);
     }
@@ -189,7 +189,7 @@ class AccountSecurityController extends BaseController
                 (new TrustedDevice())->store(UserFacade::getUser()->uniqueId, $request->ip())->save();
             }
 
-            return response()->json(null, 204);
+        return response()->json(null, 204);
         endif;
 
         return response()->json(null, 409);
