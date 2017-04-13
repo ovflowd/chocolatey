@@ -125,11 +125,9 @@ class ShopController extends BaseController
      * @TODO: All Purchases of the CMS are Manually, so will be difficult track.
      * @TODO: Probably Administrators will Manually Insert History Through HK
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function getHistory(Request $request): JsonResponse
+    public function getHistory(): JsonResponse
     {
         return response()->json(ShopHistory::where('user_id', UserFacade::getUser()->uniqueId)->get());
     }

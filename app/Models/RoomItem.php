@@ -29,7 +29,7 @@ class RoomItem extends ChocolateyModel
     protected $primaryKey = 'id';
 
     /**
-     * Store a RoomItem
+     * Store a RoomItem.
      *
      * @param int $userId
      * @param int $roomId
@@ -40,6 +40,7 @@ class RoomItem extends ChocolateyModel
      * @param int $rotation
      * @param string $extraData
      * @param string $wallPosition
+     *
      * @return $this
      */
     public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = '')
