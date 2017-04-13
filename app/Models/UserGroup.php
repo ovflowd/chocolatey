@@ -40,9 +40,9 @@ class UserGroup extends ChocolateyModel
      * @var array
      */
     protected $maps = [
-        'badgeCode' => 'badge',
-        'roomId' => 'room_id',
-        'primaryColour' => 'color_one',
+        'badgeCode'       => 'badge',
+        'roomId'          => 'room_id',
+        'primaryColour'   => 'color_one',
         'secondaryColour' => 'color_two',
     ];
 
