@@ -68,9 +68,9 @@ class ShopItem extends ChocolateyModel
      *
      * @param string $itemName
      * @param string $countryCode
-     * @param int $creditAmount
-     * @param int $iconId
-     * @param array $paymentMethods
+     * @param int    $creditAmount
+     * @param int    $iconId
+     * @param array  $paymentMethods
      *
      * @return ShopItem
      */
@@ -100,9 +100,9 @@ class ShopItem extends ChocolateyModel
 
         foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory):
             $paymentMethod = PaymentMethod::where('localizationKey', $shopCategory)->first();
-            $paymentMethod->setPurchaseParams([Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']]);
+        $paymentMethod->setPurchaseParams([Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']]);
 
-            $paymentMethods[] = $paymentMethod;
+        $paymentMethods[] = $paymentMethod;
         endforeach;
 
         return $paymentMethods;
