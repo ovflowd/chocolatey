@@ -43,7 +43,7 @@ class ShopHistory extends ChocolateyModel
      */
     protected $maps = [
         'transactionSystemName' => 'payment_method',
-        'transactionId' => 'id',
+        'transactionId'         => 'id',
     ];
 
     /**
@@ -80,7 +80,7 @@ class ShopHistory extends ChocolateyModel
      */
     public function getCreationTimeAttribute(): string
     {
-        return date('Y-m-d', strtotime($this->attributes['created_at'])) . 'T' .
+        return date('Y-m-d', strtotime($this->attributes['created_at'])).'T'.
             date('H:i:s.ZZZZ+ZZZZ', strtotime($this->attributes['created_at']));
     }
 
