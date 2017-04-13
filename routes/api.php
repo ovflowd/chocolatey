@@ -47,7 +47,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
     $app->get('api/user/profile', 'ProfileController@getProfile');
 
     // Get User (AzureID) Avatars
-    $app->get('api/user/avatars/check-name', 'AccountController@checkNewName');
+    $app->get('api/user/avatars/check-name', 'AccountController@checkName');
 
     // User Messenger Not Read Discussions
     $app->get('api/user/discussions', 'AccountController@getDiscussions');
