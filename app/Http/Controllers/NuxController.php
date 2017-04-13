@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\Nux;
 use App\Facades\User as UserFacade;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -24,7 +25,7 @@ class NuxController extends BaseController
      */
     public function checkName(Request $request): JsonResponse
     {
-        if (UserFacade::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != UserFacade::getUser()->name) {
+        if (User::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != UserFacade::getUser()->name) {
             return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
         }
 
