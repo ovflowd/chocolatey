@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Config;
@@ -23,7 +24,7 @@ class ClientController extends BaseController
     {
         $hotelUrl = Config::get('chocolatey.hotelUrl');
 
-        $accountType = in_array('NEW_USER', $request->user()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
+        $accountType = in_array('NEW_USER', User::getUser()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
 
         return response()->json(['clienturl' => "{$hotelUrl}/client/{$accountType}"],
             200, [], JSON_UNESCAPED_SLASHES);

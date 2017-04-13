@@ -18,9 +18,6 @@ $app->get('habbo-web-pages/', function () {
 // Request a Specific View of HabboWEB Pages
 $app->get('habbo-web-pages/production/{category}/{view}', 'PageController@show');
 
-// Request a Specific View of HabboWEB Pages
-$app->get('habbo-web-pages/production/{category}/{subcategory}/{view}', 'PageController@showWithSub');
-
 // Middleware that Requires Authentication
 $app->group(['middleware' => 'auth'], function () use ($app) {
     // Request the Client URL
