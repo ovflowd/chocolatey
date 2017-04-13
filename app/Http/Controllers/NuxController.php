@@ -11,8 +11,7 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class NuxController
- * @package App\Http\Controllers
+ * Class NuxController.
  */
 class NuxController extends BaseController
 {
