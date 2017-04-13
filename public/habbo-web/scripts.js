@@ -1468,7 +1468,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             }))
         }
     }], controllerAs: "EmailChangeFormController", templateUrl: "settings/email-change/email-change-form.html"
-}),angular.module("avatar.service", ["config", "google.analytics", "security"]).factory("avatar", ["$http", "$q", "CONFIG", "Session", "googleAnalytics", function (e, t, o, r, a) {
+}),angular.module("avatar.service", ["config", "google.analytics", "security", "security.session"]).factory("avatar", ["$http", "$q", "CONFIG", "Session", "googleAnalytics", function (e, t, o, r, a) {
     var n = {};
     return n.query = function () {
         return e.get(o.apiUrl + "/user/avatars").then(function (e) {
@@ -1487,7 +1487,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             return a.trackEvent("Avatar", "Changed"), r.update(e.data), e.data
         })
     }, n
-}]),angular.module("avatar.selection", ["avatar.create", "avatar.search", "avatar.service", "locale", "router", "security", "templates"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}]),angular.module("avatar.selection", ["avatar.create", "avatar.search", "avatar.service", "locale", "router", "security", "templates", "security.session"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     e.statePrivate("settings.avatar", {
         url: "/avatars",
         parent: "settings",
@@ -4228,7 +4228,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     ), e.put("settings/account-security/trusted-locations-reset.html",
         '<button ng-click="TrustedLocationsResetController.reset()" ng-disabled="TrustedLocationsResetController.inProgress" class="account-security__reset" translate="ACCOUNT_SECURITY_RESET_TRUSTED_LOGINS_BUTTON"></button>'
     ), e.put("settings/avatar-selection/avatar-selection.html",
-        '<h2 translate="AVATAR_SELECTION_TITLE"></h2><habbo-avatar-create require-non-staff-account-session avatars="AvatarSelectionController.avatars"></habbo-avatar-create><habbo-avatar-search avatars="AvatarSelectionController.avatars"></habbo-avatar-search>'
+        '<h2 translate="AVATAR_SELECTION_TITLE"></h2><habbo-avatar-create habbo-require-non-staff-account-session avatars="AvatarSelectionController.avatars"></habbo-avatar-create><habbo-avatar-search avatars="AvatarSelectionController.avatars"></habbo-avatar-search>'
     ), e.put("settings/email-change/email-change-form.html",
         '<form ng-submit="EmailChangeFormController.update()" name="emailChangeForm" autocomplete="off" novalidate class="form form--left"><habbo-password-current password-current="EmailChangeFormController.emailChangeData.currentPassword"></habbo-password-current><habbo-email-address email-address="EmailChangeFormController.emailChangeData.newEmail" type="box"><label for="email-address" class="form__label" translate="FORM_NEW_EMAIL_LABEL"></label><p translate="EMAIL_NEW_HELP"></p></habbo-email-address><div class="form__footer"><button ng-disabled="EmailChangeFormController.updateInProgress" type="submit" class="form__submit" translate="FORM_BUTTON_CHANGE"></button></div></form>'
     ), e.put("settings/email-change/email-change.html",
@@ -4349,7 +4349,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     ), e.put("settings/avatar-selection/avatar-create/avatar-create-modal.html",
         '<button ng-click="$dismiss()" class="modal__close"></button><h3 translate="AVATAR_CREATE_TITLE" class="modal__title"></h3><div class="modal__content"><habbo-avatar-create-form on-create="$close()" on-cancel="$dismiss()"></habbo-avatar-create-form></div>'
     ), e.put("settings/avatar-selection/avatar-create/avatar-create.html",
-        '<div class="avatar-create" ng-class="{ \'avatar-create--disabled\': avatars.length === MAX_AVATARS || (!emailVerified && !identityVerified) }"><div ng-if="avatars.length < MAX_AVATARS && identityVerified" class="avatar-create__text" translate="AVATAR_CREATE_MORE" translate-values="{ count: MAX_AVATARS - avatars.length }"></div><div ng-if="!emailVerified && !identityVerified" class="avatar-create__text" translate="AVATAR_CREATE_EMAIL_UNVERIFIED"></div><div ng-if="avatars.length === MAX_AVATARS" class="avatar-create__text" translate="AVATAR_CREATE_MAX"></div><div class="avatar-create__button__wrapper"><button ng-click="open()" ng-disabled="avatars.length === MAX_AVATARS || (!emailVerified && !identityVerified)" class="avatar-create__button" translate="AVATAR_CREATE_BUTTON"></button></div></div>'
+        '<div habbo-require-non-staff-account-session class="avatar-create" ng-class="{ \'avatar-create--disabled\': avatars.length === MAX_AVATARS || (!emailVerified && !identityVerified) }"><div ng-if="avatars.length < MAX_AVATARS && identityVerified" class="avatar-create__text" translate="AVATAR_CREATE_MORE" translate-values="{ count: MAX_AVATARS - avatars.length }"></div><div ng-if="!emailVerified && !identityVerified" class="avatar-create__text" translate="AVATAR_CREATE_EMAIL_UNVERIFIED"></div><div ng-if="avatars.length === MAX_AVATARS" class="avatar-create__text" translate="AVATAR_CREATE_MAX"></div><div class="avatar-create__button__wrapper"><button ng-click="open()" ng-disabled="avatars.length === MAX_AVATARS || (!emailVerified && !identityVerified)" class="avatar-create__button" translate="AVATAR_CREATE_BUTTON"></button></div></div>'
     ),
     e.put("settings/avatar-selection/avatar-search/avatar-search.html",
         '<habbo-search query="query"></habbo-search><ul class="avatar-search__avatars"><habbo-avatar-selector ng-repeat="avatar in AvatarSearchController.avatars | byNameDescriptionOrMotto: query | orderBy: [\'-lastWebAccess\', \'name\']" avatar="avatar"></habbo-avatar-selector></ul><habbo-empty-results ng-if="(AvatarSearchController.avatars | byNameDescriptionOrMotto: query).length === 0"></habbo-empty-results>'
