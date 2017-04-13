@@ -21,7 +21,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::share('chocolatey', json_decode(json_encode(Config::get('chocolatey'))));
 
-        View::share('user', User::getSession() ?? 'null');
+        View::share('user', User::getUser() ?? 'null');
 
         View::share('mail', json_decode(json_encode(Config::get('mail'))));
 

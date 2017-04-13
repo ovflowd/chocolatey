@@ -71,10 +71,13 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
     $app->post('api/public/authentication/facebook', 'LoginController@facebook');
 
     // New User Client Check
-    $app->post('api/newuser/name/check', 'AccountController@checkName');
+    $app->post('api/newuser/name/check', 'NuxController@checkName');
 
     // New User Client Select Username
-    $app->post('api/newuser/name/select', 'AccountController@selectName');
+    $app->post('api/newuser/name/select', 'NuxController@selectName');
+
+    // New User Client Select Room
+    $app->post('api/newuser/room/select', 'NuxController@selectRoom');
 
     // Save User Look
     $app->post('api/user/look/save', 'AccountController@saveLook');
@@ -84,9 +87,6 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
 
     // Select an User Avatar
     $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
-
-    // New User Client Select Room
-    $app->post('api/newuser/room/select', 'AccountController@selectRoom');
 
     // Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app) {

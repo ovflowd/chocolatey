@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\User as UserFacade;
 use App\Models\Photo;
 use App\Models\PhotoLike;
 use App\Models\PhotoReport;
@@ -41,7 +42,7 @@ class PhotosController extends BaseController
      */
     public function report(Request $request, int $photoId): Response
     {
-        (new PhotoReport())->store($photoId, $request->json()->get('reason'), $request->user()->uniqueId)->save();
+        (new PhotoReport())->store($photoId, $request->json()->get('reason'), UserFacade::getUser()->uniqueId)->save();
 
         return response(null);
     }
@@ -56,11 +57,11 @@ class PhotosController extends BaseController
      */
     public function likePhoto(Request $request, int $photoId): Response
     {
-        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() > 0) {
+        if (PhotoLike::where('username', UserFacade::getUser()->name)->where('photo_id', $photoId)->count() > 0) {
             return response(null);
         }
 
-        (new PhotoLike())->store($photoId, $request->user()->name)->save();
+        (new PhotoLike())->store($photoId, UserFacade::getUser()->name)->save();
 
         return response(null);
     }
@@ -75,11 +76,11 @@ class PhotosController extends BaseController
      */
     public function unlikePhoto(Request $request, int $photoId): Response
     {
-        if (PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->count() == 0) {
+        if (PhotoLike::where('username', UserFacade::getUser()->name)->where('photo_id', $photoId)->count() == 0) {
             return response(null);
         }
 
-        PhotoLike::where('username', $request->user()->name)->where('photo_id', $photoId)->delete();
+        PhotoLike::where('username', UserFacade::getUser()->name)->where('photo_id', $photoId)->delete();
 
         return response(null);
     }
@@ -96,7 +97,7 @@ class PhotosController extends BaseController
     {
         $photo = Photo::find($photoId);
 
-        if ($photo == null || $photo->creator_id != $request->user()->uniqueId) {
+        if ($photo == null || $photo->creator_id != UserFacade::getUser()->uniqueId) {
             return response(null, 401);
         }
 

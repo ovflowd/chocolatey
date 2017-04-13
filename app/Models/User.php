@@ -94,6 +94,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'memberSince',
         'isBanned',
         'banDetails',
+        'isStaff'
     ];
 
     /**
@@ -208,6 +209,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getIsBannedAttribute(): bool
     {
         return Ban::where('user_id', $this->attributes['id'])->first() !== null;
+    }
+
+    /**
+     * Check if Is Staff
+     *
+     * @return bool
+     */
+    public function getIsStaffAttribute(): bool
+    {
+        return array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 5;
     }
 
     /**

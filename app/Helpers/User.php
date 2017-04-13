@@ -13,27 +13,6 @@ use Illuminate\Support\Facades\Config;
 class User
 {
     /**
-     * Quick Way to Get User Data.
-     *
-     * @return UserModel|null
-     */
-    public function getUser()
-    {
-        return self::getInstance()->getSession();
-    }
-
-    /**
-     * Get User Data from Session
-     * If User Session doesn't exists, return null.
-     *
-     * @return UserModel|null
-     */
-    public function getSession()
-    {
-        return Session::get(Config::get('chocolatey.security.session')) ?? null;
-    }
-
-    /**
      * Create and return a User instance.
      *
      * @return User
@@ -50,18 +29,6 @@ class User
     }
 
     /**
-     * Quick Way to Update User Data.
-     *
-     * @param array $parameters
-     *
-     * @return UserModel
-     */
-    public function updateUser(array $parameters)
-    {
-        return self::getInstance()->updateSession($parameters);
-    }
-
-    /**
      * Update User Data without overwriting Session.
      *
      * @param array $parameters
@@ -70,7 +37,7 @@ class User
      */
     public function updateSession(array $parameters)
     {
-        return $this->setSession($this->updateData($this->getSession(), $parameters));
+        return $this->setSession($this->updateData($this->getUser(), $parameters));
     }
 
     /**
@@ -98,6 +65,17 @@ class User
         $user->update($parameters);
 
         return $user;
+    }
+
+    /**
+     * Get User Data from Session
+     * If User Session doesn't exists, return null.
+     *
+     * @return UserModel|null
+     */
+    public function getUser()
+    {
+        return Session::get(Config::get('chocolatey.security.session')) ?? null;
     }
 
     /**
@@ -131,5 +109,19 @@ class User
     public function eraseSession()
     {
         Session::erase(Config::get('chocolatey.security.session'));
+    }
+
+    /**
+     * Filter an Username from the Invalid Names Base.
+     *
+     * @param string $userName
+     *
+     * @return bool
+     */
+    public function filterName(string $userName): bool
+    {
+        return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
+                return stripos($userName, $username) !== false;
+            })) == 0;
     }
 }
