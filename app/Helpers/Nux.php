@@ -82,10 +82,10 @@ final class Nux
         (new RoomItem())->store($user->uniqueId, $room->id, 18835, 5, 11, '0.00000', 0, '');
 
         // Wall Items
-        (new RoomItem())->store($user->uniqueId, $room->id, 22988, 0, 0, 0, '', ':w=4,2 l=0,35 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23163, 0, 0, 0, '1', ':w=4,8 l=0,43 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23261, 0, 0, 0, '', ':w=2,10 l=2,34 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23331, 0, 0, 0, '', ':w=2,10 l=2,29 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 22988, 0, 0, '0', 0, '', ':w=4,2 l=0,35 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23163, 0, 0, '0', 0, '1', ':w=4,8 l=0,43 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23261, 0, 0, '0', 0, '', ':w=2,10 l=2,34 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23331, 0, 0, '0', 0, '', ':w=2,10 l=2,29 l');
 
         return true;
     }
@@ -117,7 +117,7 @@ final class Nux
         (new RoomItem())->store($user->uniqueId, $room->id, 17190, 4, 9, 0.00000, 4, '');
         (new RoomItem())->store($user->uniqueId, $room->id, 17191, 3, 10, 0.40000, 2, '');
         (new RoomItem())->store($user->uniqueId, $room->id, 17191, 3, 12, 0.00000, 2, '');
-        (new RoomItem())->store($user->uniqueId, $room->id, 17484, 8, 3, 1.00000, 0, '0');
+        (new RoomItem())->store($user->uniqueId, $room->id, 17484, 8, 3, 1.00000, 0, '0', 0);
         (new RoomItem())->store($user->uniqueId, $room->id, 17499, 7, 3, 1.00000, 2, '');
         (new RoomItem())->store($user->uniqueId, $room->id, 17520, 7, 2, 1.00000, 0, '');
         (new RoomItem())->store($user->uniqueId, $room->id, 17520, 7, 4, 1.00000, 0, '');
@@ -145,16 +145,16 @@ final class Nux
         (new RoomItem())->store($user->uniqueId, $room->id, 18363, 3, 9, 0.80000, 0, '2');
 
         // Wall Items
-        (new RoomItem())->store($user->uniqueId, $room->id, 22996, 0, 0, 0, '', ':w=4,8 l=7,45 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 22996, 0, 0, 0, '', ':w=4,8 l=9,45 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23063, 0, 0, 0, '', ':w=2,10 l=10,56 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23063, 0, 0, 0, '', ':w=2,11 l=6,58 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, 0, '1', ':w=6,1 l=0,26 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, 0, '3', ':w=7,1 l=4,28 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, 0, '1', ':w=8,1 l=13,33 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, 0, '3', ':w=10,1 l=0,26 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23229, 0, 0, 0, '1', ':w=4,3 l=6,49 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23229, 0, 0, 0, '1', ':w=4,5 l=11,45 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 22996, 0, 0, '0', 0, '', ':w=4,8 l=7,45 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 22996, 0, 0, '0', 0, '', ':w=4,8 l=9,45 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23063, 0, 0, '0', 0, '', ':w=2,10 l=10,56 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23063, 0, 0, '0', 0, '', ':w=2,11 l=6,58 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, '0', 0, '1', ':w=6,1 l=0,26 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, '0', 0, '3', ':w=7,1 l=4,28 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, '0', 0, '1', ':w=8,1 l=13,33 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23078, 0, 0, '0', 0, '3', ':w=10,1 l=0,26 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23229, 0, 0, '0', 0, '1', ':w=4,3 l=6,49 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23229, 0, 0, '0', 0, '1', ':w=4,5 l=11,45 l');
 
         return true;
     }
@@ -194,11 +194,11 @@ final class Nux
         (new RoomItem())->store($user->uniqueId, $room->id, 18082, 9, 3, '1.00000', 6, '');
 
         // Wall Items
-        (new RoomItem())->store($user->uniqueId, $room->id, 23008, 0, 0, 0, '2', ':w=4,8 l=0,27 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23013, 0, 0, 0, '', ':w=2,10 l=2,44 l');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23014, 0, 0, 0, '1', ':w=8,1 l=14,27 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23236, 0, 0, 0, '1', ':w=6,1 l=5,31 r');
-        (new RoomItem())->store($user->uniqueId, $room->id, 23239, 0, 0, 0, '', ':w=4,7 l=4,29 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23008, 0, 0, '0', 0, '2', ':w=4,8 l=0,27 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23013, 0, 0, '0', 0, '', ':w=2,10 l=2,44 l');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23014, 0, 0, '0', 0, '1', ':w=8,1 l=14,27 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23236, 0, 0, '0', 0, '1', ':w=6,1 l=5,31 r');
+        (new RoomItem())->store($user->uniqueId, $room->id, 23239, 0, 0, '0', 0, '', ':w=4,7 l=4,29 l');
 
         return true;
     }
