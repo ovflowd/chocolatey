@@ -33,24 +33,23 @@ class LoginController extends BaseController
                 return $this->sendBanMessage($request);
             }
 
-            return response()->json(UserFacade::updateUser(['last_login' => time(), 'ip_current' => $request->ip()]));
+            return response()->json(UserFacade::updateSession(['last_login' => time(), 'ip_current' => $request->ip()]));
         endif;
 
+        //return response()->json(['message' => 'login.staff_login_not_allowed', 'captcha' => false], 401); // Example for Non Allowance of Staffs
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
     }
 
     /**
-     * Return the Ban Message.
-     *
-     * @param Request $request
+     * Return the Ban Message
      *
      * @return JsonResponse
      */
-    protected function sendBanMessage(Request $request): JsonResponse
+    protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime' => $request->user()->banDetails->ban_expire,
-            'reason' => $request->user()->banDetails->ban_reason,], 401);
+            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
+            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
     }
 
     /**
@@ -87,7 +86,7 @@ class LoginController extends BaseController
 
         (new AccountController())->createUser($request, $request->json()->all(), true);
 
-        UserFacade::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
+        UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
         return response()->json(UserFacade::getUser());
     }
@@ -109,7 +108,7 @@ class LoginController extends BaseController
 
         (new AccountController())->createUser($request, ['email' => $fbUser->getEmail(), 'password' => uniqid()], true);
 
-        UserFacade::updateUser(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
+        UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 
         return response()->json(UserFacade::getUser());
     }

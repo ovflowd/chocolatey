@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Mail;
-use App\Facades\Nux;
 use App\Facades\User as UserFacade;
 use App\Models\ChocolateyId;
 use App\Models\User;
@@ -22,54 +21,6 @@ use Nubs\RandomNameGenerator\Alliteration;
 class AccountController extends BaseController
 {
     /**
-     * Check an User Name.
-     *
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function checkName(Request $request): JsonResponse
-    {
-        if (User::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != $request->user()->name) {
-            return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
-        }
-
-        if (strlen($request->json()->get('name')) > 50 || !$this->filterName($request->json()->get('name'))) {
-            return response()->json(['code' => 'INVALID_NAME', 'validationResult' => ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS'], 'suggestions' => []]);
-        }
-
-        return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
-    }
-
-    /**
-     * Filter an Username from the Invalid Names Base.
-     *
-     * @param string $userName
-     *
-     * @return bool
-     */
-    protected function filterName(string $userName): bool
-    {
-        return count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-                return stripos($userName, $username) !== false;
-            })) == 0;
-    }
-
-    /**
-     * Select an User Name.
-     *
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function selectName(Request $request): JsonResponse
-    {
-        UserFacade::updateUser(['username' => $request->json()->get('name')]);
-
-        return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
-    }
-
-    /**
      * Save User Look.
      *
      * @param Request $request
@@ -78,30 +29,9 @@ class AccountController extends BaseController
      */
     public function saveLook(Request $request): JsonResponse
     {
-        UserFacade::updateUser(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
+        UserFacade::updateSession(['look' => $request->json()->get('figure'), 'gender' => $request->json()->get('gender')]);
 
-        return response()->json($request->user());
-    }
-
-    /**
-     * Select a Room.
-     *
-     * @TODO: Generate the Room for the User
-     * @TODO: Get Room Models.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function selectRoom(Request $request): Response
-    {
-        if (!in_array($request->json()->get('roomIndex'), [1, 2, 3])) {
-            return response('', 400);
-        }
-
-        UserFacade::updateUser(Nux::generateRoom($request) ? ['traits' => ['USER']] : ['traits' => ['NEW_USER', 'USER']]);
-
-        return response(null, 200);
+        return response()->json(UserFacade::getUser());
     }
 
     /**
@@ -120,13 +50,11 @@ class AccountController extends BaseController
     /**
      * Get User Preferences.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function getPreferences(Request $request): JsonResponse
+    public function getPreferences(): JsonResponse
     {
-        $userPreferences = UserPreferences::find($request->user()->uniqueId);
+        $userPreferences = UserPreferences::find(UserFacade::getUser()->uniqueId);
 
         foreach ($userPreferences->getAttributes() as $attributeName => $attributeValue) {
             $userPreferences->{$attributeName} = $attributeValue == 1;
@@ -144,13 +72,13 @@ class AccountController extends BaseController
      */
     public function savePreferences(Request $request): Response
     {
-        UserSettings::updateOrCreate(['user_id' => $request->user()->uniqueId], [
+        UserSettings::updateOrCreate(['user_id' => UserFacade::getUser()->uniqueId], [
             'block_following' => $request->json()->get('friendCanFollow') == false ? '1' : '0',
             'block_friendrequests' => $request->json()->get('friendRequestEnabled') == false ? '1' : '0',
         ]);
 
         foreach ((array)$request->json()->all() as $setting => $value) {
-            UserPreferences::find($request->user()->uniqueId)->update([$setting => $value == true ? '1' : '0']);
+            UserPreferences::find(UserFacade::getUser()->uniqueId)->update([$setting => $value == true ? '1' : '0']);
         }
 
         return response(null);
@@ -165,7 +93,7 @@ class AccountController extends BaseController
      */
     public function getAvatars(Request $request): JsonResponse
     {
-        return response()->json(ChocolateyId::where('mail', $request->user()->email)->first()->relatedAccounts);
+        return response()->json(ChocolateyId::where('mail', UserFacade::getUser()->email)->first()->relatedAccounts);
     }
 
     /**
@@ -178,7 +106,8 @@ class AccountController extends BaseController
      */
     public function checkNewName(Request $request): JsonResponse
     {
-        return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() > 0 || !$this->filterName($request->input('name'))) == false]);
+        return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() == 0
+            && UserFacade::filterName($request->input('name') && !UserFacade::getUser()->isStaff))]);
     }
 
     /**
@@ -190,11 +119,11 @@ class AccountController extends BaseController
      */
     public function createAvatar(Request $request): JsonResponse
     {
-        if (User::where('username', $request->json()->get('name'))->count() > 0 || !$this->filterName($request->json()->get('name'))) {
-            return response()->json(['isAvailable' => false]);
-        }
+        if (User::where('username', $request->json()->get('name'))->count() == 0 && UserFacade::filterName($request->json()->get('name')) && !UserFacade::getUser()->isStaff) {
+            $this->createUser($request, ['username' => $request->json()->get('name'), 'email' => UserFacade::getUser()->email, 'password' => openssl_random_pseudo_bytes(20)]);
 
-        $this->createUser($request, ['username' => $request->json()->get('name'), 'email' => $request->user()->email, 'password' => openssl_random_pseudo_bytes(20)]);
+            return response()->json('');
+        }
 
         return response()->json('');
     }
@@ -302,9 +231,9 @@ class AccountController extends BaseController
      */
     public function verifyAccount(Request $request): Response
     {
-        $token = Mail::store($request->user()->email, 'public/registration/activate');
+        $token = Mail::store(UserFacade::getUser()->email, 'public/registration/activate');
 
-        Mail::send(['name' => $request->user()->name, 'email' => $request->user()->email,
+        Mail::send(['name' => UserFacade::getUser()->name, 'email' => $request->user()->email,
             'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
         ]);
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Mail;
-use App\Facades\User;
+use App\Facades\User as UserFacade;
 use App\Models\Country;
 use App\Models\PaymentCheckout;
 use App\Models\Purse;
@@ -56,7 +56,7 @@ class ShopController extends BaseController
      */
     public function getPurse(Request $request): JsonResponse
     {
-        return response()->json(new Purse($request->user()->uniqueId));
+        return response()->json(new Purse(UserFacade::getUser()->uniqueId));
     }
 
     /**
@@ -107,9 +107,9 @@ class ShopController extends BaseController
             return response(view('habbo-web-payments.canceled-payment'), 500);
         }
 
-        $purchaseItem = (new ShopHistory())->store($paymentMethod, $request->user()->uniqueId, $shopItem);
+        $purchaseItem = (new ShopHistory())->store($paymentMethod, UserFacade::getUser()->uniqueId, $shopItem);
 
-        Mail::send(['email' => $request->user()->email, 'purchaseId' => $purchaseItem->transactionId,
+        Mail::send(['email' => UserFacade::getUser()->email, 'purchaseId' => $purchaseItem->transactionId,
             'product' => ShopItem::find($shopItem), 'subject' => 'Purchase completed',
         ], 'habbo-web-mail.purchase-confirmation');
 
@@ -131,7 +131,7 @@ class ShopController extends BaseController
      */
     public function getHistory(Request $request): JsonResponse
     {
-        return response()->json(ShopHistory::where('user_id', $request->user()->uniqueId)->get());
+        return response()->json(ShopHistory::where('user_id', UserFacade::getUser()->uniqueId)->get());
     }
 
     /**
@@ -149,8 +149,8 @@ class ShopController extends BaseController
             return response()->json(null, 404);
         }
 
-        User::getUser()->increment('credits', $voucher->credits);
-        User::getUser()->increment('pixels', $voucher->points);
+        UserFacade::getUser()->increment('credits', $voucher->credits);
+        UserFacade::getUser()->increment('pixels', $voucher->points);
 
         $voucher->delete();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\User as UserFacade;
 use App\Models\Photo;
 use App\Models\User;
 use App\Models\UserBadge;
@@ -66,13 +67,11 @@ class ProfileController extends BaseController
     /**
      * Get Private User Profile.
      *
-     * @param Request $request
-     *
      * @return JsonResponse
      */
-    public function getProfile(Request $request): JsonResponse
+    public function getProfile(): JsonResponse
     {
-        return response()->json(new UserProfile($request->user()));
+        return response()->json(new UserProfile(UserFacade::getUser()));
     }
 
     /**
