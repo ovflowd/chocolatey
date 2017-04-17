@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class Photo.
@@ -32,51 +31,21 @@ class Photo extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'creator_id'       => 'user_id',
-        'previewUrl'       => 'url',
-        'creator_uniqueId' => 'user_id',
-        'time'             => 'timestamp',
-    ];
+    protected $maps = ['creator_id' => 'user_id', 'previewUrl' => 'url', 'creator_uniqueId' => 'user_id', 'time' => 'timestamp'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'creator_uniqueId',
-        'version',
-        'previewUrl',
-        'creator_id',
-        'likes',
-        'tags',
-        'version',
-        'type',
-        'room_id',
-        'creator_name',
-    ];
+    protected $appends = ['creator_uniqueId', 'version', 'previewUrl', 'creator_id', 'likes', 'tags', 'version', 'type', 'room_id', 'creator_name'];
 
     /**
      * The attributes that should be casted to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'tags'             => 'array',
-        'creator_uniqueId' => 'string',
-    ];
-
-    /**
-     * Store Function.
-     *
-     * A photo can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Photo by Chocolatey. Photos need be created from the Server.');
-    }
+    protected $casts = ['tags' => 'array', 'creator_uniqueId' => 'string'];
 
     /**
      * Get the Unique Id of the Photo.
@@ -85,7 +54,7 @@ class Photo extends ChocolateyModel
      */
     public function getIdAttribute(): string
     {
-        return "{$this->attributes['id']}";
+        return (string) $this->attributes['id'];
     }
 
     /**

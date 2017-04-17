@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\Mail;
 use App\Facades\User as UserFacade;
+use App\Facades\Validation;
 use App\Models\ChocolateyId;
 use App\Models\User;
 use App\Models\UserPreferences;
@@ -91,7 +92,7 @@ class AccountController extends BaseController
      */
     public function getAvatars(): JsonResponse
     {
-        return response()->json(ChocolateyId::where('mail', UserFacade::getUser()->email)->first()->relatedAccounts);
+        return response()->json(UserFacade::getUser()->getChocolateyId()->relatedAccounts);
     }
 
     /**
@@ -105,7 +106,7 @@ class AccountController extends BaseController
     public function checkName(Request $request): JsonResponse
     {
         return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() == 0
-            && UserFacade::filterName($request->input('name') && !UserFacade::getUser()->isStaff))]);
+            && Validation::filterUserName($request->input('name')) && !UserFacade::getUser()->isStaff)]);
     }
 
     /**
@@ -117,8 +118,10 @@ class AccountController extends BaseController
      */
     public function createAvatar(Request $request): JsonResponse
     {
-        if (User::where('username', $request->json()->get('name'))->count() == 0 && UserFacade::filterName($request->json()->get('name')) && !UserFacade::getUser()->isStaff) {
-            $this->createUser($request, ['username' => $request->json()->get('name'), 'email' => UserFacade::getUser()->email, 'password' => openssl_random_pseudo_bytes(20)]);
+        if (User::where('username', $request->json()->get('name'))->count() == 0 && Validation::filterUserName($request->json()->get('name'))) {
+            $user = $this->createUser($request, ['username' => $request->json()->get('name'), 'email' => UserFacade::getUser()->email]);
+
+            ChocolateyId::find(UserFacade::getUser()->email)->update(['last_logged_id' => $user->uniqueId]);
 
             return response()->json('');
         }
@@ -143,7 +146,7 @@ class AccountController extends BaseController
 
         Mail::send(['email' => $userInfo['email'], 'name' => $userName, 'url' => "/activate/{$token}", 'subject' => 'Welcome to '.Config::get('chocolatey.hotelName')]);
 
-        return UserFacade::setSession((new User())->store($userName, $userInfo['password'], $userInfo['email'], $request->ip(), $newUser));
+        return UserFacade::setSession((new User())->store($userName, $userInfo['email'], $request->ip(), $newUser));
     }
 
     /**
@@ -169,33 +172,9 @@ class AccountController extends BaseController
      */
     public function selectAvatar(Request $request)
     {
+        UserFacade::getUser()->getChocolateyId()->update(['last_logged_id' => $request->json()->get('uniqueId')]);
+
         UserFacade::setSession(User::find($request->json()->get('uniqueId')));
-    }
-
-    /**
-     * Confirm E-Mail Activation.
-     *
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
-    public function confirmActivation(Request $request): JsonResponse
-    {
-        if (Mail::getByToken($request->json()->get('token')) == null) {
-            return response()->json(['error' => 'activation.invalid_token'], 400);
-        }
-
-        if (strpos(Mail::getMail()->link, 'change-email') !== false):
-            $email = str_replace('change-email/', '', Mail::getMail()->link);
-
-        User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
-
-        ChocolateyId::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
-        endif;
-
-        User::where('mail', Mail::getMail()->mail)->update(['mail_verified' => '1']);
-
-        return response()->json(['email' => Mail::getMail()->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
 
     /**

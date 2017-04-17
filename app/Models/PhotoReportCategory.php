@@ -41,6 +41,8 @@ class PhotoReportCategory extends ChocolateyModel
         $this->attributes['report_category'] = $reportCategory;
         $this->attributes['description'] = $description;
 
+        $this->save();
+
         return $this;
     }
 }

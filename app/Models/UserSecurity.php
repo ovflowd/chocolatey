@@ -33,9 +33,7 @@ class UserSecurity extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = [
-        'user_id',
-    ];
+    protected $hidden = ['user_id'];
 
     /**
      * The Appender(s) of the Model.
@@ -51,13 +49,7 @@ class UserSecurity extends ChocolateyModel
      *
      * @var array
      */
-    protected $fillable = [
-        'user_id',
-        'firstQuestion',
-        'secondQuestion',
-        'firstAnswer',
-        'secondAnswer',
-    ];
+    protected $fillable = ['user_id', 'firstQuestion', 'secondQuestion', 'firstAnswer', 'secondAnswer'];
 
     /**
      * Get Trusted Devices.
@@ -66,10 +58,9 @@ class UserSecurity extends ChocolateyModel
      */
     public function getTrustedDevicesAttribute(): array
     {
-        return TrustedDevice::where('user_id', $this->attributes['user_id'])->get(['ip_address'])
-            ->map(function ($item) {
-                return $item->ip_address;
-            })->toArray();
+        return TrustedDevice::where('user_id', $this->attributes['user_id'])->get(['ip_address'])->map(function ($item) {
+            return $item->ip_address;
+        })->toArray();
     }
 
     /**

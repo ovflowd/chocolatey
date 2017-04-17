@@ -52,6 +52,8 @@ class Ban extends ChocolateyModel
         $this->attributes['type'] = $banType;
         $this->attributes['machine_id'] = $machineId;
 
+        $this->save();
+
         return $this;
     }
 

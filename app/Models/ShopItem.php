@@ -40,28 +40,21 @@ class ShopItem extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'paymentMethods',
-        'uniqueId',
-    ];
+    protected $appends = ['paymentMethods', 'uniqueId'];
 
     /**
      * The attributes that will be mapped.
      *
      * @var array
      */
-    protected $maps = [
-        'paymentMethods' => 'payment_methods',
-    ];
+    protected $maps = ['paymentMethods' => 'payment_methods', 'uniqueId' => 'id'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'payment_methods',
-    ];
+    protected $hidden = ['payment_methods'];
 
     /**
      * Store an Shop Country.
@@ -82,6 +75,8 @@ class ShopItem extends ChocolateyModel
         $this->attributes['iconId'] = $iconId;
         $this->attributes['payment_methods'] = implode(',', $paymentMethods);
 
+        $this->save();
+
         return $this;
     }
 
@@ -98,12 +93,11 @@ class ShopItem extends ChocolateyModel
             return $paymentMethods;
         }
 
-        foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory):
+        foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory) {
             $paymentMethod = PaymentMethod::where('localizationKey', $shopCategory)->first();
-        $paymentMethod->setPurchaseParams([Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']]);
-
-        $paymentMethods[] = $paymentMethod;
-        endforeach;
+            $paymentMethod->setPurchaseParams([Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']]);
+            $paymentMethods[] = $paymentMethod;
+        }
 
         return $paymentMethods;
     }
@@ -122,15 +116,5 @@ class ShopItem extends ChocolateyModel
         }
 
         return $shopCategories;
-    }
-
-    /**
-     * Get Unique Id.
-     *
-     * @return int
-     */
-    public function getUniqueIdAttribute(): int
-    {
-        return $this->attributes['id'];
     }
 }

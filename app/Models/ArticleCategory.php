@@ -21,9 +21,7 @@ class ArticleCategory extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'name',
-    ];
+    protected $appends = ['name'];
 
     /**
      * The table associated with the model.
@@ -61,6 +59,8 @@ class ArticleCategory extends ChocolateyModel
     {
         $this->attributes['link'] = $link;
         $this->attributes['translate'] = $translate;
+
+        $this->save();
 
         return $this;
     }

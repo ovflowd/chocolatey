@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class UserBadge.
@@ -39,46 +38,21 @@ class UserBadge extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'badgeIndex' => 'slot_id',
-        'code'       => 'badge_code',
-        'name'       => 'badge_code',
-    ];
+    protected $maps = ['badgeIndex' => 'slot_id', 'code' => 'badge_code', 'name' => 'badge_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'user_id',
-        'badge_code',
-        'slot_id',
-        'id',
-    ];
+    protected $hidden = ['user_id', 'badge_code', 'slot_id', 'id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'description',
-        'badgeIndex',
-        'code',
-        'name',
-    ];
-
-    /**
-     * Store Function.
-     *
-     * A Badge can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store an User Badge by Chocolatey. Badges need be created from the Server.');
-    }
+    protected $appends = ['description', 'badgeIndex', 'code', 'name'];
 
     /**
      * Get Description Attribute.

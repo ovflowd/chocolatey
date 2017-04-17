@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class Voucher.
  */
@@ -29,15 +27,4 @@ class Voucher extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'id';
-
-    /**
-     * Store Function.
-     *
-     * A Voucher can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Voucher by Chocolatey. Voucher need be created from the Server.');
-    }
 }

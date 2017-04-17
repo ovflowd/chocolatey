@@ -39,6 +39,8 @@ class PaymentCategory extends ChocolateyModel
     {
         $this->attributes['payment_type'] = $paymentName;
 
+        $this->save();
+
         return $this;
     }
 }

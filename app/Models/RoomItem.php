@@ -41,9 +41,9 @@ class RoomItem extends ChocolateyModel
      * @param string $extraData
      * @param string $wallPosition
      *
-     * @return $this
+     * @return RoomItem
      */
-    public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = '')
+    public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = ''): RoomItem
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['room_id'] = $roomId;

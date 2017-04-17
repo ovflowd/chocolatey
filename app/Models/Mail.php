@@ -33,9 +33,7 @@ class Mail extends ChocolateyModel
      *
      * @var array
      */
-    protected $fillable = [
-        'used',
-    ];
+    protected $fillable = ['used'];
 
     /**
      * Store a Mail Request.
@@ -51,6 +49,8 @@ class Mail extends ChocolateyModel
         $this->attributes['token'] = $token;
         $this->attributes['link'] = $link;
         $this->attributes['mail'] = $userMail;
+
+        $this->save();
 
         return $this;
     }

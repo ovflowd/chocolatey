@@ -38,30 +38,21 @@ class Article extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'updatedAt' => 'updated_at',
-        'createdAt' => 'created_at',
-    ];
+    protected $maps = ['updatedAt' => 'updated_at', 'createdAt' => 'created_at'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'updatedAt',
-        'createdAt',
-    ];
+    protected $appends = ['updatedAt', 'createdAt'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'updated_at',
-        'created_at',
-    ];
+    protected $hidden = ['updated_at', 'created_at'];
 
     /**
      * Store a new CMS Article.
@@ -85,6 +76,8 @@ class Article extends ChocolateyModel
         $this->attributes['categories'] = $categories;
         $this->attributes['imageUrl'] = $imageUrl;
         $this->attributes['thumbnailUrl'] = $thumbnailUrl;
+
+        $this->save();
 
         return $this;
     }

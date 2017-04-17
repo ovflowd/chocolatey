@@ -45,30 +45,21 @@ class PaymentMethod extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'disclaimerRequired',
-        'premiumSms',
-        'purchaseParams',
-        'requestPath',
-    ];
+    protected $appends = ['disclaimerRequired', 'premiumSms', 'purchaseParams', 'requestPath'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'disclaimer',
-    ];
+    protected $hidden = ['disclaimer'];
 
     /**
      * The attributes that will be mapped.
      *
      * @var array
      */
-    protected $maps = [
-        'disclaimerRequired' => 'disclaimer',
-    ];
+    protected $maps = ['disclaimerRequired' => 'disclaimer'];
 
     /**
      * Store an Shop Country.
@@ -86,6 +77,8 @@ class PaymentMethod extends ChocolateyModel
         $this->attributes['buttonLogoUrl'] = $buttonImageUrl;
         $this->attributes['buttonText'] = $buttonText;
         $this->attributes['localizationKey'] = $code;
+
+        $this->save();
 
         return $this;
     }

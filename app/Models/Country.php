@@ -29,9 +29,7 @@ class Country extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'uniqueId',
-    ];
+    protected $appends = ['uniqueId'];
 
     /**
      * Primary Key of the Table.

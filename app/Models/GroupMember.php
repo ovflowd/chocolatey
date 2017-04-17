@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class GroupMember.
  */
@@ -35,33 +33,14 @@ class GroupMember extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = [
-        'id',
-        'member_since',
-        'guild_id',
-        'level_id',
-        'user_id',
-    ];
+    protected $hidden = ['id', 'member_since', 'guild_id', 'level_id', 'user_id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'guild',
-    ];
-
-    /**
-     * Store Function.
-     *
-     * A Guild Member can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Guild by Chocolatey. Guilds need be created from the Server.');
-    }
+    protected $appends = ['guild'];
 
     /**
      * Get User Group by Member Group Id.
@@ -75,6 +54,8 @@ class GroupMember extends ChocolateyModel
 
     /**
      * Get Description Attribute.
+     *
+     * @TODO: Get Real Badge Description
      *
      * @return string
      */
