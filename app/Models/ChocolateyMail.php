@@ -6,7 +6,8 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class ChocolateyMail.
+ * Class ChocolateyMail
+ * @package App\Models
  */
 class ChocolateyMail extends ChocolateyModel
 {
@@ -35,7 +36,7 @@ class ChocolateyMail extends ChocolateyModel
      * Store a new Azure Id Account.
      *
      * @param string $userMail
-     * @param int    $userId
+     * @param int $userId
      *
      * @throws ErrorException
      *

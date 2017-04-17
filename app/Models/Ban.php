@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class Ban.
+ * Class Ban
+ * @package App\Models
  */
 class Ban extends ChocolateyModel
 {

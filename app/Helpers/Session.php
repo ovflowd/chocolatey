@@ -5,7 +5,7 @@ namespace App\Helpers;
 /**
  * Class Session.
  */
-class Session
+final class Session
 {
     /**
      * Create and return a Session instance.

@@ -5,7 +5,8 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Mail.
+ * Class Mail
+ * @package App\Facades
  */
 class Mail extends Facade
 {

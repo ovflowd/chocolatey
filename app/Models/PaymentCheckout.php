@@ -5,7 +5,8 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class PaymentCheckout.
+ * Class PaymentCheckout
+ * @package App\Models
  */
 class PaymentCheckout extends ChocolateyModel
 {

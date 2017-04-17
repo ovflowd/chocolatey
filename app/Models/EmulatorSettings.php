@@ -5,7 +5,8 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class EmulatorSettings.
+ * Class EmulatorSettings
+ * @package App\Models
  */
 class EmulatorSettings extends ChocolateyModel
 {

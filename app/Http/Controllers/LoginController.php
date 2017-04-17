@@ -28,13 +28,13 @@ class LoginController extends BaseController
     {
         UserFacade::loginUser($request);
 
-        if (UserFacade::hasSession()):
+        if (UserFacade::hasSession()) {
             if (UserFacade::getUser()->isBanned) {
                 return $this->sendBanMessage($request);
             }
 
-        return response()->json(UserFacade::updateSession(['last_login' => time(), 'ip_current' => $request->ip()]));
-        endif;
+            return response()->json(UserFacade::updateSession(['last_login' => time(), 'ip_current' => $request->ip()]));
+        }
 
         //return response()->json(['message' => 'login.staff_login_not_allowed', 'captcha' => false], 401); // Example for Non Allowance of Staffs
         return response()->json(['message' => 'login.invalid_password', 'captcha' => false], 401);
@@ -48,8 +48,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime'                   => UserFacade::getUser()->banDetails->ban_expire,
-            'reason'                       => UserFacade::getUser()->banDetails->ban_reason, ], 401);
+            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
+            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
     }
 
     /**

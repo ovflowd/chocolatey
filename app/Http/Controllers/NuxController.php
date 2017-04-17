@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Facades\Nux;
 use App\Facades\User as UserFacade;
+use App\Facades\Validation;
+use App\Models\NuxValidation;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -19,44 +21,38 @@ class NuxController extends BaseController
      * Check an User Name.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function checkName(Request $request): JsonResponse
     {
-        if (User::where('username', $request->json()->get('name'))->count() > 0 && $request->json()->get('name') != UserFacade::getUser()->name) {
-            return response()->json(['code' => 'NAME_IN_USE', 'validationResult' => null, 'suggestions' => []]);
+        if (User::where('username', $request->json()->get('name'))->where('id', '<>', UserFacade::getUser()->uniqueId)->count() > 0) {
+            return response()->json(new NuxValidation('NAME_IN_USE'));
         }
 
-        if (!UserFacade::filterName($request->json()->get('name'))) {
-            return response()->json(['code' => 'INVALID_NAME', 'validationResult' => ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS'], 'suggestions' => []]);
+        if (!Validation::filterUserName($request->json()->get('name'))) {
+            return response()->json(new NuxValidation('INVALID_NAME', ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS']));
         }
 
-        return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
+        return response()->json(new NuxValidation);
     }
 
     /**
      * Select an User Name.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function selectName(Request $request): JsonResponse
     {
         UserFacade::updateSession(['username' => $request->json()->get('name')]);
 
-        return response()->json(['code' => 'OK', 'validationResult' => null, 'suggestions' => []]);
+        return response()->json(new NuxValidation);
     }
 
     /**
      * Select a Room.
      *
-     * @TODO: Generate the Room for the User
-     * @TODO: Get Room Models.
-     *
      * @param Request $request
-     *
      * @return Response
      */
     public function selectRoom(Request $request): Response

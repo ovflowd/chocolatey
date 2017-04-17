@@ -5,10 +5,10 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Session
+ * Class Validation
  * @package App\Facades
  */
-class Session extends Facade
+class Validation extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -17,6 +17,6 @@ class Session extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'chocosession';
+        return 'chocovalidate';
     }
 }

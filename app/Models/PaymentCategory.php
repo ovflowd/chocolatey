@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class PaymentCategory.
+ * Class PaymentCategory
+ * @package App\Models
  */
 class PaymentCategory extends ChocolateyModel
 {

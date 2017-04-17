@@ -4,30 +4,15 @@ namespace App\Helpers;
 
 use App\Facades\Session;
 use App\Models\User as UserModel;
+use app\Singleton;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /**
  * Class User.
  */
-class User
+final class User extends Singleton
 {
-    /**
-     * Create and return a User instance.
-     *
-     * @return User
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
-    }
-
     /**
      * Update User Data without overwriting Session.
      *
@@ -37,7 +22,7 @@ class User
      */
     public function updateSession(array $parameters)
     {
-        return $this->setSession($this->updateData($this->getUser(), $parameters));
+        return $this->setSession($this->updateUser($this->getUser(), $parameters));
     }
 
     /**
@@ -56,11 +41,11 @@ class User
      * Update User Data by User Model.
      *
      * @param UserModel $user
-     * @param array     $parameters
+     * @param array $parameters
      *
      * @return UserModel
      */
-    public function updateData(UserModel $user, array $parameters)
+    public function updateUser(UserModel $user, array $parameters)
     {
         $user->update($parameters);
 
@@ -100,7 +85,7 @@ class User
      */
     public function hasSession()
     {
-        return (bool) Session::get(Config::get('chocolatey.security.session'));
+        return (bool)Session::get(Config::get('chocolatey.security.session'));
     }
 
     /**
@@ -109,19 +94,5 @@ class User
     public function eraseSession()
     {
         Session::erase(Config::get('chocolatey.security.session'));
-    }
-
-    /**
-     * Filter an Username from the Invalid Names Base.
-     *
-     * @param string $userName
-     *
-     * @return bool
-     */
-    public function filterName(string $userName): bool
-    {
-        return ((count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-            return stripos($userName, $username) !== false;
-        })) == 0) && strlen($userName) <= 50 && strlen($userName) >= 4);
     }
 }

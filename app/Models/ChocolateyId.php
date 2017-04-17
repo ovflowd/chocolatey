@@ -6,7 +6,8 @@ use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class ChocolateyId.
+ * Class ChocolateyId
+ * @package App\Models
  */
 class ChocolateyId extends ChocolateyModel
 {
@@ -36,24 +37,19 @@ class ChocolateyId extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'relatedAzureId',
-        'relatedAccounts',
-    ];
+    protected $appends = array('relatedAzureId', 'relatedAccounts');
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'mail',
-    ];
+    protected $fillable = array('mail');
 
     /**
      * Store a new Azure Id Account.
      *
-     * @param int    $userId
+     * @param int $userId
      * @param string $userMail
      *
      * @throws ErrorException

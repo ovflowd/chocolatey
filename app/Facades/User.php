@@ -5,7 +5,8 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class User.
+ * Class User
+ * @package App\Facades
  */
 class User extends Facade
 {

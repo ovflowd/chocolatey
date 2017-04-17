@@ -200,7 +200,7 @@ class AccountSecurityController extends BaseController
             return response()->json(null, 404);
         }
 
-        UserFacade::updateData(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserFacade::updateUser(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null);
     }

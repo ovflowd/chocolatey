@@ -10,11 +10,6 @@
 |
 */
 
-// Espreso Integration Request
-$app->get('espreso', function () {
-    return response(view('errors.espreso'), 401);
-});
-
 // Logout User
 $app->post('api/public/authentication/logout', 'LoginController@logout');
 

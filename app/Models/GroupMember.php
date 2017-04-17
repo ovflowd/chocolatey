@@ -5,7 +5,8 @@ namespace App\Models;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class GroupMember.
+ * Class GroupMember
+ * @package App\Models
  */
 class GroupMember extends ChocolateyModel
 {
@@ -35,22 +36,14 @@ class GroupMember extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = [
-        'id',
-        'member_since',
-        'guild_id',
-        'level_id',
-        'user_id',
-    ];
+    protected $hidden = array('id', 'member_since', 'guild_id', 'level_id', 'user_id');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'guild',
-    ];
+    protected $appends = array('guild');
 
     /**
      * Store Function.
@@ -75,6 +68,8 @@ class GroupMember extends ChocolateyModel
 
     /**
      * Get Description Attribute.
+     *
+     * @TODO: Get Real Badge Description
      *
      * @return string
      */

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail as MailFacade;
 /**
  * Class Mail.
  */
-class Mail
+final class Mail
 {
     /**
      * Stored Mail Model.

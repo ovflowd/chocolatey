@@ -57,14 +57,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $maps = [
-        'uniqueId'      => 'id',
-        'name'          => 'username',
-        'figureString'  => 'look',
+        'uniqueId' => 'id',
+        'name' => 'username',
+        'figureString' => 'look',
         'lastWebAccess' => 'last_login',
-        'creationTime'  => 'account_created',
-        'email'         => 'mail',
-        'identityId'    => 'id',
-        'accountId'     => 'id',
+        'creationTime' => 'account_created',
+        'email' => 'mail',
+        'identityId' => 'id',
+        'accountId' => 'id',
     ];
 
     /**
@@ -166,7 +166,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $password
      * @param string $email
      * @param string $address
-     * @param bool   $newUser
+     * @param bool $newUser
      *
      * @return User
      */
@@ -219,7 +219,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getIsStaffAttribute(): bool
     {
-        return array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 5;
+        return array_key_exists('rank', $this->attributes) ? $this->attributes['rank'] >= 5 : false;
     }
 
     /**
@@ -358,7 +358,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -370,7 +370,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -392,7 +392,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $lastLogin = $this->attributes['last_login'] ?? time();
 
-        return date('Y-m-d', $lastLogin).'T'.date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
+        return date('Y-m-d', $lastLogin) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
     }
 
     /**

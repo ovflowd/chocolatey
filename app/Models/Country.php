@@ -4,6 +4,7 @@ namespace App\Models;
 
 /**
  * Class Country.
+ * @package App\Models
  *
  * @property mixed countryCode
  * @property mixed uniqueId
@@ -29,9 +30,7 @@ class Country extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'uniqueId',
-    ];
+    protected $appends = array('uniqueId');
 
     /**
      * Primary Key of the Table.

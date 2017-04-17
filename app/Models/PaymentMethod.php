@@ -6,7 +6,8 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class PaymentMethod.
+ * Class PaymentMethod
+ * @package App\Models
  */
 class PaymentMethod extends ChocolateyModel
 {
@@ -45,30 +46,21 @@ class PaymentMethod extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'disclaimerRequired',
-        'premiumSms',
-        'purchaseParams',
-        'requestPath',
-    ];
+    protected $appends = array('disclaimerRequired', 'premiumSms', 'purchaseParams', 'requestPath');
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'disclaimer',
-    ];
+    protected $hidden = array('disclaimer');
 
     /**
      * The attributes that will be mapped.
      *
      * @var array
      */
-    protected $maps = [
-        'disclaimerRequired' => 'disclaimer',
-    ];
+    protected $maps = array('disclaimerRequired' => 'disclaimer');
 
     /**
      * Store an Shop Country.

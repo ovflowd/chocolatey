@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ViewServiceProvider.
+ * Class ViewServiceProvider
+ * @package App\Providers
  */
 class ViewServiceProvider extends ServiceProvider
 {

@@ -23,3 +23,8 @@ $app->get('habbo-imaging/badge/{badgeCode}', 'ImagingController@getGroupBadge');
 
 // Get Youtube Thumbnail
 $app->get('youtube', 'ImagingController@getYoutubeThumbnail');
+
+// Espreso Integration Request
+$app->get('espreso', function () {
+    return response(view('errors.espreso'), 401);
+});

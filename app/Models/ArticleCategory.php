@@ -21,9 +21,7 @@ class ArticleCategory extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'name',
-    ];
+    protected $appends = array('name');
 
     /**
      * The table associated with the model.

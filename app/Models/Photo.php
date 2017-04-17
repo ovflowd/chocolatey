@@ -7,7 +7,8 @@ use Sofa\Eloquence\Mappable;
 use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class Photo.
+ * Class Photo
+ * @package App\Models
  */
 class Photo extends ChocolateyModel
 {
@@ -32,40 +33,21 @@ class Photo extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'creator_id'       => 'user_id',
-        'previewUrl'       => 'url',
-        'creator_uniqueId' => 'user_id',
-        'time'             => 'timestamp',
-    ];
+    protected $maps = array('creator_id' => 'user_id', 'previewUrl' => 'url', 'creator_uniqueId' => 'user_id', 'time' => 'timestamp');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'creator_uniqueId',
-        'version',
-        'previewUrl',
-        'creator_id',
-        'likes',
-        'tags',
-        'version',
-        'type',
-        'room_id',
-        'creator_name',
-    ];
+    protected $appends = array('creator_uniqueId', 'version', 'previewUrl', 'creator_id', 'likes', 'tags', 'version', 'type', 'room_id', 'creator_name');
 
     /**
      * The attributes that should be casted to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'tags'             => 'array',
-        'creator_uniqueId' => 'string',
-    ];
+    protected $casts = array('tags' => 'array', 'creator_uniqueId' => 'string');
 
     /**
      * Store Function.
@@ -85,7 +67,7 @@ class Photo extends ChocolateyModel
      */
     public function getIdAttribute(): string
     {
-        return "{$this->attributes['id']}";
+        return (string)$this->attributes['id'];
     }
 
     /**
@@ -116,7 +98,7 @@ class Photo extends ChocolateyModel
      */
     public function getTagsAttribute(): array
     {
-        return [];
+        return array();
     }
 
     /**
