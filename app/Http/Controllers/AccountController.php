@@ -106,7 +106,7 @@ class AccountController extends BaseController
     public function checkName(Request $request): JsonResponse
     {
         return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() == 0
-            && Validation::filterUserName($request->input('name') && !UserFacade::getUser()->isStaff))]);
+            && Validation::filterUserName($request->input('name')) && !UserFacade::getUser()->isStaff)]);
     }
 
     /**

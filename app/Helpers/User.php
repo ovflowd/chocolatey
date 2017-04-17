@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use App\Facades\Session;
 use App\Models\User as UserModel;
-use app\Singleton;
+use App\Singleton;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 

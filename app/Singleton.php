@@ -1,10 +1,10 @@
 <?php
 
-namespace app;
+namespace App;
 
 /**
  * Class Singleton
- * @package app
+ * @package App
  */
 abstract class Singleton
 {

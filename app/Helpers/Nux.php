@@ -5,29 +5,15 @@ namespace App\Helpers;
 use App\Models\Room;
 use App\Models\RoomItem;
 use App\Models\User;
+use App\Singleton;
 use Illuminate\Http\Request;
 
 /**
- * Class Nux.
+ * Class Nux
+ * @package App\Helpers
  */
-final class Nux
+final class Nux extends Singleton
 {
-    /**
-     * Create and return a Nux instance.
-     *
-     * @return Nux
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
-    }
-
     /**
      * Generate a NUX Room.
      *
@@ -40,11 +26,11 @@ final class Nux
         switch ($request->json()->get('roomIndex')):
             case 1:
                 return $this->createBedRoom($request->user());
-        case 2:
+            case 2:
                 return $this->createPoolRoom($request->user());
-        case 3:
+            case 3:
                 return $this->createClubRoom($request->user());
-        default:
+            default:
                 return false;
         endswitch;
     }

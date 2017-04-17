@@ -2,27 +2,14 @@
 
 namespace App\Helpers;
 
+use App\Singleton;
+
 /**
- * Class Session.
+ * Class Session
+ * @package App\Helpers
  */
-final class Session
+final class Session extends Singleton
 {
-    /**
-     * Create and return a Session instance.
-     *
-     * @return Session
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
-    }
-
     /**
      * Rename the Session ID.
      *
@@ -53,7 +40,7 @@ final class Session
      * Store a Variable in the Session.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return mixed
      */

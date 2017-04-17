@@ -3,13 +3,17 @@
 namespace App\Helpers;
 
 use App\Models\Mail as MailModel;
+use App\Singleton;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail as MailFacade;
 
 /**
- * Class Mail.
+ * Class Mail
+ * @package App\Helpers
+ *
+ * @TODO: Refactor this Class
  */
-final class Mail
+final class Mail extends Singleton
 {
     /**
      * Stored Mail Model.
@@ -25,33 +29,7 @@ final class Mail
      */
     public function getMail()
     {
-        return self::getInstance()->get();
-    }
-
-    /**
-     * Return cached Mail Model.
-     *
-     * @return MailModel|null
-     */
-    public function get()
-    {
         return $this->mailModel;
-    }
-
-    /**
-     * Create and return a Mail instance.
-     *
-     * @return Mail
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
     }
 
     /**

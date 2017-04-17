@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use app\Singleton;
+use App\Singleton;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -19,7 +19,7 @@ final class Validation extends Singleton
      */
     public function filterUserName(string $username): bool
     {
-        return $this->checkSize($username, 4, 50) && $this->checkWords($username) &&
+        return $this->checkSize($username, 4, 15) && $this->checkWords($username) &&
             !preg_match('/[^A-Za-z0-9]/', $username);
     }
 
