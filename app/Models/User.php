@@ -338,7 +338,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return ChocolateyId
      */
-    public function getChocolateyId(): ChocolateyId
+    public function getChocolateyId()
     {
         return ChocolateyId::find($this->attributes['mail']);
     }
