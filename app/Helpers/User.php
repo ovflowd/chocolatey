@@ -80,7 +80,7 @@ final class User extends Singleton
 
         $chocolateyId->last_logged_id = $user->uniqueId;
 
-        return $chocolateyId->mail_password == hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))
+        return $chocolateyId->password == hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))
             ? $this->setSession($user) : null;
     }
 

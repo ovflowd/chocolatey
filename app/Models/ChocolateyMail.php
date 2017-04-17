@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
-
 /**
  * Class ChocolateyMail
  * @package App\Models

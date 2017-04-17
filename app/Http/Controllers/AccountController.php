@@ -90,7 +90,7 @@ class AccountController extends BaseController
      */
     public function getAvatars(): JsonResponse
     {
-        return response()->json(ChocolateyId::find(UserFacade::getUser()->email)->relatedAccounts);
+        return response()->json(UserFacade::getUser()->getChocolateyId()->relatedAccounts);
     }
 
     /**
@@ -170,7 +170,7 @@ class AccountController extends BaseController
      */
     public function selectAvatar(Request $request)
     {
-        ChocolateyId::find(UserFacade::getUser()->email)->update(['last_logged_id' => $request->json()->get('uniqueId')]);
+        UserFacade::getUser()->getChocolateyId()->update(['last_logged_id' => $request->json()->get('uniqueId')]);
 
         UserFacade::setSession(User::find($request->json()->get('uniqueId')));
     }

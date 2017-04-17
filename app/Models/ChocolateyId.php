@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class ChocolateyId
  * @package App\Models
+ *
+ * @property boolean mail_verified
  */
 class ChocolateyId extends ChocolateyModel
 {
@@ -44,7 +46,7 @@ class ChocolateyId extends ChocolateyModel
      *
      * @var array
      */
-    protected $fillable = array('mail', 'mail_password', 'last_logged_id');
+    protected $fillable = array('mail', 'password', 'last_logged_id', 'mail_verified');
 
     /**
      * Store a new Azure Id Account.
@@ -55,7 +57,7 @@ class ChocolateyId extends ChocolateyModel
      */
     public function store(string $userMail, string $userPassword): ChocolateyId
     {
-        $this->attributes['mail_password'] = hash(Config::get('chocolatey.security.hash'), $userPassword);
+        $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), $userPassword);
         $this->attributes['mail'] = $userMail;
 
         $this->save();

@@ -330,7 +330,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getEmailVerifiedAttribute(): bool
     {
-        return array_key_exists('mail_verified', $this->attributes)
-            ? $this->attributes['mail_verified'] == true : false;
+        return $this->getChocolateyId()->mail_verified;
+    }
+
+    /**
+     * Get Account Chocolatey Id
+     *
+     * @return ChocolateyId
+     */
+    public function getChocolateyId(): ChocolateyId
+    {
+        return ChocolateyId::find($this->attributes['mail']);
     }
 }

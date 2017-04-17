@@ -45,7 +45,7 @@ class AccountSecurityController extends BaseController
      */
     public function saveQuestions(Request $request): JsonResponse
     {
-        if (User::where('password', hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->count() == 0) {
+        if (UserFacade::getUser()->getChocolateyId()->password != hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))) {
             return response()->json(['error' => 'invalid_password'], 400);
         }
 
@@ -93,12 +93,8 @@ class AccountSecurityController extends BaseController
      */
     public function changePassword(Request $request): JsonResponse
     {
-        if (strlen($request->json()->get('password')) < 6) {
-            return response()->json(['error' => 'password.current_password.invalid'], 409);
-        }
-
-        ChocolateyId::find(UserFacade::getUser()->email)->update(['mail_password' =>
-            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        UserFacade::getUser()->getChocolateyId()->update(['password' => hash(Config::get('chocolatey.security.hash'),
+            $request->json()->get('password'))]);
 
         return response()->json(null, 204);
     }
@@ -116,6 +112,8 @@ class AccountSecurityController extends BaseController
             return response()->json(['error' => 'activation.invalid_token'], 400);
         }
 
+        ChocolateyId::find(Mail::getMail()->mail)->update(['mail_verified' => '1']);
+
         if (strpos(Mail::getMail()->link, 'change-email') !== false) {
             $email = str_replace('change-email/', '', Mail::getMail()->link);
 
@@ -123,8 +121,6 @@ class AccountSecurityController extends BaseController
 
             ChocolateyId::find(Mail::getMail()->mail)->update(['mail' => $email]);
         }
-
-        User::where('mail', Mail::getMail()->mail)->update(['mail_verified' => '1']);
 
         return response()->json(['email' => Mail::getMail()->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
@@ -223,7 +219,7 @@ class AccountSecurityController extends BaseController
             return response()->json(null, 404);
         }
 
-        UserFacade::updateUser(User::where('mail', Mail::getMail()->mail), ['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        ChocolateyId::find(Mail::getMail()->mail)->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null);
     }
