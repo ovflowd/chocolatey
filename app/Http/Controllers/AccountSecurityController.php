@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class AccountSecurityController
- * @package App\Http\Controllers
+ * Class AccountSecurityController.
  */
 class AccountSecurityController extends BaseController
 {
@@ -41,6 +40,7 @@ class AccountSecurityController extends BaseController
      * Save Security Questions.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function saveQuestions(Request $request): JsonResponse
@@ -50,11 +50,11 @@ class AccountSecurityController extends BaseController
         }
 
         UserSecurity::updateOrCreate([
-            'user_id' => UserFacade::getUser()->uniqueId,
-            'firstQuestion' => $request->json()->get('questionId1'),
+            'user_id'        => UserFacade::getUser()->uniqueId,
+            'firstQuestion'  => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer' => $request->json()->get('answer1'),
-            'secondAnswer' => $request->json()->get('answer2'),]);
+            'firstAnswer'    => $request->json()->get('answer1'),
+            'secondAnswer'   => $request->json()->get('answer2'), ]);
 
         return response()->json(null, 204);
     }
@@ -89,6 +89,7 @@ class AccountSecurityController extends BaseController
      * @TODO: Implement Notification E-mail of Password change
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function changePassword(Request $request): JsonResponse
@@ -129,6 +130,7 @@ class AccountSecurityController extends BaseController
      * Change User E-mail.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function changeMail(Request $request): JsonResponse
@@ -154,14 +156,14 @@ class AccountSecurityController extends BaseController
     protected function sendChangeMailConfirmation(Request $request)
     {
         Mail::send(['email' => UserFacade::getUser()->email,
-            'name' => UserFacade::getUser()->name, 'subject' => 'Email change alert',
+            'name'          => UserFacade::getUser()->name, 'subject' => 'Email change alert',
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = Mail::store(UserFacade::getUser()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
         Mail::send(['email' => $request->json()->get('newEmail'), 'name' => UserFacade::getUser()->name,
-            'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
+            'subject'       => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
         ], 'habbo-web-mail.confirm-mail-change');
     }
 
@@ -190,6 +192,7 @@ class AccountSecurityController extends BaseController
      * Verify User Security Questions.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function verifyQuestions(Request $request): JsonResponse
@@ -198,7 +201,7 @@ class AccountSecurityController extends BaseController
 
         if ($questions->firstAnswer == $request->json()->get('answer1') && $questions->secondAnswer == $request->json()->get('answer2')) {
             if ($request->json()->get('trust') == true) {
-                (new TrustedDevice)->store(UserFacade::getUser()->uniqueId, $request->ip());
+                (new TrustedDevice())->store(UserFacade::getUser()->uniqueId, $request->ip());
             }
 
             return response()->json(null, 204);
@@ -211,6 +214,7 @@ class AccountSecurityController extends BaseController
      * Confirm User Change Password.
      *
      * @param Request $request
+     *
      * @return mixed
      */
     public function confirmChangePassword(Request $request): JsonResponse

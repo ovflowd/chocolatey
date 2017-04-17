@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class UserPreferences
- * @package App\Models
+ * Class UserPreferences.
  */
 class UserPreferences extends Model
 {
@@ -36,15 +35,15 @@ class UserPreferences extends Model
      *
      * @var array
      */
-    protected $hidden = array('user_id');
+    protected $hidden = ['user_id'];
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = array('emailFriendRequestNotificationEnabled', 'emailGiftNotificationEnabled', 'emailGroupNotificationEnabled', 'emailMiniMailNotificationEnabled',
-        'emailNewsletterEnabled', 'emailRoomMessageNotificationEnabled', 'friendCanFollow', 'friendRequestEnabled', 'offlineMessagingEnabled', 'onlineStatusVisible', 'profileVisible');
+    protected $fillable = ['emailFriendRequestNotificationEnabled', 'emailGiftNotificationEnabled', 'emailGroupNotificationEnabled', 'emailMiniMailNotificationEnabled',
+        'emailNewsletterEnabled', 'emailRoomMessageNotificationEnabled', 'friendCanFollow', 'friendRequestEnabled', 'offlineMessagingEnabled', 'onlineStatusVisible', 'profileVisible', ];
 
     /**
      * Store an User Preference set on the Database.

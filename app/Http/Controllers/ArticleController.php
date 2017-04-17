@@ -8,8 +8,7 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ArticleController
- * @package App\Http\Controllers
+ * Class ArticleController.
  */
 class ArticleController extends BaseController
 {
@@ -18,6 +17,7 @@ class ArticleController extends BaseController
      *
      * @param string $countryId
      * @param string $articleCategory
+     *
      * @return Response
      */
     public function many(string $countryId, string $articleCategory): Response
@@ -46,10 +46,11 @@ class ArticleController extends BaseController
      *
      * @TODO: Proper Way to use Country ID
      *
-     * @param string $countryId
+     * @param string          $countryId
      * @param ArticleCategory $category
-     * @param int $categoryPage
-     * @param int $start
+     * @param int             $categoryPage
+     * @param int             $start
+     *
      * @return Response
      */
     protected function category(string $countryId, ArticleCategory $category, int $categoryPage, int $start): Response
@@ -70,6 +71,7 @@ class ArticleController extends BaseController
      *
      * @param string $countryId
      * @param string $articleName
+     *
      * @return Response
      */
     public function one(string $countryId, string $articleName): Response

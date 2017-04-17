@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class Purse
- * @package App\Models
+ * Class Purse.
  */
 class Purse
 {

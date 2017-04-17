@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class PhotoLike
- * @package App\Models
+ * Class PhotoLike.
  */
 class PhotoLike extends ChocolateyModel
 {
@@ -32,8 +31,9 @@ class PhotoLike extends ChocolateyModel
     /**
      * Store a new Photo Data.
      *
-     * @param int $photoId
+     * @param int    $photoId
      * @param string $userName
+     *
      * @return PhotoLike
      */
     public function store(int $photoId, string $userName): PhotoLike

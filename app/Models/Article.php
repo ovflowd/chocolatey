@@ -6,8 +6,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Article
- * @package App\Models
+ * Class Article.
  */
 class Article extends ChocolateyModel
 {
@@ -39,21 +38,21 @@ class Article extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = array('updatedAt' => 'updated_at', 'createdAt' => 'created_at');
+    protected $maps = ['updatedAt' => 'updated_at', 'createdAt' => 'created_at'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('updatedAt', 'createdAt');
+    protected $appends = ['updatedAt', 'createdAt'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('updated_at', 'created_at');
+    protected $hidden = ['updated_at', 'created_at'];
 
     /**
      * Store a new CMS Article.
@@ -65,6 +64,7 @@ class Article extends ChocolateyModel
      * @param string $categories
      * @param string $imageUrl
      * @param string $thumbnailUrl
+     *
      * @return Article
      */
     public function store(string $title, string $description, string $content, string $author, string $categories, string $imageUrl, string $thumbnailUrl): Article
@@ -89,7 +89,7 @@ class Article extends ChocolateyModel
      */
     public function getCategoriesAttribute(): array
     {
-        $categories = array();
+        $categories = [];
 
         foreach (explode(',', $this->attributes['categories']) as $articleCategory) {
             $categories[] = ArticleCategory::query()->where('link', $articleCategory)->first();

@@ -11,8 +11,7 @@ use Laravel\Lumen\Http\Redirector;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ImagingController
- * @package App\Http\Controllers
+ * Class ImagingController.
  */
 class ImagingController extends BaseController
 {
@@ -21,12 +20,13 @@ class ImagingController extends BaseController
      * based on User Name or Figure.
      *
      * @param Request $request
+     *
      * @return Redirector
      */
     public function getUserHead(Request $request)
     {
-        return redirect(Config::get('chocolatey.imaging') . 'avatarimage?figure=' . ($request->has('figure') ? $request->input('figure') :
-                User::where('username', $request->input('user'))->first()->figureString) . '&size=l&headonly=1');
+        return redirect(Config::get('chocolatey.imaging').'avatarimage?figure='.($request->has('figure') ? $request->input('figure') :
+                User::where('username', $request->input('user'))->first()->figureString).'&size=l&headonly=1');
     }
 
     /**
@@ -34,17 +34,19 @@ class ImagingController extends BaseController
      * based on User Figure.
      *
      * @param string $figure
+     *
      * @return Redirector
      */
     public function getUserBody(string $figure)
     {
-        return redirect(Config::get('chocolatey.imaging') . "avatar/{$figure}");
+        return redirect(Config::get('chocolatey.imaging')."avatar/{$figure}");
     }
 
     /**
      * Get Youtube Thumbnail.
      *
      * @param Request $request
+     *
      * @return string
      */
     public function getYoutubeThumbnail(Request $request)
@@ -56,6 +58,7 @@ class ImagingController extends BaseController
      * Return Group Badge.
      *
      * @param string $badgeCode
+     *
      * @return mixed
      */
     public function getGroupBadge(string $badgeCode)

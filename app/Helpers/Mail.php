@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail as MailFacade;
 
 /**
- * Class Mail
- * @package App\Helpers
+ * Class Mail.
  *
  * @TODO: Refactor this Class
  */
@@ -35,7 +34,7 @@ final class Mail extends Singleton
     /**
      * Send an Email.
      *
-     * @param array $configuration
+     * @param array  $configuration
      * @param string $view
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
@@ -60,7 +59,7 @@ final class Mail extends Singleton
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel)->store($token = uniqid('HabboMail', true), $url, $email);
+        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email);
 
         return $token;
     }
@@ -69,7 +68,7 @@ final class Mail extends Singleton
      * Update Mail Model Data.
      *
      * @param string $token
-     * @param array $parameters
+     * @param array  $parameters
      *
      * @return MailModel
      */

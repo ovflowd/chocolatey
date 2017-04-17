@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class Question
- * @package App\Models
+ * Class Question.
  */
 class Question
 {
@@ -25,7 +24,7 @@ class Question
     /**
      * Store a Question.
      *
-     * @param int $questionId
+     * @param int    $questionId
      * @param string $questionKey
      */
     public function __construct(int $questionId, string $questionKey)

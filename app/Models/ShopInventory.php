@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class ShopInventory
- * @package App\Models
+ * Class ShopInventory.
  */
 class ShopInventory
 {
@@ -13,14 +12,14 @@ class ShopInventory
      *
      * @var PaymentCategory[]
      */
-    public $paymentCategories = array();
+    public $paymentCategories = [];
 
     /**
      * Inventory Items.
      *
      * @var array
      */
-    public $pricePoints = array();
+    public $pricePoints = [];
 
     /**
      * If double Credits are Enabled.
@@ -65,7 +64,7 @@ class ShopInventory
      */
     public function setPaymentCategories(string $countryCode)
     {
-        $paymentMethods = array();
+        $paymentMethods = [];
 
         foreach (PaymentCategory::where('country_code', $countryCode)->get(['payment_type']) as $paymentMethod) {
             $paymentMethods[] = $paymentMethod->payment_type;

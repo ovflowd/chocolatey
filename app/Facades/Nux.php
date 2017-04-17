@@ -5,8 +5,7 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Nux
- * @package App\Facades
+ * Class Nux.
  */
 class Nux extends Facade
 {

@@ -6,8 +6,7 @@ use App\Singleton;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class Validation
- * @package App\Helpers
+ * Class Validation.
  */
 final class Validation extends Singleton
 {
@@ -15,6 +14,7 @@ final class Validation extends Singleton
      * Filter an Username from the Invalid Names Base.
      *
      * @param string $username
+     *
      * @return bool
      */
     public function filterUserName(string $username): bool
@@ -24,11 +24,12 @@ final class Validation extends Singleton
     }
 
     /**
-     * Check String Size
+     * Check String Size.
      *
      * @param string $needle
-     * @param int $min
-     * @param int $max
+     * @param int    $min
+     * @param int    $max
+     *
      * @return bool
      */
     public function checkSize(string $needle, int $min, int $max)
@@ -37,15 +38,16 @@ final class Validation extends Singleton
     }
 
     /**
-     * Check for Illegal Words
+     * Check for Illegal Words.
      *
      * @param string $needle
+     *
      * @return bool
      */
     public function checkWords(string $needle): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($illegal) use ($needle) {
-                return stripos($needle, $illegal) !== false;
-            })) == 0;
+            return stripos($needle, $illegal) !== false;
+        })) == 0;
     }
 }

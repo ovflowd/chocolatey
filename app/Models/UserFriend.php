@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class UserFriend
- * @package App\Models
+ * Class UserFriend.
  */
 class UserFriend extends ChocolateyModel
 {
@@ -41,14 +40,14 @@ class UserFriend extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = array('user_one_id', 'user_two_id', 'relation', 'friends_since');
+    protected $hidden = ['user_one_id', 'user_two_id', 'relation', 'friends_since'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('figureString', 'motto', 'name', 'uniqueId');
+    protected $appends = ['figureString', 'motto', 'name', 'uniqueId'];
 
     /**
      * Get User Friend Figure String.

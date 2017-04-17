@@ -41,21 +41,21 @@ class ShopHistory extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = array('transactionSystemName' => 'payment_method', 'transactionId' => 'id');
+    protected $maps = ['transactionSystemName' => 'payment_method', 'transactionId' => 'id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('creationTime', 'transactionSystemName', 'credits', 'price', 'transactionId', 'product');
+    protected $appends = ['creationTime', 'transactionSystemName', 'credits', 'price', 'transactionId', 'product'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('created_at', 'updated_at', 'approved_by', 'user_id', 'item_id');
+    protected $hidden = ['created_at', 'updated_at', 'approved_by', 'user_id', 'item_id'];
 
     /**
      * Get Creation Time Attribute.
@@ -64,7 +64,7 @@ class ShopHistory extends ChocolateyModel
      */
     public function getCreationTimeAttribute(): string
     {
-        return date('Y-m-d', strtotime($this->attributes['created_at'])) . 'T' .
+        return date('Y-m-d', strtotime($this->attributes['created_at'])).'T'.
             date('H:i:s.ZZZZ+ZZZZ', strtotime($this->attributes['created_at']));
     }
 
@@ -124,6 +124,7 @@ class ShopHistory extends ChocolateyModel
      * @param int $paymentMethod
      * @param int $userId
      * @param int $itemId
+     *
      * @return ShopHistory
      */
     public function store(int $paymentMethod, int $userId, int $itemId): ShopHistory

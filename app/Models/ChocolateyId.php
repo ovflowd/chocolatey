@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Config;
 
 /**
- * Class ChocolateyId
- * @package App\Models
+ * Class ChocolateyId.
  *
- * @property boolean mail_verified
+ * @property bool mail_verified
  */
 class ChocolateyId extends ChocolateyModel
 {
@@ -39,20 +38,21 @@ class ChocolateyId extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = array('relatedAccounts');
+    protected $appends = ['relatedAccounts'];
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = array('mail', 'password', 'last_logged_id', 'mail_verified');
+    protected $fillable = ['mail', 'password', 'last_logged_id', 'mail_verified'];
 
     /**
      * Store a new Azure Id Account.
      *
      * @param string $userMail
      * @param string $userPassword
+     *
      * @return ChocolateyId
      */
     public function store(string $userMail, string $userPassword): ChocolateyId

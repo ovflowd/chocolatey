@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ProfileController
- * @package App\Http\Controllers
+ * Class ProfileController.
  */
 class ProfileController extends BaseController
 {
@@ -22,6 +21,7 @@ class ProfileController extends BaseController
      * Get Public User Data.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function getPublicData(Request $request): JsonResponse
@@ -44,6 +44,7 @@ class ProfileController extends BaseController
      * Get Public User Profile.
      *
      * @param int $userId
+     *
      * @return JsonResponse
      */
     public function getPublicProfile($userId): JsonResponse
@@ -89,6 +90,7 @@ class ProfileController extends BaseController
      * Get User Photos.
      *
      * @param int $userId
+     *
      * @return JsonResponse
      */
     public function getPhotos(int $userId): JsonResponse

@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class UserProfile
- * @package App\Models
+ * Class UserProfile.
  */
 class UserProfile
 {
@@ -20,28 +19,28 @@ class UserProfile
      *
      * @var UserFriend[]|array
      */
-    public $friends = array();
+    public $friends = [];
 
     /**
      * User Badges.
      *
      * @var UserBadge[]|array
      */
-    public $badges = array();
+    public $badges = [];
 
     /**
      * User Groups.
      *
      * @var UserGroup[]|array
      */
-    public $groups = array();
+    public $groups = [];
 
     /**
      * User Rooms.
      *
      * @var Room[]|array
      */
-    public $rooms = array();
+    public $rooms = [];
 
     /**
      * UserProfile constructor.
@@ -77,7 +76,7 @@ class UserProfile
      */
     protected function setFriends()
     {
-        $this->friends = UserFriend::where('user_one_id', $this->user->uniqueId)->get() ?? array();
+        $this->friends = UserFriend::where('user_one_id', $this->user->uniqueId)->get() ?? [];
     }
 
     /**
@@ -85,7 +84,7 @@ class UserProfile
      */
     protected function setBadges()
     {
-        $this->badges = UserBadge::where('user_id', $this->user->uniqueId)->get() ?? array();
+        $this->badges = UserBadge::where('user_id', $this->user->uniqueId)->get() ?? [];
     }
 
     /**
@@ -93,7 +92,7 @@ class UserProfile
      */
     protected function setGroups()
     {
-        $groups = GroupMember::where('user_id', $this->user->uniqueId)->get() ?? array();
+        $groups = GroupMember::where('user_id', $this->user->uniqueId)->get() ?? [];
 
         foreach ($groups as $group) {
             $this->groups[] = $group->guild;
@@ -105,6 +104,6 @@ class UserProfile
      */
     public function setRooms()
     {
-        $this->rooms = Room::where('owner_id', $this->user->uniqueId)->where('state', '!=', 'invisible')->get() ?? array();
+        $this->rooms = Room::where('owner_id', $this->user->uniqueId)->where('state', '!=', 'invisible')->get() ?? [];
     }
 }

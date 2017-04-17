@@ -6,8 +6,7 @@ use App\Helpers\User;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class UserServiceProvider
- * @package App\Providers
+ * Class UserServiceProvider.
  */
 class UserServiceProvider extends ServiceProvider
 {

@@ -6,8 +6,7 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class LanguageController
- * @package App\Http\Controllers
+ * Class LanguageController.
  */
 class LanguageController extends BaseController
 {
@@ -15,6 +14,7 @@ class LanguageController extends BaseController
      * Render Language View (jSON).
      *
      * @param $languageFile
+     *
      * @return Response
      */
     public function render($languageFile): Response

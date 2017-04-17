@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class PaymentCategory
- * @package App\Models
+ * Class PaymentCategory.
  */
 class PaymentCategory extends ChocolateyModel
 {
@@ -33,6 +32,7 @@ class PaymentCategory extends ChocolateyModel
      * Store an Shop Country.
      *
      * @param string $paymentName
+     *
      * @return PaymentCategory
      */
     public function store(string $paymentName): PaymentCategory

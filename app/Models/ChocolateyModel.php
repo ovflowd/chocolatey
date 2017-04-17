@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ChocolateyModel
- * @package App\Models
+ * Class ChocolateyModel.
  */
 abstract class ChocolateyModel extends Model
 {
-
 }

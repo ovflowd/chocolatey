@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class FlatCat
- * @package App\Models
+ * Class FlatCat.
  */
 class FlatCat extends ChocolateyModel
 {

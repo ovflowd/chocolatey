@@ -5,8 +5,7 @@ namespace App\Helpers;
 use App\Singleton;
 
 /**
- * Class Session
- * @package App\Helpers
+ * Class Session.
  */
 final class Session extends Singleton
 {
@@ -40,7 +39,7 @@ final class Session extends Singleton
      * Store a Variable in the Session.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return mixed
      */
