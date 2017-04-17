@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Class PhotoReport
- * @package App\Models
+ * Class PhotoReport.
  */
 class PhotoReport extends ChocolateyModel
 {
@@ -36,7 +35,7 @@ class PhotoReport extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = array('reason_category');
+    protected $appends = ['reason_category'];
 
     /**
      * Store a new Photo Report.
@@ -44,6 +43,7 @@ class PhotoReport extends ChocolateyModel
      * @param int $photoId
      * @param int $reasonId
      * @param int $reportedBy
+     *
      * @return PhotoReport
      */
     public function store(int $photoId, int $reasonId, int $reportedBy): PhotoReport

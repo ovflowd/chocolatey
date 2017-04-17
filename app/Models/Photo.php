@@ -6,8 +6,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Photo
- * @package App\Models
+ * Class Photo.
  */
 class Photo extends ChocolateyModel
 {
@@ -32,21 +31,21 @@ class Photo extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = array('creator_id' => 'user_id', 'previewUrl' => 'url', 'creator_uniqueId' => 'user_id', 'time' => 'timestamp');
+    protected $maps = ['creator_id' => 'user_id', 'previewUrl' => 'url', 'creator_uniqueId' => 'user_id', 'time' => 'timestamp'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('creator_uniqueId', 'version', 'previewUrl', 'creator_id', 'likes', 'tags', 'version', 'type', 'room_id', 'creator_name');
+    protected $appends = ['creator_uniqueId', 'version', 'previewUrl', 'creator_id', 'likes', 'tags', 'version', 'type', 'room_id', 'creator_name'];
 
     /**
      * The attributes that should be casted to native types.
      *
      * @var array
      */
-    protected $casts = array('tags' => 'array', 'creator_uniqueId' => 'string');
+    protected $casts = ['tags' => 'array', 'creator_uniqueId' => 'string'];
 
     /**
      * Get the Unique Id of the Photo.
@@ -55,7 +54,7 @@ class Photo extends ChocolateyModel
      */
     public function getIdAttribute(): string
     {
-        return (string)$this->attributes['id'];
+        return (string) $this->attributes['id'];
     }
 
     /**
@@ -86,7 +85,7 @@ class Photo extends ChocolateyModel
      */
     public function getTagsAttribute(): array
     {
-        return array();
+        return [];
     }
 
     /**

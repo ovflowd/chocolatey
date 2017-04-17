@@ -7,8 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class RoomsController
- * @package App\Http\Controllers
+ * Class RoomsController.
  */
 class RoomsController extends BaseController
 {
@@ -20,6 +19,7 @@ class RoomsController extends BaseController
      * @param string $countryId
      * @param string $roomRange
      * @param string $roomInterval
+     *
      * @return JsonResponse
      */
     public function getLeader($countryId, $roomRange, $roomInterval): JsonResponse
@@ -37,6 +37,7 @@ class RoomsController extends BaseController
      * Get a specific Room Data.
      *
      * @param int $roomId
+     *
      * @return JsonResponse
      */
     public function getRoom($roomId): JsonResponse

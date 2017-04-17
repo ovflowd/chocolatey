@@ -6,8 +6,7 @@ use App\Helpers\Validation;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class ValidationServiceProvider
- * @package App\Providers
+ * Class ValidationServiceProvider.
  */
 class ValidationServiceProvider extends ServiceProvider
 {

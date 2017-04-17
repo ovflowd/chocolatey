@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class UserCurrency
- * @package App\Models
+ * Class UserCurrency.
  */
 class UserCurrency extends ChocolateyModel
 {

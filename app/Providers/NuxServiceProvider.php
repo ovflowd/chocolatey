@@ -6,8 +6,7 @@ use App\Helpers\Nux;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class NuxServiceProvider
- * @package App\Providers
+ * Class NuxServiceProvider.
  */
 class NuxServiceProvider extends ServiceProvider
 {

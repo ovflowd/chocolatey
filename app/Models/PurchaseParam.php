@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class PurchaseParam
- * @package App\Models
+ * Class PurchaseParam.
  */
 class PurchaseParam
 {

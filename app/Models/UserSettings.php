@@ -26,7 +26,7 @@ class UserSettings extends ChocolateyModel
      *
      * @var array
      */
-    protected $fillable = array('user_id', 'block_following', 'block_friendrequests');
+    protected $fillable = ['user_id', 'block_following', 'block_friendrequests'];
 
     /**
      * Primary Key of the Table.

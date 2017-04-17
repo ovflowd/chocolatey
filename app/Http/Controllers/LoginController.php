@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class LoginController
- * @package App\Http\Controllers
+ * Class LoginController.
  */
 class LoginController extends BaseController
 {
@@ -22,6 +21,7 @@ class LoginController extends BaseController
      * Handles the Response of the Login Attempt.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function login(Request $request): JsonResponse
@@ -48,8 +48,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
-            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
+            'expiryTime'                   => UserFacade::getUser()->banDetails->ban_expire,
+            'reason'                       => UserFacade::getUser()->banDetails->ban_reason, ], 401);
     }
 
     /**
@@ -69,6 +69,7 @@ class LoginController extends BaseController
      * and do the Login of the User.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function register(Request $request): JsonResponse
@@ -79,9 +80,9 @@ class LoginController extends BaseController
 
         $dateOfBirth = strtotime("{$request->json()->get('birthdate')['day']}/{$request->json()->get('birthdate')['month']}/{$request->json()->get('birthdate')['year']}");
 
-        (new AccountController)->createUser($request, $request->json()->all(), true);
+        (new AccountController())->createUser($request, $request->json()->all(), true);
 
-        (new ChocolateyId)->store($request->json()->get('email'), $request->json()->get('password'));
+        (new ChocolateyId())->store($request->json()->get('email'), $request->json()->get('password'));
 
         UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
@@ -92,6 +93,7 @@ class LoginController extends BaseController
      * Create or Login a Facebook User.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function facebook(Request $request): JsonResponse
@@ -102,7 +104,7 @@ class LoginController extends BaseController
             return response()->json(UserFacade::setSession(User::where('real_name', $fbUser->getId())->first()));
         }
 
-        (new AccountController())->createUser($request, array('email' => $fbUser->getEmail()), true);
+        (new AccountController())->createUser($request, ['email' => $fbUser->getEmail()], true);
 
         UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 
@@ -113,6 +115,7 @@ class LoginController extends BaseController
      * Do Facebook Authentication.
      *
      * @param Request $request
+     *
      * @return GraphUser
      */
     protected function fbAuth(Request $request): GraphUser

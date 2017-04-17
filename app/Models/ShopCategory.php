@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class ShopCategory
- * @package App\Models
+ * Class ShopCategory.
  */
 class ShopCategory extends ChocolateyModel
 {
@@ -34,12 +33,13 @@ class ShopCategory extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = array('category');
+    protected $appends = ['category'];
 
     /**
      * Store an Shop Country.
      *
      * @param string $categoryName
+     *
      * @return ShopCategory
      */
     public function store(string $categoryName): ShopCategory

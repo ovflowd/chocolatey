@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class GroupMember
- * @package App\Models
+ * Class GroupMember.
  */
 class GroupMember extends ChocolateyModel
 {
@@ -34,14 +33,14 @@ class GroupMember extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = array('id', 'member_since', 'guild_id', 'level_id', 'user_id');
+    protected $hidden = ['id', 'member_since', 'guild_id', 'level_id', 'user_id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('guild');
+    protected $appends = ['guild'];
 
     /**
      * Get User Group by Member Group Id.

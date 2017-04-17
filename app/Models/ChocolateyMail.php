@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class ChocolateyMail
- * @package App\Models
+ * Class ChocolateyMail.
  */
 class ChocolateyMail extends ChocolateyModel
 {
@@ -33,7 +32,8 @@ class ChocolateyMail extends ChocolateyModel
      * Store a new Azure Id Account.
      *
      * @param string $userMail
-     * @param int $userId
+     * @param int    $userId
+     *
      * @return ChocolateyMail
      */
     public function store(int $userId, string $userMail): ChocolateyMail

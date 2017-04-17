@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class Mail
- * @package App\Models
+ * Class Mail.
  */
 class Mail extends ChocolateyModel
 {
@@ -34,7 +33,7 @@ class Mail extends ChocolateyModel
      *
      * @var array
      */
-    protected $fillable = array('used');
+    protected $fillable = ['used'];
 
     /**
      * Store a Mail Request.
@@ -42,6 +41,7 @@ class Mail extends ChocolateyModel
      * @param string $token
      * @param string $link
      * @param string $userMail
+     *
      * @return Mail
      */
     public function store(string $token, string $link, string $userMail): Mail

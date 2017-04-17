@@ -3,8 +3,7 @@
 namespace App;
 
 /**
- * Class Singleton
- * @package App
+ * Class Singleton.
  */
 abstract class Singleton
 {

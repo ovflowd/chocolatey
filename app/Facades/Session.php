@@ -5,8 +5,7 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Session
- * @package App\Facades
+ * Class Session.
  */
 class Session extends Facade
 {

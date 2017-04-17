@@ -6,8 +6,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class UserBadge
- * @package App\Models
+ * Class UserBadge.
  */
 class UserBadge extends ChocolateyModel
 {
@@ -39,21 +38,21 @@ class UserBadge extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = array('badgeIndex' => 'slot_id', 'code' => 'badge_code', 'name' => 'badge_code');
+    protected $maps = ['badgeIndex' => 'slot_id', 'code' => 'badge_code', 'name' => 'badge_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('user_id', 'badge_code', 'slot_id', 'id');
+    protected $hidden = ['user_id', 'badge_code', 'slot_id', 'id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('description', 'badgeIndex', 'code', 'name');
+    protected $appends = ['description', 'badgeIndex', 'code', 'name'];
 
     /**
      * Get Description Attribute.

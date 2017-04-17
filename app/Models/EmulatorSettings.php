@@ -3,8 +3,7 @@
 namespace App\Models;
 
 /**
- * Class EmulatorSettings
- * @package App\Models
+ * Class EmulatorSettings.
  */
 class EmulatorSettings extends ChocolateyModel
 {

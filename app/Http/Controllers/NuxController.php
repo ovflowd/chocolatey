@@ -13,8 +13,7 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class NuxController
- * @package App\Http\Controllers
+ * Class NuxController.
  */
 class NuxController extends BaseController
 {
@@ -22,6 +21,7 @@ class NuxController extends BaseController
      * Check an User Name.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function checkName(Request $request): JsonResponse
@@ -34,26 +34,28 @@ class NuxController extends BaseController
             return response()->json(new NuxValidation('INVALID_NAME', ['resultType' => 'VALIDATION_ERROR_ILLEGAL_WORDS']));
         }
 
-        return response()->json(new NuxValidation);
+        return response()->json(new NuxValidation());
     }
 
     /**
      * Select an User Name.
      *
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function selectName(Request $request): JsonResponse
     {
         UserFacade::updateSession(['username' => $request->json()->get('name')]);
 
-        return response()->json(new NuxValidation);
+        return response()->json(new NuxValidation());
     }
 
     /**
      * Select a Room.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function selectRoom(Request $request): Response

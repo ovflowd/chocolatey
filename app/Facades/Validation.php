@@ -5,8 +5,7 @@ namespace App\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Validation
- * @package App\Facades
+ * Class Validation.
  */
 class Validation extends Facade
 {

@@ -6,8 +6,7 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class UserGroup
- * @package App\Models
+ * Class UserGroup.
  */
 class UserGroup extends ChocolateyModel
 {
@@ -39,21 +38,21 @@ class UserGroup extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = array('badgeCode' => 'badge', 'roomId' => 'room_id', 'primaryColour' => 'color_one', 'secondaryColour' => 'color_two');
+    protected $maps = ['badgeCode' => 'badge', 'roomId' => 'room_id', 'primaryColour' => 'color_one', 'secondaryColour' => 'color_two'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('user_id', 'badge', 'slot_id', 'id', 'user_id', 'room_id', 'state', 'rights', 'forum', 'date_created', 'read_forum', 'post_messages', 'post_threads', 'mod_forum');
+    protected $hidden = ['user_id', 'badge', 'slot_id', 'id', 'user_id', 'room_id', 'state', 'rights', 'forum', 'date_created', 'read_forum', 'post_messages', 'post_threads', 'mod_forum'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('badgeCode', 'roomId', 'primaryColour', 'secondaryColour', 'type', 'isAdmin');
+    protected $appends = ['badgeCode', 'roomId', 'primaryColour', 'secondaryColour', 'type', 'isAdmin'];
 
     /**
      * Return if is Admin.
