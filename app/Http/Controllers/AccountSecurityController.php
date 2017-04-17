@@ -97,9 +97,36 @@ class AccountSecurityController extends BaseController
             return response()->json(['error' => 'password.current_password.invalid'], 409);
         }
 
-        UserFacade::updateSession(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        ChocolateyId::find(UserFacade::getUser()->email)->update(['mail_password' =>
+            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null, 204);
+    }
+
+    /**
+     * Confirm E-Mail Activation.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function confirmActivation(Request $request): JsonResponse
+    {
+        if (Mail::getByToken($request->json()->get('token')) == null) {
+            return response()->json(['error' => 'activation.invalid_token'], 400);
+        }
+
+        if (strpos(Mail::getMail()->link, 'change-email') !== false) {
+            $email = str_replace('change-email/', '', Mail::getMail()->link);
+
+            User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
+
+            ChocolateyId::find(Mail::getMail()->mail)->update(['mail' => $email]);
+        }
+
+        User::where('mail', Mail::getMail()->mail)->update(['mail_verified' => '1']);
+
+        return response()->json(['email' => Mail::getMail()->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
 
     /**

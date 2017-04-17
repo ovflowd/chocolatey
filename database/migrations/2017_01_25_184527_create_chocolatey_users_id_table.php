@@ -14,10 +14,11 @@ class CreateChocolateyUsersIdTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_users_id', function (Blueprint $table) {
-            $table->string('mail', 125);
-            $table->integer('user_id');
+            $table->string('mail', 150);
             $table->enum('mail_verified', ['0', '1'])->default('0');
-            $table->primary('user_id', 'chocolatey_users_id_primary');
+            $table->string('mail_password');
+            $table->integer('last_logged_id')->default(0);
+            $table->primary('mail', 'chocolatey_users_id_primary');
         });
     }
 

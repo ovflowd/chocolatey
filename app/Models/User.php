@@ -95,13 +95,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * Store an User on the Database.
      *
      * @param string $username
-     * @param string $password
      * @param string $email
      * @param string $address
      * @param bool $newUser
      * @return User
      */
-    public function store(string $username, string $password, string $email, string $address = '', bool $newUser = true): User
+    public function store(string $username, string $email, string $address = '', bool $newUser = true): User
     {
         $this->attributes['username'] = $username;
         $this->attributes['mail'] = $email;
@@ -110,7 +109,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         $this->attributes['look'] = Config::get('chocolatey.figure');
         $this->attributes['auth_ticket'] = '';
 
-        $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), $password);
+        $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), openssl_random_pseudo_bytes(50));
         $this->attributes['account_created'] = time();
 
         $this->attributes['ip_current'] = $address;
@@ -128,8 +127,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function createData()
     {
-        (new ChocolateyId)->store($this->attributes['id'], $this->attributes['mail']);
-
         (new UserPreferences)->store($this->attributes['id']);
     }
 

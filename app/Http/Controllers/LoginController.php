@@ -73,17 +73,15 @@ class LoginController extends BaseController
      */
     public function register(Request $request): JsonResponse
     {
-        if (strpos($request->json()->get('email'), '@') == false) {
-            return response()->json(['error' => 'registration_email'], 409);
-        }
-
-        if (ChocolateyId::query()->where('mail', $request->json()->get('email'))->count() > 0) {
+        if (ChocolateyId::where('mail', $request->json()->get('email'))->count() > 0) {
             return response()->json(['error' => 'registration_email_in_use'], 409);
         }
 
         $dateOfBirth = strtotime("{$request->json()->get('birthdate')['day']}/{$request->json()->get('birthdate')['month']}/{$request->json()->get('birthdate')['year']}");
 
-        (new AccountController())->createUser($request, $request->json()->all(), true);
+        (new AccountController)->createUser($request, $request->json()->all(), true);
+
+        (new ChocolateyId)->store($request->json()->get('email'), $request->json()->get('password'));
 
         UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'account_day_of_birth' => $dateOfBirth]);
 
@@ -104,7 +102,7 @@ class LoginController extends BaseController
             return response()->json(UserFacade::setSession(User::where('real_name', $fbUser->getId())->first()));
         }
 
-        (new AccountController())->createUser($request, ['email' => $fbUser->getEmail(), 'password' => uniqid()], true);
+        (new AccountController())->createUser($request, array('email' => $fbUser->getEmail()), true);
 
         UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 

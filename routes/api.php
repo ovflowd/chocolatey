@@ -51,7 +51,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
     $app->post('api/public/registration/new', 'LoginController@register');
 
     // Confirm E-mail
-    $app->post('api/public/registration/activate', 'AccountController@confirmActivation');
+    $app->post('api/public/registration/activate', 'AccountSecurityController@confirmActivation');
 
     // Change Password Request
     $app->post('api/public/forgotPassword/send', 'AccountController@forgotPassword');

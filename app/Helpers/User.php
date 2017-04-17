@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Facades\Session;
+use App\Models\ChocolateyId;
 use App\Models\User as UserModel;
 use App\Singleton;
 use Illuminate\Http\Request;
@@ -72,10 +73,15 @@ final class User extends Singleton
      */
     public function loginUser(Request $request)
     {
-        $user = UserModel::where('mail', $request->json()->get('email'))->where('password',
-            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->first();
+        $chocolateyId = ChocolateyId::find($request->json()->get('email'));
 
-        return $user != null ? $this->setSession($user) : null;
+        $user = $chocolateyId->last_logged_id == 0 ? UserModel::where('mail', $request->json()->get('email'))->first() :
+            UserModel::find($chocolateyId->last_logged_id);
+
+        $chocolateyId->last_logged_id = $user->uniqueId;
+
+        return $chocolateyId->mail_password == hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))
+            ? $this->setSession($user) : null;
     }
 
     /**

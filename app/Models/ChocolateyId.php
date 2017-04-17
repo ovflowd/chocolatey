@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Config;
 
 /**
  * Class ChocolateyId
@@ -29,32 +30,32 @@ class ChocolateyId extends ChocolateyModel
      *
      * @var string
      */
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'mail';
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = array('relatedAzureId', 'relatedAccounts');
+    protected $appends = array('relatedAccounts');
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = array('mail');
+    protected $fillable = array('mail', 'mail_password', 'last_logged_id');
 
     /**
      * Store a new Azure Id Account.
      *
-     * @param int $userId
      * @param string $userMail
+     * @param string $userPassword
      * @return ChocolateyId
      */
-    public function store(int $userId, string $userMail): ChocolateyId
+    public function store(string $userMail, string $userPassword): ChocolateyId
     {
-        $this->attributes['user_id'] = $userId;
+        $this->attributes['mail_password'] = hash(Config::get('chocolatey.security.hash'), $userPassword);
         $this->attributes['mail'] = $userMail;
 
         $this->save();
@@ -70,15 +71,5 @@ class ChocolateyId extends ChocolateyModel
     public function getRelatedAccountsAttribute()
     {
         return User::query()->where('mail', $this->attributes['mail'])->get();
-    }
-
-    /**
-     * Get All AzureId with this E-mail.
-     *
-     * @return Collection|static[]
-     */
-    public function getRelatedAzureIdAttribute()
-    {
-        return self::query()->where('mail', $this->attributes['mail'])->get();
     }
 }

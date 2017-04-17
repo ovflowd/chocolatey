@@ -47,24 +47,4 @@ class ChocolateyMail extends ChocolateyModel
 
         return $this;
     }
-
-    /**
-     * Get All Accounts related with this E-mail.
-     *
-     * @return Collection|static[]
-     */
-    public function getRelatedAccountsAttribute()
-    {
-        return User::where('mail', $this->attributes['mail'])->get();
-    }
-
-    /**
-     * Get All AzureId with this E-mail.
-     *
-     * @return Collection|static[]
-     */
-    public function getRelatedAzureIdAttribute()
-    {
-        return ChocolateyId::where('mail', $this->attributes['mail'])->get();
-    }
 }
