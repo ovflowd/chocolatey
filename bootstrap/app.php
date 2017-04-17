@@ -89,6 +89,8 @@ $app->register(App\Providers\NuxServiceProvider::class);
 
 $app->register(App\Providers\MailServiceProvider::class);
 
+$app->register(App\Providers\ValidationServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

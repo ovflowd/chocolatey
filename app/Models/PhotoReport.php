@@ -35,9 +35,7 @@ class PhotoReport extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'reason_category',
-    ];
+    protected $appends = ['reason_category'];
 
     /**
      * Store a new Photo Report.
@@ -54,6 +52,8 @@ class PhotoReport extends ChocolateyModel
         $this->attributes['reason_id'] = $reasonId;
         $this->attributes['reported_by'] = $reportedBy;
         $this->attributes['approved'] = 0;
+
+        $this->save();
 
         return $this;
     }

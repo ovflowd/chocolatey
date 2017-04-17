@@ -41,6 +41,8 @@ class PhotoLike extends ChocolateyModel
         $this->attributes['photo_id'] = $photoId;
         $this->attributes['username'] = $userName;
 
+        $this->save();
+
         return $this;
     }
 }

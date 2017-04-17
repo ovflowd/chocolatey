@@ -46,6 +46,7 @@ class Purse
      * Create an User Purse.
      *
      * @TODO: Get User Left Habbo Club Days
+     * @TODO: Improve This
      *
      * @param int $userId
      */

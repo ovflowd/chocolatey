@@ -3,31 +3,17 @@
 namespace App\Helpers;
 
 use App\Facades\Session;
+use App\Models\ChocolateyId;
 use App\Models\User as UserModel;
+use App\Singleton;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 /**
  * Class User.
  */
-class User
+final class User extends Singleton
 {
-    /**
-     * Create and return a User instance.
-     *
-     * @return User
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
-    }
-
     /**
      * Update User Data without overwriting Session.
      *
@@ -37,7 +23,7 @@ class User
      */
     public function updateSession(array $parameters)
     {
-        return $this->setSession($this->updateData($this->getUser(), $parameters));
+        return $this->setSession($this->updateUser($this->getUser(), $parameters));
     }
 
     /**
@@ -60,7 +46,7 @@ class User
      *
      * @return UserModel
      */
-    public function updateData(UserModel $user, array $parameters)
+    public function updateUser($user, array $parameters)
     {
         $user->update($parameters);
 
@@ -87,10 +73,15 @@ class User
      */
     public function loginUser(Request $request)
     {
-        $user = UserModel::where('mail', $request->json()->get('email'))->where('password',
-            hash(Config::get('chocolatey.security.hash'), $request->json()->get('password')))->first();
+        $chocolateyId = ChocolateyId::find($request->json()->get('email'));
 
-        return $user != null ? $this->setSession($user) : null;
+        $user = $chocolateyId->last_logged_id == 0 ? UserModel::where('mail', $request->json()->get('email'))->first() :
+            UserModel::find($chocolateyId->last_logged_id);
+
+        $chocolateyId->last_logged_id = $user->uniqueId;
+
+        return $chocolateyId->password == hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))
+            ? $this->setSession($user) : null;
     }
 
     /**
@@ -109,19 +100,5 @@ class User
     public function eraseSession()
     {
         Session::erase(Config::get('chocolatey.security.session'));
-    }
-
-    /**
-     * Filter an Username from the Invalid Names Base.
-     *
-     * @param string $userName
-     *
-     * @return bool
-     */
-    public function filterName(string $userName): bool
-    {
-        return ((count(array_filter(Config::get('chocolatey.invalid'), function ($username) use ($userName) {
-            return stripos($userName, $username) !== false;
-        })) == 0) && strlen($userName) <= 50 && strlen($userName) >= 4);
     }
 }

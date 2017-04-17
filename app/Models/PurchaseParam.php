@@ -33,7 +33,7 @@ class PurchaseParam
      *
      * @param int $countryId
      * @param int $pricePointId
-     * @param int $paymentMethodId [
+     * @param int $paymentMethodId
      */
     public function __construct(int $countryId, int $pricePointId, int $paymentMethodId)
     {

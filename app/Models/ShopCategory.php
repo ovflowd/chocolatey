@@ -33,9 +33,7 @@ class ShopCategory extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'category',
-    ];
+    protected $appends = ['category'];
 
     /**
      * Store an Shop Country.
@@ -47,6 +45,8 @@ class ShopCategory extends ChocolateyModel
     public function store(string $categoryName): ShopCategory
     {
         $this->attributes['category_name'] = $categoryName;
+
+        $this->save();
 
         return $this;
     }

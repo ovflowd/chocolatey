@@ -5,29 +5,14 @@ namespace App\Helpers;
 use App\Models\Room;
 use App\Models\RoomItem;
 use App\Models\User;
+use App\Singleton;
 use Illuminate\Http\Request;
 
 /**
  * Class Nux.
  */
-final class Nux
+final class Nux extends Singleton
 {
-    /**
-     * Create and return a Nux instance.
-     *
-     * @return Nux
-     */
-    public static function getInstance()
-    {
-        static $instance = null;
-
-        if ($instance === null) {
-            $instance = new static();
-        }
-
-        return $instance;
-    }
-
     /**
      * Generate a NUX Room.
      *

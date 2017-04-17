@@ -41,37 +41,21 @@ class ShopHistory extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'transactionSystemName' => 'payment_method',
-        'transactionId'         => 'id',
-    ];
+    protected $maps = ['transactionSystemName' => 'payment_method', 'transactionId' => 'id'];
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'creationTime',
-        'transactionSystemName',
-        'credits',
-        'price',
-        'transactionId',
-        'product',
-    ];
+    protected $appends = ['creationTime', 'transactionSystemName', 'credits', 'price', 'transactionId', 'product'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'approved_by',
-        'user_id',
-        'item_id',
-    ];
+    protected $hidden = ['created_at', 'updated_at', 'approved_by', 'user_id', 'item_id'];
 
     /**
      * Get Creation Time Attribute.
