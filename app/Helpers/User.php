@@ -45,7 +45,7 @@ final class User extends Singleton
      *
      * @return UserModel
      */
-    public function updateUser(UserModel $user, array $parameters)
+    public function updateUser($user, array $parameters)
     {
         $user->update($parameters);
 

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Redirect;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class HomePageController.
+ * Class HomePageController
+ * @package App\Http\Controllers
  */
 class HomePageController extends BaseController
 {

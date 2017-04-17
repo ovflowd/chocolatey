@@ -12,7 +12,8 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PhotosController.
+ * Class PhotosController
+ * @package App\Http\Controllers
  */
 class PhotosController extends BaseController
 {
@@ -36,8 +37,7 @@ class PhotosController extends BaseController
      * @MODERATION: Reporting Status (0 = Not Reviewed, 1 = Report Approved, 2 = Report Not Approved
      *
      * @param Request $request
-     * @param int     $photoId
-     *
+     * @param int $photoId
      * @return Response
      */
     public function report(Request $request, int $photoId): Response
@@ -51,7 +51,6 @@ class PhotosController extends BaseController
      * Like a Photo.
      *
      * @param int $photoId
-     *
      * @return Response
      */
     public function likePhoto(int $photoId): Response
@@ -69,7 +68,6 @@ class PhotosController extends BaseController
      * Unlike a Photo.
      *
      * @param int $photoId
-     *
      * @return Response
      */
     public function unlikePhoto(int $photoId): Response
@@ -87,7 +85,6 @@ class PhotosController extends BaseController
      * Delete a Photo.
      *
      * @param int $photoId
-     *
      * @return Response
      */
     public function delete(int $photoId): Response

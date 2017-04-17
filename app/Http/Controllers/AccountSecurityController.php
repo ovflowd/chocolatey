@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class AccountSecurityController.
+ * Class AccountSecurityController
+ * @package App\Http\Controllers
  */
 class AccountSecurityController extends BaseController
 {
@@ -40,7 +41,6 @@ class AccountSecurityController extends BaseController
      * Save Security Questions.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function saveQuestions(Request $request): JsonResponse
@@ -89,7 +89,6 @@ class AccountSecurityController extends BaseController
      * @TODO: Implement Notification E-mail of Password change
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function changePassword(Request $request): JsonResponse
@@ -107,7 +106,6 @@ class AccountSecurityController extends BaseController
      * Change User E-mail.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function changeMail(Request $request): JsonResponse
@@ -169,7 +167,6 @@ class AccountSecurityController extends BaseController
      * Verify User Security Questions.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function verifyQuestions(Request $request): JsonResponse
@@ -191,7 +188,6 @@ class AccountSecurityController extends BaseController
      * Confirm User Change Password.
      *
      * @param Request $request
-     *
      * @return mixed
      */
     public function confirmChangePassword(Request $request): JsonResponse

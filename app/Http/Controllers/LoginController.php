@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class LoginController.
+ * Class LoginController
+ * @package App\Http\Controllers
  */
 class LoginController extends BaseController
 {
@@ -21,7 +22,6 @@ class LoginController extends BaseController
      * Handles the Response of the Login Attempt.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function login(Request $request): JsonResponse
@@ -69,7 +69,6 @@ class LoginController extends BaseController
      * and do the Login of the User.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function register(Request $request): JsonResponse
@@ -95,7 +94,6 @@ class LoginController extends BaseController
      * Create or Login a Facebook User.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function facebook(Request $request): JsonResponse
@@ -117,7 +115,6 @@ class LoginController extends BaseController
      * Do Facebook Authentication.
      *
      * @param Request $request
-     *
      * @return GraphUser
      */
     protected function fbAuth(Request $request): GraphUser

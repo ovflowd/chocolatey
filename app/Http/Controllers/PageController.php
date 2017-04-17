@@ -7,7 +7,8 @@ use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class PageController.
+ * Class PageController
+ * @package App\Http\Controllers
  */
 class PageController extends BaseController
 {
@@ -16,7 +17,6 @@ class PageController extends BaseController
      *
      * @param string $pageCategory
      * @param string $pageFile
-     *
      * @return Response
      */
     public function show(string $pageCategory, string $pageFile): Response
@@ -30,7 +30,6 @@ class PageController extends BaseController
      * Get Client View.
      *
      * @param string $clientType
-     *
      * @return Response
      */
     public function getClient($clientType): Response

@@ -25,7 +25,6 @@ class AccountController extends BaseController
      * Save User Look.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function saveLook(Request $request): JsonResponse
@@ -45,7 +44,7 @@ class AccountController extends BaseController
      */
     public function getDiscussions(): JsonResponse
     {
-        return response()->json([]);
+        return response()->json(array());
     }
 
     /**
@@ -68,7 +67,6 @@ class AccountController extends BaseController
      * Save New User Preferences.
      *
      * @param Request $request
-     *
      * @return Response
      */
     public function savePreferences(Request $request): Response
@@ -105,8 +103,8 @@ class AccountController extends BaseController
      */
     public function checkName(Request $request): JsonResponse
     {
-        return response()->json(['isAvailable' => (User::where('username', $request->input('name'))->count() == 0
-            && Validation::filterUserName($request->input('name')) && !UserFacade::getUser()->isStaff)]);
+        return response()->json(array('isAvailable' => (User::where('username', $request->input('name'))->count() == 0
+            && Validation::filterUserName($request->input('name')) && !UserFacade::getUser()->isStaff)));
     }
 
     /**
@@ -158,7 +156,7 @@ class AccountController extends BaseController
      */
     protected function uniqueName(string $userMail): string
     {
-        $partialName = explode(' ', (new Alliteration())->getName());
+        $partialName = explode(' ', (new Alliteration)->getName());
 
         return strtolower($partialName[0] . strstr($userMail, '@', true) . $partialName[1]);
     }
@@ -186,13 +184,13 @@ class AccountController extends BaseController
             return response()->json(['error' => 'activation.invalid_token'], 400);
         }
 
-        if (strpos(Mail::getMail()->link, 'change-email') !== false):
+        if (strpos(Mail::getMail()->link, 'change-email') !== false) {
             $email = str_replace('change-email/', '', Mail::getMail()->link);
 
             User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
 
             ChocolateyId::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
-        endif;
+        }
 
         User::where('mail', Mail::getMail()->mail)->update(['mail_verified' => '1']);
 

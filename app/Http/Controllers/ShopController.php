@@ -20,7 +20,8 @@ use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 /**
- * Class ShopController.
+ * Class ShopController
+ * @package App\Http\Controllers
  */
 class ShopController extends BaseController
 {
@@ -38,7 +39,6 @@ class ShopController extends BaseController
      * Get the Shop Inventory of a Country.
      *
      * @param string $countryCode
-     *
      * @return JsonResponse
      */
     public function getInventory(string $countryCode): JsonResponse
@@ -51,7 +51,6 @@ class ShopController extends BaseController
      * Get User Purse.
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function getPurse(Request $request): JsonResponse
@@ -63,10 +62,9 @@ class ShopController extends BaseController
      * Proceed Payment Checkout.
      *
      * @param string $paymentCategory
-     * @param int    $countryCode
-     * @param int    $shopItem
-     * @param int    $paymentMethod
-     *
+     * @param int $countryCode
+     * @param int $shopItem
+     * @param int $paymentMethod
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
     public function proceed(string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
@@ -91,11 +89,10 @@ class ShopController extends BaseController
      * @TODO: Code Business Logic
      *
      * @param Request $request
-     * @param string  $paymentCategory
-     * @param int     $countryCode
-     * @param int     $shopItem
-     * @param int     $paymentMethod
-     *
+     * @param string $paymentCategory
+     * @param int $countryCode
+     * @param int $shopItem
+     * @param int $paymentMethod
      * @return RedirectResponse|Response|Redirector|ResponseFactory
      */
     public function success(Request $request, string $paymentCategory, int $countryCode, int $shopItem, int $paymentMethod)
@@ -110,7 +107,7 @@ class ShopController extends BaseController
         $purchaseItem = (new ShopHistory())->store($paymentMethod, UserFacade::getUser()->uniqueId, $shopItem);
 
         Mail::send(['email' => UserFacade::getUser()->email, 'purchaseId' => $purchaseItem->transactionId,
-            'product'       => ShopItem::find($shopItem), 'subject' => 'Purchase completed',
+            'product' => ShopItem::find($shopItem), 'subject' => 'Purchase completed',
         ], 'habbo-web-mail.purchase-confirmation');
 
         $paymentCheckout->delete();
@@ -138,7 +135,6 @@ class ShopController extends BaseController
      * @TODO: Need to Test if really works
      *
      * @param Request $request
-     *
      * @return JsonResponse
      */
     public function redeem(Request $request): JsonResponse
