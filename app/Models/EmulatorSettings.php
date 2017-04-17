@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class EmulatorSettings
  * @package App\Models
@@ -30,12 +28,4 @@ class EmulatorSettings extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'id';
-
-    /**
-     * Store Function.
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException("Currently Chocolatey/Espreso doesn't support store Emulator Settings by CMS.");
-    }
 }

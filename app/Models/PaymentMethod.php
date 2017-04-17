@@ -69,7 +69,6 @@ class PaymentMethod extends ChocolateyModel
      * @param string $code
      * @param string $buttonImageUrl
      * @param string $buttonText
-     *
      * @return PaymentMethod
      */
     public function store(string $methodName, string $code, string $buttonImageUrl, string $buttonText): PaymentMethod
@@ -78,6 +77,8 @@ class PaymentMethod extends ChocolateyModel
         $this->attributes['buttonLogoUrl'] = $buttonImageUrl;
         $this->attributes['buttonText'] = $buttonText;
         $this->attributes['localizationKey'] = $code;
+
+        $this->save();
 
         return $this;
     }

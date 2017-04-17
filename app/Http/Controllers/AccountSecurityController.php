@@ -50,11 +50,11 @@ class AccountSecurityController extends BaseController
         }
 
         UserSecurity::updateOrCreate([
-            'user_id'        => UserFacade::getUser()->uniqueId,
-            'firstQuestion'  => $request->json()->get('questionId1'),
+            'user_id' => UserFacade::getUser()->uniqueId,
+            'firstQuestion' => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer'    => $request->json()->get('answer1'),
-            'secondAnswer'   => $request->json()->get('answer2'), ]);
+            'firstAnswer' => $request->json()->get('answer1'),
+            'secondAnswer' => $request->json()->get('answer2'),]);
 
         return response()->json(null, 204);
     }
@@ -133,14 +133,14 @@ class AccountSecurityController extends BaseController
     protected function sendChangeMailConfirmation(Request $request)
     {
         Mail::send(['email' => UserFacade::getUser()->email,
-            'name'          => UserFacade::getUser()->name, 'subject' => 'Email change alert',
+            'name' => UserFacade::getUser()->name, 'subject' => 'Email change alert',
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = Mail::store(UserFacade::getUser()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
         Mail::send(['email' => $request->json()->get('newEmail'), 'name' => UserFacade::getUser()->name,
-            'subject'       => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
+            'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
         ], 'habbo-web-mail.confirm-mail-change');
     }
 
@@ -176,13 +176,13 @@ class AccountSecurityController extends BaseController
     {
         $questions = UserSecurity::find(UserFacade::getUser()->uniqueId);
 
-        if ($questions->firstAnswer == $request->json()->get('answer1') && $questions->secondAnswer == $request->json()->get('answer2')):
+        if ($questions->firstAnswer == $request->json()->get('answer1') && $questions->secondAnswer == $request->json()->get('answer2')) {
             if ($request->json()->get('trust') == true) {
-                (new TrustedDevice())->store(UserFacade::getUser()->uniqueId, $request->ip())->save();
+                (new TrustedDevice)->store(UserFacade::getUser()->uniqueId, $request->ip());
             }
 
-        return response()->json(null, 204);
-        endif;
+            return response()->json(null, 204);
+        }
 
         return response()->json(null, 409);
     }

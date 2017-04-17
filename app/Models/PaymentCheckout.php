@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class PaymentCheckout
  * @package App\Models
@@ -30,15 +28,4 @@ class PaymentCheckout extends ChocolateyModel
      * @var string
      */
     protected $primaryKey = 'id';
-
-    /**
-     * Store Function.
-     *
-     * A Checkout can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Payment Checkout by Chocolatey. Checkouts are created by the Engine.');
-    }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
  * Class GroupMember
  * @package App\Models
@@ -44,17 +42,6 @@ class GroupMember extends ChocolateyModel
      * @var array
      */
     protected $appends = array('guild');
-
-    /**
-     * Store Function.
-     *
-     * A Guild Member can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Guild by Chocolatey. Guilds need be created from the Server.');
-    }
 
     /**
      * Get User Group by Member Group Id.

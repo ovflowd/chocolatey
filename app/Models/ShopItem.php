@@ -6,7 +6,8 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class ShopItem.
+ * Class ShopItem
+ * @package App\Model
  *
  * @property mixed uniqueId
  */
@@ -40,38 +41,30 @@ class ShopItem extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'paymentMethods',
-        'uniqueId',
-    ];
+    protected $appends = array('paymentMethods', 'uniqueId');
 
     /**
      * The attributes that will be mapped.
      *
      * @var array
      */
-    protected $maps = [
-        'paymentMethods' => 'payment_methods',
-    ];
+    protected $maps = array('paymentMethods' => 'payment_methods', 'uniqueId' => 'id');
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'payment_methods',
-    ];
+    protected $hidden = array('payment_methods');
 
     /**
      * Store an Shop Country.
      *
      * @param string $itemName
      * @param string $countryCode
-     * @param int    $creditAmount
-     * @param int    $iconId
-     * @param array  $paymentMethods
-     *
+     * @param int $creditAmount
+     * @param int $iconId
+     * @param array $paymentMethods
      * @return ShopItem
      */
     public function store(string $itemName, string $countryCode, int $creditAmount, int $iconId, array $paymentMethods): ShopItem
@@ -81,6 +74,8 @@ class ShopItem extends ChocolateyModel
         $this->attributes['creditAmount'] = $creditAmount;
         $this->attributes['iconId'] = $iconId;
         $this->attributes['payment_methods'] = implode(',', $paymentMethods);
+
+        $this->save();
 
         return $this;
     }
@@ -92,18 +87,17 @@ class ShopItem extends ChocolateyModel
      */
     public function getPaymentMethodsAttribute(): array
     {
-        $paymentMethods = [];
+        $paymentMethods = array();
 
         if (!array_key_exists('payment_methods', $this->attributes)) {
             return $paymentMethods;
         }
 
-        foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory):
+        foreach (explode(',', $this->attributes['payment_methods']) as $shopCategory) {
             $paymentMethod = PaymentMethod::where('localizationKey', $shopCategory)->first();
-        $paymentMethod->setPurchaseParams([Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']]);
-
-        $paymentMethods[] = $paymentMethod;
-        endforeach;
+            $paymentMethod->setPurchaseParams(array(Country::where('countryCode', $this->attributes['countryCode'])->first()->uniqueId, $this->attributes['id']));
+            $paymentMethods[] = $paymentMethod;
+        }
 
         return $paymentMethods;
     }
@@ -115,22 +109,12 @@ class ShopItem extends ChocolateyModel
      */
     public function getCategoriesAttribute(): array
     {
-        $shopCategories = [];
+        $shopCategories = array();
 
         foreach (explode(',', $this->attributes['categories']) as $shopCategory) {
             $shopCategories[] = ShopCategory::find($shopCategory)->category;
         }
 
         return $shopCategories;
-    }
-
-    /**
-     * Get Unique Id.
-     *
-     * @return int
-     */
-    public function getUniqueIdAttribute(): int
-    {
-        return $this->attributes['id'];
     }
 }

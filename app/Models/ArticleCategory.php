@@ -52,13 +52,14 @@ class ArticleCategory extends ChocolateyModel
      *
      * @param string $link
      * @param string $translate
-     *
      * @return $this
      */
     public function store(string $link, string $translate)
     {
         $this->attributes['link'] = $link;
         $this->attributes['translate'] = $translate;
+
+        $this->save();
 
         return $this;
     }

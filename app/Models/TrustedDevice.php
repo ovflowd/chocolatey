@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class TrustedDevice.
+ * Class TrustedDevice
+ * @package App\Models
  */
 class TrustedDevice extends ChocolateyModel
 {
@@ -33,14 +34,12 @@ class TrustedDevice extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = [
-        'id',
-    ];
+    protected $hidden = array('id');
 
     /**
      * Store a new TrustedDevice.
      *
-     * @param int    $userId
+     * @param int $userId
      * @param string $ipAddress
      *
      * @return TrustedDevice
@@ -49,6 +48,8 @@ class TrustedDevice extends ChocolateyModel
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['ip_address'] = $ipAddress;
+
+        $this->save();
 
         return $this;
     }

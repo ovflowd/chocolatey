@@ -44,7 +44,6 @@ class Country extends ChocolateyModel
      *
      * @param string $countryCode
      * @param string $name
-     *
      * @return Country
      */
     public function store(string $countryCode, string $name): Country

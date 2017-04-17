@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class RoomItem.
+ * Class RoomItem
+ * @package App\Models
  */
 class RoomItem extends ChocolateyModel
 {
@@ -31,19 +32,18 @@ class RoomItem extends ChocolateyModel
     /**
      * Store a RoomItem.
      *
-     * @param int    $userId
-     * @param int    $roomId
-     * @param int    $itemId
-     * @param int    $xPosition
-     * @param int    $yPosition
+     * @param int $userId
+     * @param int $roomId
+     * @param int $itemId
+     * @param int $xPosition
+     * @param int $yPosition
      * @param string $zPosition
-     * @param int    $rotation
+     * @param int $rotation
      * @param string $extraData
      * @param string $wallPosition
-     *
-     * @return $this
+     * @return RoomItem
      */
-    public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = '')
+    public function store(int $userId, int $roomId, int $itemId, int $xPosition, int $yPosition, string $zPosition, int $rotation, string $extraData, string $wallPosition = ''): RoomItem
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['room_id'] = $roomId;

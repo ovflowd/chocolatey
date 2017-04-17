@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Sofa\Eloquence\Metable\InvalidMutatorException;
-
 /**
- * Class UserFriend.
+ * Class UserFriend
+ * @package App\Models
  */
 class UserFriend extends ChocolateyModel
 {
@@ -42,35 +41,14 @@ class UserFriend extends ChocolateyModel
      *
      * @var array
      */
-    protected $hidden = [
-        'user_one_id',
-        'user_two_id',
-        'relation',
-        'friends_since',
-    ];
+    protected $hidden = array('user_one_id', 'user_two_id', 'relation', 'friends_since');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'figureString',
-        'motto',
-        'name',
-        'uniqueId',
-    ];
-
-    /**
-     * Store Function.
-     *
-     * A User Friend can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store an User Friend by Chocolatey. Friends need be created from the Server.');
-    }
+    protected $appends = array('figureString', 'motto', 'name', 'uniqueId');
 
     /**
      * Get User Friend Figure String.

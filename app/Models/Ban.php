@@ -32,14 +32,13 @@ class Ban extends ChocolateyModel
     /**
      * Store an User Ban.
      *
-     * @param int    $userId
-     * @param int    $userStaffId
+     * @param int $userId
+     * @param int $userStaffId
      * @param string $banReason
-     * @param string $banType     (Account, IP, Machine, Super)
-     * @param int    $banExpire
+     * @param string $banType (Account, IP, Machine, Super)
+     * @param int $banExpire
      * @param string $ipAddress
      * @param string $machineId
-     *
      * @return Ban
      */
     public function store(int $userId, int $userStaffId, string $banReason, $banType = 'account', $banExpire = 0, $ipAddress = '', $machineId = ''): Ban
@@ -52,6 +51,8 @@ class Ban extends ChocolateyModel
         $this->attributes['ip'] = $ipAddress;
         $this->attributes['type'] = $banType;
         $this->attributes['machine_id'] = $machineId;
+
+        $this->save();
 
         return $this;
     }

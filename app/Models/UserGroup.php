@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
- * Class UserGroup.
+ * Class UserGroup
+ * @package App\Models
  */
 class UserGroup extends ChocolateyModel
 {
@@ -39,59 +39,21 @@ class UserGroup extends ChocolateyModel
      *
      * @var array
      */
-    protected $maps = [
-        'badgeCode'       => 'badge',
-        'roomId'          => 'room_id',
-        'primaryColour'   => 'color_one',
-        'secondaryColour' => 'color_two',
-    ];
+    protected $maps = array('badgeCode' => 'badge', 'roomId' => 'room_id', 'primaryColour' => 'color_one', 'secondaryColour' => 'color_two');
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'user_id',
-        'badge',
-        'slot_id',
-        'id',
-        'user_id',
-        'room_id',
-        'state',
-        'rights',
-        'forum',
-        'date_created',
-        'read_forum',
-        'post_messages',
-        'post_threads',
-        'mod_forum',
-    ];
+    protected $hidden = array('user_id', 'badge', 'slot_id', 'id', 'user_id', 'room_id', 'state', 'rights', 'forum', 'date_created', 'read_forum', 'post_messages', 'post_threads', 'mod_forum');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'badgeCode',
-        'roomId',
-        'primaryColour',
-        'secondaryColour',
-        'type',
-        'isAdmin',
-    ];
-
-    /**
-     * Store Function.
-     *
-     * A Group can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store an User Group by Chocolatey. Groups need be created from the Server.');
-    }
+    protected $appends = array('badgeCode', 'roomId', 'primaryColour', 'secondaryColour', 'type', 'isAdmin');
 
     /**
      * Return if is Admin.

@@ -8,7 +8,8 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class Room.
+ * Class Room
+ * @package App\Models
  *
  * @property int id
  */
@@ -49,82 +50,26 @@ class Room extends Model
      *
      * @var array
      */
-    protected $maps = [
-        'uniqueId'         => 'id',
-        'ownerName'        => 'owner_name',
-        'ownerUniqueId'    => 'owner_id',
-        'doorMode'         => 'state',
-        'leaderboardValue' => 'score',
-        'maximumVisitors'  => 'users_max',
-        'habboGroupId'     => 'guild_id',
-        'rating'           => 'score',
-    ];
+    protected $maps = array('uniqueId' => 'id', 'ownerName' => 'owner_name', 'ownerUniqueId' => 'owner_id', 'doorMode' => 'state',
+        'leaderboardValue' => 'score', 'maximumVisitors' => 'users_max', 'habboGroupId' => 'guild_id', 'rating' => 'score');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'uniqueId',
-        'leaderboardRank',
-        'thumbnailUrl',
-        'imageUrl',
-        'leaderboardValue',
-        'doorMode',
-        'maximumVisitors',
-        'publicRoom',
-        'ownerUniqueId',
-        'ownerName',
-        'showOwnerName',
-        'categories',
-        'rating',
-    ];
+    protected $appends = array('uniqueId', 'leaderboardRank', 'thumbnailUrl', 'imageUrl', 'leaderboardValue', 'doorMode', 'maximumVisitors',
+        'publicRoom', 'ownerUniqueId', 'ownerName', 'showOwnerName', 'categories', 'rating');
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'owner_name',
-        'owner_id',
-        'is_public',
-        'state',
-        'password',
-        'model',
-        'users',
-        'users_max',
-        'guild_id',
-        'category',
-        'score',
-        'paper_floor',
-        'paper_wall',
-        'paper_landscape',
-        'thickness_wall',
-        'wall_height',
-        'thickness_floor',
-        'moodlight_data',
-        'is_staff_picked',
-        'allow_other_pets',
-        'allow_other_pets_eat',
-        'allow_walkthrough',
-        'allow_hidewall',
-        'chat_mode',
-        'chat_weight',
-        'chat_speed',
-        'chat_hearing_distance',
-        'chat_protection',
-        'override_model',
-        'who_can_mute',
-        'who_can_kick',
-        'who_can_ban',
-        'poll_id',
-        'roller_speed',
-        'promoted',
-        'trade_mode',
-        'move_diagonally',
-    ];
+    protected $hidden = array('owner_name', 'owner_id', 'is_public', 'state', 'password', 'model', 'users', 'users_max', 'guild_id', 'category', 'score', 'paper_floor', 'paper_wall',
+        'paper_landscape', 'thickness_wall', 'wall_height', 'thickness_floor', 'moodlight_data', 'is_staff_picked', 'allow_other_pets', 'allow_other_pets_eat', 'allow_walkthrough',
+        'allow_hidewall', 'chat_mode', 'chat_weight', 'chat_speed', 'chat_hearing_distance', 'chat_protection', 'override_model', 'who_can_mute', 'who_can_kick', 'who_can_ban', 'poll_id',
+        'roller_speed', 'promoted', 'trade_mode', 'move_diagonally');
 
     /**
      * Stores a new Room.
@@ -132,12 +77,12 @@ class Room extends Model
      * @param string $roomName
      * @param string $description
      * @param string $model
-     * @param int    $maxUsers
-     * @param int    $roomCategory
-     * @param int    $floorPaper
-     * @param int    $wallPaper
-     * @param float  $landscapePaper
-     * @param int    $ownerId
+     * @param int $maxUsers
+     * @param int $roomCategory
+     * @param int $floorPaper
+     * @param int $wallPaper
+     * @param float $landscapePaper
+     * @param int $ownerId
      * @param string $ownerName
      *
      * @return Room
@@ -248,6 +193,6 @@ class Room extends Model
      */
     public function getCategoriesAttribute(): array
     {
-        return [str_replace('}', '', str_replace('${', '', FlatCat::find($this->attributes['category'])))];
+        return array(str_replace('}', '', str_replace('${', '', FlatCat::find($this->attributes['category']))));
     }
 }

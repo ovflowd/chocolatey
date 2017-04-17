@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
-use Sofa\Eloquence\Metable\InvalidMutatorException;
 
 /**
  * Class Photo
@@ -48,17 +47,6 @@ class Photo extends ChocolateyModel
      * @var array
      */
     protected $casts = array('tags' => 'array', 'creator_uniqueId' => 'string');
-
-    /**
-     * Store Function.
-     *
-     * A photo can't be inserted by the CMS.
-     * Only by the Emulator
-     */
-    public function store()
-    {
-        throw new InvalidMutatorException('You cannot store a Photo by Chocolatey. Photos need be created from the Server.');
-    }
 
     /**
      * Get the Unique Id of the Photo.

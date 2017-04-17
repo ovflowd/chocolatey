@@ -33,12 +33,13 @@ class PaymentCategory extends ChocolateyModel
      * Store an Shop Country.
      *
      * @param string $paymentName
-     *
      * @return PaymentCategory
      */
     public function store(string $paymentName): PaymentCategory
     {
         $this->attributes['payment_type'] = $paymentName;
+
+        $this->save();
 
         return $this;
     }

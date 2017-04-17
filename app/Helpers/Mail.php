@@ -82,7 +82,7 @@ final class Mail
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email)->save();
+        (new MailModel)->store($token = uniqid('HabboMail', true), $url, $email);
 
         return $token;
     }

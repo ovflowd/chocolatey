@@ -42,7 +42,7 @@ class PhotosController extends BaseController
      */
     public function report(Request $request, int $photoId): Response
     {
-        (new PhotoReport())->store($photoId, $request->json()->get('reason'), UserFacade::getUser()->uniqueId)->save();
+        (new PhotoReport)->store($photoId, $request->json()->get('reason'), UserFacade::getUser()->uniqueId);
 
         return response(null);
     }
@@ -60,7 +60,7 @@ class PhotosController extends BaseController
             return response(null);
         }
 
-        (new PhotoLike())->store($photoId, UserFacade::getUser()->name)->save();
+        (new PhotoLike)->store($photoId, UserFacade::getUser()->name);
 
         return response(null);
     }

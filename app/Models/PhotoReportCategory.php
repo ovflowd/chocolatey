@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class PhotoReportCategory.
+ * Class PhotoReportCategory
+ * @package App\Models
  */
 class PhotoReportCategory extends ChocolateyModel
 {
@@ -31,15 +32,16 @@ class PhotoReportCategory extends ChocolateyModel
     /**
      * Add a Report Category.
      *
-     * @param int    $reportCategory
+     * @param int $reportCategory
      * @param string $description
-     *
      * @return PhotoReportCategory
      */
     public function store(int $reportCategory, string $description): PhotoReportCategory
     {
         $this->attributes['report_category'] = $reportCategory;
         $this->attributes['description'] = $description;
+
+        $this->save();
 
         return $this;
     }

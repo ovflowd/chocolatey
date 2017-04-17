@@ -77,6 +77,8 @@ class Article extends ChocolateyModel
         $this->attributes['imageUrl'] = $imageUrl;
         $this->attributes['thumbnailUrl'] = $thumbnailUrl;
 
+        $this->save();
+
         return $this;
     }
 

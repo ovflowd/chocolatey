@@ -12,12 +12,14 @@ use Sofa\Eloquence\Eloquence;
 use Sofa\Eloquence\Mappable;
 
 /**
- * Class User.
+ * Class User
+ * @package App\Models
  *
  * @property string trusted
  * @property int uniqueId
  * @property string figureString
  * @property string name
+ * @property string motto
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -35,7 +37,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    public $traits = ['USER'];
+    public $traits = array('USER');
 
     /**
      * The table associated with the model.
@@ -56,108 +58,38 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $maps = [
-        'uniqueId' => 'id',
-        'name' => 'username',
-        'figureString' => 'look',
-        'lastWebAccess' => 'last_login',
-        'creationTime' => 'account_created',
-        'email' => 'mail',
-        'identityId' => 'id',
-        'accountId' => 'id',
-    ];
+    protected $maps = array('uniqueId' => 'id', 'name' => 'username', 'figureString' => 'look', 'lastWebAccess' => 'last_login', 'creationTime' => 'account_created', 'email' => 'mail', 'identityId' => 'id', 'accountId' => 'id');
 
     /**
      * The Appender(s) of the Model.
      *
      * @var array
      */
-    protected $appends = [
-        'habboClubMember',
-        'buildersClubMember',
-        'sessionLoginId',
-        'loginLogId',
-        'identityVerified',
-        'identityType',
-        'trusted',
-        'country',
-        'traits',
-        'uniqueId',
-        'name',
-        'figureString',
-        'lastWebAccess',
-        'creationTime',
-        'email',
-        'identityId',
-        'emailVerified',
-        'accountId',
-        'memberSince',
-        'isBanned',
-        'banDetails',
-        'isStaff',
-    ];
+    protected $appends = array('habboClubMember', 'buildersClubMember', 'sessionLoginId', 'loginLogId', 'identityVerified', 'identityType', 'trusted', 'country', 'traits',
+        'uniqueId', 'name', 'figureString', 'lastWebAccess', 'creationTime', 'email', 'identityId', 'emailVerified', 'accountId', 'memberSince', 'isBanned', 'banDetails', 'isStaff');
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'mail',
-        'id',
-        'username',
-        'auth_ticket',
-        'last_login',
-        'ip_current',
-        'ip_register',
-        'mail_verified',
-        'account_day_of_birth',
-        'real_name',
-        'look',
-        'gender',
-        'credits',
-        'pixels',
-        'home_room',
-    ];
+    protected $fillable = array('mail', 'id', 'username', 'auth_ticket', 'last_login', 'ip_current', 'ip_register', 'mail_verified', 'account_day_of_birth',
+        'real_name', 'look', 'gender', 'credits', 'pixels', 'home_room');
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'id',
-        'username',
-        'mail',
-        'account_created',
-        'password',
-        'mail_verified',
-        'real_name',
-        'account_day_of_birth',
-        'last_online',
-        'last_login',
-        'ip_register',
-        'auth_ticket',
-        'home_room',
-        'points',
-        'look',
-        'ip_current',
-        'online',
-        'pixels',
-        'credits',
-        'gender',
-        'points',
-        'rank',
-    ];
+    protected $hidden = array('id', 'username', 'mail', 'account_created', 'password', 'mail_verified', 'real_name', 'account_day_of_birth',
+        'last_online', 'last_login', 'ip_register', 'auth_ticket', 'home_room', 'points', 'look', 'ip_current', 'online', 'pixels', 'credits', 'gender', 'points', 'rank');
 
     /**
      * The attributes that should be casted to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'traits' => 'string',
-    ];
+    protected $casts = array('traits' => 'string');
 
     /**
      * Store an User on the Database.
@@ -167,7 +99,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $email
      * @param string $address
      * @param bool $newUser
-     *
      * @return User
      */
     public function store(string $username, string $password, string $email, string $address = '', bool $newUser = true): User
@@ -197,9 +128,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function createData()
     {
-        (new ChocolateyId())->store($this->attributes['id'], $this->attributes['mail'])->save();
+        (new ChocolateyId)->store($this->attributes['id'], $this->attributes['mail']);
 
-        (new UserPreferences())->store($this->attributes['id'])->save();
+        (new UserPreferences)->store($this->attributes['id']);
     }
 
     /**
@@ -262,7 +193,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getTraitsAttribute(): array
     {
         if (array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 6) {
-            return ['STAFF'];
+            return array('STAFF');
         }
 
         return $this->traits;

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use ErrorException;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -37,15 +36,14 @@ class ChocolateyMail extends ChocolateyModel
      *
      * @param string $userMail
      * @param int $userId
-     *
-     * @throws ErrorException
-     *
      * @return ChocolateyMail
      */
     public function store(int $userId, string $userMail): ChocolateyMail
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['mail'] = $userMail;
+
+        $this->save();
 
         return $this;
     }

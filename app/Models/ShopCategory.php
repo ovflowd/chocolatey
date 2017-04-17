@@ -3,7 +3,8 @@
 namespace App\Models;
 
 /**
- * Class ShopCategory.
+ * Class ShopCategory
+ * @package App\Models
  */
 class ShopCategory extends ChocolateyModel
 {
@@ -33,20 +34,19 @@ class ShopCategory extends ChocolateyModel
      *
      * @var array
      */
-    protected $appends = [
-        'category',
-    ];
+    protected $appends = array('category');
 
     /**
      * Store an Shop Country.
      *
      * @param string $categoryName
-     *
      * @return ShopCategory
      */
     public function store(string $categoryName): ShopCategory
     {
         $this->attributes['category_name'] = $categoryName;
+
+        $this->save();
 
         return $this;
     }
