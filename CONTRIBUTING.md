@@ -14,4 +14,4 @@
 * Please if the changes creates modifications on the HabboWEB/Pages/GUI/Graphics/Interfaces attach a screenshot.
 
 ### Read More
-* Read more about **Contributions** on [the repository wiki](wiki/Before-Collaborating)
+* Read more about **Contributions** on [the repository wiki](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating)
