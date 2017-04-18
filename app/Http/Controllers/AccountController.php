@@ -74,11 +74,11 @@ class AccountController extends BaseController
     public function savePreferences(Request $request): Response
     {
         UserSettings::updateOrCreate(['user_id' => UserFacade::getUser()->uniqueId], [
-            'block_following' => $request->json()->get('friendCanFollow') == false ? '1' : '0',
+            'block_following'      => $request->json()->get('friendCanFollow') == false ? '1' : '0',
             'block_friendrequests' => $request->json()->get('friendRequestEnabled') == false ? '1' : '0',
         ]);
 
-        foreach ((array)$request->json()->all() as $setting => $value) {
+        foreach ((array) $request->json()->all() as $setting => $value) {
             UserPreferences::find(UserFacade::getUser()->uniqueId)->update([$setting => $value == true ? '1' : '0']);
         }
 
@@ -133,8 +133,8 @@ class AccountController extends BaseController
      * Create a New User.
      *
      * @param Request $request
-     * @param array $userInfo
-     * @param bool $newUser If is a New User
+     * @param array   $userInfo
+     * @param bool    $newUser  If is a New User
      *
      * @return User
      */
@@ -144,7 +144,7 @@ class AccountController extends BaseController
 
         $token = Mail::store($userInfo['email'], 'public/registration/activate');
 
-        Mail::send(['email' => $userInfo['email'], 'name' => $userName, 'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName')]);
+        Mail::send(['email' => $userInfo['email'], 'name' => $userName, 'url' => "/activate/{$token}", 'subject' => 'Welcome to '.Config::get('chocolatey.hotelName')]);
 
         return UserFacade::setSession((new User())->store($userName, $userInfo['email'], $request->ip(), $newUser));
     }
@@ -162,7 +162,7 @@ class AccountController extends BaseController
     {
         $partialName = explode(' ', (new Alliteration())->getName());
 
-        return strtolower($partialName[0] . strstr($userMail, '@', true) . $partialName[1]);
+        return strtolower($partialName[0].strstr($userMail, '@', true).$partialName[1]);
     }
 
     /**
@@ -193,7 +193,7 @@ class AccountController extends BaseController
         $token = Mail::store($user->email, 'public/forgotPassword');
 
         Mail::send(['name' => $user->name, 'email' => $user->email, 'subject' => 'Password reset confirmation',
-            'url' => "/reset-password/{$token}",
+            'url'          => "/reset-password/{$token}",
         ], 'habbo-web-mail.password-reset');
 
         return response()->json(['email' => $user->email]);
@@ -211,7 +211,7 @@ class AccountController extends BaseController
         $token = Mail::store(UserFacade::getUser()->email, 'public/registration/activate');
 
         Mail::send(['name' => UserFacade::getUser()->name, 'email' => $request->user()->email,
-            'url' => "/activate/{$token}", 'subject' => 'Welcome to ' . Config::get('chocolatey.hotelName'),
+            'url'          => "/activate/{$token}", 'subject' => 'Welcome to '.Config::get('chocolatey.hotelName'),
         ]);
 
         return response(null);

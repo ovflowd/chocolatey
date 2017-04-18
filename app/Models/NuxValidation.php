@@ -34,8 +34,8 @@ class NuxValidation
      * Create a NUX Validation.
      *
      * @param string $code
-     * @param array $validationResult
-     * @param array $suggestions
+     * @param array  $validationResult
+     * @param array  $suggestions
      */
     public function __construct(string $code = 'OK', array $validationResult = [], array $suggestions = [])
     {

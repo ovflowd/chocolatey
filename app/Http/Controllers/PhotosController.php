@@ -36,7 +36,7 @@ class PhotosController extends BaseController
      * @MODERATION: Reporting Status (0 = Not Reviewed, 1 = Report Approved, 2 = Report Not Approved
      *
      * @param Request $request
-     * @param int $photoId
+     * @param int     $photoId
      *
      * @return Response
      */
