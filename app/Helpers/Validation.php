@@ -27,8 +27,8 @@ final class Validation extends Singleton
      * Check String Size.
      *
      * @param string $needle
-     * @param int $min
-     * @param int $max
+     * @param int    $min
+     * @param int    $max
      *
      * @return bool
      */
@@ -47,7 +47,7 @@ final class Validation extends Singleton
     public function checkWords(string $needle): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($illegal) use ($needle) {
-                return stripos($needle, $illegal) !== false;
-            })) == 0;
+            return stripos($needle, $illegal) !== false;
+        })) == 0;
     }
 }

@@ -43,7 +43,7 @@ class UserPreferences extends Model
      * @var array
      */
     protected $fillable = ['emailFriendRequestNotificationEnabled', 'emailGiftNotificationEnabled', 'emailGroupNotificationEnabled', 'emailMiniMailNotificationEnabled',
-        'emailNewsletterEnabled', 'emailRoomMessageNotificationEnabled', 'friendCanFollow', 'friendRequestEnabled', 'offlineMessagingEnabled', 'onlineStatusVisible', 'profileVisible',];
+        'emailNewsletterEnabled', 'emailRoomMessageNotificationEnabled', 'friendCanFollow', 'friendRequestEnabled', 'offlineMessagingEnabled', 'onlineStatusVisible', 'profileVisible', ];
 
     /**
      * Store an User Preference set on the Database.
