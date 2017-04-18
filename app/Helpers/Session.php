@@ -39,7 +39,7 @@ final class Session extends Singleton
      * Store a Variable in the Session.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return mixed
      */
