@@ -51,20 +51,6 @@ final class Mail extends Singleton
     }
 
     /**
-     * Update Mail Model Data.
-     *
-     * @param array $parameters
-     *
-     * @return MailModel
-     */
-    public function update(array $parameters)
-    {
-        $this->mailModel->update($parameters);
-
-        return $this->mailModel;
-    }
-
-    /**
      * Return if Exists E-Mail with that Token.
      *
      * @param string $token
@@ -108,5 +94,19 @@ final class Mail extends Singleton
     public function set(MailModel $model)
     {
         return $this->mailModel = $model;
+    }
+
+    /**
+     * Update Mail Model Data.
+     *
+     * @param array $parameters
+     *
+     * @return MailModel
+     */
+    public function update(array $parameters)
+    {
+        $this->mailModel->update($parameters);
+
+        return $this->mailModel;
     }
 }

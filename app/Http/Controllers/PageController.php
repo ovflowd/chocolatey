@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\User;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -24,5 +23,18 @@ class PageController extends BaseController
         $pageArray = explode('.', $pageFile);
 
         return response(view("habbo-web-pages.{$pageCategory}.{$pageArray[0]}"));
+    }
+
+    /**
+     * Render a HabboPage
+     *
+     * @WARNING: Categories can still be pages
+     *
+     * @param string $category
+     * @param string $page
+     */
+    public function habboPage(string $category, string $page)
+    {
+
     }
 }
