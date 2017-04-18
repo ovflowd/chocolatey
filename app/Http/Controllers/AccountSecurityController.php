@@ -50,11 +50,11 @@ class AccountSecurityController extends BaseController
         }
 
         UserSecurity::updateOrCreate([
-            'user_id' => UserFacade::getUser()->uniqueId,
-            'firstQuestion' => $request->json()->get('questionId1'),
+            'user_id'        => UserFacade::getUser()->uniqueId,
+            'firstQuestion'  => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer' => $request->json()->get('answer1'),
-            'secondAnswer' => $request->json()->get('answer2'),]);
+            'firstAnswer'    => $request->json()->get('answer1'),
+            'secondAnswer'   => $request->json()->get('answer2'), ]);
 
         return response()->json(null, 204);
     }
@@ -156,14 +156,14 @@ class AccountSecurityController extends BaseController
     protected function sendChangeMailConfirmation(Request $request)
     {
         Mail::send(['email' => UserFacade::getUser()->email,
-            'name' => UserFacade::getUser()->name, 'subject' => 'Email change alert',
+            'name'          => UserFacade::getUser()->name, 'subject' => 'Email change alert',
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = Mail::store(UserFacade::getUser()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
         Mail::send(['email' => $request->json()->get('newEmail'), 'name' => UserFacade::getUser()->name,
-            'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
+            'subject'       => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
         ], 'habbo-web-mail.confirm-mail-change');
     }
 

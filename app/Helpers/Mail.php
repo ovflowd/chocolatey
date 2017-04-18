@@ -22,7 +22,7 @@ final class Mail extends Singleton
     /**
      * Send an Email.
      *
-     * @param array $configuration
+     * @param array  $configuration
      * @param string $view
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
