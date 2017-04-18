@@ -66,7 +66,7 @@ class NuxController extends BaseController
         
         Nux::generateRoom($request);
 
-        UserFacade::updateSession(['traits' => ['USER']]);
+        UserFacade::getUser()->traits = ['USER'];
 
         return response(null, 200);
     }

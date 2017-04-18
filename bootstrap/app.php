@@ -109,6 +109,7 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/ads.php';
     require __DIR__.'/../routes/news.php';
     require __DIR__.'/../routes/misc.php';
+    require __DIR__.'/../routes/pages.php';
 });
 
 return $app;

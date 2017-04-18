@@ -46,10 +46,10 @@ class ArticleController extends BaseController
      *
      * @TODO: Proper Way to use Country ID
      *
-     * @param string          $countryId
+     * @param string $countryId
      * @param ArticleCategory $category
-     * @param int             $categoryPage
-     * @param int             $start
+     * @param int $categoryPage
+     * @param int $start
      *
      * @return Response
      */
