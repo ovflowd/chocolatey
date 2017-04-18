@@ -20,6 +20,7 @@ class CreateChocolateyUsersMailRequestsTable extends Migration
             $table->enum('used', ['0', '1'])->default('0');
             $table->string('link', 255);
             $table->string('mail', 255);
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->primary('id', 'chocolatey_users_mail_requests_primary');
         });
 

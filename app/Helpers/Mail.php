@@ -45,7 +45,7 @@ final class Mail extends Singleton
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email);
+        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email, date('Y-m-d H:i:s', time()));
 
         return $token;
     }
@@ -75,9 +75,11 @@ final class Mail extends Singleton
             $mailModel = MailModel::where('token', $token)->where('used', '0')->first();
 
             if ($mailModel !== null) {
-                $this->set($mailModel);
+                if (strtotime($mailModel->created_at) + (Config::get('mail.expire') * 24 * 60 * 60) >= time()) {
+                    $this->set($mailModel);
 
-                $this->update(['used' => '1']);
+                    $this->update(['used' => '1']);
+                }
             }
         }
 
