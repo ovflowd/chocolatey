@@ -32,9 +32,10 @@ class PageController extends BaseController
      *
      * @param string $category
      * @param string $page
+     * @return Response
      */
-    public function habboPage(string $category, string $page)
+    public function habboPage(string $category, string $page = '')
     {
-
+        return response(view(empty($page) ? "habbo-pages.{$category}" : "habbo-pages.{$category}.{$page}"));
     }
 }
