@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\User;
 use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -27,16 +26,16 @@ class PageController extends BaseController
     }
 
     /**
-     * Get Client View.
+     * Render a HabboPage
      *
-     * @param string $clientType
+     * @WARNING: Categories can still be pages
      *
+     * @param string $category
+     * @param string $page
      * @return Response
      */
-    public function getClient($clientType): Response
+    public function habboPage(string $category, string $page = '')
     {
-        User::updateSession(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
-
-        return response(view($clientType, ['token' => $userToken]));
+        return response(view(empty($page) ? "habbo-pages.{$category}" : "habbo-pages.{$category}.{$page}"));
     }
 }

@@ -9,44 +9,30 @@ use Illuminate\Support\Facades\Mail as MailFacade;
 
 /**
  * Class Mail.
- *
- * @TODO: Refactor this Class
  */
 final class Mail extends Singleton
 {
     /**
      * Stored Mail Model.
      *
-     * @var MailModel|null
+     * @var MailModel
      */
-    protected $mailModel = null;
-
-    /**
-     * Quick Way to get Cached MailModel.
-     *
-     * @return MailModel|null
-     */
-    public function getMail()
-    {
-        return $this->mailModel;
-    }
+    protected $mailModel;
 
     /**
      * Send an Email.
      *
-     * @param array  $configuration
+     * @param array $configuration
      * @param string $view
      */
     public function send(array $configuration, string $view = 'habbo-web-mail.confirm-mail')
     {
-        if (Config::get('mail.enable') == false) {
-            return;
+        if (Config::get('mail.enable')) {
+            MailFacade::send($view, $configuration, function ($message) use ($configuration) {
+                $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+                $message->to($configuration['email'])->subject($configuration['subject']);
+            });
         }
-
-        MailFacade::send($view, $configuration, function ($message) use ($configuration) {
-            $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
-            $message->to($configuration['email'])->subject($configuration['subject']);
-        });
     }
 
     /**
@@ -59,26 +45,9 @@ final class Mail extends Singleton
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email);
+        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email, date('Y-m-d H:i:s', time()));
 
         return $token;
-    }
-
-    /**
-     * Update Mail Model Data.
-     *
-     * @param string $token
-     * @param array  $parameters
-     *
-     * @return MailModel
-     */
-    public function update(string $token, array $parameters)
-    {
-        $mail = $this->get($token);
-
-        $mail->update($parameters);
-
-        return $mail;
     }
 
     /**
@@ -90,7 +59,7 @@ final class Mail extends Singleton
      */
     public function has(string $token)
     {
-        return self::getInstance()->getByToken($token) !== null;
+        return $this->get($token) !== null;
     }
 
     /**
@@ -100,13 +69,21 @@ final class Mail extends Singleton
      *
      * @return MailModel
      */
-    public function getByToken(string $token)
+    public function get(string $token = '')
     {
-        $mailRequest = MailModel::where('token', $token)->where('used', '0')->first();
+        if ($this->mailModel == null && !empty($token)) {
+            $mailModel = MailModel::where('token', $token)->where('used', '0')->first();
 
-        $mailRequest->update(['used' => '1']);
+            if ($mailModel !== null) {
+                if (strtotime($mailModel->created_at) + (Config::get('mail.expire') * 24 * 60 * 60) >= time()) {
+                    $this->set($mailModel);
 
-        return $this->set($mailRequest);
+                    $this->update(['used' => '1']);
+                }
+            }
+        }
+
+        return $this->mailModel;
     }
 
     /**
@@ -119,5 +96,19 @@ final class Mail extends Singleton
     public function set(MailModel $model)
     {
         return $this->mailModel = $model;
+    }
+
+    /**
+     * Update Mail Model Data.
+     *
+     * @param array $parameters
+     *
+     * @return MailModel
+     */
+    public function update(array $parameters)
+    {
+        $this->mailModel->update($parameters);
+
+        return $this->mailModel;
     }
 }

@@ -50,11 +50,11 @@ class AccountSecurityController extends BaseController
         }
 
         UserSecurity::updateOrCreate([
-            'user_id'        => UserFacade::getUser()->uniqueId,
-            'firstQuestion'  => $request->json()->get('questionId1'),
+            'user_id' => UserFacade::getUser()->uniqueId,
+            'firstQuestion' => $request->json()->get('questionId1'),
             'secondQuestion' => $request->json()->get('questionId2'),
-            'firstAnswer'    => $request->json()->get('answer1'),
-            'secondAnswer'   => $request->json()->get('answer2'), ]);
+            'firstAnswer' => $request->json()->get('answer1'),
+            'secondAnswer' => $request->json()->get('answer2'),]);
 
         return response()->json(null, 204);
     }
@@ -109,21 +109,21 @@ class AccountSecurityController extends BaseController
      */
     public function confirmActivation(Request $request): JsonResponse
     {
-        if (Mail::getByToken($request->json()->get('token')) == null) {
+        if (Mail::get($request->json()->get('token')) == null) {
             return response()->json(['error' => 'activation.invalid_token'], 400);
         }
 
-        ChocolateyId::find(Mail::getMail()->mail)->update(['mail_verified' => '1']);
+        ChocolateyId::find(Mail::get()->mail)->update(['mail_verified' => '1']);
 
-        if (strpos(Mail::getMail()->link, 'change-email') !== false) {
-            $email = str_replace('change-email/', '', Mail::getMail()->link);
+        if (strpos(Mail::get()->link, 'change-email') !== false) {
+            $email = str_replace('change-email/', '', Mail::get()->link);
 
-            User::where('mail', Mail::getMail()->mail)->update(['mail' => $email]);
+            User::where('mail', Mail::get()->mail)->update(['mail' => $email]);
 
-            ChocolateyId::find(Mail::getMail()->mail)->update(['mail' => $email]);
+            ChocolateyId::find(Mail::get()->mail)->update(['mail' => $email]);
         }
 
-        return response()->json(['email' => Mail::getMail()->mail, 'emailVerified' => true, 'identityVerified' => true]);
+        return response()->json(['email' => Mail::get()->mail, 'emailVerified' => true, 'identityVerified' => true]);
     }
 
     /**
@@ -156,14 +156,14 @@ class AccountSecurityController extends BaseController
     protected function sendChangeMailConfirmation(Request $request)
     {
         Mail::send(['email' => UserFacade::getUser()->email,
-            'name'          => UserFacade::getUser()->name, 'subject' => 'Email change alert',
+            'name' => UserFacade::getUser()->name, 'subject' => 'Email change alert',
         ], 'habbo-web-mail.mail-change-alert');
 
         $generatedToken = Mail::store(UserFacade::getUser()->email,
             "change-email/{$request->json()->get('newEmail')}");
 
         Mail::send(['email' => $request->json()->get('newEmail'), 'name' => UserFacade::getUser()->name,
-            'subject'       => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
+            'subject' => 'Email change confirmation', 'url' => "/activate/{$generatedToken}",
         ], 'habbo-web-mail.confirm-mail-change');
     }
 
@@ -219,11 +219,11 @@ class AccountSecurityController extends BaseController
      */
     public function confirmChangePassword(Request $request): JsonResponse
     {
-        if (Mail::getByToken($request->json()->get('token')) == null) {
+        if (Mail::get($request->json()->get('token')) == null) {
             return response()->json(null, 404);
         }
 
-        ChocolateyId::find(Mail::getMail()->mail)->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
+        ChocolateyId::find(Mail::get()->mail)->update(['password' => hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))]);
 
         return response()->json(null);
     }

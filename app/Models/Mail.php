@@ -42,13 +42,15 @@ class Mail extends ChocolateyModel
      * @param string $link
      * @param string $userMail
      *
+     * @param string $timestamp
      * @return Mail
      */
-    public function store(string $token, string $link, string $userMail): Mail
+    public function store(string $token, string $link, string $userMail, string $timestamp): Mail
     {
         $this->attributes['token'] = $token;
         $this->attributes['link'] = $link;
         $this->attributes['mail'] = $userMail;
+        $this->attributes['created_at'] = $timestamp;
 
         $this->save();
 

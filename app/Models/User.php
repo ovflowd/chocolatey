@@ -65,7 +65,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $appends = ['habboClubMember', 'buildersClubMember', 'sessionLoginId', 'loginLogId', 'identityVerified', 'identityType', 'trusted', 'country', 'traits',
-        'uniqueId', 'name', 'figureString', 'lastWebAccess', 'creationTime', 'email', 'identityId', 'emailVerified', 'accountId', 'memberSince', 'isBanned', 'banDetails', 'isStaff', ];
+        'uniqueId', 'name', 'figureString', 'lastWebAccess', 'creationTime', 'email', 'identityId', 'emailVerified', 'accountId', 'memberSince', 'isBanned', 'banDetails', 'isStaff',];
 
     /**
      * The attributes that are mass assignable.
@@ -73,7 +73,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = ['mail', 'id', 'username', 'auth_ticket', 'last_login', 'ip_current', 'ip_register', 'mail_verified', 'account_day_of_birth',
-        'real_name', 'look', 'gender', 'credits', 'pixels', 'home_room', ];
+        'real_name', 'look', 'gender', 'credits', 'pixels', 'home_room',];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -81,7 +81,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = ['id', 'username', 'mail', 'account_created', 'password', 'mail_verified', 'real_name', 'account_day_of_birth',
-        'last_online', 'last_login', 'ip_register', 'auth_ticket', 'home_room', 'points', 'look', 'ip_current', 'online', 'pixels', 'credits', 'gender', 'points', 'rank', ];
+        'last_online', 'last_login', 'ip_register', 'auth_ticket', 'home_room', 'points', 'look', 'ip_current', 'online', 'pixels', 'credits', 'gender', 'points', 'rank',];
 
     /**
      * The attributes that should be casted to native types.
@@ -96,7 +96,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @param string $username
      * @param string $email
      * @param string $address
-     * @param bool   $newUser
+     * @param bool $newUser
      *
      * @return User
      */
@@ -286,7 +286,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -298,7 +298,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $accountCreated = $this->attributes['account_created'] ?? time();
 
-        return date('Y-m-d', $accountCreated).'T'.date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
+        return date('Y-m-d', $accountCreated) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $accountCreated);
     }
 
     /**
@@ -320,7 +320,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         $lastLogin = $this->attributes['last_login'] ?? time();
 
-        return date('Y-m-d', $lastLogin).'T'.date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
+        return date('Y-m-d', $lastLogin) . 'T' . date('H:i:s.ZZZZ+ZZZZ', $lastLogin);
     }
 
     /**
@@ -338,7 +338,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return ChocolateyId
      */
-    public function getChocolateyId(): ChocolateyId
+    public function getChocolateyId()
     {
         return ChocolateyId::find($this->attributes['mail']);
     }

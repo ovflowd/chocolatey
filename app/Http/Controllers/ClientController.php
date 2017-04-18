@@ -24,10 +24,21 @@ class ClientController extends BaseController
     {
         $hotelUrl = Config::get('chocolatey.hotelUrl');
 
-        $accountType = in_array('NEW_USER', User::getUser()->traits) ? 'habbo-client-new-user' : 'habbo-client-user';
+        return response()->json(['clienturl' => "{$hotelUrl}/client/habbo-client"], 200, [], JSON_UNESCAPED_SLASHES);
+    }
 
-        return response()->json(['clienturl' => "{$hotelUrl}/client/{$accountType}"],
-            200, [], JSON_UNESCAPED_SLASHES);
+    /**
+     * Get Client View.
+     *
+     * @param string $clientType
+     *
+     * @return Response
+     */
+    public function showClient($clientType): Response
+    {
+        User::updateSession(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
+
+        return response(view($clientType, ['token' => $userToken, 'newUser' => in_array('NEW_USER', User::getUser()->traits)]));
     }
 
     /**
