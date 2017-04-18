@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Mail as MailFacade;
 
 /**
  * Class Mail.
- *
- * @TODO: Refactor this Class
  */
 final class Mail extends Singleton
 {

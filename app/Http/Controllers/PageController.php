@@ -25,18 +25,4 @@ class PageController extends BaseController
 
         return response(view("habbo-web-pages.{$pageCategory}.{$pageArray[0]}"));
     }
-
-    /**
-     * Get Client View.
-     *
-     * @param string $clientType
-     *
-     * @return Response
-     */
-    public function getClient($clientType): Response
-    {
-        User::updateSession(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
-
-        return response(view($clientType, ['token' => $userToken]));
-    }
 }

@@ -86,8 +86,11 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
     // Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app) {
 
-        // Client URL
+        // Get Client URL
         $app->get('api/client/clienturl', 'ClientController@getUrl');
+
+        // Get Client View
+        $app->get('client/{view}', 'ClientController@showClient');
 
         // User Privacy Settings
         $app->get('api/user/preferences', 'AccountController@getPreferences');
