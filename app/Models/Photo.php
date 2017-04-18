@@ -54,7 +54,7 @@ class Photo extends ChocolateyModel
      */
     public function getIdAttribute(): string
     {
-        return (string)$this->attributes['id'];
+        return (string) $this->attributes['id'];
     }
 
     /**

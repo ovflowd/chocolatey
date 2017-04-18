@@ -26,12 +26,13 @@ class PageController extends BaseController
     }
 
     /**
-     * Render a HabboPage
+     * Render a HabboPage.
      *
      * @WARNING: Categories can still be pages
      *
      * @param string $category
      * @param string $page
+     *
      * @return Response
      */
     public function habboPage(string $category, string $page = '')
