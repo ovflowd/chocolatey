@@ -29,7 +29,7 @@
             "flash.client.url": "{{$chocolatey->game->gordon}}",
             "unique_habbo_id": "{{$user->uniqueId}}",
             "client.starting.revolving": "{!! implode('/', $chocolatey->loading) !!}",
-            "habbopages.url": "{{$chocolatey->hotelUrl}}habbo-pages/",
+            "habbopages.url": "{{$chocolatey->hotelUrl}}/habbo-pages/",
             @if($newUser)
                 "new.user.flow.enabled": "true",
                 "new.user.flow.onboarding.choose.your.room": "Choose your room",
