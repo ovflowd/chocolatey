@@ -18,6 +18,6 @@ class HomePageController extends BaseController
      */
     public function show()
     {
-        return response(view('habbo-web'));
+        return response(view('habbo-web-pages.habbo-web'));
     }
 }

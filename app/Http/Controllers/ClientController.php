@@ -30,15 +30,13 @@ class ClientController extends BaseController
     /**
      * Get Client View.
      *
-     * @param string $clientType
-     *
      * @return Response
      */
-    public function showClient($clientType): Response
+    public function showClient(): Response
     {
         User::updateSession(['auth_ticket' => ($userToken = uniqid('HabboWEB', true))]);
 
-        return response(view($clientType, ['token' => $userToken, 'newUser' => in_array('NEW_USER', User::getUser()->traits)]));
+        return response(view('habbo-web-pages.habbo-client', ['token' => $userToken, 'newUser' => in_array('NEW_USER', User::getUser()->traits)]));
     }
 
     /**
