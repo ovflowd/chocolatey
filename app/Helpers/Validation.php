@@ -20,7 +20,7 @@ final class Validation extends Singleton
     public function filterUserName(string $username): bool
     {
         return $this->checkSize($username, 4, 15) && $this->checkWords($username) &&
-            !preg_match('/[^A-Za-z0-9]/', $username);
+            preg_match('/^[a-zA-Z0-9_\-=?!@:.$]+$/', $username);
     }
 
     /**
