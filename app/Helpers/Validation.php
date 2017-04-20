@@ -20,15 +20,15 @@ final class Validation extends Singleton
     public function filterUserName(string $username): bool
     {
         return $this->checkSize($username, 4, 15) && $this->checkWords($username) &&
-            !preg_match('/[^A-Za-z0-9]/', $username);
+            preg_match('/^[a-zA-Z0-9_\-=?!@:.$]+$/', $username);
     }
 
     /**
      * Check String Size.
      *
      * @param string $needle
-     * @param int $min
-     * @param int $max
+     * @param int    $min
+     * @param int    $max
      *
      * @return bool
      */
@@ -47,7 +47,7 @@ final class Validation extends Singleton
     public function checkWords(string $needle): bool
     {
         return count(array_filter(Config::get('chocolatey.invalid'), function ($illegal) use ($needle) {
-                return stripos($needle, $illegal) !== false;
-            })) == 0;
+            return stripos($needle, $illegal) !== false;
+        })) == 0;
     }
 }

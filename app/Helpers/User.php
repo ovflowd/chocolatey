@@ -42,7 +42,7 @@ final class User extends Singleton
      * Update User Data by User Model.
      *
      * @param UserModel $user
-     * @param array $parameters
+     * @param array     $parameters
      *
      * @return UserModel
      */
@@ -94,7 +94,7 @@ final class User extends Singleton
      */
     public function hasSession()
     {
-        return (bool)Session::get(Config::get('chocolatey.security.session'));
+        return (bool) Session::get(Config::get('chocolatey.security.session'));
     }
 
     /**
