@@ -127,7 +127,7 @@
         </div>
     </div>
     <div id="content" class="client-content"></div>
-    <iframe id="page-content" class="hidden" allowtransparency="true" frameborder="0" src="about:blank"></iframe>
+    <iframe id="page-content" class="hidden" allowtransparency="true" frameborder="0" src="../../../index.php"></iframe>
 </div>
 </body>
 </html>
