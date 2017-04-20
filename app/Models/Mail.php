@@ -41,8 +41,8 @@ class Mail extends ChocolateyModel
      * @param string $token
      * @param string $link
      * @param string $userMail
-     *
      * @param string $timestamp
+     *
      * @return Mail
      */
     public function store(string $token, string $link, string $userMail, string $timestamp): Mail

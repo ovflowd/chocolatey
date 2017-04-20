@@ -61,9 +61,9 @@ class ShopItem extends ChocolateyModel
      *
      * @param string $itemName
      * @param string $countryCode
-     * @param int $creditAmount
-     * @param int $iconId
-     * @param array $paymentMethods
+     * @param int    $creditAmount
+     * @param int    $iconId
+     * @param array  $paymentMethods
      *
      * @return ShopItem
      */
