@@ -75,8 +75,9 @@ final class User extends Singleton
     {
         $chocolateyId = ChocolateyId::find($request->json()->get('email'));
 
-        if ($chocolateyId == null)
-            return null;
+        if ($chocolateyId == null) {
+            return;
+        }
 
         $user = $chocolateyId->last_logged_id == 0 ? UserModel::where('mail', $request->json()->get('email'))->first() :
             UserModel::find($chocolateyId->last_logged_id);
