@@ -96,8 +96,6 @@ class ArticleController extends BaseController
      */
     public function getRss()
     {
-        return response(view('habbo-rss', [
-            'articles' => Article::limit(20)->get(),
-        ]))->header('Content-Type', 'text/xml');
+        return response(view('habbo-web-pages.habbo-rss', ['articles' => Article::limit(20)->get()]))->header('Content-Type', 'text/xml');
     }
 }

@@ -90,7 +90,7 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
         $app->get('api/client/clienturl', 'ClientController@getUrl');
 
         // Get Client View
-        $app->get('client/{view}', 'ClientController@showClient');
+        $app->get('client/habbo-client', 'ClientController@showClient');
 
         // User Privacy Settings
         $app->get('api/user/preferences', 'AccountController@getPreferences');
