@@ -7,28 +7,21 @@
 About
 --------------------------------
 
-#### What is?
+### What?
 
 **Chocolatey** it's an open source content management system made with php. It uses Laravel's Lumen Micro Framework to handle all the API Requests and uses Habbo's Angular Module for rendering all views and requests.
 
-#### What it uses?
+### How?
 
-1. php 7.0+ to implement it backend;
-2. Laravel Lumen 5.4 to design it backend;
-3. Angular 1.6.1 to design it frontend;
-4. Eloquent ORM to handle & itterate with database;
-5. Blade Template Engine to construct a dynamic template;
-6. SQL to design the database schema;
+**Chocolatey** it's made with `php` using it seventh (7.X) version. 
 
-#### For what I use Chocolatey?
+Chocolatey uses [AngularJS](https://angular.io/) for it `Front End Design/Modules`, and uses `SQL` for storing Data. 
+
+Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
+
+### Why?
 
 For development purposes and to create test and educational local Habbo.com website (CMS) clones.
-
-#### How I can have a full experience with Chocolatey?
-
-* **Chocolatey** is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source Habbo Emulator. **Chocolatey** only support it.
-* Also **Chocolatey** only supports php 7.0+ environments, php 5.X is no longer supported.
-* You can actually use **Chocolatey** in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
 
 Installation
 --------------------------------
