@@ -7,15 +7,15 @@
 About
 --------------------------------
 
-### What?
+### What is Chocolatey?
 
 **Chocolatey** it's an open source content management system made with php. It uses Laravel's Lumen Micro Framework to handle all the API Requests and uses Habbo's Angular Module for rendering all views and requests.
 
-### How?
+### How Chocolatey was made?
 
-**Chocolatey** it's made with `php` using it seventh (7.X) version. Chocolatey uses [AngularJS](https://angular.io/) for it `Front End Design/Modules`, and uses `SQL` for storing Data. Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
+**Chocolatey** it's made with `php` using it seventh (7.X) version. Chocolatey uses [AngularJS](https://angular.io/) for it Front End Design/Modules, and uses `SQL` for storing Data. Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
 
-### Why?
+### Why Chocolatey was created?
 
 For development purposes and to create test and educational local Habbo.com website (CMS) clones.
 
