@@ -13,11 +13,7 @@ About
 
 ### How?
 
-**Chocolatey** it's made with `php` using it seventh (7.X) version. 
-
-Chocolatey uses [AngularJS](https://angular.io/) for it `Front End Design/Modules`, and uses `SQL` for storing Data. 
-
-Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
+**Chocolatey** it's made with `php` using it seventh (7.X) version. Chocolatey uses [AngularJS](https://angular.io/) for it `Front End Design/Modules`, and uses `SQL` for storing Data. Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
 
 ### Why?
 
