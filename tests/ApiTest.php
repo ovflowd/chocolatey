@@ -1,30 +1,34 @@
 <?php
 
-use Httpful\Request;
+use Laravel\Lumen\Testing\TestCase;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 /**
- * Class Api
+ * Class ApiTest
  */
-class ApiTest extends PHPUnit_Framework_TestCase
+class ApiTest extends TestCase
 {
     /**
-     * Server URL
      *
-     * @var string
-     */
-    protected $serverURI = 'http://localhost';
-
-    /**
-     * Test the Index Page of the API Client
      * @path /api/
      * @test
      */
     public function testIndex()
     {
-        $response = Request::get($this->serverURI . '/api')->send();
+        $this->get('/api')->seeStatusCode(401);
+    }
 
-        $this->assertEquals(401, $response->code);
+    /**
+     * Creates the application.
+     *
+     * Needs to be implemented by subclasses.
+     *
+     * @return HttpKernelInterface
+     */
+    public function createApplication()
+    {
+        return require __DIR__ . '/../bootstrap/app.php';
     }
 }
