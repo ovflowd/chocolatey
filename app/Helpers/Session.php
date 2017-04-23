@@ -24,7 +24,7 @@ final class Session extends Singleton
      */
     public function start()
     {
-        session_start();
+        @session_start();
     }
 
     /**
@@ -32,7 +32,7 @@ final class Session extends Singleton
      */
     public function destroy()
     {
-        session_destroy();
+        @session_destroy();
     }
 
     /**
