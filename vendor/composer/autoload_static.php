@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
+class ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -14,8 +14,8 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'bee9632da3ca00a99623b9c35d0c4f8b' => __DIR__ . '/..' . '/laravel/lumen-framework/src/helpers.php',
-        'c3506a526c5ff171720322fdf42d15c3' => __DIR__ . '/..' . '/sofa/eloquence/src/helpers.php',
         'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
+        'c3506a526c5ff171720322fdf42d15c3' => __DIR__ . '/..' . '/sofa/eloquence/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -330,33 +330,12 @@ class ComposerStaticInit78ed7036e2ae09a5223145dabb5da758
         ),
     );
 
-    public static $classMap = array (
-        'CreateChocolateyArticlesCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_015846_create_chocolatey_articles_categories_table.php',
-        'CreateChocolateyArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_015827_create_chocolatey_articles_table.php',
-        'CreateChocolateyShopCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_150023_create_chocolatey_shop_countries_table.php',
-        'CreateChocolateyShopHistoryTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_175025_create_chocolatey_shop_history_table.php',
-        'CreateChocolateyShopItemsCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_154508_create_chocolatey_shop_items_categories_table.php',
-        'CreateChocolateyShopItemsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_155420_create_chocolatey_shop_items_table.php',
-        'CreateChocolateyShopPaymentCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_152613_create_chocolatey_shop_payment_categories_table.php',
-        'CreateChocolateyShopPaymentCheckoutTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_173447_create_chocolatey_shop_payment_checkout_table.php',
-        'CreateChocolateyShopPaymentMethodsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_160027_create_chocolatey_shop_payment_methods_table.php',
-        'CreateChocolateyUsersIdTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_184527_create_chocolatey_users_id_table.php',
-        'CreateChocolateyUsersMailRequestsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_26_170704_create_chocolatey_users_mail_requests_table.php',
-        'CreateChocolateyUsersPhotosLikesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_015949_create_chocolatey_users_photos_likes_table.php',
-        'CreateChocolateyUsersPhotosReportedCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_024602_create_chocolatey_users_photos_reported_categories_table.php',
-        'CreateChocolateyUsersPhotosReportedTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_024353_create_chocolatey_users_photos_reported_table.php',
-        'CreateChocolateyUsersPreferencesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_184504_create_chocolatey_users_preferences_table.php',
-        'CreateChocolateyUsersSecurityTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_25_184255_create_chocolatey_users_security_table.php',
-        'CreateChocolateyUsersSecurityTrustedTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_26_235459_create_chocolatey_users_security_trusted_table.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit78ed7036e2ae09a5223145dabb5da758::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit78ed7036e2ae09a5223145dabb5da758::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit78ed7036e2ae09a5223145dabb5da758::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit78ed7036e2ae09a5223145dabb5da758::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

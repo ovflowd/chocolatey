@@ -6,6 +6,7 @@ use Swift_Mailer;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,6 +17,8 @@ use Illuminate\Contracts\Mail\MailQueue as MailQueueContract;
 
 class Mailer implements MailerContract, MailQueueContract
 {
+    use Macroable;
+
     /**
      * The view factory instance.
      *
@@ -206,6 +209,8 @@ class Mailer implements MailerContract, MailQueueContract
         }
 
         $this->sendSwiftMessage($message->getSwiftMessage());
+
+        $this->dispatchSentEvent($message);
     }
 
     /**
@@ -453,6 +458,21 @@ class Mailer implements MailerContract, MailQueueContract
         return $this->events->until(
             new Events\MessageSending($message)
         ) !== false;
+    }
+
+    /**
+     * Dispatch the message sent event.
+     *
+     * @param  \Illuminate\Mail\Message  $message
+     * @return void
+     */
+    protected function dispatchSentEvent($message)
+    {
+        if ($this->events) {
+            $this->events->dispatch(
+                new Events\MessageSent($message->getSwiftMessage())
+            );
+        }
     }
 
     /**

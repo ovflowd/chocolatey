@@ -1,58 +1,40 @@
-**READ [THIS](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating) BEFORE CREATING AN ISSUE!!!**
-
-
-<hr>
-
 <sub><sub><sub>![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)</sub></sub></sub>
 
 <sup>The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.</sup>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![GitHub release](https://img.shields.io/github/release/sant0ro/chocolatey.svg)]() [![Github All Releases](https://img.shields.io/github/downloads/sant0ro/chocolatey/total.svg)]() [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development) [![Code Climate](https://codeclimate.com/github/sant0ro/chocolatey/badges/gpa.svg)](https://codeclimate.com/github/sant0ro/chocolatey) [![StyleCI](https://styleci.io/repos/79750909/shield?branch=development&style=flat)](https://styleci.io/repos/79750909) [![Inline docs](http://inch-ci.org/github/sant0ro/chocolatey.svg?branch=development)](http://inch-ci.org/github/sant0ro/chocolatey)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![GitHub release](https://img.shields.io/github/release/sant0ro/chocolatey.svg)]() [![Github All Releases](https://img.shields.io/github/downloads/sant0ro/chocolatey/total.svg)]() [![Build Status](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/build.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/build-status/development) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sant0ro/chocolatey/badges/quality-score.png?b=development)](https://scrutinizer-ci.com/g/sant0ro/chocolatey/?branch=development) [![Code Climate](https://codeclimate.com/github/sant0ro/chocolatey/badges/gpa.svg)](https://codeclimate.com/github/sant0ro/chocolatey) [![StyleCI](https://styleci.io/repos/79750909/shield?branch=development&style=flat)](https://styleci.io/repos/79750909) [![Inline docs](http://inch-ci.org/github/sant0ro/chocolatey.svg?branch=development)](http://inch-ci.org/github/sant0ro/chocolatey)[![codecov](https://codecov.io/gh/sant0ro/chocolatey/branch/master/graph/badge.svg)](https://codecov.io/gh/sant0ro/chocolatey)
 
-<hr>
 
-### About
+About
+--------------------------------
 
-#### What is?
+### What is Chocolatey?
 
 **Chocolatey** it's an open source content management system made with php. It uses Laravel's Lumen Micro Framework to handle all the API Requests and uses Habbo's Angular Module for rendering all views and requests.
 
-#### What it uses?
+### How Chocolatey was made?
 
-1. php 7.0+ to implement it backend;
-2. Laravel Lumen 5.4 to design it backend;
-3. Angular 1.6.1 to design it frontend;
-4. Eloquent ORM to handle & itterate with database;
-5. Blade Template Engine to construct a dynamic template;
-6. SQL to design the database schema;
+**Chocolatey** it's made with `php` using it seventh (7.X) version. Chocolatey uses [AngularJS](https://angular.io/) for it Front End Design/Modules, and uses `SQL` for storing Data. Also **Chocolatey** core it's designed using the [Lumen Framework](https://lumen.laravel.com/).
 
-#### For what I use Chocolatey?
+### Why Chocolatey was created?
 
 For development purposes and to create test and educational local Habbo.com website (CMS) clones.
 
-#### How I can have a full experience with Chocolatey?
-
-* **Chocolatey** is totally compatible with [Arcturus Emulator](http://arcturus.wf), an open-source Habbo Emulator. **Chocolatey** only support it.
-* Also **Chocolatey** only supports php 7.0+ environments, php 5.X is no longer supported.
-* You can actually use **Chocolatey** in Apache HTTP Server 2.0+. For your security we recommend ModSecurity 2.
-
-<hr>
-
-### Installation
+Installation
+--------------------------------
 
 Check our Wiki Page for Installation Tutorials, by clicking [here](https://github.com/sant0ro/chocolatey/wiki/Installing-Chocolatey)
 
-<hr>
-
-### Observations
+Observations
+--------------------------------
 
 * We recommend that you see our Wiki to get know about all our Tutorials/Guides and FAQ pages. Click [here](https://github.com/sant0ro/chocolatey/wiki) to go to the Wiki Summary.
 * We also recommend that you check our Issues to see what are the currently Chocolatey Bugs/Feature Requests. You can collaborate with Chocolatey by creating Pull Requests or Creating Issues.
 * Remember that we don't support **Arcturus** bugs related things. If you have any Issue that isn't directly related to Chocolatey, pleae use RageZONE Help Section.
-  
-<hr>
 
-### Collaborators
+Collaborators
+--------------------------------
+
 * Claudio aka saamus
 * John aka Kylon
 * Mike aka CineXMike
