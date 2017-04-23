@@ -31,4 +31,14 @@ class ApiTest extends TestCase
     {
         return require __DIR__ . '/../bootstrap/app.php';
     }
+
+    /**
+     * Set Up
+     */
+    public function setUp()
+    {
+        @session_start();
+
+        parent::setUp();
+    }
 }
