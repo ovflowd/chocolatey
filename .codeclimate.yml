@@ -13,6 +13,11 @@ engines:
     enabled: true
   phpmd:
     enabled: true
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
+      Naming/BooleanGetMethodName:
+        enabled: false
 ratings:
   paths:
   - "**.inc"
@@ -23,3 +28,4 @@ exclude_paths:
 - build/
 - vendor/
 - public/
+- resources/
