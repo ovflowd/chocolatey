@@ -8,10 +8,8 @@ before_install:
     - rm .env
     - cp .env.travis .env
     - mysql -e 'CREATE DATABASE arcturus;'
-
-before_script:
-    - travis_retry composer self-update
-    - travis_retry composer install --no-interaction
+    - composer self-update
+    - composer install --no-interaction
 
 script:
     - vendor/bin/phpunit --coverage-clover=coverage.xml
