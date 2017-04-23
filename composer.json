@@ -67,8 +67,7 @@
     "nubs/random-name-generator": "^2.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "nategood/httpful": "*"
+    "phpunit/phpunit": "~4.0"
   },
   "autoload": {
     "psr-4": {
