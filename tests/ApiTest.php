@@ -11,7 +11,6 @@ require __DIR__ . '/../vendor/autoload.php';
 class ApiTest extends TestCase
 {
     /**
-     * Test the Index Page of the API Client
      *
      * @path /api/
      * @test
