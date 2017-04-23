@@ -35,18 +35,6 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
     // Get User Public Data
     $app->get('api/public/users/{userId}/profile', 'ProfileController@getPublicProfile');
 
-    // Get User (AzureID) Avatars
-    $app->get('api/user/avatars', 'AccountController@getAvatars');
-
-    // Get User Public Data
-    $app->get('api/user/profile', 'ProfileController@getProfile');
-
-    // Get User (AzureID) Avatars
-    $app->get('api/user/avatars/check-name', 'AccountController@checkName');
-
-    // User Messenger Not Read Discussions
-    $app->get('api/user/discussions', 'AccountController@getDiscussions');
-
     // Create an User Request
     $app->post('api/public/registration/new', 'LoginController@register');
 
@@ -64,24 +52,6 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
 
     // Facebook Login
     $app->post('api/public/authentication/facebook', 'LoginController@facebook');
-
-    // New User Client Check
-    $app->post('api/newuser/name/check', 'NuxController@checkName');
-
-    // New User Client Select Username
-    $app->post('api/newuser/name/select', 'NuxController@selectName');
-
-    // New User Client Select Room
-    $app->post('api/newuser/room/select', 'NuxController@selectRoom');
-
-    // Save User Look
-    $app->post('api/user/look/save', 'AccountController@saveLook');
-
-    // Create a New User Avatar
-    $app->post('api/user/avatars', 'AccountController@createAvatar');
-
-    // Select an User Avatar
-    $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
 
     // Middleware that Requires Authentication
     $app->group(['middleware' => 'auth'], function () use ($app) {
@@ -104,6 +74,18 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
         // User Security Settings getQuestions
         $app->get('api/safetylock/questions', 'AccountSecurityController@getQuestions');
 
+        // Get User (AzureID) Avatars
+        $app->get('api/user/avatars', 'AccountController@getAvatars');
+
+        // Get User Public Data
+        $app->get('api/user/profile', 'ProfileController@getProfile');
+
+        // Get User (AzureID) Avatars
+        $app->get('api/user/avatars/check-name', 'AccountController@checkName');
+
+        // User Messenger Not Read Discussions
+        $app->get('api/user/discussions', 'AccountController@getDiscussions');
+
         // User Security Settings Reset Devices
         $app->get('api/safetylock/resetTrustedLogins', 'AccountSecurityController@reset');
 
@@ -124,6 +106,24 @@ $app->group(['middleware' => 'maintenance'], function () use ($app) {
 
         // Resend E-mail Verification
         $app->post('api/settings/email/change', 'AccountSecurityController@changeMail');
+
+        // New User Client Check
+        $app->post('api/newuser/name/check', 'NuxController@checkName');
+
+        // New User Client Select Username
+        $app->post('api/newuser/name/select', 'NuxController@selectName');
+
+        // New User Client Select Room
+        $app->post('api/newuser/room/select', 'NuxController@selectRoom');
+
+        // Save User Look
+        $app->post('api/user/look/save', 'AccountController@saveLook');
+
+        // Create a New User Avatar
+        $app->post('api/user/avatars', 'AccountController@createAvatar');
+
+        // Select an User Avatar
+        $app->post('api/user/avatars/select', 'AccountController@selectAvatar');
 
         // Habbo Client Login step
         $app->post('api/log/loginstep', function () {
