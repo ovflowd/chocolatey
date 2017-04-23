@@ -5,7 +5,7 @@ use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\TestCase;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /**
  * Class ApiTest.
@@ -15,7 +15,7 @@ class ApiTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * Test Index of the API
+     * Test Index of the API.
      *
      * @path /api/
      * @test
@@ -28,7 +28,7 @@ class ApiTest extends TestCase
     public function testRooms()
     {
         $this->get('api/public/rooms/0')->seeJson([
-            'error' => 'not-found']);
+            'error' => 'not-found', ]);
     }
 
     /**
@@ -40,7 +40,7 @@ class ApiTest extends TestCase
      */
     public function createApplication()
     {
-        return require __DIR__ . '/../bootstrap/app.php';
+        return require __DIR__.'/../bootstrap/app.php';
     }
 
     /**
@@ -52,6 +52,6 @@ class ApiTest extends TestCase
     {
         parent::setUp();
 
-        DB::unprepared(file_get_contents(__DIR__ . '/../database/arcturus/arcturus.sql'));
+        DB::unprepared(file_get_contents(__DIR__.'/../database/arcturus/arcturus.sql'));
     }
 }
