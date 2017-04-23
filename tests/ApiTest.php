@@ -3,15 +3,14 @@
 use Laravel\Lumen\Testing\TestCase;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /**
- * Class ApiTest
+ * Class ApiTest.
  */
 class ApiTest extends TestCase
 {
     /**
-     *
      * @path /api/
      * @test
      */
@@ -29,7 +28,7 @@ class ApiTest extends TestCase
      */
     public function createApplication()
     {
-        return require __DIR__ . '/../bootstrap/app.php';
+        return require __DIR__.'/../bootstrap/app.php';
     }
 
     /**
