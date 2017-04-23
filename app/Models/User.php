@@ -330,7 +330,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getEmailVerifiedAttribute(): bool
     {
-        return $this->getChocolateyId()->mail_verified;
+        return $this->getChocolateyId()->mail_verified ?? false;
     }
 
     /**

@@ -23010,7 +23010,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
   `trade_mode` int(11) NOT NULL DEFAULT '2',
   `move_diagonally` enum('0','1') NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `rooms`

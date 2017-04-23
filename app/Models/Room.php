@@ -192,6 +192,6 @@ class Room extends Model
      */
     public function getCategoriesAttribute(): array
     {
-        return [str_replace('}', '', str_replace('${', '', FlatCat::find($this->attributes['category'])))];
+        return [str_replace('}', '', str_replace('${', '', FlatCat::find($this->attributes['category'])->caption))];
     }
 }
