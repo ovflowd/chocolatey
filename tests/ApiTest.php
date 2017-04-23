@@ -32,7 +32,7 @@ class ApiTest extends TestCase
     }
 
     /**
-     * Set Up
+     * Set Up.
      */
     public function setUp()
     {
