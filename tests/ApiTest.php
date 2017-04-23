@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\TestCase;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -41,17 +40,5 @@ class ApiTest extends TestCase
     public function createApplication()
     {
         return require __DIR__ . '/../bootstrap/app.php';
-    }
-
-    /**
-     * Setup the test environment.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-
-        DB::unprepared(file_get_contents(__DIR__ . '/../database/arcturus/arcturus.sql'));
     }
 }

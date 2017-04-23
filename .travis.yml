@@ -8,6 +8,7 @@ before_install:
     - rm .env
     - cp .env.travis .env
     - mysql -e 'CREATE DATABASE arcturus;'
+    - mysql -u travis arcturus < database/arcturus/arcturus.sql || aborterror "Unable to import Arcturus Database"
     - composer self-update
     - composer install --no-interaction
 
@@ -22,5 +23,5 @@ branches:
     - development
     - master
 
-services:
-  - mysql
+addons:
+  mariadb: '10.0'
