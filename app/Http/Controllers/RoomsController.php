@@ -42,6 +42,6 @@ class RoomsController extends BaseController
      */
     public function getRoom($roomId): JsonResponse
     {
-        return response()->json(Room::find($roomId) ?? ['error' => 'not-found']);
+        return response()->json(Room::find($roomId) ?? ['error' => 'not-found'], 200, [], JSON_UNESCAPED_SLASHES);
     }
 }
