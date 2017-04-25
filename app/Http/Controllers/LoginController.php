@@ -46,8 +46,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
-            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
+            'expiryTime'                   => UserFacade::getUser()->banDetails->ban_expire,
+            'reason'                       => UserFacade::getUser()->banDetails->ban_reason, ], 401);
     }
 
     /**
