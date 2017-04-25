@@ -11,6 +11,7 @@ before_install:
     - mysql -u travis arcturus < database/arcturus/arcturus.sql || aborterror "Unable to import Arcturus Database"
     - composer self-update
     - composer install --no-interaction
+    - php artisan migrate
 
 script:
     - vendor/bin/phpunit --coverage-clover=coverage.xml
