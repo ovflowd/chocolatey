@@ -2,19 +2,16 @@
 
 use App\Models\Room;
 use App\Models\User;
-use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\TestCase;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Class ApiTest.
  */
 class ApiTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /**
      * Test Index of the API.
      *
@@ -35,7 +32,7 @@ class ApiTest extends TestCase
      */
     public function testRooms()
     {
-        if (Room::find(1) !== null) {
+        if (Room::where('name', 'Test Room')->first() !== null) {
             return;
         }
 
@@ -49,7 +46,7 @@ class ApiTest extends TestCase
 
         // Test Existent Room
         $this->get('api/public/rooms/1')->seeJson([
-            'id'   => 1,
+            'id' => 1,
             'name' => 'Test Room',
         ]);
     }
@@ -62,7 +59,7 @@ class ApiTest extends TestCase
      */
     public function testUsersPublicData()
     {
-        if (User::find(1) !== null) {
+        if (User::where('username', 'TestUser')->first() !== null) {
             return;
         }
 
@@ -102,21 +99,115 @@ class ApiTest extends TestCase
      */
     public function testRegisterUser()
     {
-        if (User::find(2) !== null) {
+        if (User::where('mail', 'newtest@melove.com')->first() !== null) {
             return;
         }
 
         // Create an User
         $this->json('POST', 'api/public/registration/new', [
-            'email'     => 'newtest@melove.com',
+            'email' => 'newtest@melove.com',
             'birthdate' => [
-                'day'   => 1,
+                'day' => 1,
                 'month' => 1,
-                'year'  => 1996,
+                'year' => 1996,
             ],
             'password' => 'WesleyFuck',
         ])->seeJson([
             'uniqueId' => 2,
+        ]);
+    }
+
+    /**
+     * Test User Login
+     *
+     * @path /api/public/authentication/login
+     * @test
+     */
+    public function testLogin()
+    {
+        // Create an User
+        $this->json('POST', 'api/public/authentication/login', [
+            'email' => 'newtest@melove.com',
+            'password' => 'WesleyFuck',
+        ])->seeJson([
+            'email' => 'newtest@melove.com',
+        ]);
+    }
+
+    /**
+     * Test if Client URL is given
+     *
+     * @path /api/client/clienturl
+     * @test
+     */
+    public function testClientUrl()
+    {
+        $this->testLogin();
+
+        $this->get('api/client/clienturl')->seeJson([
+            'clienturl' => "http://localhost/client/habbo-client"
+        ]);
+    }
+
+    /**
+     * Test if User Preferences are Given
+     *
+     * @path /api/user/preferences
+     * @test
+     */
+    public function testPreferences()
+    {
+        $this->testLogin();
+
+        $this->get('api/user/preferences')->seeJson([
+            'emailFriendRequestNotificationEnabled' => false
+        ]);
+    }
+
+    /**
+     * Test if SafetyLock status it's really deactivated.
+     *
+     * @path /api/safetylock/featureStatus
+     * @test
+     */
+    public function testSafetyLockStatus()
+    {
+        $this->testLogin();
+
+        $this->get('api/safetylock/featureStatus')->seeStatusCode(200);
+    }
+
+    /**
+     * Test if Get Avatars Details Works Correctly
+     *
+     * @path /api/user/profile
+     * @test
+     */
+    public function testGetAvatars()
+    {
+        $this->testLogin();
+
+        $this->get('api/user/profile')->seeJson([
+            'motto' => "I'm an Arcturus Lover!"
+        ]);
+    }
+
+    /**
+     * Test if Public Profile Data is being acquired
+     *
+     * @path /api/user/profile
+     * @test
+     */
+    public function testGetPublicProfile()
+    {
+        $this->testLogin();
+
+        $this->get('api/user/profile')->seeJson([
+            'motto' => "I'm an Arcturus Lover!",
+            'badges' => [],
+            'friends' => [],
+            'groups' => [],
+            'rooms' => []
         ]);
     }
 
@@ -129,6 +220,6 @@ class ApiTest extends TestCase
      */
     public function createApplication()
     {
-        return require __DIR__.'/../bootstrap/app.php';
+        return require __DIR__ . '/../bootstrap/app.php';
     }
 }

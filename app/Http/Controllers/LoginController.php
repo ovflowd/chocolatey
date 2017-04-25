@@ -26,9 +26,7 @@ class LoginController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
-        UserFacade::loginUser($request);
-
-        if (UserFacade::hasSession()) {
+        if (UserFacade::loginUser($request) !== null) {
             if (UserFacade::getUser()->isBanned) {
                 return $this->sendBanMessage($request);
             }
@@ -48,8 +46,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime'                   => UserFacade::getUser()->banDetails->ban_expire,
-            'reason'                       => UserFacade::getUser()->banDetails->ban_reason, ], 401);
+            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
+            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
     }
 
     /**
