@@ -10,5 +10,5 @@
 
 return [
     'title'       => 'SAFETY TIPS', // Template Title
-    'description' => 'Bescherm jezelf door kennis op te doen! Leer hoe je <a href="/playing-habbo/safety">veilig surft op het internet.</a>' // Template Content
+    'description' => 'Bescherm jezelf door kennis op te doen! Leer hoe je <a href="/playing-habbo/safety">veilig surft op het internet.</a>', // Template Content
 ];
