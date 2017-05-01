@@ -26,9 +26,7 @@ class LoginController extends BaseController
      */
     public function login(Request $request): JsonResponse
     {
-        UserFacade::loginUser($request);
-
-        if (UserFacade::hasSession()) {
+        if (UserFacade::loginUser($request) !== null) {
             if (UserFacade::getUser()->isBanned) {
                 return $this->sendBanMessage($request);
             }
