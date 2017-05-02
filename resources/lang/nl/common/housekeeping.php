@@ -4,7 +4,7 @@
  * Chocolatey Language Template.
  *
  * @template Go to Housekeeping Common Box
- * @uri /common/housekeeping.en.html
+ * @uri /common/housekeeping.nl.html
  * @language nl (dutch)
  */
 

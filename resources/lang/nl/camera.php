@@ -5,7 +5,7 @@
  *
  * @template HabboPage Camera Template
  * @uri /habbo-pages/camera
- * @language nl (dutch)
+ * @language en (english)
  */
 
 return [

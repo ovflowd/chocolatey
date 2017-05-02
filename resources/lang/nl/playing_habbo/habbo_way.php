@@ -3,8 +3,8 @@
 /**
  * Chocolatey Language Template.
  *
- * @template habbo Way Playing :hotelName Page
- * @uri /playing_habbo/habboe_way.en.html
+ * @template habbo Way Playing Habbo Page
+ * @uri /playing_habbo/habbo_way.nl.html
  * @language nl (dutch)
  */
 
