@@ -4,7 +4,7 @@
  * Chocolatey Language Template.
  *
  * @template Account Issues Common Box
- * @uri /common/box_account_issues.en.html
+ * @uri /common/box_account_issues.nl.html
  * @language nl (dutch)
  */
 

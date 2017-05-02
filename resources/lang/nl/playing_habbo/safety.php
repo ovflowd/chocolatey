@@ -3,8 +3,8 @@
 /**
  * Chocolatey Language Template.
  *
- * @template Safety Playing habbo Page
- * @uri /playing_habbo/safety.en.html
+ * @template Safety Playing Habbo Page
+ * @uri /playing_habbo/safety.nl.html
  * @language nl (dutch)
  */
 

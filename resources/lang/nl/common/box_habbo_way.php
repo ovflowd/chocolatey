@@ -4,7 +4,7 @@
  * Chocolatey Language Template.
  *
  * @template Habbo Way Common Box
- * @uri /common/box_habbo_way.en.html
+ * @uri /common/box_habbo_way.nl.html
  * @language nl (dutch)
  */
 

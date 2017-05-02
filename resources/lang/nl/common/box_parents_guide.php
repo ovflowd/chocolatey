@@ -4,7 +4,7 @@
  * Chocolatey Language Template.
  *
  * @template Parents Guide Common Box
- * @uri /common/box_parents_guide.en.html
+ * @uri /common/box_parents_guide.nl.html
  * @language nl (dutch)
  */
 

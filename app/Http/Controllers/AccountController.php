@@ -55,7 +55,7 @@ class AccountController extends BaseController
      */
     public function getPreferences(): JsonResponse
     {
-        $userPreferences = UserPreferences::find(UserFacade::getUser()->uniqueId);
+        $userPreferences = UserPreferences::firstOrCreate(['user_id' => UserFacade::getUser()->uniqueId]);
 
         foreach ($userPreferences->getAttributes() as $attributeName => $attributeValue) {
             $userPreferences->{$attributeName} = $attributeValue == 1;

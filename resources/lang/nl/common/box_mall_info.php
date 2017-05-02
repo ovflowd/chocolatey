@@ -4,7 +4,7 @@
  * Chocolatey Language Template.
  *
  * @template Mall Info Common Box
- * @uri /common/box_mall_info.en.html
+ * @uri /common/box_mall_info.nl.html
  * @language nl (dutch)
  */
 
