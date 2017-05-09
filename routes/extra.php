@@ -34,18 +34,18 @@ $app->get('extradata/public/users/stories', function () {
 // Crossdomain for Client
 $app->get('crossdomain.xml', function () {
     $cors = Config::get('chocolatey.cors');
-    
+
     $domains = '';
-    
-    foreach($cors as $domain) {
-        $domains .= '<allow-access-from domain="' . $domain . '"/>' . PHP_EOL;
+
+    foreach ($cors as $domain) {
+        $domains .= '<allow-access-from domain="'.$domain.'"/>'.PHP_EOL;
     }
-    
-    $cross = '<?xml version="1.0"?>' . PHP_EOL
-        . '<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">' . PHP_EOL
-        . $domains
-        . '</cross-domain-policy>';
-    
+
+    $cross = '<?xml version="1.0"?>'.PHP_EOL
+        .'<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">'.PHP_EOL
+        .$domains
+        .'</cross-domain-policy>';
+
     return response($cross)->header('Content-Type', 'text/xml');
 });
 
