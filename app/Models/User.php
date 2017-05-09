@@ -137,7 +137,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getIsBannedAttribute(): bool
     {
-        return Ban::where('user_id', $this->attributes['id'])->first() !== null;
+        $ban = Ban::where('user_id', $this->attributes['id'])->first();
+
+        if ($ban == null) {
+            return false;
+        }
+
+        return $ban->ban_expire >= time();
     }
 
     /**

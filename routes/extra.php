@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
+
 /*
 |--------------------------------------------------------------------------
 | Habbo Extradata Routes
@@ -27,6 +29,24 @@ $app->get('extradata/public/users/{userId}/photos', 'ProfileController@getPhotos
 // Public Stories
 $app->get('extradata/public/users/stories', function () {
     return response()->json('');
+});
+
+// Crossdomain for Client
+$app->get('crossdomain.xml', function () {
+    $cors = Config::get('chocolatey.cors');
+
+    $domains = '';
+
+    foreach ($cors as $domain) {
+        $domains .= '<allow-access-from domain="'.$domain.'"/>'.PHP_EOL;
+    }
+
+    $cross = '<?xml version="1.0"?>'.PHP_EOL
+        .'<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">'.PHP_EOL
+        .$domains
+        .'</cross-domain-policy>';
+
+    return response($cross)->header('Content-Type', 'text/xml');
 });
 
 // Middleware that Requires Authentication
