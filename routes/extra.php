@@ -43,6 +43,7 @@ $app->get('crossdomain.xml', function () {
 
     $cross = '<?xml version="1.0"?>'.PHP_EOL
         .'<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">'.PHP_EOL
+	.'<cross-domain-policy>'.PHP_EOL
         .$domains
         .'</cross-domain-policy>';
 
