@@ -76,7 +76,7 @@ final class User extends Singleton
         $temporaryUsers = UserModel::where('mail', $request->json()->get('email'))->get();
                 
         foreach($temporaryUsers as $forUser) {
-            if(!$forUser->isBanned()) {
+            if(!$forUser->isBanned) {
                 return $forUser;
             }
         }
@@ -96,7 +96,7 @@ final class User extends Singleton
         if($chocolateyId->last_logged_id != 0) {
             $temporaryUser = UserModel::find($chocolateyId->last_logged_id);
             
-            if($temporaryUser->isBanned()) {
+            if($temporaryUser->isBanned) {
                 return $this->checkForBanAlternative($request, $chocolateyId);
             }
             
@@ -105,7 +105,7 @@ final class User extends Singleton
         
         $temporaryUser = UserModel::where('mail', $request->json()->get('email'))->first();
         
-        if($temporaryUser->isBanned()) {
+        if($temporaryUser->isBanned) {
             return $this->checkForBanAlternative($request, $chocolateyId);
         }
         
