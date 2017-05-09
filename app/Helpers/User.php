@@ -63,6 +63,54 @@ final class User extends Singleton
     {
         return Session::get(Config::get('chocolatey.security.session')) ?? null;
     }
+    
+    /**
+     * Retrieve Non Banned Users (If all Users are Banned, return the Banned user Also)
+     *
+     * @param Request $request
+     * @param ChocolateyId $chocolateyId
+     *
+     * @return UserModel
+     */
+    private function checkForBanAlternative(Request $request, ChocolateyId $chocolateyId) {
+        $temporaryUsers = UserModel::where('mail', $request->json()->get('email'))->get();
+                
+        foreach($temporaryUsers as $forUser) {
+            if(!$forUser->isBanned()) {
+                return $forUser;
+            }
+        }
+        
+        return $temporaryUsers->get(0);
+    }
+    
+    /**
+     * Get Users
+     *
+     * @param Request $request
+     * @param ChocolateyId $chocolateyId
+     *
+     * @return UserModel
+     */
+    private function retrieveUser(Request $request, ChocolateyId $chocolateyId) {
+        if($chocolateyId->last_logged_id != 0) {
+            $temporaryUser = UserModel::find($chocolateyId->last_logged_id);
+            
+            if($temporaryUser->isBanned()) {
+                return $this->checkForBanAlternative($request, $chocolateyId);
+            }
+            
+            return $temporaryUser;
+        }
+        
+        $temporaryUser = UserModel::where('mail', $request->json()->get('email'))->first();
+        
+        if($temporaryUser->isBanned()) {
+            return $this->checkForBanAlternative($request, $chocolateyId);
+        }
+        
+        return $temporaryUser;
+    }
 
     /**
      * Set Session From Login Credentials.
@@ -78,10 +126,9 @@ final class User extends Singleton
         if ($chocolateyId == null) {
             return null;
         }
-
-        $user = $chocolateyId->last_logged_id == 0 ? UserModel::where('mail', $request->json()->get('email'))->first() :
-            UserModel::find($chocolateyId->last_logged_id);
-
+        
+        $user = $this->retrieveUser($request, $chocolateyId);
+        
         $chocolateyId->last_logged_id = $user->uniqueId;
 
         return $chocolateyId->password == hash(Config::get('chocolatey.security.hash'), $request->json()->get('password'))
