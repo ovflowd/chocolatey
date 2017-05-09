@@ -65,7 +65,7 @@ final class User extends Singleton
     }
     
     /**
-     * Retrieve Non Banned Users
+     * Retrieve Non Banned Users (If all Users are Banned, return the Banned user Also)
      *
      * @param Request $request
      * @param ChocolateyId $chocolateyId
@@ -81,7 +81,7 @@ final class User extends Singleton
             }
         }
         
-        return null;
+        return $temporaryUsers->get(0);
     }
     
     /**
