@@ -22,6 +22,5 @@ class UsersMigration extends Migration
      */
     public function down()
     {
-
     }
 }
