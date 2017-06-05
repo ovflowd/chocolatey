@@ -59,6 +59,7 @@ class ArticleCategory extends ChocolateyModel
     {
         $this->attributes['link'] = $link;
         $this->attributes['translate'] = $translate;
+        $this->timestamps = false;
 
         $this->save();
 

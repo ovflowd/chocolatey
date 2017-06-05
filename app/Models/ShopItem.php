@@ -74,6 +74,7 @@ class ShopItem extends ChocolateyModel
         $this->attributes['creditAmount'] = $creditAmount;
         $this->attributes['iconId'] = $iconId;
         $this->attributes['payment_methods'] = implode(',', $paymentMethods);
+        $this->timestamps = false;
 
         $this->save();
 

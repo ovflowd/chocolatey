@@ -20,6 +20,7 @@ class CreateChocolateyUsersMailRequestsTable extends Migration
             $table->enum('used', ['0', '1'])->default('0');
             $table->string('link', 255);
             $table->string('mail', 255);
+            $table->timestamps();
         });
     }
 

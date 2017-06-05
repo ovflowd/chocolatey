@@ -47,6 +47,7 @@ class TrustedDevice extends ChocolateyModel
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['ip_address'] = $ipAddress;
+        $this->timestamps = false;
 
         $this->save();
 

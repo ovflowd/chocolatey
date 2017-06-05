@@ -81,6 +81,7 @@ class UserSecurity extends ChocolateyModel
         $this->attributes['secondQuestion'] = $secondQuestion;
         $this->attributes['firstAnswer'] = $firstAnswer;
         $this->attributes['secondAnswer'] = $secondAnswer;
+        $this->timestamps = false;
 
         return $this;
     }

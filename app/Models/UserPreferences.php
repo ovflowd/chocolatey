@@ -55,6 +55,7 @@ class UserPreferences extends Model
     public function store(int $userId): UserPreferences
     {
         $this->attributes['user_id'] = $userId;
+        $this->timestamps = false;
 
         $this->save();
 

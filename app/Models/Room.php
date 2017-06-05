@@ -101,6 +101,7 @@ class Room extends Model
         $this->attributes['thickness_floor'] = 0;
         $this->attributes['owner_id'] = $ownerId;
         $this->attributes['owner_name'] = $ownerName;
+        $this->timestamps = false;
 
         $this->save();
 

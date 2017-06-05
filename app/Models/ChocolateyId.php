@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Config;
  * Class ChocolateyId.
  *
  * @property bool mail_verified
+ * @property int last_logged_id
  */
 class ChocolateyId extends ChocolateyModel
 {
@@ -59,6 +60,7 @@ class ChocolateyId extends ChocolateyModel
     {
         $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), $userPassword);
         $this->attributes['mail'] = $userMail;
+        $this->timestamps = false;
 
         $this->save();
 
@@ -72,6 +74,6 @@ class ChocolateyId extends ChocolateyModel
      */
     public function getRelatedAccountsAttribute()
     {
-        return User::query()->where('mail', $this->attributes['mail'])->get();
+        return User::where('mail', $this->attributes['mail'])->get();
     }
 }
