@@ -51,6 +51,7 @@ class Ban extends ChocolateyModel
         $this->attributes['ip'] = $ipAddress;
         $this->attributes['type'] = $banType;
         $this->attributes['machine_id'] = $machineId;
+        $this->timestamps = false;
 
         $this->save();
 

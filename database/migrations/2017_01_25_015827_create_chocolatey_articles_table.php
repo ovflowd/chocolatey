@@ -15,7 +15,7 @@ class CreateChocolateyArticlesTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_articles', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('title', 125);
             $table->string('description', 255);
             $table->text('content');
@@ -24,12 +24,8 @@ class CreateChocolateyArticlesTable extends Migration
             $table->string('imageUrl', 255);
             $table->string('thumbnailUrl', 255);
             $table->integer('roomId')->default(0);
-            $table->primary('id', 'chocolatey_articles_primary');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
-
-        DB::update('ALTER TABLE chocolatey_articles MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_articles')->insert([[
             'title'        => 'Welcome to Chocolatey',

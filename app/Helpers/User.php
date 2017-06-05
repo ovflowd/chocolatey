@@ -126,7 +126,7 @@ final class User extends Singleton
         $chocolateyId = ChocolateyId::find($request->json()->get('email'));
 
         if ($chocolateyId == null) {
-            return;
+            return null;
         }
 
         $user = $this->retrieveUser($request, $chocolateyId);

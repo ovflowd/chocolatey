@@ -1,6 +1,3 @@
-Development PAUSED!
--------------------
-
 <sub><sub><sub>![](http://www.habbcrazy.net/resources/fonts/116/chocolatey.gif)</sub></sub></sub>
 
 <sup>The Open Source Habbo.com Clone CMS, it's fast, secure and with many features.</sup>

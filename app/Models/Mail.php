@@ -8,13 +8,6 @@ namespace App\Models;
 class Mail extends ChocolateyModel
 {
     /**
-     * Disable Timestamps.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -41,16 +34,14 @@ class Mail extends ChocolateyModel
      * @param string $token
      * @param string $link
      * @param string $userMail
-     * @param string $timestamp
      *
      * @return Mail
      */
-    public function store(string $token, string $link, string $userMail, string $timestamp): Mail
+    public function store(string $token, string $link, string $userMail): Mail
     {
         $this->attributes['token'] = $token;
         $this->attributes['link'] = $link;
         $this->attributes['mail'] = $userMail;
-        $this->attributes['created_at'] = $timestamp;
 
         $this->save();
 

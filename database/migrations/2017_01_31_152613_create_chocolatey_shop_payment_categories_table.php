@@ -15,13 +15,10 @@ class CreateChocolateyShopPaymentCategoriesTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_shop_payment_categories', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('country_code', 5)->default('all');
             $table->string('payment_type', 50)->default('online');
-            $table->primary('id', 'chocolatey_shop_payment_categories_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_shop_payment_categories MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_shop_payment_categories')->insert([
             ['payment_type' => 'online', 'country_code' => 'all'],

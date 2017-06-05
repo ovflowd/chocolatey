@@ -50,6 +50,7 @@ class Country extends ChocolateyModel
     {
         $this->attributes['countryCode'] = $countryCode;
         $this->attributes['name'] = $name;
+        $this->timestamps = false;
 
         return $this;
     }

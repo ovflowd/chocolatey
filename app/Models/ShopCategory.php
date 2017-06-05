@@ -45,6 +45,7 @@ class ShopCategory extends ChocolateyModel
     public function store(string $categoryName): ShopCategory
     {
         $this->attributes['category_name'] = $categoryName;
+        $this->timestamps = false;
 
         $this->save();
 

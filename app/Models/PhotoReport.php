@@ -52,6 +52,7 @@ class PhotoReport extends ChocolateyModel
         $this->attributes['reason_id'] = $reasonId;
         $this->attributes['reported_by'] = $reportedBy;
         $this->attributes['approved'] = 0;
+        $this->timestamps = false;
 
         $this->save();
 

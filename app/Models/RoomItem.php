@@ -53,6 +53,7 @@ class RoomItem extends ChocolateyModel
         $this->attributes['z'] = $zPosition;
         $this->attributes['rot'] = $rotation;
         $this->attributes['extra_data'] = $extraData;
+        $this->timestamps = false;
 
         if (!empty($wallPosition)) {
             $this->attributes['wall_pos'] = $wallPosition;

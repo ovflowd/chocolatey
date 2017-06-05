@@ -116,6 +116,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
         $this->traits = $newUser ? ['NEW_USER', 'USER'] : ['USER'];
 
+        $this->timestamps = false;
+
         $this->save();
         $this->createData();
 

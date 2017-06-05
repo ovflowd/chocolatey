@@ -15,16 +15,13 @@ class CreateChocolateyUsersMailRequestsTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_users_mail_requests', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('token', 255);
             $table->enum('used', ['0', '1'])->default('0');
             $table->string('link', 255);
             $table->string('mail', 255);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->primary('id', 'chocolatey_users_mail_requests_primary');
+            $table->timestamps();
         });
-
-        DB::update('ALTER TABLE chocolatey_users_mail_requests MODIFY COLUMN id INT AUTO_INCREMENT');
     }
 
     /**

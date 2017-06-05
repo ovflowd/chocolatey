@@ -15,7 +15,7 @@ class CreateChocolateyShopPaymentMethodsTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_shop_payment_methods', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('buttonLogoUrl', 255)->default('//habboo-a.akamaihd.net/c_images/cbs2_partner_logos/partner_logo_paypal_001.png');
             $table->string('buttonText', 255)->nullable();
             $table->string('localizationKey', 125)->default('paypal');
@@ -23,10 +23,7 @@ class CreateChocolateyShopPaymentMethodsTable extends Migration
             $table->integer('category')->default(1);
             $table->boolean('disclaimer')->default(false);
             $table->text('smallPrint')->nullable();
-            $table->primary('id', 'chocolatey_shop_payment_methods_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_shop_payment_methods MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_shop_payment_methods')->insert([
             ['name' => 'PayPal', 'localizationKey' => 'paypal'],

@@ -15,15 +15,12 @@ class CreateChocolateyUsersPhotosReportedTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_users_photos_reported', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('photo_id');
             $table->integer('reported_by');
             $table->integer('reason_id');
             $table->enum('approved', ['0', '1', '2'])->default('0');
-            $table->primary('id', 'chocolatey_users_photos_reported_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_users_photos_reported MODIFY COLUMN id INT AUTO_INCREMENT');
     }
 
     /**

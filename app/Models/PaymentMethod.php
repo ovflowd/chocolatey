@@ -77,6 +77,7 @@ class PaymentMethod extends ChocolateyModel
         $this->attributes['buttonLogoUrl'] = $buttonImageUrl;
         $this->attributes['buttonText'] = $buttonText;
         $this->attributes['localizationKey'] = $code;
+        $this->timestamps = false;
 
         $this->save();
 
