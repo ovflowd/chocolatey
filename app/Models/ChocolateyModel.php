@@ -10,19 +10,19 @@ use Illuminate\Database\Eloquent\Model;
 abstract class ChocolateyModel extends Model
 {
     /**
-     * Remove Useless Updated At
+     * Remove Useless Updated At.
      *
      * @return null
      */
     public function getUpdatedAtColumn()
     {
-        return null;
     }
 
     /**
-     * Remove Useless Updated At
+     * Remove Useless Updated At.
      *
-     * @param  mixed $value
+     * @param mixed $value
+     *
      * @return $this
      */
     public function setUpdatedAt($value)
