@@ -15,13 +15,10 @@ class CreateChocolateyUsersPhotosLikesTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_users_photos_likes', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('photo_id');
             $table->string('username', 255);
-            $table->primary('id', 'chocolatey_users_photos_likes_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_users_photos_likes MODIFY COLUMN id INT AUTO_INCREMENT');
     }
 
     /**

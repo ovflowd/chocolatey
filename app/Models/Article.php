@@ -13,13 +13,6 @@ class Article extends ChocolateyModel
     use Eloquence, Mappable;
 
     /**
-     * Disable Timestamps.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * The table associated with the model.
      *
      * @var string

@@ -15,14 +15,11 @@ class CreateChocolateyShopCountriesTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_shop_countries', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('countryCode', 5)->default('all');
             $table->string('locale', 5)->nullable();
             $table->string('name', 50)->default('Global');
-            $table->primary('id', 'chocolatey_shop_countries_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_shop_countries MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_shop_countries')->insert([
             ['countryCode' => 'all', 'name' => 'Global'],

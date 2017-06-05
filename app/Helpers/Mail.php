@@ -45,7 +45,7 @@ final class Mail extends Singleton
      */
     public function store(string $email, string $url): string
     {
-        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email, date('Y-m-d H:i:s', time()));
+        (new MailModel())->store($token = uniqid('HabboMail', true), $url, $email);
 
         return $token;
     }

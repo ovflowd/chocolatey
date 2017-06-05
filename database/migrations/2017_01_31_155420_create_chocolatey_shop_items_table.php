@@ -15,7 +15,7 @@ class CreateChocolateyShopItemsTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_shop_items', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('countryCode', 5)->default('all');
             $table->string('categories', 125)->default('CREDITS');
             $table->integer('creditAmount')->default(0);
@@ -25,10 +25,7 @@ class CreateChocolateyShopItemsTable extends Migration
             $table->text('description')->default('');
             $table->string('price', 50)->default('US$ 0.00');
             $table->string('payment_methods', 125)->default('paypal');
-            $table->primary('id', 'chocolatey_shop_items_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_shop_items MODIFY COLUMN id INT AUTO_INCREMENT');
 
         DB::table('chocolatey_shop_items')->insert([
             ['countryCode' => 'us', 'categories' => 'HABBO_CLUB', 'iconId' => 5, 'name' => 'Habbo Club - 1 month'],

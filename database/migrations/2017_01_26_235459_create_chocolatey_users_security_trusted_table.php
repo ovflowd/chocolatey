@@ -15,13 +15,10 @@ class CreateChocolateyUsersSecurityTrustedTable extends Migration
     public function up()
     {
         Schema::create('chocolatey_users_security_trusted', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('user_id');
             $table->string('ip_address', 255);
-            $table->primary('id', 'chocolatey_users_security_trusted_primary');
         });
-
-        DB::update('ALTER TABLE chocolatey_users_security_trusted MODIFY COLUMN id INT AUTO_INCREMENT');
     }
 
     /**
