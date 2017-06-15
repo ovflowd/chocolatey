@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178
+class ComposerStaticInit287f7e2d775ee33bcc0805190dcfba23
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -12,10 +12,10 @@ class ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'bee9632da3ca00a99623b9c35d0c4f8b' => __DIR__ . '/..' . '/laravel/lumen-framework/src/helpers.php',
-        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c3506a526c5ff171720322fdf42d15c3' => __DIR__ . '/..' . '/sofa/eloquence/src/helpers.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -333,9 +333,9 @@ class ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7038a2d6d8922245d7b520ea4c7aa178::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit287f7e2d775ee33bcc0805190dcfba23::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit287f7e2d775ee33bcc0805190dcfba23::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit287f7e2d775ee33bcc0805190dcfba23::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
