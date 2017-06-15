@@ -56,7 +56,10 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
+    "php": "^7.0",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-xml": "*",
     "laravel/lumen-framework": "5.4.*",
     "vlucas/phpdotenv": "^2.4",
     "sofa/eloquence": "master",
