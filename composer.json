@@ -6,63 +6,26 @@
     "RaGEZONE",
     "CMS"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "support": {
     "issues": "https://github.com/sant0ro/chocolatey/issues",
     "source": "https://github.com/sant0ro/chocolatey/"
   },
-  "type": "project",
-  "repositories": [
+  "authors": [
     {
-      "type": "package",
-      "package": {
-        "name": "sofa/hookable",
-        "version": "master",
-        "autoload": {
-          "psr-4": {
-            "Sofa\\Hookable\\": "src/"
-          }
-        },
-        "source": {
-          "url": "https://github.com/jarektkaczyk/hookable.git",
-          "type": "git",
-          "reference": "master"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "sofa/eloquence",
-        "version": "master",
-        "require": {
-          "sofa/hookable": "master",
-          "illuminate/database": "5.4.*"
-        },
-        "autoload": {
-          "psr-4": {
-            "Sofa\\Eloquence\\": "src"
-          },
-          "files": [
-            "src/helpers.php"
-          ]
-        },
-        "source": {
-          "url": "https://github.com/jarektkaczyk/eloquence.git",
-          "type": "git",
-          "reference": "master"
-        }
-      }
+      "name": "Claudio Santoro",
+      "email": "claudio.santoro@ieee.org",
+      "role": "lead"
     }
   ],
+  "type": "project",
   "require": {
     "php": "^7.0",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "ext-xml": "*",
     "laravel/lumen-framework": "5.4.*",
     "vlucas/phpdotenv": "^2.4",
-    "sofa/eloquence": "master",
+    "sofa/eloquence": "5.4.*",
     "rdehnhardt/lumen-maintenance-mode": "^1.2",
     "illuminate/mail": "5.4.*",
     "intervention/image": "^2.3",
@@ -70,7 +33,7 @@
     "nubs/random-name-generator": "^2.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0"
+    "phpunit/phpunit": "^6.2"
   },
   "autoload": {
     "psr-4": {
