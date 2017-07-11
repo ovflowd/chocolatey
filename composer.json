@@ -39,9 +39,6 @@
     "psr-4": {
       "App\\": "app/"
     }
-      "files": [
-       "app/CloudflareHelper.php"
-       ]
   },
   "autoload-dev": {
     "classmap": [
