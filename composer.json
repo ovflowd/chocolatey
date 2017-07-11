@@ -38,12 +38,10 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/"
-    }
-  },
-  "autoload-dev": {
-    "classmap": [
-      "database/"
-    ]
+    },
+        "files": [
+            "app/CloudflareHelper.php"
+        ]
   },
   "scripts": {
     "post-update-cmd": "bash post-install.sh",
