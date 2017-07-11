@@ -43,6 +43,11 @@
             "app/CloudflareHelper.php"
         ]
   },
+  "autoload-dev": {
+    "classmap": [
+      "database/"
+    ]
+  },
   "scripts": {
     "post-update-cmd": "bash post-install.sh",
     "post-install-cmd": "bash post-install.sh"
