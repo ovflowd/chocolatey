@@ -30,4 +30,5 @@ return [
     'youtube'       => 'Bezoek voor veel meer videos <a href="https://www.youtube.com/user/habbo"  target="_blank"> :hotelName &apos;s YouTube page</a>&#x2026;',
     'join_the_army' => 'SPEEL :hotelName!',
     'join_now'      => 'Word onderdeel van s werelds grootste online community voor tieners. <a href="/registration">Speel nu :hotelName!',
+    'join_now_img'  => 'join_now_nl.png',
 ];
