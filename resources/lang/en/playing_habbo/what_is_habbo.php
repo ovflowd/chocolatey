@@ -30,4 +30,6 @@ return [
     'youtube'       => 'Check out loads of more videos on <a href="https://www.youtube.com/user/habbo"  target="_blank"> :hotelName &apos;s YouTube page</a>&#x2026;',
     'join_the_army' => 'Join :hotelName!',
     'join_now'      => 'Become a part of the world&apos;s biggest online community for teens. <a href="/registration">Join :hotelName now',
+    // Images
+    'join_now_img'  => 'join_now.png',
 ];

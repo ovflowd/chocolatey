@@ -72,4 +72,7 @@ return [
     // Help Desk Section
     'desk_title' => ':hotelName Help Desk',
     'desk'       => 'If you have a <strong>problem with your :hotelName account, there was an error with the credits you bought or you have questions about a banned account</strong>, find your answer in our Customer Support &amp; Helpdesk</a> pages.',
+    // Images
+    'help_button_img' => 'help_button.png',
+    'report_im_img'   => 'report_im.png',
 ];

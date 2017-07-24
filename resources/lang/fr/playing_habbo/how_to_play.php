@@ -30,4 +30,9 @@ return [
     // Footer Section
     'join_title' => 'Rejoins :hotelName',
     'join'       => 'Tu n&apos;as pas encore de compte :shortName? <a href="/registration">Rejoins-nous maintenant</a>!',
+    // Images
+    'citizenship_img'   => 'citizenship_fr.png',
+    'gamehub_img'       => 'gamehub_fr.png',
+    'askfriend_img'     => 'askfriend_FR.png',
+    'navigator_img'     => 'navigator_fr.png',
 ];

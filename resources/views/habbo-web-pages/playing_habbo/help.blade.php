@@ -26,7 +26,7 @@
     <li>{!! trans('playing_habbo/help.reporting_list_six') !!}</li>
 </ol>
 <p>
-    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/help_button.png" alt="Help button" class="align-right">
+    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/{!! trans('playing_habbo/help.help_button_img') !!}" alt="Help button" class="align-right">
 </p>
 <p>{!! trans('playing_habbo/help.reporting_two', ['shortName' => $chocolatey->shortName]) !!}</p>
 <ol>
@@ -47,7 +47,7 @@
     <li>{!! trans('playing_habbo/help.reporting_four_list_three') !!}</li>
 </ol>
 <p>
-    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/report_im.png" alt="Reporting a  {{$chocolatey->hotelName}} in personal messaging">
+    <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/{!! trans('playing_habbo/help.report_im_img') !!}" alt="Reporting a  {{$chocolatey->hotelName}} in personal messaging">
 </p>
 <h2>{!! trans('playing_habbo/help.reporting_five') !!}</h2>
 <p>

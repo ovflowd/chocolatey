@@ -72,4 +72,7 @@ return [
     // Help Desk Section
     'desk_title' => ':hotelName HELPTOOL',
     'desk'       => 'Heb je een <strong>probleem met je :hotelName account, is er een fout opgetreden bij je credits aankopen of heb je een vraag over een ban</strong>, bekijk onze Helptool pagina.</a>',
+    // Images
+    'help_button_img' => 'help_button_nl.png',
+    'report_im_img'   => 'report_im_nl.png',
 ];

@@ -72,4 +72,7 @@ return [
     // Help Desk Section
     'desk_title' => 'Centre d&apos;Aide :hotelName',
     'desk'       => 'Si tu as un <strong>probl&#xE8;me avec ton compte BobbaWorld, une erreur lors d&apos;un achat de cr&#xE9;dits ou alors des questions par rapport &#xE0; une exclusion</strong>, tu trouveras toute l&apos;aide n&#xE9;cessaire dans notre Centre d&apos;Aide',
+    // Images
+    'help_button_img' => 'help_button_fr.png',
+    'report_im_img'   => 'report_im_fr.png',
 ];

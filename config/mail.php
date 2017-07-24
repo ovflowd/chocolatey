@@ -103,4 +103,17 @@ return [
     'username' => env('MAIL_USERNAME'),
 
     'password' => env('MAIL_PASSWORD'),
+
+   	/*
+    |--------------------------------------------------------------------------
+    | Connection Encryption
+    |--------------------------------------------------------------------------
+    |
+    | If your SMTP server has encryption, you should specify which it.
+	|
+    | Supported: "tls", "ssl", ""
+    |
+    */
+
+    'encryption' => 'tls',
 ];

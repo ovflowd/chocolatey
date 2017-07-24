@@ -1,7 +1,7 @@
 <h1>{!! trans('playing_habbo/what_is_habbo.title', ['hotelName' => $chocolatey->hotelName]) !!}</h1>
 <p>
     <a href="/registration" class="remove-link">
-        <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/join_now.png" alt="Join now" class="align-right">
+        <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/{!! trans('playing_habbo/what_is_habbo.join_now_img') !!}" alt="Join now" class="align-right">
     </a>
 </p>
 <p>{!! trans('playing_habbo/what_is_habbo.vintage', ['hotelName' => $chocolatey->hotelName]) !!}</p>
@@ -32,7 +32,7 @@
 <h2>{!! trans('playing_habbo/what_is_habbo.join_the_army', ['hotelName' => $chocolatey->hotelName]) !!}</h2>
 <p>
     <a href="/registration" class="remove-link">
-        <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/join_now.png" alt="Join now" class="align-right">
+        <img src="{{$chocolatey->hotelUrl}}/habbo-web/assets/web-images/{!! trans('playing_habbo/what_is_habbo.join_now_img') !!}" alt="Join now" class="align-right">
     </a>
 </p>
 <p>{!! trans('playing_habbo/what_is_habbo.join_now', ['hotelName' => $chocolatey->hotelName]) !!}</p>
