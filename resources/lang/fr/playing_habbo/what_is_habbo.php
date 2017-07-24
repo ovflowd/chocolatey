@@ -30,4 +30,5 @@ return [
     'youtube'       => 'D&#xE9;couvre les vid&#xE9;os :hotelName sur notre <a href="https://www.youtube.com/playlist?list=PL074A16CEC751C213" target="_blank">Page Youtube</a>&#x2026;',
     'join_the_army' => 'Rejoins :hotelName!',
     'join_now'      => 'Rejoins la plus grande communaut&#xE9; virtuelle en ligne pour adolescents. <a href="/registration">Rejoins :hotelName maintenant</a>!',
+    'join_now_img'  => 'join_now_FR.png',
 ];

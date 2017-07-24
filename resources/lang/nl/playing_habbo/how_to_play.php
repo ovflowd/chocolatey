@@ -30,4 +30,9 @@ return [
     // Footer Section
     'join_title' => 'Doe ook mee in :hotelName!',
     'join'       => 'Heb je je nog niet geregistreed? <a href="/registration">Registreer dan hier</a>!',
+    // Images
+    'citizenship_img'   => 'citizenship_nl.png',
+    'gamehub_img'       => 'gamehub_nl.png',
+    'askfriend_img'     => 'askfriend_nl.png',
+    'navigator_img'     => 'navigator_nl.png',
 ];
