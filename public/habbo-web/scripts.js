@@ -2476,7 +2476,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     }
 }]),angular.module("client.service", ["ngResource", "config"]).factory("Client", ["$resource", "CONFIG", function (e, t) {
     return e(t.apiUrl + "/client/clienturl")
-}]),angular.module("register.banner", ["air.download.link", "local.register.banner", "locale", "templates"]).component("habboRegisterBanner", {templateUrl: "home/register-banner/register-banner.html"}),angular.module("promos.service", ["config"]).factory("promos", ["$http", "$q", "CONFIG", function (e, t, o) {
+}]),angular.module("register.banner", ["air.download.link", "locale", "templates"]).component("habboRegisterBanner", {templateUrl: "home/register-banner/register-banner.html"}),angular.module("promos.service", ["config"]).factory("promos", ["$http", "$q", "CONFIG", function (e, t, o) {
     return {
         get: function () {
             var r = o.habboWebNewsUrl + "front.html";

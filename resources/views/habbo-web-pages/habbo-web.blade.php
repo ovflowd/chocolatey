@@ -50,7 +50,7 @@
     <habbo-client></habbo-client>
 </div>
 <habbo-eu-cookie-banner habbo-require-no-session></habbo-eu-cookie-banner>
-<script src="{{$chocolatey->hotelUrl}}/habbo-web/vendor.js"></script>
-<script src="{{$chocolatey->hotelUrl}}/habbo-web/scripts.js"></script>
+<script src="{{$chocolatey->hotelUrl}}/habbo-web/vendor.min.js"></script>
+<script src="{{$chocolatey->hotelUrl}}/habbo-web/scripts.min.js"></script>
 </body>
 </html>
