@@ -94,7 +94,7 @@
         };
     </script>
     <script type="text/javascript"
-            src="{{$chocolatey->hotelUrl}}/habbo-web/habboapi.js"></script>
+            src="{{$chocolatey->hotelUrl}}/habbo-web/habboapi.min.js"></script>
     <script type="text/javascript">
         var params = {
             "base": "{{$chocolatey->game->gordon}}",
