@@ -38,4 +38,4 @@
   ExpiresByType image/icon "access plus 12 month"
   ExpiresByType application/x-ico "access plus 12 month"
   ExpiresByType application/ico "access plus 12 month"
-</IfModule>`
+</IfModule>
