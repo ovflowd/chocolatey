@@ -13,6 +13,7 @@ class UsersMigration extends Migration
     public function up()
     {
         DB::statement('ALTER TABLE users MODIFY mail varchar(255) NOT NULL;');
+        DB::statement('ALTER TABLE users MODIFY username varchar(50) NOT NULL;');
     }
 
     /**

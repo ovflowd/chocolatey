@@ -35,6 +35,7 @@ class CreateChocolateyArticlesTable extends Migration
             'categories'   => 'technical.updates',
             'imageUrl'     => 'https://habboo-a.akamaihd.net/web_images/habbo-web-articles/lpromo_gen15_51.png',
             'thumbnailUrl' => 'https://habboo-a.akamaihd.net/web_images/habbo-web-articles/lpromo_gen15_51_thumb.png',
+            'created_at'   => time()
         ]]);
     }
 
