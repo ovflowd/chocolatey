@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use PDO;
 
 /**
- * Class Setup
+ * Class Setup.
  */
 class Setup extends Command
 {
@@ -68,7 +68,7 @@ class Setup extends Command
             Storage::put('.env', 'APP_ENV=production');
 
             $this->comment('[INFO] Generating Chocolatey encryption key for password hashing...');
-            Storage::append('.env', 'APP_KEY=' . bin2hex(openssl_random_pseudo_bytes(20)));
+            Storage::append('.env', 'APP_KEY='.bin2hex(openssl_random_pseudo_bytes(20)));
 
             $this->comment('[INFO] Setting Chocolatey debug mode to false...');
             Storage::append('.env', 'APP_DEBUG=false');
@@ -80,11 +80,11 @@ class Setup extends Command
             Storage::append('.env', 'DB_CONNECTION=mysql');
 
             $this->comment('[INFO] Appending all database credentials to .env file...');
-            Storage::append('.env', 'DB_HOST=' . $DB_HOST);
-            Storage::append('.env', 'DB_PORT=' . $DB_PORT);
-            Storage::append('.env', 'DB_DATABASE=' . $DB_NAME);
-            Storage::append('.env', 'DB_USERNAME=' . $DB_USER);
-            Storage::append('.env', 'DB_PASSWORD=' . $DB_PASS);
+            Storage::append('.env', 'DB_HOST='.$DB_HOST);
+            Storage::append('.env', 'DB_PORT='.$DB_PORT);
+            Storage::append('.env', 'DB_DATABASE='.$DB_NAME);
+            Storage::append('.env', 'DB_USERNAME='.$DB_USER);
+            Storage::append('.env', 'DB_PASSWORD='.$DB_PASS);
             Storage::append('.env', '');
 
             $this->comment('[DRIVERS] Setting broadcast to log...');
