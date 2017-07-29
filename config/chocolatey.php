@@ -291,4 +291,15 @@ return [
         'hash'    => 'sha256',
         'session' => 'ChocolateyWEB',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Staff Min Rank
+    |--------------------------------------------------------------------------
+    |
+    | The Minimal Rank that someone it's considered as Staff
+    |
+    */
+
+    'minRank' => 4,
 ];

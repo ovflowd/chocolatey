@@ -1394,5 +1394,7 @@
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
-  "NAVIGATION_HOUSEKEEPING": "Panneau de configuration"
+  "NAVIGATION_HOUSEKEEPING": "Panneau de configuration",
+  "COMMUNITY_STAFF_TAB": "Personnel",
+  "HEAD_TITLE_STAFF": "Personnel"
 }
