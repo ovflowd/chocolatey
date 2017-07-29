@@ -2628,6 +2628,17 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
 }]).controller("PhotosController", ["photos", function (e) {
     var t = this;
     t.photos = e
+}]),angular.module("staff", ["locale", "router"]).config(["$stateProvider", function (e) {
+    e.statePublic("community.staff", {
+        url: "/staff",
+        parent: "community",
+        controller: "StaffController",
+        controllerAs: "StaffController",
+        templateUrl: "community/staff/staff.html",
+        data: {title: "HEAD_TITLE_STAFF"},
+    })
+}]).controller("StaffController", [function () {
+    var t = this;
 }]),angular.module("photos.service", ["ngResource", "config", "reported.photos", "safe.transform.response", "storage"]).factory("Photos", ["$resource", "CONFIG", "httpCache", "reportedPhotosFilter", "safeTransformResponse", function (e, t, o, r, a) {
     return e(t.extraDataUrl + "/public/photos", null, {
         query: {
@@ -4052,7 +4063,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
             return o
         }, e
     }])
-}]),angular.module("community", ["article", "category", "fansites", "header", "photos", "rooms", "router", "tabs", "templates"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
+}]),angular.module("community", ["article", "category", "fansites", "header", "staff", "photos", "rooms", "router", "tabs", "templates"]).config(["$stateProvider", "$urlRouterProvider", function (e, t) {
     e.statePublic("community", {
         url: "/community",
         "abstract": !0,
@@ -4078,7 +4089,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
     t.success("ACTIVATE_SUCCESS"), e.go("home.news")
 }]),angular.module("templates", []).run(["$templateCache", function (e) {
     e.put("community/community.html",
-        '<habbo-header-small active="community"></habbo-header-small><habbo-tabs><habbo-tab path="/community/photos" translation-key="COMMUNITY_PHOTOS_TAB"></habbo-tab><habbo-tab path="/community/rooms" translation-key="COMMUNITY_ROOMS_TAB"></habbo-tab><habbo-tab path="/community/fansites" translation-key="COMMUNITY_FANSITES_TAB"></habbo-tab><habbo-tab path="/community/category" alternative-path="/community/article" translation-key="COMMUNITY_NEWS_TAB"></habbo-tab></habbo-tabs><main ui-view></main>'
+        '<habbo-header-small active="community"></habbo-header-small><habbo-tabs><habbo-tab path="/community/photos" translation-key="COMMUNITY_PHOTOS_TAB"></habbo-tab><habbo-tab path="/community/rooms" translation-key="COMMUNITY_ROOMS_TAB"></habbo-tab><habbo-tab path="/community/fansites" translation-key="COMMUNITY_FANSITES_TAB"></habbo-tab><habbo-tab path="/community/category" alternative-path="/community/article" translation-key="COMMUNITY_NEWS_TAB"></habbo-tab><habbo-tab path="/community/staff" translation-key="COMMUNITY_STAFF_TAB"></habbo-tab></habbo-tabs><main ui-view></main>'
     ), e.put("dev/dev.html",
         '<habbo-header-small></habbo-header-small><section class="wrapper wrapper--content"><habbo-web-pages key="{{:: \'dev/\' + DevController.page}}" class="main"></habbo-web-pages><habbo-web-pages key="{{:: \'dev/\' + DevController.page + \'_box\'}}" class="aside aside--box aside--push-down"></habbo-web-pages></section>'
     ), e.put("home/home.html",
@@ -4162,6 +4173,8 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
         '<section class="wrapper wrapper--content"><article class="main main--fixed static-content"><habbo-compile data="FansitesController.fansites"></habbo-compile></article><habbo-ad-unit unit="inlineRectangle" class="aside aside--fixed aside--push-down"></habbo-ad-unit><habbo-web-pages key="common/box_habbo_way" class="aside aside--box aside--fixed"></habbo-web-pages></section>'
     ), e.put("community/photos/photos.html",
         '<header class="photos__header"><div class="photos__header__container wrapper"><div class="photos__header__image__wrapper"><div class="photos__header__image"></div></div><div class="photos__header__content"><h1 class="photos__header__title" translate="PHOTOS_TITLE"></h1><p translate="PHOTOS_DESCRIPTION"></p></div></div></header><section class="wrapper wrapper--content"><habbo-columns-channel items="PhotosController.photos"></habbo-columns-channel></section>'
+    ), e.put("community/staff/staff.html",
+        '<section class="wrapper wrapper--content"><article class="main main--fixed static-content"><habbo-web-pages key="common/staff_team"></habbo-web-pages></article><habbo-web-pages key="common/staff_about" class="aside aside--box aside--fixed"></habbo-web-pages></section>'
     ), e.put("community/rooms/rooms.html",
         '<header class="rooms__header"><div class="rooms__header__container wrapper"><div class="rooms__header__image__wrapper"><div class="rooms__header__image"></div></div><div class="rooms__header__content"><h1 class="rooms__header__title" translate="ROOMS_TITLE"></h1><p translate="ROOMS_DESCRIPTION"></p></div></div></header><section class="wrapper wrapper--content rooms-wrapper"><div ng-repeat="room in RoomsController.rooms" class="room-item"><a ng-href="/room/{{:: room.id}}" class="room-item__link"><div class="room-item__thumbnail"><img habbo-remove-on-error class="room-item__thumbnail__image" ng-src="{{room.thumbnailUrl}}"></div></a> <a ng-href="/room/{{:: room.id}}" class="room-item__link"><h2 class="room-item__title">{{:: room.name}}</h2></a><p class="room-item__description">{{:: room.description}}</p><div ng-switch="room.publicRoom"><official-room-avatar ng-switch-when="true" class="room-item__owner--official"></official-room-avatar><habbo-avatar ng-switch-when="false" class="room-item__owner--user" user="{{:: room.ownerName}}"></habbo-avatar></div></div></section>'
     ), e.put("email/email-report-unauthorized/email-report-unauthorized-form.html",

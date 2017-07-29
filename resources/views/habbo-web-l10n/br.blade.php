@@ -1409,5 +1409,7 @@
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
-  "NAVIGATION_HOUSEKEEPING": "Painel de Controle"
+  "NAVIGATION_HOUSEKEEPING": "Painel de Controle",
+  "COMMUNITY_STAFF_TAB": "Equipe",
+  "HEAD_TITLE_STAFF": "Equipe"
 }
