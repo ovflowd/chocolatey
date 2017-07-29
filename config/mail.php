@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'driver' => 'smtp',
+    'driver' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'host' => 'localhost',
+    'host' => env('MAIL_HOST', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'port' => 25,
+    'port' => env('MAIL_PORT', 25),
 
     /*
     |--------------------------------------------------------------------------
@@ -100,20 +100,33 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME', 'your-username'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD', 'your-password'),
 
-   	/*
+    /*
     |--------------------------------------------------------------------------
-    | Connection Encryption
+    | E-Mail Encryption Protocol
     |--------------------------------------------------------------------------
     |
-    | If your SMTP server has encryption, you should specify which it.
-	|
-    | Supported: "tls", "ssl", ""
+    | Here you may specify the encryption protocol that should be used when
+    | the application send e-mail messages. A sensible default using the
+    | transport layer security protocol should provide great security.
     |
     */
 
-    'encryption' => 'tls',
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mail "Pretend"
+    |--------------------------------------------------------------------------
+    |
+    | When this option is enabled, e-mail will not actually be sent over the
+    | web and will instead be written to your application's logs files so
+    | you may inspect the message. This is great for local development.
+    |
+    */
+
+    'pretend' => false,
 ];
