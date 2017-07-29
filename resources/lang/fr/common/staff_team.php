@@ -9,5 +9,5 @@
  */
 
 return [
-    'title' => 'Staff Team'
+    'title' => 'Staff Team',
 ];
