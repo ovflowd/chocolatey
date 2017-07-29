@@ -197,7 +197,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getTraitsAttribute(): array
     {
-        if (array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= 6) {
+        if (array_key_exists('rank', $this->attributes) && $this->attributes['rank'] >= config('chocolatey.minRank')) {
             return ['STAFF'];
         }
 
