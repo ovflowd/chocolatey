@@ -5,6 +5,7 @@
 * Please Include Logs and Images
 * You can attach also a complete full log, by attaching a `.har` file. Check here how get a [har file](https://support.cloudflare.com/hc/en-us/articles/203118044-How-do-I-generate-a-HAR-file-)
 * Please describe the steps that you did to find the bug and which pages does the bug happens
+* **Read more about Issues [HERE](ISSUES.md)**
 
 ### Pull Requests
 * Please **ONLY CREATE PULL REQUESTS ON DEVELOPMENT BRANCH!!** The `master` branch it's only for final results.
@@ -12,6 +13,7 @@
 * Be carefully and test the changes before creating a pull request.
 * Be sure that the Pull Requests does not conflicts with other codes.
 * Please if the changes creates modifications on the HabboWEB/Pages/GUI/Graphics/Interfaces attach a screenshot.
+* **Read more about Pull Requests [HERE](PR.md)**
 
 ### Read More
 * Read more about **Contributions** on [the repository wiki](https://github.com/sant0ro/chocolatey/wiki/Before-Collaborating)
