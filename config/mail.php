@@ -113,9 +113,11 @@ return [
     | the application send e-mail messages. A sensible default using the
     | transport layer security protocol should provide great security.
     |
+    | Available: empty (''), tls, ssl
+    |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', ''),
 
     /*
     |--------------------------------------------------------------------------
