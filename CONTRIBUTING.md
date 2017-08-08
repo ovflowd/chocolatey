@@ -1,5 +1,3 @@
-Hi @{{ username }}!
-
 Thanks for contributing on **Chocolatey** repository.
 
 We're glad that you're using our software. I need to remember that **this** message was generated automatically.
