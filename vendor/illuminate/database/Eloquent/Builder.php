@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Concerns\BuildsQueries;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
@@ -98,6 +97,17 @@ class Builder
     }
 
     /**
+     * Create and return an un-saved model instance.
+     *
+     * @param  array  $attributes
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function make(array $attributes = [])
+    {
+        return $this->newModelInstance($attributes);
+    }
+
+    /**
      * Register a new global scope.
      *
      * @param  string  $identifier
@@ -183,7 +193,7 @@ class Builder
     /**
      * Add a basic where clause to the query.
      *
-     * @param  string|\Closure  $column
+     * @param  string|array|\Closure  $column
      * @param  string  $operator
      * @param  mixed  $value
      * @param  string  $boolean
@@ -255,7 +265,7 @@ class Builder
      */
     public function find($id, $columns = ['*'])
     {
-        if (is_array($id)) {
+        if (is_array($id) || $id instanceof Arrayable) {
             return $this->findMany($id, $columns);
         }
 
@@ -680,7 +690,7 @@ class Builder
                                     ? $this->forPage($page, $perPage)->get($columns)
                                     : $this->model->newCollection();
 
-        return new LengthAwarePaginator($results, $total, $perPage, $page, [
+        return $this->paginator($results, $total, $perPage, $page, [
             'path' => Paginator::resolveCurrentPath(),
             'pageName' => $pageName,
         ]);
@@ -706,7 +716,7 @@ class Builder
         // paginator instances for these results with the given page and per page.
         $this->skip(($page - 1) * $perPage)->take($perPage + 1);
 
-        return new Paginator($this->get($columns), $perPage, $page, [
+        return $this->simplePaginator($this->get($columns), $perPage, $page, [
             'path' => Paginator::resolveCurrentPath(),
             'pageName' => $pageName,
         ]);
@@ -914,7 +924,8 @@ class Builder
         // We will keep track of how many wheres are on the query before running the
         // scope so that we can properly group the added scope constraints in the
         // query as their own isolated nested where statement and avoid issues.
-        $originalWhereCount = count($query->wheres);
+        $originalWhereCount = is_null($query->wheres)
+                    ? 0 : count($query->wheres);
 
         $result = $scope(...array_values($parameters)) ?: $this;
 
