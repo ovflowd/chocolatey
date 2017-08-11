@@ -1,6 +1,6 @@
-Hi @{{ username }}!
-
 Thanks for reporting an Issue to the **Chocolatey Repository**.
+
+**If you liked this software, go to my GitHub profile and like my profile. [Clicking Here](https://github.com/sant0ro) and clicking on the "Follow" button.**
 
 We're glad that you're using our software. I need to remember that **this** message was generated automatically.
 
