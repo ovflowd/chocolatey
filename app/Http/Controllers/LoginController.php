@@ -46,8 +46,8 @@ class LoginController extends BaseController
     protected function sendBanMessage(): JsonResponse
     {
         return response()->json(['message' => 'login.user_banned',
-            'expiryTime'                   => UserFacade::getUser()->banDetails->ban_expire,
-            'reason'                       => UserFacade::getUser()->banDetails->ban_reason, ], 401);
+            'expiryTime' => UserFacade::getUser()->banDetails->ban_expire,
+            'reason' => UserFacade::getUser()->banDetails->ban_reason,], 401);
     }
 
     /**
@@ -73,6 +73,10 @@ class LoginController extends BaseController
     public function register(Request $request): JsonResponse
     {
         if (ChocolateyId::where('mail', $request->json()->get('email'))->count() > 0) {
+            return response()->json(['error' => 'registration_email_in_use'], 409);
+        }
+
+        if(User::where('ip_register', $request->ip())->count() > 0) {
             return response()->json(['error' => 'registration_email_in_use'], 409);
         }
 
@@ -102,7 +106,7 @@ class LoginController extends BaseController
             return response()->json(UserFacade::setSession(User::where('real_name', $fbUser->getId())->first()));
         }
 
-        (new AccountController())->createUser($request, ['email' => $fbUser->getEmail()], true);
+        (new AccountController())->createUser($request, ['email' => $fbUser->getEmail() . '-fblogin'], true, false);
 
         UserFacade::updateSession(['last_login' => time(), 'ip_register' => $request->ip(), 'ip_current' => $request->ip(), 'real_name' => $fbUser->getId()]);
 

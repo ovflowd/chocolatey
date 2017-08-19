@@ -558,7 +558,7 @@ angular.module("payment.popup", ["config", "google.analytics", "notifier", "popu
                 })
             }
 
-            a.emailVerified = t.user.emailVerified, a.identityVerified = t.user.identityVerified, a.MAX_AVATARS = 50, a.open = function () {
+            a.emailVerified = t.user.emailVerified, a.identityVerified = t.user.identityVerified, a.MAX_AVATARS = window.chocolatey.maxAvatars, a.open = function () {
                 t.isTrusted() ? n() : r.open().then(n)
             }
         }
