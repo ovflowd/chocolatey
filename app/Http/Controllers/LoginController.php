@@ -76,6 +76,10 @@ class LoginController extends BaseController
             return response()->json(['error' => 'registration_email_in_use'], 409);
         }
 
+        if(User::where('ip_register', $request->ip())->count() > 0) {
+            return response()->json(['error' => 'registration_email_in_use'], 409);
+        }
+
         $dateOfBirth = strtotime("{$request->json()->get('birthdate')['day']}/{$request->json()->get('birthdate')['month']}/{$request->json()->get('birthdate')['year']}");
 
         (new AccountController())->createUser($request, $request->json()->all(), true);
