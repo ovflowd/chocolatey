@@ -1353,6 +1353,7 @@
   "CFH_CLOSED_ABUSIVE": "Mods hebben jouw oproep afgehandeld. Let op: alleen serieuze aangiftes worden behandeld! Misbruik van het systeem is niet cool.",
   "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Control Panel",

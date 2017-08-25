@@ -1407,6 +1407,7 @@
   "CFH_CLOSED_ABUSIVE": "Os Moderadores verificaram o caso que você reportou. Por favor, somente abra Pedidos de Ajuda legítimos! Usar esse sistema sem necessidade não é legal.",
   "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Painel de Controle",

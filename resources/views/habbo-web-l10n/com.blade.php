@@ -1604,6 +1604,7 @@
   "CFH_CLOSED_ABUSIVE": "Mods looked into the case reported by you. Legit emergency calls only, please! Misusing the system is not cool.",
   "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Housekeeping",

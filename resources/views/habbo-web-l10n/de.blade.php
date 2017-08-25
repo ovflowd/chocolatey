@@ -1397,6 +1397,7 @@
   "CFH_CLOSED_ABUSIVE": "Die Moderatoren haben sich deinen Hilferuf angeschaut. Bitte melde nur echte Verstöße ! Es ist nicht cool das System zu missbrauchen.",
   "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Systemsteuerung",
