@@ -19,8 +19,14 @@ $app = new Laravel\Lumen\Application(
 // Enable Laravel Facades (DB::)
 $app->withFacades();
 
+// Add Alias for File Systems
+class_alias('Illuminate\Support\Facades\Storage', 'Storage');
+
 // Enable Laravel Eloquent Models
 $app->withEloquent();
+
+// Configure File System
+$app->configure('filesystems');
 
 // Configure Mail Provider
 $app->configure('mail');
@@ -73,6 +79,8 @@ if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
 | Register Service Providers
 |--------------------------------------------------------------------------
 */
+
+$app->register(Illuminate\Filesystem\FilesystemServiceProvider::class);
 
 $app->register(App\Providers\AppServiceProvider::class);
 

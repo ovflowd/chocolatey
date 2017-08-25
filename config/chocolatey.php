@@ -92,7 +92,7 @@ return [
     */
 
     'ads' => [
-        'enabled'   => true,
+        'enabled'   => false,
         'adseneKey' => 'YOUR-ADSENE-KEY', //DEFAULT: /108596585/HABBO_Video
     ],
 
@@ -130,8 +130,8 @@ return [
     */
 
     'twitter' => [
-        'title'    => 'Tweets by @m0vame',
-        'username' => 'm0vame',
+        'title'    => 'Tweets by @YOUR-TWITTER-USERNAME',
+        'username' => 'YOUR-TWITTER-USERNAME',
     ],
 
     /*
@@ -145,12 +145,23 @@ return [
     */
 
     'facebook' => [
-        'page' => 'universalinternetofthings',
+        'page' => 'YOUR-FACEBOOK-PAGE',
         'app'  => [
             'key'    => 'YOUR-API-KEY',
             'secret' => 'YOU-SECRET-KEY',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Youtube Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Used for Social Media
+    |
+    */
+
+    'youtube' => 'YOUR-YOUTUBE-PAGE',
 
     /*
     |--------------------------------------------------------------------------
@@ -313,4 +324,15 @@ return [
     */
 
     'minRank' => 4,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Cookies Message
+    |--------------------------------------------------------------------------
+    |
+    | Show the Cookies Banner for first access Users?
+    |
+    */
+
+    'cookieBanner' => true,
 ];

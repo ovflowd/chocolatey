@@ -1480,6 +1480,7 @@
   "MODERATOR_MESSAGETEMPLATE_1": "Si te encuentras en una situación desagradable en {{$chocolatey->hotelName}} , al pinchar en \"Ayuda\" puedes hacer clic en \"Quiero abandonar la sala\". Es una forma fácil de escapar de ahí.",
   "CFH_CLOSED_ABUSIVE": "L@s mods miraron el caso que has reportado. ¡Sólo emergencias reales, por favor! El uso inapropiado del sistema no está bien.",  "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Panel de Control",

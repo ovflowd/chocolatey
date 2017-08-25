@@ -1392,6 +1392,7 @@
   "CFH_CLOSED_ABUSIVE": "Les Modérateurs ont étudié le cas que tu as rapporté. N'envoie que des demandes urgentes et justifiées, s'il te plaît ! Fais bon usage du système.",
   "RSS_URI": "{{$chocolatey->hotelUrl}}/rss.xml",
   "TWITTER_URI": "https://twitter.com/{{$chocolatey->twitter->username}}",
+  "YOUTUBE_URI": "https://youtube.com/channel/{{$chocolatey->youtube}}",
   "FACEBOOK_URI": "https://facebook.com/{{$chocolatey->facebook->page}}",
   "HOTEL_URI": "{{$chocolatey->hotelUrl}}/",
   "NAVIGATION_HOUSEKEEPING": "Panneau de configuration",
