@@ -141,7 +141,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getMailAttribute()
     {
-        return strpos('-fblogin', $this->attributes['mail']) !== 0 ? 'fblogin' : $this->attributes['mail'];
+        return strpos('-fblogin', $this->attributes['mail']) !== false ? 'fblogin' : $this->attributes['mail'];
     }
 
     /**
@@ -246,7 +246,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getIdentityTypeAttribute(): string
     {
-        return strpos('-fblogin', $this->attributes['mail']) !== 0 ? 'FACEBOOK' : 'HABBO';
+        return strpos('-fblogin', $this->attributes['mail']) !== false ? 'FACEBOOK' : 'HABBO';
     }
 
     /**
@@ -358,7 +358,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getEmailVerifiedAttribute(): bool
     {
-        return strpos('-fblogin', $this->attributes['mail']) !== 0 ?
+        return strpos('-fblogin', $this->attributes['mail']) !== false ?
             true : ($this->getChocolateyId()->mail_verified ?? false);
     }
 
