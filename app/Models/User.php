@@ -100,7 +100,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return User
      */
-    public function store(string $username, string $email, string $address = '', bool $newUser = true): User
+    public function store(string $username, string $email, string $address = '', bool $newUser = true): self
     {
         $this->attributes['username'] = $username;
         $this->attributes['mail'] = $email;
