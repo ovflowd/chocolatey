@@ -13,26 +13,26 @@ use Illuminate\Support\Facades\Config;
 */
 
 // Main Extradata Request is Forbidden
-$app->get('extradata', function () {
+$router->get('extradata', function () {
     return response('Unauthorized.', 401);
 });
 
 // Show All Registered HabboWEB Photos
-$app->get('extradata/public/photos', 'PhotosController@show');
+$router->get('extradata/public/photos', 'PhotosController@show');
 
 // Get User Stories
-$app->get('extradata/public/users/{userId}/stories', 'ProfileController@getStories');
+$router->get('extradata/public/users/{userId}/stories', 'ProfileController@getStories');
 
 // Get User Stories
-$app->get('extradata/public/users/{userId}/photos', 'ProfileController@getPhotos');
+$router->get('extradata/public/users/{userId}/photos', 'ProfileController@getPhotos');
 
 // Public Stories
-$app->get('extradata/public/users/stories', function () {
+$router->get('extradata/public/users/stories', function () {
     return response()->json('');
 });
 
 // Cross domain for Client
-$app->get('crossdomain.xml', function () {
+$router->get('crossdomain.xml', function () {
     $domains = '';
 
     foreach (Config::get('chocolatey.cors') as $domain) {
@@ -45,23 +45,23 @@ $app->get('crossdomain.xml', function () {
 });
 
 // Middleware that Requires Authentication
-$app->group(['middleware' => 'auth'], function () use ($app) {
+$router->group(['middleware' => 'auth'], function () use ($router) {
 
     // Recent Photo Moderations
     // @TODO: Synchronize with Photo Moderations
-    $app->get('extradata/private/moderations/recentModerations', function () {
+    $router->get('extradata/private/moderations/recentModerations', function () {
         return response()->json([]);
     });
 
     // Report a Specific Photo
-    $app->post('extradata/private/creation/{photo}/report', 'PhotosController@report');
+    $router->post('extradata/private/creation/{photo}/report', 'PhotosController@report');
 
     // Like a Specific Photo
-    $app->post('extradata/private/like/{photo}', 'PhotosController@likePhoto');
+    $router->post('extradata/private/like/{photo}', 'PhotosController@likePhoto');
 
     // Like a Specific Photo
-    $app->post('extradata/private/unlike/{photo}', 'PhotosController@unlikePhoto');
+    $router->post('extradata/private/unlike/{photo}', 'PhotosController@unlikePhoto');
 
     // Delete a Specific Photo
-    $app->delete('extradata/private/photo/{photo}', 'PhotosController@delete');
+    $router->delete('extradata/private/photo/{photo}', 'PhotosController@delete');
 });

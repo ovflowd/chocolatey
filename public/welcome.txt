@@ -1,1 +1,5 @@
 The Public Folder Works. You can put your SWF content inside here.
+
+Please set in your Web Server the DocumentRoot to this folder.
+
+Thanks for using Chocolatey.
