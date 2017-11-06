@@ -46,7 +46,7 @@ class Country extends ChocolateyModel
      *
      * @return Country
      */
-    public function store(string $countryCode, string $name): Country
+    public function store(string $countryCode, string $name): self
     {
         $this->attributes['countryCode'] = $countryCode;
         $this->attributes['name'] = $name;

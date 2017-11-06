@@ -71,7 +71,7 @@ class PaymentMethod extends ChocolateyModel
      *
      * @return PaymentMethod
      */
-    public function store(string $methodName, string $code, string $buttonImageUrl, string $buttonText): PaymentMethod
+    public function store(string $methodName, string $code, string $buttonImageUrl, string $buttonText): self
     {
         $this->attributes['name'] = $methodName;
         $this->attributes['buttonLogoUrl'] = $buttonImageUrl;

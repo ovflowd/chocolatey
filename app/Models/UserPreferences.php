@@ -52,7 +52,7 @@ class UserPreferences extends Model
      *
      * @return UserPreferences
      */
-    public function store(int $userId): UserPreferences
+    public function store(int $userId): self
     {
         $this->attributes['user_id'] = $userId;
         $this->timestamps = false;
