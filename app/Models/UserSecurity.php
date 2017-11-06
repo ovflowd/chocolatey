@@ -74,7 +74,7 @@ class UserSecurity extends ChocolateyModel
      *
      * @return UserSecurity
      */
-    public function store(int $userId, int $firstQuestion, int $secondQuestion, string $firstAnswer, string $secondAnswer): UserSecurity
+    public function store(int $userId, int $firstQuestion, int $secondQuestion, string $firstAnswer, string $secondAnswer): self
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['firstQuestion'] = $firstQuestion;

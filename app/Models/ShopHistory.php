@@ -120,7 +120,7 @@ class ShopHistory extends ChocolateyModel
      *
      * @return ShopHistory
      */
-    public function store(int $paymentMethod, int $userId, int $itemId): ShopHistory
+    public function store(int $paymentMethod, int $userId, int $itemId): self
     {
         $this->attributes['payment_method'] = $paymentMethod;
         $this->attributes['user_id'] = $userId;

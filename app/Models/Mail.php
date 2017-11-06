@@ -37,7 +37,7 @@ class Mail extends ChocolateyModel
      *
      * @return Mail
      */
-    public function store(string $token, string $link, string $userMail): Mail
+    public function store(string $token, string $link, string $userMail): self
     {
         $this->attributes['token'] = $token;
         $this->attributes['link'] = $link;

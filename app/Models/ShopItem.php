@@ -67,7 +67,7 @@ class ShopItem extends ChocolateyModel
      *
      * @return ShopItem
      */
-    public function store(string $itemName, string $countryCode, int $creditAmount, int $iconId, array $paymentMethods): ShopItem
+    public function store(string $itemName, string $countryCode, int $creditAmount, int $iconId, array $paymentMethods): self
     {
         $this->attributes['name'] = $itemName;
         $this->attributes['countryCode'] = $countryCode;
