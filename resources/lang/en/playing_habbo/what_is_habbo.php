@@ -31,5 +31,5 @@ return [
     'join_the_army' => 'Join :hotelName!',
     'join_now'      => 'Become a part of the world&apos;s biggest online community for teens. <a href="/registration">Join :hotelName now',
     // Images
-    'join_now_img'  => 'join_now.png',
+    'join_now_img' => 'join_now.png',
 ];

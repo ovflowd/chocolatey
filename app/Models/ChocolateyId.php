@@ -56,7 +56,7 @@ class ChocolateyId extends ChocolateyModel
      *
      * @return ChocolateyId
      */
-    public function store(string $userMail, string $userPassword): ChocolateyId
+    public function store(string $userMail, string $userPassword): self
     {
         $this->attributes['password'] = hash(Config::get('chocolatey.security.hash'), $userPassword);
         $this->attributes['mail'] = $userMail;

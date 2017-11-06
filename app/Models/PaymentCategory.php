@@ -35,7 +35,7 @@ class PaymentCategory extends ChocolateyModel
      *
      * @return PaymentCategory
      */
-    public function store(string $paymentName): PaymentCategory
+    public function store(string $paymentName): self
     {
         $this->attributes['payment_type'] = $paymentName;
         $this->timestamps = false;
