@@ -60,7 +60,7 @@ class Article extends ChocolateyModel
      *
      * @return Article
      */
-    public function store(string $title, string $description, string $content, string $author, string $categories, string $imageUrl, string $thumbnailUrl): Article
+    public function store(string $title, string $description, string $content, string $author, string $categories, string $imageUrl, string $thumbnailUrl): self
     {
         $this->attributes['title'] = $title;
         $this->attributes['description'] = $description;

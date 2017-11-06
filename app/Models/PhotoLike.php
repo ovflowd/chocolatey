@@ -36,7 +36,7 @@ class PhotoLike extends ChocolateyModel
      *
      * @return PhotoLike
      */
-    public function store(int $photoId, string $userName): PhotoLike
+    public function store(int $photoId, string $userName): self
     {
         $this->attributes['photo_id'] = $photoId;
         $this->attributes['username'] = $userName;
