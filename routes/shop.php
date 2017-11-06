@@ -11,43 +11,43 @@
 */
 
 // Maintenance Middleware
-$app->group(['middleware' => 'maintenance'], function () use ($app) {
+$router->group(['middleware' => 'maintenance'], function () use ($router) {
 
     // Main ShopAPI Request is Forbidden
-    $app->get('shopapi', function () {
+    $router->get('shopapi', function () {
         return response('Unauthorized.', 401);
     });
 
     // Get a List of all Shop Countries
-    $app->get('shopapi/public/countries', 'ShopController@listCountries');
+    $router->get('shopapi/public/countries', 'ShopController@listCountries');
 
     // Get the Inventory of a specific Country
-    $app->get('shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
+    $router->get('shopapi/public/inventory/{countryCode}', 'ShopController@getInventory');
 
     // Middleware that Requires Authentication
-    $app->group(['middleware' => 'auth'], function () use ($app) {
+    $router->group(['middleware' => 'auth'], function () use ($router) {
         // Get User Purse
-        $app->get('shopapi/purse', 'ShopController@getPurse');
+        $router->get('shopapi/purse', 'ShopController@getPurse');
 
         // Get Offers Page
-        $app->get('shopapi/offerwall/url', 'ShopController@getWall');
+        $router->get('shopapi/offerwall/url', 'ShopController@getWall');
 
         // Get User Purchase History
-        $app->get('shopapi/history', 'ShopController@getHistory');
+        $router->get('shopapi/history', 'ShopController@getHistory');
 
         // Get a List of all Shop Countries
-        $app->get('shopapi/countries', 'ShopController@listCountries');
+        $router->get('shopapi/countries', 'ShopController@listCountries');
 
         // Get the Inventory of a specific Country
-        $app->get('shopapi/inventory/{countryCode}', 'ShopController@getInventory');
+        $router->get('shopapi/inventory/{countryCode}', 'ShopController@getInventory');
 
         // Redirect to Purchase Proceed
-        $app->get('shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
+        $router->get('shopapi/proceed/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@proceed');
 
         // Redeem a Voucher
-        $app->post('shopapi/voucher/redeem', 'ShopController@redeem');
+        $router->post('shopapi/voucher/redeem', 'ShopController@redeem');
 
         // Redirect to Success Purchase
-        $app->post('shopapi/success/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@success');
+        $router->post('shopapi/success/{paymentCategory}/{countryCode}/{shopItem}/{paymentMethod}', 'ShopController@success');
     });
 });

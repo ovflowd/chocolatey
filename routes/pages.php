@@ -11,12 +11,12 @@
 */
 
 // Main HabboPAGES Request is Forbidden
-$app->get('habbo-pages/', function () {
+$router->get('habbo-pages/', function () {
     return response('Unauthorized.', 401);
 });
 
 // Request a HabboPage
-$app->get('habbo-pages/{page}', 'PageController@habboPage');
+$router->get('habbo-pages/{page}', 'PageController@habboPage');
 
 // Request a Categorized HabboPage
-$app->get('habbo-pages/{category}/{page}', 'PageController@habboPage');
+$router->get('habbo-pages/{category}/{page}', 'PageController@habboPage');
