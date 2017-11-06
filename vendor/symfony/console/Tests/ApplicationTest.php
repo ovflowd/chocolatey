@@ -652,6 +652,22 @@ class ApplicationTest extends TestCase
         putenv('COLUMNS=120');
     }
 
+    public function testRenderExceptionLineBreaks()
+    {
+        $application = $this->getMockBuilder('Symfony\Component\Console\Application')->setMethods(array('getTerminalWidth'))->getMock();
+        $application->setAutoExit(false);
+        $application->expects($this->any())
+            ->method('getTerminalWidth')
+            ->will($this->returnValue(120));
+        $application->register('foo')->setCode(function () {
+            throw new \InvalidArgumentException("\n\nline 1 with extra spaces        \nline 2\n\nline 4\n");
+        });
+        $tester = new ApplicationTester($application);
+
+        $tester->run(array('command' => 'foo'), array('decorated' => false));
+        $this->assertStringEqualsFile(self::$fixturesPath.'/application_renderexception_linebreaks.txt', $tester->getDisplay(true), '->renderException() keep multiple line breaks');
+    }
+
     public function testRun()
     {
         $application = new Application();
@@ -1040,6 +1056,9 @@ class ApplicationTest extends TestCase
         $this->assertContains('before.error.after.', $tester->getDisplay());
     }
 
+    /**
+     * @requires PHP 7
+     */
     public function testRunWithError()
     {
         $application = new Application();
@@ -1160,6 +1179,7 @@ class ApplicationTest extends TestCase
     }
 
     /**
+     * @requires PHP 7
      * @expectedException        \LogicException
      * @expectedExceptionMessage error
      */
@@ -1181,6 +1201,9 @@ class ApplicationTest extends TestCase
         $this->assertContains('before.dym.error.after.', $tester->getDisplay(), 'The PHP Error did not dispached events');
     }
 
+    /**
+     * @requires PHP 7
+     */
     public function testRunDispatchesAllEventsWithError()
     {
         $application = new Application();
@@ -1198,6 +1221,9 @@ class ApplicationTest extends TestCase
         $this->assertContains('before.dym.error.after.', $tester->getDisplay(), 'The PHP Error did not dispached events');
     }
 
+    /**
+     * @requires PHP 7
+     */
     public function testRunWithErrorFailingStatusCode()
     {
         $application = new Application();
