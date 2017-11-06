@@ -43,7 +43,7 @@ class TrustedDevice extends ChocolateyModel
      *
      * @return TrustedDevice
      */
-    public function store(int $userId, string $ipAddress): TrustedDevice
+    public function store(int $userId, string $ipAddress): self
     {
         $this->attributes['user_id'] = $userId;
         $this->attributes['ip_address'] = $ipAddress;

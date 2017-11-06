@@ -31,8 +31,8 @@ return [
     'join_title' => 'Join :hotelName',
     'join'       => 'Haven&apos;t registered for :hotelName yet? <a href="/registration">Join now</a>!',
     // Images
-    'citizenship_img'   => 'citizenship.png',
-    'gamehub_img'       => 'gamehub.png',
-    'askfriend_img'     => 'askfriend.png',
-    'navigator_img'     => 'navigator.png',
+    'citizenship_img' => 'citizenship.png',
+    'gamehub_img'     => 'gamehub.png',
+    'askfriend_img'   => 'askfriend.png',
+    'navigator_img'   => 'navigator.png',
 ];
